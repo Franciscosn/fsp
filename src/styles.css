@@ -406,7 +406,7 @@ h3 {
 
 .question {
   margin: 14px 0 0;
-  font-size: 1.14rem;
+  font-size: 1.24rem;
   line-height: 1.5;
   font-weight: 700;
   color: #5c1f2d;
@@ -424,8 +424,8 @@ h3 {
   text-align: left;
   background: #fff;
   color: #612232;
-  padding: 11px 12px;
-  font-size: 1rem;
+  padding: 12px 13px;
+  font-size: 1.08rem;
   font-family: inherit;
   cursor: pointer;
 }
@@ -459,7 +459,7 @@ h3 {
 .result-line {
   margin: 0;
   font-weight: 900;
-  font-size: 1.06rem;
+  font-size: 1.16rem;
 }
 
 .result-line.ok {
@@ -473,6 +473,8 @@ h3 {
 .explanation {
   margin: 8px 0 0;
   color: #7d4350;
+  font-size: 1.06rem;
+  line-height: 1.45;
 }
 
 .translation-box {
@@ -499,8 +501,9 @@ h3 {
   background: #fff1f4;
   border: 1px solid rgba(248, 73, 102, 0.2);
   border-radius: 10px;
-  padding: 8px 10px;
-  line-height: 1.35;
+  padding: 10px 12px;
+  font-size: 1.08rem;
+  line-height: 1.45;
 }
 
 .heart-burst {
@@ -711,8 +714,8 @@ body.immersive .quiz-actions {
 }
 
 body.immersive .quiz-actions .soft-btn {
-  padding: 8px 8px;
-  font-size: 0.82rem;
+  padding: 6px 8px;
+  font-size: 0.76rem;
 }
 
 body.immersive .card-meta {
@@ -800,8 +803,8 @@ body.immersive .stats-fab {
 
   body.immersive .question {
     margin-top: 0;
-    font-size: 0.98rem;
-    line-height: 1.35;
+    font-size: 1.08rem;
+    line-height: 1.4;
   }
 
   body.immersive .choices {
@@ -810,8 +813,8 @@ body.immersive .stats-fab {
   }
 
   body.immersive .choice {
-    padding: 8px 10px;
-    font-size: 0.92rem;
+    padding: 9px 10px;
+    font-size: 1rem;
     border-radius: 10px;
   }
 
@@ -821,7 +824,7 @@ body.immersive .stats-fab {
   }
 
   body.immersive .result-line {
-    font-size: 0.97rem;
+    font-size: 1.08rem;
   }
 
   body.immersive .feedback .primary-btn {
@@ -832,13 +835,13 @@ body.immersive .stats-fab {
 
   body.immersive .translation-inline {
     margin-top: 6px;
-    padding: 7px 8px;
-    font-size: 0.88rem;
+    padding: 8px 9px;
+    font-size: 1.02rem;
   }
 
   body.immersive .explanation {
     margin-top: 4px;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   body.immersive .translation-box {
