@@ -1,0 +1,302 @@
+{
+  "deckName": "FSP-Berlin-Endokrinologie-Basis",
+  "language": "de",
+  "version": "1.1.0",
+  "terms": [
+    {
+      "termId": "hypoglykaemie",
+      "fachbegriff": "Hypoglykämie",
+      "patientensprache": "Unterzucker",
+      "cards": [
+        {
+          "cardId": "hypoglykaemie-1",
+          "type": "patient_to_fachbegriff",
+          "question": "Patient sagt: \"Ich hatte heute Morgen Unterzucker, mir wurde zittrig und ich brauchte sofort Saft.\" Welcher Fachbegriff passt?",
+          "translation_es": "El paciente dice: \"Esta manana tuve una bajada de azucar, me puse tembloroso y necesite jugo de inmediato\". ?Que termino medico corresponde?",
+          "choices": [
+            "Hypoglykämie",
+            "Hyperglykämie",
+            "Hyperthyreose"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Hypoglykämie bedeutet Unterzuckerung und passt zu Zittern plus schneller Besserung nach Zuckerzufuhr."
+        },
+        {
+          "cardId": "hypoglykaemie-2",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Rezidivierende Hypoglykämien unter Insulintherapie.\" Wie sagst du das in Patientensprache?",
+          "translation_es": "En el informe medico dice: \"Hipoglucemias recurrentes bajo terapia con insulina\". ?Como lo dirias en lenguaje del paciente?",
+          "choices": [
+            "Wiederholter Unterzucker unter Insulin",
+            "Wiederholter Überzucker unter Insulin",
+            "Wiederholte Schilddrüsenüberfunktion"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Rezidivierend heisst wiederholt. Hypoglykämien sind Episoden von Unterzucker."
+        },
+        {
+          "cardId": "hypoglykaemie-3",
+          "type": "interesting_patient",
+          "question": "Patientin: \"Ich hatte Unterzucker im Supermarkt.\" Welche Anschlussfrage ist für den Schweregrad am wichtigsten?",
+          "translation_es": "La paciente dice: \"Tuve una bajada de azucar en el supermercado\". ?Que pregunta de seguimiento es la mas importante para valorar la gravedad?",
+          "choices": [
+            "Waren Sie noch ansprechbar oder kurz bewusstlos?",
+            "Welche Supermarktkette war das?",
+            "Hatten Sie neue Schuhe an?"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Bewusstseinslage ist entscheidend fuer die akute Gefaehrdung und hilft bei der Einordnung der Episode."
+        },
+        {
+          "cardId": "hypoglykaemie-4",
+          "type": "interesting_fach",
+          "question": "Welche Symptomkombination spricht am ehesten für eine Hypoglykämie?",
+          "translation_es": "?Que combinacion de sintomas sugiere mas una hipoglucemia?",
+          "choices": [
+            "Zittern, kalter Schweiß, Heißhunger",
+            "Durst, häufiges Wasserlassen, trockener Mund",
+            "Gewichtsverlust, Wärmeintoleranz, Tremor"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Adrenerge Warnzeichen der Hypoglykämie sind Zittern, Schwitzen und Heisshunger."
+        }
+      ]
+    },
+    {
+      "termId": "hyperglykaemie",
+      "fachbegriff": "Hyperglykämie",
+      "patientensprache": "Überzucker",
+      "cards": [
+        {
+          "cardId": "hyperglykaemie-1",
+          "type": "patient_to_fachbegriff",
+          "question": "Patient sagt: \"Ich habe seit Tagen Überzucker.\" Wie heißt das fachsprachlich?",
+          "translation_es": "El paciente dice: \"Llevo dias con azucar alta\". ?Como se llama en lenguaje medico?",
+          "choices": [
+            "Hyperglykämie",
+            "Hypoglykämie",
+            "Hypothyreose"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Hyperglykämie bezeichnet einen erhoehten Blutzuckerwert, umgangssprachlich Ueberzucker."
+        },
+        {
+          "cardId": "hyperglykaemie-2",
+          "type": "fachbegriff_to_patient",
+          "question": "In der Kurve steht: \"Persistierende Hyperglykämie.\" Was ist die passende Patientensprache?",
+          "translation_es": "En la hoja de evolucion dice: \"Hiperglucemia persistente\". ?Cual es la expresion adecuada para el paciente?",
+          "choices": [
+            "Anhaltender Überzucker",
+            "Anhaltender Unterzucker",
+            "Anhaltende Schilddrüsenunterfunktion"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Persistierend bedeutet anhaltend. Hyperglykämie entspricht Ueberzucker."
+        },
+        {
+          "cardId": "hyperglykaemie-3",
+          "type": "interesting_patient",
+          "question": "Patientin: \"Bei Überzucker habe ich extremen Durst und muss ständig zur Toilette.\" Welche Rückfrage hilft am meisten?",
+          "translation_es": "La paciente dice: \"Con azucar alta tengo mucha sed y voy al bano constantemente\". ?Que repregunta ayuda mas?",
+          "choices": [
+            "Seit wann bestehen starker Durst und häufiges Wasserlassen?",
+            "Welche Farbe hat Ihre Trinkflasche?",
+            "Hören Sie beim Trinken Musik?"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Zeitlicher Verlauf der Leitsymptome ist zentral fuer Dringlichkeit und Differenzialdiagnose."
+        },
+        {
+          "cardId": "hyperglykaemie-4",
+          "type": "interesting_fach",
+          "question": "Welche Kombination passt eher zu Hyperglykämie als zu Hypoglykämie?",
+          "translation_es": "?Que combinacion encaja mas con hiperglucemia que con hipoglucemia?",
+          "choices": [
+            "Polydipsie, Polyurie, Müdigkeit",
+            "Zittern, Schwitzen, Heißhunger",
+            "Kalte Haut, Akutverwirrtheit nach Auslassen einer Mahlzeit"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Polydipsie und Polyurie sind klassische Zeichen einer Hyperglykämie."
+        }
+      ]
+    },
+    {
+      "termId": "hypothyreose",
+      "fachbegriff": "Hypothyreose",
+      "patientensprache": "Schilddrüsenunterfunktion",
+      "cards": [
+        {
+          "cardId": "hypothyreose-1",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin: \"Ich habe eine Schilddrüsenunterfunktion.\" Welcher Fachbegriff ist korrekt?",
+          "translation_es": "La paciente dice: \"Tengo hipofuncion de la tiroides\". ?Cual es el termino medico correcto?",
+          "choices": [
+            "Hypothyreose",
+            "Hyperthyreose",
+            "Adipositas"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Hypothyreose ist die fachsprachliche Bezeichnung fuer Schilddruesenunterfunktion."
+        },
+        {
+          "cardId": "hypothyreose-2",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Befund steht: \"Bekannte Hypothyreose seit 2019.\" Wie erklärst du das patientengerecht?",
+          "translation_es": "En el informe dice: \"Hipotiroidismo conocido desde 2019\". ?Como lo explicas en lenguaje del paciente?",
+          "choices": [
+            "Bekannte Schilddrüsenunterfunktion seit 2019",
+            "Bekannte Schilddrüsenüberfunktion seit 2019",
+            "Bekannter Überzucker seit 2019"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Laienuebersetzung von Hypothyreose ist Schilddruesenunterfunktion."
+        },
+        {
+          "cardId": "hypothyreose-3",
+          "type": "interesting_patient",
+          "question": "Patientin: \"Meine Schilddrüsenunterfunktion ist schlecht eingestellt, ich friere dauernd.\" Welche Zusatzfrage passt am besten?",
+          "translation_es": "La paciente dice: \"Mi hipofuncion tiroidea esta mal ajustada y siempre tengo frio\". ?Que pregunta adicional encaja mejor?",
+          "choices": [
+            "Haben Sie auch Verstopfung oder ausgeprägte Müdigkeit?",
+            "Mögen Sie kalte Getränke?",
+            "Tragen Sie im Winter zwei Jacken?"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Obstipation und ausgepraegte Muedigkeit sind typische Begleitsymptome der Hypothyreose."
+        },
+        {
+          "cardId": "hypothyreose-4",
+          "type": "interesting_fach",
+          "question": "Welche Befundkonstellation spricht am ehesten für Hypothyreose?",
+          "translation_es": "?Que conjunto de hallazgos sugiere mas hipotiroidismo?",
+          "choices": [
+            "Müdigkeit, Gewichtszunahme, Kälteempfindlichkeit",
+            "Gewichtsverlust, Herzrasen, Wärmeintoleranz",
+            "Durst, Polyurie, Azetongeruch"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die Trias Muedigkeit, Gewichtszunahme und Kaelteempfindlichkeit passt klassisch zur Hypothyreose."
+        }
+      ]
+    },
+    {
+      "termId": "hyperthyreose",
+      "fachbegriff": "Hyperthyreose",
+      "patientensprache": "Schilddrüsenüberfunktion",
+      "cards": [
+        {
+          "cardId": "hyperthyreose-1",
+          "type": "patient_to_fachbegriff",
+          "question": "Patient sagt: \"Mein Hausarzt meinte, ich habe eine Schilddrüsenüberfunktion.\" Fachbegriff?",
+          "translation_es": "El paciente dice: \"Mi medico de cabecera dijo que tengo hiperfuncion de la tiroides\". ?Cual es el termino medico?",
+          "choices": [
+            "Hyperthyreose",
+            "Hypothyreose",
+            "Hyperglykämie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Hyperthyreose entspricht der Schilddruesenueberfunktion."
+        },
+        {
+          "cardId": "hyperthyreose-2",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Laborchemisch gesicherte Hyperthyreose.\" Was heißt das für Patientinnen und Patienten?",
+          "translation_es": "En el informe medico dice: \"Hipertiroidismo confirmado por laboratorio\". ?Que significa para el paciente?",
+          "choices": [
+            "Im Blut bestätigte Schilddrüsenüberfunktion",
+            "Im Blut bestätigte Schilddrüsenunterfunktion",
+            "Im Blut bestätigter Unterzucker"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Laborchemisch gesichert bedeutet, dass Blutwerte die Ueberfunktion bestaetigen."
+        },
+        {
+          "cardId": "hyperthyreose-3",
+          "type": "interesting_patient",
+          "question": "Patientin: \"Seit meiner Schilddrüsenüberfunktion nehme ich ab, obwohl ich viel esse.\" Welche Anschlussfrage ist sinnvoll?",
+          "translation_es": "La paciente dice: \"Desde que tengo hiperfuncion tiroidea, bajo de peso aunque coma mucho\". ?Que pregunta de seguimiento es adecuada?",
+          "choices": [
+            "Haben Sie Herzklopfen, Zittern oder innere Unruhe?",
+            "Welche Zahnpasta benutzen Sie?",
+            "Sind Sie Team Kaffee oder Team Tee?"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Tachykardie, Tremor und innere Unruhe sind typische Symptome der Hyperthyreose."
+        },
+        {
+          "cardId": "hyperthyreose-4",
+          "type": "interesting_fach",
+          "question": "Welche Kombination unterstützt die Diagnose Hyperthyreose am stärksten?",
+          "translation_es": "?Que combinacion apoya mas el diagnostico de hipertiroidismo?",
+          "choices": [
+            "Tachykardie, Tremor, Wärmeintoleranz",
+            "Bradykardie, Obstipation, Kälteintoleranz",
+            "Polyurie, Polydipsie, Müdigkeit"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die Kombination aus Tachykardie, Tremor und Waermeintoleranz ist fuer Hyperthyreose typisch."
+        }
+      ]
+    },
+    {
+      "termId": "adipositas",
+      "fachbegriff": "Adipositas",
+      "patientensprache": "starkes Übergewicht",
+      "cards": [
+        {
+          "cardId": "adipositas-1",
+          "type": "patient_to_fachbegriff",
+          "question": "Patient sagt: \"Ich habe seit Jahren starkes Übergewicht.\" Welcher Fachbegriff passt?",
+          "translation_es": "El paciente dice: \"Desde hace anos tengo sobrepeso importante\". ?Que termino medico corresponde?",
+          "choices": [
+            "Adipositas",
+            "Kachexie",
+            "Hyperthyreose"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Adipositas ist die fachsprachliche Bezeichnung fuer starkes Uebergewicht."
+        },
+        {
+          "cardId": "adipositas-2",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Befund steht: \"Adipositas Grad II.\" Wie lautet die passende Patientensprache?",
+          "translation_es": "En el informe dice: \"Obesidad grado II\". ?Cual es la forma adecuada en lenguaje del paciente?",
+          "choices": [
+            "Deutlich starkes Übergewicht",
+            "Deutlicher Unterzucker",
+            "Deutliche Schilddrüsenüberfunktion"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Adipositas Grad II beschreibt deutlich ausgepraegtes Uebergewicht."
+        },
+        {
+          "cardId": "adipositas-3",
+          "type": "interesting_patient",
+          "question": "Patientin: \"Ich habe starkes Übergewicht und bekomme beim Treppensteigen schnell Luftnot.\" Welche Anamnese-Frage ist am wichtigsten als Nächstes?",
+          "translation_es": "La paciente dice: \"Tengo sobrepeso importante y me falta el aire al subir escaleras\". ?Que pregunta de anamnesis es la mas importante a continuacion?",
+          "choices": [
+            "Wie hat sich Ihr Gewicht in den letzten 6-12 Monaten verändert?",
+            "Welches Stockwerk mögen Sie am liebsten?",
+            "Haben Sie lieber Aufzugsmusik oder Stille?"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Der Gewichtsverlauf ist entscheidend fuer Risikoeinschaetzung und Therapieplanung."
+        },
+        {
+          "cardId": "adipositas-4",
+          "type": "interesting_fach",
+          "question": "Welche häufige Begleiterkrankung sollte bei Adipositas aktiv erfragt werden?",
+          "translation_es": "?Que comorbilidad frecuente debe investigarse activamente en la adiposidad?",
+          "choices": [
+            "Typ-2-Diabetes mellitus",
+            "Akute Otitis media",
+            "Akute Appendizitis"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Typ-2-Diabetes ist eine haeufige und klinisch relevante Begleiterkrankung bei Adipositas."
+        }
+      ]
+    }
+  ]
+}

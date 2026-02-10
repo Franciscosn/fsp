@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quote Reel</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page is-locked" id="page">
+      <section class="unlock" id="unlock">
+        <div class="unlock__panel">
+          <p class="unlock__eyebrow">Quote Reel</p>
+          <h1>Ready for a spoken classic?</h1>
+          <p class="unlock__lede">Click to unlock audio and reveal the author.</p>
+          <button class="btn btn--primary" id="unlockBtn">Enlighten me</button>
+        </div>
+      </section>
+      <section class="hero">
+        <header class="hero__header">
+          <div>
+            <p class="eyebrow">Quote Reel</p>
+            <h1>Refresh for a fresh voice.</h1>
+            <p class="lede">
+              Each refresh spins up a different legendary author, complete with a talking portrait and a
+              spoken quote.
+            </p>
+          </div>
+          <div class="hero__actions">
+            <button class="btn" id="replay">Replay Reading</button>
+            <button class="btn btn--ghost" id="newQuote">Another Quote</button>
+          </div>
+        </header>
+
+        <div class="stage">
+          <article class="video-card" id="videoCard" aria-live="polite">
+            <div class="video-frame">
+              <div class="video-noise" aria-hidden="true"></div>
+              <div class="portrait" aria-hidden="true">
+                <div class="halo"></div>
+                <div class="head">
+                  <div class="hair"></div>
+                  <div class="face">
+                    <div class="eyes">
+                      <span class="eye"></span>
+                      <span class="eye"></span>
+                    </div>
+                    <div class="nose"></div>
+                    <div class="mouth"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="caption">
+                <span class="caption__name" id="authorName">Author</span>
+                <span class="caption__role">Live Reading</span>
+              </div>
+            </div>
+            <div class="audio-indicator" id="audioIndicator">Speaking...</div>
+          </article>
+
+          <article class="quote-card">
+            <blockquote id="quoteText">"Quote will appear here."</blockquote>
+            <div class="meta">
+              <span id="authorMeta">Author Name</span>
+              <span class="dot" aria-hidden="true"></span>
+              <span id="workMeta">Work</span>
+            </div>
+            <p class="hint">Tip: refresh the page to hear a new quote automatically.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="src/main.js"></script>
+  </body>
+</html>

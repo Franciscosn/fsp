@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HerzKartei FSP Berlin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a" aria-hidden="true"></div>
+    <div class="bg-orb orb-b" aria-hidden="true"></div>
+    <div class="bg-orb orb-c" aria-hidden="true"></div>
+
+    <aside class="edge-deco left" aria-hidden="true">
+      <span>🔥</span><span>❤</span><span>⛓️</span><span>🔥</span><span>❤</span
+      ><span>⛓️</span><span>🔥</span>
+    </aside>
+    <aside class="edge-deco right" aria-hidden="true">
+      <span>⛓️</span><span>❤</span><span>🔥</span><span>⛓️</span><span>❤</span
+      ><span>🔥</span><span>⛓️</span>
+    </aside>
+
+    <main class="app-shell">
+      <header class="panel dedication reveal" style="--i: 0">
+        <p class="dedication-text">para Kat, la medica mas amada</p>
+        <div class="dedication-photo-wrap">
+          <img
+            class="dedication-photo"
+            src="assets/kat-photo.jpg"
+            alt="Para Kat"
+            onerror="this.onerror=null;this.src='assets/kat-photo-placeholder.svg';"
+          />
+        </div>
+      </header>
+
+      <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 1">
+        <h2>Deck Auswahl</h2>
+        <p class="muted">
+          Kategorie und Wiederholungsordner waehlen, dann den Fokusmodus starten.
+        </p>
+        <div class="control-grid">
+          <article class="selection-card">
+            <h3>Kategorien</h3>
+            <p class="muted">
+              Waehle den Bereich, den du heute gezielt trainieren willst.
+            </p>
+            <div id="categoryFilters" class="chip-row"></div>
+          </article>
+
+          <article class="selection-card">
+            <h3>Wiederholung</h3>
+            <p class="muted">
+              Neu, unsicher, heute falsch oder faellig trainieren.
+            </p>
+            <div id="folderFilters" class="folder-grid"></div>
+          </article>
+        </div>
+        <div class="selection-footer">
+          <p id="queueInfo" class="queue-info"></p>
+          <button id="startImmersiveBtn" class="primary-btn" type="button">
+            Fokus starten
+          </button>
+        </div>
+      </section>
+
+      <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 2">
+        <div class="quiz-top">
+          <div>
+            <h2>Fokusmodus</h2>
+            <p id="progressText" class="muted">Karte 0 von 0</p>
+          </div>
+          <div class="quiz-actions">
+            <button id="shuffleBtn" class="soft-btn" type="button">
+              Neu mischen
+            </button>
+            <button id="exitImmersiveBtn" class="soft-btn" type="button">
+              Deck Auswahl
+            </button>
+          </div>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <p>Keine Karte in diesem Ordner. Probiere eine andere Auswahl.</p>
+        </div>
+
+        <article id="cardBox" class="quiz-card hidden">
+          <div class="card-meta">
+            <span id="cardMode" class="pill">Modus</span>
+            <span id="cardCategory" class="pill ghost">Kategorie</span>
+          </div>
+
+          <p id="questionText" class="question"></p>
+          <div id="choices" class="choices"></div>
+
+          <section id="feedbackBox" class="feedback hidden">
+            <div id="heartBurst" class="heart-burst hidden" aria-hidden="true">
+              <span>❤</span><span>❤</span><span>❤</span><span>❤</span><span>❤</span
+              ><span>❤</span>
+            </div>
+            <p id="resultText" class="result-line"></p>
+            <p id="explanationText" class="explanation"></p>
+            <div class="translation-box">
+              <h3>Spanische Uebersetzung</h3>
+              <p id="translationText"></p>
+            </div>
+            <button id="nextBtn" class="primary-btn" type="button">
+              Naechste Karte
+            </button>
+          </section>
+        </article>
+      </section>
+    </main>
+
+    <button id="toggleStatsBtn" class="stats-fab" type="button">📊 Statistik</button>
+
+    <section id="statsOverlay" class="stats-overlay hidden" aria-hidden="true">
+      <div id="statsBackdrop" class="stats-backdrop"></div>
+      <article class="stats-sheet">
+        <div class="stats-head">
+          <h2>Statistik</h2>
+          <button id="closeStatsBtn" class="soft-btn" type="button">
+            Schliessen
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="panel">
+            <h3>Heute</h3>
+            <div class="today-stats">
+              <p><span>Geuebt:</span> <strong id="todayAttempts">0</strong></p>
+              <p><span>Richtig:</span> <strong id="todayCorrect">0</strong></p>
+              <p><span>Falsch:</span> <strong id="todayWrong">0</strong></p>
+              <p><span>Trefferquote:</span> <strong id="todayRate">0%</strong></p>
+              <p><span>Tagesziel:</span> <strong id="kpiGoal">0 / 20</strong></p>
+              <p><span>Serie:</span> <strong id="kpiStreak">0 Tage</strong></p>
+            </div>
+          </article>
+
+          <article class="panel">
+            <h3>7-Tage Verlauf</h3>
+            <p class="muted">
+              Taegliche Uebungen mit Erfolgsquote. Hoehere Balken bedeuten mehr
+              trainierte Karten.
+            </p>
+            <p class="muted compact">
+              Heute Erfolg: <strong id="kpiAccuracy">0%</strong>
+            </p>
+            <div id="weekChart" class="chart"></div>
+          </article>
+        </div>
+      </article>
+    </section>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>

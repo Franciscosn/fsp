@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb3c1" />
+      <stop offset="100%" stop-color="#ff5f7f" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="720" fill="url(#bg)" />
+  <g fill="#fff" opacity="0.88">
+    <text x="58" y="120" font-size="62">❤ 🔥 ⛓️ ❤</text>
+    <text x="450" y="680" font-size="62">❤ 🔥 ⛓️</text>
+  </g>
+  <g fill="#ffffff">
+    <text
+      x="360"
+      y="320"
+      text-anchor="middle"
+      font-size="54"
+      font-family="Avenir, Segoe UI, sans-serif"
+      font-weight="700"
+    >
+      para Kat
+    </text>
+    <text
+      x="360"
+      y="390"
+      text-anchor="middle"
+      font-size="36"
+      font-family="Avenir, Segoe UI, sans-serif"
+    >
+      la medica mas amada
+    </text>
+    <text
+      x="360"
+      y="500"
+      text-anchor="middle"
+      font-size="96"
+      font-family="Avenir, Segoe UI, sans-serif"
+    >
+      ❤
+    </text>
+  </g>
+</svg>
