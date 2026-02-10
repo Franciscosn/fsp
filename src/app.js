@@ -327,11 +327,11 @@ function updateStartButtonState() {
   const total = state.queue.length;
   if (total === 0) {
     refs.startImmersiveBtn.disabled = true;
-    refs.startImmersiveBtn.textContent = "Keine Karten in Auswahl";
+    refs.startImmersiveBtn.textContent = "los geht's";
     return;
   }
   refs.startImmersiveBtn.disabled = false;
-  refs.startImmersiveBtn.textContent = `Fokus starten (${total})`;
+  refs.startImmersiveBtn.textContent = "los geht's";
 }
 
 function enterImmersiveMode() {

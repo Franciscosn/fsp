@@ -163,7 +163,6 @@ body::before {
   line-height: 1.05;
   color: var(--heart-600);
   letter-spacing: 0.01em;
-  text-transform: lowercase;
 }
 
 .dedication-photo-wrap {
@@ -798,6 +797,22 @@ body.immersive .stats-fab {
 
   .selection-footer {
     align-items: stretch;
+  }
+
+  .selection-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .selection-footer {
+    order: 1;
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .control-grid {
+    order: 2;
   }
 
   .quiz-top {
