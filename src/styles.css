@@ -488,57 +488,68 @@ h3 {
   color: #86384a;
 }
 
+
 .feedback .primary-btn {
-  margin-top: 12px;
+  margin-top: 8px;
+}
+
+.feedback-details {
+  margin-top: 8px;
+  border: 1px solid rgba(248, 73, 102, 0.2);
+  border-radius: 12px;
+  background: #fff7f9;
+  padding: 0 10px 10px;
+}
+
+.feedback-summary {
+  cursor: pointer;
+  list-style: none;
+  color: #8b3249;
+  font-weight: 800;
+  padding: 10px 2px;
+}
+
+.feedback-summary::-webkit-details-marker {
+  display: none;
 }
 
 .heart-burst {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
   margin-bottom: 8px;
   color: var(--heart-600);
-  font-size: clamp(2.3rem, 7.8vw, 3.8rem);
+  font-size: clamp(4rem, 18vw, 8rem);
   line-height: 1;
+  min-height: 1.1em;
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }
 
-.heart-burst.show span {
-  animation: heart-pop 920ms ease forwards;
+.heart-burst.show {
+  animation: emoji-pop 1900ms ease-out forwards;
 }
 
-.heart-burst.show span:nth-child(2) {
-  animation-delay: 70ms;
-}
-
-.heart-burst.show span:nth-child(3) {
-  animation-delay: 130ms;
-}
-
-.heart-burst.show span:nth-child(4) {
-  animation-delay: 180ms;
-}
-
-.heart-burst.show span:nth-child(5) {
-  animation-delay: 230ms;
-}
-
-.heart-burst.show span:nth-child(6) {
-  animation-delay: 280ms;
-}
-
-@keyframes heart-pop {
+@keyframes emoji-pop {
   0% {
     opacity: 0;
-    transform: translateY(16px) scale(0.32);
+    transform: translate(var(--emoji-x, 0), 22px) scale(0.42)
+      rotate(var(--emoji-rot, 0deg));
   }
-  32% {
+  24% {
     opacity: 1;
-    transform: translateY(0) scale(1.18);
+    transform: translate(var(--emoji-x, 0), 0) scale(1.2)
+      rotate(var(--emoji-rot, 0deg));
+  }
+  72% {
+    opacity: 1;
+    transform: translate(var(--emoji-x, 0), -4px) scale(1.22)
+      rotate(var(--emoji-rot, 0deg));
   }
   100% {
     opacity: 0;
-    transform: translateY(-34px) scale(1.45);
+    transform: translate(var(--emoji-x, 0), -48px) scale(1.36)
+      rotate(var(--emoji-rot, 0deg));
   }
 }
 
@@ -734,10 +745,136 @@ body.immersive .quiz-panel {
     width: 100%;
   }
 
+  body.immersive .quiz-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    min-height: calc(100vh - 88px);
+  }
+
+  body.immersive .quiz-card,
+  body.immersive #emptyState {
+    order: 1;
+    margin-top: 0;
+  }
+
+  body.immersive .quiz-top {
+    order: 3;
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(248, 73, 102, 0.35);
+    gap: 6px;
+  }
+
+  body.immersive .quiz-top h2 {
+    display: none;
+  }
+
+  body.immersive #progressText {
+    margin: 0;
+    font-size: 0.88rem;
+  }
+
+  body.immersive .quiz-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  body.immersive .quiz-actions .soft-btn {
+    width: 100%;
+    padding: 8px 8px;
+    font-size: 0.82rem;
+  }
+
+  body.immersive .quiz-card {
+    padding: 11px;
+    border-radius: 14px;
+  }
+
+  body.immersive .card-meta {
+    display: none;
+  }
+
+  body.immersive .question {
+    margin-top: 0;
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  body.immersive .choices {
+    margin-top: 9px;
+    gap: 7px;
+  }
+
+  body.immersive .choice {
+    padding: 8px 10px;
+    font-size: 0.92rem;
+    border-radius: 10px;
+  }
+
+  body.immersive .feedback {
+    margin-top: 8px;
+    padding-top: 9px;
+  }
+
+  body.immersive .result-line {
+    font-size: 0.97rem;
+  }
+
+  body.immersive .feedback .primary-btn {
+    margin-top: 6px;
+    padding: 9px 10px;
+    font-size: 0.94rem;
+  }
+
+  body.immersive .feedback-details {
+    margin-top: 7px;
+    padding: 0 8px 8px;
+  }
+
+  body.immersive .feedback-summary {
+    padding: 8px 2px;
+    font-size: 0.86rem;
+  }
+
+  body.immersive .explanation {
+    margin-top: 4px;
+    font-size: 0.9rem;
+  }
+
+  body.immersive .translation-box {
+    margin-top: 6px;
+    padding: 8px;
+  }
+
+  body.immersive .translation-box h3 {
+    font-size: 0.92rem;
+  }
+
+  body.immersive .translation-box p {
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  body.immersive .heart-burst {
+    font-size: clamp(4.4rem, 24vw, 7rem);
+    margin-bottom: 4px;
+  }
+
   .stats-fab {
     right: 10px;
-    left: 10px;
-    border-radius: 14px;
+    left: auto;
+    bottom: 10px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .edge-deco {

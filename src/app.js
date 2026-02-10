@@ -2,6 +2,9 @@ const STORAGE_PROGRESS_KEY = "fsp_heart_progress_v1";
 const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
 const DAILY_GOAL = 20;
 
+const SWEET_EMOJIS = ["💖", "💕", "💘", "💝", "🥰", "😍", "😘", "🫶", "🍑", "🌸", "✨"];
+let emojiHideTimer = null;
+
 const CATEGORY_MAP = {
   adipositas: "Gewicht",
   angina_pectoris: "Kardio/Pneumo",
@@ -100,6 +103,7 @@ const refs = {
   questionText: document.getElementById("questionText"),
   choices: document.getElementById("choices"),
   feedbackBox: document.getElementById("feedbackBox"),
+  feedbackDetails: document.getElementById("feedbackDetails"),
   resultText: document.getElementById("resultText"),
   explanationText: document.getElementById("explanationText"),
   translationText: document.getElementById("translationText"),
@@ -357,6 +361,13 @@ function renderCard() {
   refs.feedbackBox.classList.add("hidden");
   refs.heartBurst.classList.add("hidden");
   refs.heartBurst.classList.remove("show");
+  if (emojiHideTimer) {
+    window.clearTimeout(emojiHideTimer);
+    emojiHideTimer = null;
+  }
+  if (refs.feedbackDetails) {
+    refs.feedbackDetails.open = false;
+  }
 
   refs.cardMode.textContent = MODE_LABELS[card.type] || "Modus";
   refs.cardCategory.textContent = card.category;
@@ -415,11 +426,27 @@ function handleAnswer(selectedIndex) {
 }
 
 function triggerHeartBurst() {
+  const emoji = SWEET_EMOJIS[Math.floor(Math.random() * SWEET_EMOJIS.length)];
+  const driftX = Math.floor(Math.random() * 41) - 20;
+  const rotation = Math.floor(Math.random() * 31) - 15;
+
+  refs.heartBurst.textContent = emoji;
+  refs.heartBurst.style.setProperty("--emoji-x", `${driftX}px`);
+  refs.heartBurst.style.setProperty("--emoji-rot", `${rotation}deg`);
   refs.heartBurst.classList.remove("hidden");
   refs.heartBurst.classList.remove("show");
+
   // Reflow fuer wiederholte Animation.
   void refs.heartBurst.offsetWidth;
   refs.heartBurst.classList.add("show");
+
+  if (emojiHideTimer) {
+    window.clearTimeout(emojiHideTimer);
+  }
+  emojiHideTimer = window.setTimeout(() => {
+    refs.heartBurst.classList.remove("show");
+    refs.heartBurst.classList.add("hidden");
+  }, 2100);
 }
 
 function nextCard() {
