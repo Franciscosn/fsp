@@ -64,7 +64,7 @@ const MODE_LABELS = {
   fachbegriff_to_patient: "Fachbegriff -> Patientensprache",
   interesting_patient: "Interessante Frage (Patientensprache)",
   interesting_fach: "Interessante Frage (Fachsprache)",
-  story_funfact: "Story-Fun-Fact"
+  story_text: "Klinik-Textkarte"
 };
 
 const FOLDERS = [
@@ -354,6 +354,7 @@ function renderCard() {
     refs.cardBox.classList.add("hidden");
     refs.emptyState.classList.remove("hidden");
     refs.feedbackBox.classList.add("hidden");
+    refs.questionText.classList.remove("story-text");
     return;
   }
 
@@ -371,15 +372,38 @@ function renderCard() {
     activeCelebration = null;
   }
 
+  const isStoryText = card.type === "story_text";
+
   refs.cardMode.textContent = MODE_LABELS[card.type] || "Modus";
   refs.cardCategory.textContent = card.category;
   refs.questionText.textContent = card.question;
-  refs.translationText.textContent = card.translation_es || "";
-  refs.explanationText.textContent = card.explanation_de || "";
+  refs.questionText.classList.toggle("story-text", isStoryText);
+
   refs.resultText.textContent = "";
   refs.resultText.className = "result-line";
+  refs.translationText.textContent = card.translation_es || "";
+  refs.explanationText.textContent = card.explanation_de || "";
+
+  refs.feedbackBox.classList.remove("text-card-nav");
+  refs.choices.classList.remove("hidden");
+  refs.resultText.classList.remove("hidden");
+  refs.explanationText.classList.remove("hidden");
+  refs.translationText.classList.remove("hidden");
+  refs.nextBtn.textContent = "Naechste Karte";
 
   refs.choices.innerHTML = "";
+
+  if (isStoryText) {
+    refs.choices.classList.add("hidden");
+    refs.feedbackBox.classList.remove("hidden");
+    refs.feedbackBox.classList.add("text-card-nav");
+    refs.resultText.classList.add("hidden");
+    refs.explanationText.classList.add("hidden");
+    refs.translationText.classList.add("hidden");
+    state.answered = true;
+    return;
+  }
+
   card.choices.forEach((choice, index) => {
     const button = document.createElement("button");
     button.type = "button";
@@ -395,7 +419,7 @@ function renderCard() {
 function handleAnswer(selectedIndex) {
   if (state.answered) return;
   const card = state.queue[state.currentIndex];
-  if (!card) return;
+  if (!card || card.type === "story_text") return;
 
   state.answered = true;
   const isCorrect = selectedIndex === card.correctIndex;
@@ -421,6 +445,16 @@ function handleAnswer(selectedIndex) {
   }
 
   saveAttempt(card.cardId, isCorrect);
+  renderFolderFilters();
+  renderQueueInfo();
+  updateStartButtonState();
+  renderStats();
+}
+
+function markStoryTextCardAsRead(card) {
+  if (!card || card.type !== "story_text") return;
+
+  saveAttempt(card.cardId, true);
   renderFolderFilters();
   renderQueueInfo();
   updateStartButtonState();
@@ -469,6 +503,9 @@ function triggerHeartBurst() {
 
 function nextCard() {
   if (!state.queue.length) return;
+
+  const currentCard = state.queue[state.currentIndex];
+  markStoryTextCardAsRead(currentCard);
 
   if (state.currentIndex < state.queue.length - 1) {
     state.currentIndex += 1;

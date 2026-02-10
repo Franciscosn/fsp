@@ -412,6 +412,13 @@ h3 {
   color: #5c1f2d;
 }
 
+.question.story-text {
+  white-space: pre-line;
+  font-size: 1.12rem;
+  line-height: 1.58;
+  font-weight: 650;
+}
+
 .choices {
   margin-top: 14px;
   display: grid;
@@ -454,6 +461,16 @@ h3 {
   margin-top: 14px;
   border-top: 1px solid rgba(248, 73, 102, 0.22);
   padding-top: 14px;
+}
+
+.feedback.text-card-nav {
+  margin-top: 10px;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.feedback.text-card-nav .primary-btn {
+  margin-top: 0;
 }
 
 .result-line {
@@ -805,6 +822,11 @@ body.immersive .stats-fab {
     margin-top: 0;
     font-size: 1.08rem;
     line-height: 1.4;
+  }
+
+  body.immersive .question.story-text {
+    font-size: 1.03rem;
+    line-height: 1.5;
   }
 
   body.immersive .choices {
