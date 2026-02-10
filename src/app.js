@@ -63,7 +63,8 @@ const MODE_LABELS = {
   patient_to_fachbegriff: "Patientensprache -> Fachbegriff",
   fachbegriff_to_patient: "Fachbegriff -> Patientensprache",
   interesting_patient: "Interessante Frage (Patientensprache)",
-  interesting_fach: "Interessante Frage (Fachsprache)"
+  interesting_fach: "Interessante Frage (Fachsprache)",
+  story_funfact: "Story-Fun-Fact"
 };
 
 const FOLDERS = [

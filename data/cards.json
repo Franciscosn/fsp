@@ -1,7 +1,7 @@
 {
   "deckName": "FSP-Berlin-Masterdeck",
   "language": "de",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "terms": [
     {
       "termId": "hypoglykaemie",
@@ -59,6 +59,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Adrenerge Warnzeichen der Hypoglykämie sind Zittern, Schwitzen und Heisshunger."
+        },
+        {
+          "cardId": "hypoglykaemie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Mir wurde plötzlich zittrig, ich war schweißnass und brauchte sofort etwas Süßes.\" Die Beschwerden kamen abrupt und wurden innerhalb weniger Minuten nach Saft deutlich besser. Fun Fact: Das Gehirn speichert kaum Glukosevorräte, deshalb können neuroglykopenische Symptome schnell auftreten. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hypoglykämie",
+            "Hyperglykämie",
+            "Hypothyreose"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hypoglykämie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -118,6 +131,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Polydipsie und Polyurie sind klassische Zeichen einer Hyperglykämie."
+        },
+        {
+          "cardId": "hyperglykaemie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich habe ständig Durst, muss oft Wasser lassen und sehe abends verschwommen.\" Der Verlauf ist eher schleichend über mehrere Tage und geht mit Müdigkeit einher. Fun Fact: Wenn der Blutzucker lange hoch bleibt, überschreitet er die Nierenschwelle und verursacht osmotische Diurese. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hyperglykämie",
+            "Hypoglykämie",
+            "Adipositas"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hyperglykämie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -177,6 +203,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die Trias Muedigkeit, Gewichtszunahme und Kaelteempfindlichkeit passt klassisch zur Hypothyreose."
+        },
+        {
+          "cardId": "hypothyreose-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich friere dauernd, bin müde und nehme zu, obwohl ich nicht mehr esse.\" Dazu kommen häufig trockene Haut, Verstopfung und verlangsamtes Denken. Fun Fact: Schon eine milde Unterfunktion kann Lipidwerte erhöhen und kardiovaskuläre Risiken beeinflussen. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hypothyreose",
+            "Hyperthyreose",
+            "Fatigue"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hypothyreose; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -236,6 +275,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die Kombination aus Tachykardie, Tremor und Waermeintoleranz ist fuer Hyperthyreose typisch."
+        },
+        {
+          "cardId": "hyperthyreose-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Mein Herz rast, ich schwitze schnell und nehme trotz gutem Appetit ab.\" Oft sind Unruhe, Tremor und Schlafstörungen gleichzeitig vorhanden. Fun Fact: Bei Morbus Basedow können zusätzlich okuläre Symptome wie Exophthalmus auftreten. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hyperthyreose",
+            "Hypothyreose",
+            "Tachykardie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hyperthyreose; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -295,6 +347,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Typ-2-Diabetes ist eine haeufige und klinisch relevante Begleiterkrankung bei Adipositas."
+        },
+        {
+          "cardId": "adipositas-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich habe viele Diäten versucht, aber das Gewicht kommt immer wieder zurück.\" Zusätzlich bestehen Belastungsdyspnoe, Knieschmerzen und erhöhter Blutdruck. Fun Fact: Schon 5 bis 10 Prozent Gewichtsreduktion verbessern messbar Blutdruck, Blutzucker und Fettleber. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Adipositas",
+            "Hyperglykämie",
+            "Hypertonie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Adipositas; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -354,6 +419,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Dyspnoe."
+        },
+        {
+          "cardId": "dyspnoe-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Schon beim Treppensteigen bleibt mir die Luft weg.\" Im Gespräch spricht die Patientin in kurzen Sätzen und berichtet über Leistungsabfall. Fun Fact: Der subjektive Dyspnoegrad korreliert nicht immer mit der gemessenen Sauerstoffsättigung. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Dyspnoe",
+            "Orthopnoe",
+            "Hämoptyse"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Dyspnoe; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -413,6 +491,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Orthopnoe."
+        },
+        {
+          "cardId": "orthopnoe-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Im Liegen bekomme ich schlecht Luft und schlafe nur mit drei Kissen.\" Im Sitzen bessert sich die Atemnot innerhalb weniger Minuten. Fun Fact: Nachts verlagert sich Flüssigkeit aus den Beinen in den Thorax und kann kardiale Atemnot verstärken. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Orthopnoe",
+            "Hämoptyse",
+            "Palpitationen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Orthopnoe; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -472,6 +563,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Hämoptyse."
+        },
+        {
+          "cardId": "haemoptyse-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich huste rotes Blut ab, vor allem morgens.\" Das Blut ist meist hellrot und schaumig, begleitet von Hustenreiz. Fun Fact: Die Abgrenzung zur Hämatemesis gelingt oft über Begleitsymptome wie Übelkeit versus Husten. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hämoptyse",
+            "Palpitationen",
+            "Angina pectoris"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hämoptyse; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -531,6 +635,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Palpitationen."
+        },
+        {
+          "cardId": "palpitationen-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Es fühlt sich an, als würde mein Herz stolpern oder bis zum Hals schlagen.\" Die Episoden treten plötzlich auf, dauern Sekunden bis Minuten und enden spontan. Fun Fact: Viele Palpitationen sind benigne Extrasystolen, aber Synkope als Begleitsymptom ist ein Warnsignal. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Palpitationen",
+            "Angina pectoris",
+            "Synkope"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Palpitationen; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -590,6 +707,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Angina pectoris."
+        },
+        {
+          "cardId": "angina_pectoris-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Bei Belastung drückt es hinter dem Brustbein und zieht in den linken Arm.\" In Ruhe oder nach Nitrospray bessern sich die Beschwerden. Fun Fact: Diabetiker können ischämische Episoden mit atypischen Symptomen oder sogar stumm erleben. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Angina pectoris",
+            "Synkope",
+            "Ödem"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Angina pectoris; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -649,6 +779,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Synkope."
+        },
+        {
+          "cardId": "synkope-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Mir wurde schwarz vor Augen und ich war kurz weg.\" Die Erholung erfolgte rasch, danach bestand nur kurze Schwäche. Fun Fact: Eine laterale Zungenbissverletzung spricht eher für einen epileptischen Anfall als für Synkope. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Synkope",
+            "Ödem",
+            "Hypertonie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Synkope; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -708,6 +851,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Ödem."
+        },
+        {
+          "cardId": "oedem-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Abends sind meine Knöchel so geschwollen, dass die Schuhe drücken.\" Beim Eindrücken bleibt eine Delle zurück, morgens ist es meist besser. Fun Fact: Bevor ein peripheres Ödem sichtbar wird, können bereits erhebliche Flüssigkeitsmengen retiniert sein. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Ödem",
+            "Hypertonie",
+            "Tachykardie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Ödem; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -767,6 +923,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Hypertonie."
+        },
+        {
+          "cardId": "hypertonie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Eigentlich merke ich nichts, aber meine Werte sind immer wieder zu hoch.\" Mehrere Messungen zeigen wiederholt Werte über dem Zielbereich. Fun Fact: Praxis- und Heimmessungen können sich durch den Weißkittel-Effekt deutlich unterscheiden. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hypertonie",
+            "Tachykardie",
+            "Arrhythmie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hypertonie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -826,6 +995,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Tachykardie."
+        },
+        {
+          "cardId": "tachykardie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Selbst in Ruhe pulsiert es schnell und ich fühle mich gehetzt.\" Die Herzfrequenz liegt dauerhaft über 100 pro Minute. Fun Fact: Pro Grad Celsius Fieber steigt die Herzfrequenz oft um etwa 8 bis 10 Schläge pro Minute. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Tachykardie",
+            "Arrhythmie",
+            "Dyspnoe"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Tachykardie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -885,6 +1067,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Arrhythmie."
+        },
+        {
+          "cardId": "arrhythmie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Mein Puls ist unregelmäßig, mal schnell, mal mit Pausen.\" Dazu kommen Schwindel und gelegentliche Leistungseinbrüche. Fun Fact: Bei Vorhofflimmern kann ein Pulsdefizit auftreten, weil nicht jeder Impuls peripher tastbar ist. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Arrhythmie",
+            "Dyspnoe",
+            "Orthopnoe"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Arrhythmie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -944,6 +1139,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Nausea."
+        },
+        {
+          "cardId": "nausea-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Mir ist dauernd übel, aber ich muss noch nicht erbrechen.\" Der Appetit ist reduziert, Gerüche verstärken das Unwohlsein. Fun Fact: Nausea kann vestibulär, viszeral oder medikamentös ausgelöst sein und ist diagnostisch unspezifisch. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Nausea",
+            "Emesis",
+            "Hämatemesis"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Nausea; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1003,6 +1211,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Emesis."
+        },
+        {
+          "cardId": "emesis-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich musste heute schon mehrfach erbrechen.\" Nach dem Erbrechen fühlt sich der Oberbauch kurzzeitig entlastet. Fun Fact: Wiederholte Emesis kann rasch zu Volumenmangel und metabolischer Alkalose führen. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Emesis",
+            "Hämatemesis",
+            "Dysphagie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Emesis; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1062,6 +1283,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Hämatemesis."
+        },
+        {
+          "cardId": "haematemesis-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich habe dunkelrotes bis kaffeesatzartiges Material erbrochen.\" Vorher bestanden Übelkeit und epigastrische Beschwerden. Fun Fact: Kaffeesatzerbrechen entsteht, wenn Blut mit Magensäure reagiert und oxidiert. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hämatemesis",
+            "Dysphagie",
+            "Pyrosis"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hämatemesis; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1121,6 +1355,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Dysphagie."
+        },
+        {
+          "cardId": "dysphagie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Essen bleibt manchmal auf halber Strecke stecken.\" Die Unterscheidung, ob zuerst feste oder flüssige Nahrung Probleme macht, lenkt die Differenzialdiagnose. Fun Fact: Odynophagie beschreibt schmerzhaftes Schlucken und ist nicht gleichbedeutend mit Dysphagie. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Dysphagie",
+            "Pyrosis",
+            "Diarrhö"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Dysphagie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1180,6 +1427,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Pyrosis."
+        },
+        {
+          "cardId": "pyrosis-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Nach fettigem Essen brennt es hinter dem Brustbein bis in den Hals.\" Im Liegen und nach späten Mahlzeiten verstärken sich die Beschwerden. Fun Fact: Sodbrennen entsteht oft durch Reflux, nicht zwingend durch eine erhöhte Säureproduktion. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Pyrosis",
+            "Diarrhö",
+            "Obstipation"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Pyrosis; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1239,6 +1499,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Diarrhö."
+        },
+        {
+          "cardId": "diarrhoe-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich habe mehrmals täglich wässrigen Stuhl.\" Zusätzlich bestehen Bauchkrämpfe und ein deutlicher Flüssigkeitsverlust. Fun Fact: Bei osmotischer Diarrhö nehmen die Beschwerden im Nüchternzustand typischerweise ab. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Diarrhö",
+            "Obstipation",
+            "Meläna"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Diarrhö; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1298,6 +1571,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Obstipation."
+        },
+        {
+          "cardId": "obstipation-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich habe nur alle paar Tage harten Stuhl und muss stark pressen.\" Dazu kommen Völlegefühl und das Gefühl unvollständiger Entleerung. Fun Fact: Mehr Ballaststoffe ohne ausreichende Trinkmenge können Obstipation sogar verstärken. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Obstipation",
+            "Meläna",
+            "Hämatochezie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Obstipation; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1357,6 +1643,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Meläna."
+        },
+        {
+          "cardId": "melaena-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Der Stuhl ist pechschwarz und riecht ungewöhnlich streng.\" Die Verfärbung besteht über mehrere Entleerungen. Fun Fact: Meläna spricht meist für eine obere GI-Blutung, kann aber durch Eisenpräparate imitiert werden. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Meläna",
+            "Hämatochezie",
+            "Meteorismus"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Meläna; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1416,6 +1715,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Hämatochezie."
+        },
+        {
+          "cardId": "haematochezie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich sehe frisches rotes Blut beim Stuhlgang.\" Das Blut liegt auf dem Stuhl oder am Toilettenpapier auf. Fun Fact: Hämatochezie weist meist auf eine untere Blutungsquelle hin, kann bei massiver oberer Blutung aber ebenfalls auftreten. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hämatochezie",
+            "Meteorismus",
+            "Nausea"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hämatochezie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1475,6 +1787,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Meteorismus."
+        },
+        {
+          "cardId": "meteorismus-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Mein Bauch bläht sich im Tagesverlauf wie ein Ballon auf.\" Nach dem Abgang von Winden bessert sich der Druck oft kurzfristig. Fun Fact: Fermentierbare Kohlenhydrate (FODMAPs) sind bei funktionellen Blähbeschwerden häufige Trigger. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Meteorismus",
+            "Nausea",
+            "Emesis"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Meteorismus; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1534,6 +1859,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Dysurie."
+        },
+        {
+          "cardId": "dysurie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Beim Wasserlassen brennt es jedes Mal.\" Es besteht Harndrang, aber meist kommen nur kleine Mengen. Fun Fact: Bei unkomplizierter Zystitis sind Brennen plus Pollakisurie klinisch oft bereits richtungsweisend. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Dysurie",
+            "Pollakisurie",
+            "Nykturie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Dysurie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1593,6 +1931,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Pollakisurie."
+        },
+        {
+          "cardId": "pollakisurie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich muss ständig zur Toilette, aber es kommen nur kleine Portionen.\" Die Gesamttrinkmenge ist unverändert und es besteht kein ausgeprägter Durst. Fun Fact: Pollakisurie bedeutet häufiges Wasserlassen kleiner Mengen und ist nicht gleichbedeutend mit Polyurie. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Pollakisurie",
+            "Nykturie",
+            "Hämaturie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Pollakisurie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1652,6 +2003,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Nykturie."
+        },
+        {
+          "cardId": "nykturie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich wache nachts mehrmals auf, um Wasser zu lassen.\" Tagsüber ist die Frequenz weniger auffällig. Fun Fact: Nächtliche Reabsorption von Beinödemen kann die nächtliche Urinmenge erhöhen. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Nykturie",
+            "Hämaturie",
+            "Harnverhalt"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Nykturie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1711,6 +2075,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Hämaturie."
+        },
+        {
+          "cardId": "haematurie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Mein Urin war plötzlich rötlich verfärbt.\" Teilweise bleibt die Blutung schmerzlos, was immer abgeklärt werden muss. Fun Fact: Rote-Bete-Konsum kann eine Pseudohämaturie verursachen und diagnostisch täuschen. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hämaturie",
+            "Harnverhalt",
+            "Dysurie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hämaturie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1770,6 +2147,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Harnverhalt."
+        },
+        {
+          "cardId": "harnverhalt-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich habe starken Harndrang, aber es kommt fast nichts.\" Suprapubischer Druckschmerz und ein geblähter Unterbauch fallen auf. Fun Fact: Bei chronischem Harnverhalt kann paradoxerweise eine Überlaufinkontinenz auftreten. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Harnverhalt",
+            "Dysurie",
+            "Pollakisurie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Harnverhalt; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1829,6 +2219,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Kopfschmerz."
+        },
+        {
+          "cardId": "kopfschmerz-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Seit gestern habe ich drückende Kopfschmerzen, heute deutlich stärker.\" Für die Einordnung sind Beginn, Qualität, Trigger und neurologische Begleitsymptome entscheidend. Fun Fact: Ein plötzlich einschießender Vernichtungskopfschmerz ist ein Red Flag und muss sofort abgeklärt werden. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Kopfschmerz",
+            "Schwindel",
+            "Parästhesie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Kopfschmerz; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1888,6 +2291,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Schwindel."
+        },
+        {
+          "cardId": "schwindel-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Mir ist schwindelig, als würde sich alles drehen.\" Beim Lagewechsel werden die Symptome stärker, im Sitzen bessern sie sich. Fun Fact: Die Unterscheidung zwischen Vertigo, Präsynkope und Unsicherheit ist der zentrale erste diagnostische Schritt. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Schwindel",
+            "Parästhesie",
+            "Hemiparese"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Schwindel; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -1947,6 +2363,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Parästhesie."
+        },
+        {
+          "cardId": "paraesthesie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Meine Finger kribbeln, als ob Ameisen darüber laufen.\" Die Missempfindung tritt phasenweise auf und kann lageabhängig zunehmen. Fun Fact: Auch Hyperventilation kann periorale und akrale Parästhesien auslösen. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Parästhesie",
+            "Hemiparese",
+            "Aphasie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Parästhesie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2006,6 +2435,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Hemiparese."
+        },
+        {
+          "cardId": "hemiparese-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Mein rechter Arm und mein rechtes Bein fühlen sich plötzlich schwach an.\" Zusätzlich fällt eine einseitige Gesichtsschwäche auf. Fun Fact: Bei akuter Halbseiten-Symptomatik gilt das FAST-Schema als schneller Notfall-Check. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Hemiparese",
+            "Aphasie",
+            "Krampfanfall"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Hemiparese; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2065,6 +2507,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Aphasie."
+        },
+        {
+          "cardId": "aphasie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich weiß, was ich sagen will, aber die Worte kommen nicht richtig heraus.\" Das Sprachverständnis oder die Sprachproduktion ist gestört, bei klarem Bewusstsein. Fun Fact: Aphasie wird im Akutfall leicht als Verwirrtheit fehlinterpretiert. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Aphasie",
+            "Krampfanfall",
+            "Tremor"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Aphasie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2124,6 +2579,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Krampfanfall."
+        },
+        {
+          "cardId": "krampfanfall-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Plötzlich verkrampfte der ganze Körper und danach war ich lange benommen.\" Es gab tonisch-klonische Bewegungen und eine postiktale Desorientierung. Fun Fact: Postiktale Müdigkeit und Verlangsamung sind typische Hinweise nach generalisiertem Anfall. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Krampfanfall",
+            "Tremor",
+            "Kopfschmerz"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Krampfanfall; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2183,6 +2651,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Tremor."
+        },
+        {
+          "cardId": "tremor-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Meine Hände zittern rhythmisch, besonders bei feinen Arbeiten.\" Die Symptomatik wird unter Stress stärker und stört Alltagstätigkeiten. Fun Fact: Beim essenziellen Tremor kann Alkohol die Amplitude kurzfristig reduzieren, was diagnostisch ein Hinweis sein kann. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Tremor",
+            "Kopfschmerz",
+            "Schwindel"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Tremor; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2242,6 +2723,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Fieber."
+        },
+        {
+          "cardId": "fieber-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Seit zwei Tagen habe ich erhöhte Temperatur und fühle mich krank.\" Mit Fieber treten häufig Tachykardie, Kopf- und Gliederschmerzen auf. Fun Fact: Ältere Menschen können trotz schwerer Infektion nur wenig oder gar kein Fieber entwickeln. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Fieber",
+            "Schüttelfrost",
+            "Nachtschweiß"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Fieber; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2301,6 +2795,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Schüttelfrost."
+        },
+        {
+          "cardId": "schuettelfrost-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich habe so stark gefroren, dass ich am ganzen Körper gezittert habe.\" Kurz danach stieg die Temperatur deutlich an. Fun Fact: Schüttelfrost spricht für einen raschen Temperaturanstieg und kann bei Bakteriämie vorkommen. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Schüttelfrost",
+            "Nachtschweiß",
+            "Fatigue"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Schüttelfrost; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2360,6 +2867,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Nachtschweiß."
+        },
+        {
+          "cardId": "nachtschweiss-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Nachts bin ich klatschnass und muss oft das Shirt wechseln.\" Tagsüber bestehen dazu Müdigkeit und ungewollter Gewichtsverlust. Fun Fact: Nachtschweiß mit B-Symptomatik verlangt eine strukturierte Abklärung auf Infektionen und Malignome. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Nachtschweiß",
+            "Fatigue",
+            "Exsikkose"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Nachtschweiß; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2419,6 +2939,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Fatigue."
+        },
+        {
+          "cardId": "fatigue-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich bin den ganzen Tag erschöpft, selbst nach ausreichend Schlaf.\" Die Leistung ist reduziert, Konzentration und Belastbarkeit lassen nach. Fun Fact: Fatigue ist mehr als Müdigkeit und tritt häufig bei chronischen Entzündungen oder Tumorerkrankungen auf. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Fatigue",
+            "Exsikkose",
+            "Fieber"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Fatigue; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2478,6 +3011,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Exsikkose."
+        },
+        {
+          "cardId": "exsikkose-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich habe kaum getrunken und fühle mich seit Tagen schlapp und trocken.\" Trockene Schleimhäute, stehende Hautfalten und Schwindel beim Aufstehen sind typisch. Fun Fact: Gerade ältere Menschen verspüren Durst oft verspätet und dehydrieren deshalb schneller. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Exsikkose",
+            "Fieber",
+            "Schüttelfrost"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Exsikkose; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2537,6 +3083,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Exanthem."
+        },
+        {
+          "cardId": "exanthem-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Der Ausschlag hat sich innerhalb eines Tages über den Rumpf ausgebreitet.\" Juckreiz und zeitlicher Bezug zu einem neuen Medikament sind wichtige Hinweise. Fun Fact: Die Frage, ob die Hautveränderungen wegdrückbar sind, hilft bei der Ersteinschätzung. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Exanthem",
+            "Pruritus",
+            "Urtikaria"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Exanthem; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2596,6 +3155,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Pruritus."
+        },
+        {
+          "cardId": "pruritus-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Es juckt ständig, auch wenn man kaum etwas auf der Haut sieht.\" Das Kratzen verschafft nur kurz Linderung und stört den Schlaf. Fun Fact: Pruritus kann dermatologisch, aber auch systemisch bei Cholestase, Niereninsuffizienz oder Hämatopathien auftreten. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Pruritus",
+            "Urtikaria",
+            "Exanthem"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Pruritus; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2655,6 +3227,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Urtikaria."
+        },
+        {
+          "cardId": "urtikaria-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Plötzlich entstehen juckende Quaddeln, die wieder verschwinden und an anderer Stelle auftauchen.\" Die einzelnen Effloreszenzen halten meist nur Stunden an. Fun Fact: Eine einzelne Urtika bleibt typischerweise unter 24 Stunden bestehen. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Urtikaria",
+            "Exanthem",
+            "Pruritus"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Urtikaria; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2714,6 +3299,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Depressive Episode."
+        },
+        {
+          "cardId": "depressive_episode-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Seit Wochen habe ich auf nichts mehr Lust und komme morgens kaum aus dem Bett.\" Hinzu kommen Schlafstörungen, Grübeln und verminderter Antrieb. Fun Fact: In der Hausarztpraxis zeigt sich Depression oft primär über körperliche Beschwerden statt über Traurigkeit. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Depressive Episode",
+            "Angststörung",
+            "Schlafstörung"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Depressive Episode; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2773,6 +3371,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Angststörung."
+        },
+        {
+          "cardId": "angststoerung-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Schon bei kleinen Auslösern rast mein Herz und ich bekomme keine ruhige Luft.\" Die Sorge vor der nächsten Attacke führt zunehmend zu Vermeidungsverhalten. Fun Fact: Die Angst vor den Körpersymptomen verstärkt die Symptome oft in einem Teufelskreis. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Angststörung",
+            "Schlafstörung",
+            "Depressive Episode"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Angststörung; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2832,6 +3443,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Schlafstörung."
+        },
+        {
+          "cardId": "schlafstoerung-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Ich liege lange wach, wache oft auf und bin tagsüber wie gerädert.\" Die Beschwerden bestehen seit Monaten und beeinträchtigen Arbeit und Stimmung. Fun Fact: Unregelmäßige Schlafzeiten und spätes Bildschirmlicht verschlechtern die Schlafqualität messbar. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Schlafstörung",
+            "Depressive Episode",
+            "Angststörung"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Schlafstörung; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2891,6 +3515,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Arthralgie."
+        },
+        {
+          "cardId": "arthralgie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Meine Gelenke tun weh, besonders morgens beim Anlaufen.\" Die Schmerzen betreffen wechselnde Gelenke und sind belastungsabhängig. Fun Fact: Die Dauer der Morgensteifigkeit hilft, entzündliche von degenerativen Ursachen besser zu unterscheiden. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Arthralgie",
+            "Myalgie",
+            "Ödem"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Arthralgie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     },
@@ -2950,6 +3587,19 @@
           ],
           "correctIndex": 0,
           "explanation_de": "Die korrekte Option beschreibt die typische klinische Konstellation fuer Myalgie."
+        },
+        {
+          "cardId": "myalgie-5",
+          "type": "story_funfact",
+          "question": "In der Anamnese sagt die Patientin: \"Die Muskeln fühlen sich an wie nach einem Marathon, obwohl ich kaum Sport gemacht habe.\" Druckschmerz und diffuse Beschwerden betreffen mehrere Muskelgruppen. Fun Fact: Myalgien treten häufig bei Virusinfekten auf, können aber auch medikamentös, etwa unter Statinen, bedingt sein. Welcher Fachbegriff passt am besten?",
+          "translation_es": "En la anamnesis se describe un caso clínico con síntomas clave y un dato útil para memorizar el concepto. Lee el texto completo y elige el término médico más adecuado.",
+          "choices": [
+            "Myalgie",
+            "Arthralgie",
+            "Fatigue"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die beschriebene Konstellation passt zu Myalgie; der Fun Fact verankert den Begriff im klinischen Kontext."
         }
       ]
     }
