@@ -493,62 +493,61 @@ h3 {
   margin-top: 8px;
 }
 
-.feedback-details {
-  margin-top: 8px;
+.translation-inline {
+  margin: 8px 0 0;
+  color: #7b3f4f;
+  background: #fff1f4;
   border: 1px solid rgba(248, 73, 102, 0.2);
-  border-radius: 12px;
-  background: #fff7f9;
-  padding: 0 10px 10px;
-}
-
-.feedback-summary {
-  cursor: pointer;
-  list-style: none;
-  color: #8b3249;
-  font-weight: 800;
-  padding: 10px 2px;
-}
-
-.feedback-summary::-webkit-details-marker {
-  display: none;
+  border-radius: 10px;
+  padding: 8px 10px;
+  line-height: 1.35;
 }
 
 .heart-burst {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 8px;
-  color: var(--heart-600);
-  font-size: clamp(4rem, 18vw, 8rem);
+  display: none !important;
+}
+
+.floating-emoji {
+  position: fixed;
+  left: 50%;
+  top: 43%;
+  z-index: 40;
+  pointer-events: none;
+  font-size: clamp(5rem, 24vw, 10rem);
   line-height: 1;
-  min-height: 1.1em;
-  transform: translateZ(0);
+  opacity: 0;
+  transform: translate(-50%, 24px) scale(0.36) rotate(var(--emoji-rot, 0deg));
   will-change: transform, opacity;
+  filter: drop-shadow(0 10px 24px rgba(128, 24, 45, 0.35));
 }
 
-.heart-burst.show {
-  animation: emoji-pop 1900ms ease-out forwards;
+.floating-emoji.show {
+  animation: floating-emoji-pop 2400ms ease-out forwards;
 }
 
-@keyframes emoji-pop {
+.floating-emoji.hide {
+  opacity: 0;
+}
+
+@keyframes floating-emoji-pop {
   0% {
     opacity: 0;
-    transform: translate(var(--emoji-x, 0), 22px) scale(0.42)
+    transform: translate(calc(-50% + var(--emoji-x, 0px)), 24px) scale(0.36)
       rotate(var(--emoji-rot, 0deg));
   }
-  24% {
+  23% {
     opacity: 1;
-    transform: translate(var(--emoji-x, 0), 0) scale(1.2)
+    transform: translate(calc(-50% + var(--emoji-x, 0px)), 0) scale(1.16)
       rotate(var(--emoji-rot, 0deg));
   }
-  72% {
+  74% {
     opacity: 1;
-    transform: translate(var(--emoji-x, 0), -4px) scale(1.22)
+    transform: translate(calc(-50% + var(--emoji-x, 0px)), -6px) scale(1.2)
       rotate(var(--emoji-rot, 0deg));
   }
   100% {
     opacity: 0;
-    transform: translate(var(--emoji-x, 0), -48px) scale(1.36)
+    transform: translate(calc(-50% + var(--emoji-x, 0px)), -72px) scale(1.36)
       rotate(var(--emoji-rot, 0deg));
   }
 }
@@ -680,7 +679,48 @@ body.immersive .app-shell {
 }
 
 body.immersive .quiz-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   min-height: calc(100vh - 22px);
+  padding: 10px;
+}
+
+body.immersive .quiz-card,
+body.immersive #emptyState {
+  order: 1;
+  margin-top: 0;
+}
+
+body.immersive .quiz-top {
+  order: 3;
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(248, 73, 102, 0.35);
+  gap: 6px;
+}
+
+body.immersive .quiz-top > div:first-child {
+  display: none;
+}
+
+body.immersive .quiz-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+body.immersive .quiz-actions .soft-btn {
+  padding: 8px 8px;
+  font-size: 0.82rem;
+}
+
+body.immersive .card-meta {
+  display: none;
+}
+
+body.immersive .stats-fab {
+  display: none;
 }
 
 @media (max-width: 980px) {
@@ -746,46 +786,7 @@ body.immersive .quiz-panel {
   }
 
   body.immersive .quiz-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px;
     min-height: calc(100vh - 88px);
-  }
-
-  body.immersive .quiz-card,
-  body.immersive #emptyState {
-    order: 1;
-    margin-top: 0;
-  }
-
-  body.immersive .quiz-top {
-    order: 3;
-    margin-top: 4px;
-    padding-top: 6px;
-    border-top: 1px dashed rgba(248, 73, 102, 0.35);
-    gap: 6px;
-  }
-
-  body.immersive .quiz-top h2 {
-    display: none;
-  }
-
-  body.immersive #progressText {
-    margin: 0;
-    font-size: 0.88rem;
-  }
-
-  body.immersive .quiz-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-  }
-
-  body.immersive .quiz-actions .soft-btn {
-    width: 100%;
-    padding: 8px 8px;
-    font-size: 0.82rem;
   }
 
   body.immersive .quiz-card {
@@ -829,14 +830,10 @@ body.immersive .quiz-panel {
     font-size: 0.94rem;
   }
 
-  body.immersive .feedback-details {
-    margin-top: 7px;
-    padding: 0 8px 8px;
-  }
-
-  body.immersive .feedback-summary {
-    padding: 8px 2px;
-    font-size: 0.86rem;
+  body.immersive .translation-inline {
+    margin-top: 6px;
+    padding: 7px 8px;
+    font-size: 0.88rem;
   }
 
   body.immersive .explanation {
@@ -858,9 +855,9 @@ body.immersive .quiz-panel {
     line-height: 1.35;
   }
 
-  body.immersive .heart-burst {
-    font-size: clamp(4.4rem, 24vw, 7rem);
-    margin-bottom: 4px;
+  .floating-emoji {
+    font-size: clamp(5.2rem, 32vw, 9rem);
+    top: 40%;
   }
 
   .stats-fab {

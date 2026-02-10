@@ -4,6 +4,7 @@ const DAILY_GOAL = 20;
 
 const SWEET_EMOJIS = ["💖", "💕", "💘", "💝", "🥰", "😍", "😘", "🫶", "🍑", "🌸", "✨"];
 let emojiHideTimer = null;
+let activeCelebration = null;
 
 const CATEGORY_MAP = {
   adipositas: "Gewicht",
@@ -103,7 +104,6 @@ const refs = {
   questionText: document.getElementById("questionText"),
   choices: document.getElementById("choices"),
   feedbackBox: document.getElementById("feedbackBox"),
-  feedbackDetails: document.getElementById("feedbackDetails"),
   resultText: document.getElementById("resultText"),
   explanationText: document.getElementById("explanationText"),
   translationText: document.getElementById("translationText"),
@@ -365,8 +365,9 @@ function renderCard() {
     window.clearTimeout(emojiHideTimer);
     emojiHideTimer = null;
   }
-  if (refs.feedbackDetails) {
-    refs.feedbackDetails.open = false;
+  if (activeCelebration) {
+    activeCelebration.remove();
+    activeCelebration = null;
   }
 
   refs.cardMode.textContent = MODE_LABELS[card.type] || "Modus";
@@ -427,26 +428,42 @@ function handleAnswer(selectedIndex) {
 
 function triggerHeartBurst() {
   const emoji = SWEET_EMOJIS[Math.floor(Math.random() * SWEET_EMOJIS.length)];
-  const driftX = Math.floor(Math.random() * 41) - 20;
-  const rotation = Math.floor(Math.random() * 31) - 15;
+  const driftX = Math.floor(Math.random() * 61) - 30;
+  const rotation = Math.floor(Math.random() * 41) - 20;
 
-  refs.heartBurst.textContent = emoji;
-  refs.heartBurst.style.setProperty("--emoji-x", `${driftX}px`);
-  refs.heartBurst.style.setProperty("--emoji-rot", `${rotation}deg`);
-  refs.heartBurst.classList.remove("hidden");
-  refs.heartBurst.classList.remove("show");
+  if (activeCelebration) {
+    activeCelebration.remove();
+    activeCelebration = null;
+  }
 
-  // Reflow fuer wiederholte Animation.
-  void refs.heartBurst.offsetWidth;
-  refs.heartBurst.classList.add("show");
+  const celebration = document.createElement("div");
+  celebration.className = "floating-emoji";
+  celebration.textContent = emoji;
+  celebration.style.setProperty("--emoji-x", `${driftX}px`);
+  celebration.style.setProperty("--emoji-rot", `${rotation}deg`);
+
+  document.body.appendChild(celebration);
+  activeCelebration = celebration;
+
+  void celebration.offsetWidth;
+  celebration.classList.add("show");
 
   if (emojiHideTimer) {
     window.clearTimeout(emojiHideTimer);
   }
+
   emojiHideTimer = window.setTimeout(() => {
-    refs.heartBurst.classList.remove("show");
-    refs.heartBurst.classList.add("hidden");
-  }, 2100);
+    celebration.classList.remove("show");
+    celebration.classList.add("hide");
+    window.setTimeout(() => {
+      if (celebration.parentNode) {
+        celebration.remove();
+      }
+      if (activeCelebration === celebration) {
+        activeCelebration = null;
+      }
+    }, 500);
+  }, 2400);
 }
 
 function nextCard() {
