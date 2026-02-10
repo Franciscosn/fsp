@@ -40,6 +40,7 @@ const state = {
 };
 
 const refs = {
+  dedicationPhoto: document.getElementById("dedicationPhoto"),
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
   queueInfo: document.getElementById("queueInfo"),
@@ -101,6 +102,7 @@ function wireEvents() {
 }
 
 async function init() {
+  initDedicationPhoto();
   try {
     const url = new URL("../data/cards.json", import.meta.url);
     const response = await fetch(url);
@@ -123,6 +125,23 @@ async function init() {
       "<p>Karten konnten nicht geladen werden. Bitte die Seite ueber einen lokalen Webserver oeffnen.</p>";
     console.error(error);
   }
+}
+
+function initDedicationPhoto() {
+  const photo = refs.dedicationPhoto;
+  if (!photo) return;
+
+  const preferredPath = "assets/kat-photo.jpg";
+  const fallbackPath = "assets/kat-photo-placeholder.svg";
+  const probe = new Image();
+
+  probe.onload = () => {
+    photo.src = preferredPath;
+  };
+  probe.onerror = () => {
+    photo.src = fallbackPath;
+  };
+  probe.src = preferredPath;
 }
 
 function flattenCards(deck) {
