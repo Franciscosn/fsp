@@ -12,7 +12,7 @@
           "cardId": "hypoglykaemie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich hatte heute Morgen Unterzucker, mir wurde zittrig und ich brauchte sofort Saft.\" Welcher Fachbegriff passt?",
-          "translation_es": "El paciente dice: \"Esta manana tuve una bajada de azucar, me puse tembloroso y necesite jugo de inmediato\". ?Que termino medico corresponde?",
+          "translation_es": "El paciente describe una bajada de azúcar (hipoglucemia). ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hypoglykämie",
             "Hyperglykämie",
@@ -25,7 +25,7 @@
           "cardId": "hypoglykaemie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Arztbrief steht: \"Rezidivierende Hypoglykämien unter Insulintherapie.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe medico dice: \"Hipoglucemias recurrentes bajo terapia con insulina\". ?Como lo dirias en lenguaje del paciente?",
+          "translation_es": "En el informe aparece \"Hypoglykämie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Wiederholter Unterzucker unter Insulin",
             "Wiederholter Überzucker unter Insulin",
@@ -38,7 +38,7 @@
           "cardId": "hypoglykaemie-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich hatte Unterzucker im Supermarkt.\" Welche Anschlussfrage ist für den Schweregrad am wichtigsten?",
-          "translation_es": "La paciente dice: \"Tuve una bajada de azucar en el supermercado\". ?Que pregunta de seguimiento es la mas importante para valorar la gravedad?",
+          "translation_es": "Caso de anamnesis con una bajada de azúcar (hipoglucemia): ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Waren Sie noch ansprechbar oder kurz bewusstlos?",
             "Welche Supermarktkette war das?",
@@ -51,7 +51,7 @@
           "cardId": "hypoglykaemie-4",
           "type": "interesting_fach",
           "question": "Welche Symptomkombination spricht am ehesten für eine Hypoglykämie?",
-          "translation_es": "?Que combinacion de sintomas sugiere mas una hipoglucemia?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hypoglykämie?",
           "choices": [
             "Zittern, kalter Schweiß, Heißhunger",
             "Durst, häufiges Wasserlassen, trockener Mund",
@@ -71,7 +71,7 @@
           "cardId": "hyperglykaemie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe seit Tagen Überzucker.\" Wie heißt das fachsprachlich?",
-          "translation_es": "El paciente dice: \"Llevo dias con azucar alta\". ?Como se llama en lenguaje medico?",
+          "translation_es": "El paciente describe azúcar alta (hiperglucemia). ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hyperglykämie",
             "Hypoglykämie",
@@ -84,7 +84,7 @@
           "cardId": "hyperglykaemie-2",
           "type": "fachbegriff_to_patient",
           "question": "In der Kurve steht: \"Persistierende Hyperglykämie.\" Was ist die passende Patientensprache?",
-          "translation_es": "En la hoja de evolucion dice: \"Hiperglucemia persistente\". ?Cual es la expresion adecuada para el paciente?",
+          "translation_es": "En el informe aparece \"Hyperglykämie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Anhaltender Überzucker",
             "Anhaltender Unterzucker",
@@ -97,7 +97,7 @@
           "cardId": "hyperglykaemie-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Bei Überzucker habe ich extremen Durst und muss ständig zur Toilette.\" Welche Rückfrage hilft am meisten?",
-          "translation_es": "La paciente dice: \"Con azucar alta tengo mucha sed y voy al bano constantemente\". ?Que repregunta ayuda mas?",
+          "translation_es": "Caso de anamnesis con azúcar alta (hiperglucemia): ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Seit wann bestehen starker Durst und häufiges Wasserlassen?",
             "Welche Farbe hat Ihre Trinkflasche?",
@@ -110,7 +110,7 @@
           "cardId": "hyperglykaemie-4",
           "type": "interesting_fach",
           "question": "Welche Kombination passt eher zu Hyperglykämie als zu Hypoglykämie?",
-          "translation_es": "?Que combinacion encaja mas con hiperglucemia que con hipoglucemia?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hyperglykämie?",
           "choices": [
             "Polydipsie, Polyurie, Müdigkeit",
             "Zittern, Schwitzen, Heißhunger",
@@ -130,7 +130,7 @@
           "cardId": "hypothyreose-1",
           "type": "patient_to_fachbegriff",
           "question": "Patientin: \"Ich habe eine Schilddrüsenunterfunktion.\" Welcher Fachbegriff ist korrekt?",
-          "translation_es": "La paciente dice: \"Tengo hipofuncion de la tiroides\". ?Cual es el termino medico correcto?",
+          "translation_es": "El paciente describe hipofunción tiroidea. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hypothyreose",
             "Hyperthyreose",
@@ -143,7 +143,7 @@
           "cardId": "hypothyreose-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Bekannte Hypothyreose seit 2019.\" Wie erklärst du das patientengerecht?",
-          "translation_es": "En el informe dice: \"Hipotiroidismo conocido desde 2019\". ?Como lo explicas en lenguaje del paciente?",
+          "translation_es": "En el informe aparece \"Hypothyreose\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Bekannte Schilddrüsenunterfunktion seit 2019",
             "Bekannte Schilddrüsenüberfunktion seit 2019",
@@ -156,7 +156,7 @@
           "cardId": "hypothyreose-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Meine Schilddrüsenunterfunktion ist schlecht eingestellt, ich friere dauernd.\" Welche Zusatzfrage passt am besten?",
-          "translation_es": "La paciente dice: \"Mi hipofuncion tiroidea esta mal ajustada y siempre tengo frio\". ?Que pregunta adicional encaja mejor?",
+          "translation_es": "Caso de anamnesis con hipofunción tiroidea: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Haben Sie auch Verstopfung oder ausgeprägte Müdigkeit?",
             "Mögen Sie kalte Getränke?",
@@ -169,7 +169,7 @@
           "cardId": "hypothyreose-4",
           "type": "interesting_fach",
           "question": "Welche Befundkonstellation spricht am ehesten für Hypothyreose?",
-          "translation_es": "?Que conjunto de hallazgos sugiere mas hipotiroidismo?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hypothyreose?",
           "choices": [
             "Müdigkeit, Gewichtszunahme, Kälteempfindlichkeit",
             "Gewichtsverlust, Herzrasen, Wärmeintoleranz",
@@ -189,7 +189,7 @@
           "cardId": "hyperthyreose-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Mein Hausarzt meinte, ich habe eine Schilddrüsenüberfunktion.\" Fachbegriff?",
-          "translation_es": "El paciente dice: \"Mi medico de cabecera dijo que tengo hiperfuncion de la tiroides\". ?Cual es el termino medico?",
+          "translation_es": "El paciente describe hiperfunción tiroidea. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hyperthyreose",
             "Hypothyreose",
@@ -202,7 +202,7 @@
           "cardId": "hyperthyreose-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Arztbrief steht: \"Laborchemisch gesicherte Hyperthyreose.\" Was heißt das für Patientinnen und Patienten?",
-          "translation_es": "En el informe medico dice: \"Hipertiroidismo confirmado por laboratorio\". ?Que significa para el paciente?",
+          "translation_es": "En el informe aparece \"Hyperthyreose\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Im Blut bestätigte Schilddrüsenüberfunktion",
             "Im Blut bestätigte Schilddrüsenunterfunktion",
@@ -215,7 +215,7 @@
           "cardId": "hyperthyreose-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Seit meiner Schilddrüsenüberfunktion nehme ich ab, obwohl ich viel esse.\" Welche Anschlussfrage ist sinnvoll?",
-          "translation_es": "La paciente dice: \"Desde que tengo hiperfuncion tiroidea, bajo de peso aunque coma mucho\". ?Que pregunta de seguimiento es adecuada?",
+          "translation_es": "Caso de anamnesis con hiperfunción tiroidea: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Haben Sie Herzklopfen, Zittern oder innere Unruhe?",
             "Welche Zahnpasta benutzen Sie?",
@@ -228,7 +228,7 @@
           "cardId": "hyperthyreose-4",
           "type": "interesting_fach",
           "question": "Welche Kombination unterstützt die Diagnose Hyperthyreose am stärksten?",
-          "translation_es": "?Que combinacion apoya mas el diagnostico de hipertiroidismo?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hyperthyreose?",
           "choices": [
             "Tachykardie, Tremor, Wärmeintoleranz",
             "Bradykardie, Obstipation, Kälteintoleranz",
@@ -248,7 +248,7 @@
           "cardId": "adipositas-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe seit Jahren starkes Übergewicht.\" Welcher Fachbegriff passt?",
-          "translation_es": "El paciente dice: \"Desde hace anos tengo sobrepeso importante\". ?Que termino medico corresponde?",
+          "translation_es": "El paciente describe sobrepeso marcado u obesidad. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Adipositas",
             "Kachexie",
@@ -261,7 +261,7 @@
           "cardId": "adipositas-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Adipositas Grad II.\" Wie lautet die passende Patientensprache?",
-          "translation_es": "En el informe dice: \"Obesidad grado II\". ?Cual es la forma adecuada en lenguaje del paciente?",
+          "translation_es": "En el informe aparece \"Adipositas\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Deutlich starkes Übergewicht",
             "Deutlicher Unterzucker",
@@ -274,7 +274,7 @@
           "cardId": "adipositas-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich habe starkes Übergewicht und bekomme beim Treppensteigen schnell Luftnot.\" Welche Anamnese-Frage ist am wichtigsten als Nächstes?",
-          "translation_es": "La paciente dice: \"Tengo sobrepeso importante y me falta el aire al subir escaleras\". ?Que pregunta de anamnesis es la mas importante a continuacion?",
+          "translation_es": "Caso de anamnesis con sobrepeso marcado u obesidad: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie hat sich Ihr Gewicht in den letzten 6-12 Monaten verändert?",
             "Welches Stockwerk mögen Sie am liebsten?",
@@ -287,7 +287,7 @@
           "cardId": "adipositas-4",
           "type": "interesting_fach",
           "question": "Welche häufige Begleiterkrankung sollte bei Adipositas aktiv erfragt werden?",
-          "translation_es": "?Que comorbilidad frecuente debe investigarse activamente en la adiposidad?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Adipositas?",
           "choices": [
             "Typ-2-Diabetes mellitus",
             "Akute Otitis media",
@@ -307,7 +307,7 @@
           "cardId": "dyspnoe-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich bekomme schon bei kleinen Wegen schlecht Luft.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich bekomme schon bei kleinen Wegen schlecht Luft.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe dificultad respiratoria. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Dyspnoe",
             "Orthopnoe",
@@ -320,7 +320,7 @@
           "cardId": "dyspnoe-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Belastungsdyspnoe seit zwei Tagen.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Belastungsdyspnoe seit zwei Tagen.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Dyspnoe\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Luftnot bei Belastung seit zwei Tagen",
             "Luftnot im Liegen",
@@ -333,7 +333,7 @@
           "cardId": "dyspnoe-3",
           "type": "interesting_patient",
           "question": "Patient: \"Mir bleibt beim Gehen die Luft weg.\" Welche Anschlussfrage ist am wichtigsten?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Mir bleibt beim Gehen die Luft weg.\" Welche Anschlussfrage ist am wichtigsten?",
+          "translation_es": "Caso de anamnesis con dificultad respiratoria: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Tritt die Luftnot auch in Ruhe oder nur unter Belastung auf?",
             "Haben Sie dabei eher trockenen oder produktiven Husten?",
@@ -346,7 +346,7 @@
           "cardId": "dyspnoe-4",
           "type": "interesting_fach",
           "question": "Welche Konstellation macht Dyspnoe besonders dringlich?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Dyspnoe?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Dyspnoe?",
           "choices": [
             "Luftnot in Ruhe plus Saettigungsabfall",
             "Luftnot nur beim Sprint ohne weitere Symptome",
@@ -366,7 +366,7 @@
           "cardId": "orthopnoe-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Sobald ich mich flach hinlege, bekomme ich schlecht Luft.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Sobald ich mich flach hinlege, bekomme ich schlecht Luft.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe dificultad respiratoria al estar acostado. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Orthopnoe",
             "Dyspnoe",
@@ -379,7 +379,7 @@
           "cardId": "orthopnoe-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Orthopnoe, Patient schlaeft mit drei Kissen.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Orthopnoe, Patient schlaeft mit drei Kissen.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Orthopnoe\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Luftnot im Liegen, besser im Sitzen",
             "Luftnot",
@@ -392,7 +392,7 @@
           "cardId": "orthopnoe-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Im Liegen bekomme ich keine Luft.\" Welche Rueckfrage passt am besten?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Im Liegen bekomme ich keine Luft.\" Welche Rueckfrage passt am besten?",
+          "translation_es": "Caso de anamnesis con dificultad respiratoria al estar acostado: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Brauchen Sie mehrere Kissen oder muessen Sie sich nachts aufsetzen?",
             "Haben Sie tagsueber auch Belastungsluftnot?",
@@ -405,7 +405,7 @@
           "cardId": "orthopnoe-4",
           "type": "interesting_fach",
           "question": "Welche Aussage beschreibt Orthopnoe am besten?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Orthopnoe?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Orthopnoe?",
           "choices": [
             "Dyspnoe, die im Sitzen besser und im Liegen schlechter wird",
             "Luftnot nur bei schwerer sportlicher Belastung",
@@ -425,7 +425,7 @@
           "cardId": "haemoptyse-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe beim Husten Blutstreifen im Schleim.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich habe beim Husten Blutstreifen im Schleim.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe tos con sangre. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hämoptyse",
             "Hämatemesis",
@@ -438,7 +438,7 @@
           "cardId": "haemoptyse-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Kleine Hämoptysen seit zwei Tagen bei Husten.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Kleine Hämoptysen seit zwei Tagen bei Husten.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Hämoptyse\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Beim Husten Blut abhusten",
             "Blut erbrechen",
@@ -451,7 +451,7 @@
           "cardId": "haemoptyse-3",
           "type": "interesting_patient",
           "question": "Patient: \"Ich huste Blut mit aus.\" Welche Rueckfrage ist akut am wichtigsten?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Ich huste Blut mit aus.\" Welche Rueckfrage ist akut am wichtigsten?",
+          "translation_es": "Caso de anamnesis con tos con sangre: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie viel Blut war es und besteht gleichzeitig Luftnot?",
             "Gab es vorher Fieber oder Gewichtsverlust?",
@@ -464,7 +464,7 @@
           "cardId": "haemoptyse-4",
           "type": "interesting_fach",
           "question": "Was spricht eher fuer Hämoptyse als fuer Hämatemesis?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Hämoptyse?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hämoptyse?",
           "choices": [
             "Blut wird beim Husten ausgeworfen, oft mit sputum",
             "Blut kommt nach Übelkeit und Erbrechen",
@@ -484,7 +484,7 @@
           "cardId": "palpitationen-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Mein Herz klopft ploetzlich bis zum Hals.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Mein Herz klopft ploetzlich bis zum Hals.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe palpitaciones. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Palpitationen",
             "Tachykardie",
@@ -497,7 +497,7 @@
           "cardId": "palpitationen-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Anfallsartige Palpitationen fuer einige Minuten.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Anfallsartige Palpitationen fuer einige Minuten.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Palpitationen\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Anfallsweises Herzklopfen fuer einige Minuten",
             "Herzrasen",
@@ -510,7 +510,7 @@
           "cardId": "palpitationen-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich habe ploetzlich Herzklopfen.\" Welche Frage ist am hilfreichsten?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich habe ploetzlich Herzklopfen.\" Welche Frage ist am hilfreichsten?",
+          "translation_es": "Caso de anamnesis con palpitaciones: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Beginnen und enden die Episoden abrupt?",
             "Gab es dabei Schwindel oder Brustschmerz?",
@@ -523,7 +523,7 @@
           "cardId": "palpitationen-4",
           "type": "interesting_fach",
           "question": "Welche Zusatzsymptome erhoehen bei Palpitationen die Dringlichkeit?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Palpitationen?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Palpitationen?",
           "choices": [
             "Synkope, Thoraxschmerz oder Luftnot waehrend der Episode",
             "Leichter Juckreiz ohne Kreislaufbeschwerden",
@@ -543,7 +543,7 @@
           "cardId": "angina_pectoris-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Bei Anstrengung drueckt es stark auf der Brust.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Bei Anstrengung drueckt es stark auf der Brust.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe opresión en el pecho. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Angina pectoris",
             "Dyspnoe",
@@ -556,7 +556,7 @@
           "cardId": "angina_pectoris-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Belastungsabhaengige Angina pectoris, Besserung in Ruhe.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Belastungsabhaengige Angina pectoris, Besserung in Ruhe.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Angina pectoris\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Brustenge bei Belastung, in Ruhe besser",
             "Luftnot",
@@ -569,7 +569,7 @@
           "cardId": "angina_pectoris-3",
           "type": "interesting_patient",
           "question": "Patient: \"Ich habe Brustenge beim Gehen.\" Welche Rueckfrage ist zentral?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Ich habe Brustenge beim Gehen.\" Welche Rueckfrage ist zentral?",
+          "translation_es": "Caso de anamnesis con opresión en el pecho: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Strahlt der Schmerz in Arm, Kiefer oder Ruecken aus?",
             "Wie lange dauert eine einzelne Episode?",
@@ -582,7 +582,7 @@
           "cardId": "angina_pectoris-4",
           "type": "interesting_fach",
           "question": "Welche Beschreibung passt klassisch zu Angina pectoris?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Angina pectoris?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Angina pectoris?",
           "choices": [
             "Retrosternaler Druck unter Belastung mit Besserung in Ruhe",
             "Brennender Oberbauchschmerz nach fettigem Essen",
@@ -602,7 +602,7 @@
           "cardId": "synkope-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich war gestern kurz ohnmaechtig.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich war gestern kurz ohnmaechtig.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe desmayo. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Synkope",
             "Krampfanfall",
@@ -615,7 +615,7 @@
           "cardId": "synkope-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Synkope unklarer Genese waehrend Stehen.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Synkope unklarer Genese waehrend Stehen.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Synkope\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Kurze Ohnmacht beim Stehen",
             "Anfall mit Zuckungen",
@@ -628,7 +628,7 @@
           "cardId": "synkope-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich war kurz weg.\" Welche Frage hilft am meisten?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich war kurz weg.\" Welche Frage hilft am meisten?",
+          "translation_es": "Caso de anamnesis con desmayo: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Gab es Vorboten und wie schnell kam das Bewusstsein zurueck?",
             "Gab es palpitationsartige Beschwerden vorher?",
@@ -641,7 +641,7 @@
           "cardId": "synkope-4",
           "type": "interesting_fach",
           "question": "Welche Konstellation spricht eher fuer Synkope?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Synkope?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Synkope?",
           "choices": [
             "Kurzer Bewusstseinsverlust mit rascher kompletter Erholung",
             "Lang anhaltende Verwirrtheit nach Zuckungen",
@@ -661,7 +661,7 @@
           "cardId": "oedem-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Abends habe ich Wasser in den Beinen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Abends habe ich Wasser in den Beinen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe hinchazón por retención de líquido en las piernas. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Ödem",
             "Adipositas",
@@ -674,7 +674,7 @@
           "cardId": "oedem-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Beidseitige Unterschenkelödeme zunehmend seit einer Woche.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Beidseitige Unterschenkelödeme zunehmend seit einer Woche.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Ödem\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Wassereinlagerungen an beiden Unterschenkeln",
             "starkes Übergewicht",
@@ -687,7 +687,7 @@
           "cardId": "oedem-3",
           "type": "interesting_patient",
           "question": "Patient: \"Meine Beine schwellen abends an.\" Welche Rueckfrage ist am wichtigsten?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Meine Beine schwellen abends an.\" Welche Rueckfrage ist am wichtigsten?",
+          "translation_es": "Caso de anamnesis con hinchazón por retención de líquido en las piernas: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Nehmen die Schwellungen ueber den Tag zu und sind sie eindrueckbar?",
             "Besteht zusaetzlich Luftnot im Liegen?",
@@ -700,7 +700,7 @@
           "cardId": "oedem-4",
           "type": "interesting_fach",
           "question": "Welche Beobachtung passt zu peripheren Ödemen?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Ödem?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Ödem?",
           "choices": [
             "Eindrueckbare Schwellung am Unterschenkel mit Gewichtszunahme",
             "Nur trockener Reizhusten ohne Beinbefund",
@@ -720,7 +720,7 @@
           "cardId": "hypertonie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Mein Blutdruck ist seit Wochen zu hoch.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Mein Blutdruck ist seit Wochen zu hoch.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe presión arterial alta. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hypertonie",
             "Tachykardie",
@@ -733,7 +733,7 @@
           "cardId": "hypertonie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Arterielle Hypertonie mit wiederholten Werten ueber 140/90.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Arterielle Hypertonie mit wiederholten Werten ueber 140/90.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Hypertonie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Wiederholt zu hoher Blutdruck",
             "Herzrasen",
@@ -746,7 +746,7 @@
           "cardId": "hypertonie-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Mein Blutdruck ist immer hoch.\" Welche Anamnese-Frage ist sinnvoll?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Mein Blutdruck ist immer hoch.\" Welche Anamnese-Frage ist sinnvoll?",
+          "translation_es": "Caso de anamnesis con presión arterial alta: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Werden die Werte zu Hause korrekt in Ruhe gemessen und dokumentiert?",
             "Bestehen Endorgansymptome wie Kopfschmerz oder Sehstörung?",
@@ -759,7 +759,7 @@
           "cardId": "hypertonie-4",
           "type": "interesting_fach",
           "question": "Welche Aussage zur Hypertonie trifft am ehesten zu?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Hypertonie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hypertonie?",
           "choices": [
             "Sie verlaeuft oft symptomarm und erhoeht langfristig das Schlaganfallrisiko",
             "Sie verursacht immer sofort starke Thoraxschmerzen",
@@ -779,7 +779,7 @@
           "cardId": "tachykardie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Mein Herz rast auch im Sitzen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Mein Herz rast auch im Sitzen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe latido cardíaco acelerado. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Tachykardie",
             "Palpitationen",
@@ -792,7 +792,7 @@
           "cardId": "tachykardie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Sinustachykardie in Ruhe mit 125/min.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Sinustachykardie in Ruhe mit 125/min.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Tachykardie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Schneller Herzschlag in Ruhe",
             "Herzklopfen",
@@ -805,7 +805,7 @@
           "cardId": "tachykardie-3",
           "type": "interesting_patient",
           "question": "Patient: \"Mein Herz rast ploetzlich.\" Welche Frage ist prioritär?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Mein Herz rast ploetzlich.\" Welche Frage ist prioritär?",
+          "translation_es": "Caso de anamnesis con latido cardíaco acelerado: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Gab es Ausloeser wie Fieber, Schmerz, Dehydratation oder Medikamente?",
             "Treten die Episoden regelmaessig oder unregelmaessig auf?",
@@ -818,7 +818,7 @@
           "cardId": "tachykardie-4",
           "type": "interesting_fach",
           "question": "Welche Definition passt zu Tachykardie beim Erwachsenen?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Tachykardie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Tachykardie?",
           "choices": [
             "Herzfrequenz ueber 100/min in Ruhe",
             "Herzfrequenz unter 50/min in Ruhe",
@@ -838,7 +838,7 @@
           "cardId": "arrhythmie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Mein Herz stolpert und schlaegt unregelmaessig.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Mein Herz stolpert und schlaegt unregelmaessig.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe latido irregular del corazón. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Arrhythmie",
             "Tachykardie",
@@ -851,7 +851,7 @@
           "cardId": "arrhythmie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Paroxysmale Arrhythmie mit unregelmaessigem Puls.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Paroxysmale Arrhythmie mit unregelmaessigem Puls.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Arrhythmie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Unregelmaessiger Herzschlag mit Aussetzern",
             "Herzrasen",
@@ -864,7 +864,7 @@
           "cardId": "arrhythmie-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Es fuehlt sich an, als wuerde mein Herz aussetzen.\" Was fragst du zuerst?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Es fuehlt sich an, als wuerde mein Herz aussetzen.\" Was fragst du zuerst?",
+          "translation_es": "Caso de anamnesis con latido irregular del corazón: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie lange dauern die Episoden und gibt es Schwindel oder Synkopen?",
             "Treten die Episoden unter Belastung oder in Ruhe auf?",
@@ -877,7 +877,7 @@
           "cardId": "arrhythmie-4",
           "type": "interesting_fach",
           "question": "Welche Konstellation spricht fuer klinisch relevante Arrhythmie?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Arrhythmie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Arrhythmie?",
           "choices": [
             "Unregelmaessiger Puls plus Schwindel oder Synkope",
             "Regelmaessiger Puls 72/min ohne Beschwerden",
@@ -897,7 +897,7 @@
           "cardId": "nausea-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Mir ist seit dem Morgen stark schlecht.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Mir ist seit dem Morgen stark schlecht.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe náuseas. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Nausea",
             "Emesis",
@@ -910,7 +910,7 @@
           "cardId": "nausea-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Anhaltende Nausea ohne Erbrechen.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Anhaltende Nausea ohne Erbrechen.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Nausea\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Anhaltende Übelkeit ohne Erbrechen",
             "Erbrechen",
@@ -923,7 +923,7 @@
           "cardId": "nausea-3",
           "type": "interesting_patient",
           "question": "Patient: \"Mir ist dauernd uebel.\" Welche Frage hilft bei der Einordnung am meisten?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Mir ist dauernd uebel.\" Welche Frage hilft bei der Einordnung am meisten?",
+          "translation_es": "Caso de anamnesis con náuseas: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Bestehen zusaetzlich Erbrechen, Bauchschmerz oder Fieber?",
             "Tritt die Uebelkeit eher nuechtern oder nach Mahlzeiten auf?",
@@ -936,7 +936,7 @@
           "cardId": "nausea-4",
           "type": "interesting_fach",
           "question": "Welche Aussage trifft auf Nausea zu?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Nausea?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Nausea?",
           "choices": [
             "Nausea beschreibt Übelkeit, auch ohne Erbrechen",
             "Nausea bedeutet immer blutiges Erbrechen",
@@ -956,7 +956,7 @@
           "cardId": "emesis-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich musste heute schon dreimal erbrechen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich musste heute schon dreimal erbrechen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe vómitos. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Emesis",
             "Nausea",
@@ -969,7 +969,7 @@
           "cardId": "emesis-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Rezidivierende Emesis seit 12 Stunden.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Rezidivierende Emesis seit 12 Stunden.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Emesis\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Wiederholtes Erbrechen seit 12 Stunden",
             "Übelkeit",
@@ -982,7 +982,7 @@
           "cardId": "emesis-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich erbreche seit der Nacht.\" Welche Frage ist zuerst wichtig?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich erbreche seit der Nacht.\" Welche Frage ist zuerst wichtig?",
+          "translation_es": "Caso de anamnesis con vómitos: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Koennen Sie Fluessigkeit bei sich behalten oder erbrechen Sie alles wieder?",
             "Gab es zuvor Übelkeit und Bauchschmerzen?",
@@ -995,7 +995,7 @@
           "cardId": "emesis-4",
           "type": "interesting_fach",
           "question": "Welche Komplikation droht bei haeufiger Emesis besonders?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Emesis?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Emesis?",
           "choices": [
             "Exsikkose und Elektrolytstoerungen",
             "Akute pAVK",
@@ -1015,7 +1015,7 @@
           "cardId": "haematemesis-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Beim Erbrechen kam rotes Blut mit.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Beim Erbrechen kam rotes Blut mit.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe vómito con sangre. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hämatemesis",
             "Hämoptyse",
@@ -1028,7 +1028,7 @@
           "cardId": "haematemesis-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Episode von Hämatemesis in der Nacht.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Episode von Hämatemesis in der Nacht.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Hämatemesis\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Blutiges Erbrechen in der Nacht",
             "Blut husten",
@@ -1041,7 +1041,7 @@
           "cardId": "haematemesis-3",
           "type": "interesting_patient",
           "question": "Patient: \"Ich habe Blut erbrochen.\" Welche Rueckfrage ist akut entscheidend?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Ich habe Blut erbrochen.\" Welche Rueckfrage ist akut entscheidend?",
+          "translation_es": "Caso de anamnesis con vómito con sangre: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie viel Blut war es und gibt es Kreislaufschwaeche?",
             "Nehmen Sie Gerinnungshemmer oder NSAR ein?",
@@ -1054,7 +1054,7 @@
           "cardId": "haematemesis-4",
           "type": "interesting_fach",
           "question": "Was passt eher zu Hämatemesis als zu Hämoptyse?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Hämatemesis?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hämatemesis?",
           "choices": [
             "Blut nach Übelkeit/Erbrechen, oft kaffeesatzartig",
             "Schaumiges Blut beim Husten",
@@ -1074,7 +1074,7 @@
           "cardId": "dysphagie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe Schluckbeschwerden, vor allem bei festem Essen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich habe Schluckbeschwerden, vor allem bei festem Essen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe dificultad para tragar. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Dysphagie",
             "Pyrosis",
@@ -1087,7 +1087,7 @@
           "cardId": "dysphagie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Progrediente Dysphagie fuer feste Nahrung.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Progrediente Dysphagie fuer feste Nahrung.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Dysphagie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Zunehmende Schluckbeschwerden bei fester Kost",
             "Sodbrennen",
@@ -1100,7 +1100,7 @@
           "cardId": "dysphagie-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Essen bleibt manchmal stecken.\" Welche Anschlussfrage ist am wichtigsten?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Essen bleibt manchmal stecken.\" Welche Anschlussfrage ist am wichtigsten?",
+          "translation_es": "Caso de anamnesis con dificultad para tragar: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Sind zuerst feste und spaeter auch fluessige Speisen betroffen?",
             "Gibt es gleichzeitig Gewichtsverlust?",
@@ -1113,7 +1113,7 @@
           "cardId": "dysphagie-4",
           "type": "interesting_fach",
           "question": "Welche Warnkonstellation bei Dysphagie ist besonders relevant?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Dysphagie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Dysphagie?",
           "choices": [
             "Progredienz plus ungewollter Gewichtsverlust",
             "Leichtes Aufstossen nach fettem Essen",
@@ -1133,7 +1133,7 @@
           "cardId": "pyrosis-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Nach dem Essen habe ich starkes Sodbrennen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Nach dem Essen habe ich starkes Sodbrennen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe ardor de estómago. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Pyrosis",
             "Angina pectoris",
@@ -1146,7 +1146,7 @@
           "cardId": "pyrosis-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Rezidivierende Pyrosis, nachts im Liegen verstaerkt.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Rezidivierende Pyrosis, nachts im Liegen verstaerkt.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Pyrosis\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Wiederkehrendes Sodbrennen, im Liegen schlimmer",
             "Brustenge",
@@ -1159,7 +1159,7 @@
           "cardId": "pyrosis-3",
           "type": "interesting_patient",
           "question": "Patient: \"Es brennt hinter dem Brustbein nach dem Essen.\" Was fragst du zuerst?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Es brennt hinter dem Brustbein nach dem Essen.\" Was fragst du zuerst?",
+          "translation_es": "Caso de anamnesis con ardor de estómago: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Bessern Antazida und tritt es lageabhaengig auf?",
             "Gibt es saures Aufstossen bis in den Rachen?",
@@ -1172,7 +1172,7 @@
           "cardId": "pyrosis-4",
           "type": "interesting_fach",
           "question": "Welche Konstellation passt am ehesten zu Pyrosis?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Pyrosis?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Pyrosis?",
           "choices": [
             "Retrosternales Brennen nach Mahlzeiten, im Liegen verstaerkt",
             "Druckschmerz bei Belastung mit Arm-Ausstrahlung",
@@ -1192,7 +1192,7 @@
           "cardId": "diarrhoe-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe seit gestern starken Durchfall.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich habe seit gestern starken Durchfall.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe diarrea. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Diarrhö",
             "Obstipation",
@@ -1205,7 +1205,7 @@
           "cardId": "diarrhoe-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Akute Diarrhö, sechs waessrige Stuehle pro Tag.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Akute Diarrhö, sechs waessrige Stuehle pro Tag.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Diarrhö\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Akuter waessriger Durchfall mehrmals taeglich",
             "Verstopfung",
@@ -1218,7 +1218,7 @@
           "cardId": "diarrhoe-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich habe dauernd Durchfall.\" Welche Rueckfrage ist zentral?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich habe dauernd Durchfall.\" Welche Rueckfrage ist zentral?",
+          "translation_es": "Caso de anamnesis con diarrea: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie oft, wie waessrig und ist Blut im Stuhl dabei?",
             "Besteht Fieber oder Erbrechen zusaetzlich?",
@@ -1231,7 +1231,7 @@
           "cardId": "diarrhoe-4",
           "type": "interesting_fach",
           "question": "Welche Gefahr besteht bei schwerer Diarrhö besonders?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Diarrhö?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Diarrhö?",
           "choices": [
             "Dehydratation und Elektrolytverlust",
             "Akute Hyperthyreose",
@@ -1251,7 +1251,7 @@
           "cardId": "obstipation-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Seit Tagen habe ich Verstopfung.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Seit Tagen habe ich Verstopfung.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe estreñimiento. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Obstipation",
             "Diarrhö",
@@ -1264,7 +1264,7 @@
           "cardId": "obstipation-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Chronische Obstipation mit harten Stuehlen.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Chronische Obstipation mit harten Stuehlen.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Obstipation\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Chronische Verstopfung mit harten Stuehlen",
             "Durchfall",
@@ -1277,7 +1277,7 @@
           "cardId": "obstipation-3",
           "type": "interesting_patient",
           "question": "Patient: \"Ich kann kaum auf Toilette.\" Was fragst du zuerst?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Ich kann kaum auf Toilette.\" Was fragst du zuerst?",
+          "translation_es": "Caso de anamnesis con estreñimiento: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wann war der letzte Stuhlgang und gehen Winde noch ab?",
             "Bestehen Bauchschmerzen oder Erbrechen?",
@@ -1290,7 +1290,7 @@
           "cardId": "obstipation-4",
           "type": "interesting_fach",
           "question": "Was spricht fuer klinisch relevante Obstipation?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Obstipation?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Obstipation?",
           "choices": [
             "Seltene harte Stuehle plus Pressen und Entleerungsgefuehl",
             "Mehrfach taeglich waessrige Stuehle",
@@ -1310,7 +1310,7 @@
           "cardId": "melaena-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Mein Stuhl war pechschwarz wie Teer.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Mein Stuhl war pechschwarz wie Teer.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe heces negras alquitranadas. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Meläna",
             "Hämatochezie",
@@ -1323,7 +1323,7 @@
           "cardId": "melaena-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Meläna seit gestern mit Schwindel.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Meläna seit gestern mit Schwindel.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Meläna\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Schwarzer Teerstuhl seit gestern",
             "hellrotes Blut im Stuhl",
@@ -1336,7 +1336,7 @@
           "cardId": "melaena-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Der Stuhl ist schwarz.\" Welche Frage ist akut wichtig?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Der Stuhl ist schwarz.\" Welche Frage ist akut wichtig?",
+          "translation_es": "Caso de anamnesis con heces negras alquitranadas: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Bestehen Kreislaufsymptome oder wurde Blut erbrochen?",
             "Nehmen Sie Eisenpraeparate oder Bismut ein?",
@@ -1349,7 +1349,7 @@
           "cardId": "melaena-4",
           "type": "interesting_fach",
           "question": "Welche Ursache ist bei Meläna haeufig?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Meläna?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Meläna?",
           "choices": [
             "Obere gastrointestinale Blutung",
             "Unkomplizierter Harnwegsinfekt",
@@ -1369,7 +1369,7 @@
           "cardId": "haematochezie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Beim Stuhlgang war frisches rotes Blut dabei.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Beim Stuhlgang war frisches rotes Blut dabei.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe sangre roja en las heces. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hämatochezie",
             "Meläna",
@@ -1382,7 +1382,7 @@
           "cardId": "haematochezie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Hämatochezie ohne Teerstuhl.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Hämatochezie ohne Teerstuhl.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Hämatochezie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Frisches rotes Blut im Stuhl",
             "schwarzer Teerstuhl",
@@ -1395,7 +1395,7 @@
           "cardId": "haematochezie-3",
           "type": "interesting_patient",
           "question": "Patient: \"Beim Stuhlgang war rotes Blut dabei.\" Welche Rueckfrage passt?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Beim Stuhlgang war rotes Blut dabei.\" Welche Rueckfrage passt?",
+          "translation_es": "Caso de anamnesis con sangre roja en las heces: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Ist das Blut aufgelagert, beigemischt oder nur auf Papier?",
             "Bestehen gleichzeitig Bauchschmerzen oder Fieber?",
@@ -1408,7 +1408,7 @@
           "cardId": "haematochezie-4",
           "type": "interesting_fach",
           "question": "Welche Aussage passt eher zu Hämatochezie?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Hämatochezie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hämatochezie?",
           "choices": [
             "Frisches rotes Blut spricht eher fuer untere GI-Quelle",
             "Kaffeesatzartiges Erbrechen",
@@ -1428,7 +1428,7 @@
           "cardId": "meteorismus-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Mein Bauch ist nach dem Essen stark aufgebläht.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Mein Bauch ist nach dem Essen stark aufgebläht.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe distensión abdominal por gases. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Meteorismus",
             "Obstipation",
@@ -1441,7 +1441,7 @@
           "cardId": "meteorismus-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Ausgepraegter Meteorismus nach Mahlzeiten.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Ausgepraegter Meteorismus nach Mahlzeiten.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Meteorismus\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Starker Blaehbauch nach Mahlzeiten",
             "Verstopfung",
@@ -1454,7 +1454,7 @@
           "cardId": "meteorismus-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich bin dauernd aufgebläht.\" Welche Frage hilft am meisten?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich bin dauernd aufgebläht.\" Welche Frage hilft am meisten?",
+          "translation_es": "Caso de anamnesis con distensión abdominal por gases: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Verbessern sich die Beschwerden nach Windabgang oder Stuhlgang?",
             "Bestehen Verstopfung oder Durchfall zusaetzlich?",
@@ -1467,7 +1467,7 @@
           "cardId": "meteorismus-4",
           "type": "interesting_fach",
           "question": "Welche Beobachtung passt zu Meteorismus?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Meteorismus?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Meteorismus?",
           "choices": [
             "Luftansammlung mit Völlegefuehl und sichtbarer Aufblaehung",
             "Unregelmaessiger Puls mit Synkope",
@@ -1487,7 +1487,7 @@
           "cardId": "dysurie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Beim Wasserlassen brennt es stark.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Beim Wasserlassen brennt es stark.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe ardor al orinar. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Dysurie",
             "Pollakisurie",
@@ -1500,7 +1500,7 @@
           "cardId": "dysurie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Dysurie seit drei Tagen.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Dysurie seit drei Tagen.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Dysurie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Brennen beim Wasserlassen seit drei Tagen",
             "häufig kleine Mengen Wasser lassen",
@@ -1513,7 +1513,7 @@
           "cardId": "dysurie-3",
           "type": "interesting_patient",
           "question": "Patient: \"Wasserlassen brennt.\" Welche Anschlussfrage ist zentral?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Wasserlassen brennt.\" Welche Anschlussfrage ist zentral?",
+          "translation_es": "Caso de anamnesis con ardor al orinar: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Gibt es Fieber, Flankenschmerz oder Blut im Urin?",
             "Miktionieren Sie haeufig kleine Mengen?",
@@ -1526,7 +1526,7 @@
           "cardId": "dysurie-4",
           "type": "interesting_fach",
           "question": "Welche Begleitkonstellation spricht fuer komplizierten Harnwegsinfekt?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Dysurie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Dysurie?",
           "choices": [
             "Dysurie plus Fieber und Flankenschmerz",
             "Dysurie ohne weitere Symptome",
@@ -1546,7 +1546,7 @@
           "cardId": "pollakisurie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich muss staendig zur Toilette, aber es kommt wenig.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich muss staendig zur Toilette, aber es kommt wenig.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe orinar con mucha frecuencia y en poca cantidad. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Pollakisurie",
             "Nykturie",
@@ -1559,7 +1559,7 @@
           "cardId": "pollakisurie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Pollakisurie tagsueber mit kleinen Miktionsmengen.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Pollakisurie tagsueber mit kleinen Miktionsmengen.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Pollakisurie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Haeufiges Wasserlassen mit kleinen Mengen",
             "nachts häufig Wasserlassen",
@@ -1572,7 +1572,7 @@
           "cardId": "pollakisurie-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich gehe dauernd zur Toilette.\" Welche Rueckfrage hilft?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich gehe dauernd zur Toilette.\" Welche Rueckfrage hilft?",
+          "translation_es": "Caso de anamnesis con orinar con mucha frecuencia y en poca cantidad: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Besteht dabei Brennen oder Unterbauchschmerz?",
             "Wie viel trinken Sie taeglich?",
@@ -1585,7 +1585,7 @@
           "cardId": "pollakisurie-4",
           "type": "interesting_fach",
           "question": "Was beschreibt Pollakisurie am besten?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Pollakisurie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Pollakisurie?",
           "choices": [
             "Erhoehte Miktionsfrequenz bei meist normaler Tagesurinmenge",
             "Massiv erhoehte Tagesurinmenge",
@@ -1605,7 +1605,7 @@
           "cardId": "nykturie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich muss nachts drei- bis viermal Wasser lassen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich muss nachts drei- bis viermal Wasser lassen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe orinar con frecuencia por la noche. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Nykturie",
             "Pollakisurie",
@@ -1618,7 +1618,7 @@
           "cardId": "nykturie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Ausgepraegte Nykturie mit Schlafunterbrechung.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Ausgepraegte Nykturie mit Schlafunterbrechung.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Nykturie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Haeufiges naechtliches Wasserlassen",
             "häufig kleine Mengen Wasser lassen",
@@ -1631,7 +1631,7 @@
           "cardId": "nykturie-3",
           "type": "interesting_patient",
           "question": "Patient: \"Nachts muss ich dauernd raus.\" Welche Frage ist sinnvoll?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Nachts muss ich dauernd raus.\" Welche Frage ist sinnvoll?",
+          "translation_es": "Caso de anamnesis con orinar con frecuencia por la noche: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie viele Miktionen pro Nacht und wie viel trinken Sie spaet?",
             "Ist tagsueber ebenfalls Pollakisurie vorhanden?",
@@ -1644,7 +1644,7 @@
           "cardId": "nykturie-4",
           "type": "interesting_fach",
           "question": "Welche Aussage zur Nykturie trifft eher zu?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Nykturie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Nykturie?",
           "choices": [
             "Nykturie beeintraechtigt Schlaf und hat oft internistische Ursachen",
             "Nykturie bedeutet immer Harnverhalt",
@@ -1664,7 +1664,7 @@
           "cardId": "haematurie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe rotes Blut im Urin gesehen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich habe rotes Blut im Urin gesehen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe sangre en la orina. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hämaturie",
             "Hämatochezie",
@@ -1677,7 +1677,7 @@
           "cardId": "haematurie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Makroskopische Hämaturie ohne Dysurie.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Makroskopische Hämaturie ohne Dysurie.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Hämaturie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Sichtbares Blut im Urin",
             "hellrotes Blut im Stuhl",
@@ -1690,7 +1690,7 @@
           "cardId": "haematurie-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Der Urin war rot.\" Welche Rueckfrage ist zuerst wichtig?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Der Urin war rot.\" Welche Rueckfrage ist zuerst wichtig?",
+          "translation_es": "Caso de anamnesis con sangre en la orina: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Gab es Koagel, Schmerzen oder Fieber dazu?",
             "Besteht gleichzeitig Pollakisurie oder Dysurie?",
@@ -1703,7 +1703,7 @@
           "cardId": "haematurie-4",
           "type": "interesting_fach",
           "question": "Welche Konstellation bei Hämaturie ist besonders abklaerungsbeduerftig?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Hämaturie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hämaturie?",
           "choices": [
             "Schmerzlose makroskopische Hämaturie",
             "Leichtes Brennen ohne Blutnachweis",
@@ -1723,7 +1723,7 @@
           "cardId": "harnverhalt-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich kann trotz starkem Druck kaum Wasser lassen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich kann trotz starkem Druck kaum Wasser lassen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe incapacidad para orinar. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Harnverhalt",
             "Dysurie",
@@ -1736,7 +1736,7 @@
           "cardId": "harnverhalt-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Akuter Harnverhalt mit suprapubischem Druckschmerz.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Akuter Harnverhalt mit suprapubischem Druckschmerz.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Harnverhalt\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Akute Unfaehigkeit die Blase zu entleeren",
             "Brennen beim Wasserlassen",
@@ -1749,7 +1749,7 @@
           "cardId": "harnverhalt-3",
           "type": "interesting_patient",
           "question": "Patient: \"Ich kann die Blase nicht entleeren.\" Welche Frage ist akut wichtig?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Ich kann die Blase nicht entleeren.\" Welche Frage ist akut wichtig?",
+          "translation_es": "Caso de anamnesis con incapacidad para orinar: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wann war die letzte richtige Blasenentleerung?",
             "Besteht gleichzeitig Unterbauchschmerz?",
@@ -1762,7 +1762,7 @@
           "cardId": "harnverhalt-4",
           "type": "interesting_fach",
           "question": "Was ist typisch fuer akuten Harnverhalt?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Harnverhalt?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Harnverhalt?",
           "choices": [
             "Schmerzhafte pralle Blase bei fehlender Miktion",
             "Haeufige Miktion mit grossen Mengen",
@@ -1782,7 +1782,7 @@
           "cardId": "kopfschmerz-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe seit heute starke Kopfschmerzen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich habe seit heute starke Kopfschmerzen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe dolor de cabeza. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Kopfschmerz",
             "Schwindel",
@@ -1795,7 +1795,7 @@
           "cardId": "kopfschmerz-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Akute Cephalgie frontal progredient.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Akute Cephalgie frontal progredient.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Kopfschmerz\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Akut zunehmende Kopfschmerzen",
             "Schwindel",
@@ -1808,7 +1808,7 @@
           "cardId": "kopfschmerz-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Das sind die schlimmsten Kopfschmerzen meines Lebens.\" Welche Frage zuerst?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Das sind die schlimmsten Kopfschmerzen meines Lebens.\" Welche Frage zuerst?",
+          "translation_es": "Caso de anamnesis con dolor de cabeza: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Begann der Schmerz ploetzlich wie ein Donnerschlag?",
             "Gab es zusaetzlich Nackensteifigkeit oder Fieber?",
@@ -1821,7 +1821,7 @@
           "cardId": "kopfschmerz-4",
           "type": "interesting_fach",
           "question": "Welche Red Flag bei Kopfschmerz ist besonders relevant?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Kopfschmerz?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Kopfschmerz?",
           "choices": [
             "Vernichtungskopfschmerz mit neurologischen Ausfaellen",
             "Leichter Spannungsschmerz nach langem Bildschirmtag",
@@ -1841,7 +1841,7 @@
           "cardId": "schwindel-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Mir ist dauernd schwindelig, vor allem beim Aufstehen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Mir ist dauernd schwindelig, vor allem beim Aufstehen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe mareo. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Schwindel",
             "Synkope",
@@ -1854,7 +1854,7 @@
           "cardId": "schwindel-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Persistierender Schwindel mit Gangunsicherheit.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Persistierender Schwindel mit Gangunsicherheit.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Schwindel\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Anhaltender Schwindel mit unsicherem Gehen",
             "Ohnmacht",
@@ -1867,7 +1867,7 @@
           "cardId": "schwindel-3",
           "type": "interesting_patient",
           "question": "Patient: \"Mir dreht sich alles.\" Welche Nachfrage hilft zur Differenzierung?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Mir dreht sich alles.\" Welche Nachfrage hilft zur Differenzierung?",
+          "translation_es": "Caso de anamnesis con mareo: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Handelt es sich um Drehschwindel, Schwankschwindel oder Benommenheit?",
             "Bestehen neurologische Symptome wie Doppelbilder?",
@@ -1880,7 +1880,7 @@
           "cardId": "schwindel-4",
           "type": "interesting_fach",
           "question": "Welche Zusatzzeichen machen Schwindel neurologisch dringlich?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Schwindel?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Schwindel?",
           "choices": [
             "Doppelbilder, Dysarthrie oder neue Ataxie",
             "Leichtes Aufstossen nach Mahlzeiten",
@@ -1900,7 +1900,7 @@
           "cardId": "paraesthesie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe Kribbeln und Taubheitsgefuehl in den Fingern.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich habe Kribbeln und Taubheitsgefuehl in den Fingern.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe hormigueo o entumecimiento. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Parästhesie",
             "Hemiparese",
@@ -1913,7 +1913,7 @@
           "cardId": "paraesthesie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Parästhesien distal betont an beiden Fuessen.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Parästhesien distal betont an beiden Fuessen.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Parästhesie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Kribbeln und Taubheitsgefuehl vor allem distal",
             "halbseitige Schwäche",
@@ -1926,7 +1926,7 @@
           "cardId": "paraesthesie-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Meine Finger kribbeln dauernd.\" Welche Frage ist am wichtigsten?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Meine Finger kribbeln dauernd.\" Welche Frage ist am wichtigsten?",
+          "translation_es": "Caso de anamnesis con hormigueo o entumecimiento: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Gab es zusaetzlich Kraftverlust oder Sprachstoerungen?",
             "Sind die Beschwerden ein- oder beidseitig?",
@@ -1939,7 +1939,7 @@
           "cardId": "paraesthesie-4",
           "type": "interesting_fach",
           "question": "Welche Aussage passt zu Parästhesie?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Parästhesie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Parästhesie?",
           "choices": [
             "Subjektive Missempfindung wie Kribbeln oder Ameisenlaufen",
             "Objektiver kompletter Kraftverlust einer Extremitaet",
@@ -1959,7 +1959,7 @@
           "cardId": "hemiparese-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Seit heute ist eine Koerperseite deutlich schwach.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Seit heute ist eine Koerperseite deutlich schwach.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe debilidad de un lado del cuerpo. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Hemiparese",
             "Parästhesie",
@@ -1972,7 +1972,7 @@
           "cardId": "hemiparese-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Akute Hemiparese rechts, Verdacht auf Schlaganfall.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Akute Hemiparese rechts, Verdacht auf Schlaganfall.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Hemiparese\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Akute halbseitige Schwaeche rechts",
             "Kribbeln/Taubheitsgefühl",
@@ -1985,7 +1985,7 @@
           "cardId": "hemiparese-3",
           "type": "interesting_patient",
           "question": "Patient: \"Mein rechter Arm ist ploetzlich kraftlos.\" Welche Frage sofort?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Mein rechter Arm ist ploetzlich kraftlos.\" Welche Frage sofort?",
+          "translation_es": "Caso de anamnesis con debilidad de un lado del cuerpo: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Seit wann genau besteht die Schwaeche (Last seen well)?",
             "Sind auch Sprache oder Gesichtsmotorik betroffen?",
@@ -1998,7 +1998,7 @@
           "cardId": "hemiparese-4",
           "type": "interesting_fach",
           "question": "Welche Begleitzeichen stuetzen akuten Schlaganfall bei Hemiparese?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Hemiparese?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Hemiparese?",
           "choices": [
             "Fazialisparese, Aphasie oder Blickdeviation",
             "Sodbrennen nach fettigem Essen",
@@ -2018,7 +2018,7 @@
           "cardId": "aphasie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich finde ploetzlich keine Worte mehr.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich finde ploetzlich keine Worte mehr.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe alteración del lenguaje. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Aphasie",
             "Hemiparese",
@@ -2031,7 +2031,7 @@
           "cardId": "aphasie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Akute Aphasie mit Wortfindungsstoerung.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Akute Aphasie mit Wortfindungsstoerung.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Aphasie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Ploetzliche Sprachstoerung mit Wortfindungsproblemen",
             "halbseitige Schwäche",
@@ -2044,7 +2044,7 @@
           "cardId": "aphasie-3",
           "type": "interesting_patient",
           "question": "Angehoerige: \"Er spricht ploetzlich komisch.\" Welche Frage ist zuerst relevant?",
-          "translation_es": "Pregunta de anamnesis: Angehoerige: \"Er spricht ploetzlich komisch.\" Welche Frage ist zuerst relevant?",
+          "translation_es": "Caso de anamnesis con alteración del lenguaje: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Seit wann genau bestehen die Sprachprobleme?",
             "Versteht der Patient einfache Aufforderungen?",
@@ -2057,7 +2057,7 @@
           "cardId": "aphasie-4",
           "type": "interesting_fach",
           "question": "Welche Aussage beschreibt Aphasie korrekt?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Aphasie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Aphasie?",
           "choices": [
             "Stoerung von Sprachproduktion und/oder Sprachverstehen",
             "Reine Artikulationsstoerung bei intaktem Verstehen",
@@ -2077,7 +2077,7 @@
           "cardId": "krampfanfall-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich hatte einen Anfall mit Zuckungen und war danach sehr muede.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich hatte einen Anfall mit Zuckungen und war danach sehr muede.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe crisis convulsiva. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Krampfanfall",
             "Synkope",
@@ -2090,7 +2090,7 @@
           "cardId": "krampfanfall-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Generalisiert tonisch-klonischer Krampfanfall, postiktal verlangsamt.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Generalisiert tonisch-klonischer Krampfanfall, postiktal verlangsamt.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Krampfanfall\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Anfall mit Zuckungen und anschliessender Verwirrtheit",
             "Ohnmacht",
@@ -2103,7 +2103,7 @@
           "cardId": "krampfanfall-3",
           "type": "interesting_patient",
           "question": "Zeuge: \"Er hat gekrampft und war danach verwirrt.\" Welche Frage hilft am meisten?",
-          "translation_es": "Pregunta de anamnesis: Zeuge: \"Er hat gekrampft und war danach verwirrt.\" Welche Frage hilft am meisten?",
+          "translation_es": "Caso de anamnesis con crisis convulsiva: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie lange dauerte der Anfall und gab es postiktale Verwirrtheit?",
             "Gab es Zungenbiss oder Einnässen?",
@@ -2116,7 +2116,7 @@
           "cardId": "krampfanfall-4",
           "type": "interesting_fach",
           "question": "Was spricht eher fuer Krampfanfall als fuer Synkope?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Krampfanfall?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Krampfanfall?",
           "choices": [
             "Postiktale Verwirrtheit und Zungenbiss",
             "Sofortige komplette Erholung ohne Verwirrtheit",
@@ -2136,7 +2136,7 @@
           "cardId": "tremor-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Meine Haende zittern deutlich in Ruhe.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Meine Haende zittern deutlich in Ruhe.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe temblor. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Tremor",
             "Krampfanfall",
@@ -2149,7 +2149,7 @@
           "cardId": "tremor-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Feinschlaegiger Tremor beidseits.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Feinschlaegiger Tremor beidseits.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Tremor\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Sichtbares Zittern der Haende",
             "Anfall mit Zuckungen",
@@ -2162,7 +2162,7 @@
           "cardId": "tremor-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Meine Haende zittern.\" Welche Anschlussfrage ist sinnvoll?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Meine Haende zittern.\" Welche Anschlussfrage ist sinnvoll?",
+          "translation_es": "Caso de anamnesis con temblor: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Tritt das Zittern in Ruhe, bei Haltung oder bei Bewegung auf?",
             "Nehmen Sie koffeinhaltige Getraenke oder neue Medikamente?",
@@ -2175,7 +2175,7 @@
           "cardId": "tremor-4",
           "type": "interesting_fach",
           "question": "Welche Aussage passt am ehesten zu Tremor?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Tremor?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Tremor?",
           "choices": [
             "Rhythmische unwillkuerliche Muskelbewegung",
             "Einmaliger generalisierter Krampfanfall",
@@ -2195,7 +2195,7 @@
           "cardId": "fieber-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe seit gestern hohes Fieber.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich habe seit gestern hohes Fieber.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe fiebre. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Fieber",
             "Schüttelfrost",
@@ -2208,7 +2208,7 @@
           "cardId": "fieber-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Fieber bis 39,5 Grad seit zwei Tagen.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Fieber bis 39,5 Grad seit zwei Tagen.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Fieber\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Gemessene Temperatur bis 39,5 Grad",
             "starkes Frieren mit Zittern",
@@ -2221,7 +2221,7 @@
           "cardId": "fieber-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich habe Fieber.\" Welche Frage ist zuerst wichtig?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich habe Fieber.\" Welche Frage ist zuerst wichtig?",
+          "translation_es": "Caso de anamnesis con fiebre: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie hoch war die gemessene Temperatur und seit wann?",
             "Gab es Schuettelfrost oder Nachtschweiss?",
@@ -2234,7 +2234,7 @@
           "cardId": "fieber-4",
           "type": "interesting_fach",
           "question": "Welche Aussage zum Fieber trifft am ehesten zu?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Fieber?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Fieber?",
           "choices": [
             "Objektive Temperaturmessung ist fuer die Einordnung entscheidend",
             "Fieber bedeutet immer bakterielle Infektion",
@@ -2254,7 +2254,7 @@
           "cardId": "schuettelfrost-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich friere mit starkem Zittern trotz Decke.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich friere mit starkem Zittern trotz Decke.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe escalofríos intensos con temblor. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Schüttelfrost",
             "Fieber",
@@ -2267,7 +2267,7 @@
           "cardId": "schuettelfrost-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Schüttelfrost mit Temperaturanstieg.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Schüttelfrost mit Temperaturanstieg.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Schüttelfrost\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Starkes Frieren und Zittern bei Infekt",
             "Fieber",
@@ -2280,7 +2280,7 @@
           "cardId": "schuettelfrost-3",
           "type": "interesting_patient",
           "question": "Patient: \"Ich hatte ploetzlich Schuettelfrost.\" Welche Rueckfrage ist zentral?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Ich hatte ploetzlich Schuettelfrost.\" Welche Rueckfrage ist zentral?",
+          "translation_es": "Caso de anamnesis con escalofríos intensos con temblor: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Kam gleichzeitig hohes Fieber oder Kreislaufverschlechterung vor?",
             "Gab es fokale Symptome wie Flankenschmerz oder Husten?",
@@ -2293,7 +2293,7 @@
           "cardId": "schuettelfrost-4",
           "type": "interesting_fach",
           "question": "Welche klinische Bedeutung hat Schüttelfrost haeufig?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Schüttelfrost?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Schüttelfrost?",
           "choices": [
             "Hinweis auf systemische Infektion oder Bakteriaemie",
             "Spezifisches Zeichen einer Obstipation",
@@ -2313,7 +2313,7 @@
           "cardId": "nachtschweiss-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich schwitze nachts so stark, dass das Shirt nass ist.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich schwitze nachts so stark, dass das Shirt nass ist.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe sudoración nocturna intensa. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Nachtschweiß",
             "Fieber",
@@ -2326,7 +2326,7 @@
           "cardId": "nachtschweiss-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Ausgepraegter Nachtschweiß mit Bettwaeschewechsel.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Ausgepraegter Nachtschweiß mit Bettwaeschewechsel.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Nachtschweiß\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Starkes naechtliches Schwitzen mit nasser Kleidung",
             "Fieber",
@@ -2339,7 +2339,7 @@
           "cardId": "nachtschweiss-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich bin nachts klatschnass.\" Welche Frage ist am wichtigsten?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich bin nachts klatschnass.\" Welche Frage ist am wichtigsten?",
+          "translation_es": "Caso de anamnesis con sudoración nocturna intensa: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Bestehen dazu Fieber, Gewichtsverlust oder Husten?",
             "Seit wann tritt das Schwitzen auf und wie oft?",
@@ -2352,7 +2352,7 @@
           "cardId": "nachtschweiss-4",
           "type": "interesting_fach",
           "question": "Welche Trias mit Nachtschweiß ist als Red Flag bekannt?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Nachtschweiß?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Nachtschweiß?",
           "choices": [
             "Nachtschweiß, Fieber und ungewollter Gewichtsverlust",
             "Nachtschweiß, Pollakisurie und Obstipation",
@@ -2372,7 +2372,7 @@
           "cardId": "fatigue-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich bin seit Wochen extrem erschoepft.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich bin seit Wochen extrem erschoepft.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe cansancio extremo. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Fatigue",
             "Depressive Episode",
@@ -2385,7 +2385,7 @@
           "cardId": "fatigue-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Ausgepraegte Fatigue mit Leistungsknick.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Ausgepraegte Fatigue mit Leistungsknick.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Fatigue\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Starke Erschoepfung mit Leistungsabfall",
             "depressive Verstimmung",
@@ -2398,7 +2398,7 @@
           "cardId": "fatigue-3",
           "type": "interesting_patient",
           "question": "Patient: \"Ich bin dauernd muede und kraftlos.\" Welche Frage hilft zuerst?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Ich bin dauernd muede und kraftlos.\" Welche Frage hilft zuerst?",
+          "translation_es": "Caso de anamnesis con cansancio extremo: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Seit wann besteht die Erschoepfung und wie stark schraenkt sie den Alltag ein?",
             "Gab es Gewichtsverlust, Fieber oder Nachtschweiss?",
@@ -2411,7 +2411,7 @@
           "cardId": "fatigue-4",
           "type": "interesting_fach",
           "question": "Welche Aussage zu Fatigue trifft am ehesten zu?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Fatigue?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Fatigue?",
           "choices": [
             "Unspezifisches Symptom, das strukturierte Ursachensuche erfordert",
             "Beweist immer eine depressive Episode",
@@ -2431,7 +2431,7 @@
           "cardId": "exsikkose-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich fuehle mich ausgetrocknet, der Mund ist ganz trocken.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich fuehle mich ausgetrocknet, der Mund ist ganz trocken.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe deshidratación. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Exsikkose",
             "Diarrhö",
@@ -2444,7 +2444,7 @@
           "cardId": "exsikkose-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Klinische Exsikkose mit trockenen Schleimhaeuten.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Klinische Exsikkose mit trockenen Schleimhaeuten.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Exsikkose\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Austrocknung mit trockenen Schleimhaeuten",
             "Durchfall",
@@ -2457,7 +2457,7 @@
           "cardId": "exsikkose-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich bin total ausgetrocknet.\" Welche Frage ist am wichtigsten?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich bin total ausgetrocknet.\" Welche Frage ist am wichtigsten?",
+          "translation_es": "Caso de anamnesis con deshidratación: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie viel haben Sie getrunken und wie viel Fluessigkeit verloren?",
             "Bestehen Schwindel oder geringe Urinmenge?",
@@ -2470,7 +2470,7 @@
           "cardId": "exsikkose-4",
           "type": "interesting_fach",
           "question": "Welche Konstellation passt zu Exsikkose?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Exsikkose?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Exsikkose?",
           "choices": [
             "Trockene Schleimhaeute, Durst, geringe Urinmenge",
             "Nasse Haut mit Oedemen",
@@ -2490,7 +2490,7 @@
           "cardId": "exanthem-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe seit gestern einen roten Hautausschlag.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich habe seit gestern einen roten Hautausschlag.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe erupción cutánea. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Exanthem",
             "Urtikaria",
@@ -2503,7 +2503,7 @@
           "cardId": "exanthem-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Makulopapuloeses Exanthem am Stamm.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Makulopapuloeses Exanthem am Stamm.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Exanthem\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Fleckiger Hautausschlag am Koerperstamm",
             "Nesselsucht/Quaddeln",
@@ -2516,7 +2516,7 @@
           "cardId": "exanthem-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich habe ploetzlich Ausschlag bekommen.\" Welche Frage ist wichtig?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich habe ploetzlich Ausschlag bekommen.\" Welche Frage ist wichtig?",
+          "translation_es": "Caso de anamnesis con erupción cutánea: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Gab es neue Medikamente, Infekte oder Nahrungsmittel?",
             "Besteht Fieber oder Schleimhautbeteiligung?",
@@ -2529,7 +2529,7 @@
           "cardId": "exanthem-4",
           "type": "interesting_fach",
           "question": "Welche Aussage passt am ehesten zu Exanthem?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Exanthem?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Exanthem?",
           "choices": [
             "Sichtbare flaechige Hautveraenderung unterschiedlicher Morphologie",
             "Reiner Juckreiz ohne sichtbaren Hautbefund",
@@ -2549,7 +2549,7 @@
           "cardId": "pruritus-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Meine Haut juckt staendig.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Meine Haut juckt staendig.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe picor. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Pruritus",
             "Exanthem",
@@ -2562,7 +2562,7 @@
           "cardId": "pruritus-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Generalisierter Pruritus ohne primaeren Hautbefund.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Generalisierter Pruritus ohne primaeren Hautbefund.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Pruritus\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Starker Juckreiz ohne sichtbaren Ausschlag",
             "Hautausschlag",
@@ -2575,7 +2575,7 @@
           "cardId": "pruritus-3",
           "type": "interesting_patient",
           "question": "Patient: \"Es juckt ueberall.\" Welche Rueckfrage ist hilfreich?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Es juckt ueberall.\" Welche Rueckfrage ist hilfreich?",
+          "translation_es": "Caso de anamnesis con picor: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Gibt es sichtbare Hautveraenderungen oder nur Juckreiz?",
             "Sind Medikamente oder Leber-/Nierenprobleme bekannt?",
@@ -2588,7 +2588,7 @@
           "cardId": "pruritus-4",
           "type": "interesting_fach",
           "question": "Welche Aussage zu Pruritus trifft eher zu?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Pruritus?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Pruritus?",
           "choices": [
             "Pruritus kann dermatologische und systemische Ursachen haben",
             "Pruritus bedeutet immer akute Urtikaria",
@@ -2608,7 +2608,7 @@
           "cardId": "urtikaria-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich bekomme ploetzlich juckende Quaddeln.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich bekomme ploetzlich juckende Quaddeln.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe urticaria con ronchas. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Urtikaria",
             "Exanthem",
@@ -2621,7 +2621,7 @@
           "cardId": "urtikaria-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Akute Urtikaria mit fluechtigen Quaddeln.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Akute Urtikaria mit fluechtigen Quaddeln.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Urtikaria\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Ploetzliche juckende Quaddeln (Nesselsucht)",
             "Hautausschlag",
@@ -2634,7 +2634,7 @@
           "cardId": "urtikaria-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich habe Quaddeln am ganzen Koerper.\" Welche Frage ist akut wichtig?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich habe Quaddeln am ganzen Koerper.\" Welche Frage ist akut wichtig?",
+          "translation_es": "Caso de anamnesis con urticaria con ronchas: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Bestehen Atemnot, Lippen- oder Zungenschwellung?",
             "Gab es ein neues Medikament oder Nahrungsmittel?",
@@ -2647,7 +2647,7 @@
           "cardId": "urtikaria-4",
           "type": "interesting_fach",
           "question": "Was ist bei Urtikaria ein Notfallzeichen?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Urtikaria?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Urtikaria?",
           "choices": [
             "Quaddeln plus Angiooedem oder Atemwegsbeteiligung",
             "Quaddeln plus leichte Obstipation",
@@ -2667,7 +2667,7 @@
           "cardId": "depressive_episode-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich fuehle mich seit Wochen niedergeschlagen und antriebslos.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich fuehle mich seit Wochen niedergeschlagen und antriebslos.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe ánimo depresivo persistente. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Depressive Episode",
             "Fatigue",
@@ -2680,7 +2680,7 @@
           "cardId": "depressive_episode-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Hinweis auf depressive Episode mit Interessenverlust.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Hinweis auf depressive Episode mit Interessenverlust.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Depressive Episode\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Depressive Stimmung mit Interessenverlust",
             "starke Erschöpfung",
@@ -2693,7 +2693,7 @@
           "cardId": "depressive_episode-3",
           "type": "interesting_patient",
           "question": "Patient: \"Ich habe auf nichts mehr Lust.\" Welche Frage ist unverzichtbar?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Ich habe auf nichts mehr Lust.\" Welche Frage ist unverzichtbar?",
+          "translation_es": "Caso de anamnesis con ánimo depresivo persistente: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Bestehen Suizidgedanken oder Selbstverletzungsimpulse?",
             "Wie stark sind Schlaf und Appetit veraendert?",
@@ -2706,7 +2706,7 @@
           "cardId": "depressive_episode-4",
           "type": "interesting_fach",
           "question": "Welche Symptomkombination passt zu depressiver Episode?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Depressive Episode?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Depressive Episode?",
           "choices": [
             "Gedrueckte Stimmung, Interessenverlust, Antriebsmangel",
             "Euphorie, Rededrang, vermindertes Schlafbeduerfnis",
@@ -2726,7 +2726,7 @@
           "cardId": "angststoerung-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich bekomme ploetzlich starke Angstattacken mit Herzklopfen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich bekomme ploetzlich starke Angstattacken mit Herzklopfen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe crisis de ansiedad intensas. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Angststörung",
             "Depressive Episode",
@@ -2739,7 +2739,7 @@
           "cardId": "angststoerung-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Anfallsartige Angst mit vegetativer Symptomatik.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Anfallsartige Angst mit vegetativer Symptomatik.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Angststörung\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Panikartige Angst mit Herzklopfen und Unruhe",
             "depressive Verstimmung",
@@ -2752,7 +2752,7 @@
           "cardId": "angststoerung-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Ich bekomme ploetzlich Panik.\" Welche Frage hilft zuerst?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Ich bekomme ploetzlich Panik.\" Welche Frage hilft zuerst?",
+          "translation_es": "Caso de anamnesis con crisis de ansiedad intensas: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie oft treten die Attacken auf und gibt es Ausloeser?",
             "Gab es in der Attacke Hyperventilation oder Brustenge?",
@@ -2765,7 +2765,7 @@
           "cardId": "angststoerung-4",
           "type": "interesting_fach",
           "question": "Welche Aussage passt zur Angststörung?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Angststörung?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Angststörung?",
           "choices": [
             "Koerperliche Symptome koennen stark sein, organische Ursachen mitpruefen",
             "Angststoerung verursacht nie Herzrasen",
@@ -2785,7 +2785,7 @@
           "cardId": "schlafstoerung-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich schlafe schlecht ein und wache oft auf.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich schlafe schlecht ein und wache oft auf.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe trastorno del sueño. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Schlafstörung",
             "Fatigue",
@@ -2798,7 +2798,7 @@
           "cardId": "schlafstoerung-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Insomnie mit Ein- und Durchschlafstoerung.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Insomnie mit Ein- und Durchschlafstoerung.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Schlafstörung\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Ein- und Durchschlafprobleme",
             "starke Erschöpfung",
@@ -2811,7 +2811,7 @@
           "cardId": "schlafstoerung-3",
           "type": "interesting_patient",
           "question": "Patient: \"Ich schlafe kaum noch.\" Welche Frage ist zentral?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Ich schlafe kaum noch.\" Welche Frage ist zentral?",
+          "translation_es": "Caso de anamnesis con trastorno del sueño: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Wie stark ist die Tagesbeeintraechtigung durch den Schlafmangel?",
             "Seit wie vielen Wochen bestehen die Schlafprobleme?",
@@ -2824,7 +2824,7 @@
           "cardId": "schlafstoerung-4",
           "type": "interesting_fach",
           "question": "Welche Aussage zur Insomnie ist am ehesten korrekt?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Schlafstörung?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Schlafstörung?",
           "choices": [
             "Klinisch relevant bei anhaltender Dauer und Tagesbeeintraechtigung",
             "Insomnie ist immer harmlos und nie abklaerungsbeduerftig",
@@ -2844,7 +2844,7 @@
           "cardId": "arthralgie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Meine Gelenke tun seit Tagen weh.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Meine Gelenke tun seit Tagen weh.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe dolor articular. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Arthralgie",
             "Myalgie",
@@ -2857,7 +2857,7 @@
           "cardId": "arthralgie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Arthralgie beider Kniegelenke seit einer Woche.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Arthralgie beider Kniegelenke seit einer Woche.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Arthralgie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Gelenkschmerzen in beiden Knien",
             "Muskelschmerzen",
@@ -2870,7 +2870,7 @@
           "cardId": "arthralgie-3",
           "type": "interesting_patient",
           "question": "Patientin: \"Meine Gelenke schmerzen.\" Welche Frage ist am hilfreichsten?",
-          "translation_es": "Pregunta de anamnesis: Patientin: \"Meine Gelenke schmerzen.\" Welche Frage ist am hilfreichsten?",
+          "translation_es": "Caso de anamnesis con dolor articular: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Gibt es Morgensteifigkeit, Schwellung oder Roetung?",
             "Sind mehrere Gelenke oder nur ein Gelenk betroffen?",
@@ -2883,7 +2883,7 @@
           "cardId": "arthralgie-4",
           "type": "interesting_fach",
           "question": "Welche Aussage passt am ehesten zu Arthralgie?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Arthralgie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Arthralgie?",
           "choices": [
             "Schmerzlokalisation im Gelenk ohne zwingende Entzuendungszeichen",
             "Diffuse Muskelschmerzen ohne Gelenkbeteiligung",
@@ -2903,7 +2903,7 @@
           "cardId": "myalgie-1",
           "type": "patient_to_fachbegriff",
           "question": "Patient sagt: \"Ich habe in den Muskeln ueberall Schmerzen.\" Welcher Fachbegriff passt am besten?",
-          "translation_es": "El paciente dice: \"Ich habe in den Muskeln ueberall Schmerzen.\". ?Que termino medico corresponde mejor?",
+          "translation_es": "El paciente describe dolor muscular. ¿Qué término médico corresponde mejor?",
           "choices": [
             "Myalgie",
             "Arthralgie",
@@ -2916,7 +2916,7 @@
           "cardId": "myalgie-2",
           "type": "fachbegriff_to_patient",
           "question": "Im Befund steht: \"Generalisierte Myalgie seit Infektbeginn.\" Wie sagst du das in Patientensprache?",
-          "translation_es": "En el informe dice: \"Generalisierte Myalgie seit Infektbeginn.\". ?Como se explica para el paciente?",
+          "translation_es": "En el informe aparece \"Myalgie\". ¿Cómo lo dirías en lenguaje del paciente?",
           "choices": [
             "Diffuse Muskelschmerzen am ganzen Koerper",
             "Gelenkschmerzen",
@@ -2929,7 +2929,7 @@
           "cardId": "myalgie-3",
           "type": "interesting_patient",
           "question": "Patient: \"Mir tut die Muskulatur ueberall weh.\" Welche Frage ist sinnvoll?",
-          "translation_es": "Pregunta de anamnesis: Patient: \"Mir tut die Muskulatur ueberall weh.\" Welche Frage ist sinnvoll?",
+          "translation_es": "Caso de anamnesis con dolor muscular: ¿cuál es la pregunta de seguimiento más útil?",
           "choices": [
             "Gab es Fieber, Infektzeichen oder neue Medikamente?",
             "Sind auch Gelenke geschwollen oder geroetet?",
@@ -2942,7 +2942,7 @@
           "cardId": "myalgie-4",
           "type": "interesting_fach",
           "question": "Welche Aussage passt zu Myalgie?",
-          "translation_es": "?Que opcion apoya mas el diagnostico de Myalgie?",
+          "translation_es": "¿Qué opción respalda mejor el diagnóstico de Myalgie?",
           "choices": [
             "Schmerzen betreffen primär die Muskulatur, nicht das Gelenk",
             "Schmerz ist auf Gelenkspalt und Belastung fokussiert",
