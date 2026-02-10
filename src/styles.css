@@ -419,6 +419,14 @@ h3 {
   font-weight: 650;
 }
 
+.question.differential-answer {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(248, 73, 102, 0.24);
+  background: #fff3f6;
+}
+
 .choices {
   margin-top: 14px;
   display: grid;
@@ -827,6 +835,11 @@ body.immersive .stats-fab {
   body.immersive .question.story-text {
     font-size: 1.03rem;
     line-height: 1.5;
+  }
+
+  body.immersive .question.differential-answer {
+    margin-top: 6px;
+    padding: 9px;
   }
 
   body.immersive .choices {

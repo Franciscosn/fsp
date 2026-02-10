@@ -64,7 +64,8 @@ const MODE_LABELS = {
   fachbegriff_to_patient: "Fachbegriff -> Patientensprache",
   interesting_patient: "Interessante Frage (Patientensprache)",
   interesting_fach: "Interessante Frage (Fachsprache)",
-  story_text: "Klinik-Textkarte"
+  story_text: "Klinik-Textkarte",
+  differenzial_text: "Differenzialdiagnose"
 };
 
 const FOLDERS = [
@@ -85,6 +86,7 @@ const state = {
   currentIndex: 0,
   answered: false,
   isImmersive: false,
+  revealPhase: null,
   progress: loadFromStorage(STORAGE_PROGRESS_KEY, {}),
   dailyStats: loadFromStorage(STORAGE_DAILY_KEY, {})
 };
@@ -354,7 +356,8 @@ function renderCard() {
     refs.cardBox.classList.add("hidden");
     refs.emptyState.classList.remove("hidden");
     refs.feedbackBox.classList.add("hidden");
-    refs.questionText.classList.remove("story-text");
+    refs.questionText.classList.remove("story-text", "differential-answer");
+    state.revealPhase = null;
     return;
   }
 
@@ -373,11 +376,14 @@ function renderCard() {
   }
 
   const isStoryText = card.type === "story_text";
+  const isDifferentialText = card.type === "differenzial_text";
 
+  state.revealPhase = null;
   refs.cardMode.textContent = MODE_LABELS[card.type] || "Modus";
   refs.cardCategory.textContent = card.category;
   refs.questionText.textContent = card.question;
-  refs.questionText.classList.toggle("story-text", isStoryText);
+  refs.questionText.classList.remove("differential-answer");
+  refs.questionText.classList.toggle("story-text", isStoryText || isDifferentialText);
 
   refs.resultText.textContent = "";
   refs.resultText.className = "result-line";
@@ -404,6 +410,19 @@ function renderCard() {
     return;
   }
 
+  if (isDifferentialText) {
+    refs.choices.classList.add("hidden");
+    refs.feedbackBox.classList.remove("hidden");
+    refs.feedbackBox.classList.add("text-card-nav");
+    refs.resultText.classList.add("hidden");
+    refs.explanationText.classList.add("hidden");
+    refs.translationText.classList.add("hidden");
+    refs.nextBtn.textContent = "Bereit";
+    state.revealPhase = "prompt";
+    state.answered = true;
+    return;
+  }
+
   card.choices.forEach((choice, index) => {
     const button = document.createElement("button");
     button.type = "button";
@@ -419,7 +438,7 @@ function renderCard() {
 function handleAnswer(selectedIndex) {
   if (state.answered) return;
   const card = state.queue[state.currentIndex];
-  if (!card || card.type === "story_text") return;
+  if (!card || card.type === "story_text" || card.type === "differenzial_text") return;
 
   state.answered = true;
   const isCorrect = selectedIndex === card.correctIndex;
@@ -451,14 +470,27 @@ function handleAnswer(selectedIndex) {
   renderStats();
 }
 
-function markStoryTextCardAsRead(card) {
-  if (!card || card.type !== "story_text") return;
+function markPassiveCardAsRead(card) {
+  if (!card) return;
+  if (card.type !== "story_text" && card.type !== "differenzial_text") return;
+  if (card.type === "differenzial_text" && state.revealPhase !== "answer") return;
 
   saveAttempt(card.cardId, true);
   renderFolderFilters();
   renderQueueInfo();
   updateStartButtonState();
   renderStats();
+}
+
+function showDifferentialAnswer(card) {
+  if (!card || card.type !== "differenzial_text") return;
+
+  refs.questionText.textContent = card.answer_de || "Keine Antwort hinterlegt.";
+  refs.questionText.classList.add("story-text", "differential-answer");
+  refs.feedbackBox.classList.remove("hidden");
+  refs.feedbackBox.classList.add("text-card-nav");
+  refs.nextBtn.textContent = "Naechste Karte";
+  state.revealPhase = "answer";
 }
 
 function triggerHeartBurst() {
@@ -505,7 +537,13 @@ function nextCard() {
   if (!state.queue.length) return;
 
   const currentCard = state.queue[state.currentIndex];
-  markStoryTextCardAsRead(currentCard);
+
+  if (currentCard?.type === "differenzial_text" && state.revealPhase === "prompt") {
+    showDifferentialAnswer(currentCard);
+    return;
+  }
+
+  markPassiveCardAsRead(currentCard);
 
   if (state.currentIndex < state.queue.length - 1) {
     state.currentIndex += 1;
