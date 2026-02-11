@@ -156,6 +156,11 @@ body::before {
   gap: 16px;
 }
 
+.dedication-copy {
+  display: grid;
+  gap: 10px;
+}
+
 .dedication-text {
   margin: 0;
   font-family: "Baloo 2", "Trebuchet MS", sans-serif;
@@ -163,6 +168,18 @@ body::before {
   line-height: 1.05;
   color: var(--heart-600);
   letter-spacing: 0.01em;
+}
+
+.mailto-kiss-btn {
+  text-decoration: none;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.mailto-kiss-btn:visited {
+  color: #fff;
 }
 
 .dedication-photo-wrap {
