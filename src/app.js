@@ -87,6 +87,8 @@ const state = {
   answered: false,
   isImmersive: false,
   revealPhase: null,
+  currentChoices: [],
+  currentCorrectIndex: -1,
   progress: loadFromStorage(STORAGE_PROGRESS_KEY, {}),
   dailyStats: loadFromStorage(STORAGE_DAILY_KEY, {})
 };
@@ -358,6 +360,8 @@ function renderCard() {
     refs.feedbackBox.classList.add("hidden");
     refs.questionText.classList.remove("story-text", "differential-answer");
     state.revealPhase = null;
+    state.currentChoices = [];
+    state.currentCorrectIndex = -1;
     return;
   }
 
@@ -384,6 +388,9 @@ function renderCard() {
   refs.questionText.textContent = card.question;
   refs.questionText.classList.remove("differential-answer");
   refs.questionText.classList.toggle("story-text", isStoryText || isDifferentialText);
+
+  state.currentChoices = [];
+  state.currentCorrectIndex = -1;
 
   refs.resultText.textContent = "";
   refs.resultText.className = "result-line";
@@ -423,7 +430,18 @@ function renderCard() {
     return;
   }
 
-  card.choices.forEach((choice, index) => {
+  const shuffledChoices = card.choices.map((choice, originalIndex) => ({
+    choice,
+    originalIndex
+  }));
+  shuffleInPlace(shuffledChoices);
+
+  state.currentChoices = shuffledChoices.map((entry) => entry.choice);
+  state.currentCorrectIndex = shuffledChoices.findIndex(
+    (entry) => entry.originalIndex === card.correctIndex
+  );
+
+  state.currentChoices.forEach((choice, index) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "choice";
@@ -441,12 +459,15 @@ function handleAnswer(selectedIndex) {
   if (!card || card.type === "story_text" || card.type === "differenzial_text") return;
 
   state.answered = true;
-  const isCorrect = selectedIndex === card.correctIndex;
+  const correctIndex = state.currentCorrectIndex;
+  if (correctIndex < 0) return;
+
+  const isCorrect = selectedIndex === correctIndex;
   const choiceButtons = Array.from(refs.choices.querySelectorAll(".choice"));
 
   choiceButtons.forEach((button, index) => {
     button.disabled = true;
-    if (index === card.correctIndex) {
+    if (index === correctIndex) {
       button.classList.add("correct");
     } else if (index === selectedIndex && !isCorrect) {
       button.classList.add("wrong");
@@ -459,7 +480,7 @@ function handleAnswer(selectedIndex) {
     refs.resultText.classList.add("ok");
     triggerHeartBurst();
   } else {
-    refs.resultText.textContent = `Nicht ganz. Richtig ist: ${card.choices[card.correctIndex]}`;
+    refs.resultText.textContent = `Nicht ganz. Richtig ist: ${state.currentChoices[correctIndex]}`;
     refs.resultText.classList.add("bad");
   }
 
