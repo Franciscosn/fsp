@@ -5,7 +5,7 @@ const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
 
-const SUPABASE_URL = "https://nitmxiasxwgwsaygumls.supabase.com";
+const SUPABASE_URL = "https://nitmxiasxwgwsaygumls.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_frshj6OvLDHGioVXbVwsrg_dbzyFajQ";
 const supabaseReady = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 const supabase = supabaseReady ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
