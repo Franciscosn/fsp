@@ -1038,14 +1038,20 @@ function handleLevelAvatarError() {
 }
 
 function buildLevelAssetCandidates(level) {
-  const paddedLevel = String(level).padStart(2, "0");
-  return [
-    `assets/levels/level-${paddedLevel}.svg`,
-    `assets/levels/level-${paddedLevel}.png`,
-    `assets/levels/level-${paddedLevel}.jpg`,
-    `assets/levels/doctor-level-${paddedLevel}.svg`,
-    "assets/kat-photo-placeholder.svg"
-  ];
+  const candidates = [];
+  const levelIndex = Math.max(0, Math.min(9, level - 1));
+
+  // Prefer exact level file (level-0.png ... level-9.png),
+  // then gracefully fall back to lower unlocked assets if some files are still missing.
+  for (let index = levelIndex; index >= 0; index -= 1) {
+    candidates.push(`assets/levels/level-${index}.png`);
+    candidates.push(`assets/levels/level-${index}.jpg`);
+    candidates.push(`assets/levels/level-${index}.jpeg`);
+    candidates.push(`assets/levels/level-${index}.webp`);
+    candidates.push(`assets/levels/level-${index}.svg`);
+  }
+  candidates.push("assets/kat-photo-placeholder.svg");
+  return candidates;
 }
 
 function getRemainingNewSlotsToday() {
