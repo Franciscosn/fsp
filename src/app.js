@@ -78,12 +78,35 @@ const MODE_LABELS = {
   differenzial_text: "Differenzialdiagnose"
 };
 
+const NEW_CARDS_PER_DAY = 12;
+const REGULAR_PATTERN = [
+  "unsure",
+  "new",
+  "one_right",
+  "unsure",
+  "streak_2",
+  "unsure",
+  "streak_3",
+  "new",
+  "one_right",
+  "streak_4",
+  "unsure",
+  "streak_5",
+  "streak_2",
+  "streak_6"
+];
+
 const FOLDERS = [
-  { id: "due", label: "Faellig heute" },
+  { id: "regular", label: "Regulaer" },
   { id: "new", label: "Neu" },
+  { id: "one_right", label: "1x richtig" },
   { id: "unsure", label: "Unsicher" },
-  { id: "wrong_today", label: "Heute falsch" },
-  { id: "strong", label: "Sicher" },
+  { id: "streak_2", label: "2x richtig" },
+  { id: "streak_3", label: "3x richtig" },
+  { id: "streak_4", label: "4x richtig" },
+  { id: "streak_5", label: "5x richtig" },
+  { id: "streak_6", label: "6x richtig" },
+  { id: "diamonds", label: "Diamonds (7x)" },
   { id: "all", label: "Alle Karten" }
 ];
 
@@ -91,7 +114,7 @@ const state = {
   cards: [],
   categories: [],
   selectedCategory: "all",
-  selectedFolder: "new",
+  selectedFolder: "regular",
   queue: [],
   currentIndex: 0,
   answered: false,
@@ -99,7 +122,7 @@ const state = {
   revealPhase: null,
   currentChoices: [],
   currentCorrectIndex: -1,
-  progress: loadFromStorage(STORAGE_PROGRESS_KEY, {}),
+  progress: migrateStoredProgress(loadFromStorage(STORAGE_PROGRESS_KEY, {})),
   dailyStats: loadFromStorage(STORAGE_DAILY_KEY, {}),
   user: null
 };
@@ -426,8 +449,7 @@ function renderFolderFilters() {
 }
 
 function rebuildQueue(isManualShuffle) {
-  const filtered = getFilteredCards(state.selectedFolder);
-  state.queue = prioritizeCards(filtered);
+  state.queue = getFilteredCards(state.selectedFolder);
   if (isManualShuffle) {
     shuffleInPlace(state.queue);
   }
@@ -448,49 +470,108 @@ function getFilteredCards(folderId) {
     return card.category === state.selectedCategory;
   });
 
+  if (folderId === "regular") {
+    return buildRegularQueue(byCategory);
+  }
+
   return byCategory.filter((card) => cardInFolder(card, folderId));
 }
 
 function cardInFolder(card, folderId) {
   const progress = getProgress(card.cardId);
-  const attempts = progress.attempts || 0;
-  const correct = progress.correct || 0;
-  const accuracy = attempts > 0 ? correct / attempts : 0;
-  const due = !progress.nextDue || progress.nextDue <= todayKey();
+  const streak = progress.streak || 0;
+  const introduced = Boolean(progress.introduced);
+  const isDiamond = streak >= 7;
+  const wasLastWrong = progress.lastResult === false;
+  const wasLastRight = progress.lastResult === true;
 
   if (folderId === "all") return true;
-  if (folderId === "new") return attempts === 0;
-  if (folderId === "due") return attempts > 0 && due;
-  if (folderId === "unsure")
-    return attempts > 0 && (accuracy < 0.7 || (progress.wrongStreak || 0) >= 2);
-  if (folderId === "wrong_today")
-    return progress.lastDate === todayKey() && progress.lastResult === false;
-  if (folderId === "strong")
-    return attempts >= 3 && accuracy >= 0.85 && (progress.wrongStreak || 0) === 0;
+  if (folderId === "diamonds") return isDiamond;
+  if (folderId === "new") return !introduced;
+  if (folderId === "one_right") return !isDiamond && introduced && wasLastRight && streak === 1;
+  if (folderId === "unsure") return !isDiamond && introduced && wasLastWrong;
+  if (folderId === "streak_2") return !isDiamond && introduced && wasLastRight && streak === 2;
+  if (folderId === "streak_3") return !isDiamond && introduced && wasLastRight && streak === 3;
+  if (folderId === "streak_4") return !isDiamond && introduced && wasLastRight && streak === 4;
+  if (folderId === "streak_5") return !isDiamond && introduced && wasLastRight && streak === 5;
+  if (folderId === "streak_6") return !isDiamond && introduced && wasLastRight && streak === 6;
   return true;
 }
 
-function prioritizeCards(cards) {
-  const weighted = cards.map((card) => {
-    const progress = getProgress(card.cardId);
-    const attempts = progress.attempts || 0;
-    const accuracy = attempts > 0 ? (progress.correct || 0) / attempts : 0;
-    const dueBoost = !progress.nextDue || progress.nextDue <= todayKey() ? 2 : 0;
-    const wrongBoost = progress.wrongStreak || 0;
-    const noveltyBoost = attempts === 0 ? 1.5 : 0;
-    return {
-      card,
-      score: dueBoost + wrongBoost + noveltyBoost + (1 - accuracy)
-    };
-  });
+function buildRegularQueue(cards) {
+  const buckets = {
+    new: [],
+    one_right: [],
+    unsure: [],
+    streak_2: [],
+    streak_3: [],
+    streak_4: [],
+    streak_5: [],
+    streak_6: []
+  };
 
-  weighted.sort((a, b) => b.score - a.score);
-  return weighted.map((entry) => entry.card);
+  for (const card of cards) {
+    const progress = getProgress(card.cardId);
+    const streak = progress.streak || 0;
+    const introduced = Boolean(progress.introduced);
+    const isDiamond = streak >= 7;
+    if (isDiamond) continue;
+
+    if (!introduced) {
+      buckets.new.push(card);
+      continue;
+    }
+
+    if (progress.lastResult === false) {
+      buckets.unsure.push(card);
+      continue;
+    }
+
+    if (streak === 1) buckets.one_right.push(card);
+    else if (streak === 2) buckets.streak_2.push(card);
+    else if (streak === 3) buckets.streak_3.push(card);
+    else if (streak === 4) buckets.streak_4.push(card);
+    else if (streak === 5) buckets.streak_5.push(card);
+    else if (streak === 6) buckets.streak_6.push(card);
+    else buckets.unsure.push(card);
+  }
+
+  shuffleInPlace(buckets.new);
+  shuffleInPlace(buckets.one_right);
+  shuffleInPlace(buckets.unsure);
+  shuffleInPlace(buckets.streak_2);
+  shuffleInPlace(buckets.streak_3);
+  shuffleInPlace(buckets.streak_4);
+  shuffleInPlace(buckets.streak_5);
+  shuffleInPlace(buckets.streak_6);
+
+  const remainingNewSlots = getRemainingNewSlotsToday();
+  if (buckets.new.length > remainingNewSlots) {
+    buckets.new = buckets.new.slice(0, remainingNewSlots);
+  }
+
+  const queue = [];
+  while (true) {
+    let added = false;
+    for (const bucketId of REGULAR_PATTERN) {
+      const bucket = buckets[bucketId];
+      if (!bucket || bucket.length === 0) continue;
+      queue.push(bucket.pop());
+      added = true;
+    }
+    if (!added) break;
+  }
+
+  return queue;
 }
 
 function renderQueueInfo() {
   const label = FOLDERS.find((folder) => folder.id === state.selectedFolder)?.label || "Ordner";
   const categoryLabel = state.selectedCategory === "all" ? "Alle Kategorien" : state.selectedCategory;
+  if (state.selectedFolder === "regular") {
+    refs.queueInfo.textContent = `${label}: ${state.queue.length} Karte(n) in ${categoryLabel} | Neue heute frei: ${getRemainingNewSlotsToday()}`;
+    return;
+  }
   refs.queueInfo.textContent = `${label}: ${state.queue.length} Karte(n) in ${categoryLabel}`;
 }
 
@@ -762,23 +843,24 @@ function nextCard() {
 
 function saveAttempt(cardId, isCorrect) {
   const progress = getProgress(cardId);
-  const attempts = (progress.attempts || 0) + 1;
-  const correct = (progress.correct || 0) + (isCorrect ? 1 : 0);
-  const wrongStreak = isCorrect ? 0 : (progress.wrongStreak || 0) + 1;
-  const interval = isCorrect
-    ? Math.min(progress.interval ? progress.interval * 2 : 1, 30)
-    : 0;
-  const nextDue = addDays(todayKey(), interval);
+  progress.introduced = true;
+  if (!progress.introducedDate) {
+    progress.introducedDate = todayKey();
+  }
 
-  state.progress[cardId] = {
-    attempts,
-    correct,
-    wrongStreak,
-    interval,
-    nextDue,
-    lastDate: todayKey(),
-    lastResult: isCorrect
-  };
+  progress.attempts = (progress.attempts || 0) + 1;
+  progress.correct = (progress.correct || 0) + (isCorrect ? 1 : 0);
+  progress.lastDate = todayKey();
+  progress.lastResult = isCorrect;
+  if (isCorrect) {
+    progress.streak = Math.min((progress.streak || 0) + 1, 7);
+    if (progress.streak >= 7) {
+      progress.diamondSince = todayKey();
+    }
+  } else {
+    progress.streak = 0;
+    progress.diamondSince = "";
+  }
 
   const day = ensureDayStats(todayKey());
   day.attempts += 1;
@@ -873,18 +955,95 @@ function computeStreak() {
   return streak;
 }
 
+function getRemainingNewSlotsToday() {
+  const today = todayKey();
+  let introducedToday = 0;
+  for (const entry of Object.values(state.progress)) {
+    const progress = normalizeProgressEntry(entry);
+    if (progress.introducedDate === today) {
+      introducedToday += 1;
+    }
+  }
+  return Math.max(0, NEW_CARDS_PER_DAY - introducedToday);
+}
+
+function migrateStoredProgress(rawProgress) {
+  if (!rawProgress || typeof rawProgress !== "object") return {};
+
+  const migrated = {};
+  for (const [cardId, entry] of Object.entries(rawProgress)) {
+    migrated[cardId] = normalizeProgressEntry(entry);
+  }
+  return migrated;
+}
+
+function createDefaultProgressEntry() {
+  return {
+    attempts: 0,
+    correct: 0,
+    introduced: false,
+    introducedDate: "",
+    streak: 0,
+    lastDate: "",
+    lastResult: null,
+    diamondSince: ""
+  };
+}
+
+function normalizeProgressEntry(entry) {
+  const base = createDefaultProgressEntry();
+  if (!entry || typeof entry !== "object") {
+    return base;
+  }
+
+  const attempts = Number(entry.attempts) || 0;
+  const correct = Number(entry.correct) || 0;
+  const introduced = Boolean(entry.introduced) || attempts > 0;
+  const lastResult =
+    typeof entry.lastResult === "boolean" ? entry.lastResult : base.lastResult;
+
+  let streak = 0;
+  if (typeof entry.streak === "number" && Number.isFinite(entry.streak)) {
+    streak = Math.max(0, Math.min(7, Math.floor(entry.streak)));
+  } else if (introduced && lastResult === true) {
+    const oldInterval = Number(entry.interval) || 0;
+    if (oldInterval >= 30) streak = 7;
+    else if (oldInterval >= 16) streak = 6;
+    else if (oldInterval >= 8) streak = 5;
+    else if (oldInterval >= 4) streak = 4;
+    else if (oldInterval >= 2) streak = 3;
+    else if (oldInterval >= 1) streak = 2;
+    else streak = 1;
+  }
+
+  if (lastResult === false) {
+    streak = 0;
+  }
+
+  return {
+    attempts,
+    correct,
+    introduced,
+    introducedDate:
+      typeof entry.introducedDate === "string" && entry.introducedDate ? entry.introducedDate : "",
+    streak,
+    lastDate: typeof entry.lastDate === "string" ? entry.lastDate : "",
+    lastResult,
+    diamondSince:
+      typeof entry.diamondSince === "string"
+        ? entry.diamondSince
+        : streak >= 7
+          ? todayKey()
+          : ""
+  };
+}
+
 function getProgress(cardId) {
   if (!state.progress[cardId]) {
-    state.progress[cardId] = {
-      attempts: 0,
-      correct: 0,
-      wrongStreak: 0,
-      interval: 0,
-      nextDue: todayKey(),
-      lastDate: "",
-      lastResult: null
-    };
+    state.progress[cardId] = createDefaultProgressEntry();
+    return state.progress[cardId];
   }
+  state.progress[cardId] = normalizeProgressEntry(state.progress[cardId]);
   return state.progress[cardId];
 }
 
@@ -946,10 +1105,9 @@ async function pullRemoteState() {
 
   try {
     const payload = JSON.parse(row.status || "{}");
-    state.progress =
-      payload && typeof payload.progress === "object" && payload.progress
-        ? payload.progress
-        : {};
+    state.progress = migrateStoredProgress(
+      payload && typeof payload.progress === "object" && payload.progress ? payload.progress : {}
+    );
     state.dailyStats =
       payload && typeof payload.dailyStats === "object" && payload.dailyStats
         ? payload.dailyStats
