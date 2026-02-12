@@ -95,6 +95,25 @@ const REGULAR_PATTERN = [
   "streak_2",
   "streak_6"
 ];
+const LEVEL_TITLES = [
+  "Starter",
+  "Kittel",
+  "Namensschild",
+  "Stethoskop",
+  "Handschuhe",
+  "Klemmbrett",
+  "Praxis-Set",
+  "OP-Haube",
+  "Fachaerztin",
+  "Diamond Doctor"
+];
+const LEVEL_THRESHOLDS = [0, 0.07, 0.15, 0.24, 0.34, 0.45, 0.57, 0.7, 0.84, 1];
+const LEVEL_DEFINITIONS = LEVEL_TITLES.map((title, index) => ({
+  level: index + 1,
+  title,
+  minRatio: LEVEL_THRESHOLDS[index],
+  assetCandidates: buildLevelAssetCandidates(index + 1)
+}));
 
 const FOLDERS = [
   { id: "regular", label: "Ueben" },
@@ -140,6 +159,11 @@ const refs = {
   quickPracticeBtn: document.getElementById("quickPracticeBtn"),
   sessionText: document.getElementById("sessionText"),
   authPortrait: document.getElementById("authPortrait"),
+  levelAvatar: document.getElementById("levelAvatar"),
+  levelBadge: document.getElementById("levelBadge"),
+  levelTitle: document.getElementById("levelTitle"),
+  levelProgressText: document.getElementById("levelProgressText"),
+  levelFill: document.getElementById("levelFill"),
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
   queueInfo: document.getElementById("queueInfo"),
@@ -180,6 +204,7 @@ function wireEvents() {
   refs.signupBtn.addEventListener("click", handleSignup);
   refs.logoutBtn.addEventListener("click", handleLogout);
   refs.quickPracticeBtn.addEventListener("click", startQuickPractice);
+  refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
 
   refs.nextBtn.addEventListener("click", nextCard);
   refs.shuffleBtn.addEventListener("click", () => rebuildQueue(true));
@@ -872,6 +897,59 @@ function renderStats() {
   refs.kpiStreak.textContent = `${computeStreak()} Tage`;
 
   renderWeekChart();
+  renderLevelDisplay();
+}
+
+function renderLevelDisplay() {
+  const levelState = getLevelState();
+  const levelDef = LEVEL_DEFINITIONS[levelState.level - 1] || LEVEL_DEFINITIONS[0];
+  const percent = Math.round(levelState.ratio * 100);
+
+  refs.levelBadge.textContent = `Level ${levelState.level}`;
+  refs.levelTitle.textContent = levelDef.title;
+  refs.levelProgressText.textContent = `${levelState.mastered} / ${levelState.total} Karten in Diamonds`;
+  refs.levelFill.style.width = `${percent}%`;
+
+  const track = refs.levelFill.parentElement;
+  if (track) {
+    track.setAttribute("aria-valuenow", String(percent));
+  }
+
+  if (refs.levelAvatar.dataset.level !== String(levelState.level)) {
+    refs.levelAvatar.dataset.level = String(levelState.level);
+    applyLevelAvatarSources(levelDef.assetCandidates);
+  }
+}
+
+function getLevelState() {
+  const total = state.cards.length;
+  if (total === 0) {
+    return { level: 1, mastered: 0, total: 0, ratio: 0 };
+  }
+
+  let mastered = 0;
+  for (const card of state.cards) {
+    const progress = getProgress(card.cardId);
+    if ((progress.streak || 0) >= 7) {
+      mastered += 1;
+    }
+  }
+
+  const ratio = total > 0 ? mastered / total : 0;
+  let level = 1;
+  for (const definition of LEVEL_DEFINITIONS) {
+    if (ratio >= definition.minRatio) {
+      level = definition.level;
+    }
+  }
+
+  if (mastered === total) {
+    level = 10;
+  } else if (level >= 10) {
+    level = 9;
+  }
+
+  return { level, mastered, total, ratio };
 }
 
 function renderWeekChart() {
@@ -933,6 +1011,41 @@ function computeStreak() {
     }
   }
   return streak;
+}
+
+function applyLevelAvatarSources(sources) {
+  if (!Array.isArray(sources) || sources.length === 0) return;
+  refs.levelAvatar.dataset.sources = JSON.stringify(sources);
+  refs.levelAvatar.dataset.sourceIndex = "0";
+  refs.levelAvatar.src = sources[0];
+}
+
+function handleLevelAvatarError() {
+  let sources = [];
+  try {
+    sources = JSON.parse(refs.levelAvatar.dataset.sources || "[]");
+  } catch (error) {
+    sources = [];
+  }
+  if (!Array.isArray(sources) || sources.length === 0) return;
+
+  const currentIndex = Number(refs.levelAvatar.dataset.sourceIndex || "0");
+  const nextIndex = currentIndex + 1;
+  if (nextIndex >= sources.length) return;
+
+  refs.levelAvatar.dataset.sourceIndex = String(nextIndex);
+  refs.levelAvatar.src = sources[nextIndex];
+}
+
+function buildLevelAssetCandidates(level) {
+  const paddedLevel = String(level).padStart(2, "0");
+  return [
+    `assets/levels/level-${paddedLevel}.svg`,
+    `assets/levels/level-${paddedLevel}.png`,
+    `assets/levels/level-${paddedLevel}.jpg`,
+    `assets/levels/doctor-level-${paddedLevel}.svg`,
+    "assets/kat-photo-placeholder.svg"
+  ];
 }
 
 function getRemainingNewSlotsToday() {

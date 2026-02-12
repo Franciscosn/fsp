@@ -88,7 +88,21 @@
         </div>
       </header>
 
-      <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 2">
+      <section id="levelPanel" class="panel level-panel reveal" style="--i: 2">
+        <div class="level-visual">
+          <img id="levelAvatar" class="level-avatar" src="assets/levels/doctor-level-01.svg" alt="Level Avatar" />
+        </div>
+        <div class="level-copy">
+          <p id="levelBadge" class="level-badge">Level 1</p>
+          <h3 id="levelTitle">Starter</h3>
+          <p id="levelProgressText" class="muted">0 / 0 Karten in Diamonds</p>
+          <div class="level-track" role="progressbar" aria-label="Level Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="levelFill" class="level-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 3">
         <div class="control-grid">
           <article class="selection-card">
             <h3>Kategorien</h3>
@@ -111,7 +125,7 @@
         </div>
       </section>
 
-      <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 3">
+      <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 4">
         <div class="quiz-top">
           <div>
             <h2>Fokusmodus</h2>
@@ -151,7 +165,7 @@
         </article>
       </section>
 
-      <footer class="panel feedback-panel reveal" style="--i: 4">
+      <footer class="panel feedback-panel reveal" style="--i: 5">
         <div class="footer-actions">
           <a
             class="soft-btn feedback-link"
