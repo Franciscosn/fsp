@@ -1,10 +1,20 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
 const STORAGE_PROGRESS_KEY = "fsp_heart_progress_v1";
 const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
 const DAILY_GOAL = 20;
+const APP_STATE_CARD_ID = "__app_state__";
+
+const SUPABASE_URL = "https://nitmxiasxwgwsaygumls.supabase.com";
+const SUPABASE_ANON_KEY = "sb_publishable_frshj6OvLDHGioVXbVwsrg_dbzyFajQ";
+const supabaseReady = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
+const supabase = supabaseReady ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
 const SWEET_EMOJIS = ["💖", "💕", "💘", "💝", "🥰", "😍", "😘", "🫶", "🍑", "🌸", "✨"];
 let emojiHideTimer = null;
 let activeCelebration = null;
+let remoteStateRowId = null;
+let syncTimer = null;
 
 const CATEGORY_MAP = {
   adipositas: "Gewicht",
@@ -90,10 +100,18 @@ const state = {
   currentChoices: [],
   currentCorrectIndex: -1,
   progress: loadFromStorage(STORAGE_PROGRESS_KEY, {}),
-  dailyStats: loadFromStorage(STORAGE_DAILY_KEY, {})
+  dailyStats: loadFromStorage(STORAGE_DAILY_KEY, {}),
+  user: null
 };
 
 const refs = {
+  authStatus: document.getElementById("authStatus"),
+  authForm: document.getElementById("authForm"),
+  emailInput: document.getElementById("emailInput"),
+  passwordInput: document.getElementById("passwordInput"),
+  loginBtn: document.getElementById("loginBtn"),
+  signupBtn: document.getElementById("signupBtn"),
+  logoutBtn: document.getElementById("logoutBtn"),
   dedicationPhoto: document.getElementById("dedicationPhoto"),
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
@@ -114,7 +132,6 @@ const refs = {
   translationText: document.getElementById("translationText"),
   nextBtn: document.getElementById("nextBtn"),
   shuffleBtn: document.getElementById("shuffleBtn"),
-  heartBurst: document.getElementById("heartBurst"),
   toggleStatsBtn: document.getElementById("toggleStatsBtn"),
   closeStatsBtn: document.getElementById("closeStatsBtn"),
   statsOverlay: document.getElementById("statsOverlay"),
@@ -133,6 +150,10 @@ wireEvents();
 init();
 
 function wireEvents() {
+  refs.authForm.addEventListener("submit", handleLoginSubmit);
+  refs.signupBtn.addEventListener("click", handleSignup);
+  refs.logoutBtn.addEventListener("click", handleLogout);
+
   refs.nextBtn.addEventListener("click", nextCard);
   refs.shuffleBtn.addEventListener("click", () => rebuildQueue(true));
   refs.startImmersiveBtn.addEventListener("click", enterImmersiveMode);
@@ -156,6 +177,7 @@ function wireEvents() {
 }
 
 async function init() {
+  initAuthUi();
   initDedicationPhoto();
   try {
     const url = new URL("../data/cards.json", import.meta.url);
@@ -172,6 +194,7 @@ async function init() {
     renderFolderFilters();
     rebuildQueue(false);
     renderStats();
+    await initSupabaseSession();
   } catch (error) {
     refs.emptyState.classList.remove("hidden");
     refs.cardBox.classList.add("hidden");
@@ -179,6 +202,92 @@ async function init() {
       "<p>Karten konnten nicht geladen werden. Bitte die Seite ueber einen lokalen Webserver oeffnen.</p>";
     console.error(error);
   }
+}
+
+function initAuthUi() {
+  if (supabaseReady) {
+    refs.authStatus.textContent = "Nicht eingeloggt";
+    return;
+  }
+  refs.authStatus.textContent =
+    "Supabase ist noch nicht verbunden (Login deaktiviert, nur lokale Speicherung)";
+  refs.authForm.classList.add("hidden");
+}
+
+async function initSupabaseSession() {
+  if (!supabase) return;
+  const {
+    data: { session }
+  } = await supabase.auth.getSession();
+  await applySession(session);
+
+  supabase.auth.onAuthStateChange(async (_event, newSession) => {
+    await applySession(newSession);
+  });
+}
+
+async function applySession(session) {
+  const user = session?.user || null;
+  state.user = user;
+  updateAuthUi();
+  if (!user) return;
+  await pullRemoteState();
+}
+
+function updateAuthUi() {
+  if (!supabaseReady) return;
+  if (!state.user) {
+    refs.authStatus.textContent = "Nicht eingeloggt";
+    refs.logoutBtn.classList.add("hidden");
+    refs.authForm.classList.remove("hidden");
+    return;
+  }
+  refs.authStatus.textContent = `Eingeloggt als ${state.user.email}`;
+  refs.logoutBtn.classList.remove("hidden");
+  refs.authForm.classList.add("hidden");
+}
+
+async function handleLoginSubmit(event) {
+  event.preventDefault();
+  if (!supabase) return;
+  const email = refs.emailInput.value.trim();
+  const password = refs.passwordInput.value;
+  if (!email || !password) return;
+
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  if (error) {
+    refs.authStatus.textContent = `Login fehlgeschlagen: ${error.message}`;
+    return;
+  }
+
+  refs.emailInput.value = "";
+  refs.passwordInput.value = "";
+}
+
+async function handleSignup() {
+  if (!supabase) return;
+  const email = refs.emailInput.value.trim();
+  const password = refs.passwordInput.value;
+  if (!email || !password) {
+    refs.authStatus.textContent = "Bitte E-Mail und Passwort eingeben.";
+    return;
+  }
+
+  const { error } = await supabase.auth.signUp({ email, password });
+  if (error) {
+    refs.authStatus.textContent = `Registrierung fehlgeschlagen: ${error.message}`;
+    return;
+  }
+
+  refs.authStatus.textContent = "Registrierung erfolgreich. Du bist nun eingeloggt.";
+  refs.emailInput.value = "";
+  refs.passwordInput.value = "";
+}
+
+async function handleLogout() {
+  if (!supabase) return;
+  await supabase.auth.signOut();
+  refs.authStatus.textContent = "Ausgeloggt";
 }
 
 function initDedicationPhoto() {
@@ -368,8 +477,6 @@ function renderCard() {
   refs.emptyState.classList.add("hidden");
   refs.cardBox.classList.remove("hidden");
   refs.feedbackBox.classList.add("hidden");
-  refs.heartBurst.classList.add("hidden");
-  refs.heartBurst.classList.remove("show");
   if (emojiHideTimer) {
     window.clearTimeout(emojiHideTimer);
     emojiHideTimer = null;
@@ -426,6 +533,24 @@ function renderCard() {
     refs.translationText.classList.add("hidden");
     refs.nextBtn.textContent = "Bereit";
     state.revealPhase = "prompt";
+    state.answered = true;
+    return;
+  }
+
+  const hasValidChoices = Array.isArray(card.choices) && card.choices.length >= 2;
+  const hasValidCorrectIndex =
+    Number.isInteger(card.correctIndex) &&
+    card.correctIndex >= 0 &&
+    card.correctIndex < (card.choices?.length || 0);
+  if (!hasValidChoices || !hasValidCorrectIndex) {
+    refs.choices.classList.add("hidden");
+    refs.feedbackBox.classList.remove("hidden");
+    refs.feedbackBox.classList.add("text-card-nav");
+    refs.resultText.classList.remove("hidden");
+    refs.resultText.classList.add("bad");
+    refs.resultText.textContent = "Karte unvollstaendig. Bitte Deck-Daten pruefen.";
+    refs.explanationText.classList.add("hidden");
+    refs.translationText.classList.add("hidden");
     state.answered = true;
     return;
   }
@@ -602,6 +727,7 @@ function saveAttempt(cardId, isCorrect) {
 
   saveToStorage(STORAGE_PROGRESS_KEY, state.progress);
   saveToStorage(STORAGE_DAILY_KEY, state.dailyStats);
+  scheduleRemoteSync();
 }
 
 function ensureDayStats(dayKey) {
@@ -720,6 +846,97 @@ function saveToStorage(key, value) {
   } catch (error) {
     console.warn("Storage-Schreiben fehlgeschlagen", error);
   }
+}
+
+function scheduleRemoteSync() {
+  if (!supabase || !state.user) return;
+  if (syncTimer) window.clearTimeout(syncTimer);
+  syncTimer = window.setTimeout(() => {
+    pushRemoteState();
+  }, 800);
+}
+
+async function pullRemoteState() {
+  if (!supabase || !state.user) return;
+
+  const { data, error } = await supabase
+    .from("progress")
+    .select("id, status, updated_at")
+    .eq("user_id", state.user.id)
+    .eq("card_id", APP_STATE_CARD_ID)
+    .order("updated_at", { ascending: false })
+    .limit(1);
+
+  if (error) {
+    refs.authStatus.textContent = `Cloud-Laden fehlgeschlagen: ${error.message}`;
+    return;
+  }
+
+  const row = data?.[0] || null;
+  if (!row) {
+    remoteStateRowId = null;
+    if (Object.keys(state.progress).length || Object.keys(state.dailyStats).length) {
+      await pushRemoteState();
+    }
+    return;
+  }
+
+  remoteStateRowId = row.id;
+
+  try {
+    const payload = JSON.parse(row.status || "{}");
+    state.progress =
+      payload && typeof payload.progress === "object" && payload.progress
+        ? payload.progress
+        : {};
+    state.dailyStats =
+      payload && typeof payload.dailyStats === "object" && payload.dailyStats
+        ? payload.dailyStats
+        : {};
+    saveToStorage(STORAGE_PROGRESS_KEY, state.progress);
+    saveToStorage(STORAGE_DAILY_KEY, state.dailyStats);
+    renderFolderFilters();
+    rebuildQueue(false);
+    renderStats();
+    refs.authStatus.textContent = `Eingeloggt als ${state.user.email} (Cloud geladen)`;
+  } catch (parseError) {
+    refs.authStatus.textContent = "Cloud-Daten konnten nicht gelesen werden.";
+    console.error(parseError);
+  }
+}
+
+async function pushRemoteState() {
+  if (!supabase || !state.user) return;
+
+  const payload = JSON.stringify({
+    progress: state.progress,
+    dailyStats: state.dailyStats
+  });
+
+  if (remoteStateRowId) {
+    const { error } = await supabase
+      .from("progress")
+      .update({ status: payload, updated_at: new Date().toISOString() })
+      .eq("id", remoteStateRowId)
+      .eq("user_id", state.user.id);
+    if (!error) return;
+  }
+
+  const { data, error } = await supabase
+    .from("progress")
+    .insert({
+      user_id: state.user.id,
+      card_id: APP_STATE_CARD_ID,
+      status: payload
+    })
+    .select("id")
+    .single();
+
+  if (error) {
+    refs.authStatus.textContent = `Cloud-Speichern fehlgeschlagen: ${error.message}`;
+    return;
+  }
+  remoteStateRowId = data.id;
 }
 
 function todayKey() {

@@ -27,6 +27,26 @@
     </aside>
 
     <main class="app-shell">
+      <section class="panel auth-panel reveal" style="--i: 0">
+        <div class="auth-row">
+          <p id="authStatus" class="muted auth-status">Nicht eingeloggt (nur lokal gespeichert)</p>
+          <button id="logoutBtn" class="soft-btn hidden" type="button">Logout</button>
+        </div>
+        <form id="authForm" class="auth-form">
+          <input id="emailInput" class="auth-input" type="email" placeholder="E-Mail" required />
+          <input
+            id="passwordInput"
+            class="auth-input"
+            type="password"
+            placeholder="Passwort"
+            minlength="6"
+            required
+          />
+          <button id="loginBtn" class="primary-btn" type="submit">Login</button>
+          <button id="signupBtn" class="soft-btn" type="button">Registrieren</button>
+        </form>
+      </section>
+
       <header class="panel dedication reveal" style="--i: 0">
         <div class="dedication-copy">
           <p class="dedication-text">para Kat, la medica mas amada</p>
@@ -107,7 +127,6 @@
           <div id="choices" class="choices"></div>
 
           <section id="feedbackBox" class="feedback hidden">
-            <div id="heartBurst" class="heart-burst hidden" aria-hidden="true"></div>
             <p id="resultText" class="result-line"></p>
             <p id="explanationText" class="explanation"></p>
             <p id="translationText" class="translation-inline"></p>
