@@ -139,6 +139,15 @@ body::before {
   gap: 14px;
 }
 
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  position: relative;
+  z-index: 1;
+}
+
 .panel {
   background: var(--panel);
   border-radius: var(--radius-lg);
@@ -154,11 +163,24 @@ body::before {
   gap: 10px;
 }
 
+.auth-card {
+  width: min(520px, 100%);
+}
+
 .auth-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+}
+
+.auth-form-stacked {
+  grid-template-columns: 1fr;
+}
+
+.session-panel {
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .auth-status {
@@ -731,7 +753,8 @@ h3 {
 }
 
 body.immersive .dedication,
-body.immersive #selectionPanel {
+body.immersive #selectionPanel,
+body.immersive .session-panel {
   display: none;
 }
 

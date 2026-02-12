@@ -105,6 +105,8 @@ const state = {
 };
 
 const refs = {
+  authPage: document.getElementById("authPage"),
+  appContent: document.getElementById("appContent"),
   authStatus: document.getElementById("authStatus"),
   authForm: document.getElementById("authForm"),
   emailInput: document.getElementById("emailInput"),
@@ -112,6 +114,7 @@ const refs = {
   loginBtn: document.getElementById("loginBtn"),
   signupBtn: document.getElementById("signupBtn"),
   logoutBtn: document.getElementById("logoutBtn"),
+  sessionText: document.getElementById("sessionText"),
   dedicationPhoto: document.getElementById("dedicationPhoto"),
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
@@ -205,6 +208,11 @@ async function init() {
 }
 
 function initAuthUi() {
+  refs.authPage.classList.remove("hidden");
+  refs.appContent.classList.add("hidden");
+  refs.toggleStatsBtn.classList.add("hidden");
+  closeStatsOverlay();
+
   if (supabaseReady) {
     refs.authStatus.textContent = "Nicht eingeloggt";
     return;
@@ -229,22 +237,38 @@ async function initSupabaseSession() {
 async function applySession(session) {
   const user = session?.user || null;
   state.user = user;
+  if (!user) {
+    remoteStateRowId = null;
+    exitImmersiveMode();
+    closeStatsOverlay();
+  }
   updateAuthUi();
   if (!user) return;
   await pullRemoteState();
 }
 
 function updateAuthUi() {
-  if (!supabaseReady) return;
-  if (!state.user) {
-    refs.authStatus.textContent = "Nicht eingeloggt";
-    refs.logoutBtn.classList.add("hidden");
-    refs.authForm.classList.remove("hidden");
+  if (!supabaseReady) {
+    refs.authPage.classList.remove("hidden");
+    refs.appContent.classList.add("hidden");
+    refs.toggleStatsBtn.classList.add("hidden");
     return;
   }
+
+  if (!state.user) {
+    refs.authStatus.textContent = "Nicht eingeloggt";
+    refs.authPage.classList.remove("hidden");
+    refs.appContent.classList.add("hidden");
+    refs.toggleStatsBtn.classList.add("hidden");
+    closeStatsOverlay();
+    return;
+  }
+
   refs.authStatus.textContent = `Eingeloggt als ${state.user.email}`;
-  refs.logoutBtn.classList.remove("hidden");
-  refs.authForm.classList.add("hidden");
+  refs.sessionText.textContent = `Eingeloggt als ${state.user.email}`;
+  refs.authPage.classList.add("hidden");
+  refs.appContent.classList.remove("hidden");
+  refs.toggleStatsBtn.classList.remove("hidden");
 }
 
 async function handleLoginSubmit(event) {
@@ -298,6 +322,8 @@ async function handleSignup() {
 async function handleLogout() {
   if (!supabase) return;
   await supabase.auth.signOut();
+  exitImmersiveMode();
+  closeStatsOverlay();
   refs.authStatus.textContent = "Ausgeloggt";
 }
 
@@ -801,6 +827,7 @@ function renderWeekChart() {
 }
 
 function openStatsOverlay() {
+  if (!state.user) return;
   refs.statsOverlay.classList.remove("hidden");
   refs.statsOverlay.setAttribute("aria-hidden", "false");
 }

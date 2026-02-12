@@ -26,13 +26,12 @@
       ><span>🔥</span><span>⛓️</span>
     </aside>
 
-    <main class="app-shell">
-      <section class="panel auth-panel reveal" style="--i: 0">
-        <div class="auth-row">
-          <p id="authStatus" class="muted auth-status">Nicht eingeloggt (nur lokal gespeichert)</p>
-          <button id="logoutBtn" class="soft-btn hidden" type="button">Logout</button>
-        </div>
-        <form id="authForm" class="auth-form">
+    <section id="authPage" class="auth-page">
+      <article class="panel auth-panel auth-card">
+        <h2>Login</h2>
+        <p class="muted">Bitte einloggen oder registrieren, um deinen Fortschritt zu sehen.</p>
+        <p id="authStatus" class="muted auth-status">Nicht eingeloggt</p>
+        <form id="authForm" class="auth-form auth-form-stacked">
           <input id="emailInput" class="auth-input" type="email" placeholder="E-Mail" required />
           <input
             id="passwordInput"
@@ -45,9 +44,18 @@
           <button id="loginBtn" class="primary-btn" type="submit">Login</button>
           <button id="signupBtn" class="soft-btn" type="button">Registrieren</button>
         </form>
+      </article>
+    </section>
+
+    <main id="appContent" class="app-shell hidden">
+      <section class="panel session-panel reveal" style="--i: 0">
+        <div class="auth-row">
+          <p id="sessionText" class="muted auth-status">Eingeloggt</p>
+          <button id="logoutBtn" class="soft-btn" type="button">Logout</button>
+        </div>
       </section>
 
-      <header class="panel dedication reveal" style="--i: 0">
+      <header class="panel dedication reveal" style="--i: 1">
         <div class="dedication-copy">
           <p class="dedication-text">para Kat, la medica mas amada</p>
           <a
@@ -67,7 +75,7 @@
         </div>
       </header>
 
-      <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 1">
+      <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 2">
         <h2>some german a day keeps the doctor not away</h2>
         <p class="muted">
           letsssss go babeyyyy... olèèèèèèèèèè
@@ -97,7 +105,7 @@
         </div>
       </section>
 
-      <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 2">
+      <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 3">
         <div class="quiz-top">
           <div>
             <h2>Fokusmodus</h2>
@@ -140,7 +148,7 @@
 
     <button
       id="toggleStatsBtn"
-      class="stats-fab"
+      class="stats-fab hidden"
       type="button"
       title="Statistik"
       aria-label="Statistik"
