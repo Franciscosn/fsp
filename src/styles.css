@@ -264,6 +264,13 @@ body.auth-only .edge-deco {
   padding-bottom: 12px;
 }
 
+.session-user {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: #8f6070;
+}
+
 .auth-brand {
   margin: 0;
   font-size: 0.85rem;
@@ -342,6 +349,10 @@ body.auth-only .edge-deco {
   gap: 8px;
 }
 
+.practice-headline {
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+}
+
 .practice-btn {
   width: min(360px, 100%);
   font-size: 1.06rem;
@@ -352,13 +363,25 @@ body.auth-only .edge-deco {
   justify-items: center;
 }
 
+.footer-actions {
+  width: min(680px, 100%);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .feedback-link {
-  width: min(460px, 100%);
+  flex: 1 1 320px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 12px 14px;
+}
+
+.logout-btn {
+  flex: 0 0 140px;
 }
 
 h2,
@@ -1033,6 +1056,17 @@ body.immersive .stats-fab {
 
   .soft-btn,
   .primary-btn {
+    width: 100%;
+  }
+
+  .footer-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-actions .feedback-link,
+  .footer-actions .logout-btn {
     width: 100%;
   }
 

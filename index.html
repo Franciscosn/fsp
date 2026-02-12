@@ -77,21 +77,18 @@
 
     <main id="appContent" class="app-shell hidden">
       <section class="panel session-panel reveal" style="--i: 0">
-        <div class="auth-row">
-          <p id="sessionText" class="muted auth-status">Eingeloggt</p>
-          <button id="logoutBtn" class="soft-btn" type="button">Logout</button>
-        </div>
+        <p id="sessionText" class="session-user">Eingeloggt</p>
       </section>
 
       <header class="panel dedication reveal" style="--i: 1">
         <div class="dedication-copy">
+          <h2 class="practice-headline">some german a day keeps the doctor not away</h2>
           <button id="quickPracticeBtn" class="primary-btn practice-btn" type="button">Üben</button>
-          <p class="muted">Regulärer Modus mit automatischer Wiederholung.</p>
+          <p class="muted">regular spaced repetition mode</p>
         </div>
       </header>
 
       <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 2">
-        <h2>some german a day keeps the doctor not away</h2>
         <div class="control-grid">
           <article class="selection-card">
             <h3>Kategorien</h3>
@@ -111,9 +108,6 @@
         </div>
         <div class="selection-footer">
           <p id="queueInfo" class="queue-info"></p>
-          <button id="startImmersiveBtn" class="primary-btn" type="button">
-            Üben starten
-          </button>
         </div>
       </section>
 
@@ -158,12 +152,15 @@
       </section>
 
       <footer class="panel feedback-panel reveal" style="--i: 4">
-        <a
-          class="soft-btn feedback-link"
-          href="mailto:Kuss@crelur.com?subject=R%C3%BCckmeldung&body=Hallo%20Francisco%2C%0A%0Ahier%20ist%20meine%20R%C3%BCckmeldung%20zur%20Webseite%3A%0A"
-        >
-          Francisco Rückmeldung geben
-        </a>
+        <div class="footer-actions">
+          <a
+            class="soft-btn feedback-link"
+            href="mailto:Kuss@crelur.com?subject=R%C3%BCckmeldung&body=Hallo%20Francisco%2C%0A%0Ahier%20ist%20meine%20R%C3%BCckmeldung%20zur%20Webseite%3A%0A"
+          >
+            Francisco Rückmeldung geben
+          </a>
+          <button id="logoutBtn" class="soft-btn logout-btn" type="button">Logout</button>
+        </div>
       </footer>
     </main>
 

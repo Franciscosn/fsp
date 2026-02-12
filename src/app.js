@@ -143,7 +143,6 @@ const refs = {
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
   queueInfo: document.getElementById("queueInfo"),
-  startImmersiveBtn: document.getElementById("startImmersiveBtn"),
   exitImmersiveBtn: document.getElementById("exitImmersiveBtn"),
   quizPanel: document.getElementById("quizPanel"),
   progressText: document.getElementById("progressText"),
@@ -184,7 +183,6 @@ function wireEvents() {
 
   refs.nextBtn.addEventListener("click", nextCard);
   refs.shuffleBtn.addEventListener("click", () => rebuildQueue(true));
-  refs.startImmersiveBtn.addEventListener("click", enterImmersiveMode);
   refs.exitImmersiveBtn.addEventListener("click", exitImmersiveMode);
 
   refs.toggleStatsBtn.addEventListener("click", () => {
@@ -565,14 +563,7 @@ function renderQueueInfo() {
 }
 
 function updateStartButtonState() {
-  const total = state.queue.length;
-  if (total === 0) {
-    refs.startImmersiveBtn.disabled = true;
-    refs.startImmersiveBtn.textContent = "Üben starten";
-    return;
-  }
-  refs.startImmersiveBtn.disabled = false;
-  refs.startImmersiveBtn.textContent = "Üben starten";
+  // Intentional no-op: practice starts via the dedicated "Üben" action.
 }
 
 function enterImmersiveMode() {
