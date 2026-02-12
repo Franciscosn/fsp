@@ -253,15 +253,20 @@ async function handleLoginSubmit(event) {
   const email = refs.emailInput.value.trim();
   const password = refs.passwordInput.value;
   if (!email || !password) return;
+  try {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      refs.authStatus.textContent = `Login fehlgeschlagen: ${error.message}`;
+      return;
+    }
 
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
-  if (error) {
-    refs.authStatus.textContent = `Login fehlgeschlagen: ${error.message}`;
-    return;
+    refs.emailInput.value = "";
+    refs.passwordInput.value = "";
+  } catch (networkError) {
+    refs.authStatus.textContent =
+      "Login fehlgeschlagen: Netzwerkproblem. Bitte Supabase-URL/Key und Internet pruefen.";
+    console.error(networkError);
   }
-
-  refs.emailInput.value = "";
-  refs.passwordInput.value = "";
 }
 
 async function handleSignup() {
@@ -273,15 +278,21 @@ async function handleSignup() {
     return;
   }
 
-  const { error } = await supabase.auth.signUp({ email, password });
-  if (error) {
-    refs.authStatus.textContent = `Registrierung fehlgeschlagen: ${error.message}`;
-    return;
-  }
+  try {
+    const { error } = await supabase.auth.signUp({ email, password });
+    if (error) {
+      refs.authStatus.textContent = `Registrierung fehlgeschlagen: ${error.message}`;
+      return;
+    }
 
-  refs.authStatus.textContent = "Registrierung erfolgreich. Du bist nun eingeloggt.";
-  refs.emailInput.value = "";
-  refs.passwordInput.value = "";
+    refs.authStatus.textContent = "Registrierung erfolgreich. Du bist nun eingeloggt.";
+    refs.emailInput.value = "";
+    refs.passwordInput.value = "";
+  } catch (networkError) {
+    refs.authStatus.textContent =
+      "Registrierung fehlgeschlagen: Netzwerkproblem. Bitte Supabase-URL/Key und Internet pruefen.";
+    console.error(networkError);
+  }
 }
 
 async function handleLogout() {
