@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/styles.css?v=20260212b" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -80,15 +80,7 @@
         <p id="sessionText" class="session-user">Eingeloggt</p>
       </section>
 
-      <header class="panel dedication reveal" style="--i: 1">
-        <div class="dedication-copy">
-          <h2 class="practice-headline">some german a day keeps the doctor not away</h2>
-          <button id="quickPracticeBtn" class="primary-btn practice-btn" type="button">Üben</button>
-          <p class="muted">regular spaced repetition mode</p>
-        </div>
-      </header>
-
-      <section id="levelPanel" class="panel level-panel reveal" style="--i: 2">
+      <section id="levelPanel" class="panel level-panel reveal" style="--i: 1">
         <div class="level-visual">
           <img id="levelAvatar" class="level-avatar" src="assets/levels/level-0.png" alt="Level Avatar" />
         </div>
@@ -101,6 +93,14 @@
           </div>
         </div>
       </section>
+
+      <header class="panel dedication reveal" style="--i: 2">
+        <div class="dedication-copy">
+          <h2 class="practice-headline">some german a day keeps the doctor not away</h2>
+          <button id="quickPracticeBtn" class="primary-btn practice-btn" type="button">Üben</button>
+          <p class="muted">regular spaced repetition mode</p>
+        </div>
+      </header>
 
       <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 3">
         <div class="control-grid">
@@ -226,6 +226,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js"></script>
+    <script type="module" src="src/app.js?v=20260212b"></script>
   </body>
 </html>

@@ -4,11 +4,22 @@ const STORAGE_PROGRESS_KEY = "fsp_heart_progress_v1";
 const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
+const APP_VERSION = "20260212b";
 
 const SUPABASE_URL = "https://nitmxiasxwgwsaygumls.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_frshj6OvLDHGioVXbVwsrg_dbzyFajQ";
 const supabaseReady = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
-const supabase = supabaseReady ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+const supabase = supabaseReady
+  ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true,
+        storage: createSupabaseStorage(),
+        storageKey: "fsp_auth_v1"
+      }
+    })
+  : null;
 
 const SWEET_EMOJIS = ["💖", "💕", "💘", "💝", "🥰", "😍", "😘", "🫶", "🍑", "🌸", "✨"];
 let emojiHideTimer = null;
@@ -231,8 +242,8 @@ async function init() {
   initAuthUi();
   initAuthPortrait();
   try {
-    const url = new URL("../data/cards.json", import.meta.url);
-    const response = await fetch(url);
+    const url = new URL(`../data/cards.json?v=${APP_VERSION}`, import.meta.url);
+    const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) {
       throw new Error("Konnte Kartendaten nicht laden.");
     }
@@ -1011,6 +1022,63 @@ function computeStreak() {
     }
   }
   return streak;
+}
+
+function createSupabaseStorage() {
+  const memoryStore = {};
+  const localStorageRef = getStorageOrNull("localStorage");
+  const sessionStorageRef = getStorageOrNull("sessionStorage");
+  const primaryStorage = localStorageRef || sessionStorageRef;
+
+  return {
+    getItem(key) {
+      try {
+        if (primaryStorage) {
+          const value = primaryStorage.getItem(key);
+          if (value !== null) return value;
+        }
+      } catch (error) {
+        console.warn("Auth storage getItem fehlgeschlagen", error);
+      }
+      return Object.prototype.hasOwnProperty.call(memoryStore, key) ? memoryStore[key] : null;
+    },
+    setItem(key, value) {
+      try {
+        if (primaryStorage) {
+          primaryStorage.setItem(key, value);
+          return;
+        }
+      } catch (error) {
+        console.warn("Auth storage setItem fehlgeschlagen", error);
+      }
+      memoryStore[key] = value;
+    },
+    removeItem(key) {
+      try {
+        if (localStorageRef) {
+          localStorageRef.removeItem(key);
+        }
+      } catch (error) {
+        console.warn("Auth storage removeItem (local) fehlgeschlagen", error);
+      }
+      try {
+        if (sessionStorageRef) {
+          sessionStorageRef.removeItem(key);
+        }
+      } catch (error) {
+        console.warn("Auth storage removeItem (session) fehlgeschlagen", error);
+      }
+      delete memoryStore[key];
+    }
+  };
+}
+
+function getStorageOrNull(storageName) {
+  try {
+    return window[storageName] || null;
+  } catch (error) {
+    return null;
+  }
 }
 
 function applyLevelAvatarSources(sources) {
