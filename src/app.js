@@ -97,16 +97,16 @@ const REGULAR_PATTERN = [
 ];
 
 const FOLDERS = [
-  { id: "regular", label: "Regulaer" },
+  { id: "regular", label: "Ueben" },
   { id: "new", label: "Neu" },
-  { id: "one_right", label: "1x richtig" },
   { id: "unsure", label: "Unsicher" },
+  { id: "one_right", label: "1x richtig" },
   { id: "streak_2", label: "2x richtig" },
   { id: "streak_3", label: "3x richtig" },
   { id: "streak_4", label: "4x richtig" },
   { id: "streak_5", label: "5x richtig" },
   { id: "streak_6", label: "6x richtig" },
-  { id: "diamonds", label: "Diamonds (7x)" },
+  { id: "diamonds", label: "7x richtig (Diamonds)" },
   { id: "all", label: "Alle Karten" }
 ];
 
@@ -137,9 +137,9 @@ const refs = {
   loginBtn: document.getElementById("loginBtn"),
   signupBtn: document.getElementById("signupBtn"),
   logoutBtn: document.getElementById("logoutBtn"),
+  quickPracticeBtn: document.getElementById("quickPracticeBtn"),
   sessionText: document.getElementById("sessionText"),
   authPortrait: document.getElementById("authPortrait"),
-  dedicationPhoto: document.getElementById("dedicationPhoto"),
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
   queueInfo: document.getElementById("queueInfo"),
@@ -180,6 +180,7 @@ function wireEvents() {
   refs.authForm.addEventListener("submit", handleLoginSubmit);
   refs.signupBtn.addEventListener("click", handleSignup);
   refs.logoutBtn.addEventListener("click", handleLogout);
+  refs.quickPracticeBtn.addEventListener("click", startQuickPractice);
 
   refs.nextBtn.addEventListener("click", nextCard);
   refs.shuffleBtn.addEventListener("click", () => rebuildQueue(true));
@@ -206,7 +207,6 @@ function wireEvents() {
 async function init() {
   initAuthUi();
   initAuthPortrait();
-  initDedicationPhoto();
   try {
     const url = new URL("../data/cards.json", import.meta.url);
     const response = await fetch(url);
@@ -373,21 +373,10 @@ async function handleLogout() {
   refs.authStatus.textContent = "Ausgeloggt";
 }
 
-function initDedicationPhoto() {
-  const photo = refs.dedicationPhoto;
-  if (!photo) return;
-
-  const preferredPath = "assets/kat-photo.jpg";
-  const fallbackPath = "assets/kat-photo-placeholder.svg";
-  const probe = new Image();
-
-  probe.onload = () => {
-    photo.src = preferredPath;
-  };
-  probe.onerror = () => {
-    photo.src = fallbackPath;
-  };
-  probe.src = preferredPath;
+function startQuickPractice() {
+  state.selectedFolder = "regular";
+  renderFolderFilters();
+  enterImmersiveMode();
 }
 
 function flattenCards(deck) {
@@ -579,11 +568,11 @@ function updateStartButtonState() {
   const total = state.queue.length;
   if (total === 0) {
     refs.startImmersiveBtn.disabled = true;
-    refs.startImmersiveBtn.textContent = "los geht's";
+    refs.startImmersiveBtn.textContent = "Üben starten";
     return;
   }
   refs.startImmersiveBtn.disabled = false;
-  refs.startImmersiveBtn.textContent = "los geht's";
+  refs.startImmersiveBtn.textContent = "Üben starten";
 }
 
 function enterImmersiveMode() {

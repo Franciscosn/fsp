@@ -332,51 +332,33 @@ body.auth-only .edge-deco {
 
 .dedication {
   display: grid;
-  grid-template-columns: 1.2fr 180px;
+  grid-template-columns: 1fr;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
 
 .dedication-copy {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
-.dedication-text {
-  margin: 0;
-  font-family: "Baloo 2", "Trebuchet MS", sans-serif;
-  font-size: clamp(1.6rem, 4.8vw, 2.9rem);
-  line-height: 1.05;
-  color: var(--heart-600);
-  letter-spacing: 0.01em;
+.practice-btn {
+  width: min(360px, 100%);
+  font-size: 1.06rem;
 }
 
-.mailto-kiss-btn {
+.feedback-panel {
+  display: grid;
+  justify-items: center;
+}
+
+.feedback-link {
+  width: min(460px, 100%);
   text-decoration: none;
   display: inline-flex;
-  width: fit-content;
   align-items: center;
   justify-content: center;
-}
-
-.mailto-kiss-btn:visited {
-  color: #fff;
-}
-
-.dedication-photo-wrap {
-  width: 170px;
-  aspect-ratio: 1;
-  border-radius: 26px;
-  overflow: hidden;
-  border: 3px solid rgba(255, 255, 255, 0.82);
-  box-shadow: 0 12px 26px rgba(160, 38, 58, 0.26);
-}
-
-.dedication-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  padding: 12px 14px;
 }
 
 h2,
@@ -957,14 +939,6 @@ body.immersive .stats-fab {
   .stats-grid {
     grid-template-columns: 1fr;
   }
-
-  .dedication {
-    grid-template-columns: 1fr 130px;
-  }
-
-  .dedication-photo-wrap {
-    width: 122px;
-  }
 }
 
 @media (max-width: 760px) {
@@ -1022,11 +996,7 @@ body.immersive .stats-fab {
   .dedication {
     grid-template-columns: 1fr;
     text-align: center;
-    justify-items: center;
-  }
-
-  .dedication-photo-wrap {
-    width: min(220px, 72vw);
+    justify-items: start;
   }
 
   .folder-grid {
