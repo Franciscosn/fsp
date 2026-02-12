@@ -115,6 +115,7 @@ const refs = {
   signupBtn: document.getElementById("signupBtn"),
   logoutBtn: document.getElementById("logoutBtn"),
   sessionText: document.getElementById("sessionText"),
+  authPortrait: document.getElementById("authPortrait"),
   dedicationPhoto: document.getElementById("dedicationPhoto"),
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
@@ -181,6 +182,7 @@ function wireEvents() {
 
 async function init() {
   initAuthUi();
+  initAuthPortrait();
   initDedicationPhoto();
   try {
     const url = new URL("../data/cards.json", import.meta.url);
@@ -208,6 +210,7 @@ async function init() {
 }
 
 function initAuthUi() {
+  document.body.classList.add("auth-only");
   refs.authPage.classList.remove("hidden");
   refs.appContent.classList.add("hidden");
   refs.toggleStatsBtn.classList.add("hidden");
@@ -220,6 +223,23 @@ function initAuthUi() {
   refs.authStatus.textContent =
     "Supabase ist noch nicht verbunden (Login deaktiviert, nur lokale Speicherung)";
   refs.authForm.classList.add("hidden");
+}
+
+function initAuthPortrait() {
+  const portrait = refs.authPortrait;
+  if (!portrait) return;
+
+  const preferredPath = "assets/hermine-heusler-edenhuizen.jpg";
+  const fallbackPath = "assets/kat-photo.jpg";
+  const probe = new Image();
+
+  probe.onload = () => {
+    portrait.src = preferredPath;
+  };
+  probe.onerror = () => {
+    portrait.src = fallbackPath;
+  };
+  probe.src = preferredPath;
 }
 
 async function initSupabaseSession() {
@@ -249,6 +269,7 @@ async function applySession(session) {
 
 function updateAuthUi() {
   if (!supabaseReady) {
+    document.body.classList.add("auth-only");
     refs.authPage.classList.remove("hidden");
     refs.appContent.classList.add("hidden");
     refs.toggleStatsBtn.classList.add("hidden");
@@ -256,6 +277,7 @@ function updateAuthUi() {
   }
 
   if (!state.user) {
+    document.body.classList.add("auth-only");
     refs.authStatus.textContent = "Nicht eingeloggt";
     refs.authPage.classList.remove("hidden");
     refs.appContent.classList.add("hidden");
@@ -264,6 +286,7 @@ function updateAuthUi() {
     return;
   }
 
+  document.body.classList.remove("auth-only");
   refs.authStatus.textContent = `Eingeloggt als ${state.user.email}`;
   refs.sessionText.textContent = `Eingeloggt als ${state.user.email}`;
   refs.authPage.classList.add("hidden");

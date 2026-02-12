@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="src/styles.css" />
   </head>
-  <body>
+  <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
     <div class="bg-orb orb-b" aria-hidden="true"></div>
     <div class="bg-orb orb-c" aria-hidden="true"></div>
@@ -27,23 +27,47 @@
     </aside>
 
     <section id="authPage" class="auth-page">
-      <article class="panel auth-panel auth-card">
-        <h2>Login</h2>
-        <p class="muted">Bitte einloggen oder registrieren, um deinen Fortschritt zu sehen.</p>
-        <p id="authStatus" class="muted auth-status">Nicht eingeloggt</p>
-        <form id="authForm" class="auth-form auth-form-stacked">
-          <input id="emailInput" class="auth-input" type="email" placeholder="E-Mail" required />
-          <input
-            id="passwordInput"
-            class="auth-input"
-            type="password"
-            placeholder="Passwort"
-            minlength="6"
-            required
+      <article class="auth-stage">
+        <figure class="auth-portrait-wrap">
+          <img
+            id="authPortrait"
+            class="auth-portrait"
+            src="assets/hermine-heusler-edenhuizen.jpg"
+            alt="Dr. Hermine Heusler-Edenhuizen"
           />
-          <button id="loginBtn" class="primary-btn" type="submit">Login</button>
-          <button id="signupBtn" class="soft-btn" type="button">Registrieren</button>
-        </form>
+          <figcaption class="auth-caption">
+            <p class="auth-caption-title">Dr. Hermine Heusler-Edenhuizen (1872-1955)</p>
+            <p class="auth-caption-quote">
+              "...kann mit einer selbstbewussten, berufstätigen Frau nicht in Ruhe und Frieden
+              leben."
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="panel auth-panel auth-card">
+          <p class="auth-brand">deutschvisite.de</p>
+          <h2>Willkommen zur Fachsprache</h2>
+          <p class="auth-lead">
+            Hier lernst du die Fachsprache, um in Deutschland arbeiten zu dürfen. Danke an alle
+            Ärztinnen.
+          </p>
+          <p id="authStatus" class="auth-status">Nicht eingeloggt</p>
+          <form id="authForm" class="auth-form auth-form-stacked">
+            <input id="emailInput" class="auth-input" type="email" placeholder="E-Mail" required />
+            <input
+              id="passwordInput"
+              class="auth-input"
+              type="password"
+              placeholder="Passwort"
+              minlength="6"
+              required
+            />
+            <button id="loginBtn" class="primary-btn auth-primary-btn" type="submit">Login</button>
+            <button id="signupBtn" class="soft-btn auth-soft-btn" type="button">
+              Registrieren
+            </button>
+          </form>
+        </div>
       </article>
     </section>
 
