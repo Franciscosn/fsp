@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="560" viewBox="0 0 420 560" role="img" aria-labelledby="title desc">
+  <title id="title">Doctor Avatar Level 2</title>
+  <desc id="desc">Doctor progression avatar for level 2 (Kittel).</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8f8f8"/>
+      <stop offset="100%" stop-color="#d8d8d8"/>
+    </linearGradient>
+    <linearGradient id="coatGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fafafa"/>
+      <stop offset="100%" stop-color="#e9e9e9"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="420" height="560" fill="url(#bgGrad)"/>
+  <rect x="14" y="14" width="392" height="532" rx="26" fill="none" stroke="#b1b1b1" stroke-width="2"/>
+  <ellipse cx="210" cy="510" rx="86" ry="16" fill="#111" opacity="0.22"/>
+  <g id="avatar" stroke="#1f1f1f" stroke-width="2">
+    <rect x="196" y="166" width="28" height="28" rx="10" fill="#d0d0d0"/>
+
+    <rect x="132" y="212" width="26" height="124" rx="13" fill="#666"/>
+    <rect x="262" y="212" width="26" height="124" rx="13" fill="#666"/>
+
+    <rect x="158" y="188" width="104" height="154" rx="24" fill="#666"/>
+
+    <rect x="168" y="334" width="34" height="130" rx="14" fill="#535353"/>
+    <rect x="218" y="334" width="34" height="130" rx="14" fill="#535353"/>
+
+    <rect x="160" y="458" width="50" height="20" rx="10" fill="#2d2d2d"/>
+    <rect x="210" y="458" width="50" height="20" rx="10" fill="#2d2d2d"/>
+
+    <circle cx="145" cy="338" r="14" fill="#d5d5d5"/>
+    <circle cx="275" cy="338" r="14" fill="#d5d5d5"/>
+
+    <circle cx="210" cy="126" r="44" fill="#e7e7e7"/>
+    <path d="M166 126c0-31 20-54 44-54s44 23 44 54v18c-12-11-27-17-44-17s-32 6-44 17z" fill="#1b1b1b"/>
+    <circle cx="194" cy="130" r="3" fill="#2a2a2a" stroke="none"/>
+    <circle cx="226" cy="130" r="3" fill="#2a2a2a" stroke="none"/>
+    <path d="M198 148q12 10 24 0" fill="none"/>
+    <path d="M146 188h128l18 164c1 8-5 14-13 14H141c-8 0-14-6-13-14z" fill="url(#coatGrad)"/>
+    <path d="M210 200v164" fill="none"/>
+    <path d="M182 198l28 48 28-48" fill="none"/>
+  </g>
+
+  <text x="210" y="530" text-anchor="middle" font-size="20" font-weight="800" fill="#222" font-family="Nunito, Arial, sans-serif">LEVEL 2</text>
+  <text x="210" y="548" text-anchor="middle" font-size="12" fill="#444" font-family="Nunito, Arial, sans-serif">Kittel</text>
+</svg>
