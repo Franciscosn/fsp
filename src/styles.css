@@ -272,6 +272,25 @@ body.auth-only .edge-deco {
   text-align: center;
 }
 
+.build-badge {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 30;
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(80, 80, 80, 0.25);
+  background: rgba(255, 255, 255, 0.92);
+  color: #5a3640;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 20px rgba(40, 40, 40, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
 .auth-brand {
   margin: 0;
   font-size: 0.85rem;
@@ -1394,6 +1413,17 @@ body.immersive .stats-fab {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .build-badge {
+    right: 8px;
+    bottom: 8px;
+    font-size: 0.68rem;
+    padding: 6px 8px;
+    max-width: calc(100vw - 16px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .edge-deco {

@@ -5,7 +5,8 @@ const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
 const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260213b";
+const APP_VERSION = "20260213c";
+const BUILD_UPDATED_AT = "2026-02-13 16:45 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const DEFAULT_VOICE_CASE = [
@@ -223,6 +224,7 @@ const refs = {
   logoutBtn: document.getElementById("logoutBtn"),
   quickPracticeBtn: document.getElementById("quickPracticeBtn"),
   sessionText: document.getElementById("sessionText"),
+  buildBadge: document.getElementById("buildBadge"),
   voicePanel: document.getElementById("voicePanel"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
   voiceRecordBtn: document.getElementById("voiceRecordBtn"),
@@ -306,6 +308,7 @@ function wireEvents() {
 }
 
 async function init() {
+  renderBuildBadge();
   initAuthUi();
   initAuthPortrait();
   initVoiceUi();
@@ -332,6 +335,15 @@ async function init() {
       "<p>Karten konnten nicht geladen werden. Bitte die Seite ueber einen lokalen Webserver oeffnen.</p>";
     console.error(error);
   }
+}
+
+function renderBuildBadge() {
+  if (!refs.buildBadge) return;
+
+  const currentUrl = new URL(window.location.href);
+  const hasVersionHint = currentUrl.searchParams.get("v") || "";
+  const hint = hasVersionHint ? ` | URL-v=${hasVersionHint}` : "";
+  refs.buildBadge.textContent = `Version ${APP_VERSION} | Stand ${BUILD_UPDATED_AT}${hint}`;
 }
 
 function initAuthUi() {

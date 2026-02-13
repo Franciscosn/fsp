@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260213b" />
+    <link rel="stylesheet" href="src/styles.css?v=20260213c" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -117,7 +117,7 @@
           <button id="voiceRecordBtn" class="primary-btn" type="button">🎤 Aufnahme starten</button>
           <button id="voiceResetBtn" class="soft-btn" type="button">Neues Gespraech</button>
         </div>
-        <p id="voiceStatus" class="voice-status">Bereit. Fall eingeben und Aufnahme starten.</p>
+        <p id="voiceStatus" class="voice-status">Bereit. Optional eigenen Fall eingeben, sonst interner Standardfall.</p>
         <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
         <article id="voiceLastTurn" class="voice-turn hidden">
           <p class="voice-turn-label">Du:</p>
@@ -205,6 +205,10 @@
       </footer>
     </main>
 
+    <p id="buildBadge" class="build-badge" aria-live="polite">
+      Stand wird geladen ...
+    </p>
+
     <button
       id="toggleStatsBtn"
       class="stats-fab hidden"
@@ -253,6 +257,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260213b"></script>
+    <script type="module" src="src/app.js?v=20260213c"></script>
   </body>
 </html>

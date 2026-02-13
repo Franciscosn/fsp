@@ -7,6 +7,8 @@ const MAX_CASE_LENGTH = 8_000;
 const MAX_HISTORY_TURNS = 8;
 const MAX_TEXT_FIELD = 900;
 const ENGLISH_MARKERS = [
+  " need ",
+  " respond ",
   " the ",
   " and ",
   " with ",
@@ -300,7 +302,8 @@ async function generatePatientTurn(ai, promptInput) {
   }
 
   return normalizePatientTurn({
-    patient_reply: truncateForTts(text || "Entschuldigung, koennen Sie die Frage bitte anders stellen?"),
+    patient_reply:
+      "Entschuldigung, koennen Sie die Frage bitte noch einmal in einfachen Worten stellen?",
     examiner_feedback: "Achte auf praezise, offene Fragen zur Anamnese.",
     revealed_case_facts: [],
     off_topic: false
@@ -407,6 +410,11 @@ function normalizeExaminerFeedback(text) {
 function looksLikeMetaResponse(text) {
   const lower = ` ${text.toLowerCase()} `;
   return (
+    lower.includes(" need to respond as patient ") ||
+    lower.includes(" respond as patient ") ||
+    lower.includes(" must respond as patient ") ||
+    lower.includes(" i need to respond ") ||
+    lower.includes(" i should respond ") ||
     lower.includes(" as an ai ") ||
     lower.includes(" language model ") ||
     lower.includes(" i cannot ") ||
