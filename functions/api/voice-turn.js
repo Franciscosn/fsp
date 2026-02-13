@@ -76,6 +76,7 @@ const SYSTEM_INSTRUCTIONS = [
   "Rolle: Du bist ausschliesslich ein standardisierter Patient in einer medizinischen Fachsprachpruefung.",
   "Sprache: Alle Ausgaben muessen auf Deutsch sein. Kein Englisch.",
   "Perspektive: Antworte in Ich-Form aus Patientensicht.",
+  "Wenn der Arzt nur begruesst (z. B. 'Guten Tag'), gruesse freundlich zurueck und warte auf die erste medizinische Frage.",
   "Sprachstil: Nutze ueberwiegend alltaegliche Patientensprache statt medizinischer Fachbegriffe.",
   "Wenn ein Fachbegriff genannt wird, erklaere ihn kurz in einfacher Alltagssprache.",
   "Verhalten: Bleibe strikt innerhalb des vorgegebenen Falls.",
@@ -121,7 +122,9 @@ export async function onRequestPost(context) {
 
     const llmResult = await generatePatientTurn(context.env.AI, promptInput);
     const spokenReply = truncateForTts(llmResult.patient_reply);
-    const replyAudioBase64 = await synthesizeSpeech(context.env.AI, spokenReply);
+    const replyAudioBase64 = payload.preferLocalTts
+      ? ""
+      : await synthesizeSpeech(context.env.AI, spokenReply);
 
     const nextHistory = [...payload.history, { user: transcript, assistant: spokenReply }].slice(
       -MAX_HISTORY_TURNS
@@ -186,12 +189,14 @@ async function readPayload(request) {
   }
 
   const history = sanitizeHistory(body?.history);
+  const preferLocalTts = Boolean(body?.preferLocalTts);
 
   return {
     ok: true,
     audioBase64: cleanedAudio,
     caseText: rawCaseText,
-    history
+    history,
+    preferLocalTts
   };
 }
 
@@ -230,28 +235,51 @@ function safeText(value) {
 }
 
 async function transcribeAudio(ai, audioBase64) {
-  let result;
+  let result = null;
+  const primaryPayload = {
+    audio: audioBase64,
+    task: "transcribe",
+    language: "de",
+    vad_filter: false,
+    initial_prompt:
+      "Dialog in deutscher Alltagssprache in der Arztpraxis; kann mit Begruessung beginnen."
+  };
+
   try {
-    result = await ai.run(WHISPER_MODEL, {
+    result = await ai.run(WHISPER_MODEL, primaryPayload);
+  } catch {
+    const audioBytes = base64ToUint8Array(audioBase64);
+    try {
+      result = await ai.run(WHISPER_MODEL, {
+        ...primaryPayload,
+        audio: Array.from(audioBytes)
+      });
+    } catch {
+      result = null;
+    }
+  }
+
+  const text = typeof result?.text === "string" ? result.text.trim() : "";
+  if (text) {
+    return text;
+  }
+
+  // Fallback for noisy audio where VAD can help.
+  try {
+    const retry = await ai.run(WHISPER_MODEL, {
       audio: audioBase64,
       task: "transcribe",
       language: "de",
       vad_filter: true,
       initial_prompt: "medizinisches Fachgespraech"
     });
+    if (typeof retry?.text === "string") {
+      return retry.text.trim();
+    }
   } catch {
-    const audioBytes = base64ToUint8Array(audioBase64);
-    result = await ai.run(WHISPER_MODEL, {
-      audio: Array.from(audioBytes),
-      task: "transcribe",
-      language: "de",
-      vad_filter: true,
-      initial_prompt: "medizinisches Fachgespraech"
-    });
+    // keep empty
   }
-  if (typeof result?.text === "string") {
-    return result.text.trim();
-  }
+
   return "";
 }
 
