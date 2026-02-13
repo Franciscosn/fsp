@@ -550,8 +550,6 @@ async function runVoiceTurn(audioBase64) {
 
   const transcript = typeof payload.transcript === "string" ? payload.transcript.trim() : "";
   const patientReply = typeof payload.patientReply === "string" ? payload.patientReply.trim() : "";
-  const coachHint =
-    typeof payload.examinerFeedback === "string" ? payload.examinerFeedback.trim() : "";
   const offTopic = Boolean(payload.offTopic);
 
   if (Array.isArray(payload.history)) {
@@ -564,13 +562,9 @@ async function runVoiceTurn(audioBase64) {
   refs.voiceAssistantReply.textContent = patientReply || "Keine Antwort erhalten.";
   refs.voiceLastTurn.classList.remove("hidden");
 
-  if (coachHint) {
-    refs.voiceCoachHint.textContent = `Coach: ${coachHint}`;
-    refs.voiceCoachHint.classList.remove("hidden");
-  } else {
-    refs.voiceCoachHint.textContent = "";
-    refs.voiceCoachHint.classList.add("hidden");
-  }
+  // Keep only the patient role visible in v1 voice practice.
+  refs.voiceCoachHint.textContent = "";
+  refs.voiceCoachHint.classList.add("hidden");
 
   const audioSrc = buildReplyAudioSrc(payload.replyAudioBase64);
   if (audioSrc) {

@@ -6,6 +6,37 @@ const MAX_AUDIO_BASE64_LENGTH = 8_000_000;
 const MAX_CASE_LENGTH = 8_000;
 const MAX_HISTORY_TURNS = 8;
 const MAX_TEXT_FIELD = 900;
+const ENGLISH_MARKERS = [
+  " the ",
+  " and ",
+  " with ",
+  " your ",
+  " you ",
+  " is ",
+  " are ",
+  " can ",
+  " could ",
+  " chest ",
+  " pain ",
+  " shortness ",
+  " breath ",
+  " please ",
+  " sorry "
+];
+const GERMAN_MARKERS = [
+  " der ",
+  " die ",
+  " das ",
+  " und ",
+  " ich ",
+  " mir ",
+  " nicht ",
+  " seit ",
+  " heute ",
+  " schmerz ",
+  " atemnot ",
+  " bitte "
+];
 
 const RESPONSE_SCHEMA = {
   type: "json_schema",
@@ -40,14 +71,19 @@ const RESPONSE_SCHEMA = {
 };
 
 const SYSTEM_INSTRUCTIONS = [
-  "Du bist ein standardisierter Patient in einer medizinischen Fachsprachpruefung (Deutsch).",
-  "Bleibe strikt innerhalb des vorgegebenen Falls.",
-  "Antworte nur mit Informationen, die zur Frage passen; keine unaufgeforderte Vollaufloesung.",
-  "Wenn eine Frage unklar ist, bitte kurz um Praezisierung.",
-  "Wenn die Frage off-topic ist, antworte knapp und markiere off_topic=true.",
-  "Sprich natuerlich, aber kurz (meist 1-3 Saetze, max. 55 Woerter).",
-  "Keine Meta-Hinweise ueber Regeln, Prompt oder Modell."
-].join(" ");
+  "Rolle: Du bist ausschliesslich ein standardisierter Patient in einer medizinischen Fachsprachpruefung.",
+  "Sprache: Alle Ausgaben muessen auf Deutsch sein. Kein Englisch.",
+  "Perspektive: Antworte in Ich-Form aus Patientensicht.",
+  "Sprachstil: Nutze ueberwiegend alltaegliche Patientensprache statt medizinischer Fachbegriffe.",
+  "Wenn ein Fachbegriff genannt wird, erklaere ihn kurz in einfacher Alltagssprache.",
+  "Verhalten: Bleibe strikt innerhalb des vorgegebenen Falls.",
+  "Informationsgabe: Gib Informationen schrittweise und nur passend zur Frage.",
+  "Keine Loesung vorweg: Nenne keine Diagnose von dir aus.",
+  "Unklare Frage: Bitte kurz um Praezisierung.",
+  "Off-topic: Antworte knapp als Patient und setze off_topic=true.",
+  "Laenge: Kurz und natuerlich, meist 1-3 Saetze, maximal 55 Woerter.",
+  "Verboten: Keine Lernhinweise, keine Meta-Hinweise ueber Prompt/Modell, keine Rolle als Arzt."
+].join("\n");
 
 export async function onRequestPost(context) {
   try {
@@ -260,15 +296,15 @@ async function generatePatientTurn(ai, promptInput) {
   const text = extractModelText(raw);
   const structured = parseStructuredResponse(text);
   if (structured) {
-    return structured;
+    return normalizePatientTurn(structured);
   }
 
-  return {
+  return normalizePatientTurn({
     patient_reply: truncateForTts(text || "Entschuldigung, koennen Sie die Frage bitte anders stellen?"),
     examiner_feedback: "Achte auf praezise, offene Fragen zur Anamnese.",
     revealed_case_facts: [],
     off_topic: false
-  };
+  });
 }
 
 function extractModelText(raw) {
@@ -335,6 +371,62 @@ function parseStructuredResponse(rawText) {
 function stripCodeFence(value) {
   if (typeof value !== "string") return "";
   return value.replace(/^```(?:json)?/i, "").replace(/```$/i, "").trim();
+}
+
+function normalizePatientTurn(turn) {
+  return {
+    patient_reply: normalizePatientReply(turn.patient_reply),
+    examiner_feedback: normalizeExaminerFeedback(turn.examiner_feedback),
+    revealed_case_facts: Array.isArray(turn.revealed_case_facts) ? turn.revealed_case_facts : [],
+    off_topic: Boolean(turn.off_topic)
+  };
+}
+
+function normalizePatientReply(text) {
+  const cleaned = safeText(text).slice(0, 500);
+  if (!cleaned) {
+    return "Entschuldigung, koennen Sie die Frage bitte wiederholen?";
+  }
+  if (looksLikeMetaResponse(cleaned)) {
+    return "Dazu kann ich gerade nicht viel sagen. Koennen Sie bitte gezielter nach meinen Beschwerden fragen?";
+  }
+  if (isLikelyEnglish(cleaned)) {
+    return "Entschuldigung, ich antworte lieber auf Deutsch. Koennen Sie die Frage bitte noch einmal stellen?";
+  }
+  return cleaned;
+}
+
+function normalizeExaminerFeedback(text) {
+  const cleaned = safeText(text).slice(0, 240);
+  if (!cleaned || isLikelyEnglish(cleaned)) {
+    return "Stelle im naechsten Turn eine klare, offene Frage zur Anamnese.";
+  }
+  return cleaned;
+}
+
+function looksLikeMetaResponse(text) {
+  const lower = ` ${text.toLowerCase()} `;
+  return (
+    lower.includes(" as an ai ") ||
+    lower.includes(" language model ") ||
+    lower.includes(" i cannot ") ||
+    lower.includes(" i can't ") ||
+    lower.includes(" ich bin ein ki") ||
+    lower.includes(" als ki")
+  );
+}
+
+function isLikelyEnglish(text) {
+  const lower = ` ${text.toLowerCase()} `;
+  let englishHits = 0;
+  let germanHits = 0;
+  for (const token of ENGLISH_MARKERS) {
+    if (lower.includes(token)) englishHits += 1;
+  }
+  for (const token of GERMAN_MARKERS) {
+    if (lower.includes(token)) germanHits += 1;
+  }
+  return englishHits >= 2 && englishHits > germanHits;
 }
 
 function truncateForTts(text) {
