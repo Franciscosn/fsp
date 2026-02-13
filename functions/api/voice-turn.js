@@ -320,13 +320,13 @@ async function generatePatientTurn(ai, promptInput) {
 
   const directStructured = extractStructuredFromRaw(raw);
   if (directStructured) {
-    return normalizePatientTurn(directStructured);
+    return finalizePatientTurn(ai, directStructured);
   }
 
   const text = extractModelText(raw);
   const structured = parseStructuredResponse(text);
   if (structured) {
-    return normalizePatientTurn(structured);
+    return finalizePatientTurn(ai, structured);
   }
 
   // Final text-only fallback to avoid repeating a static message if schema parsing fails.
@@ -342,7 +342,7 @@ async function generatePatientTurn(ai, promptInput) {
 
   const plainText = extractModelText(plainRaw);
 
-  return normalizePatientTurn({
+  return finalizePatientTurn(ai, {
     patient_reply:
       plainText ||
       text ||
@@ -351,6 +351,47 @@ async function generatePatientTurn(ai, promptInput) {
     revealed_case_facts: [],
     off_topic: false
   });
+}
+
+async function finalizePatientTurn(ai, turn) {
+  const normalized = normalizePatientTurn(turn);
+  if (!normalized.patient_reply) {
+    normalized.patient_reply = "Koennen Sie bitte genauer nach meinen Beschwerden fragen?";
+    return normalized;
+  }
+
+  if (!isLikelyEnglish(normalized.patient_reply)) {
+    return normalized;
+  }
+
+  const rewritten = await rewriteEnglishToGermanPatient(ai, normalized.patient_reply);
+  if (rewritten && !isLikelyEnglish(rewritten)) {
+    normalized.patient_reply = normalizePatientReply(rewritten);
+    return normalized;
+  }
+
+  normalized.patient_reply =
+    "Mir geht es seit heute schlechter, koennen Sie bitte gezielt nach meinen Beschwerden fragen?";
+  return normalized;
+}
+
+async function rewriteEnglishToGermanPatient(ai, text) {
+  if (!text) return "";
+  try {
+    const raw = await ai.run(CHAT_MODEL, {
+      instructions: [
+        "Du formulierst eine Patientenantwort auf Deutsch um.",
+        "Uebersetze den Inhalt naturgetreu ins Deutsche.",
+        "Stil: alltaegliche Patientensprache, Ich-Form, kurz (1-2 Saetze).",
+        "Keine neuen medizinischen Fakten hinzufuegen."
+      ].join(" "),
+      input: text
+    });
+    const rewritten = extractModelText(raw);
+    return rewritten || "";
+  } catch {
+    return "";
+  }
 }
 
 function extractModelText(raw) {
@@ -503,9 +544,6 @@ function normalizePatientReply(text) {
   }
   if (looksLikeMetaResponse(cleaned)) {
     return "Dazu kann ich gerade nicht viel sagen. Koennen Sie bitte gezielter nach meinen Beschwerden fragen?";
-  }
-  if (isLikelyEnglish(cleaned)) {
-    return "Entschuldigung, ich antworte lieber auf Deutsch. Koennen Sie die Frage bitte noch einmal stellen?";
   }
   return cleaned;
 }
