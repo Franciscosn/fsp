@@ -380,6 +380,28 @@ body.auth-only .edge-deco {
   color: #7f3b4b;
 }
 
+.voice-case-select {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(248, 73, 102, 0.28);
+  background: #fff;
+  color: #54202f;
+  font: inherit;
+  padding: 10px 12px;
+}
+
+.voice-case-select:focus {
+  outline: 2px solid rgba(248, 73, 102, 0.28);
+  outline-offset: 1px;
+}
+
+.voice-case-meta {
+  margin: -2px 0 2px;
+  color: #7b4a54;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 .voice-case-input {
   width: 100%;
   border-radius: 12px;
@@ -391,6 +413,12 @@ body.auth-only .edge-deco {
   line-height: 1.4;
   resize: vertical;
   min-height: 104px;
+}
+
+.voice-case-input[disabled] {
+  background: #f8f2f4;
+  color: #8f6973;
+  cursor: not-allowed;
 }
 
 .voice-case-input:focus {

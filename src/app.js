@@ -3,14 +3,18 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const STORAGE_PROGRESS_KEY = "fsp_heart_progress_v1";
 const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
 const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
+const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260213d";
-const BUILD_UPDATED_AT = "2026-02-13 17:25 UTC";
+const APP_VERSION = "20260213e";
+const BUILD_UPDATED_AT = "2026-02-13 18:05 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MIN_VOICE_BLOB_BYTES = 450;
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
+const VOICE_CASE_DEFAULT = "default";
+const VOICE_CASE_CUSTOM = "custom";
+const VOICE_CASE_LIBRARY_PREFIX = "lib:";
 const DEFAULT_VOICE_CASE = [
   "CASE_ID: default_thoraxschmerz_001",
   "Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.",
@@ -214,7 +218,8 @@ const state = {
   voiceRecording: false,
   voiceCaseLibrary: [],
   voiceCaseIndex: -1,
-  voiceCaseLibraryLoaded: false
+  voiceCaseLibraryLoaded: false,
+  voiceCaseSelection: VOICE_CASE_DEFAULT
 };
 
 const refs = {
@@ -231,6 +236,8 @@ const refs = {
   sessionText: document.getElementById("sessionText"),
   buildBadge: document.getElementById("buildBadge"),
   voicePanel: document.getElementById("voicePanel"),
+  voiceCaseSelect: document.getElementById("voiceCaseSelect"),
+  voiceCaseMeta: document.getElementById("voiceCaseMeta"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
   voiceRecordBtn: document.getElementById("voiceRecordBtn"),
   voiceResetBtn: document.getElementById("voiceResetBtn"),
@@ -293,6 +300,7 @@ function wireEvents() {
   refs.voiceNextCaseBtn?.addEventListener("click", () => {
     void handleVoiceNextCase();
   });
+  refs.voiceCaseSelect?.addEventListener("change", handleVoiceCaseSelectionChange);
   refs.voiceCaseInput.addEventListener("input", handleVoiceCaseInput);
 
   refs.nextBtn.addEventListener("click", nextCard);
@@ -393,6 +401,14 @@ function initVoiceUi() {
   if (typeof stored.caseText === "string" && stored.caseText) {
     refs.voiceCaseInput.value = stored.caseText.slice(0, MAX_VOICE_CASE_LENGTH);
   }
+  const storedSelection = loadFromStorage(STORAGE_VOICE_CASE_SELECTION_KEY, {
+    selection: VOICE_CASE_DEFAULT
+  });
+  if (typeof storedSelection.selection === "string" && storedSelection.selection) {
+    state.voiceCaseSelection = storedSelection.selection;
+  }
+  renderVoiceCaseSelect();
+  applyVoiceCaseSelection(state.voiceCaseSelection, { preserveStatus: true, resetConversation: false });
   void ensureVoiceCaseLibraryLoaded();
 
   if (!isVoiceCaptureSupported()) {
@@ -404,7 +420,7 @@ function initVoiceUi() {
     return;
   }
 
-  setVoiceStatus("Bereit. Optional eigenen Fall eingeben, sonst wird ein interner Standardfall genutzt.");
+  setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst jetzt aufnehmen.`);
 }
 
 function handleVoiceCaseInput() {
@@ -413,6 +429,11 @@ function handleVoiceCaseInput() {
     refs.voiceCaseInput.value = normalized;
   }
   saveToStorage(STORAGE_VOICE_CASE_KEY, { caseText: refs.voiceCaseInput.value });
+}
+
+function handleVoiceCaseSelectionChange() {
+  if (!refs.voiceCaseSelect) return;
+  applyVoiceCaseSelection(refs.voiceCaseSelect.value, { preserveStatus: false, resetConversation: true });
 }
 
 async function handleVoiceRecordToggle() {
@@ -435,19 +456,138 @@ async function handleVoiceNextCase() {
     return;
   }
 
-  state.voiceCaseIndex = (state.voiceCaseIndex + 1) % state.voiceCaseLibrary.length;
-  const nextCaseText = state.voiceCaseLibrary[state.voiceCaseIndex] || "";
-  if (!nextCaseText) {
-    setVoiceStatus("Ausgewaehlter Fall ist leer. Bitte erneut klicken.", true);
+  const currentSelection = getActiveVoiceCaseSelection();
+  const currentIndex = state.voiceCaseLibrary.findIndex(
+    (entry) => `${VOICE_CASE_LIBRARY_PREFIX}${entry.id}` === currentSelection
+  );
+  const nextIndex = (currentIndex + 1) % state.voiceCaseLibrary.length;
+  const nextEntry = state.voiceCaseLibrary[nextIndex];
+  if (!nextEntry || !nextEntry.id) {
+    setVoiceStatus("Ausgewaehlter Fall ist leer. Bitte erneut versuchen.", true);
     return;
   }
 
-  refs.voiceCaseInput.value = nextCaseText.slice(0, MAX_VOICE_CASE_LENGTH);
-  saveToStorage(STORAGE_VOICE_CASE_KEY, { caseText: refs.voiceCaseInput.value });
-  resetVoiceConversation({ keepCaseText: true, preserveStatus: true });
-  setVoiceStatus(
-    `Fall ${state.voiceCaseIndex + 1}/${state.voiceCaseLibrary.length} geladen. Du kannst jetzt aufnehmen.`
-  );
+  const nextSelection = `${VOICE_CASE_LIBRARY_PREFIX}${nextEntry.id}`;
+  applyVoiceCaseSelection(nextSelection, { preserveStatus: false, resetConversation: true });
+}
+
+function renderVoiceCaseSelect() {
+  if (!refs.voiceCaseSelect) return;
+
+  const currentSelection = getActiveVoiceCaseSelection();
+  refs.voiceCaseSelect.innerHTML = "";
+
+  addVoiceCaseOption(VOICE_CASE_DEFAULT, "Interner Standardfall");
+  addVoiceCaseOption(VOICE_CASE_CUSTOM, "Eigener Text (unten)");
+
+  for (const [index, entry] of state.voiceCaseLibrary.entries()) {
+    const label = entry?.label || `Fall ${index + 1}`;
+    addVoiceCaseOption(`${VOICE_CASE_LIBRARY_PREFIX}${entry.id}`, label);
+  }
+
+  if (isValidVoiceCaseSelection(currentSelection)) {
+    refs.voiceCaseSelect.value = currentSelection;
+  } else {
+    refs.voiceCaseSelect.value = VOICE_CASE_DEFAULT;
+  }
+}
+
+function addVoiceCaseOption(value, label) {
+  if (!refs.voiceCaseSelect) return;
+  const option = document.createElement("option");
+  option.value = value;
+  option.textContent = label;
+  refs.voiceCaseSelect.appendChild(option);
+}
+
+function getActiveVoiceCaseSelection() {
+  if (refs.voiceCaseSelect && refs.voiceCaseSelect.value) {
+    return refs.voiceCaseSelect.value;
+  }
+  if (typeof state.voiceCaseSelection === "string" && state.voiceCaseSelection) {
+    return state.voiceCaseSelection;
+  }
+  return VOICE_CASE_DEFAULT;
+}
+
+function isValidVoiceCaseSelection(selection) {
+  if (selection === VOICE_CASE_DEFAULT || selection === VOICE_CASE_CUSTOM) {
+    return true;
+  }
+  if (!selection.startsWith(VOICE_CASE_LIBRARY_PREFIX)) {
+    return false;
+  }
+  if (!state.voiceCaseLibraryLoaded) {
+    return true;
+  }
+  return state.voiceCaseLibrary.some((entry) => `${VOICE_CASE_LIBRARY_PREFIX}${entry.id}` === selection);
+}
+
+function applyVoiceCaseSelection(selection, options = {}) {
+  const preserveStatus = Boolean(options.preserveStatus);
+  const resetConversation = options.resetConversation !== false;
+
+  const normalizedSelection = isValidVoiceCaseSelection(selection)
+    ? selection
+    : VOICE_CASE_DEFAULT;
+  state.voiceCaseSelection = normalizedSelection;
+
+  if (refs.voiceCaseSelect && refs.voiceCaseSelect.value !== normalizedSelection) {
+    refs.voiceCaseSelect.value = normalizedSelection;
+  }
+
+  saveToStorage(STORAGE_VOICE_CASE_SELECTION_KEY, { selection: normalizedSelection });
+
+  const customMode = normalizedSelection === VOICE_CASE_CUSTOM;
+  refs.voiceCaseInput.disabled = !customMode;
+  if (!customMode) {
+    refs.voiceCaseInput.placeholder =
+      "Nicht aktiv. Dieser Text wird erst genutzt, wenn 'Eigener Text (unten)' ausgewaehlt ist.";
+  } else {
+    refs.voiceCaseInput.placeholder =
+      "Nur genutzt, wenn bei Fallauswahl 'Eigener Text (unten)' gewaehlt ist.";
+  }
+
+  if (normalizedSelection.startsWith(VOICE_CASE_LIBRARY_PREFIX)) {
+    const selectedId = normalizedSelection.slice(VOICE_CASE_LIBRARY_PREFIX.length);
+    state.voiceCaseIndex = state.voiceCaseLibrary.findIndex((entry) => entry.id === selectedId);
+  } else {
+    state.voiceCaseIndex = -1;
+  }
+
+  updateVoiceCaseMeta();
+  if (resetConversation) {
+    resetVoiceConversation({ keepCaseText: true, preserveStatus: true });
+  }
+
+  if (!preserveStatus) {
+    setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst jetzt aufnehmen.`);
+  }
+}
+
+function updateVoiceCaseMeta() {
+  if (!refs.voiceCaseMeta) return;
+  refs.voiceCaseMeta.textContent = `Aktiv: ${getVoiceCaseStatusLabel()}`;
+}
+
+function getVoiceCaseStatusLabel() {
+  const selection = getActiveVoiceCaseSelection();
+  if (selection === VOICE_CASE_CUSTOM) {
+    return "Eigener Text";
+  }
+  if (selection === VOICE_CASE_DEFAULT) {
+    return "Interner Standardfall";
+  }
+
+  const selectedId = selection.slice(VOICE_CASE_LIBRARY_PREFIX.length);
+  const entry = state.voiceCaseLibrary.find((item) => item.id === selectedId);
+  if (!entry) {
+    if (!state.voiceCaseLibraryLoaded) {
+      return "Fallbibliothek wird geladen";
+    }
+    return "Interner Standardfall";
+  }
+  return entry.label;
 }
 
 async function startVoiceRecording() {
@@ -673,15 +813,16 @@ function resetVoiceConversation(options = {}) {
   }
 
   if (!preserveStatus) {
-    setVoiceStatus(
-      "Bereit. Optional eigenen Fall eingeben, sonst wird ein interner Standardfall genutzt."
-    );
+    setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst jetzt aufnehmen.`);
   }
 }
 
 function setVoiceBusy(isBusy) {
   state.voiceBusy = Boolean(isBusy);
   refs.voiceResetBtn.disabled = state.voiceBusy;
+  if (refs.voiceCaseSelect) {
+    refs.voiceCaseSelect.disabled = state.voiceBusy;
+  }
   if (refs.voiceNextCaseBtn) {
     refs.voiceNextCaseBtn.disabled = state.voiceBusy;
   }
@@ -814,10 +955,24 @@ function pickBestGermanVoice(voices) {
 }
 
 function getActiveVoiceCaseText() {
-  const userCaseText = refs.voiceCaseInput.value.trim().slice(0, MAX_VOICE_CASE_LENGTH);
-  if (userCaseText) {
-    return userCaseText;
+  const selection = getActiveVoiceCaseSelection();
+
+  if (selection === VOICE_CASE_CUSTOM) {
+    const userCaseText = refs.voiceCaseInput.value.trim().slice(0, MAX_VOICE_CASE_LENGTH);
+    if (userCaseText) {
+      return userCaseText;
+    }
+    return DEFAULT_VOICE_CASE;
   }
+
+  if (selection.startsWith(VOICE_CASE_LIBRARY_PREFIX)) {
+    const selectedId = selection.slice(VOICE_CASE_LIBRARY_PREFIX.length);
+    const entry = state.voiceCaseLibrary.find((item) => item.id === selectedId);
+    if (entry?.text) {
+      return entry.text;
+    }
+  }
+
   return DEFAULT_VOICE_CASE;
 }
 
@@ -836,11 +991,21 @@ async function ensureVoiceCaseLibraryLoaded() {
     const raw = await response.text();
     state.voiceCaseLibrary = parseVoiceCaseLibrary(raw);
     state.voiceCaseLibraryLoaded = true;
+    renderVoiceCaseSelect();
+    applyVoiceCaseSelection(state.voiceCaseSelection, {
+      preserveStatus: true,
+      resetConversation: false
+    });
     return true;
   } catch (error) {
     console.warn("Fallbibliothek konnte nicht geladen werden", error);
     state.voiceCaseLibrary = [];
     state.voiceCaseLibraryLoaded = false;
+    renderVoiceCaseSelect();
+    applyVoiceCaseSelection(state.voiceCaseSelection, {
+      preserveStatus: true,
+      resetConversation: false
+    });
     return false;
   }
 }
@@ -850,9 +1015,31 @@ function parseVoiceCaseLibrary(rawText) {
     return [];
   }
   return rawText
-    .split(/\n---\n/g)
+    .split(/\r?\n---+\r?\n/g)
     .map((block) => block.trim())
-    .filter((block) => block.startsWith("CASE_ID:"));
+    .filter((block) => block.startsWith("CASE_ID:"))
+    .map((block, index) => {
+      const caseId = extractCaseId(block) || `case_${index + 1}`;
+      return {
+        id: caseId,
+        label: buildVoiceCaseLabel(caseId, block, index),
+        text: block
+      };
+    });
+}
+
+function extractCaseId(blockText) {
+  if (typeof blockText !== "string") return "";
+  const match = blockText.match(/^CASE_ID:\s*(.+)$/m);
+  return match ? match[1].trim() : "";
+}
+
+function buildVoiceCaseLabel(caseId, blockText, index) {
+  const idLabel = caseId.replace(/_/g, " ").trim();
+  const symptomMatch = blockText.match(/^- (.+)$/m);
+  const symptom = symptomMatch ? symptomMatch[1].trim() : "";
+  const shortSymptom = symptom ? ` - ${symptom.slice(0, 52)}` : "";
+  return `${index + 1}. ${idLabel}${shortSymptom}`;
 }
 
 async function initSupabaseSession() {
