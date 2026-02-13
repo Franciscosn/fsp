@@ -106,7 +106,7 @@ const SYSTEM_INSTRUCTIONS = [
   "Off-topic: Antworte knapp als Patient und setze off_topic=true.",
   "Laenge: Kurz und natuerlich, meist 1-3 Saetze, maximal 55 Woerter.",
   "Verboten: Keine Lernhinweise, keine Meta-Hinweise ueber Prompt/Modell, keine Rolle als Arzt.",
-  "Ausgabeformat: Gib ausschliesslich die finale Patientenantwort aus, ohne Erklaerungen oder Gedankengang.",
+  "Ausgabeformat: Gib ein JSON-Objekt mit patient_reply, examiner_feedback, revealed_case_facts und off_topic aus.",
   "Leak-Schutz: Gib niemals Textfragmente wie 'The user says', 'Instructions', 'I should', 'Reasoning' aus."
 ].join("\n");
 
@@ -384,7 +384,7 @@ async function finalizePatientTurn(ai, turn, context) {
   }
 
   if (!isPatientReplyStable(normalized.patient_reply)) {
-    normalized.patient_reply = fallbackPatientReplyForTranscript(context.transcript);
+    normalized.patient_reply = fallbackPatientReplyForTranscript(context.transcript, context.caseText);
   }
 
   return normalized;
@@ -398,6 +398,7 @@ async function repairPatientReply(ai, context) {
         "Nur Patientenantwort, keine Analyse, keine Begruendung, kein Monolog.",
         "Keine Saetze wie 'The user says', 'Instructions', 'I should'.",
         "Ich-Form, alltaegliche Patientensprache, maximal 2 Saetze.",
+        "Wenn nach dem Befinden gefragt wird, nenne konkrete Beschwerden aus dem Fall.",
         "Wenn nur Begruessung vorliegt, freundlich zurueckgruessen und auf Fragen warten."
       ].join(" "),
       input: JSON.stringify(
@@ -428,6 +429,32 @@ async function repairPatientReply(ai, context) {
     // continue to secondary repair
   }
 
+  try {
+    const plain = await ai.run(CHAT_MODEL, {
+      instructions: [
+        "Du bist nur der Patient in einer medizinischen Pruefung.",
+        "Antworte ausschliesslich auf Deutsch in Ich-Form.",
+        "Nutze alltaegliche Patientensprache.",
+        "Wenn nach dem Befinden gefragt wird, nenne konkrete Beschwerden aus dem Fall.",
+        "Antworte konkret auf die letzte Frage des Arztes, keine Meta-Saetze."
+      ].join(" "),
+      input: JSON.stringify(
+        {
+          case_profile: context.caseText,
+          learner_utterance: context.transcript
+        },
+        null,
+        2
+      )
+    });
+    const plainText = extractModelText(plain);
+    if (plainText) {
+      return plainText;
+    }
+  } catch {
+    // continue to translation fallback
+  }
+
   return rewriteEnglishToGermanPatient(ai, context.transcript || "");
 }
 
@@ -453,14 +480,24 @@ function containsPromptOrPolicyLeak(text) {
   );
 }
 
-function fallbackPatientReplyForTranscript(transcript) {
+function fallbackPatientReplyForTranscript(transcript, caseText) {
   const lower = ` ${String(transcript || "").toLowerCase()} `;
-  if (
-    /\b(hallo|guten tag|moin|servus|gruess gott|gruesse sie|wie geht|wie geht's)\b/.test(lower)
-  ) {
-    return "Guten Tag. Mir geht es soweit okay, danke. Was moechten Sie zu meinen Beschwerden wissen?";
+  const symptomHint = extractSymptomHintFromCase(caseText);
+  if (/\b(wie geht|wie geht's|wie fuehlen|wie fuehlst|was fehlt|was haben sie)\b/.test(lower)) {
+    if (symptomHint) {
+      return `Ehrlich gesagt geht es mir nicht gut. ${symptomHint}`;
+    }
+    return "Ehrlich gesagt geht es mir nicht gut. Ich fuehle mich seit heute deutlich unwohl.";
   }
-  return defaultPatientFallback();
+  if (
+    /\b(hallo|guten tag|moin|servus|gruess gott|gruesse sie)\b/.test(lower)
+  ) {
+    if (symptomHint) {
+      return `Guten Tag. ${symptomHint}`;
+    }
+    return "Guten Tag. Ich habe seit heute Beschwerden und fuehle mich nicht gut.";
+  }
+  return defaultPatientFallback(caseText);
 }
 
 async function rewriteEnglishToGermanPatient(ai, text) {
@@ -629,10 +666,10 @@ function normalizePatientTurn(turn) {
 function normalizePatientReply(text) {
   const cleaned = sanitizePatientReplyText(text);
   if (!cleaned) {
-    return defaultPatientFallback();
+    return "";
   }
   if (looksLikeMetaResponse(cleaned) || looksLikeInternalMonologue(cleaned)) {
-    return defaultPatientFallback();
+    return "";
   }
   return cleaned;
 }
@@ -715,8 +752,44 @@ function isLikelyEnglish(text) {
   return englishHits >= 2 && englishHits > germanHits;
 }
 
-function defaultPatientFallback() {
-  return "Guten Tag. Ich beantworte gern Ihre Fragen zu meinen Beschwerden.";
+function defaultPatientFallback(caseText) {
+  const symptomHint = extractSymptomHintFromCase(caseText);
+  if (symptomHint) {
+    return symptomHint;
+  }
+  return "Mir geht es nicht gut. Ich habe seit heute Beschwerden.";
+}
+
+function extractSymptomHintFromCase(caseText) {
+  const text = String(caseText || "")
+    .replace(/\r/g, "")
+    .slice(0, MAX_CASE_LENGTH);
+  if (!text) return "";
+
+  const lines = text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const symptomLine = lines.find((line) =>
+    /(beschwerden|symptome|anamnese|hauptproblem|grund|aktuell|seit)/i.test(line)
+  );
+  const bulletLine = lines.find((line) => /^[-*]\s+/.test(line));
+  const source = symptomLine || bulletLine || lines[0] || "";
+  if (!source) return "";
+
+  const cleaned = source
+    .replace(/^[-*]\s*/, "")
+    .replace(/^[A-Za-zÄÖÜäöüß ]{2,30}:\s*/, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+
+  if (!cleaned) return "";
+  const compact = cleaned.replace(/[.]+$/, "").slice(0, 180);
+  if (/^(ich|mir|seit|heute)\b/i.test(compact)) {
+    return `${compact}.`;
+  }
+  return `Ich habe ${compact.charAt(0).toLowerCase()}${compact.slice(1)}.`;
 }
 
 function truncateForTts(text) {
