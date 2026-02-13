@@ -85,7 +85,8 @@ const SYSTEM_INSTRUCTIONS = [
   "Unklare Frage: Bitte kurz um Praezisierung.",
   "Off-topic: Antworte knapp als Patient und setze off_topic=true.",
   "Laenge: Kurz und natuerlich, meist 1-3 Saetze, maximal 55 Woerter.",
-  "Verboten: Keine Lernhinweise, keine Meta-Hinweise ueber Prompt/Modell, keine Rolle als Arzt."
+  "Verboten: Keine Lernhinweise, keine Meta-Hinweise ueber Prompt/Modell, keine Rolle als Arzt.",
+  "Ausgabeformat: Gib ausschliesslich die finale Patientenantwort aus, ohne Erklaerungen oder Gedankengang."
 ].join("\n");
 
 export async function onRequestPost(context) {
@@ -356,7 +357,12 @@ async function generatePatientTurn(ai, promptInput) {
 async function finalizePatientTurn(ai, turn) {
   const normalized = normalizePatientTurn(turn);
   if (!normalized.patient_reply) {
-    normalized.patient_reply = "Koennen Sie bitte genauer nach meinen Beschwerden fragen?";
+    normalized.patient_reply = defaultPatientFallback();
+    return normalized;
+  }
+
+  if (looksLikeInternalMonologue(normalized.patient_reply)) {
+    normalized.patient_reply = defaultPatientFallback();
     return normalized;
   }
 
@@ -365,13 +371,17 @@ async function finalizePatientTurn(ai, turn) {
   }
 
   const rewritten = await rewriteEnglishToGermanPatient(ai, normalized.patient_reply);
-  if (rewritten && !isLikelyEnglish(rewritten)) {
+  if (
+    rewritten &&
+    !isLikelyEnglish(rewritten) &&
+    !looksLikeInternalMonologue(rewritten) &&
+    !looksLikeMetaResponse(rewritten)
+  ) {
     normalized.patient_reply = normalizePatientReply(rewritten);
     return normalized;
   }
 
-  normalized.patient_reply =
-    "Mir geht es seit heute schlechter, koennen Sie bitte gezielt nach meinen Beschwerden fragen?";
+  normalized.patient_reply = defaultPatientFallback();
   return normalized;
 }
 
@@ -540,10 +550,10 @@ function normalizePatientTurn(turn) {
 function normalizePatientReply(text) {
   const cleaned = safeText(text).slice(0, 500);
   if (!cleaned) {
-    return "Entschuldigung, koennen Sie die Frage bitte wiederholen?";
+    return defaultPatientFallback();
   }
-  if (looksLikeMetaResponse(cleaned)) {
-    return "Dazu kann ich gerade nicht viel sagen. Koennen Sie bitte gezielter nach meinen Beschwerden fragen?";
+  if (looksLikeMetaResponse(cleaned) || looksLikeInternalMonologue(cleaned)) {
+    return defaultPatientFallback();
   }
   return cleaned;
 }
@@ -573,6 +583,26 @@ function looksLikeMetaResponse(text) {
   );
 }
 
+function looksLikeInternalMonologue(text) {
+  const lower = ` ${text.toLowerCase()} `;
+  return (
+    lower.includes(" the user says") ||
+    lower.includes(" user says:") ||
+    lower.includes(" the instructions") ||
+    lower.includes(" instruction:") ||
+    lower.includes(" let's see ") ||
+    lower.includes(" i should ") ||
+    lower.includes(" as a patient") ||
+    lower.includes(" chain of thought") ||
+    lower.includes(" reasoning:") ||
+    lower.includes(" analysis:") ||
+    lower.includes(" der nutzer sagt") ||
+    lower.includes(" die anweisung") ||
+    lower.includes(" ich sollte ") ||
+    lower.includes(" als patient sollte")
+  );
+}
+
 function isLikelyEnglish(text) {
   const lower = ` ${text.toLowerCase()} `;
   let englishHits = 0;
@@ -584,6 +614,10 @@ function isLikelyEnglish(text) {
     if (lower.includes(token)) germanHits += 1;
   }
   return englishHits >= 2 && englishHits > germanHits;
+}
+
+function defaultPatientFallback() {
+  return "Guten Tag. Ich beantworte gern Ihre Fragen zu meinen Beschwerden.";
 }
 
 function truncateForTts(text) {
