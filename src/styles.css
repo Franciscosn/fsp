@@ -488,9 +488,44 @@ body.auth-only .edge-deco {
   border: 1px solid rgba(248, 73, 102, 0.24);
   border-radius: 14px;
   background: #fff9fb;
-  padding: 12px;
+  overflow: hidden;
+}
+
+.voice-resolution-toggle {
+  list-style: none;
+  cursor: pointer;
+  padding: 11px 12px;
+  color: #8f2f49;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.voice-resolution-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.voice-resolution-toggle::after {
+  content: "▸";
+  color: #9f4a5f;
+  transition: transform 120ms ease;
+}
+
+.voice-resolution[open] .voice-resolution-toggle::after {
+  transform: rotate(90deg);
+}
+
+.voice-resolution-content {
+  padding: 0 12px 12px;
   display: grid;
   gap: 10px;
+}
+
+.voice-resolution-content > h4 {
+  margin-top: 2px;
 }
 
 .voice-resolution h4 {

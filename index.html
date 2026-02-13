@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260213f" />
+    <link rel="stylesheet" href="src/styles.css?v=20260213g" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -125,25 +125,28 @@
           <button id="voiceNextCaseBtn" class="soft-btn" type="button">Naechster Fall</button>
         </div>
         <p id="voiceStatus" class="voice-status">Bereit. Optional eigenen Fall eingeben, sonst interner Standardfall.</p>
-        <section class="voice-resolution">
-          <h4 id="voiceResolutionTitle">Fall aufloesen</h4>
-          <p id="voiceResolutionHint" class="voice-resolution-hint">Aufloesung wird geladen ...</p>
-          <p id="voiceResolutionSummary" class="voice-resolution-summary"></p>
-          <div class="voice-resolution-grid">
+        <details class="voice-resolution">
+          <summary class="voice-resolution-toggle">Fall aufloesen</summary>
+          <div class="voice-resolution-content">
+            <h4 id="voiceResolutionTitle">Fall aufloesen</h4>
+            <p id="voiceResolutionHint" class="voice-resolution-hint">Aufloesung wird geladen ...</p>
+            <p id="voiceResolutionSummary" class="voice-resolution-summary"></p>
+            <div class="voice-resolution-grid">
+              <article class="voice-resolution-block">
+                <h5>Wichtige Arztfragen</h5>
+                <ul id="voiceResolutionQuestions" class="voice-resolution-list"></ul>
+              </article>
+              <article class="voice-resolution-block">
+                <h5>Relevante Fachbegriffe</h5>
+                <ul id="voiceResolutionTerms" class="voice-resolution-list"></ul>
+              </article>
+            </div>
             <article class="voice-resolution-block">
-              <h5>Wichtige Arztfragen</h5>
-              <ul id="voiceResolutionQuestions" class="voice-resolution-list"></ul>
-            </article>
-            <article class="voice-resolution-block">
-              <h5>Relevante Fachbegriffe</h5>
-              <ul id="voiceResolutionTerms" class="voice-resolution-list"></ul>
+              <h5>Diagnose / moegliche Diagnosen</h5>
+              <ul id="voiceResolutionDiagnoses" class="voice-resolution-list"></ul>
             </article>
           </div>
-          <article class="voice-resolution-block">
-            <h5>Diagnose / moegliche Diagnosen</h5>
-            <ul id="voiceResolutionDiagnoses" class="voice-resolution-list"></ul>
-          </article>
-        </section>
+        </details>
         <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
         <article id="voiceLastTurn" class="voice-turn hidden">
           <p class="voice-turn-label">Du:</p>
@@ -283,6 +286,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260213f"></script>
+    <script type="module" src="src/app.js?v=20260213g"></script>
   </body>
 </html>
