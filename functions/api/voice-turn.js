@@ -287,11 +287,7 @@ async function generatePatientTurn(ai, promptInput) {
   const request = {
     instructions: SYSTEM_INSTRUCTIONS,
     input: promptInput,
-    response_format: RESPONSE_SCHEMA,
-    reasoning: {
-      effort: "low",
-      summary: "auto"
-    }
+    response_format: RESPONSE_SCHEMA
   };
 
   let raw;
@@ -302,8 +298,7 @@ async function generatePatientTurn(ai, promptInput) {
       // Safety fallback in case response_format is rejected for a specific runtime.
       raw = await ai.run(CHAT_MODEL, {
         instructions: SYSTEM_INSTRUCTIONS,
-        input: promptInput,
-        reasoning: { effort: "low", summary: "auto" }
+        input: promptInput
       });
     } catch {
       try {
@@ -323,14 +318,34 @@ async function generatePatientTurn(ai, promptInput) {
     }
   }
 
+  const directStructured = extractStructuredFromRaw(raw);
+  if (directStructured) {
+    return normalizePatientTurn(directStructured);
+  }
+
   const text = extractModelText(raw);
   const structured = parseStructuredResponse(text);
   if (structured) {
     return normalizePatientTurn(structured);
   }
 
+  // Final text-only fallback to avoid repeating a static message if schema parsing fails.
+  let plainRaw = null;
+  try {
+    plainRaw = await ai.run(CHAT_MODEL, {
+      instructions: SYSTEM_INSTRUCTIONS,
+      input: `${promptInput}\n\nAntworte jetzt nur mit der direkten Patientenantwort auf Deutsch.`
+    });
+  } catch {
+    plainRaw = null;
+  }
+
+  const plainText = extractModelText(plainRaw);
+
   return normalizePatientTurn({
     patient_reply:
+      plainText ||
+      text ||
       "Entschuldigung, koennen Sie die Frage bitte noch einmal in einfachen Worten stellen?",
     examiner_feedback: "Achte auf praezise, offene Fragen zur Anamnese.",
     revealed_case_facts: [],
@@ -340,18 +355,18 @@ async function generatePatientTurn(ai, promptInput) {
 
 function extractModelText(raw) {
   if (typeof raw === "string") {
-    return raw.trim();
+    return sanitizeModelText(raw);
   }
   if (!raw || typeof raw !== "object") {
     return "";
   }
 
   if (typeof raw.output_text === "string" && raw.output_text.trim()) {
-    return raw.output_text.trim();
+    return sanitizeModelText(raw.output_text);
   }
 
   if (typeof raw.response === "string" && raw.response.trim()) {
-    return raw.response.trim();
+    return sanitizeModelText(raw.response);
   }
 
   if (Array.isArray(raw.output)) {
@@ -360,10 +375,10 @@ function extractModelText(raw) {
       if (Array.isArray(item.content)) {
         for (const block of item.content) {
           if (block?.type === "output_text" && typeof block.text === "string" && block.text.trim()) {
-            return block.text.trim();
+            return sanitizeModelText(block.text);
           }
           if (typeof block?.text === "string" && block.text.trim()) {
-            return block.text.trim();
+            return sanitizeModelText(block.text);
           }
         }
       }
@@ -371,6 +386,74 @@ function extractModelText(raw) {
   }
 
   return "";
+}
+
+function sanitizeModelText(text) {
+  if (typeof text !== "string") return "";
+  let cleaned = text.trim();
+  cleaned = cleaned.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+  cleaned = cleaned.replace(/^```(?:json)?/i, "").replace(/```$/i, "").trim();
+  return cleaned;
+}
+
+function extractStructuredFromRaw(raw) {
+  if (!raw || typeof raw !== "object") return null;
+
+  if (looksLikeTurnObject(raw)) {
+    return {
+      patient_reply: raw.patient_reply,
+      examiner_feedback: raw.examiner_feedback,
+      revealed_case_facts: raw.revealed_case_facts,
+      off_topic: raw.off_topic
+    };
+  }
+
+  if (raw.response && typeof raw.response === "object" && looksLikeTurnObject(raw.response)) {
+    return {
+      patient_reply: raw.response.patient_reply,
+      examiner_feedback: raw.response.examiner_feedback,
+      revealed_case_facts: raw.response.revealed_case_facts,
+      off_topic: raw.response.off_topic
+    };
+  }
+
+  if (Array.isArray(raw.output)) {
+    for (const item of raw.output) {
+      if (!item || typeof item !== "object") continue;
+      if (item.parsed && typeof item.parsed === "object" && looksLikeTurnObject(item.parsed)) {
+        return {
+          patient_reply: item.parsed.patient_reply,
+          examiner_feedback: item.parsed.examiner_feedback,
+          revealed_case_facts: item.parsed.revealed_case_facts,
+          off_topic: item.parsed.off_topic
+        };
+      }
+      if (Array.isArray(item.content)) {
+        for (const block of item.content) {
+          if (!block || typeof block !== "object") continue;
+          if (block.parsed && typeof block.parsed === "object" && looksLikeTurnObject(block.parsed)) {
+            return {
+              patient_reply: block.parsed.patient_reply,
+              examiner_feedback: block.parsed.examiner_feedback,
+              revealed_case_facts: block.parsed.revealed_case_facts,
+              off_topic: block.parsed.off_topic
+            };
+          }
+          if (typeof block.text === "string" && block.text.trim()) {
+            const parsed = parseStructuredResponse(block.text);
+            if (parsed) return parsed;
+          }
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
+function looksLikeTurnObject(value) {
+  if (!value || typeof value !== "object") return false;
+  return typeof value.patient_reply === "string";
 }
 
 function parseStructuredResponse(rawText) {
