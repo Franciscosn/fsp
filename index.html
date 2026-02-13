@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260213h" />
+    <link rel="stylesheet" href="src/styles.css?v=20260213i" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -120,9 +120,30 @@
           placeholder="Nur genutzt, wenn bei Fallauswahl 'Eigener Text (unten)' gewaehlt ist."
         ></textarea>
         <div class="voice-actions">
-          <button id="voiceRecordBtn" class="primary-btn" type="button">🎤 Aufnahme starten</button>
           <button id="voiceResetBtn" class="soft-btn" type="button">Neues Gespraech</button>
           <button id="voiceNextCaseBtn" class="soft-btn" type="button">Naechster Fall</button>
+          <details class="voice-resolution voice-resolution-inline">
+            <summary class="voice-resolution-toggle">Fall aufloesen</summary>
+            <div class="voice-resolution-content">
+              <h4 id="voiceResolutionTitle">Fall aufloesen</h4>
+              <p id="voiceResolutionHint" class="voice-resolution-hint">Aufloesung wird geladen ...</p>
+              <p id="voiceResolutionSummary" class="voice-resolution-summary"></p>
+              <div class="voice-resolution-grid">
+                <article class="voice-resolution-block">
+                  <h5>Wichtige Arztfragen</h5>
+                  <ul id="voiceResolutionQuestions" class="voice-resolution-list"></ul>
+                </article>
+                <article class="voice-resolution-block">
+                  <h5>Relevante Fachbegriffe</h5>
+                  <ul id="voiceResolutionTerms" class="voice-resolution-list"></ul>
+                </article>
+              </div>
+              <article class="voice-resolution-block">
+                <h5>Diagnose / moegliche Diagnosen</h5>
+                <ul id="voiceResolutionDiagnoses" class="voice-resolution-list"></ul>
+              </article>
+            </div>
+          </details>
         </div>
         <label class="voice-label" for="voiceTextInput">Frage per Text</label>
         <div class="voice-text-row">
@@ -133,31 +154,12 @@
             maxlength="500"
             placeholder="Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'."
           ></textarea>
-          <button id="voiceTextSendBtn" class="soft-btn" type="button">Text senden</button>
+          <div class="voice-text-controls">
+            <button id="voiceTextSendBtn" class="soft-btn" type="button">Text senden</button>
+            <button id="voiceRecordBtn" class="primary-btn" type="button">🎤 Aufnahme starten</button>
+          </div>
         </div>
         <p id="voiceStatus" class="voice-status">Bereit. Optional eigenen Fall eingeben, sonst interner Standardfall.</p>
-        <details class="voice-resolution">
-          <summary class="voice-resolution-toggle">Fall aufloesen</summary>
-          <div class="voice-resolution-content">
-            <h4 id="voiceResolutionTitle">Fall aufloesen</h4>
-            <p id="voiceResolutionHint" class="voice-resolution-hint">Aufloesung wird geladen ...</p>
-            <p id="voiceResolutionSummary" class="voice-resolution-summary"></p>
-            <div class="voice-resolution-grid">
-              <article class="voice-resolution-block">
-                <h5>Wichtige Arztfragen</h5>
-                <ul id="voiceResolutionQuestions" class="voice-resolution-list"></ul>
-              </article>
-              <article class="voice-resolution-block">
-                <h5>Relevante Fachbegriffe</h5>
-                <ul id="voiceResolutionTerms" class="voice-resolution-list"></ul>
-              </article>
-            </div>
-            <article class="voice-resolution-block">
-              <h5>Diagnose / moegliche Diagnosen</h5>
-              <ul id="voiceResolutionDiagnoses" class="voice-resolution-list"></ul>
-            </article>
-          </div>
-        </details>
         <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
         <article id="voiceLastTurn" class="voice-turn hidden">
           <p class="voice-turn-label">Du:</p>
@@ -297,6 +299,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260213h"></script>
+    <script type="module" src="src/app.js?v=20260213i"></script>
   </body>
 </html>

@@ -445,6 +445,12 @@ body.auth-only .edge-deco {
   align-items: end;
 }
 
+.voice-text-controls {
+  display: grid;
+  gap: 8px;
+  width: min(220px, 100%);
+}
+
 .voice-text-input {
   width: 100%;
   border-radius: 12px;
@@ -465,6 +471,12 @@ body.auth-only .edge-deco {
 
 .voice-text-row .soft-btn {
   min-width: 140px;
+}
+
+.voice-text-controls .soft-btn,
+.voice-text-controls .primary-btn {
+  width: 100%;
+  min-width: 0;
 }
 
 .voice-status {
@@ -518,6 +530,19 @@ body.auth-only .edge-deco {
   border-radius: 14px;
   background: #fff9fb;
   overflow: hidden;
+}
+
+.voice-resolution-inline {
+  min-width: 200px;
+  background: #fff;
+}
+
+.voice-resolution-inline[open] {
+  flex-basis: 100%;
+}
+
+.voice-resolution-inline[open] .voice-resolution-content {
+  border-top: 1px solid rgba(248, 73, 102, 0.2);
 }
 
 .voice-resolution-toggle {
@@ -1461,6 +1486,10 @@ body.immersive .stats-fab {
 
   .voice-text-row {
     grid-template-columns: 1fr;
+  }
+
+  .voice-text-controls {
+    width: 100%;
   }
 
   .voice-text-row .soft-btn {
