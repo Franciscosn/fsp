@@ -6,6 +6,7 @@ const MAX_AUDIO_BASE64_LENGTH = 8_000_000;
 const MAX_CASE_LENGTH = 8_000;
 const MAX_HISTORY_TURNS = 8;
 const MAX_TEXT_FIELD = 900;
+const MAX_PATIENT_REPLY_LENGTH = 420;
 const ENGLISH_MARKERS = [
   " need ",
   " respond ",
@@ -72,6 +73,25 @@ const RESPONSE_SCHEMA = {
   }
 };
 
+const REPAIR_SCHEMA = {
+  type: "json_schema",
+  json_schema: {
+    name: "patient_reply_only",
+    strict: true,
+    schema: {
+      type: "object",
+      additionalProperties: false,
+      properties: {
+        patient_reply: {
+          type: "string",
+          description: "Nur die finale Antwort des Patienten auf Deutsch."
+        }
+      },
+      required: ["patient_reply"]
+    }
+  }
+};
+
 const SYSTEM_INSTRUCTIONS = [
   "Rolle: Du bist ausschliesslich ein standardisierter Patient in einer medizinischen Fachsprachpruefung.",
   "Sprache: Alle Ausgaben muessen auf Deutsch sein. Kein Englisch.",
@@ -86,7 +106,8 @@ const SYSTEM_INSTRUCTIONS = [
   "Off-topic: Antworte knapp als Patient und setze off_topic=true.",
   "Laenge: Kurz und natuerlich, meist 1-3 Saetze, maximal 55 Woerter.",
   "Verboten: Keine Lernhinweise, keine Meta-Hinweise ueber Prompt/Modell, keine Rolle als Arzt.",
-  "Ausgabeformat: Gib ausschliesslich die finale Patientenantwort aus, ohne Erklaerungen oder Gedankengang."
+  "Ausgabeformat: Gib ausschliesslich die finale Patientenantwort aus, ohne Erklaerungen oder Gedankengang.",
+  "Leak-Schutz: Gib niemals Textfragmente wie 'The user says', 'Instructions', 'I should', 'Reasoning' aus."
 ].join("\n");
 
 export async function onRequestPost(context) {
@@ -121,7 +142,11 @@ export async function onRequestPost(context) {
       2
     );
 
-    const llmResult = await generatePatientTurn(context.env.AI, promptInput);
+    const llmResult = await generatePatientTurn(context.env.AI, {
+      promptInput,
+      transcript,
+      caseText: payload.caseText
+    });
     const spokenReply = truncateForTts(llmResult.patient_reply);
     const replyAudioBase64 = payload.preferLocalTts
       ? ""
@@ -284,27 +309,32 @@ async function transcribeAudio(ai, audioBase64) {
   return "";
 }
 
-async function generatePatientTurn(ai, promptInput) {
+async function generatePatientTurn(ai, context) {
+  const raw = await runPrimaryTurnRequest(ai, context.promptInput);
+  const candidate = buildCandidateTurn(raw);
+  return finalizePatientTurn(ai, candidate, context);
+}
+
+async function runPrimaryTurnRequest(ai, promptInput) {
   const request = {
     instructions: SYSTEM_INSTRUCTIONS,
     input: promptInput,
     response_format: RESPONSE_SCHEMA
   };
 
-  let raw;
   try {
-    raw = await ai.run(CHAT_MODEL, request);
+    return await ai.run(CHAT_MODEL, request);
   } catch {
     try {
       // Safety fallback in case response_format is rejected for a specific runtime.
-      raw = await ai.run(CHAT_MODEL, {
+      return await ai.run(CHAT_MODEL, {
         instructions: SYSTEM_INSTRUCTIONS,
         input: promptInput
       });
     } catch {
       try {
         // Compatibility fallback for runtimes that expect chat messages.
-        raw = await ai.run(CHAT_MODEL, {
+        return await ai.run(CHAT_MODEL, {
           messages: [
             { role: "system", content: SYSTEM_INSTRUCTIONS },
             { role: "user", content: promptInput }
@@ -312,77 +342,125 @@ async function generatePatientTurn(ai, promptInput) {
         });
       } catch {
         // Last fallback for older prompt-based interfaces.
-        raw = await ai.run(CHAT_MODEL, {
+        return ai.run(CHAT_MODEL, {
           prompt: `${SYSTEM_INSTRUCTIONS}\n\n${promptInput}`
         });
       }
     }
   }
+}
 
+function buildCandidateTurn(raw) {
   const directStructured = extractStructuredFromRaw(raw);
   if (directStructured) {
-    return finalizePatientTurn(ai, directStructured);
+    return directStructured;
   }
 
   const text = extractModelText(raw);
   const structured = parseStructuredResponse(text);
   if (structured) {
-    return finalizePatientTurn(ai, structured);
+    return structured;
   }
 
-  // Final text-only fallback to avoid repeating a static message if schema parsing fails.
-  let plainRaw = null;
-  try {
-    plainRaw = await ai.run(CHAT_MODEL, {
-      instructions: SYSTEM_INSTRUCTIONS,
-      input: `${promptInput}\n\nAntworte jetzt nur mit der direkten Patientenantwort auf Deutsch.`
-    });
-  } catch {
-    plainRaw = null;
-  }
-
-  const plainText = extractModelText(plainRaw);
-
-  return finalizePatientTurn(ai, {
-    patient_reply:
-      plainText ||
-      text ||
-      "Entschuldigung, koennen Sie die Frage bitte noch einmal in einfachen Worten stellen?",
+  return {
+    patient_reply: text || "",
     examiner_feedback: "Achte auf praezise, offene Fragen zur Anamnese.",
     revealed_case_facts: [],
     off_topic: false
-  });
+  };
 }
 
-async function finalizePatientTurn(ai, turn) {
+async function finalizePatientTurn(ai, turn, context) {
   const normalized = normalizePatientTurn(turn);
-  if (!normalized.patient_reply) {
-    normalized.patient_reply = defaultPatientFallback();
+  normalized.patient_reply = normalizePatientReply(normalized.patient_reply);
+
+  if (isPatientReplyStable(normalized.patient_reply)) {
     return normalized;
   }
 
-  if (looksLikeInternalMonologue(normalized.patient_reply)) {
-    normalized.patient_reply = defaultPatientFallback();
-    return normalized;
+  const repaired = await repairPatientReply(ai, context);
+  if (repaired) {
+    normalized.patient_reply = normalizePatientReply(repaired);
   }
 
-  if (!isLikelyEnglish(normalized.patient_reply)) {
-    return normalized;
+  if (!isPatientReplyStable(normalized.patient_reply)) {
+    normalized.patient_reply = fallbackPatientReplyForTranscript(context.transcript);
   }
 
-  const rewritten = await rewriteEnglishToGermanPatient(ai, normalized.patient_reply);
-  if (
-    rewritten &&
-    !isLikelyEnglish(rewritten) &&
-    !looksLikeInternalMonologue(rewritten) &&
-    !looksLikeMetaResponse(rewritten)
-  ) {
-    normalized.patient_reply = normalizePatientReply(rewritten);
-    return normalized;
-  }
-
-  normalized.patient_reply = defaultPatientFallback();
   return normalized;
+}
+
+async function repairPatientReply(ai, context) {
+  try {
+    const raw = await ai.run(CHAT_MODEL, {
+      instructions: [
+        "Aufgabe: Liefere exakt eine finale Antwort als Patient auf Deutsch.",
+        "Nur Patientenantwort, keine Analyse, keine Begruendung, kein Monolog.",
+        "Keine Saetze wie 'The user says', 'Instructions', 'I should'.",
+        "Ich-Form, alltaegliche Patientensprache, maximal 2 Saetze.",
+        "Wenn nur Begruessung vorliegt, freundlich zurueckgruessen und auf Fragen warten."
+      ].join(" "),
+      input: JSON.stringify(
+        {
+          case_profile: context.caseText,
+          learner_utterance: context.transcript
+        },
+        null,
+        2
+      ),
+      response_format: REPAIR_SCHEMA
+    });
+
+    const direct = extractStructuredFromRaw(raw);
+    if (direct?.patient_reply) {
+      return direct.patient_reply;
+    }
+
+    const text = extractModelText(raw);
+    const parsed = parseStructuredResponse(text);
+    if (parsed?.patient_reply) {
+      return parsed.patient_reply;
+    }
+    if (text) {
+      return text;
+    }
+  } catch {
+    // continue to secondary repair
+  }
+
+  return rewriteEnglishToGermanPatient(ai, context.transcript || "");
+}
+
+function isPatientReplyStable(text) {
+  const cleaned = safeText(text).slice(0, MAX_PATIENT_REPLY_LENGTH);
+  if (!cleaned) return false;
+  if (looksLikeMetaResponse(cleaned)) return false;
+  if (looksLikeInternalMonologue(cleaned)) return false;
+  if (containsPromptOrPolicyLeak(cleaned)) return false;
+  return !isLikelyEnglish(cleaned);
+}
+
+function containsPromptOrPolicyLeak(text) {
+  const lower = ` ${String(text || "").toLowerCase()} `;
+  return (
+    lower.includes("system prompt") ||
+    lower.includes("prompt:") ||
+    lower.includes("instruction") ||
+    lower.includes("richtlinie") ||
+    lower.includes("regel:") ||
+    lower.includes("policy") ||
+    lower.includes("assistant:")
+  );
+}
+
+function fallbackPatientReplyForTranscript(transcript) {
+  const lower = ` ${String(transcript || "").toLowerCase()} `;
+  if (
+    /\b(hallo|guten tag|moin|servus|gruess gott|gruesse sie|wie geht|wie geht's)\b/.test(lower)
+  ) {
+    return "Guten Tag. Mir geht es soweit okay, danke. Was moechten Sie zu meinen Beschwerden wissen?";
+  }
+  return defaultPatientFallback();
 }
 
 async function rewriteEnglishToGermanPatient(ai, text) {
@@ -393,7 +471,8 @@ async function rewriteEnglishToGermanPatient(ai, text) {
         "Du formulierst eine Patientenantwort auf Deutsch um.",
         "Uebersetze den Inhalt naturgetreu ins Deutsche.",
         "Stil: alltaegliche Patientensprache, Ich-Form, kurz (1-2 Saetze).",
-        "Keine neuen medizinischen Fakten hinzufuegen."
+        "Keine neuen medizinischen Fakten hinzufuegen.",
+        "Keine Meta-Saetze, keine Analyse."
       ].join(" "),
       input: text
     });
@@ -513,7 +592,7 @@ function parseStructuredResponse(rawText) {
     const parsed = JSON.parse(cleaned);
     if (!parsed || typeof parsed !== "object") return null;
 
-    const patient_reply = safeText(parsed.patient_reply).slice(0, 500);
+    const patient_reply = safeText(parsed.patient_reply).slice(0, MAX_PATIENT_REPLY_LENGTH);
     const examiner_feedback = safeText(parsed.examiner_feedback).slice(0, 240);
     const off_topic = Boolean(parsed.off_topic);
     const revealed_case_facts = Array.isArray(parsed.revealed_case_facts)
@@ -548,7 +627,7 @@ function normalizePatientTurn(turn) {
 }
 
 function normalizePatientReply(text) {
-  const cleaned = safeText(text).slice(0, 500);
+  const cleaned = sanitizePatientReplyText(text);
   if (!cleaned) {
     return defaultPatientFallback();
   }
@@ -556,6 +635,26 @@ function normalizePatientReply(text) {
     return defaultPatientFallback();
   }
   return cleaned;
+}
+
+function sanitizePatientReplyText(text) {
+  if (typeof text !== "string") return "";
+  const lines = text
+    .split(/\r?\n/g)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const keptLines = lines.filter(
+    (line) =>
+      !looksLikeMetaResponse(line) &&
+      !looksLikeInternalMonologue(line) &&
+      !containsPromptOrPolicyLeak(line)
+  );
+
+  let merged = keptLines.join(" ").trim();
+  merged = sanitizeModelText(merged);
+  merged = merged.replace(/^(patient|patient reply|antwort|final answer)\s*:\s*/i, "").trim();
+  merged = merged.replace(/\s{2,}/g, " ");
+  return safeText(merged).slice(0, MAX_PATIENT_REPLY_LENGTH);
 }
 
 function normalizeExaminerFeedback(text) {
