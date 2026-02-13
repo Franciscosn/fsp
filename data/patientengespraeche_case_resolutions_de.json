@@ -1,0 +1,482 @@
+{
+  "default_thoraxschmerz_001": {
+    "title": "Fall aufloesen: Belastungsabhaengiger Thoraxschmerz",
+    "summary": "Der Fall passt klinisch zu einem akuten Koronarsyndrom bis zum Beweis des Gegenteils: drueckender retrosternaler Schmerz, Belastungszunahme, Ausstrahlung in Arm/Kiefer und vegetative Begleitsymptome. Wichtige Risikofaktoren sind Hypertonie, Dyslipidaemie, positive Familienanamnese und fruehere Raucheranamnese. Im Gespraech sollte die Gefahr eines kardialen Ereignisses frueh erkannt und rasch priorisiert werden.",
+    "questions": [
+      "Seit wann bestehen die Schmerzen genau, und wie war der Beginn (ploetzlich oder schleichend)?",
+      "Wie fuehlt sich der Schmerz an: Druck, Brennen, Stechen oder Enge?",
+      "Strahlt der Schmerz in Arm, Kiefer, Ruecken oder Oberbauch aus?",
+      "Werden die Beschwerden bei Belastung schlimmer und in Ruhe besser?",
+      "Wie lange dauert eine Episode, und ist der Schmerz dauerhaft oder anfallsartig?",
+      "Gibt es Begleitsymptome wie Luftnot, Uebelkeit, kalten Schweiss oder Schwindel?",
+      "Bestehen kardiovaskulaere Risikofaktoren (Hypertonie, Lipide, Diabetes, Familienanamnese, Nikotin)?",
+      "Gab es frueher schon aehnliche Episoden oder bekannte Herzerkrankungen?"
+    ],
+    "terms": [
+      "dumpfer Druck hinter dem Brustbein -> retrosternaler Druckschmerz",
+      "Ausstrahlung in linken Arm und Unterkiefer -> Schmerzprojektion in Arm/Kiefer",
+      "bei Treppensteigen schlimmer -> belastungsabhaengige Angina",
+      "kalter Schweiss -> vegetative Symptomatik/Diaphorese",
+      "mir ist schlecht -> Uebelkeit",
+      "Atemnot bei Anstrengung -> Belastungsdyspnoe",
+      "Herzinfarkt in der Familie -> positive Familienanamnese",
+      "frueher stark geraucht -> relevante Packyears"
+    ],
+    "diagnoses": [
+      "Am wahrscheinlichsten: akutes Koronarsyndrom (instabile Angina / NSTEMI / STEMI je nach Diagnostik).",
+      "Wichtige Differenzialdiagnosen: Lungenembolie, Aortendissektion, Perikarditis.",
+      "Weitere Differenzialdiagnosen: muskuloskelettaler Thoraxschmerz, Reflux/Oesophagitis.",
+      "Pruefungsfokus: ACS frueh priorisieren und red flags sicher erfassen."
+    ]
+  },
+  "dyspnoe_copd_exazerbation_001": {
+    "title": "Fall aufloesen: Akute Luftnot bei bekannter COPD",
+    "summary": "Die Konstellation spricht fuer eine akute COPD-Exazerbation: zunehmende Dyspnoe ueber 2 Tage, pfeifende Atmung, Husten und gelbliches Sputum. Die Anamnese mit GOLD-II-COPD und aktueller Nikotinexposition stuetzt das Bild. Im Pruefungsgespraech ist entscheidend, schwere Alternativen wie Pneumonie, Pneumothorax oder Lungenembolie aktiv auszuschliessen.",
+    "questions": [
+      "Seit wann ist die Luftnot da, und wie schnell hat sie zugenommen?",
+      "Besteht die Luftnot nur bei Belastung oder inzwischen auch in Ruhe?",
+      "Wie klingt die Atmung: pfeifend, rasselnd oder eher trocken?",
+      "Gibt es Husten, und falls ja: wie viel und welche Farbe hat der Auswurf?",
+      "Gab es Fieber, Schuettelfrost oder Brustschmerzen?",
+      "Wie haeufig wird das Bedarfsinhalat genutzt, und hilft es noch?",
+      "Wie ist die Rauchanamnese (Packyears, aktuell weiter rauchen)?",
+      "Gab es fruehere Exazerbationen oder Krankenhausaufnahmen?"
+    ],
+    "terms": [
+      "mir geht die Luft aus -> Dyspnoe",
+      "es pfeift beim Atmen -> Giemen/Wheezing",
+      "gelblicher Schleim -> purulentes Sputum",
+      "ich huste morgens stark -> produktiver Morgenhusten",
+      "Spray hilft kaum -> reduzierte Bronchodilatator-Wirkung",
+      "langjaehriges Rauchen -> Nikotinanamnese/Packyears",
+      "bekannte COPD GOLD II -> chronisch obstruktive Lungenerkrankung",
+      "Angst keine Luft mehr zu bekommen -> subjektive Atemnotangst"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: akute Exazerbation einer COPD (ggf. infektexazerbiert).",
+      "Differenzialdiagnosen: Pneumonie, Lungenembolie, dekompensierte Herzinsuffizienz.",
+      "Weitere Differenzialdiagnosen: Pneumothorax, Asthma-Exazerbation.",
+      "Pruefungsfokus: Schweregrad (Ruhedyspnoe, Sprechdyspnoe, red flags) sauber erheben."
+    ]
+  },
+  "neurologie_schlaganfallverdacht_001": {
+    "title": "Fall aufloesen: Ploetzliche Sprachstoerung und Halbseitenproblematik",
+    "summary": "Ploetzlicher Beginn von Sprachstoerung plus fokal-neurologischem Defizit (rechte Hand schwaecher, Mundwinkelasymmetrie) ist hochverdaechtig auf akuten Schlaganfall. Risikoprofil mit Vorhofflimmern, Hypertonie und Diabetes ist typisch. Im Gespraech ist die exakte Zeitachse (last known well) zentral fuer die Akuttherapie.",
+    "questions": [
+      "Wann wurden die Symptome zuletzt sicher nicht bemerkt (letzter normaler Zeitpunkt)?",
+      "Wie ploetzlich sind Sprachstoerung und Schwaeche aufgetreten?",
+      "Welche Koerperseite ist betroffen, und was ist konkret eingeschraenkt?",
+      "Gab es zusaetzlich Sehstoerungen, Schwindel oder Gangunsicherheit?",
+      "Bestehen Kopfschmerzen, Bewusstseinsveraenderung oder Krampfanfall?",
+      "Welche Gerinnungsmedikation wird eingenommen (z. B. Apixaban)?",
+      "Gab es frueher bereits TIA/Schlaganfall-Episoden?",
+      "Wer ist erreichbar als Kontaktperson, und lebt die Patientin alleine?"
+    ],
+    "terms": [
+      "ich spreche verwaschen -> Dysarthrie",
+      "Worte fallen mir nicht ein -> Aphasie/Wortfindungsstoerung",
+      "rechte Hand ist schwach -> fokale Parese rechts",
+      "schiefer Mundwinkel -> Fazialisparesezeichen",
+      "unsicher beim Gehen -> Gangataxie/Gangunsicherheit",
+      "ploetzlich seit heute frueh -> akuter Symptombeginn",
+      "Vorhofflimmern -> kardioembolischer Risikofaktor",
+      "Angst wie mein Bruder -> Krankheitsangst mit Familienbezug"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: akuter ischaemischer Schlaganfall bis zum Beweis des Gegenteils.",
+      "Differenzialdiagnosen: TIA, intrazerebrale Blutung, postiktaler Zustand.",
+      "Weitere Differenzialdiagnosen: Hypoglykaemie, komplexe Migraene mit Aura.",
+      "Pruefungsfokus: Zeitfenster, Antikoagulation und neurologische Defizite strukturiert erfassen."
+    ]
+  },
+  "gastro_melaena_oberer_gi_bleed_001": {
+    "title": "Fall aufloesen: Teerstuhl und Kreislaufsymptome",
+    "summary": "Schwarzer teerartiger Stuhl plus Schwaeche/Schwindel spricht klar fuer eine obere gastrointestinale Blutung. Wichtige Risikotreiber sind haeufige NSAID-Einnahme und Alkoholkonsum. Bei der Anamnese muss der potenziell instabile Kreislauf frueh erkannt und nach Blutungszeichen systematisch gefragt werden.",
+    "questions": [
+      "Seit wann ist der Stuhl schwarz, und wie oft trat das auf?",
+      "Gab es Schwindel, Beinahe-Synkope oder tatsaechliche Ohnmacht?",
+      "Bestehen Oberbauchschmerzen, Uebelkeit oder Erbrechen von Blut?",
+      "Wie viel NSAID (z. B. Ibuprofen) wird eingenommen, und seit wann?",
+      "Besteht Alkoholkonsum, und in welchem Ausmass?",
+      "Gab es fruehere Ulzera oder bekannte Magen-/Duodenumprobleme?",
+      "Sind Antikoagulanzien oder Thrombozytenhemmer im Einsatz?",
+      "Gibt es Warnzeichen wie Brustschmerz, Dyspnoe oder kalten Schweiss?"
+    ],
+    "terms": [
+      "schwarzer teerartiger Stuhl -> Melaena",
+      "mir ist schwindelig beim Aufstehen -> orthostatische Kreislaufproblematik",
+      "ich bin fast umgekippt -> Praesynkope",
+      "Magenschmerzen oben -> epigastrischer Schmerz",
+      "oft Ibuprofen genommen -> NSAID-assoziiertes Blutungsrisiko",
+      "ich fuehle mich sehr schwach -> allgemeine Leistungsminderung",
+      "innerlich verbluten -> relevante Blutungsangst",
+      "kein frisches rotes Blut -> kein Haematochezie-Hinweis"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: obere GI-Blutung, wahrscheinlich ulkusassoziiert (NSAID-bedingt).",
+      "Differenzialdiagnosen: erosive Gastritis, Oesophaguslaesionen, varikoese Blutung.",
+      "Weitere Differenzialdiagnosen: untere GI-Blutung mit langsamem Verlauf (seltener bei Melaena).",
+      "Pruefungsfokus: Blutungsmenge/Instabilitaet abschaetzen und Risikofaktoren klar erheben."
+    ]
+  },
+  "urologie_pyelonephritis_001": {
+    "title": "Fall aufloesen: Fieber, Flankenschmerz und Dysurie",
+    "summary": "Dysurie gefolgt von Fieber, Flankenschmerz und Schuettelfrost passt am ehesten zu einer akuten Pyelonephritis. Die Vorgeschichte mit rezidivierenden Harnwegsinfekten erhoeht die Wahrscheinlichkeit. Das Anamnesegespraech sollte die Ausbreitung vom unteren in den oberen Harntrakt und Sepsiszeichen frueh fokussieren.",
+    "questions": [
+      "Wann begannen Brennen beim Wasserlassen und Harndrang?",
+      "Seit wann bestehen Fieber und Flankenschmerzen?",
+      "Wie hoch war das Fieber, und gab es Schuettelfrost?",
+      "Ist der Schmerz ein- oder beidseitig, konstant oder kolikartig?",
+      "Gibt es Uebelkeit, Erbrechen oder Kreislaufprobleme?",
+      "Bestehen vaginaler Ausfluss oder andere gynaekologische Symptome?",
+      "Gab es in der Vergangenheit aehnliche Episoden oder Antibiotikatherapien?",
+      "Sind Allergien gegen relevante Antibiotika bekannt?"
+    ],
+    "terms": [
+      "Brennen beim Wasserlassen -> Dysurie",
+      "haeufig kleiner Urinmengen -> Pollakisurie",
+      "Schmerz in der Seite -> Flankenschmerz",
+      "hohes Fieber mit Schuettelfrost -> systemische Infektzeichen",
+      "mir ist uebel -> Nausea",
+      "wiederholte Blasenentzuendung -> rezidivierende HWI",
+      "Niere betroffen? -> V. a. Pyelonephritis",
+      "Cotrimoxazol juckt -> Arzneimittelallergie"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: akute unkomplizierte/komplizierte Pyelonephritis (je nach Kontext).",
+      "Differenzialdiagnosen: Urolithiasis mit Harnwegsinfekt, komplizierte Zystitis.",
+      "Weitere Differenzialdiagnosen: gynaekologische Entzuendung, Appendizitis (je nach Lokalisation).",
+      "Pruefungsfokus: Fieber/Schuettelfrost und Flankenschmerz als Warnkombination erkennen."
+    ]
+  },
+  "abdomen_appendizitis_001": {
+    "title": "Fall aufloesen: Wandernder Unterbauchschmerz rechts",
+    "summary": "Typische Konstellation fuer eine akute Appendizitis: initial periumbilikaler Schmerz mit Wanderung in den rechten Unterbauch, dazu Uebelkeit und Appetitlosigkeit. Schmerzverstaerkung bei Bewegung/Husten passt zu peritonealer Reizung. In der Pruefung ist die Schmerzzeitachse und Lokalisation der Schluessel.",
+    "questions": [
+      "Wo begann der Schmerz, und wohin hat er sich verlagert?",
+      "Seit wann bestehen die Beschwerden, und wie war der zeitliche Verlauf?",
+      "Wie stark ist der Schmerz auf einer Skala von 0 bis 10?",
+      "Nimmt der Schmerz bei Bewegung, Husten oder Erschuetterung zu?",
+      "Gibt es Uebelkeit, Erbrechen, Fieber oder Appetitverlust?",
+      "Bestehen Durchfall, Obstipation oder Blut im Stuhl?",
+      "Gibt es Harnbeschwerden, um urologische Ursachen mitzupruefen?",
+      "Gab es aehnliche Episoden in der Vergangenheit?"
+    ],
+    "terms": [
+      "Bauchschmerz um den Nabel -> periumbilikaler Schmerz",
+      "jetzt rechts unten -> Schmerzlokalisation rechter Unterbauch",
+      "Schmerz wandert -> Schmerzmigration",
+      "schlimmer bei Husten -> Erschuetterungsschmerz",
+      "kein Appetit -> Appetitlosigkeit/Anorexie",
+      "mir ist uebel -> Nausea",
+      "kein Blut im Stuhl -> negative GI-Blutungsanamnese",
+      "Blinddarm entzuendet? -> Verdacht auf Appendizitis"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: akute Appendizitis.",
+      "Differenzialdiagnosen: Mesenteriallymphadenitis, terminale Ileitis, Gastroenteritis.",
+      "Weitere Differenzialdiagnosen: Urolithiasis, Harnwegsinfekt, bei Frauen gynaekologische Ursachen.",
+      "Pruefungsfokus: typische Schmerzmigration und peritoneale Reizzeichen erfragen."
+    ]
+  },
+  "schilddruese_hypothyreose_001": {
+    "title": "Fall aufloesen: Chronische Muedigkeit und Kaelteempfindlichkeit",
+    "summary": "Das Beschwerdebild (Muedigkeit, Frieren, Gewichtszunahme, trockene Haut, Obstipation) passt zu einer Hypothyreose. Bekannte Hashimoto-Thyreoiditis und unregelmaessige L-Thyroxin-Einnahme machen eine Unterversorgung wahrscheinlich. In der Anamnese ist die Therapieadhaerenz ein zentraler Hebel.",
+    "questions": [
+      "Seit wann bestehen Muedigkeit und Leistungsknick?",
+      "Wie haben sich Gewicht und Appetit in letzter Zeit veraendert?",
+      "Gibt es Kaelteintoleranz, trockene Haut oder Verstopfung?",
+      "Wie regelmaessig wird L-Thyroxin eingenommen (Uhrzeit, Nuechternheit)?",
+      "Gab es zuletzt Schilddruesen-Kontrollen (TSH/fT4)?",
+      "Bestehen depressive Stimmung, Konzentrationsprobleme oder Schlafprobleme?",
+      "Gibt es kardiale Symptome wie Bradykardie oder Belastungsdyspnoe?",
+      "Welche Alltagsfaktoren erschweren die regelmaessige Einnahme?"
+    ],
+    "terms": [
+      "ich bin dauernd muede -> Fatigue/Antriebsminderung",
+      "ich friere schnell -> Kaelteintoleranz",
+      "ich nehme zu trotz gleicher Ernaehrung -> ungewollte Gewichtszunahme",
+      "trockene Haut -> Xerosis cutis",
+      "Verstopfung -> Obstipation",
+      "kann mich schlecht konzentrieren -> Konzentrationsstoerung",
+      "L-Thyroxin unregelmaessig -> reduzierte Therapieadhaerenz",
+      "Hashimoto bekannt -> Autoimmunthyreoiditis"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: primaere Hypothyreose bei Hashimoto-Thyreoiditis.",
+      "Differenzialdiagnosen: depressive Episode, Anaemie, Schlafmangel/chronische Erschoepfung.",
+      "Weitere Differenzialdiagnosen: medikamentoese Ursachen, metabolische Stoerungen.",
+      "Pruefungsfokus: typische Hypothyreose-Symptome + Adhaerenz klar herausarbeiten."
+    ]
+  },
+  "schilddruese_hyperthyreose_001": {
+    "title": "Fall aufloesen: Herzklopfen, Unruhe und Gewichtsverlust",
+    "summary": "Herzklopfen, Tremor, innere Unruhe, Schwitzen und Gewichtsverlust trotz gutem Appetit sprechen fuer eine Hyperthyreose. Der Fall ist pruefungstypisch, weil kardiologische Beschwerden (Palpitationen) im Vordergrund stehen koennen. Wichtig ist die Trennung zwischen endokriner Ursache und primaer kardialer Stoerung.",
+    "questions": [
+      "Seit wann bestehen Herzklopfen und innere Unruhe?",
+      "Wie viel Gewicht wurde in welchem Zeitraum verloren?",
+      "Gibt es Tremor, Hitzeintoleranz, Schwitzen oder Schlafstoerungen?",
+      "Treten die Beschwerden in Ruhe auf oder nur unter Belastung?",
+      "Gab es Synkopen, Brustschmerz oder Luftnot als red flags?",
+      "Wie hoch ist der Koffeinkonsum, und wird Nikotin konsumiert?",
+      "Besteht eine Struma, Augenveraenderung oder Schluckbeschwerden?",
+      "Gibt es in der Familie Schilddruesenerkrankungen?"
+    ],
+    "terms": [
+      "Herzklopfen -> Palpitationen/Tachykardie",
+      "ich bin staendig nervoes -> psychomotorische Unruhe",
+      "Haende zittern -> Tremor",
+      "ich schwitze schnell -> Hyperhidrose/Hitzeintoleranz",
+      "ich nehme trotz Essen ab -> ungewollter Gewichtsverlust",
+      "Schlafstoerung -> Insomnie",
+      "viel Kaffee -> hoher Koffeinkonsum",
+      "Angst mit dem Herzen stimmt etwas nicht -> kardiale Krankheitsangst"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: Hyperthyreose (z. B. M. Basedow oder funktionelle Autonomie).",
+      "Differenzialdiagnosen: Angst/Panikstoerung, Rhythmusstoerung ohne endokrine Ursache.",
+      "Weitere Differenzialdiagnosen: Medikamenten-/Substanzwirkung (Koffein, Sympathomimetika).",
+      "Pruefungsfokus: systematische Hyperthyreose-Anamnese trotz kardialem Erstbeschwerdebild."
+    ]
+  },
+  "infekt_exsikkose_ae_ltere_patientin_001": {
+    "title": "Fall aufloesen: Exsikkose bei aelterer Patientin",
+    "summary": "Sehr typische Geriatrie-Konstellation: reduzierte Trinkmenge, dunkler Urin, orthostatischer Schwindel und allgemeine Schwaeche. Die Kombination aus Niereninsuffizienz, Diuretikum und verminderter Aufnahme erhoeht das Risiko fuer praerenales Nierenversagen. In der Anamnese ist die konkrete Trinkmenge besonders wichtig.",
+    "questions": [
+      "Wie viel wurde in den letzten Tagen tatsaechlich getrunken (ml/Tag)?",
+      "Seit wann bestehen Schwaeche und Schwindel beim Aufstehen?",
+      "Wie oft wird uriniert, und wie sieht der Urin aus (Menge/Farbe)?",
+      "Gab es Uebelkeit, Erbrechen, Durchfall oder Fieber als Ausloeser?",
+      "Welche Medikamente werden eingenommen, besonders Diuretika?",
+      "Gab es Stuerze, Praesynkope oder Ohnmachten?",
+      "Wie ist die Alltagsversorgung zu Hause (Unterstuetzung vorhanden)?",
+      "Bestehen Begleiterkrankungen wie Niereninsuffizienz oder Herzkrankheit?"
+    ],
+    "terms": [
+      "kaum getrunken -> verminderte orale Fluessigkeitsaufnahme",
+      "trockener Mund -> Schleimhauttrockenheit",
+      "wenig dunkler Urin -> Oligurie mit konzentriertem Urin",
+      "Schwindel beim Aufstehen -> orthostatische Symptomatik",
+      "ich fuehle mich schwach -> allgemeine Leistungsminderung",
+      "unter 500 ml pro Tag -> deutlicher Volumenmangel",
+      "Niereninsuffizienz Stadium 3 -> CKD Stadium 3",
+      "ich kippe fast um -> orthostatische Praesynkope"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: Exsikkose/Volumenmangel mit Risiko praerenaler Nierenfunktionsverschlechterung.",
+      "Differenzialdiagnosen: Infekt mit reduzierter Aufnahme, medikamentoese Hypotonie.",
+      "Weitere Differenzialdiagnosen: Blutung/Anaemie, kardiale Ursache von Schwindel.",
+      "Pruefungsfokus: geriatrische Risikofaktoren und konkrete Trinkanamnese erfassen."
+    ]
+  },
+  "dermatologie_urtikaria_001": {
+    "title": "Fall aufloesen: Akute juckende Quaddeln",
+    "summary": "Wandernde, juckende Quaddeln mit episodischem Verlauf sind klassisch fuer eine akute Urtikaria. Der moegliche Trigger (neuer Proteinriegel) wird erst bei gezielter Frage genannt, was den Anamnesefokus gut trainiert. Entscheidend ist die Abgrenzung zur Anaphylaxie durch Fragen nach Atemwegs- und Kreislaufzeichen.",
+    "questions": [
+      "Seit wann bestehen die Hautveraenderungen, und wie schnell traten sie auf?",
+      "Wie sehen die Stellen aus, und verschwinden sie wieder an anderer Stelle?",
+      "Wie stark ist der Juckreiz, und gibt es Trigger?",
+      "Gab es neue Nahrungsmittel, Medikamente oder Kosmetika?",
+      "Bestehen Atemnot, Schluckbeschwerden oder Halsenge?",
+      "Gibt es Lippen-/Zungenschwellung oder Kreislaufsymptome?",
+      "Bestehen bekannte Allergien oder atopische Erkrankungen?",
+      "Was wurde bereits eingenommen (z. B. Antihistaminikum), und hat es geholfen?"
+    ],
+    "terms": [
+      "juckende Quaddeln -> Urtikaria",
+      "kommt in Schueben -> fluktuierender Verlauf",
+      "wandert ueber den Koerper -> migratorische Quaddeln",
+      "Lippenkribbeln -> periorales Paraesthesiegefuehl",
+      "neuer Proteinriegel -> moeglicher allergischer Trigger",
+      "keine Luftnot -> keine akute respiratorische Beteiligung",
+      "kein Halsengegefuehl -> aktuell keine obere Atemwegsobstruktion",
+      "Cetirizin bei Bedarf -> bedarfsweise Antihistaminika"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: akute Urtikaria, vermutlich triggerassoziiert.",
+      "Wichtige Differenzialdiagnosen: beginnende Anaphylaxie, Arzneimittelexanthem.",
+      "Weitere Differenzialdiagnosen: virales Exanthem, Kontaktdermatitis.",
+      "Pruefungsfokus: red flags (Atemwege/Kreislauf) frueh aktiv ausschliessen."
+    ]
+  },
+  "psychiatrie_depressive_episode_001": {
+    "title": "Fall aufloesen: Verdacht auf depressive Episode",
+    "summary": "Der Fall zeigt typische Kernsymptome einer depressiven Episode: gedrueckte Stimmung, Interessenverlust und Antriebsmangel ueber mehrere Wochen. Schlaf-, Appetit- und Konzentrationsstoerungen stuetzen die Diagnose. Besonders pruefungsrelevant ist das empathische, direkte Erfragen von Suizidalitaet.",
+    "questions": [
+      "Seit wann fuehlen Sie sich niedergeschlagen, und wie ist der Tagesverlauf?",
+      "Was macht Ihnen aktuell noch Freude, was nicht mehr?",
+      "Wie sind Schlaf, Appetit, Konzentration und Energie?",
+      "Wie stark beeintraechtigen die Beschwerden Arbeit und Alltag?",
+      "Gab es frueher aehnliche Episoden oder psychiatrische Behandlung?",
+      "Gab es Phasen mit deutlich gehobener Stimmung/vermindertem Schlafbedarf?",
+      "Konsumieren Sie Alkohol, Drogen oder Beruhigungsmittel?",
+      "Haben Sie Gedanken, nicht mehr leben zu wollen, oder sich etwas anzutun?"
+    ],
+    "terms": [
+      "gedrueckte Stimmung -> depressive Verstimmung",
+      "nichts macht Freude -> Anhedonie",
+      "kein Antrieb -> Antriebsminderung",
+      "Schlafprobleme -> Ein-/Durchschlafstoerung",
+      "wenig Appetit -> Appetitminderung",
+      "kann mich nicht konzentrieren -> Konzentrationsstoerung",
+      "ich funktioniere nicht mehr -> psychosoziale Funktionseinschraenkung",
+      "passive Suizidgedanken -> Suizidalitaet ohne konkrete Planung"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: depressive Episode (Schweregrad klinisch weiter einzuordnen).",
+      "Differenzialdiagnosen: Anpassungsstoerung, Burnout-nahe Belastungsreaktion.",
+      "Weitere Differenzialdiagnosen: bipolare Stoerung (depressive Phase), somatische Ursache (z. B. Hypothyreose).",
+      "Pruefungsfokus: empathisches Gespraech, Suizidalitaet sicher und direkt ansprechen."
+    ]
+  },
+  "psychiatrie_panikattacke_001": {
+    "title": "Fall aufloesen: Wiederholte Panikattacken",
+    "summary": "Die Episoden mit ploetzlichem Beginn, Herzrasen, Luftnot, Zittern, Brustenge und starker Todesangst sind klassisch fuer Panikattacken. Gleichzeitig muss initial immer eine somatische Ursache mitgedacht werden. Der Fall trainiert das strukturierte Unterscheiden zwischen Angststoerung und akut gefaehrlichen internistischen Ursachen.",
+    "questions": [
+      "Wie ploetzlich beginnen die Attacken, und wie lange dauern sie?",
+      "Welche Symptome treten waehrend einer Attacke genau auf?",
+      "Gibt es ausloesende Situationen oder treten Attacken spontan auf?",
+      "Wie oft treten die Episoden auf, und wie stark ist die Beeintraechtigung?",
+      "Bestehen Brustschmerz, Synkope oder neurologische Warnzeichen?",
+      "Bestehen Hyperthyreose-Symptome, Substanzkonsum oder hoher Koffeinkonsum?",
+      "Gab es bereits fruehere Angstdiagnosen oder Therapie?",
+      "Welche Befuerchtungen bestehen waehrend der Attacke (z. B. Herzinfarkt)?"
+    ],
+    "terms": [
+      "ploetzliche Attacken -> anfallsartige Episoden",
+      "Herzrasen -> Tachykardie/Palpitationen",
+      "Luftnot -> Dyspnoe",
+      "Zittern -> Tremor",
+      "Enge in der Brust -> thorakales Engegefuehl",
+      "Angst zu sterben -> ausgepraegte Todesangst",
+      "10-20 Minuten -> typische Attackendauer",
+      "hoher Stress -> psychosozialer Belastungsfaktor"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: Panikattacke bei Angststoerung (rezidivierend).",
+      "Differenzialdiagnosen: akutes Koronarsyndrom, relevante Arrhythmie.",
+      "Weitere Differenzialdiagnosen: Hyperthyreose, Lungenembolie (je nach Risikoprofil).",
+      "Pruefungsfokus: somatische red flags ausschliessen und psychische Symptomatik praezise erfassen."
+    ]
+  },
+  "kardio_synkope_001": {
+    "title": "Fall aufloesen: Wiederholte Synkopen mit Arrhythmieverdacht",
+    "summary": "Mehrere Ohnmachten in kurzer Zeit, teils ohne Vorwarnung, plus Palpitationen sprechen fuer eine potenziell kardiale Synkope. Das ist besonders relevant, weil der Patient Berufskraftfahrer ist. Im Gespraech muessen Synkopencharakteristika sowie epileptische und vasovagale Differenzialzeichen sauber getrennt werden.",
+    "questions": [
+      "Wie oft kam es zur Ohnmacht, und in welchen Situationen?",
+      "Gab es Prodromi wie Schwindel, Uebelkeit, Schwarzwerden vor Augen?",
+      "Wie lange dauerte die Bewusstlosigkeit und wie schnell war die Erholung?",
+      "Gab es Herzstolpern, Brustschmerz oder Luftnot vor dem Ereignis?",
+      "Kam es zu Zungenbiss, Einnassen oder postiktaler Verwirrtheit?",
+      "Bestehen bekannte Herzrhythmusstoerungen oder strukturelle Herzerkrankungen?",
+      "Welche Medikamente werden eingenommen (inkl. Antikoagulation)?",
+      "Gab es Verletzungen durch Sturz und Sicherheitsrisiken im Beruf?"
+    ],
+    "terms": [
+      "ohnmaechtig geworden -> Synkope",
+      "Herzstolpern vorher -> Palpitationen/arrhythmischer Prodrom",
+      "schnell wieder klar -> rasche Reorientierung",
+      "kein Zungenbiss, kein Einnassen -> eher gegen epileptischen Anfall",
+      "Platzwunde nach Sturz -> traumaassoziierte Begleitverletzung",
+      "Vorhofflimmern in Vorgeschichte -> arrhythmischer Risikofaktor",
+      "Busfahrer -> hohe sicherheitsrelevante Taetigkeit",
+      "Angst beim Fahren umzufallen -> erhebliche Alltags-/Berufsangst"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: kardiale Synkope bei Rhythmusstoerung bis zum Beweis des Gegenteils.",
+      "Differenzialdiagnosen: vasovagale Synkope, orthostatische Synkope.",
+      "Weitere Differenzialdiagnosen: epileptischer Anfall, metabolische Ursache.",
+      "Pruefungsfokus: synkopenspezifische Schluesselfragen und Sicherheitsaspekte im Beruf."
+    ]
+  },
+  "pneumologie_lungenembolieverdacht_001": {
+    "title": "Fall aufloesen: Ploetzliche Dyspnoe mit pleuritischem Thoraxschmerz",
+    "summary": "Ploetzliche Luftnot plus atemabhaengiger Thoraxschmerz und Risikokette (Langstreckenflug, orale Kontrazeption, Beinschwellung) ist hochverdaechtig fuer Lungenembolie. Der Fall trainiert besonders gut die gezielte Risikoanamnese. Entscheidend ist, red flags schnell zu erkennen und nicht vorschnell als Angstsymptom zu interpretieren.",
+    "questions": [
+      "Wann begann die Luftnot, und war der Beginn ploetzlich?",
+      "Ist der Thoraxschmerz atemabhaengig/stechend oder drueckend?",
+      "Gab es zuvor Immobilisation, Flugreisen oder Operationen?",
+      "Besteht Hormontherapie oder orale Kontrazeption?",
+      "Gab es einseitige Beinschwellung oder Beinschmerzen?",
+      "Bestehen Husten, Haemoptysen, Fieber oder Infektzeichen?",
+      "Gab es fruehere Thrombosen/Embolien oder familiaere Thrombophilie?",
+      "Wie stark sind Dyspnoe und Belastungseinschraenkung aktuell?"
+    ],
+    "terms": [
+      "ploetzliche Luftnot -> akute Dyspnoe",
+      "stechender Schmerz beim Einatmen -> pleuritischer Thoraxschmerz",
+      "schneller Puls -> Tachykardie",
+      "trockener Husten -> unproduktiver Husten",
+      "ein Bein geschwollen -> einseitige Beinschwellung (DVT-Hinweis)",
+      "Langstreckenflug -> Immobilisations-/Reiserisiko",
+      "Pille -> oestrogenassoziiertes Thromboserisiko",
+      "Angst vor Blutgerinnsel -> Embolieangst"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: akute Lungenembolie (bis zum Ausschluss).",
+      "Differenzialdiagnosen: Pneumothorax, Pneumonie/Pleuritis, ACS.",
+      "Weitere Differenzialdiagnosen: Angst-/Panikereignis bei fehlenden red flags.",
+      "Pruefungsfokus: strukturierte VTE-Risikofaktoren und zeitkritische Einordnung."
+    ]
+  },
+  "gastro_cholezystitis_001": {
+    "title": "Fall aufloesen: Rechter Oberbauchschmerz nach fettreicher Mahlzeit",
+    "summary": "Starker rechter Oberbauchschmerz mit Nausea/Erbrechen und Ausstrahlung in die rechte Schulter bei bekannter Cholelithiasis passt zu akuter Cholezystitis. Der postprandiale Trigger ist typisch. In der Anamnese sollten biliaere Warnzeichen (Fieber, Ikterus, Cholangitiszeichen) systematisch abgefragt werden.",
+    "questions": [
+      "Seit wann bestehen die Oberbauchschmerzen und wie stark sind sie?",
+      "Treten die Schmerzen nach fettreichen Mahlzeiten verstaerkt auf?",
+      "Strahlt der Schmerz in Schulter oder Ruecken aus?",
+      "Gibt es Uebelkeit, Erbrechen oder Fieber?",
+      "Wurde Gelbfaerbung der Haut/Augen oder dunkler Urin bemerkt?",
+      "Bestehen Stuhlveraenderungen wie Teerstuhl oder entfaerbter Stuhl?",
+      "Sind frueher Gallenkoliken oder sonographische Steine bekannt?",
+      "Welche Medikamente wurden gegen den Schmerz bereits genommen?"
+    ],
+    "terms": [
+      "starker Schmerz rechts oben -> rechter Oberbauchschmerz",
+      "nach fettem Essen schlimmer -> postprandiale biliaere Schmerzprovokation",
+      "zieht in rechte Schulter -> Schmerzausstrahlung",
+      "mir ist uebel, ich habe erbrochen -> Nausea/Emesis",
+      "leichte Temperatur -> subfebriler Zustand",
+      "Gallensteine bekannt -> Cholelithiasis",
+      "keine Gelbsucht bemerkt -> kein Ikterus",
+      "koennte die Gallenblase sein -> patientenseitiger Organverdacht"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: akute Cholezystitis bei bekannter Cholelithiasis.",
+      "Differenzialdiagnosen: biliaere Kolik ohne Entzuendung, Cholangitis.",
+      "Weitere Differenzialdiagnosen: Pankreatitis, Ulkuskrankheit, atypisches ACS.",
+      "Pruefungsfokus: Trigger, Fieber, Ikterus und Komplikationszeichen aktiv erheben."
+    ]
+  },
+  "nephro_urolithiasis_001": {
+    "title": "Fall aufloesen: Kolikartiger Flankenschmerz mit Haematurie",
+    "summary": "Akuter wellenfoermiger Flankenschmerz mit Ausstrahlung in die Leiste plus roetlicher Urin passt sehr gut zu Urolithiasis. Frueherer Nierenstein stuetzt die Rezidivwahrscheinlichkeit. Wichtig ist in der Anamnese die Trennung zur infizierten Harnabflussstoerung durch gezielte Fragen nach Fieber/Schuettelfrost.",
+    "questions": [
+      "Wann begann der Schmerz, und ist er kolikartig mit Schmerzspitzen?",
+      "Wo sitzt der Schmerz genau, und wohin strahlt er aus?",
+      "Gibt es Uebelkeit, Erbrechen oder Bewegungsunruhe?",
+      "Wurde Blut im Urin bemerkt, und wie deutlich war die Verfaerbung?",
+      "Besteht Harndrang/Pollakisurie oder Dysurie?",
+      "Gab es Fieber oder Schuettelfrost (Hinweis auf komplizierten Verlauf)?",
+      "Gab es frueher Nierensteine, und wie wurden diese behandelt?",
+      "Wie viel Fluessigkeit wird taeglich getrunken?"
+    ],
+    "terms": [
+      "starker Schmerz in der Flanke -> Flankenschmerz",
+      "kommt in Wellen -> kolikartiger Schmerzcharakter",
+      "zieht in die Leiste -> Leistenausstrahlung",
+      "leicht roetlicher Urin -> Makrohaematurie",
+      "haeufig Wasserlassen in kleinen Mengen -> Pollakisurie",
+      "mir ist uebel -> Nausea",
+      "Nierenstein frueher -> Urolithiasis in Vorgeschichte",
+      "trinke wenig bei der Arbeit -> geringe Hydrierung als Risikofaktor"
+    ],
+    "diagnoses": [
+      "Leitdiagnose: akute Ureterolithiasis/Nierenkolik links.",
+      "Differenzialdiagnosen: Pyelonephritis (v. a. bei Fieber), muskuloskelettaler Schmerz.",
+      "Weitere Differenzialdiagnosen: abdominale Ursachen (z. B. Divertikulitis) je nach Verlauf.",
+      "Pruefungsfokus: Kolikcharakter, Harnsymptome und Infektzeichen sauber differenzieren."
+    ]
+  }
+}

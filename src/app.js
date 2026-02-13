@@ -6,12 +6,13 @@ const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260213e";
-const BUILD_UPDATED_AT = "2026-02-13 18:05 UTC";
+const APP_VERSION = "20260213f";
+const BUILD_UPDATED_AT = "2026-02-13 16:21 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MIN_VOICE_BLOB_BYTES = 450;
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
+const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
 const VOICE_CASE_DEFAULT = "default";
 const VOICE_CASE_CUSTOM = "custom";
 const VOICE_CASE_LIBRARY_PREFIX = "lib:";
@@ -217,8 +218,10 @@ const state = {
   voiceBusy: false,
   voiceRecording: false,
   voiceCaseLibrary: [],
+  voiceCaseResolutions: {},
   voiceCaseIndex: -1,
   voiceCaseLibraryLoaded: false,
+  voiceCaseResolutionsLoaded: false,
   voiceCaseSelection: VOICE_CASE_DEFAULT
 };
 
@@ -239,6 +242,12 @@ const refs = {
   voiceCaseSelect: document.getElementById("voiceCaseSelect"),
   voiceCaseMeta: document.getElementById("voiceCaseMeta"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
+  voiceResolutionTitle: document.getElementById("voiceResolutionTitle"),
+  voiceResolutionHint: document.getElementById("voiceResolutionHint"),
+  voiceResolutionSummary: document.getElementById("voiceResolutionSummary"),
+  voiceResolutionQuestions: document.getElementById("voiceResolutionQuestions"),
+  voiceResolutionTerms: document.getElementById("voiceResolutionTerms"),
+  voiceResolutionDiagnoses: document.getElementById("voiceResolutionDiagnoses"),
   voiceRecordBtn: document.getElementById("voiceRecordBtn"),
   voiceResetBtn: document.getElementById("voiceResetBtn"),
   voiceNextCaseBtn: document.getElementById("voiceNextCaseBtn"),
@@ -410,6 +419,7 @@ function initVoiceUi() {
   renderVoiceCaseSelect();
   applyVoiceCaseSelection(state.voiceCaseSelection, { preserveStatus: true, resetConversation: false });
   void ensureVoiceCaseLibraryLoaded();
+  void ensureVoiceCaseResolutionLibraryLoaded();
 
   if (!isVoiceCaptureSupported()) {
     refs.voiceRecordBtn.disabled = true;
@@ -429,6 +439,9 @@ function handleVoiceCaseInput() {
     refs.voiceCaseInput.value = normalized;
   }
   saveToStorage(STORAGE_VOICE_CASE_KEY, { caseText: refs.voiceCaseInput.value });
+  if (getActiveVoiceCaseSelection() === VOICE_CASE_CUSTOM) {
+    updateVoiceCaseResolution();
+  }
 }
 
 function handleVoiceCaseSelectionChange() {
@@ -556,6 +569,7 @@ function applyVoiceCaseSelection(selection, options = {}) {
   }
 
   updateVoiceCaseMeta();
+  updateVoiceCaseResolution();
   if (resetConversation) {
     resetVoiceConversation({ keepCaseText: true, preserveStatus: true });
   }
@@ -588,6 +602,124 @@ function getVoiceCaseStatusLabel() {
     return "Interner Standardfall";
   }
   return entry.label;
+}
+
+function getActiveVoiceCaseId() {
+  const selection = getActiveVoiceCaseSelection();
+  if (selection === VOICE_CASE_DEFAULT) {
+    return extractCaseId(DEFAULT_VOICE_CASE) || "default_thoraxschmerz_001";
+  }
+  if (selection.startsWith(VOICE_CASE_LIBRARY_PREFIX)) {
+    return selection.slice(VOICE_CASE_LIBRARY_PREFIX.length);
+  }
+  if (selection === VOICE_CASE_CUSTOM) {
+    const customId = extractCaseId(refs.voiceCaseInput.value || "");
+    return customId || "";
+  }
+  return "";
+}
+
+async function ensureVoiceCaseResolutionLibraryLoaded() {
+  if (state.voiceCaseResolutionsLoaded) {
+    return true;
+  }
+
+  try {
+    const url = new URL(`../${VOICE_CASE_RESOLUTION_PATH}?v=${APP_VERSION}`, import.meta.url);
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("voice-case-resolution-fetch-failed");
+    }
+
+    const raw = await response.json();
+    if (!raw || typeof raw !== "object") {
+      throw new Error("voice-case-resolution-invalid-json");
+    }
+    state.voiceCaseResolutions = raw;
+    state.voiceCaseResolutionsLoaded = true;
+    updateVoiceCaseResolution();
+    return true;
+  } catch (error) {
+    console.warn("Fallaufloesungen konnten nicht geladen werden", error);
+    state.voiceCaseResolutions = {};
+    state.voiceCaseResolutionsLoaded = true;
+    updateVoiceCaseResolution();
+    return false;
+  }
+}
+
+function updateVoiceCaseResolution() {
+  if (
+    !refs.voiceResolutionTitle ||
+    !refs.voiceResolutionHint ||
+    !refs.voiceResolutionSummary ||
+    !refs.voiceResolutionQuestions ||
+    !refs.voiceResolutionTerms ||
+    !refs.voiceResolutionDiagnoses
+  ) {
+    return;
+  }
+
+  if (!state.voiceCaseResolutionsLoaded) {
+    refs.voiceResolutionTitle.textContent = "Fall aufloesen";
+    refs.voiceResolutionHint.textContent = "Aufloesung wird geladen ...";
+    refs.voiceResolutionSummary.textContent = "";
+    renderVoiceResolutionList(refs.voiceResolutionQuestions, []);
+    renderVoiceResolutionList(refs.voiceResolutionTerms, []);
+    renderVoiceResolutionList(refs.voiceResolutionDiagnoses, []);
+    return;
+  }
+
+  const activeCaseId = getActiveVoiceCaseId();
+  const entry = activeCaseId ? state.voiceCaseResolutions[activeCaseId] : null;
+  if (!entry) {
+    if (getActiveVoiceCaseSelection() === VOICE_CASE_CUSTOM) {
+      refs.voiceResolutionTitle.textContent = "Fall aufloesen";
+      refs.voiceResolutionHint.textContent =
+        "Fuer eigenen Falltext gibt es noch keine hinterlegte Aufloesung. Nutze einen Bibliotheksfall fuer strukturierte Loesungen.";
+    } else {
+      refs.voiceResolutionTitle.textContent = "Fall aufloesen";
+      refs.voiceResolutionHint.textContent = "Fuer diesen Fall ist noch keine Aufloesung hinterlegt.";
+    }
+    refs.voiceResolutionSummary.textContent = "";
+    renderVoiceResolutionList(refs.voiceResolutionQuestions, []);
+    renderVoiceResolutionList(refs.voiceResolutionTerms, []);
+    renderVoiceResolutionList(refs.voiceResolutionDiagnoses, []);
+    return;
+  }
+
+  refs.voiceResolutionTitle.textContent = entry.title || "Fall aufloesen";
+  refs.voiceResolutionHint.textContent = `CASE_ID: ${activeCaseId}`;
+  refs.voiceResolutionSummary.textContent = entry.summary || "";
+  renderVoiceResolutionList(refs.voiceResolutionQuestions, Array.isArray(entry.questions) ? entry.questions : []);
+  renderVoiceResolutionList(refs.voiceResolutionTerms, Array.isArray(entry.terms) ? entry.terms : []);
+  renderVoiceResolutionList(
+    refs.voiceResolutionDiagnoses,
+    Array.isArray(entry.diagnoses) ? entry.diagnoses : []
+  );
+}
+
+function renderVoiceResolutionList(container, items) {
+  if (!container) return;
+  container.innerHTML = "";
+  if (!Array.isArray(items) || items.length === 0) {
+    const empty = document.createElement("li");
+    empty.textContent = "-";
+    container.appendChild(empty);
+    return;
+  }
+  for (const item of items) {
+    const value = String(item || "").trim();
+    if (!value) continue;
+    const li = document.createElement("li");
+    li.textContent = value;
+    container.appendChild(li);
+  }
+  if (!container.children.length) {
+    const empty = document.createElement("li");
+    empty.textContent = "-";
+    container.appendChild(empty);
+  }
 }
 
 async function startVoiceRecording() {
