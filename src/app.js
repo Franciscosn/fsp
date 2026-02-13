@@ -5,9 +5,52 @@ const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
 const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260213a";
+const APP_VERSION = "20260213b";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
+const DEFAULT_VOICE_CASE = [
+  "CASE_ID: default_thoraxschmerz_001",
+  "Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.",
+  "Persona: 58 Jahre, Grundschullehrerin, spricht ruhig, zeitweise besorgt.",
+  "",
+  "Leitsymptom:",
+  "- Seit gestern Abend dumpfer Druck hinter dem Brustbein.",
+  "- Heute Morgen bei Treppensteigen staerker geworden.",
+  "",
+  "Begleitsymptome (nur bei gezielter Nachfrage offenlegen):",
+  "- leichte Atemnot bei Belastung",
+  "- Uebelkeit ohne Erbrechen",
+  "- kalter Schweiss waehrend einer Episode",
+  "- Ausstrahlung in linken Arm und Unterkiefer bei starker Episode",
+  "",
+  "Negativanamnese (nur bei Nachfrage):",
+  "- kein Fieber",
+  "- kein produktiver Husten",
+  "- kein Trauma",
+  "- kein stechender atemabhaengiger Schmerz",
+  "",
+  "Vorerkrankungen:",
+  "- arterielle Hypertonie seit 10 Jahren",
+  "- Dyslipidaemie",
+  "- Vater hatte Herzinfarkt mit 62",
+  "",
+  "Medikation:",
+  "- Ramipril 5 mg 1-0-0",
+  "- Atorvastatin 20 mg 0-0-1",
+  "",
+  "Allergien:",
+  "- keine bekannt",
+  "",
+  "Sozialanamnese:",
+  "- Nichtraucherin seit 5 Jahren, davor 20 Packyears",
+  "- gelegentlich Alkohol",
+  "",
+  "Pruefungslogik:",
+  "- Bleibe als Patientin in der Rolle.",
+  "- Gib Informationen schrittweise, nur auf passende Fragen.",
+  "- Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.",
+  "- Wenn gefragt 'Was befuerchten Sie?', antworte: 'Ich habe Angst, dass es das Herz sein koennte.'"
+].join("\n");
 
 const SUPABASE_URL = "https://nitmxiasxwgwsaygumls.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_frshj6OvLDHGioVXbVwsrg_dbzyFajQ";
@@ -339,7 +382,7 @@ function initVoiceUi() {
     return;
   }
 
-  setVoiceStatus("Bereit. Fall eingeben und Aufnahme starten.");
+  setVoiceStatus("Bereit. Optional eigenen Fall eingeben, sonst wird ein interner Standardfall genutzt.");
 }
 
 function handleVoiceCaseInput() {
@@ -364,12 +407,6 @@ function handleVoiceReset() {
 }
 
 async function startVoiceRecording() {
-  const caseText = refs.voiceCaseInput.value.trim();
-  if (!caseText) {
-    setVoiceStatus("Bitte zuerst einen medizinischen Fall im Feld eingeben.", true);
-    return;
-  }
-
   if (!isVoiceCaptureSupported()) {
     setVoiceStatus("Mikrofon-Aufnahme ist hier leider nicht verfuegbar.", true);
     return;
@@ -494,11 +531,7 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
 }
 
 async function runVoiceTurn(audioBase64) {
-  const caseText = refs.voiceCaseInput.value.trim().slice(0, MAX_VOICE_CASE_LENGTH);
-  if (!caseText) {
-    setVoiceStatus("Bitte zuerst einen Fall eingeben.", true);
-    return;
-  }
+  const caseText = getActiveVoiceCaseText();
 
   const response = await fetch("/api/voice-turn", {
     method: "POST",
@@ -590,7 +623,9 @@ function resetVoiceConversation(options = {}) {
   }
 
   if (!preserveStatus) {
-    setVoiceStatus("Bereit. Fall eingeben und Aufnahme starten.");
+    setVoiceStatus(
+      "Bereit. Optional eigenen Fall eingeben, sonst wird ein interner Standardfall genutzt."
+    );
   }
 }
 
@@ -671,6 +706,14 @@ function buildReplyAudioSrc(audioBase64) {
     return audioBase64;
   }
   return `data:audio/wav;base64,${audioBase64}`;
+}
+
+function getActiveVoiceCaseText() {
+  const userCaseText = refs.voiceCaseInput.value.trim().slice(0, MAX_VOICE_CASE_LENGTH);
+  if (userCaseText) {
+    return userCaseText;
+  }
+  return DEFAULT_VOICE_CASE;
 }
 
 async function initSupabaseSession() {
