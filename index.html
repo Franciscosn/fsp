@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260212b" />
+    <link rel="stylesheet" href="src/styles.css?v=20260213a" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -98,7 +98,37 @@
         </div>
       </header>
 
-      <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 3">
+      <section id="voicePanel" class="panel voice-panel reveal" style="--i: 3">
+        <div class="voice-head">
+          <h3>AI Sprachmodus (Beta)</h3>
+          <p class="muted">
+            Modell: <strong>gpt-oss-20b</strong> | Fallbasiertes Gespraech fuer medizinische
+            Pruefungssimulation.
+          </p>
+        </div>
+        <label class="voice-label" for="voiceCaseInput">Dein Fall (wird fuer jede Antwort benutzt)</label>
+        <textarea
+          id="voiceCaseInput"
+          class="voice-case-input"
+          rows="5"
+          placeholder="Beispiel: 54-jaehrige Patientin mit seit 2 Tagen Belastungsdyspnoe, thorakalem Druck, leichter Uebelkeit, Hypertonie in der Vorgeschichte ..."
+        ></textarea>
+        <div class="voice-actions">
+          <button id="voiceRecordBtn" class="primary-btn" type="button">🎤 Aufnahme starten</button>
+          <button id="voiceResetBtn" class="soft-btn" type="button">Neues Gespraech</button>
+        </div>
+        <p id="voiceStatus" class="voice-status">Bereit. Fall eingeben und Aufnahme starten.</p>
+        <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
+        <article id="voiceLastTurn" class="voice-turn hidden">
+          <p class="voice-turn-label">Du:</p>
+          <p id="voiceUserTranscript" class="voice-turn-text"></p>
+          <p class="voice-turn-label">Patient:</p>
+          <p id="voiceAssistantReply" class="voice-turn-text"></p>
+          <p id="voiceCoachHint" class="voice-coach-hint hidden"></p>
+        </article>
+      </section>
+
+      <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 4">
         <div class="control-grid">
           <article class="selection-card">
             <h3>Kategorien</h3>
@@ -121,7 +151,7 @@
         </div>
       </section>
 
-      <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 4">
+      <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 5">
         <div class="quiz-top">
           <div>
             <h2>Fokusmodus</h2>
@@ -161,7 +191,7 @@
         </article>
       </section>
 
-      <footer class="panel feedback-panel reveal" style="--i: 5">
+      <footer class="panel feedback-panel reveal" style="--i: 6">
         <div class="footer-actions">
           <a
             class="soft-btn feedback-link"
@@ -223,6 +253,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260212b"></script>
+    <script type="module" src="src/app.js?v=20260213a"></script>
   </body>
 </html>

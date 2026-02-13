@@ -2,9 +2,12 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const STORAGE_PROGRESS_KEY = "fsp_heart_progress_v1";
 const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
+const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260212b";
+const APP_VERSION = "20260213a";
+const MAX_VOICE_RECORD_MS = 25_000;
+const MAX_VOICE_CASE_LENGTH = 8_000;
 
 const SUPABASE_URL = "https://nitmxiasxwgwsaygumls.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_frshj6OvLDHGioVXbVwsrg_dbzyFajQ";
@@ -26,6 +29,11 @@ let emojiHideTimer = null;
 let activeCelebration = null;
 let remoteStateRowId = null;
 let syncTimer = null;
+let activeMediaRecorder = null;
+let activeMediaStream = null;
+let voiceChunkBuffer = [];
+let voiceAutoStopTimer = null;
+let shouldSendVoiceAfterStop = false;
 
 const CATEGORY_MAP = {
   adipositas: "Gewicht",
@@ -154,7 +162,10 @@ const state = {
   currentCorrectIndex: -1,
   progress: migrateStoredProgress(loadFromStorage(STORAGE_PROGRESS_KEY, {})),
   dailyStats: loadFromStorage(STORAGE_DAILY_KEY, {}),
-  user: null
+  user: null,
+  voiceHistory: [],
+  voiceBusy: false,
+  voiceRecording: false
 };
 
 const refs = {
@@ -169,6 +180,16 @@ const refs = {
   logoutBtn: document.getElementById("logoutBtn"),
   quickPracticeBtn: document.getElementById("quickPracticeBtn"),
   sessionText: document.getElementById("sessionText"),
+  voicePanel: document.getElementById("voicePanel"),
+  voiceCaseInput: document.getElementById("voiceCaseInput"),
+  voiceRecordBtn: document.getElementById("voiceRecordBtn"),
+  voiceResetBtn: document.getElementById("voiceResetBtn"),
+  voiceStatus: document.getElementById("voiceStatus"),
+  voiceReplyAudio: document.getElementById("voiceReplyAudio"),
+  voiceLastTurn: document.getElementById("voiceLastTurn"),
+  voiceUserTranscript: document.getElementById("voiceUserTranscript"),
+  voiceAssistantReply: document.getElementById("voiceAssistantReply"),
+  voiceCoachHint: document.getElementById("voiceCoachHint"),
   authPortrait: document.getElementById("authPortrait"),
   levelAvatar: document.getElementById("levelAvatar"),
   levelBadge: document.getElementById("levelBadge"),
@@ -216,6 +237,9 @@ function wireEvents() {
   refs.logoutBtn.addEventListener("click", handleLogout);
   refs.quickPracticeBtn.addEventListener("click", startQuickPractice);
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
+  refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
+  refs.voiceResetBtn.addEventListener("click", handleVoiceReset);
+  refs.voiceCaseInput.addEventListener("input", handleVoiceCaseInput);
 
   refs.nextBtn.addEventListener("click", nextCard);
   refs.shuffleBtn.addEventListener("click", () => rebuildQueue(true));
@@ -241,6 +265,7 @@ function wireEvents() {
 async function init() {
   initAuthUi();
   initAuthPortrait();
+  initVoiceUi();
   try {
     const url = new URL(`../data/cards.json?v=${APP_VERSION}`, import.meta.url);
     const response = await fetch(url, { cache: "no-store" });
@@ -299,6 +324,355 @@ function initAuthPortrait() {
   probe.src = preferredPath;
 }
 
+function initVoiceUi() {
+  const stored = loadFromStorage(STORAGE_VOICE_CASE_KEY, { caseText: "" });
+  if (typeof stored.caseText === "string" && stored.caseText) {
+    refs.voiceCaseInput.value = stored.caseText.slice(0, MAX_VOICE_CASE_LENGTH);
+  }
+
+  if (!isVoiceCaptureSupported()) {
+    refs.voiceRecordBtn.disabled = true;
+    setVoiceStatus(
+      "Mikrofon-Aufnahme wird auf diesem Geraet/Browser nicht unterstuetzt. Bitte Desktop-Chrome oder aktuelles Safari nutzen.",
+      true
+    );
+    return;
+  }
+
+  setVoiceStatus("Bereit. Fall eingeben und Aufnahme starten.");
+}
+
+function handleVoiceCaseInput() {
+  const normalized = refs.voiceCaseInput.value.slice(0, MAX_VOICE_CASE_LENGTH);
+  if (normalized !== refs.voiceCaseInput.value) {
+    refs.voiceCaseInput.value = normalized;
+  }
+  saveToStorage(STORAGE_VOICE_CASE_KEY, { caseText: refs.voiceCaseInput.value });
+}
+
+async function handleVoiceRecordToggle() {
+  if (state.voiceBusy) return;
+  if (state.voiceRecording) {
+    stopVoiceRecording(true, "manual-stop");
+    return;
+  }
+  await startVoiceRecording();
+}
+
+function handleVoiceReset() {
+  resetVoiceConversation({ keepCaseText: true, preserveStatus: false });
+}
+
+async function startVoiceRecording() {
+  const caseText = refs.voiceCaseInput.value.trim();
+  if (!caseText) {
+    setVoiceStatus("Bitte zuerst einen medizinischen Fall im Feld eingeben.", true);
+    return;
+  }
+
+  if (!isVoiceCaptureSupported()) {
+    setVoiceStatus("Mikrofon-Aufnahme ist hier leider nicht verfuegbar.", true);
+    return;
+  }
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mimeType = pickRecordingMimeType();
+    const recorder = mimeType
+      ? new MediaRecorder(stream, { mimeType })
+      : new MediaRecorder(stream);
+
+    activeMediaRecorder = recorder;
+    activeMediaStream = stream;
+    voiceChunkBuffer = [];
+    shouldSendVoiceAfterStop = true;
+
+    recorder.ondataavailable = (event) => {
+      if (event.data && event.data.size > 0) {
+        voiceChunkBuffer.push(event.data);
+      }
+    };
+
+    recorder.onerror = () => {
+      setVoiceStatus("Aufnahmefehler. Bitte erneut versuchen.", true);
+      cleanupVoiceMedia();
+      state.voiceRecording = false;
+      updateVoiceRecordButton();
+    };
+
+    recorder.onstop = () => {
+      const sendAfterStop = shouldSendVoiceAfterStop;
+      shouldSendVoiceAfterStop = false;
+      const finalMimeType = recorder.mimeType || mimeType || "audio/webm";
+      cleanupVoiceMedia();
+      void finalizeVoiceRecording(sendAfterStop, finalMimeType);
+    };
+
+    recorder.start(250);
+    state.voiceRecording = true;
+    updateVoiceRecordButton();
+    setVoiceStatus("Aufnahme laeuft ... tippe erneut, um zu stoppen und an die KI zu senden.");
+
+    if (voiceAutoStopTimer) {
+      window.clearTimeout(voiceAutoStopTimer);
+    }
+    voiceAutoStopTimer = window.setTimeout(() => {
+      if (!state.voiceRecording) return;
+      stopVoiceRecording(true, "auto-stop");
+    }, MAX_VOICE_RECORD_MS);
+  } catch (error) {
+    setVoiceStatus(
+      "Mikrofon konnte nicht gestartet werden. Bitte Browser-Berechtigung pruefen.",
+      true
+    );
+    cleanupVoiceMedia();
+    state.voiceRecording = false;
+    updateVoiceRecordButton();
+    console.error(error);
+  }
+}
+
+function stopVoiceRecording(sendToAi, reason) {
+  shouldSendVoiceAfterStop = Boolean(sendToAi);
+  state.voiceRecording = false;
+  updateVoiceRecordButton();
+
+  if (voiceAutoStopTimer) {
+    window.clearTimeout(voiceAutoStopTimer);
+    voiceAutoStopTimer = null;
+  }
+
+  if (reason === "auto-stop") {
+    setVoiceStatus("Maximale Aufnahmedauer erreicht. Audio wird jetzt verarbeitet ...");
+  } else if (sendToAi) {
+    setVoiceStatus("Verarbeite Aufnahme ...");
+  } else {
+    setVoiceStatus("Aufnahme verworfen.");
+  }
+
+  if (!activeMediaRecorder) {
+    cleanupVoiceMedia();
+    return;
+  }
+
+  if (activeMediaRecorder.state !== "inactive") {
+    activeMediaRecorder.stop();
+  } else {
+    cleanupVoiceMedia();
+  }
+}
+
+async function finalizeVoiceRecording(sendToAi, mimeType) {
+  const chunks = [...voiceChunkBuffer];
+  voiceChunkBuffer = [];
+  if (!sendToAi) {
+    return;
+  }
+
+  if (!chunks.length) {
+    setVoiceStatus("Es wurde kein Audio erkannt. Bitte erneut sprechen.", true);
+    return;
+  }
+
+  const blob = new Blob(chunks, { type: mimeType || "audio/webm" });
+  if (blob.size < 1200) {
+    setVoiceStatus("Audio war zu kurz. Bitte etwas laenger sprechen.", true);
+    return;
+  }
+
+  try {
+    setVoiceBusy(true);
+    setVoiceStatus("Transkribiere und simuliere Patientenantwort ...");
+    const audioBase64 = await blobToBase64(blob);
+    await runVoiceTurn(audioBase64);
+  } catch (error) {
+    setVoiceStatus("Voice-Turn fehlgeschlagen. Bitte erneut versuchen.", true);
+    console.error(error);
+  } finally {
+    setVoiceBusy(false);
+  }
+}
+
+async function runVoiceTurn(audioBase64) {
+  const caseText = refs.voiceCaseInput.value.trim().slice(0, MAX_VOICE_CASE_LENGTH);
+  if (!caseText) {
+    setVoiceStatus("Bitte zuerst einen Fall eingeben.", true);
+    return;
+  }
+
+  const response = await fetch("/api/voice-turn", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      audioBase64,
+      caseText,
+      history: state.voiceHistory
+    })
+  });
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(payload.error || "API Fehler");
+  }
+
+  const transcript = typeof payload.transcript === "string" ? payload.transcript.trim() : "";
+  const patientReply = typeof payload.patientReply === "string" ? payload.patientReply.trim() : "";
+  const coachHint =
+    typeof payload.examinerFeedback === "string" ? payload.examinerFeedback.trim() : "";
+  const offTopic = Boolean(payload.offTopic);
+
+  if (Array.isArray(payload.history)) {
+    state.voiceHistory = payload.history.slice(-8);
+  } else if (transcript || patientReply) {
+    state.voiceHistory = [...state.voiceHistory, { user: transcript, assistant: patientReply }].slice(-8);
+  }
+
+  refs.voiceUserTranscript.textContent = transcript || "Keine Transkription.";
+  refs.voiceAssistantReply.textContent = patientReply || "Keine Antwort erhalten.";
+  refs.voiceLastTurn.classList.remove("hidden");
+
+  if (coachHint) {
+    refs.voiceCoachHint.textContent = `Coach: ${coachHint}`;
+    refs.voiceCoachHint.classList.remove("hidden");
+  } else {
+    refs.voiceCoachHint.textContent = "";
+    refs.voiceCoachHint.classList.add("hidden");
+  }
+
+  const audioSrc = buildReplyAudioSrc(payload.replyAudioBase64);
+  if (audioSrc) {
+    refs.voiceReplyAudio.src = audioSrc;
+    refs.voiceReplyAudio.classList.remove("hidden");
+    try {
+      await refs.voiceReplyAudio.play();
+    } catch {
+      // autoplay may be blocked; controls are visible as fallback.
+    }
+  } else {
+    refs.voiceReplyAudio.removeAttribute("src");
+    refs.voiceReplyAudio.classList.add("hidden");
+  }
+
+  if (offTopic) {
+    setVoiceStatus("Antwort da. Hinweis: Die letzte Frage war teilweise off-topic.");
+    return;
+  }
+  setVoiceStatus("Antwort da. Du kannst direkt die naechste Frage aufnehmen.");
+}
+
+function resetVoiceConversation(options = {}) {
+  const keepCaseText = Boolean(options.keepCaseText);
+  const preserveStatus = Boolean(options.preserveStatus);
+
+  state.voiceHistory = [];
+  setVoiceBusy(false);
+
+  if (state.voiceRecording) {
+    stopVoiceRecording(false, "reset");
+  } else {
+    cleanupVoiceMedia();
+  }
+  state.voiceRecording = false;
+  updateVoiceRecordButton();
+
+  refs.voiceLastTurn.classList.add("hidden");
+  refs.voiceUserTranscript.textContent = "";
+  refs.voiceAssistantReply.textContent = "";
+  refs.voiceCoachHint.textContent = "";
+  refs.voiceCoachHint.classList.add("hidden");
+  refs.voiceReplyAudio.pause();
+  refs.voiceReplyAudio.removeAttribute("src");
+  refs.voiceReplyAudio.classList.add("hidden");
+
+  if (!keepCaseText) {
+    refs.voiceCaseInput.value = "";
+    saveToStorage(STORAGE_VOICE_CASE_KEY, { caseText: "" });
+  }
+
+  if (!preserveStatus) {
+    setVoiceStatus("Bereit. Fall eingeben und Aufnahme starten.");
+  }
+}
+
+function setVoiceBusy(isBusy) {
+  state.voiceBusy = Boolean(isBusy);
+  refs.voiceResetBtn.disabled = state.voiceBusy;
+  refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
+}
+
+function setVoiceStatus(message, isError = false) {
+  refs.voiceStatus.textContent = message;
+  refs.voiceStatus.classList.toggle("error", Boolean(isError));
+}
+
+function updateVoiceRecordButton() {
+  refs.voiceRecordBtn.textContent = state.voiceRecording
+    ? "⏹ Aufnahme stoppen"
+    : "🎤 Aufnahme starten";
+  refs.voiceRecordBtn.classList.toggle("recording", state.voiceRecording);
+}
+
+function cleanupVoiceMedia() {
+  if (voiceAutoStopTimer) {
+    window.clearTimeout(voiceAutoStopTimer);
+    voiceAutoStopTimer = null;
+  }
+  if (activeMediaStream) {
+    for (const track of activeMediaStream.getTracks()) {
+      track.stop();
+    }
+    activeMediaStream = null;
+  }
+  activeMediaRecorder = null;
+}
+
+function pickRecordingMimeType() {
+  if (!window.MediaRecorder || typeof window.MediaRecorder.isTypeSupported !== "function") {
+    return "";
+  }
+  const supported = [
+    "audio/webm;codecs=opus",
+    "audio/webm",
+    "audio/mp4",
+    "audio/ogg;codecs=opus",
+    "audio/ogg"
+  ];
+  return supported.find((type) => window.MediaRecorder.isTypeSupported(type)) || "";
+}
+
+function isVoiceCaptureSupported() {
+  return Boolean(
+    window.MediaRecorder &&
+      navigator.mediaDevices &&
+      typeof navigator.mediaDevices.getUserMedia === "function"
+  );
+}
+
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("Audio konnte nicht gelesen werden."));
+    reader.onloadend = () => {
+      const result = typeof reader.result === "string" ? reader.result : "";
+      const commaIndex = result.indexOf(",");
+      if (commaIndex < 0) {
+        reject(new Error("Ungueltiges Audio-Format."));
+        return;
+      }
+      resolve(result.slice(commaIndex + 1));
+    };
+    reader.readAsDataURL(blob);
+  });
+}
+
+function buildReplyAudioSrc(audioBase64) {
+  if (typeof audioBase64 !== "string" || !audioBase64.trim()) return "";
+  if (audioBase64.startsWith("data:audio")) {
+    return audioBase64;
+  }
+  return `data:audio/wav;base64,${audioBase64}`;
+}
+
 async function initSupabaseSession() {
   if (!supabase) return;
   const {
@@ -315,6 +689,7 @@ async function applySession(session) {
   const user = session?.user || null;
   state.user = user;
   if (!user) {
+    resetVoiceConversation({ keepCaseText: true, preserveStatus: false });
     remoteStateRowId = null;
     exitImmersiveMode();
     closeStatsOverlay();

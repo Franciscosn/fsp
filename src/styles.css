@@ -345,6 +345,106 @@ body.auth-only .edge-deco {
   gap: 6px;
 }
 
+.voice-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.voice-head {
+  display: grid;
+  gap: 2px;
+}
+
+.voice-label {
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #7f3b4b;
+}
+
+.voice-case-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(248, 73, 102, 0.28);
+  background: #fff;
+  color: #54202f;
+  font: inherit;
+  padding: 11px 12px;
+  line-height: 1.4;
+  resize: vertical;
+  min-height: 104px;
+}
+
+.voice-case-input:focus {
+  outline: 2px solid rgba(248, 73, 102, 0.28);
+  outline-offset: 1px;
+}
+
+.voice-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.voice-actions .primary-btn,
+.voice-actions .soft-btn {
+  width: auto;
+  min-width: 200px;
+}
+
+.voice-status {
+  margin: 0;
+  color: #7d4250;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.voice-status.error {
+  color: var(--bad);
+}
+
+.voice-actions .primary-btn.recording {
+  background: linear-gradient(126deg, #b32c47, #dd4c69);
+}
+
+.voice-reply-audio {
+  width: 100%;
+}
+
+.voice-turn {
+  border: 1px solid rgba(248, 73, 102, 0.2);
+  border-radius: 14px;
+  background: #fff9fb;
+  padding: 11px 12px;
+}
+
+.voice-turn-label {
+  margin: 0 0 3px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #8f3650;
+}
+
+.voice-turn-text {
+  margin: 0 0 10px;
+  color: #5f2635;
+  line-height: 1.5;
+  font-size: 0.97rem;
+}
+
+.voice-turn-text:last-of-type {
+  margin-bottom: 0;
+}
+
+.voice-coach-hint {
+  margin: 2px 0 0;
+  border-top: 1px dashed rgba(248, 73, 102, 0.22);
+  padding-top: 8px;
+  color: #794554;
+  font-size: 0.9rem;
+}
+
 .dedication-copy {
   display: grid;
   gap: 8px;
@@ -949,6 +1049,7 @@ h3 {
 }
 
 body.immersive .dedication,
+body.immersive .voice-panel,
 body.immersive #selectionPanel,
 body.immersive .session-panel {
   display: none;
@@ -1172,6 +1273,17 @@ body.immersive .stats-fab {
 
   .quiz-actions {
     width: 100%;
+  }
+
+  .voice-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .voice-actions .primary-btn,
+  .voice-actions .soft-btn {
+    width: 100%;
+    min-width: 0;
   }
 
   .soft-btn,
