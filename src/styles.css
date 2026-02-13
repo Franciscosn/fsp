@@ -438,6 +438,35 @@ body.auth-only .edge-deco {
   min-width: 200px;
 }
 
+.voice-text-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: end;
+}
+
+.voice-text-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(248, 73, 102, 0.28);
+  background: #fff;
+  color: #54202f;
+  font: inherit;
+  padding: 10px 12px;
+  line-height: 1.4;
+  resize: vertical;
+  min-height: 84px;
+}
+
+.voice-text-input:focus {
+  outline: 2px solid rgba(248, 73, 102, 0.28);
+  outline-offset: 1px;
+}
+
+.voice-text-row .soft-btn {
+  min-width: 140px;
+}
+
 .voice-status {
   margin: 0;
   color: #7d4250;
@@ -1426,6 +1455,15 @@ body.immersive .stats-fab {
 
   .voice-actions .primary-btn,
   .voice-actions .soft-btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .voice-text-row {
+    grid-template-columns: 1fr;
+  }
+
+  .voice-text-row .soft-btn {
     width: 100%;
     min-width: 0;
   }

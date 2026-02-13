@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260213g" />
+    <link rel="stylesheet" href="src/styles.css?v=20260213h" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -123,6 +123,17 @@
           <button id="voiceRecordBtn" class="primary-btn" type="button">🎤 Aufnahme starten</button>
           <button id="voiceResetBtn" class="soft-btn" type="button">Neues Gespraech</button>
           <button id="voiceNextCaseBtn" class="soft-btn" type="button">Naechster Fall</button>
+        </div>
+        <label class="voice-label" for="voiceTextInput">Frage per Text</label>
+        <div class="voice-text-row">
+          <textarea
+            id="voiceTextInput"
+            class="voice-text-input"
+            rows="3"
+            maxlength="500"
+            placeholder="Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'."
+          ></textarea>
+          <button id="voiceTextSendBtn" class="soft-btn" type="button">Text senden</button>
         </div>
         <p id="voiceStatus" class="voice-status">Bereit. Optional eigenen Fall eingeben, sonst interner Standardfall.</p>
         <details class="voice-resolution">
@@ -286,6 +297,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260213g"></script>
+    <script type="module" src="src/app.js?v=20260213h"></script>
   </body>
 </html>

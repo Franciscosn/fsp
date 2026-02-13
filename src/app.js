@@ -6,10 +6,11 @@ const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260213g";
-const BUILD_UPDATED_AT = "2026-02-13 16:31 UTC";
+const APP_VERSION = "20260213h";
+const BUILD_UPDATED_AT = "2026-02-13 16:35 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
+const MAX_VOICE_QUESTION_LENGTH = 500;
 const MIN_VOICE_BLOB_BYTES = 450;
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
@@ -242,6 +243,8 @@ const refs = {
   voiceCaseSelect: document.getElementById("voiceCaseSelect"),
   voiceCaseMeta: document.getElementById("voiceCaseMeta"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
+  voiceTextInput: document.getElementById("voiceTextInput"),
+  voiceTextSendBtn: document.getElementById("voiceTextSendBtn"),
   voiceResolutionTitle: document.getElementById("voiceResolutionTitle"),
   voiceResolutionHint: document.getElementById("voiceResolutionHint"),
   voiceResolutionSummary: document.getElementById("voiceResolutionSummary"),
@@ -306,6 +309,14 @@ function wireEvents() {
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
   refs.voiceResetBtn.addEventListener("click", handleVoiceReset);
+  refs.voiceTextSendBtn?.addEventListener("click", () => {
+    void handleVoiceTextSend();
+  });
+  refs.voiceTextInput?.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" || event.shiftKey) return;
+    event.preventDefault();
+    void handleVoiceTextSend();
+  });
   refs.voiceNextCaseBtn?.addEventListener("click", () => {
     void handleVoiceNextCase();
   });
@@ -424,13 +435,12 @@ function initVoiceUi() {
   if (!isVoiceCaptureSupported()) {
     refs.voiceRecordBtn.disabled = true;
     setVoiceStatus(
-      "Mikrofon-Aufnahme wird auf diesem Geraet/Browser nicht unterstuetzt. Bitte Desktop-Chrome oder aktuelles Safari nutzen.",
-      true
+      "Mikrofon-Aufnahme wird auf diesem Geraet/Browser nicht unterstuetzt. Du kannst den Textmodus nutzen."
     );
     return;
   }
 
-  setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst jetzt aufnehmen.`);
+  setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst aufnehmen oder Text senden.`);
 }
 
 function handleVoiceCaseInput() {
@@ -460,6 +470,37 @@ async function handleVoiceRecordToggle() {
 
 function handleVoiceReset() {
   resetVoiceConversation({ keepCaseText: true, preserveStatus: false });
+}
+
+async function handleVoiceTextSend() {
+  if (state.voiceBusy) return;
+  if (state.voiceRecording) {
+    setVoiceStatus("Bitte zuerst die laufende Aufnahme stoppen.", true);
+    return;
+  }
+
+  const learnerText = String(refs.voiceTextInput?.value || "")
+    .trim()
+    .slice(0, MAX_VOICE_QUESTION_LENGTH);
+  if (!learnerText) {
+    setVoiceStatus("Bitte zuerst eine Frage als Text eingeben.", true);
+    refs.voiceTextInput?.focus();
+    return;
+  }
+
+  try {
+    setVoiceBusy(true);
+    setVoiceStatus("Sende Textfrage und simuliere Patientenantwort ...");
+    await runVoiceTurn({ learnerText });
+    if (refs.voiceTextInput) {
+      refs.voiceTextInput.value = "";
+    }
+  } catch (error) {
+    setVoiceStatus("Text-Turn fehlgeschlagen. Bitte erneut versuchen.", true);
+    console.error(error);
+  } finally {
+    setVoiceBusy(false);
+  }
 }
 
 async function handleVoiceNextCase() {
@@ -575,7 +616,7 @@ function applyVoiceCaseSelection(selection, options = {}) {
   }
 
   if (!preserveStatus) {
-    setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst jetzt aufnehmen.`);
+    setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst aufnehmen oder Text senden.`);
   }
 }
 
@@ -837,7 +878,7 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
     setVoiceBusy(true);
     setVoiceStatus("Transkribiere und simuliere Patientenantwort ...");
     const audioBase64 = await blobToBase64(blob);
-    await runVoiceTurn(audioBase64);
+    await runVoiceTurn({ audioBase64 });
   } catch (error) {
     setVoiceStatus("Voice-Turn fehlgeschlagen. Bitte erneut versuchen.", true);
     console.error(error);
@@ -846,18 +887,26 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
   }
 }
 
-async function runVoiceTurn(audioBase64) {
+async function runVoiceTurn(turnInput) {
+  const audioBase64 = typeof turnInput?.audioBase64 === "string" ? turnInput.audioBase64 : "";
+  const learnerText = typeof turnInput?.learnerText === "string" ? turnInput.learnerText : "";
   const caseText = getActiveVoiceCaseText();
+  const requestBody = {
+    caseText,
+    history: state.voiceHistory,
+    preferLocalTts: canUseLocalGermanTts()
+  };
+  if (audioBase64) {
+    requestBody.audioBase64 = audioBase64;
+  }
+  if (learnerText) {
+    requestBody.learnerText = learnerText;
+  }
 
   const response = await fetch("/api/voice-turn", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      audioBase64,
-      caseText,
-      history: state.voiceHistory,
-      preferLocalTts: canUseLocalGermanTts()
-    })
+    body: JSON.stringify(requestBody)
   });
 
   const payload = await response.json().catch(() => ({}));
@@ -912,7 +961,7 @@ async function runVoiceTurn(audioBase64) {
     setVoiceStatus("Antwort da. Wiedergabe mit lokaler deutscher Stimme. Du kannst direkt weiterfragen.");
     return;
   }
-  setVoiceStatus("Antwort da. Du kannst direkt die naechste Frage aufnehmen.");
+  setVoiceStatus("Antwort da. Du kannst direkt weiterfragen (Voice oder Text).");
 }
 
 function resetVoiceConversation(options = {}) {
@@ -945,7 +994,7 @@ function resetVoiceConversation(options = {}) {
   }
 
   if (!preserveStatus) {
-    setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst jetzt aufnehmen.`);
+    setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst aufnehmen oder Text senden.`);
   }
 }
 
@@ -957,6 +1006,12 @@ function setVoiceBusy(isBusy) {
   }
   if (refs.voiceNextCaseBtn) {
     refs.voiceNextCaseBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceTextSendBtn) {
+    refs.voiceTextSendBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceTextInput) {
+    refs.voiceTextInput.disabled = state.voiceBusy;
   }
   refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
 }

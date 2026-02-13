@@ -6,6 +6,7 @@ const MAX_AUDIO_BASE64_LENGTH = 8_000_000;
 const MAX_CASE_LENGTH = 8_000;
 const MAX_HISTORY_TURNS = 8;
 const MAX_TEXT_FIELD = 900;
+const MAX_LEARNER_TEXT_LENGTH = 500;
 const MAX_PATIENT_REPLY_LENGTH = 420;
 const ENGLISH_MARKERS = [
   " need ",
@@ -127,9 +128,9 @@ export async function onRequestPost(context) {
       return json({ error: payload.error }, 400);
     }
 
-    const transcript = await transcribeAudio(context.env.AI, payload.audioBase64);
+    const transcript = payload.learnerText || (await transcribeAudio(context.env.AI, payload.audioBase64));
     if (!transcript) {
-      return json({ error: "Keine Sprache erkannt. Bitte erneut sprechen." }, 422);
+      return json({ error: "Keine Eingabe erkannt. Bitte sprechen oder Text eingeben." }, 422);
     }
 
     const promptInput = JSON.stringify(
@@ -195,9 +196,10 @@ async function readPayload(request) {
   }
 
   const rawAudio = typeof body?.audioBase64 === "string" ? body.audioBase64.trim() : "";
+  const rawLearnerText = typeof body?.learnerText === "string" ? body.learnerText.trim() : "";
   const rawCaseText = typeof body?.caseText === "string" ? body.caseText.trim() : "";
-  if (!rawAudio) {
-    return { ok: false, error: "audioBase64 fehlt." };
+  if (!rawAudio && !rawLearnerText) {
+    return { ok: false, error: "Bitte Audio aufnehmen oder eine Textfrage senden." };
   }
   if (!rawCaseText) {
     return { ok: false, error: "Bitte zuerst einen medizinischen Fall eingeben." };
@@ -206,12 +208,23 @@ async function readPayload(request) {
     return { ok: false, error: `Falltext zu lang (max ${MAX_CASE_LENGTH} Zeichen).` };
   }
 
-  const cleanedAudio = stripDataUrl(rawAudio);
-  if (cleanedAudio.length > MAX_AUDIO_BASE64_LENGTH) {
-    return { ok: false, error: "Audio ist zu gross. Bitte kuerzer sprechen (max ca. 25 Sekunden)." };
+  let cleanedAudio = "";
+  if (rawAudio) {
+    cleanedAudio = stripDataUrl(rawAudio);
+    if (cleanedAudio.length > MAX_AUDIO_BASE64_LENGTH) {
+      return { ok: false, error: "Audio ist zu gross. Bitte kuerzer sprechen (max ca. 25 Sekunden)." };
+    }
+    if (!isLikelyBase64(cleanedAudio)) {
+      return { ok: false, error: "audioBase64 ist ungueltig formatiert." };
+    }
   }
-  if (!isLikelyBase64(cleanedAudio)) {
-    return { ok: false, error: "audioBase64 ist ungueltig formatiert." };
+
+  const learnerText = rawLearnerText.slice(0, MAX_LEARNER_TEXT_LENGTH);
+  if (rawLearnerText.length > MAX_LEARNER_TEXT_LENGTH) {
+    return {
+      ok: false,
+      error: `Textfrage zu lang (max ${MAX_LEARNER_TEXT_LENGTH} Zeichen).`
+    };
   }
 
   const history = sanitizeHistory(body?.history);
@@ -220,6 +233,7 @@ async function readPayload(request) {
   return {
     ok: true,
     audioBase64: cleanedAudio,
+    learnerText,
     caseText: rawCaseText,
     history,
     preferLocalTts
