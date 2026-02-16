@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260216a" />
+    <link rel="stylesheet" href="src/styles.css?v=20260216b" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -119,17 +119,11 @@
           rows="5"
           placeholder="Nur genutzt, wenn bei Fallauswahl 'Eigener Text (unten)' gewaehlt ist."
         ></textarea>
-        <label class="voice-label" for="voiceModeSelect">Gespraechsmodus</label>
-        <select id="voiceModeSelect" class="voice-mode-select">
-          <option value="question">Fragen stellen</option>
-          <option value="diagnosis">Diagnose abschliessen</option>
-        </select>
-        <p id="voiceModeHint" class="voice-mode-hint">
-          Frage-Modus: sprich oder tippe Fragen und fuehre das Anamnesegespraech.
-        </p>
         <div class="voice-actions">
-          <button id="voiceResetBtn" class="soft-btn" type="button">Neues Gespraech</button>
           <button id="voiceNextCaseBtn" class="soft-btn" type="button">Naechster Fall</button>
+          <button id="voiceDiagnoseBtn" class="soft-btn voice-diagnose-btn" type="button">
+            Diagnostizieren
+          </button>
           <details class="voice-resolution voice-resolution-inline">
             <summary class="voice-resolution-toggle">Fall aufloesen</summary>
             <div class="voice-resolution-content">
@@ -344,6 +338,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260216a"></script>
+    <script type="module" src="src/app.js?v=20260216b"></script>
   </body>
 </html>

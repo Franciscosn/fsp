@@ -7,8 +7,8 @@ const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260216a";
-const BUILD_UPDATED_AT = "2026-02-16 14:03 UTC";
+const APP_VERSION = "20260216b";
+const BUILD_UPDATED_AT = "2026-02-16 15:12 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -247,8 +247,7 @@ const refs = {
   voiceCaseSelect: document.getElementById("voiceCaseSelect"),
   voiceCaseMeta: document.getElementById("voiceCaseMeta"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
-  voiceModeSelect: document.getElementById("voiceModeSelect"),
-  voiceModeHint: document.getElementById("voiceModeHint"),
+  voiceDiagnoseBtn: document.getElementById("voiceDiagnoseBtn"),
   voiceTextLabel: document.getElementById("voiceTextLabel"),
   voiceTextInput: document.getElementById("voiceTextInput"),
   voiceTextSendBtn: document.getElementById("voiceTextSendBtn"),
@@ -259,7 +258,6 @@ const refs = {
   voiceResolutionTerms: document.getElementById("voiceResolutionTerms"),
   voiceResolutionDiagnoses: document.getElementById("voiceResolutionDiagnoses"),
   voiceRecordBtn: document.getElementById("voiceRecordBtn"),
-  voiceResetBtn: document.getElementById("voiceResetBtn"),
   voiceNextCaseBtn: document.getElementById("voiceNextCaseBtn"),
   voiceStatus: document.getElementById("voiceStatus"),
   voiceReplyAudio: document.getElementById("voiceReplyAudio"),
@@ -327,7 +325,7 @@ function wireEvents() {
   refs.quickPracticeBtn.addEventListener("click", startQuickPractice);
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
-  refs.voiceResetBtn.addEventListener("click", handleVoiceReset);
+  refs.voiceDiagnoseBtn?.addEventListener("click", handleVoiceDiagnoseToggle);
   refs.voiceTextSendBtn?.addEventListener("click", () => {
     void handleVoiceTextSend();
   });
@@ -339,7 +337,6 @@ function wireEvents() {
   refs.voiceNextCaseBtn?.addEventListener("click", () => {
     void handleVoiceNextCase();
   });
-  refs.voiceModeSelect?.addEventListener("change", handleVoiceModeChange);
   refs.voiceCaseSelect?.addEventListener("change", handleVoiceCaseSelectionChange);
   refs.voiceCaseInput.addEventListener("input", handleVoiceCaseInput);
 
@@ -479,14 +476,13 @@ function handleVoiceCaseInput() {
   }
 }
 
-function handleVoiceModeChange() {
-  if (!refs.voiceModeSelect) return;
+function handleVoiceDiagnoseToggle() {
   if (state.voiceRecording) {
-    refs.voiceModeSelect.value = state.voiceMode;
     setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
     return;
   }
-  applyVoiceMode(refs.voiceModeSelect.value, { preserveStatus: false });
+  const nextMode = isDiagnosisMode() ? VOICE_MODE_QUESTION : VOICE_MODE_DIAGNOSIS;
+  applyVoiceMode(nextMode, { preserveStatus: false });
 }
 
 function handleVoiceCaseSelectionChange() {
@@ -505,9 +501,6 @@ function isDiagnosisMode() {
 function applyVoiceMode(mode, options = {}) {
   const preserveStatus = Boolean(options.preserveStatus);
   state.voiceMode = normalizeVoiceMode(mode);
-  if (refs.voiceModeSelect && refs.voiceModeSelect.value !== state.voiceMode) {
-    refs.voiceModeSelect.value = state.voiceMode;
-  }
   saveToStorage(STORAGE_VOICE_MODE_KEY, { mode: state.voiceMode });
   updateVoiceModeUi();
   if (!preserveStatus) {
@@ -535,10 +528,9 @@ function updateVoiceModeUi() {
   if (refs.voiceTextSendBtn) {
     refs.voiceTextSendBtn.textContent = diagnosisMode ? "Diagnose abschicken" : "Text senden";
   }
-  if (refs.voiceModeHint) {
-    refs.voiceModeHint.textContent = diagnosisMode
-      ? "Diagnose-Modus: Die KI bewertet Anamnese + Diagnosequalitaet und zeigt fehlende Fragen."
-      : "Frage-Modus: sprich oder tippe Fragen und fuehre das Anamnesegespraech.";
+  if (refs.voiceDiagnoseBtn) {
+    refs.voiceDiagnoseBtn.classList.toggle("active", diagnosisMode);
+    refs.voiceDiagnoseBtn.setAttribute("aria-pressed", diagnosisMode ? "true" : "false");
   }
   updateVoiceRecordButton();
 }
@@ -552,10 +544,6 @@ async function handleVoiceRecordToggle() {
   await startVoiceRecording();
 }
 
-function handleVoiceReset() {
-  resetVoiceConversation({ keepCaseText: true, preserveStatus: false });
-}
-
 async function handleVoiceTextSend() {
   if (state.voiceBusy) return;
   if (state.voiceRecording) {
@@ -567,7 +555,10 @@ async function handleVoiceTextSend() {
     .trim()
     .slice(0, MAX_VOICE_QUESTION_LENGTH);
   if (!learnerText) {
-    setVoiceStatus("Bitte zuerst eine Frage als Text eingeben.", true);
+    setVoiceStatus(
+      isDiagnosisMode() ? "Bitte zuerst eine Diagnose als Text eingeben." : "Bitte zuerst eine Frage als Text eingeben.",
+      true
+    );
     refs.voiceTextInput?.focus();
     return;
   }
@@ -618,6 +609,7 @@ async function handleVoiceNextCase() {
 
   const nextSelection = `${VOICE_CASE_LIBRARY_PREFIX}${nextEntry.id}`;
   applyVoiceCaseSelection(nextSelection, { preserveStatus: false, resetConversation: true });
+  applyVoiceMode(VOICE_MODE_QUESTION, { preserveStatus: false });
 }
 
 function renderVoiceCaseSelect() {
@@ -1243,15 +1235,14 @@ function resetVoiceConversation(options = {}) {
 
 function setVoiceBusy(isBusy) {
   state.voiceBusy = Boolean(isBusy);
-  refs.voiceResetBtn.disabled = state.voiceBusy;
   if (refs.voiceCaseSelect) {
     refs.voiceCaseSelect.disabled = state.voiceBusy;
   }
   if (refs.voiceNextCaseBtn) {
     refs.voiceNextCaseBtn.disabled = state.voiceBusy;
   }
-  if (refs.voiceModeSelect) {
-    refs.voiceModeSelect.disabled = state.voiceBusy;
+  if (refs.voiceDiagnoseBtn) {
+    refs.voiceDiagnoseBtn.disabled = state.voiceBusy;
   }
   if (refs.voiceTextSendBtn) {
     refs.voiceTextSendBtn.disabled = state.voiceBusy;
