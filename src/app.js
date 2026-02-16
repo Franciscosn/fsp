@@ -2,13 +2,14 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const STORAGE_PROGRESS_KEY = "fsp_heart_progress_v1";
 const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
+const STORAGE_XP_KEY = "fsp_xp_v1";
 const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260216c";
-const BUILD_UPDATED_AT = "2026-02-16 15:29 UTC";
+const APP_VERSION = "20260216d";
+const BUILD_UPDATED_AT = "2026-02-16 16:04 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -89,6 +90,7 @@ let activeMediaStream = null;
 let voiceChunkBuffer = [];
 let voiceAutoStopTimer = null;
 let shouldSendVoiceAfterStop = false;
+let xpMilestoneHideTimer = null;
 
 const CATEGORY_MAP = {
   adipositas: "Gewicht",
@@ -169,25 +171,6 @@ const REGULAR_PATTERN = [
   "streak_2",
   "streak_6"
 ];
-const LEVEL_TITLES = [
-  "Starter",
-  "Kittel",
-  "Namensschild",
-  "Stethoskop",
-  "Handschuhe",
-  "Klemmbrett",
-  "Praxis-Set",
-  "OP-Haube",
-  "Fachaerztin",
-  "Diamond Doctor"
-];
-const LEVEL_THRESHOLDS = [0, 0.07, 0.15, 0.24, 0.34, 0.45, 0.57, 0.7, 0.84, 1];
-const LEVEL_DEFINITIONS = LEVEL_TITLES.map((title, index) => ({
-  level: index + 1,
-  title,
-  minRatio: LEVEL_THRESHOLDS[index],
-  assetCandidates: buildLevelAssetCandidates(index + 1)
-}));
 
 const FOLDERS = [
   { id: "regular", label: "Ueben" },
@@ -203,6 +186,10 @@ const FOLDERS = [
   { id: "all", label: "Alle Karten" }
 ];
 
+const initialProgress = migrateStoredProgress(loadFromStorage(STORAGE_PROGRESS_KEY, {}));
+const initialDailyStats = loadFromStorage(STORAGE_DAILY_KEY, {});
+const initialXp = resolveStoredXp(loadFromStorage(STORAGE_XP_KEY, {}), initialProgress);
+
 const state = {
   cards: [],
   categories: [],
@@ -215,8 +202,9 @@ const state = {
   revealPhase: null,
   currentChoices: [],
   currentCorrectIndex: -1,
-  progress: migrateStoredProgress(loadFromStorage(STORAGE_PROGRESS_KEY, {})),
-  dailyStats: loadFromStorage(STORAGE_DAILY_KEY, {}),
+  progress: initialProgress,
+  dailyStats: initialDailyStats,
+  xp: initialXp,
   user: null,
   voiceHistory: [],
   voiceBusy: false,
@@ -242,6 +230,8 @@ const refs = {
   logoutBtn: document.getElementById("logoutBtn"),
   quickPracticeBtn: document.getElementById("quickPracticeBtn"),
   sessionText: document.getElementById("sessionText"),
+  topXpText: document.getElementById("topXpText"),
+  xpMilestone: document.getElementById("xpMilestone"),
   buildBadge: document.getElementById("buildBadge"),
   voicePanel: document.getElementById("voicePanel"),
   voiceCaseSelect: document.getElementById("voiceCaseSelect"),
@@ -2050,6 +2040,7 @@ function saveAttempt(cardId, isCorrect) {
     if (progress.streak >= 7) {
       progress.diamondSince = todayKey();
     }
+    awardXp(1);
   } else {
     progress.streak = 0;
     progress.diamondSince = "";
@@ -2072,6 +2063,39 @@ function ensureDayStats(dayKey) {
   return state.dailyStats[dayKey];
 }
 
+function awardXp(amount) {
+  const gain = normalizeXpValue(amount);
+  if (gain <= 0) return;
+
+  const previousXp = normalizeXpValue(state.xp);
+  const nextXp = previousXp + gain;
+  state.xp = nextXp;
+  saveToStorage(STORAGE_XP_KEY, { total: nextXp });
+
+  const previousStep = Math.floor(previousXp / 10);
+  const currentStep = Math.floor(nextXp / 10);
+  if (currentStep > previousStep) {
+    showXpMilestone(`+${(currentStep - previousStep) * 10} XP`);
+  }
+}
+
+function showXpMilestone(text) {
+  if (!refs.xpMilestone) return;
+  refs.xpMilestone.textContent = text;
+  refs.xpMilestone.classList.remove("hidden");
+  refs.xpMilestone.classList.remove("show");
+  void refs.xpMilestone.offsetWidth;
+  refs.xpMilestone.classList.add("show");
+
+  if (xpMilestoneHideTimer) {
+    window.clearTimeout(xpMilestoneHideTimer);
+  }
+  xpMilestoneHideTimer = window.setTimeout(() => {
+    refs.xpMilestone.classList.remove("show");
+    refs.xpMilestone.classList.add("hidden");
+  }, 1500);
+}
+
 function renderStats() {
   const day = ensureDayStats(todayKey());
   const rate = day.attempts > 0 ? Math.round((day.correct / day.attempts) * 100) : 0;
@@ -2085,59 +2109,33 @@ function renderStats() {
   refs.kpiStreak.textContent = `${computeStreak()} Tage`;
 
   renderWeekChart();
-  renderLevelDisplay();
+  renderXpDisplay();
 }
 
-function renderLevelDisplay() {
-  const levelState = getLevelState();
-  const levelDef = LEVEL_DEFINITIONS[levelState.level - 1] || LEVEL_DEFINITIONS[0];
-  const percent = Math.round(levelState.ratio * 100);
+function renderXpDisplay() {
+  const xp = normalizeXpValue(state.xp);
+  const blockProgress = xp % 10;
+  const percent = Math.round((blockProgress / 10) * 100);
 
-  refs.levelBadge.textContent = `Level ${levelState.level}`;
-  refs.levelTitle.textContent = levelDef.title;
-  refs.levelProgressText.textContent = `${levelState.mastered} / ${levelState.total} Karten in Diamonds`;
+  refs.levelBadge.textContent = `XP ${xp}`;
+  refs.levelTitle.textContent = "Trainingspunkte";
+  refs.levelProgressText.textContent = `${blockProgress} / 10 bis +10 XP`;
   refs.levelFill.style.width = `${percent}%`;
+  if (refs.topXpText) {
+    refs.topXpText.textContent = `XP: ${xp}`;
+  }
 
   const track = refs.levelFill.parentElement;
   if (track) {
-    track.setAttribute("aria-valuenow", String(percent));
+    track.setAttribute("aria-label", "XP Fortschritt bis +10");
+    track.setAttribute("aria-valuemin", "0");
+    track.setAttribute("aria-valuemax", "10");
+    track.setAttribute("aria-valuenow", String(blockProgress));
   }
 
-  if (refs.levelAvatar.dataset.level !== String(levelState.level)) {
-    refs.levelAvatar.dataset.level = String(levelState.level);
-    applyLevelAvatarSources(levelDef.assetCandidates);
+  if (!refs.levelAvatar.dataset.sources) {
+    applyLevelAvatarSources(buildLevelAssetCandidates(1));
   }
-}
-
-function getLevelState() {
-  const total = state.cards.length;
-  if (total === 0) {
-    return { level: 1, mastered: 0, total: 0, ratio: 0 };
-  }
-
-  let mastered = 0;
-  for (const card of state.cards) {
-    const progress = getProgress(card.cardId);
-    if ((progress.streak || 0) >= 7) {
-      mastered += 1;
-    }
-  }
-
-  const ratio = total > 0 ? mastered / total : 0;
-  let level = 1;
-  for (const definition of LEVEL_DEFINITIONS) {
-    if (ratio >= definition.minRatio) {
-      level = definition.level;
-    }
-  }
-
-  if (mastered === total) {
-    level = 10;
-  } else if (level >= 10) {
-    level = 9;
-  }
-
-  return { level, mastered, total, ratio };
 }
 
 function renderWeekChart() {
@@ -2321,6 +2319,37 @@ function migrateStoredProgress(rawProgress) {
   return migrated;
 }
 
+function resolveStoredXp(rawValue, progressMap) {
+  if (rawValue && typeof rawValue === "object") {
+    if (Object.prototype.hasOwnProperty.call(rawValue, "total")) {
+      return normalizeXpValue(rawValue.total);
+    }
+    if (Object.prototype.hasOwnProperty.call(rawValue, "xp")) {
+      return normalizeXpValue(rawValue.xp);
+    }
+    if (Object.prototype.hasOwnProperty.call(rawValue, "points")) {
+      return normalizeXpValue(rawValue.points);
+    }
+  }
+  return deriveXpFromProgress(progressMap);
+}
+
+function deriveXpFromProgress(progressMap) {
+  if (!progressMap || typeof progressMap !== "object") return 0;
+  let total = 0;
+  for (const entry of Object.values(progressMap)) {
+    const normalized = normalizeProgressEntry(entry);
+    total += Math.max(0, Number(normalized.correct) || 0);
+  }
+  return normalizeXpValue(total);
+}
+
+function normalizeXpValue(value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return 0;
+  return Math.max(0, Math.floor(numeric));
+}
+
 function createDefaultProgressEntry() {
   return {
     attempts: 0,
@@ -2439,7 +2468,11 @@ async function pullRemoteState() {
   const row = data?.[0] || null;
   if (!row) {
     remoteStateRowId = null;
-    if (Object.keys(state.progress).length || Object.keys(state.dailyStats).length) {
+    if (
+      Object.keys(state.progress).length ||
+      Object.keys(state.dailyStats).length ||
+      normalizeXpValue(state.xp) > 0
+    ) {
       await pushRemoteState();
     }
     return;
@@ -2449,15 +2482,18 @@ async function pullRemoteState() {
 
   try {
     const payload = JSON.parse(row.status || "{}");
-    state.progress = migrateStoredProgress(
+    const migratedProgress = migrateStoredProgress(
       payload && typeof payload.progress === "object" && payload.progress ? payload.progress : {}
     );
+    state.progress = migratedProgress;
     state.dailyStats =
       payload && typeof payload.dailyStats === "object" && payload.dailyStats
         ? payload.dailyStats
         : {};
+    state.xp = resolveStoredXp(payload, migratedProgress);
     saveToStorage(STORAGE_PROGRESS_KEY, state.progress);
     saveToStorage(STORAGE_DAILY_KEY, state.dailyStats);
+    saveToStorage(STORAGE_XP_KEY, { total: state.xp });
     renderFolderFilters();
     rebuildQueue(false);
     renderStats();
@@ -2473,7 +2509,8 @@ async function pushRemoteState() {
 
   const payload = JSON.stringify({
     progress: state.progress,
-    dailyStats: state.dailyStats
+    dailyStats: state.dailyStats,
+    xp: normalizeXpValue(state.xp)
   });
 
   if (remoteStateRowId) {

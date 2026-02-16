@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260216c" />
+    <link rel="stylesheet" href="src/styles.css?v=20260216d" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -81,10 +81,10 @@
           <img id="levelAvatar" class="level-avatar" src="assets/levels/level-0.png" alt="Level Avatar" />
         </div>
         <div class="level-copy">
-          <p id="levelBadge" class="level-badge">Level 1</p>
-          <h3 id="levelTitle">Starter</h3>
-          <p id="levelProgressText" class="muted">0 / 0 Karten in Diamonds</p>
-          <div class="level-track" role="progressbar" aria-label="Level Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <p id="levelBadge" class="level-badge">XP 0</p>
+          <h3 id="levelTitle">Trainingspunkte</h3>
+          <p id="levelProgressText" class="muted">0 / 10 bis +10 XP</p>
+          <div class="level-track" role="progressbar" aria-label="XP Fortschritt bis +10" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
             <div id="levelFill" class="level-fill"></div>
           </div>
         </div>
@@ -92,6 +92,8 @@
 
       <header class="panel dedication reveal" style="--i: 2">
         <div class="dedication-copy">
+          <p id="topXpText" class="top-xp-text">XP: 0</p>
+          <p id="xpMilestone" class="xp-milestone hidden" aria-live="polite">+10 XP</p>
           <h2 class="practice-headline">some german a day keeps the doctor not away</h2>
           <button id="quickPracticeBtn" class="primary-btn practice-btn" type="button">Üben</button>
           <p class="muted">regular spaced repetition mode</p>
@@ -337,6 +339,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260216c"></script>
+    <script type="module" src="src/app.js?v=20260216d"></script>
   </body>
 </html>

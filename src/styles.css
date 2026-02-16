@@ -758,6 +758,38 @@ body.auth-only .edge-deco {
   gap: 8px;
 }
 
+.top-xp-text {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(123, 123, 123, 0.35);
+  background: rgba(255, 255, 255, 0.92);
+  color: #3f3f3f;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.xp-milestone {
+  margin: -2px 0 0;
+  justify-self: start;
+  color: #7d3f4b;
+  font-size: 0.88rem;
+  font-weight: 800;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.xp-milestone.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .practice-headline {
   font-size: clamp(1.1rem, 2.2vw, 1.45rem);
   line-height: 1.2;
