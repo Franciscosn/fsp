@@ -7,8 +7,8 @@ const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260216b";
-const BUILD_UPDATED_AT = "2026-02-16 15:12 UTC";
+const APP_VERSION = "20260216c";
+const BUILD_UPDATED_AT = "2026-02-16 15:29 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -618,18 +618,22 @@ function renderVoiceCaseSelect() {
   const currentSelection = getActiveVoiceCaseSelection();
   refs.voiceCaseSelect.innerHTML = "";
 
-  addVoiceCaseOption(VOICE_CASE_DEFAULT, "Interner Standardfall");
-  addVoiceCaseOption(VOICE_CASE_CUSTOM, "Eigener Text (unten)");
-
   for (const [index, entry] of state.voiceCaseLibrary.entries()) {
-    const label = entry?.label || `Fall ${index + 1}`;
-    addVoiceCaseOption(`${VOICE_CASE_LIBRARY_PREFIX}${entry.id}`, label);
+    addVoiceCaseOption(`${VOICE_CASE_LIBRARY_PREFIX}${entry.id}`, String(index + 1));
   }
 
+  if (state.voiceCaseLibrary.length === 0) {
+    addVoiceCaseOption(VOICE_CASE_DEFAULT, "1");
+  }
+
+  const fallbackSelection =
+    state.voiceCaseLibrary.length > 0
+      ? `${VOICE_CASE_LIBRARY_PREFIX}${state.voiceCaseLibrary[0].id}`
+      : VOICE_CASE_DEFAULT;
   if (isValidVoiceCaseSelection(currentSelection)) {
     refs.voiceCaseSelect.value = currentSelection;
   } else {
-    refs.voiceCaseSelect.value = VOICE_CASE_DEFAULT;
+    refs.voiceCaseSelect.value = fallbackSelection;
   }
 }
 
@@ -653,7 +657,7 @@ function getActiveVoiceCaseSelection() {
 
 function isValidVoiceCaseSelection(selection) {
   if (selection === VOICE_CASE_DEFAULT || selection === VOICE_CASE_CUSTOM) {
-    return true;
+    return !state.voiceCaseLibraryLoaded || state.voiceCaseLibrary.length === 0;
   }
   if (!selection.startsWith(VOICE_CASE_LIBRARY_PREFIX)) {
     return false;
@@ -668,9 +672,11 @@ function applyVoiceCaseSelection(selection, options = {}) {
   const preserveStatus = Boolean(options.preserveStatus);
   const resetConversation = options.resetConversation !== false;
 
-  const normalizedSelection = isValidVoiceCaseSelection(selection)
-    ? selection
-    : VOICE_CASE_DEFAULT;
+  const fallbackSelection =
+    state.voiceCaseLibrary.length > 0
+      ? `${VOICE_CASE_LIBRARY_PREFIX}${state.voiceCaseLibrary[0].id}`
+      : VOICE_CASE_DEFAULT;
+  const normalizedSelection = isValidVoiceCaseSelection(selection) ? selection : fallbackSelection;
   state.voiceCaseSelection = normalizedSelection;
 
   if (refs.voiceCaseSelect && refs.voiceCaseSelect.value !== normalizedSelection) {
@@ -718,18 +724,19 @@ function getVoiceCaseStatusLabel() {
     return "Eigener Text";
   }
   if (selection === VOICE_CASE_DEFAULT) {
-    return "Interner Standardfall";
+    return "Fall 1";
   }
 
   const selectedId = selection.slice(VOICE_CASE_LIBRARY_PREFIX.length);
-  const entry = state.voiceCaseLibrary.find((item) => item.id === selectedId);
+  const entryIndex = state.voiceCaseLibrary.findIndex((item) => item.id === selectedId);
+  const entry = entryIndex >= 0 ? state.voiceCaseLibrary[entryIndex] : null;
   if (!entry) {
     if (!state.voiceCaseLibraryLoaded) {
       return "Fallbibliothek wird geladen";
     }
-    return "Interner Standardfall";
+    return "Fall 1";
   }
-  return entry.label;
+  return `Fall ${entryIndex + 1}`;
 }
 
 function getActiveVoiceCaseId() {
@@ -1465,11 +1472,7 @@ function extractCaseId(blockText) {
 }
 
 function buildVoiceCaseLabel(caseId, blockText, index) {
-  const idLabel = caseId.replace(/_/g, " ").trim();
-  const symptomMatch = blockText.match(/^- (.+)$/m);
-  const symptom = symptomMatch ? symptomMatch[1].trim() : "";
-  const shortSymptom = symptom ? ` - ${symptom.slice(0, 52)}` : "";
-  return `${index + 1}. ${idLabel}${shortSymptom}`;
+  return String(index + 1);
 }
 
 async function initSupabaseSession() {

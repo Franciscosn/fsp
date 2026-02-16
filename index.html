@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260216b" />
+    <link rel="stylesheet" href="src/styles.css?v=20260216c" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -100,7 +100,7 @@
 
       <section id="voicePanel" class="panel voice-panel reveal" style="--i: 3">
         <div class="voice-head">
-          <h3>AI Sprachmodus (Beta)</h3>
+          <h3>Patiens ex machina</h3>
           <p class="muted">
             Modell: <strong>gpt-oss-20b</strong> | Fallbasiertes Gespraech fuer medizinische
             Pruefungssimulation.
@@ -108,10 +108,9 @@
         </div>
         <label class="voice-label" for="voiceCaseSelect">Fallauswahl</label>
         <select id="voiceCaseSelect" class="voice-case-select">
-          <option value="default">Interner Standardfall</option>
-          <option value="custom">Eigener Text (unten)</option>
+          <option value="default">1</option>
         </select>
-        <p id="voiceCaseMeta" class="voice-case-meta">Aktiv: Interner Standardfall</p>
+        <p id="voiceCaseMeta" class="voice-case-meta">Aktiv: Fall 1</p>
         <label class="voice-label" for="voiceCaseInput">Eigener Falltext (optional)</label>
         <textarea
           id="voiceCaseInput"
@@ -338,6 +337,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260216b"></script>
+    <script type="module" src="src/app.js?v=20260216c"></script>
   </body>
 </html>
