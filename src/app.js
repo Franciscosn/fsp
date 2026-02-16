@@ -8,8 +8,8 @@ const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260216d";
-const BUILD_UPDATED_AT = "2026-02-16 16:04 UTC";
+const APP_VERSION = "20260216e";
+const BUILD_UPDATED_AT = "2026-02-16 16:26 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -205,6 +205,7 @@ const state = {
   progress: initialProgress,
   dailyStats: initialDailyStats,
   xp: initialXp,
+  sessionXp: 0,
   user: null,
   voiceHistory: [],
   voiceBusy: false,
@@ -276,6 +277,9 @@ const refs = {
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
   queueInfo: document.getElementById("queueInfo"),
+  sessionXpStrip: document.getElementById("sessionXpStrip"),
+  sessionXpFill: document.getElementById("sessionXpFill"),
+  sessionXpText: document.getElementById("sessionXpText"),
   exitImmersiveBtn: document.getElementById("exitImmersiveBtn"),
   quizPanel: document.getElementById("quizPanel"),
   progressText: document.getElementById("progressText"),
@@ -1481,6 +1485,8 @@ async function applySession(session) {
   const user = session?.user || null;
   state.user = user;
   if (!user) {
+    state.sessionXp = 0;
+    renderSessionXpDisplay();
     resetVoiceConversation({ keepCaseText: true, preserveStatus: false });
     remoteStateRowId = null;
     exitImmersiveMode();
@@ -1575,6 +1581,8 @@ async function handleLogout() {
 }
 
 function startQuickPractice() {
+  state.sessionXp = 0;
+  renderSessionXpDisplay();
   state.selectedFolder = "regular";
   renderFolderFilters();
   enterImmersiveMode();
@@ -1773,6 +1781,7 @@ function enterImmersiveMode() {
   state.isImmersive = true;
   document.body.classList.add("immersive");
   refs.quizPanel.classList.remove("hidden");
+  renderSessionXpDisplay();
   rebuildQueue(false);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -1781,6 +1790,7 @@ function exitImmersiveMode() {
   state.isImmersive = false;
   document.body.classList.remove("immersive");
   refs.quizPanel.classList.add("hidden");
+  renderSessionXpDisplay();
 }
 
 function renderCard() {
@@ -1801,14 +1811,6 @@ function renderCard() {
   refs.emptyState.classList.add("hidden");
   refs.cardBox.classList.remove("hidden");
   refs.feedbackBox.classList.add("hidden");
-  if (emojiHideTimer) {
-    window.clearTimeout(emojiHideTimer);
-    emojiHideTimer = null;
-  }
-  if (activeCelebration) {
-    activeCelebration.remove();
-    activeCelebration = null;
-  }
 
   const isStoryText = card.type === "story_text";
   const isDifferentialText = card.type === "differenzial_text";
@@ -1927,7 +1929,6 @@ function handleAnswer(selectedIndex) {
   if (isCorrect) {
     refs.resultText.textContent = "Richtig. Stark gemacht.";
     refs.resultText.classList.add("ok");
-    triggerHeartBurst();
   } else {
     refs.resultText.textContent = `Nicht ganz. Richtig ist: ${state.currentChoices[correctIndex]}`;
     refs.resultText.classList.add("bad");
@@ -2040,6 +2041,8 @@ function saveAttempt(cardId, isCorrect) {
     if (progress.streak >= 7) {
       progress.diamondSince = todayKey();
     }
+    state.sessionXp = normalizeXpValue(state.sessionXp) + 1;
+    triggerHeartBurst();
     awardXp(1);
   } else {
     progress.streak = 0;
@@ -2108,8 +2111,18 @@ function renderStats() {
   refs.kpiAccuracy.textContent = `${rate}%`;
   refs.kpiStreak.textContent = `${computeStreak()} Tage`;
 
+  renderSessionXpDisplay();
   renderWeekChart();
   renderXpDisplay();
+}
+
+function renderSessionXpDisplay() {
+  if (!refs.sessionXpStrip || !refs.sessionXpFill || !refs.sessionXpText) return;
+  const sessionXp = normalizeXpValue(state.sessionXp);
+  const percent = Math.max(0, Math.min(100, sessionXp));
+  refs.sessionXpFill.style.width = `${percent}%`;
+  refs.sessionXpText.textContent = `Session XP: ${sessionXp}`;
+  refs.sessionXpStrip.setAttribute("aria-valuenow", String(percent));
 }
 
 function renderXpDisplay() {

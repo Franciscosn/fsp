@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260216d" />
+    <link rel="stylesheet" href="src/styles.css?v=20260216e" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -234,6 +234,12 @@
       </section>
 
       <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 5">
+        <div id="sessionXpStrip" class="session-xp-strip" role="progressbar" aria-label="Session XP" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="session-xp-track">
+            <div id="sessionXpFill" class="session-xp-fill"></div>
+          </div>
+          <p id="sessionXpText" class="session-xp-text">Session XP: 0</p>
+        </div>
         <div class="quiz-top">
           <div>
             <h2>Fokusmodus</h2>
@@ -339,6 +345,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260216d"></script>
+    <script type="module" src="src/app.js?v=20260216e"></script>
   </body>
 </html>

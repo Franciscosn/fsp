@@ -1056,6 +1056,37 @@ h3 {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(255, 238, 242, 0.92));
 }
 
+.session-xp-strip {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-xp-track {
+  flex: 1 1 auto;
+  height: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(215, 68, 100, 0.18);
+}
+
+.session-xp-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #db3555, #ff7a92);
+  transition: width 180ms ease;
+}
+
+.session-xp-text {
+  margin: 0;
+  flex: 0 0 auto;
+  color: #9b2f45;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 .quiz-top {
   display: flex;
   align-items: flex-start;
@@ -1388,9 +1419,11 @@ h3 {
   }
 }
 
+body.immersive #levelPanel,
 body.immersive .dedication,
 body.immersive .voice-panel,
 body.immersive #selectionPanel,
+body.immersive .feedback-panel,
 body.immersive .session-panel {
   display: none;
 }
@@ -1406,6 +1439,11 @@ body.immersive .quiz-panel {
   gap: 8px;
   min-height: calc(100vh - 22px);
   padding: 10px;
+}
+
+body.immersive .session-xp-strip {
+  display: flex;
+  order: 0;
 }
 
 body.immersive .quiz-card,
@@ -1613,6 +1651,14 @@ body.immersive .stats-fab {
 
   .quiz-actions {
     width: 100%;
+  }
+
+  .session-xp-track {
+    height: 5px;
+  }
+
+  .session-xp-text {
+    font-size: 0.68rem;
   }
 
   .voice-actions {
