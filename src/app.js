@@ -4,10 +4,11 @@ const STORAGE_PROGRESS_KEY = "fsp_heart_progress_v1";
 const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
 const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
+const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260213i";
-const BUILD_UPDATED_AT = "2026-02-13 16:40 UTC";
+const APP_VERSION = "20260216a";
+const BUILD_UPDATED_AT = "2026-02-16 14:03 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -17,6 +18,8 @@ const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de
 const VOICE_CASE_DEFAULT = "default";
 const VOICE_CASE_CUSTOM = "custom";
 const VOICE_CASE_LIBRARY_PREFIX = "lib:";
+const VOICE_MODE_QUESTION = "question";
+const VOICE_MODE_DIAGNOSIS = "diagnosis";
 const DEFAULT_VOICE_CASE = [
   "CASE_ID: default_thoraxschmerz_001",
   "Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.",
@@ -218,6 +221,7 @@ const state = {
   voiceHistory: [],
   voiceBusy: false,
   voiceRecording: false,
+  voiceMode: VOICE_MODE_QUESTION,
   voiceCaseLibrary: [],
   voiceCaseResolutions: {},
   voiceCaseIndex: -1,
@@ -243,6 +247,9 @@ const refs = {
   voiceCaseSelect: document.getElementById("voiceCaseSelect"),
   voiceCaseMeta: document.getElementById("voiceCaseMeta"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
+  voiceModeSelect: document.getElementById("voiceModeSelect"),
+  voiceModeHint: document.getElementById("voiceModeHint"),
+  voiceTextLabel: document.getElementById("voiceTextLabel"),
   voiceTextInput: document.getElementById("voiceTextInput"),
   voiceTextSendBtn: document.getElementById("voiceTextSendBtn"),
   voiceResolutionTitle: document.getElementById("voiceResolutionTitle"),
@@ -260,6 +267,18 @@ const refs = {
   voiceUserTranscript: document.getElementById("voiceUserTranscript"),
   voiceAssistantReply: document.getElementById("voiceAssistantReply"),
   voiceCoachHint: document.getElementById("voiceCoachHint"),
+  voiceEvalPanel: document.getElementById("voiceEvalPanel"),
+  voiceEvalDiagnosis: document.getElementById("voiceEvalDiagnosis"),
+  voiceEvalOverall: document.getElementById("voiceEvalOverall"),
+  voiceEvalAnamnesis: document.getElementById("voiceEvalAnamnesis"),
+  voiceEvalDiagnosisScore: document.getElementById("voiceEvalDiagnosisScore"),
+  voiceEvalLikely: document.getElementById("voiceEvalLikely"),
+  voiceEvalSummary: document.getElementById("voiceEvalSummary"),
+  voiceEvalStrengths: document.getElementById("voiceEvalStrengths"),
+  voiceEvalMissingQuestions: document.getElementById("voiceEvalMissingQuestions"),
+  voiceEvalMistakes: document.getElementById("voiceEvalMistakes"),
+  voiceEvalSuggestedQuestions: document.getElementById("voiceEvalSuggestedQuestions"),
+  voiceEvalDifferentials: document.getElementById("voiceEvalDifferentials"),
   authPortrait: document.getElementById("authPortrait"),
   levelAvatar: document.getElementById("levelAvatar"),
   levelBadge: document.getElementById("levelBadge"),
@@ -320,6 +339,7 @@ function wireEvents() {
   refs.voiceNextCaseBtn?.addEventListener("click", () => {
     void handleVoiceNextCase();
   });
+  refs.voiceModeSelect?.addEventListener("change", handleVoiceModeChange);
   refs.voiceCaseSelect?.addEventListener("change", handleVoiceCaseSelectionChange);
   refs.voiceCaseInput.addEventListener("input", handleVoiceCaseInput);
 
@@ -427,20 +447,25 @@ function initVoiceUi() {
   if (typeof storedSelection.selection === "string" && storedSelection.selection) {
     state.voiceCaseSelection = storedSelection.selection;
   }
+  const storedMode = loadFromStorage(STORAGE_VOICE_MODE_KEY, {
+    mode: VOICE_MODE_QUESTION
+  });
+  if (typeof storedMode.mode === "string") {
+    state.voiceMode = normalizeVoiceMode(storedMode.mode);
+  }
   renderVoiceCaseSelect();
+  applyVoiceMode(state.voiceMode, { preserveStatus: true });
   applyVoiceCaseSelection(state.voiceCaseSelection, { preserveStatus: true, resetConversation: false });
   void ensureVoiceCaseLibraryLoaded();
   void ensureVoiceCaseResolutionLibraryLoaded();
 
   if (!isVoiceCaptureSupported()) {
     refs.voiceRecordBtn.disabled = true;
-    setVoiceStatus(
-      "Mikrofon-Aufnahme wird auf diesem Geraet/Browser nicht unterstuetzt. Du kannst den Textmodus nutzen."
-    );
+    setVoiceStatus("Mikrofon-Aufnahme wird auf diesem Geraet/Browser nicht unterstuetzt. Textmodus bleibt aktiv.");
     return;
   }
 
-  setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst aufnehmen oder Text senden.`);
+  setVoiceStatus(buildVoiceReadyStatus());
 }
 
 function handleVoiceCaseInput() {
@@ -454,9 +479,68 @@ function handleVoiceCaseInput() {
   }
 }
 
+function handleVoiceModeChange() {
+  if (!refs.voiceModeSelect) return;
+  if (state.voiceRecording) {
+    refs.voiceModeSelect.value = state.voiceMode;
+    setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
+    return;
+  }
+  applyVoiceMode(refs.voiceModeSelect.value, { preserveStatus: false });
+}
+
 function handleVoiceCaseSelectionChange() {
   if (!refs.voiceCaseSelect) return;
   applyVoiceCaseSelection(refs.voiceCaseSelect.value, { preserveStatus: false, resetConversation: true });
+}
+
+function normalizeVoiceMode(mode) {
+  return mode === VOICE_MODE_DIAGNOSIS ? VOICE_MODE_DIAGNOSIS : VOICE_MODE_QUESTION;
+}
+
+function isDiagnosisMode() {
+  return state.voiceMode === VOICE_MODE_DIAGNOSIS;
+}
+
+function applyVoiceMode(mode, options = {}) {
+  const preserveStatus = Boolean(options.preserveStatus);
+  state.voiceMode = normalizeVoiceMode(mode);
+  if (refs.voiceModeSelect && refs.voiceModeSelect.value !== state.voiceMode) {
+    refs.voiceModeSelect.value = state.voiceMode;
+  }
+  saveToStorage(STORAGE_VOICE_MODE_KEY, { mode: state.voiceMode });
+  updateVoiceModeUi();
+  if (!preserveStatus) {
+    setVoiceStatus(buildVoiceReadyStatus());
+  }
+}
+
+function buildVoiceReadyStatus() {
+  if (isDiagnosisMode()) {
+    return `${getVoiceCaseStatusLabel()} aktiv. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
+  }
+  return `${getVoiceCaseStatusLabel()} aktiv. Du kannst aufnehmen oder Text senden.`;
+}
+
+function updateVoiceModeUi() {
+  const diagnosisMode = isDiagnosisMode();
+  if (refs.voiceTextLabel) {
+    refs.voiceTextLabel.textContent = diagnosisMode ? "Diagnose per Text" : "Frage per Text";
+  }
+  if (refs.voiceTextInput) {
+    refs.voiceTextInput.placeholder = diagnosisMode
+      ? "Formuliere hier deine Verdachtsdiagnose (z. B. 'Akute Appendizitis')."
+      : "Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'.";
+  }
+  if (refs.voiceTextSendBtn) {
+    refs.voiceTextSendBtn.textContent = diagnosisMode ? "Diagnose abschicken" : "Text senden";
+  }
+  if (refs.voiceModeHint) {
+    refs.voiceModeHint.textContent = diagnosisMode
+      ? "Diagnose-Modus: Die KI bewertet Anamnese + Diagnosequalitaet und zeigt fehlende Fragen."
+      : "Frage-Modus: sprich oder tippe Fragen und fuehre das Anamnesegespraech.";
+  }
+  updateVoiceRecordButton();
 }
 
 async function handleVoiceRecordToggle() {
@@ -490,13 +574,24 @@ async function handleVoiceTextSend() {
 
   try {
     setVoiceBusy(true);
-    setVoiceStatus("Sende Textfrage und simuliere Patientenantwort ...");
-    await runVoiceTurn({ learnerText });
+    if (isDiagnosisMode()) {
+      setVoiceStatus("Sende Diagnose und starte Bewertung ...");
+      await runVoiceEvaluation({ diagnosisText: learnerText });
+    } else {
+      clearVoiceEvaluationReport();
+      setVoiceStatus("Sende Textfrage und simuliere Patientenantwort ...");
+      await runVoiceTurn({ learnerText });
+    }
     if (refs.voiceTextInput) {
       refs.voiceTextInput.value = "";
     }
   } catch (error) {
-    setVoiceStatus("Text-Turn fehlgeschlagen. Bitte erneut versuchen.", true);
+    setVoiceStatus(
+      isDiagnosisMode()
+        ? "Diagnosebewertung fehlgeschlagen. Bitte erneut versuchen."
+        : "Text-Turn fehlgeschlagen. Bitte erneut versuchen.",
+      true
+    );
     console.error(error);
   } finally {
     setVoiceBusy(false);
@@ -616,7 +711,7 @@ function applyVoiceCaseSelection(selection, options = {}) {
   }
 
   if (!preserveStatus) {
-    setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst aufnehmen oder Text senden.`);
+    setVoiceStatus(buildVoiceReadyStatus());
   }
 }
 
@@ -805,7 +900,11 @@ async function startVoiceRecording() {
     recorder.start(250);
     state.voiceRecording = true;
     updateVoiceRecordButton();
-    setVoiceStatus("Aufnahme laeuft ... tippe erneut, um zu stoppen und an die KI zu senden.");
+    setVoiceStatus(
+      isDiagnosisMode()
+        ? "Diagnose-Aufnahme laeuft ... tippe erneut, um zu stoppen und zu bewerten."
+        : "Aufnahme laeuft ... tippe erneut, um zu stoppen und an die KI zu senden."
+    );
 
     if (voiceAutoStopTimer) {
       window.clearTimeout(voiceAutoStopTimer);
@@ -839,7 +938,7 @@ function stopVoiceRecording(sendToAi, reason) {
   if (reason === "auto-stop") {
     setVoiceStatus("Maximale Aufnahmedauer erreicht. Audio wird jetzt verarbeitet ...");
   } else if (sendToAi) {
-    setVoiceStatus("Verarbeite Aufnahme ...");
+    setVoiceStatus(isDiagnosisMode() ? "Verarbeite Diagnose-Audio ..." : "Verarbeite Aufnahme ...");
   } else {
     setVoiceStatus("Aufnahme verworfen.");
   }
@@ -876,11 +975,25 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
 
   try {
     setVoiceBusy(true);
-    setVoiceStatus("Transkribiere und simuliere Patientenantwort ...");
+    setVoiceStatus(
+      isDiagnosisMode()
+        ? "Transkribiere Diagnose und erstelle Bewertung ..."
+        : "Transkribiere und simuliere Patientenantwort ..."
+    );
     const audioBase64 = await blobToBase64(blob);
-    await runVoiceTurn({ audioBase64 });
+    if (isDiagnosisMode()) {
+      await runVoiceEvaluation({ audioBase64 });
+    } else {
+      clearVoiceEvaluationReport();
+      await runVoiceTurn({ audioBase64 });
+    }
   } catch (error) {
-    setVoiceStatus("Voice-Turn fehlgeschlagen. Bitte erneut versuchen.", true);
+    setVoiceStatus(
+      isDiagnosisMode()
+        ? "Diagnosebewertung fehlgeschlagen. Bitte erneut versuchen."
+        : "Voice-Turn fehlgeschlagen. Bitte erneut versuchen.",
+      true
+    );
     console.error(error);
   } finally {
     setVoiceBusy(false);
@@ -964,6 +1077,135 @@ async function runVoiceTurn(turnInput) {
   setVoiceStatus("Antwort da. Du kannst direkt weiterfragen (Voice oder Text).");
 }
 
+async function runVoiceEvaluation(input) {
+  const audioBase64 = typeof input?.audioBase64 === "string" ? input.audioBase64 : "";
+  const diagnosisText = typeof input?.diagnosisText === "string" ? input.diagnosisText.trim() : "";
+  const caseText = getActiveVoiceCaseText();
+  const requestBody = {
+    caseText,
+    history: state.voiceHistory,
+    preferLocalTts: canUseLocalGermanTts()
+  };
+  if (audioBase64) {
+    requestBody.audioBase64 = audioBase64;
+  }
+  if (diagnosisText) {
+    requestBody.diagnosisText = diagnosisText;
+  }
+
+  const response = await fetch("/api/voice-evaluate", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(requestBody)
+  });
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(payload.error || "API Fehler");
+  }
+
+  const diagnosisTranscript =
+    typeof payload.diagnosisTranscript === "string" ? payload.diagnosisTranscript.trim() : "";
+  const evaluation = payload?.evaluation && typeof payload.evaluation === "object" ? payload.evaluation : null;
+  if (!evaluation) {
+    throw new Error("Keine Bewertung erhalten.");
+  }
+
+  renderVoiceEvaluationReport(evaluation, diagnosisTranscript || diagnosisText);
+
+  const localTtsText = typeof evaluation.summary_feedback === "string" ? evaluation.summary_feedback.trim() : "";
+  const localTtsStarted = speakWithLocalGermanVoice(localTtsText);
+  if (localTtsStarted) {
+    refs.voiceReplyAudio.pause();
+    refs.voiceReplyAudio.removeAttribute("src");
+    refs.voiceReplyAudio.classList.add("hidden");
+  } else {
+    const audioSrc = buildReplyAudioSrc(payload.feedbackAudioBase64);
+    if (audioSrc) {
+      refs.voiceReplyAudio.src = audioSrc;
+      refs.voiceReplyAudio.classList.remove("hidden");
+      try {
+        await refs.voiceReplyAudio.play();
+      } catch {
+        // autoplay may be blocked; controls are visible as fallback.
+      }
+    } else {
+      refs.voiceReplyAudio.pause();
+      refs.voiceReplyAudio.removeAttribute("src");
+      refs.voiceReplyAudio.classList.add("hidden");
+    }
+  }
+
+  if (localTtsStarted) {
+    setVoiceStatus("Bewertung da. Zusammenfassung wird mit lokaler Stimme abgespielt.");
+    return;
+  }
+  setVoiceStatus("Bewertung da. Du kannst den Fall jetzt resetten oder weiterfragen.");
+}
+
+function renderVoiceEvaluationReport(report, diagnosisText) {
+  if (
+    !refs.voiceEvalPanel ||
+    !refs.voiceEvalDiagnosis ||
+    !refs.voiceEvalOverall ||
+    !refs.voiceEvalAnamnesis ||
+    !refs.voiceEvalDiagnosisScore ||
+    !refs.voiceEvalLikely ||
+    !refs.voiceEvalSummary ||
+    !refs.voiceEvalStrengths ||
+    !refs.voiceEvalMissingQuestions ||
+    !refs.voiceEvalMistakes ||
+    !refs.voiceEvalSuggestedQuestions ||
+    !refs.voiceEvalDifferentials
+  ) {
+    return;
+  }
+
+  refs.voiceEvalDiagnosis.textContent = diagnosisText
+    ? `Deine Diagnose: ${diagnosisText}`
+    : "Deine Diagnose wurde uebermittelt.";
+  refs.voiceEvalOverall.textContent = String(Math.round(Number(report.overall_score) || 0));
+  refs.voiceEvalAnamnesis.textContent = String(Math.round(Number(report.anamnesis_score) || 0));
+  refs.voiceEvalDiagnosisScore.textContent = String(Math.round(Number(report.diagnosis_score) || 0));
+  refs.voiceEvalLikely.textContent = report.likely_diagnosis
+    ? `Fallnahe Hauptdiagnose laut KI: ${report.likely_diagnosis}`
+    : "";
+  refs.voiceEvalSummary.textContent = String(report.summary_feedback || "");
+
+  renderVoiceResolutionList(refs.voiceEvalStrengths, Array.isArray(report.strengths) ? report.strengths : []);
+  renderVoiceResolutionList(
+    refs.voiceEvalMissingQuestions,
+    Array.isArray(report.missing_questions) ? report.missing_questions : []
+  );
+  renderVoiceResolutionList(refs.voiceEvalMistakes, Array.isArray(report.mistakes) ? report.mistakes : []);
+  renderVoiceResolutionList(
+    refs.voiceEvalSuggestedQuestions,
+    Array.isArray(report.suggested_questions) ? report.suggested_questions : []
+  );
+  renderVoiceResolutionList(
+    refs.voiceEvalDifferentials,
+    Array.isArray(report.differentials) ? report.differentials : []
+  );
+
+  refs.voiceEvalPanel.classList.remove("hidden");
+}
+
+function clearVoiceEvaluationReport() {
+  if (!refs.voiceEvalPanel) return;
+  refs.voiceEvalPanel.classList.add("hidden");
+  if (refs.voiceEvalDiagnosis) refs.voiceEvalDiagnosis.textContent = "";
+  if (refs.voiceEvalOverall) refs.voiceEvalOverall.textContent = "0";
+  if (refs.voiceEvalAnamnesis) refs.voiceEvalAnamnesis.textContent = "0";
+  if (refs.voiceEvalDiagnosisScore) refs.voiceEvalDiagnosisScore.textContent = "0";
+  if (refs.voiceEvalLikely) refs.voiceEvalLikely.textContent = "";
+  if (refs.voiceEvalSummary) refs.voiceEvalSummary.textContent = "";
+  renderVoiceResolutionList(refs.voiceEvalStrengths, []);
+  renderVoiceResolutionList(refs.voiceEvalMissingQuestions, []);
+  renderVoiceResolutionList(refs.voiceEvalMistakes, []);
+  renderVoiceResolutionList(refs.voiceEvalSuggestedQuestions, []);
+  renderVoiceResolutionList(refs.voiceEvalDifferentials, []);
+}
+
 function resetVoiceConversation(options = {}) {
   const keepCaseText = Boolean(options.keepCaseText);
   const preserveStatus = Boolean(options.preserveStatus);
@@ -987,6 +1229,7 @@ function resetVoiceConversation(options = {}) {
   refs.voiceReplyAudio.pause();
   refs.voiceReplyAudio.removeAttribute("src");
   refs.voiceReplyAudio.classList.add("hidden");
+  clearVoiceEvaluationReport();
 
   if (!keepCaseText) {
     refs.voiceCaseInput.value = "";
@@ -994,7 +1237,7 @@ function resetVoiceConversation(options = {}) {
   }
 
   if (!preserveStatus) {
-    setVoiceStatus(`${getVoiceCaseStatusLabel()} aktiv. Du kannst aufnehmen oder Text senden.`);
+    setVoiceStatus(buildVoiceReadyStatus());
   }
 }
 
@@ -1006,6 +1249,9 @@ function setVoiceBusy(isBusy) {
   }
   if (refs.voiceNextCaseBtn) {
     refs.voiceNextCaseBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceModeSelect) {
+    refs.voiceModeSelect.disabled = state.voiceBusy;
   }
   if (refs.voiceTextSendBtn) {
     refs.voiceTextSendBtn.disabled = state.voiceBusy;
@@ -1022,9 +1268,15 @@ function setVoiceStatus(message, isError = false) {
 }
 
 function updateVoiceRecordButton() {
-  refs.voiceRecordBtn.textContent = state.voiceRecording
-    ? "⏹ Aufnahme stoppen"
-    : "🎤 Aufnahme starten";
+  if (isDiagnosisMode()) {
+    refs.voiceRecordBtn.textContent = state.voiceRecording
+      ? "⏹ Diagnose stoppen"
+      : "🎤 Diagnose sprechen";
+  } else {
+    refs.voiceRecordBtn.textContent = state.voiceRecording
+      ? "⏹ Aufnahme stoppen"
+      : "🎤 Aufnahme starten";
+  }
   refs.voiceRecordBtn.classList.toggle("recording", state.voiceRecording);
 }
 
