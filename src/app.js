@@ -8,8 +8,8 @@ const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260216e";
-const BUILD_UPDATED_AT = "2026-02-16 16:26 UTC";
+const APP_VERSION = "20260216f";
+const BUILD_UPDATED_AT = "2026-02-16 17:02 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -263,11 +263,9 @@ const refs = {
   voiceEvalDiagnosisScore: document.getElementById("voiceEvalDiagnosisScore"),
   voiceEvalLikely: document.getElementById("voiceEvalLikely"),
   voiceEvalSummary: document.getElementById("voiceEvalSummary"),
-  voiceEvalStrengths: document.getElementById("voiceEvalStrengths"),
-  voiceEvalMissingQuestions: document.getElementById("voiceEvalMissingQuestions"),
-  voiceEvalMistakes: document.getElementById("voiceEvalMistakes"),
-  voiceEvalSuggestedQuestions: document.getElementById("voiceEvalSuggestedQuestions"),
-  voiceEvalDifferentials: document.getElementById("voiceEvalDifferentials"),
+  voiceEvalQuestionReview: document.getElementById("voiceEvalQuestionReview"),
+  voiceEvalDiagnosisReview: document.getElementById("voiceEvalDiagnosisReview"),
+  voiceEvalTeacherFeedback: document.getElementById("voiceEvalTeacherFeedback"),
   authPortrait: document.getElementById("authPortrait"),
   levelAvatar: document.getElementById("levelAvatar"),
   levelBadge: document.getElementById("levelBadge"),
@@ -1025,9 +1023,9 @@ async function runVoiceTurn(turnInput) {
   const offTopic = Boolean(payload.offTopic);
 
   if (Array.isArray(payload.history)) {
-    state.voiceHistory = payload.history.slice(-8);
+    state.voiceHistory = payload.history.slice(-20);
   } else if (transcript || patientReply) {
-    state.voiceHistory = [...state.voiceHistory, { user: transcript, assistant: patientReply }].slice(-8);
+    state.voiceHistory = [...state.voiceHistory, { user: transcript, assistant: patientReply }].slice(-20);
   }
 
   refs.voiceUserTranscript.textContent = transcript || "Keine Transkription.";
@@ -1106,7 +1104,12 @@ async function runVoiceEvaluation(input) {
 
   renderVoiceEvaluationReport(evaluation, diagnosisTranscript || diagnosisText);
 
-  const localTtsText = typeof evaluation.summary_feedback === "string" ? evaluation.summary_feedback.trim() : "";
+  const localTtsText =
+    typeof evaluation.summary_feedback === "string" && evaluation.summary_feedback.trim()
+      ? evaluation.summary_feedback.trim()
+      : typeof evaluation.teacher_feedback_text === "string"
+        ? evaluation.teacher_feedback_text.trim()
+        : "";
   const localTtsStarted = speakWithLocalGermanVoice(localTtsText);
   if (localTtsStarted) {
     refs.voiceReplyAudio.pause();
@@ -1145,11 +1148,9 @@ function renderVoiceEvaluationReport(report, diagnosisText) {
     !refs.voiceEvalDiagnosisScore ||
     !refs.voiceEvalLikely ||
     !refs.voiceEvalSummary ||
-    !refs.voiceEvalStrengths ||
-    !refs.voiceEvalMissingQuestions ||
-    !refs.voiceEvalMistakes ||
-    !refs.voiceEvalSuggestedQuestions ||
-    !refs.voiceEvalDifferentials
+    !refs.voiceEvalQuestionReview ||
+    !refs.voiceEvalDiagnosisReview ||
+    !refs.voiceEvalTeacherFeedback
   ) {
     return;
   }
@@ -1164,21 +1165,9 @@ function renderVoiceEvaluationReport(report, diagnosisText) {
     ? `Fallnahe Hauptdiagnose laut KI: ${report.likely_diagnosis}`
     : "";
   refs.voiceEvalSummary.textContent = String(report.summary_feedback || "");
-
-  renderVoiceResolutionList(refs.voiceEvalStrengths, Array.isArray(report.strengths) ? report.strengths : []);
-  renderVoiceResolutionList(
-    refs.voiceEvalMissingQuestions,
-    Array.isArray(report.missing_questions) ? report.missing_questions : []
-  );
-  renderVoiceResolutionList(refs.voiceEvalMistakes, Array.isArray(report.mistakes) ? report.mistakes : []);
-  renderVoiceResolutionList(
-    refs.voiceEvalSuggestedQuestions,
-    Array.isArray(report.suggested_questions) ? report.suggested_questions : []
-  );
-  renderVoiceResolutionList(
-    refs.voiceEvalDifferentials,
-    Array.isArray(report.differentials) ? report.differentials : []
-  );
+  refs.voiceEvalQuestionReview.textContent = String(report.question_review_text || "");
+  refs.voiceEvalDiagnosisReview.textContent = String(report.diagnosis_review_text || "");
+  refs.voiceEvalTeacherFeedback.textContent = String(report.teacher_feedback_text || "");
 
   refs.voiceEvalPanel.classList.remove("hidden");
 }
@@ -1192,11 +1181,9 @@ function clearVoiceEvaluationReport() {
   if (refs.voiceEvalDiagnosisScore) refs.voiceEvalDiagnosisScore.textContent = "0";
   if (refs.voiceEvalLikely) refs.voiceEvalLikely.textContent = "";
   if (refs.voiceEvalSummary) refs.voiceEvalSummary.textContent = "";
-  renderVoiceResolutionList(refs.voiceEvalStrengths, []);
-  renderVoiceResolutionList(refs.voiceEvalMissingQuestions, []);
-  renderVoiceResolutionList(refs.voiceEvalMistakes, []);
-  renderVoiceResolutionList(refs.voiceEvalSuggestedQuestions, []);
-  renderVoiceResolutionList(refs.voiceEvalDifferentials, []);
+  if (refs.voiceEvalQuestionReview) refs.voiceEvalQuestionReview.textContent = "";
+  if (refs.voiceEvalDiagnosisReview) refs.voiceEvalDiagnosisReview.textContent = "";
+  if (refs.voiceEvalTeacherFeedback) refs.voiceEvalTeacherFeedback.textContent = "";
 }
 
 function resetVoiceConversation(options = {}) {

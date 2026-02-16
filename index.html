@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260216e" />
+    <link rel="stylesheet" href="src/styles.css?v=20260216f" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -177,28 +177,20 @@
           <p id="voiceEvalSummary" class="voice-eval-summary"></p>
           <div class="voice-eval-grid">
             <article class="voice-eval-block">
-              <h5>Gut gemacht</h5>
-              <ul id="voiceEvalStrengths" class="voice-eval-list"></ul>
-            </article>
-            <article class="voice-eval-block">
-              <h5>Fehlende Fragen</h5>
-              <ul id="voiceEvalMissingQuestions" class="voice-eval-list"></ul>
+              <h5>Anamnese-Prüfung</h5>
+              <p id="voiceEvalQuestionReview" class="voice-eval-prose"></p>
             </article>
           </div>
           <div class="voice-eval-grid">
             <article class="voice-eval-block">
-              <h5>Fehler / Risiken</h5>
-              <ul id="voiceEvalMistakes" class="voice-eval-list"></ul>
+              <h5>Diagnose-Prüfung</h5>
+              <p id="voiceEvalDiagnosisReview" class="voice-eval-prose"></p>
             </article>
             <article class="voice-eval-block">
-              <h5>Bessere naechste Fragen</h5>
-              <ul id="voiceEvalSuggestedQuestions" class="voice-eval-list"></ul>
+              <h5>Prüfer- und Lehrerfeedback</h5>
+              <p id="voiceEvalTeacherFeedback" class="voice-eval-prose"></p>
             </article>
           </div>
-          <article class="voice-eval-block">
-            <h5>Differenzialdiagnosen</h5>
-            <ul id="voiceEvalDifferentials" class="voice-eval-list"></ul>
-          </article>
         </article>
         <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
         <article id="voiceLastTurn" class="voice-turn hidden">
@@ -345,6 +337,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260216e"></script>
+    <script type="module" src="src/app.js?v=20260216f"></script>
   </body>
 </html>

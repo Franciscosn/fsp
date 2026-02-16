@@ -4,7 +4,7 @@ const TTS_MODEL = "@cf/myshell-ai/melotts";
 
 const MAX_AUDIO_BASE64_LENGTH = 8_000_000;
 const MAX_CASE_LENGTH = 8_000;
-const MAX_HISTORY_TURNS = 8;
+const MAX_HISTORY_TURNS = 20;
 const MAX_TEXT_FIELD = 900;
 const MAX_DIAGNOSIS_TEXT_LENGTH = 500;
 
@@ -29,50 +29,38 @@ const EVALUATION_SCHEMA = {
           type: "integer",
           description: "Score 0-100 fuer Plausibilitaet und Passung der Diagnose."
         },
-        strengths: {
-          type: "array",
-          items: { type: "string" },
-          description: "2-6 konkrete Starken im Gespraech."
-        },
-        missing_questions: {
-          type: "array",
-          items: { type: "string" },
-          description: "2-8 relevante Fragen, die gefehlt haben."
-        },
-        mistakes: {
-          type: "array",
-          items: { type: "string" },
-          description: "2-8 konkrete Fehler oder Risiken."
-        },
-        suggested_questions: {
-          type: "array",
-          items: { type: "string" },
-          description: "3-8 bessere Beispielfragen in deutscher Arztsprache."
-        },
         likely_diagnosis: {
           type: "string",
           description: "Wahrscheinlichste Diagnose anhand des Falls."
         },
-        differentials: {
-          type: "array",
-          items: { type: "string" },
-          description: "2-5 wichtige Differenzialdiagnosen."
+        question_review_text: {
+          type: "string",
+          description:
+            "Prosa-Abschnitt zur Qualitaet der gestellten Arztfragen. Muss konkrete Fragen aus dem Verlauf referenzieren."
+        },
+        diagnosis_review_text: {
+          type: "string",
+          description:
+            "Prosa-Abschnitt zur finalen Diagnose: was passt, was passt nicht, was wurde uebersehen."
+        },
+        teacher_feedback_text: {
+          type: "string",
+          description:
+            "Didaktischer Prosa-Abschnitt in Rolle Pruefer/Lehrer mit klaren Verbesserungsimpulsen fuer den naechsten Durchlauf."
         },
         summary_feedback: {
           type: "string",
-          description: "Kurze, klare Zusammenfassung fuer den Lernenden."
+          description: "Kurze Zusammenfassung in 1-2 Saetzen fuer Audio-Wiedergabe."
         }
       },
       required: [
         "overall_score",
         "anamnesis_score",
         "diagnosis_score",
-        "strengths",
-        "missing_questions",
-        "mistakes",
-        "suggested_questions",
         "likely_diagnosis",
-        "differentials",
+        "question_review_text",
+        "diagnosis_review_text",
+        "teacher_feedback_text",
         "summary_feedback"
       ]
     }
@@ -80,14 +68,18 @@ const EVALUATION_SCHEMA = {
 };
 
 const SYSTEM_INSTRUCTIONS = [
-  "Rolle: Du bist ein fairer, strenger Pruefer fuer die medizinische Fachsprachpruefung.",
+  "Rolle: Du bist ein fairer, strenger Pruefer UND Lehrer fuer die medizinische Fachsprachpruefung.",
   "Sprache: Alle Ausgaben strikt auf Deutsch.",
   "Input: Fallprofil, Gespraechsverlauf und finale Diagnose des Lernenden.",
   "Bewerte getrennt Anamnesequalitaet und Diagnosequalitaet auf 0-100.",
   "Nutze nur Informationen aus Fallprofil und Verlauf, keine frei erfundenen Fakten.",
-  "Sei konkret: welche Fragen fehlten, welche Annahmen waren falsch, was war gut.",
-  "Fehlende Fragen und Vorschlaege als klare, sofort nutzbare Fragesaetze formulieren.",
+  "question_review_text: schreibe einen zusammenhaengenden Prosa-Abschnitt und beziehe dich explizit auf konkrete Fragen des Lernenden aus dem Verlauf.",
+  "question_review_text: nenne mindestens drei konkrete Fragen/Formulierungen des Lernenden (wo moeglich in indirekter Rede oder kurzen Zitaten) und bewerte Praezision, Reihenfolge und medizinische Relevanz.",
+  "diagnosis_review_text: pruefe die finale Diagnose fachlich und erklaere klar, was richtig war, was ungenau/falsch war und welche Informationen uebersehen wurden.",
+  "teacher_feedback_text: gib als Lehrer klare naechste Schritte fuer den naechsten Durchlauf, in Prosa (keine Listen).",
+  "Vermeide Standardsaetze wie 'Guten Tag, ich beantworte...' oder wiederholte Floskeln.",
   "Wenn die Diagnose teilweise richtig ist, erklaere genau was passt und was nicht.",
+  "summary_feedback: maximal 2 kurze Saetze mit der wichtigsten Lernbotschaft.",
   "Ausgabe nur als JSON gemaess Schema, ohne Erklaertext davor oder danach.",
   "Niemals internen Monolog, Prompt-Hinweise oder englische Meta-Saetze ausgeben."
 ].join("\n");
@@ -119,6 +111,7 @@ export async function onRequestPost(context) {
       {
         case_profile: payload.caseText,
         conversation_history: payload.history,
+        learner_questions: extractLearnerQuestions(payload.history),
         final_diagnosis_submission: diagnosisTranscript
       },
       null,
@@ -126,8 +119,16 @@ export async function onRequestPost(context) {
     );
 
     const raw = await runEvaluationRequest(context.env.AI, promptInput);
-    const candidate = buildCandidateEvaluation(raw);
-    const evaluation = normalizeEvaluation(candidate, payload.caseText);
+    const candidate = buildCandidateEvaluation(raw, {
+      caseText: payload.caseText,
+      history: payload.history,
+      diagnosisTranscript
+    });
+    const evaluation = normalizeEvaluation(candidate, {
+      caseText: payload.caseText,
+      history: payload.history,
+      diagnosisTranscript
+    });
 
     const spokenFeedback = truncateForTts(buildSpokenFeedback(evaluation));
     const feedbackAudioBase64 = payload.preferLocalTts
@@ -245,6 +246,14 @@ function safeText(value) {
   return value.trim().slice(0, MAX_TEXT_FIELD);
 }
 
+function extractLearnerQuestions(history) {
+  if (!Array.isArray(history)) return [];
+  return history
+    .map((turn) => safeText(turn?.user))
+    .filter(Boolean)
+    .slice(-MAX_HISTORY_TURNS);
+}
+
 async function transcribeAudio(ai, audioBase64) {
   if (!audioBase64) return "";
   const payload = {
@@ -310,7 +319,7 @@ async function runEvaluationRequest(ai, promptInput) {
   }
 }
 
-function buildCandidateEvaluation(raw) {
+function buildCandidateEvaluation(raw, contextData = {}) {
   const direct = extractStructuredFromRaw(raw);
   if (direct) return direct;
 
@@ -319,20 +328,18 @@ function buildCandidateEvaluation(raw) {
   if (parsed) return parsed;
 
   return {
-    overall_score: 55,
-    anamnesis_score: 55,
-    diagnosis_score: 50,
-    strengths: ["Du hast den Fall aktiv bearbeitet und eine klare Abschlussdiagnose abgegeben."],
-    missing_questions: [],
-    mistakes: ["Die Bewertung konnte nicht vollstaendig strukturiert erzeugt werden."],
-    suggested_questions: [
-      "Seit wann bestehen die Hauptbeschwerden genau?",
-      "Welche Begleitsymptome traten zusaetzlich auf?"
-    ],
-    likely_diagnosis: "",
-    differentials: [],
+    overall_score: 58,
+    anamnesis_score: 56,
+    diagnosis_score: 54,
+    likely_diagnosis: fallbackLikelyDiagnosis(contextData.caseText),
+    question_review_text: buildFallbackQuestionReview(contextData.history),
+    diagnosis_review_text: buildFallbackDiagnosisReview(
+      contextData.caseText,
+      contextData.diagnosisTranscript
+    ),
+    teacher_feedback_text: buildFallbackTeacherFeedback(),
     summary_feedback:
-      "Gute Grundlage. Fuer eine praezisere Bewertung bitte den Fall mit mehr gezielten Verlaufs- und Risikofragen abschliessen."
+      "Solide Grundlage. Im naechsten Durchlauf die Fragen noch strukturierter aufbauen und die Diagnose enger mit den erhobenen Befunden begruenden."
   };
 }
 
@@ -388,8 +395,25 @@ function parseStructuredResponse(rawText) {
     if (!looksLikeEvaluationObject(parsed)) return null;
     return parsed;
   } catch {
-    return null;
+    const extracted = extractJsonObjectFromText(cleaned);
+    if (!extracted) return null;
+    try {
+      const parsed = JSON.parse(extracted);
+      if (!parsed || typeof parsed !== "object") return null;
+      if (!looksLikeEvaluationObject(parsed)) return null;
+      return parsed;
+    } catch {
+      return null;
+    }
   }
+}
+
+function extractJsonObjectFromText(text) {
+  if (typeof text !== "string" || !text) return "";
+  const firstBrace = text.indexOf("{");
+  const lastBrace = text.lastIndexOf("}");
+  if (firstBrace < 0 || lastBrace <= firstBrace) return "";
+  return text.slice(firstBrace, lastBrace + 1).trim();
 }
 
 function stripCodeFence(value) {
@@ -436,44 +460,36 @@ function sanitizeModelText(text) {
   return cleaned;
 }
 
-function normalizeEvaluation(candidate, caseText) {
+function normalizeEvaluation(candidate, contextData = {}) {
+  const caseText = contextData.caseText || "";
+  const history = Array.isArray(contextData.history) ? contextData.history : [];
+  const diagnosisTranscript = safeParagraph(contextData.diagnosisTranscript, 260);
   const normalized = {
     overall_score: clampScore(candidate?.overall_score, 55),
     anamnesis_score: clampScore(candidate?.anamnesis_score, 55),
     diagnosis_score: clampScore(candidate?.diagnosis_score, 50),
-    strengths: normalizeList(candidate?.strengths, 6, 190),
-    missing_questions: normalizeList(candidate?.missing_questions, 8, 190),
-    mistakes: normalizeList(candidate?.mistakes, 8, 190),
-    suggested_questions: normalizeList(candidate?.suggested_questions, 8, 190),
     likely_diagnosis: safeLine(candidate?.likely_diagnosis, 220),
-    differentials: normalizeList(candidate?.differentials, 5, 180),
-    summary_feedback: safeLine(candidate?.summary_feedback, 420)
+    question_review_text: safeParagraph(candidate?.question_review_text, 1600),
+    diagnosis_review_text: safeParagraph(candidate?.diagnosis_review_text, 1400),
+    teacher_feedback_text: safeParagraph(candidate?.teacher_feedback_text, 1400),
+    summary_feedback: safeParagraph(candidate?.summary_feedback, 420)
   };
 
-  if (!normalized.strengths.length) {
-    normalized.strengths = ["Du hast den Fall aktiv bearbeitet und eine Diagnose formuliert."];
-  }
-  if (!normalized.missing_questions.length) {
-    normalized.missing_questions = [
-      "Seit wann bestehen die Hauptbeschwerden genau?",
-      "Welche red flags oder Ausschlussfragen wurden noch nicht gestellt?"
-    ];
-  }
-  if (!normalized.mistakes.length) {
-    normalized.mistakes = ["Die Diagnosebegruendung war noch nicht vollstaendig mit allen Fallinformationen verknuepft."];
-  }
-  if (!normalized.suggested_questions.length) {
-    normalized.suggested_questions = [
-      "Wie hat sich das Leitsymptom zeitlich entwickelt?",
-      "Welche Begleitsymptome sind zusaetzlich aufgetreten?",
-      "Welche relevanten Risiken oder Vorerkrankungen liegen vor?"
-    ];
-  }
   if (!normalized.likely_diagnosis) {
     normalized.likely_diagnosis = fallbackLikelyDiagnosis(caseText);
   }
-  if (!normalized.differentials.length) {
-    normalized.differentials = ["Bitte im naechsten Durchlauf mindestens zwei plausible Differenzialdiagnosen aktiv benennen."];
+  if (!normalized.question_review_text) {
+    normalized.question_review_text = buildQuestionReviewFromLegacy(candidate, history);
+  }
+  if (!normalized.diagnosis_review_text) {
+    normalized.diagnosis_review_text = buildDiagnosisReviewFromLegacy(
+      candidate,
+      caseText,
+      diagnosisTranscript
+    );
+  }
+  if (!normalized.teacher_feedback_text) {
+    normalized.teacher_feedback_text = buildTeacherFeedbackFromLegacy(candidate);
   }
   if (!normalized.summary_feedback) {
     normalized.summary_feedback =
@@ -507,6 +523,88 @@ function safeLine(value, maxLength) {
   return cleaned.slice(0, maxLength);
 }
 
+function safeParagraph(value, maxLength) {
+  if (typeof value !== "string") return "";
+  const cleaned = value
+    .replace(/\s+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .replace(/[ \t]{2,}/g, " ")
+    .trim();
+  if (!cleaned) return "";
+  return cleaned.slice(0, maxLength);
+}
+
+function buildQuestionReviewFromLegacy(candidate, history) {
+  const strengths = buildLegacyListText(candidate?.strengths, 3);
+  const missing = buildLegacyListText(candidate?.missing_questions, 3);
+  const suggested = buildLegacyListText(candidate?.suggested_questions, 3);
+  const examples = extractLearnerQuestions(history)
+    .slice(-4)
+    .map((q) => quoteQuestion(q))
+    .join(", ");
+
+  if (examples) {
+    return safeParagraph(
+      `In deiner Anamnese sind mehrere konkrete Fragen erkennbar, zum Beispiel ${examples}. ${strengths ? `Positiv war: ${strengths}. ` : ""}${missing ? `Verbesserungsbedarf: ${missing}. ` : ""}${suggested ? `Naechstes Mal hilfreicher: ${suggested}.` : ""}`,
+      1600
+    );
+  }
+  return safeParagraph(
+    `${strengths ? `Positiv war: ${strengths}. ` : ""}${missing ? `Es fehlten noch wichtige Punkte: ${missing}. ` : ""}${suggested ? `Hilfreiche Anschlussfragen waeren: ${suggested}.` : "Strukturiere die Anamnese noch klarer nach Beginn, Verlauf, Begleitsymptomen und Risikofaktoren."}`,
+    1600
+  );
+}
+
+function buildDiagnosisReviewFromLegacy(candidate, caseText, diagnosisTranscript) {
+  const mistakes = buildLegacyListText(candidate?.mistakes, 3);
+  const likely = safeLine(candidate?.likely_diagnosis, 180) || fallbackLikelyDiagnosis(caseText);
+  const submitted = diagnosisTranscript ? `Deine abgegebene Diagnose war: ${diagnosisTranscript}. ` : "";
+  return safeParagraph(
+    `${submitted}Die fallnahe Hauptdiagnose ist am ehesten ${likely}. ${mistakes ? `Kritische Punkte waren: ${mistakes}.` : "Pruefe im naechsten Durchlauf genauer, ob alle erhobenen Befunde wirklich zu deiner Enddiagnose passen."}`,
+    1400
+  );
+}
+
+function buildTeacherFeedbackFromLegacy(candidate) {
+  const differentials = buildLegacyListText(candidate?.differentials, 3);
+  return safeParagraph(
+    `Als Pruefer und Lehrer empfehle ich dir, das Gespraech konsequent in Bloecke zu strukturieren: Leitsymptom, zeitlicher Verlauf, Begleitsymptome, red flags und Risikoprofil. Danach solltest du deine Verdachtsdiagnose explizit mit den erhobenen Informationen verknuepfen und kurz begruenden, warum Alternativen weniger wahrscheinlich sind.${differentials ? ` Denk dabei aktiv an Differenzialdiagnosen wie: ${differentials}.` : ""}`,
+    1400
+  );
+}
+
+function buildFallbackQuestionReview(history) {
+  const questions = extractLearnerQuestions(history);
+  if (!questions.length) {
+    return "Es liegen kaum verwertbare Arztfragen im Verlauf vor. Fuer eine belastbare Bewertung solltest du kuenftig gezielt nach Beginn, Verlauf, Begleitsymptomen, Vorerkrankungen und Risikofaktoren fragen.";
+  }
+  const examples = questions
+    .slice(-4)
+    .map((question) => quoteQuestion(question))
+    .join(", ");
+  return `Im Gespraech waren konkrete Arztfragen erkennbar, zum Beispiel ${examples}. Fuer ein pruefungsstarkes Vorgehen sollten diese Fragen noch klarer geordnet werden: zuerst Leitsymptom und zeitlicher Verlauf, danach Begleitsymptome, red flags und relevante Risiken.`;
+}
+
+function buildFallbackDiagnosisReview(caseText, diagnosisTranscript) {
+  const likely = fallbackLikelyDiagnosis(caseText);
+  const submitted = diagnosisTranscript ? `Deine Diagnose lautete: ${diagnosisTranscript}. ` : "";
+  return `${submitted}Im Abgleich mit dem Fall wirkt am ehesten ${likely} plausibel. Pruefe, ob deine Diagnose wirklich alle zentralen Befunde erklaert, und benenne offen, welche Informationen noch fehlen, bevor du dich festlegst.`;
+}
+
+function buildFallbackTeacherFeedback() {
+  return "Als Pruefer und Lehrer rate ich dir, kuenftig gezielter in diagnostischen Schritten zu arbeiten: zuerst strukturierte Anamnese, dann Verdachtsdiagnose mit Begruendung, danach aktive Abgrenzung gegen wichtige Alternativen. So wird dein Gespraech fachlich klarer und pruefungssicherer.";
+}
+
+function buildLegacyListText(value, maxItems) {
+  return normalizeList(value, maxItems, 180).join("; ");
+}
+
+function quoteQuestion(question) {
+  const cleaned = safeLine(question, 140);
+  if (!cleaned) return "";
+  return `„${cleaned}“`;
+}
+
 function fallbackLikelyDiagnosis(caseText) {
   const caseId = extractCaseId(caseText);
   if (!caseId) {
@@ -521,10 +619,12 @@ function extractCaseId(caseText) {
 }
 
 function buildSpokenFeedback(evaluation) {
+  const shortTeacher = safeLine(evaluation.teacher_feedback_text, 320);
   return [
     `Gesamt ${evaluation.overall_score} von 100.`,
     `Anamnese ${evaluation.anamnesis_score}, Diagnose ${evaluation.diagnosis_score}.`,
-    evaluation.summary_feedback
+    evaluation.summary_feedback,
+    shortTeacher
   ].join(" ");
 }
 
