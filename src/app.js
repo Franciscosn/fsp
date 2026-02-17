@@ -11,8 +11,8 @@ const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217d";
-const BUILD_UPDATED_AT = "2026-02-17 14:58 UTC";
+const APP_VERSION = "20260217e";
+const BUILD_UPDATED_AT = "2026-02-17 16:08 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -283,8 +283,12 @@ const refs = {
   voiceModelSelect: document.getElementById("voiceModelSelect"),
   voiceCaseSelect: document.getElementById("voiceCaseSelect"),
   voiceCaseMeta: document.getElementById("voiceCaseMeta"),
+  voiceCaseInfoToggleBtn: document.getElementById("voiceCaseInfoToggleBtn"),
+  voiceCaseInfoPanel: document.getElementById("voiceCaseInfoPanel"),
+  voiceCaseInfoText: document.getElementById("voiceCaseInfoText"),
   voiceCreateCaseBtn: document.getElementById("voiceCreateCaseBtn"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
+  voicePatientConversationBtn: document.getElementById("voicePatientConversationBtn"),
   voiceDiagnoseBtn: document.getElementById("voiceDiagnoseBtn"),
   voiceTextInput: document.getElementById("voiceTextInput"),
   voiceTextSendBtn: document.getElementById("voiceTextSendBtn"),
@@ -414,12 +418,14 @@ function wireEvents() {
   refs.dailyGoalPanel?.addEventListener("click", handleDailyGoalEdit);
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
+  refs.voicePatientConversationBtn?.addEventListener("click", handleVoicePatientConversationActivate);
   refs.voiceDiagnoseBtn?.addEventListener("click", handleVoiceDiagnoseToggle);
   refs.voiceDoctorConversationBtn?.addEventListener("click", handleVoiceDoctorConversationToggle);
   refs.voiceDoctorLetterToggleBtn?.addEventListener("click", handleDoctorLetterToggle);
   refs.voiceDoctorLetterSubmitBtn?.addEventListener("click", () => {
     void handleDoctorLetterSubmit();
   });
+  refs.voiceCaseInfoToggleBtn?.addEventListener("click", handleVoiceCaseInfoToggle);
   refs.voiceCreateCaseBtn?.addEventListener("click", handleVoiceCreateCase);
   refs.voiceInfoBtn?.addEventListener("click", openVoiceInfoModal);
   refs.voiceInfoCloseBtn?.addEventListener("click", closeVoiceInfoModal);
@@ -561,11 +567,13 @@ function initVoiceUi() {
   }
   clearDoctorLetterEvaluationReport();
   refs.voiceDoctorLetterToggleBtn?.setAttribute("aria-expanded", "false");
+  refs.voiceCaseInfoToggleBtn?.setAttribute("aria-expanded", "false");
   renderVoiceModelSelect();
   applyVoiceModelSelection(state.voiceModel, { preserveStatus: true });
   renderVoiceCaseSelect();
   applyVoiceMode(state.voiceMode, { preserveStatus: true });
   applyVoiceCaseSelection(state.voiceCaseSelection, { preserveStatus: true, resetConversation: false });
+  updateVoiceCaseInfoPanel();
   void ensureVoiceCaseLibraryLoaded();
   void ensureVoiceCaseResolutionLibraryLoaded();
 
@@ -584,6 +592,7 @@ function handleVoiceCaseInput() {
     refs.voiceCaseInput.value = normalized;
   }
   saveToStorage(STORAGE_VOICE_CASE_KEY, { caseText: refs.voiceCaseInput.value });
+  updateVoiceCaseInfoPanel();
   if (getActiveVoiceCaseSelection() === VOICE_CASE_CUSTOM) {
     updateVoiceCaseResolution();
   }
@@ -636,6 +645,14 @@ function handleVoiceDiagnoseToggle() {
   applyVoiceMode(nextMode, { preserveStatus: false });
 }
 
+function handleVoicePatientConversationActivate() {
+  if (state.voiceRecording) {
+    setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
+    return;
+  }
+  applyVoiceMode(VOICE_MODE_QUESTION, { preserveStatus: false });
+}
+
 function handleVoiceDoctorConversationToggle() {
   if (state.voiceRecording) {
     setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
@@ -643,6 +660,16 @@ function handleVoiceDoctorConversationToggle() {
   }
   const nextMode = isDoctorConversationMode() ? VOICE_MODE_QUESTION : VOICE_MODE_DOCTOR_CONVERSATION;
   applyVoiceMode(nextMode, { preserveStatus: false });
+}
+
+function handleVoiceCaseInfoToggle() {
+  if (!refs.voiceCaseInfoPanel || !refs.voiceCaseInfoToggleBtn) return;
+  const willOpen = refs.voiceCaseInfoPanel.classList.contains("hidden");
+  refs.voiceCaseInfoPanel.classList.toggle("hidden");
+  refs.voiceCaseInfoToggleBtn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  if (willOpen) {
+    updateVoiceCaseInfoPanel();
+  }
 }
 
 function handleDoctorLetterToggle() {
@@ -772,6 +799,7 @@ function buildVoiceReadyStatus() {
 function updateVoiceModeUi() {
   const diagnosisMode = isDiagnosisMode();
   const doctorConversationMode = isDoctorConversationMode();
+  const patientConversationMode = !diagnosisMode && !doctorConversationMode;
   if (refs.voiceTextInput) {
     refs.voiceTextInput.placeholder = diagnosisMode
       ? "Formuliere hier deine Verdachtsdiagnose (z. B. 'Akute Appendizitis')."
@@ -793,6 +821,10 @@ function updateVoiceModeUi() {
   if (refs.voiceDoctorConversationBtn) {
     refs.voiceDoctorConversationBtn.classList.toggle("active", doctorConversationMode);
     refs.voiceDoctorConversationBtn.setAttribute("aria-pressed", doctorConversationMode ? "true" : "false");
+  }
+  if (refs.voicePatientConversationBtn) {
+    refs.voicePatientConversationBtn.classList.toggle("active", patientConversationMode);
+    refs.voicePatientConversationBtn.setAttribute("aria-pressed", patientConversationMode ? "true" : "false");
   }
   if (refs.voiceAssistantLabel) {
     refs.voiceAssistantLabel.textContent = doctorConversationMode ? "Prueferarzt:" : "Patient:";
@@ -996,6 +1028,7 @@ function applyVoiceCaseSelection(selection, options = {}) {
 
   updateVoiceCaseMeta();
   updateVoiceCaseResolution();
+  updateVoiceCaseInfoPanel();
   if (resetConversation) {
     resetVoiceConversation({ keepCaseText: true, preserveStatus: true });
   }
@@ -1003,6 +1036,12 @@ function applyVoiceCaseSelection(selection, options = {}) {
   if (!preserveStatus) {
     setVoiceStatus(buildVoiceReadyStatus());
   }
+}
+
+function updateVoiceCaseInfoPanel() {
+  if (!refs.voiceCaseInfoText) return;
+  const caseText = String(getActiveVoiceCaseText() || "").trim();
+  refs.voiceCaseInfoText.textContent = caseText || "Keine Fallinformationen vorhanden.";
 }
 
 function updateVoiceCaseMeta() {
@@ -1373,7 +1412,7 @@ async function runVoiceTurn(turnInput) {
   const caseText = getActiveVoiceCaseText();
   const requestBody = {
     caseText,
-    history: state.voiceDoctorConversationHistory,
+    history: state.voiceHistory,
     chatModel: normalizeVoiceModel(state.voiceModel),
     preferLocalTts: canUseLocalGermanTts()
   };
@@ -1746,6 +1785,9 @@ function setVoiceBusy(isBusy) {
   if (refs.voiceDoctorConversationBtn) {
     refs.voiceDoctorConversationBtn.disabled = state.voiceBusy;
   }
+  if (refs.voicePatientConversationBtn) {
+    refs.voicePatientConversationBtn.disabled = state.voiceBusy;
+  }
   if (refs.voiceTextSendBtn) {
     refs.voiceTextSendBtn.disabled = state.voiceBusy;
   }
@@ -1754,6 +1796,9 @@ function setVoiceBusy(isBusy) {
   }
   if (refs.voiceCreateCaseBtn) {
     refs.voiceCreateCaseBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceCaseInfoToggleBtn) {
+    refs.voiceCaseInfoToggleBtn.disabled = state.voiceBusy;
   }
   if (refs.voiceDoctorLetterToggleBtn) {
     refs.voiceDoctorLetterToggleBtn.disabled = state.voiceBusy;

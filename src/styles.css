@@ -428,13 +428,57 @@ body.auth-only .edge-deco {
 
 .voice-case-actions {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: auto auto minmax(0, 1fr);
   gap: 8px;
   align-items: start;
 }
 
 .voice-case-actions .voice-resolution-inline {
   min-width: 0;
+  max-width: 190px;
+}
+
+.voice-case-actions .voice-resolution-inline[open] {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
+.voice-case-actions .voice-resolution-toggle {
+  padding: 8px 10px;
+  font-size: 0.86rem;
+}
+
+.voice-case-info-toggle-btn {
+  white-space: nowrap;
+}
+
+.voice-case-info {
+  border: 1px solid rgba(248, 73, 102, 0.24);
+  border-radius: 14px;
+  background: #fff9fb;
+  padding: 10px 11px;
+  display: grid;
+  gap: 8px;
+}
+
+.voice-case-info h4 {
+  margin: 0;
+  color: #8f2f49;
+  font-size: 0.95rem;
+}
+
+.voice-case-info-text {
+  margin: 0;
+  border: 1px solid rgba(248, 73, 102, 0.2);
+  border-radius: 10px;
+  background: #fff;
+  color: #5d2736;
+  padding: 9px 10px;
+  white-space: pre-wrap;
+  line-height: 1.45;
+  font-size: 0.86rem;
+  max-height: 280px;
+  overflow: auto;
 }
 
 .voice-case-input {
@@ -463,9 +507,15 @@ body.auth-only .edge-deco {
 
 .voice-actions {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 8px;
   align-items: start;
+}
+
+.voice-patient-conversation-btn.active {
+  background: linear-gradient(126deg, #356e44, #4f9a60);
+  border-color: rgba(53, 110, 68, 0.8);
+  color: #f3fff5;
 }
 
 .voice-diagnose-btn.active {
@@ -1917,9 +1967,17 @@ body.immersive .stats-fab {
     grid-template-columns: 1fr;
   }
 
+  .voice-case-actions .voice-resolution-inline {
+    max-width: none;
+  }
+
   .voice-case-actions .voice-create-case-btn {
     width: 100%;
     justify-self: stretch;
+  }
+
+  .voice-case-info-text {
+    max-height: 220px;
   }
 
   .voice-text-compact {
