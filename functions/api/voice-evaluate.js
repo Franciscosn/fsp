@@ -283,7 +283,12 @@ async function transcribeAudio(ai, audioBase64) {
       return result.text.trim();
     }
   } catch {
-    const audioBytes = base64ToUint8Array(audioBase64);
+    let audioBytes = null;
+    try {
+      audioBytes = base64ToUint8Array(audioBase64);
+    } catch {
+      return "";
+    }
     try {
       const retry = await ai.run(WHISPER_MODEL, {
         ...payload,
