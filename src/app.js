@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217h";
-const BUILD_UPDATED_AT = "2026-02-17 18:26 UTC";
+const APP_VERSION = "20260217i";
+const BUILD_UPDATED_AT = "2026-02-17 18:39 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -989,6 +989,60 @@ function setPromptProposalStatus(message, isError = false) {
   refs.voicePromptProposalStatus.classList.toggle("error", Boolean(isError));
 }
 
+function normalizeDbError(error) {
+  if (error && typeof error === "object") {
+    return {
+      code: safeLine(error.code, 40),
+      message: safeParagraph(error.message || error.error_description, 600),
+      details: safeParagraph(error.details, 600),
+      hint: safeParagraph(error.hint, 400)
+    };
+  }
+  const fallback = safeParagraph(String(error || ""), 600);
+  return { code: "", message: fallback, details: "", hint: "" };
+}
+
+function isSchemaMissingDbError(dbError) {
+  const full = `${dbError.code} ${dbError.message} ${dbError.details} ${dbError.hint}`.toLowerCase();
+  return (
+    dbError.code === "42P01" ||
+    dbError.code === "PGRST205" ||
+    full.includes("does not exist") ||
+    full.includes("schema cache") ||
+    full.includes("could not find the table") ||
+    full.includes("relation")
+  );
+}
+
+function isPermissionDbError(dbError) {
+  const full = `${dbError.code} ${dbError.message} ${dbError.details} ${dbError.hint}`.toLowerCase();
+  return (
+    dbError.code === "42501" ||
+    full.includes("permission denied") ||
+    full.includes("row-level security") ||
+    full.includes("rls")
+  );
+}
+
+function buildPromptProposalErrorMessage(dbError, stageLabel) {
+  if (isSchemaMissingDbError(dbError)) {
+    return `Tabellen fehlen. Bitte /supabase/prompt_feedback.sql in Supabase ausfuehren. (${stageLabel})`;
+  }
+  if (isPermissionDbError(dbError)) {
+    return `Keine Berechtigung in Supabase (${stageLabel}). Bitte RLS/Policies fuer prompt_feedback/prompt_profiles pruefen.`;
+  }
+  const readableParts = [];
+  if (dbError.code) readableParts.push(`Code ${dbError.code}`);
+  if (dbError.message) readableParts.push(dbError.message);
+  if (dbError.details) readableParts.push(dbError.details);
+  if (dbError.hint) readableParts.push(`Hinweis: ${dbError.hint}`);
+  const readable = safeParagraph(readableParts.join(" | "), 420);
+  if (readable) {
+    return `${stageLabel} fehlgeschlagen: ${readable}`;
+  }
+  return `${stageLabel} fehlgeschlagen.`;
+}
+
 function getPromptProposalKeys(target) {
   if (target === PROMPT_FEEDBACK_TARGET_ALL) {
     return [...PROMPT_FIELD_KEYS];
@@ -1039,6 +1093,7 @@ async function handlePromptProposalSubmit() {
   }
 
   let submissionId = "";
+  let stageLabel = "Vorschlag speichern";
   try {
     setVoiceBusy(true);
     setPromptProposalStatus("");
@@ -1066,8 +1121,10 @@ async function handlePromptProposalSubmit() {
     submissionId = String(submission?.id || "");
 
     if (directAdopt) {
+      stageLabel = "Direkte globale Uebernahme";
       await applyPromptProposalGlobally(promptKeys, submissionId);
 
+      stageLabel = "Rueckmeldung nach globaler Uebernahme";
       const { error: updateError } = await supabase
         .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
         .update({
@@ -1087,35 +1144,24 @@ async function handlePromptProposalSubmit() {
       setPromptProposalStatus(`Vorschlag gespeichert (${targetLabel}).`);
     }
   } catch (error) {
-    const message = String(error?.message || "");
+    const dbError = normalizeDbError(error);
+    const adoptionErrorText =
+      buildPromptProposalErrorMessage(dbError, stageLabel).slice(0, 500) ||
+      "Direkte Uebernahme fehlgeschlagen.";
     if (submissionId) {
-      const trimmedError = message.slice(0, 500) || "Direkte Uebernahme fehlgeschlagen.";
       const { error: proposalUpdateError } = await supabase
         .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
-        .update({ adoption_note: trimmedError })
+        .update({ adoption_note: adoptionErrorText })
         .eq("id", submissionId)
         .eq("user_id", state.user.id);
       if (proposalUpdateError) {
         console.warn("Prompt-Feedback Fehlerstatus konnte nicht gespeichert werden", proposalUpdateError);
       }
     }
-    const relationMissing =
-      message.includes("relation") ||
-      message.includes("does not exist") ||
-      message.includes("42P01");
-    if (relationMissing) {
-      setVoiceStatus(
-        "Prompt-Feedback-Tabelle fehlt. Bitte SQL aus supabase/prompt_feedback.sql ausfuehren.",
-        true
-      );
-      setPromptProposalStatus(
-        "Tabellen fehlen. Bitte supabase/prompt_feedback.sql in Supabase ausfuehren.",
-        true
-      );
-    } else {
-      setVoiceStatus("Prompt-Vorschlag konnte nicht gespeichert werden.", true);
-      setPromptProposalStatus("Speichern fehlgeschlagen. Details in der Konsole.", true);
-    }
+
+    const uiMessage = buildPromptProposalErrorMessage(dbError, stageLabel);
+    setVoiceStatus(uiMessage, true);
+    setPromptProposalStatus(uiMessage, true);
     console.error(error);
   } finally {
     setVoiceBusy(false);
