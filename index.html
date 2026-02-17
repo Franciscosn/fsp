@@ -159,6 +159,13 @@
           <button id="voiceDoctorConversationBtn" class="soft-btn voice-doctor-conversation-btn" type="button">
             Arzt-Arzt Gespräch
           </button>
+          <button
+            id="voiceDoctorConversationEvalBtn"
+            class="soft-btn voice-doctor-conversation-eval-btn hidden"
+            type="button"
+          >
+            Arzt-Arzt bewerten
+          </button>
           <button id="voiceDoctorLetterToggleBtn" class="soft-btn" type="button">
             Arztbrief erstellen
           </button>
@@ -274,6 +281,19 @@
           <article class="voice-eval-block">
             <h5>Einzelkriterien</h5>
             <div id="voiceDoctorLetterEvalCriteria" class="voice-eval-prose"></div>
+          </article>
+        </article>
+        <article id="voiceDoctorConversationEvalPanel" class="voice-eval hidden">
+          <div class="voice-eval-head">
+            <h4>Arzt-Arzt-Gespräch-Bewertung</h4>
+            <p id="voiceDoctorConversationEvalScore" class="voice-eval-diagnosis"></p>
+          </div>
+          <p id="voiceDoctorConversationEvalPass" class="voice-eval-likely"></p>
+          <p id="voiceDoctorConversationEvalSummary" class="voice-eval-summary"></p>
+          <p id="voiceDoctorConversationEvalRecommendation" class="voice-eval-summary"></p>
+          <article class="voice-eval-block">
+            <h5>Einzelkriterien (8)</h5>
+            <div id="voiceDoctorConversationEvalCriteria" class="voice-eval-prose"></div>
           </article>
         </article>
         <div id="voiceInfoModal" class="voice-info-modal hidden" role="dialog" aria-modal="true" aria-labelledby="voiceInfoTitle">

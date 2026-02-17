@@ -507,7 +507,7 @@ body.auth-only .edge-deco {
 
 .voice-actions {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
   align-items: start;
 }
@@ -528,6 +528,10 @@ body.auth-only .edge-deco {
   background: linear-gradient(126deg, #7f2e45, #bb4662);
   border-color: rgba(127, 46, 69, 0.84);
   color: #fff7fa;
+}
+
+.voice-doctor-conversation-eval-btn {
+  border-color: rgba(143, 47, 73, 0.44);
 }
 
 .voice-text-compact {

@@ -11,8 +11,8 @@ const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217e";
-const BUILD_UPDATED_AT = "2026-02-17 16:08 UTC";
+const APP_VERSION = "20260217f";
+const BUILD_UPDATED_AT = "2026-02-17 16:44 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -319,6 +319,7 @@ const refs = {
   voiceEvalTeacherFeedback: document.getElementById("voiceEvalTeacherFeedback"),
   voiceDoctorLetterToggleBtn: document.getElementById("voiceDoctorLetterToggleBtn"),
   voiceDoctorConversationBtn: document.getElementById("voiceDoctorConversationBtn"),
+  voiceDoctorConversationEvalBtn: document.getElementById("voiceDoctorConversationEvalBtn"),
   voiceDoctorLetterPanel: document.getElementById("voiceDoctorLetterPanel"),
   voiceDoctorLetterInput: document.getElementById("voiceDoctorLetterInput"),
   voiceDoctorLetterSubmitBtn: document.getElementById("voiceDoctorLetterSubmitBtn"),
@@ -327,6 +328,14 @@ const refs = {
   voiceDoctorLetterEvalPass: document.getElementById("voiceDoctorLetterEvalPass"),
   voiceDoctorLetterEvalRecommendation: document.getElementById("voiceDoctorLetterEvalRecommendation"),
   voiceDoctorLetterEvalCriteria: document.getElementById("voiceDoctorLetterEvalCriteria"),
+  voiceDoctorConversationEvalPanel: document.getElementById("voiceDoctorConversationEvalPanel"),
+  voiceDoctorConversationEvalScore: document.getElementById("voiceDoctorConversationEvalScore"),
+  voiceDoctorConversationEvalPass: document.getElementById("voiceDoctorConversationEvalPass"),
+  voiceDoctorConversationEvalSummary: document.getElementById("voiceDoctorConversationEvalSummary"),
+  voiceDoctorConversationEvalRecommendation: document.getElementById(
+    "voiceDoctorConversationEvalRecommendation"
+  ),
+  voiceDoctorConversationEvalCriteria: document.getElementById("voiceDoctorConversationEvalCriteria"),
   authPortrait: document.getElementById("authPortrait"),
   levelAvatar: document.getElementById("levelAvatar"),
   levelBadge: document.getElementById("levelBadge"),
@@ -421,6 +430,9 @@ function wireEvents() {
   refs.voicePatientConversationBtn?.addEventListener("click", handleVoicePatientConversationActivate);
   refs.voiceDiagnoseBtn?.addEventListener("click", handleVoiceDiagnoseToggle);
   refs.voiceDoctorConversationBtn?.addEventListener("click", handleVoiceDoctorConversationToggle);
+  refs.voiceDoctorConversationEvalBtn?.addEventListener("click", () => {
+    void handleVoiceDoctorConversationEvaluate();
+  });
   refs.voiceDoctorLetterToggleBtn?.addEventListener("click", handleDoctorLetterToggle);
   refs.voiceDoctorLetterSubmitBtn?.addEventListener("click", () => {
     void handleDoctorLetterSubmit();
@@ -566,6 +578,7 @@ function initVoiceUi() {
     refs.voiceDoctorLetterInput.value = DOCTOR_LETTER_TEMPLATE;
   }
   clearDoctorLetterEvaluationReport();
+  clearVoiceDoctorConversationEvaluationReport();
   refs.voiceDoctorLetterToggleBtn?.setAttribute("aria-expanded", "false");
   refs.voiceCaseInfoToggleBtn?.setAttribute("aria-expanded", "false");
   renderVoiceModelSelect();
@@ -714,6 +727,41 @@ async function handleDoctorLetterSubmit() {
   }
 }
 
+async function handleVoiceDoctorConversationEvaluate() {
+  if (state.voiceBusy) return;
+  if (state.voiceRecording) {
+    setVoiceStatus("Bitte zuerst die laufende Aufnahme stoppen.", true);
+    return;
+  }
+  if (!isDoctorConversationMode()) {
+    setVoiceStatus("Bitte zuerst in den Arzt-Arzt-Modus wechseln.", true);
+    return;
+  }
+
+  const hasConversation = Array.isArray(state.voiceDoctorConversationHistory)
+    ? state.voiceDoctorConversationHistory.some(
+        (turn) => String(turn?.user || "").trim() || String(turn?.assistant || "").trim()
+      )
+    : false;
+  if (!hasConversation) {
+    setVoiceStatus("Bitte zuerst ein Arzt-Arzt-Gespraech fuehren, dann bewerten.", true);
+    return;
+  }
+
+  try {
+    setVoiceBusy(true);
+    setVoiceStatus("Arzt-Arzt-Gespraech wird bewertet ...");
+    const evaluation = await runVoiceDoctorConversationEvaluation();
+    renderVoiceDoctorConversationEvaluationReport(evaluation);
+    setVoiceStatus("Arzt-Arzt-Bewertung ist da.");
+  } catch (error) {
+    setVoiceStatus("Arzt-Arzt-Bewertung fehlgeschlagen. Bitte erneut versuchen.", true);
+    console.error(error);
+  } finally {
+    setVoiceBusy(false);
+  }
+}
+
 function handleVoiceModelChange() {
   if (!refs.voiceModelSelect) return;
   if (state.voiceRecording) {
@@ -822,9 +870,15 @@ function updateVoiceModeUi() {
     refs.voiceDoctorConversationBtn.classList.toggle("active", doctorConversationMode);
     refs.voiceDoctorConversationBtn.setAttribute("aria-pressed", doctorConversationMode ? "true" : "false");
   }
+  if (refs.voiceDoctorConversationEvalBtn) {
+    refs.voiceDoctorConversationEvalBtn.classList.toggle("hidden", !doctorConversationMode);
+  }
   if (refs.voicePatientConversationBtn) {
     refs.voicePatientConversationBtn.classList.toggle("active", patientConversationMode);
     refs.voicePatientConversationBtn.setAttribute("aria-pressed", patientConversationMode ? "true" : "false");
+  }
+  if (!doctorConversationMode) {
+    clearVoiceDoctorConversationEvaluationReport();
   }
   if (refs.voiceAssistantLabel) {
     refs.voiceAssistantLabel.textContent = doctorConversationMode ? "Prueferarzt:" : "Patient:";
@@ -867,16 +921,19 @@ async function handleVoiceTextSend() {
   try {
     setVoiceBusy(true);
     if (isDiagnosisMode()) {
+      clearVoiceDoctorConversationEvaluationReport();
       setVoiceStatus("Sende Diagnose und starte Gesamtbewertung ...");
       await runVoiceEvaluation({ diagnosisText: learnerText });
     } else if (isDoctorConversationMode()) {
       clearVoiceEvaluationReport();
       clearDoctorLetterEvaluationReport();
+      clearVoiceDoctorConversationEvaluationReport();
       setVoiceStatus("Sende Bericht und starte Arzt-Arzt-Gespraech ...");
       await runVoiceDoctorConversationTurn({ learnerText });
     } else {
       clearVoiceEvaluationReport();
       clearDoctorLetterEvaluationReport();
+      clearVoiceDoctorConversationEvaluationReport();
       setVoiceStatus("Sende Textfrage und simuliere Patientenantwort ...");
       await runVoiceTurn({ learnerText });
     }
@@ -1366,6 +1423,24 @@ async function runDoctorLetterEvaluation(doctorLetterText) {
   return payload.evaluation;
 }
 
+async function runVoiceDoctorConversationEvaluation() {
+  const response = await fetch("/api/voice-doctor-evaluate", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      caseText: getActiveVoiceCaseText(),
+      history: state.voiceDoctorConversationHistory,
+      chatModel: normalizeVoiceModel(state.voiceModel)
+    })
+  });
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || !payload?.evaluation) {
+    throw new Error(payload.error || "API Fehler");
+  }
+  return payload.evaluation;
+}
+
 function renderDoctorLetterEvaluationReport(report) {
   if (
     !refs.voiceDoctorLetterEvalPanel ||
@@ -1404,6 +1479,49 @@ function clearDoctorLetterEvaluationReport() {
   if (refs.voiceDoctorLetterEvalPass) refs.voiceDoctorLetterEvalPass.textContent = "";
   if (refs.voiceDoctorLetterEvalRecommendation) refs.voiceDoctorLetterEvalRecommendation.textContent = "";
   if (refs.voiceDoctorLetterEvalCriteria) refs.voiceDoctorLetterEvalCriteria.innerHTML = "";
+}
+
+function renderVoiceDoctorConversationEvaluationReport(report) {
+  if (
+    !refs.voiceDoctorConversationEvalPanel ||
+    !refs.voiceDoctorConversationEvalScore ||
+    !refs.voiceDoctorConversationEvalPass ||
+    !refs.voiceDoctorConversationEvalSummary ||
+    !refs.voiceDoctorConversationEvalRecommendation ||
+    !refs.voiceDoctorConversationEvalCriteria
+  ) {
+    return;
+  }
+
+  refs.voiceDoctorConversationEvalScore.textContent = `Gesamt: ${formatScoreWithMax(
+    report.total_score,
+    20
+  )}`;
+  refs.voiceDoctorConversationEvalPass.textContent = String(report.pass_assessment || "");
+  refs.voiceDoctorConversationEvalSummary.textContent = String(report.summary_feedback || "");
+  refs.voiceDoctorConversationEvalRecommendation.textContent = String(report.recommendation || "");
+
+  const criteria = Array.isArray(report.criteria) ? report.criteria : [];
+  refs.voiceDoctorConversationEvalCriteria.innerHTML = "";
+  for (const item of criteria) {
+    const p = document.createElement("p");
+    const name = String(item?.name || "Kriterium");
+    const score = formatScoreForUi(item?.score);
+    const justification = String(item?.justification || "");
+    p.textContent = `${name}: ${score} Punkte. ${justification}`;
+    refs.voiceDoctorConversationEvalCriteria.appendChild(p);
+  }
+
+  refs.voiceDoctorConversationEvalPanel.classList.remove("hidden");
+}
+
+function clearVoiceDoctorConversationEvaluationReport() {
+  refs.voiceDoctorConversationEvalPanel?.classList.add("hidden");
+  if (refs.voiceDoctorConversationEvalScore) refs.voiceDoctorConversationEvalScore.textContent = "";
+  if (refs.voiceDoctorConversationEvalPass) refs.voiceDoctorConversationEvalPass.textContent = "";
+  if (refs.voiceDoctorConversationEvalSummary) refs.voiceDoctorConversationEvalSummary.textContent = "";
+  if (refs.voiceDoctorConversationEvalRecommendation) refs.voiceDoctorConversationEvalRecommendation.textContent = "";
+  if (refs.voiceDoctorConversationEvalCriteria) refs.voiceDoctorConversationEvalCriteria.innerHTML = "";
 }
 
 async function runVoiceTurn(turnInput) {
@@ -1757,6 +1875,7 @@ function resetVoiceConversation(options = {}) {
   refs.voiceReplyAudio.removeAttribute("src");
   refs.voiceReplyAudio.classList.add("hidden");
   clearVoiceEvaluationReport();
+  clearVoiceDoctorConversationEvaluationReport();
 
   if (!keepCaseText) {
     refs.voiceCaseInput.value = "";
@@ -1784,6 +1903,9 @@ function setVoiceBusy(isBusy) {
   }
   if (refs.voiceDoctorConversationBtn) {
     refs.voiceDoctorConversationBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceDoctorConversationEvalBtn) {
+    refs.voiceDoctorConversationEvalBtn.disabled = state.voiceBusy;
   }
   if (refs.voicePatientConversationBtn) {
     refs.voicePatientConversationBtn.disabled = state.voiceBusy;
