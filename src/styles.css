@@ -366,16 +366,40 @@ body.auth-only .edge-deco {
 
 .voice-panel {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .voice-head {
-  display: grid;
-  gap: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.voice-head h3 {
+  margin: 0;
+}
+
+.voice-info-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(248, 73, 102, 0.32);
+  border-radius: 999px;
+  background: #fff;
+  color: #8f2f49;
+  font-family: inherit;
+  font-size: 0.98rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.voice-info-btn:hover {
+  transform: translateY(-1px);
 }
 
 .voice-label {
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   font-weight: 800;
   color: #7f3b4b;
 }
@@ -427,15 +451,10 @@ body.auth-only .edge-deco {
 }
 
 .voice-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  flex-wrap: wrap;
-}
-
-.voice-actions .primary-btn,
-.voice-actions .soft-btn {
-  width: auto;
-  min-width: 200px;
+  align-items: start;
 }
 
 .voice-diagnose-btn.active {
@@ -444,17 +463,19 @@ body.auth-only .edge-deco {
   color: #fff7fa;
 }
 
-.voice-text-row {
+.voice-text-compact {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8px;
-  align-items: end;
+  gap: 7px;
 }
 
-.voice-text-controls {
-  display: grid;
-  gap: 8px;
-  width: min(220px, 100%);
+.voice-record-top {
+  width: 100%;
+  min-width: 0;
+}
+
+.voice-send-btn {
+  width: 100%;
+  min-width: 0;
 }
 
 .voice-text-input {
@@ -464,25 +485,16 @@ body.auth-only .edge-deco {
   background: #fff;
   color: #54202f;
   font: inherit;
-  padding: 10px 12px;
+  padding: 9px 11px;
   line-height: 1.4;
   resize: vertical;
-  min-height: 84px;
+  min-height: 64px;
+  max-height: 132px;
 }
 
 .voice-text-input:focus {
   outline: 2px solid rgba(248, 73, 102, 0.28);
   outline-offset: 1px;
-}
-
-.voice-text-row .soft-btn {
-  min-width: 140px;
-}
-
-.voice-text-controls .soft-btn,
-.voice-text-controls .primary-btn {
-  width: 100%;
-  min-width: 0;
 }
 
 .voice-status {
@@ -496,8 +508,60 @@ body.auth-only .edge-deco {
   color: var(--bad);
 }
 
-.voice-actions .primary-btn.recording {
+.voice-record-top.recording {
   background: linear-gradient(126deg, #b32c47, #dd4c69);
+}
+
+.voice-config-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.voice-create-case-btn {
+  width: 100%;
+  min-width: 0;
+}
+
+.voice-info-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.voice-info-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(44, 20, 27, 0.45);
+}
+
+.voice-info-card {
+  position: relative;
+  width: min(420px, 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(248, 73, 102, 0.3);
+  background: #fff;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  box-shadow: 0 14px 34px rgba(88, 31, 44, 0.32);
+}
+
+.voice-info-card h4 {
+  margin: 0;
+  color: #8f2f49;
+  font-size: 1rem;
+}
+
+.voice-info-card p {
+  margin: 0;
+  color: #5f2635;
+  line-height: 1.45;
+  font-size: 0.94rem;
 }
 
 .voice-reply-audio {
@@ -508,7 +572,7 @@ body.auth-only .edge-deco {
   border: 1px solid rgba(248, 73, 102, 0.2);
   border-radius: 14px;
   background: #fff9fb;
-  padding: 11px 12px;
+  padding: 10px 11px;
 }
 
 .voice-turn-label {
@@ -523,8 +587,8 @@ body.auth-only .edge-deco {
 .voice-turn-text {
   margin: 0 0 10px;
   color: #5f2635;
-  line-height: 1.5;
-  font-size: 0.97rem;
+  line-height: 1.45;
+  font-size: 0.94rem;
 }
 
 .voice-turn-text:last-of-type {
@@ -651,7 +715,7 @@ body.auth-only .edge-deco {
 }
 
 .voice-resolution-inline {
-  min-width: 200px;
+  min-width: 0;
   background: #fff;
 }
 
@@ -1760,23 +1824,32 @@ body.immersive .stats-fab {
     grid-template-columns: 1fr;
   }
 
-  .voice-actions .primary-btn,
-  .voice-actions .soft-btn {
+  .voice-actions .soft-btn,
+  .voice-actions .voice-resolution-inline {
     width: 100%;
     min-width: 0;
   }
 
-  .voice-text-row {
+  .voice-text-compact {
+    gap: 6px;
+  }
+
+  .voice-text-input {
+    min-height: 58px;
+    max-height: 112px;
+  }
+
+  .voice-config-row {
     grid-template-columns: 1fr;
   }
 
-  .voice-text-controls {
-    width: 100%;
+  .voice-case-select {
+    padding: 8px 10px;
+    font-size: 0.9rem;
   }
 
-  .voice-text-row .soft-btn {
-    width: 100%;
-    min-width: 0;
+  .voice-status {
+    font-size: 0.86rem;
   }
 
   .voice-eval-score-grid {

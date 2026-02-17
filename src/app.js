@@ -11,8 +11,8 @@ const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217a";
-const BUILD_UPDATED_AT = "2026-02-17 09:20 UTC";
+const APP_VERSION = "20260217b";
+const BUILD_UPDATED_AT = "2026-02-17 10:08 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -254,9 +254,14 @@ const refs = {
   dailyGoalFill: document.getElementById("dailyGoalFill"),
   buildBadge: document.getElementById("buildBadge"),
   voicePanel: document.getElementById("voicePanel"),
+  voiceInfoBtn: document.getElementById("voiceInfoBtn"),
+  voiceInfoModal: document.getElementById("voiceInfoModal"),
+  voiceInfoBackdrop: document.getElementById("voiceInfoBackdrop"),
+  voiceInfoCloseBtn: document.getElementById("voiceInfoCloseBtn"),
   voiceModelSelect: document.getElementById("voiceModelSelect"),
   voiceCaseSelect: document.getElementById("voiceCaseSelect"),
   voiceCaseMeta: document.getElementById("voiceCaseMeta"),
+  voiceCreateCaseBtn: document.getElementById("voiceCreateCaseBtn"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
   voiceDiagnoseBtn: document.getElementById("voiceDiagnoseBtn"),
   voiceTextLabel: document.getElementById("voiceTextLabel"),
@@ -339,6 +344,10 @@ function wireEvents() {
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
   refs.voiceDiagnoseBtn?.addEventListener("click", handleVoiceDiagnoseToggle);
+  refs.voiceCreateCaseBtn?.addEventListener("click", handleVoiceCreateCase);
+  refs.voiceInfoBtn?.addEventListener("click", openVoiceInfoModal);
+  refs.voiceInfoCloseBtn?.addEventListener("click", closeVoiceInfoModal);
+  refs.voiceInfoBackdrop?.addEventListener("click", closeVoiceInfoModal);
   refs.voiceTextSendBtn?.addEventListener("click", () => {
     void handleVoiceTextSend();
   });
@@ -370,6 +379,7 @@ function wireEvents() {
 
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
+      closeVoiceInfoModal();
       closeStatsOverlay();
     }
   });
@@ -496,6 +506,44 @@ function handleVoiceCaseInput() {
   if (getActiveVoiceCaseSelection() === VOICE_CASE_CUSTOM) {
     updateVoiceCaseResolution();
   }
+}
+
+function openVoiceInfoModal() {
+  if (!refs.voiceInfoModal) return;
+  refs.voiceInfoModal.classList.remove("hidden");
+  refs.voiceInfoBtn?.setAttribute("aria-expanded", "true");
+}
+
+function closeVoiceInfoModal() {
+  if (!refs.voiceInfoModal) return;
+  refs.voiceInfoModal.classList.add("hidden");
+  refs.voiceInfoBtn?.setAttribute("aria-expanded", "false");
+}
+
+function handleVoiceCreateCase() {
+  if (state.voiceRecording) {
+    setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann einen neuen Fall erstellen.", true);
+    return;
+  }
+
+  const currentValue = String(refs.voiceCaseInput?.value || "");
+  const rawInput = window.prompt(
+    "Neuen Falltext einfügen (max. 8000 Zeichen):",
+    currentValue
+  );
+  if (rawInput === null) return;
+
+  const normalized = rawInput.trim().slice(0, MAX_VOICE_CASE_LENGTH);
+  if (!normalized) {
+    setVoiceStatus("Leerer Falltext wurde nicht uebernommen.", true);
+    return;
+  }
+
+  refs.voiceCaseInput.value = normalized;
+  saveToStorage(STORAGE_VOICE_CASE_KEY, { caseText: normalized });
+  applyVoiceCaseSelection(VOICE_CASE_CUSTOM, { preserveStatus: true, resetConversation: true });
+  applyVoiceMode(VOICE_MODE_QUESTION, { preserveStatus: true });
+  setVoiceStatus("Eigener Fall aktiv. Du kannst direkt fragen oder aufnehmen.");
 }
 
 function handleVoiceDiagnoseToggle() {
@@ -695,7 +743,10 @@ function renderVoiceCaseSelect() {
     state.voiceCaseLibrary.length > 0
       ? `${VOICE_CASE_LIBRARY_PREFIX}${state.voiceCaseLibrary[0].id}`
       : VOICE_CASE_DEFAULT;
-  if (isValidVoiceCaseSelection(currentSelection)) {
+  const hasCurrentOption = Array.from(refs.voiceCaseSelect.options || []).some(
+    (option) => option.value === currentSelection
+  );
+  if (isValidVoiceCaseSelection(currentSelection) && hasCurrentOption) {
     refs.voiceCaseSelect.value = currentSelection;
   } else {
     refs.voiceCaseSelect.value = fallbackSelection;
@@ -711,6 +762,9 @@ function addVoiceCaseOption(value, label) {
 }
 
 function getActiveVoiceCaseSelection() {
+  if (state.voiceCaseSelection === VOICE_CASE_CUSTOM) {
+    return VOICE_CASE_CUSTOM;
+  }
   if (refs.voiceCaseSelect && refs.voiceCaseSelect.value) {
     return refs.voiceCaseSelect.value;
   }
@@ -721,8 +775,14 @@ function getActiveVoiceCaseSelection() {
 }
 
 function isValidVoiceCaseSelection(selection) {
-  if (selection === VOICE_CASE_DEFAULT || selection === VOICE_CASE_CUSTOM) {
+  if (selection === VOICE_CASE_CUSTOM) {
+    return true;
+  }
+  if (selection === VOICE_CASE_DEFAULT) {
     return !state.voiceCaseLibraryLoaded || state.voiceCaseLibrary.length === 0;
+  }
+  if (!selection) {
+    return false;
   }
   if (!selection.startsWith(VOICE_CASE_LIBRARY_PREFIX)) {
     return false;
@@ -744,7 +804,11 @@ function applyVoiceCaseSelection(selection, options = {}) {
   const normalizedSelection = isValidVoiceCaseSelection(selection) ? selection : fallbackSelection;
   state.voiceCaseSelection = normalizedSelection;
 
-  if (refs.voiceCaseSelect && refs.voiceCaseSelect.value !== normalizedSelection) {
+  if (
+    refs.voiceCaseSelect &&
+    Array.from(refs.voiceCaseSelect.options || []).some((option) => option.value === normalizedSelection) &&
+    refs.voiceCaseSelect.value !== normalizedSelection
+  ) {
     refs.voiceCaseSelect.value = normalizedSelection;
   }
 
@@ -754,10 +818,9 @@ function applyVoiceCaseSelection(selection, options = {}) {
   refs.voiceCaseInput.disabled = !customMode;
   if (!customMode) {
     refs.voiceCaseInput.placeholder =
-      "Nicht aktiv. Dieser Text wird erst genutzt, wenn 'Eigener Text (unten)' ausgewaehlt ist.";
+      "Nicht aktiv. Dieser Text wird erst genutzt, wenn ein eigener Fall erstellt wird.";
   } else {
-    refs.voiceCaseInput.placeholder =
-      "Nur genutzt, wenn bei Fallauswahl 'Eigener Text (unten)' gewaehlt ist.";
+    refs.voiceCaseInput.placeholder = "Eigener Falltext aktiv.";
   }
 
   if (normalizedSelection.startsWith(VOICE_CASE_LIBRARY_PREFIX)) {
@@ -1315,6 +1378,9 @@ function setVoiceBusy(isBusy) {
   }
   if (refs.voiceTextInput) {
     refs.voiceTextInput.disabled = state.voiceBusy;
+  }
+  if (refs.voiceCreateCaseBtn) {
+    refs.voiceCreateCaseBtn.disabled = state.voiceBusy;
   }
   refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
 }

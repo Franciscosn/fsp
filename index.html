@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260217a" />
+    <link rel="stylesheet" href="src/styles.css?v=20260217b" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -116,29 +116,32 @@
       <section id="voicePanel" class="panel voice-panel reveal" style="--i: 3">
         <div class="voice-head">
           <h3>Patiens ex machina</h3>
-          <p class="muted">
-            Fallbasiertes Gespraech fuer medizinische Pruefungssimulation.
-          </p>
+          <button
+            id="voiceInfoBtn"
+            class="voice-info-btn"
+            type="button"
+            aria-haspopup="dialog"
+            aria-controls="voiceInfoModal"
+            aria-expanded="false"
+            title="Info"
+          >
+            i
+          </button>
         </div>
-        <label class="voice-label" for="voiceModelSelect">Sprachmodell</label>
-        <select id="voiceModelSelect" class="voice-case-select">
-          <option value="@cf/openai/gpt-oss-20b">gpt-oss-20b (empfohlen)</option>
-          <option value="@cf/qwen/qwen3-30b-a3b-fp8">qwen3-30b-a3b-fp8 (guenstig)</option>
-          <option value="@cf/zai-org/glm-4.7-flash">glm-4.7-flash (schnell)</option>
-          <option value="@cf/openai/gpt-oss-120b">gpt-oss-120b (staerker, teurer)</option>
-        </select>
-        <label class="voice-label" for="voiceCaseSelect">Fallauswahl</label>
-        <select id="voiceCaseSelect" class="voice-case-select">
-          <option value="default">1</option>
-        </select>
-        <p id="voiceCaseMeta" class="voice-case-meta">Aktiv: Fall 1</p>
-        <label class="voice-label" for="voiceCaseInput">Eigener Falltext (optional)</label>
-        <textarea
-          id="voiceCaseInput"
-          class="voice-case-input"
-          rows="5"
-          placeholder="Nur genutzt, wenn bei Fallauswahl 'Eigener Text (unten)' gewaehlt ist."
-        ></textarea>
+        <label id="voiceTextLabel" class="voice-label" for="voiceTextInput">Frage per Text</label>
+        <div class="voice-text-compact">
+          <button id="voiceRecordBtn" class="primary-btn voice-record-top" type="button">
+            🎤 Aufnahme starten
+          </button>
+          <textarea
+            id="voiceTextInput"
+            class="voice-text-input"
+            rows="2"
+            maxlength="500"
+            placeholder="Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'."
+          ></textarea>
+          <button id="voiceTextSendBtn" class="soft-btn voice-send-btn" type="button">Text senden</button>
+        </div>
         <div class="voice-actions">
           <button id="voiceNextCaseBtn" class="soft-btn" type="button">Naechster Fall</button>
           <button id="voiceDiagnoseBtn" class="soft-btn voice-diagnose-btn" type="button">
@@ -167,21 +170,37 @@
             </div>
           </details>
         </div>
-        <label id="voiceTextLabel" class="voice-label" for="voiceTextInput">Frage per Text</label>
-        <div class="voice-text-row">
-          <textarea
-            id="voiceTextInput"
-            class="voice-text-input"
-            rows="3"
-            maxlength="500"
-            placeholder="Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'."
-          ></textarea>
-          <div class="voice-text-controls">
-            <button id="voiceTextSendBtn" class="soft-btn" type="button">Text senden</button>
-            <button id="voiceRecordBtn" class="primary-btn" type="button">🎤 Aufnahme starten</button>
-          </div>
+        <article id="voiceLastTurn" class="voice-turn hidden">
+          <p class="voice-turn-label">Du:</p>
+          <p id="voiceUserTranscript" class="voice-turn-text"></p>
+          <p class="voice-turn-label">Patient:</p>
+          <p id="voiceAssistantReply" class="voice-turn-text"></p>
+          <p id="voiceCoachHint" class="voice-coach-hint hidden"></p>
+        </article>
+        <p id="voiceStatus" class="voice-status">Bereit. Du kannst direkt sprechen oder Text senden.</p>
+        <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
+        <div class="voice-config-row">
+          <select id="voiceCaseSelect" class="voice-case-select" aria-label="Fallauswahl">
+            <option value="default">1</option>
+          </select>
+          <select id="voiceModelSelect" class="voice-case-select" aria-label="Sprachmodell">
+            <option value="@cf/openai/gpt-oss-20b">gpt-oss-20b (empfohlen)</option>
+            <option value="@cf/qwen/qwen3-30b-a3b-fp8">qwen3-30b-a3b-fp8 (guenstig)</option>
+            <option value="@cf/zai-org/glm-4.7-flash">glm-4.7-flash (schnell)</option>
+            <option value="@cf/openai/gpt-oss-120b">gpt-oss-120b (staerker, teurer)</option>
+          </select>
         </div>
-        <p id="voiceStatus" class="voice-status">Bereit. Optional eigenen Fall eingeben, sonst interner Standardfall.</p>
+        <p id="voiceCaseMeta" class="voice-case-meta">Aktiv: Fall 1</p>
+        <button id="voiceCreateCaseBtn" class="soft-btn voice-create-case-btn" type="button">
+          Neuen Fall kreieren
+        </button>
+        <label class="voice-label hidden" for="voiceCaseInput">Eigener Falltext (intern)</label>
+        <textarea
+          id="voiceCaseInput"
+          class="voice-case-input hidden"
+          rows="3"
+          placeholder="Interner Speicher fuer eigenen Fall."
+        ></textarea>
         <article id="voiceEvalPanel" class="voice-eval hidden">
           <div class="voice-eval-head">
             <h4>Diagnose-Feedback</h4>
@@ -211,14 +230,19 @@
             </article>
           </div>
         </article>
-        <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
-        <article id="voiceLastTurn" class="voice-turn hidden">
-          <p class="voice-turn-label">Du:</p>
-          <p id="voiceUserTranscript" class="voice-turn-text"></p>
-          <p class="voice-turn-label">Patient:</p>
-          <p id="voiceAssistantReply" class="voice-turn-text"></p>
-          <p id="voiceCoachHint" class="voice-coach-hint hidden"></p>
-        </article>
+        <div id="voiceInfoModal" class="voice-info-modal hidden" role="dialog" aria-modal="true" aria-labelledby="voiceInfoTitle">
+          <button
+            id="voiceInfoBackdrop"
+            class="voice-info-backdrop"
+            type="button"
+            aria-label="Info schliessen"
+          ></button>
+          <div class="voice-info-card">
+            <h4 id="voiceInfoTitle">Info</h4>
+            <p>Fallbasiertes Gespraech fuer medizinische Pruefungssimulation.</p>
+            <button id="voiceInfoCloseBtn" class="soft-btn" type="button">Schliessen</button>
+          </div>
+        </div>
       </section>
 
       <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 4">
@@ -356,6 +380,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260217a"></script>
+    <script type="module" src="src/app.js?v=20260217b"></script>
   </body>
 </html>
