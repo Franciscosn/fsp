@@ -571,6 +571,7 @@ function initVoiceUi() {
     refs.voiceDoctorLetterInput.value = DOCTOR_LETTER_TEMPLATE;
   }
   clearDoctorLetterEvaluationReport();
+  refs.voiceDoctorLetterToggleBtn?.setAttribute("aria-expanded", "false");
   renderVoiceModelSelect();
   applyVoiceModelSelection(state.voiceModel, { preserveStatus: true });
   renderVoiceCaseSelect();
@@ -648,12 +649,15 @@ function handleVoiceDiagnoseToggle() {
 
 function handleDoctorLetterToggle() {
   if (!refs.voiceDoctorLetterPanel || !refs.voiceDoctorLetterInput) return;
-  const opening = refs.voiceDoctorLetterPanel.classList.contains("hidden");
-  refs.voiceDoctorLetterPanel.classList.toggle("hidden", !opening);
-  if (opening && !refs.voiceDoctorLetterInput.value.trim()) {
+  const willOpen = refs.voiceDoctorLetterPanel.classList.contains("hidden");
+  refs.voiceDoctorLetterPanel.classList.toggle("hidden");
+  if (refs.voiceDoctorLetterToggleBtn) {
+    refs.voiceDoctorLetterToggleBtn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  }
+  if (willOpen && !refs.voiceDoctorLetterInput.value.trim()) {
     refs.voiceDoctorLetterInput.value = DOCTOR_LETTER_TEMPLATE;
   }
-  if (opening) {
+  if (willOpen) {
     refs.voiceDoctorLetterInput.focus();
   }
 }

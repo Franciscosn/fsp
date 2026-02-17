@@ -457,6 +457,10 @@ body.auth-only .edge-deco {
   align-items: start;
 }
 
+.voice-actions .voice-resolution-inline {
+  grid-column: 1 / -1;
+}
+
 .voice-diagnose-btn.active {
   background: linear-gradient(126deg, #b32c47, #dd4c69);
   border-color: rgba(179, 44, 71, 0.8);
