@@ -9,11 +9,12 @@ const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
 const STORAGE_PROMPT_CONFIG_KEY = "fsp_prompt_config_v1";
+const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217g";
-const BUILD_UPDATED_AT = "2026-02-17 17:42 UTC";
+const APP_VERSION = "20260217h";
+const BUILD_UPDATED_AT = "2026-02-17 18:26 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -21,6 +22,11 @@ const MAX_DOCTOR_LETTER_LENGTH = 12_000;
 const MAX_VOICE_HISTORY_TURNS = 60;
 const MIN_VOICE_BLOB_BYTES = 450;
 const MAX_PROMPT_TEXT_LENGTH = 60_000;
+const MAX_PROMPT_PROPOSAL_NAME_LENGTH = 120;
+const MAX_PROMPT_PROPOSAL_NOTE_LENGTH = 1_200;
+const PROMPT_FEEDBACK_TARGET_ALL = "__all__";
+const SUPABASE_PROMPT_FEEDBACK_TABLE = "prompt_feedback_submissions";
+const SUPABASE_PROMPT_PROFILES_TABLE = "prompt_profiles";
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
 const VOICE_CASE_DEFAULT = "default";
@@ -149,6 +155,13 @@ const PROMPT_FIELD_KEYS = Object.freeze([
   "voiceDoctorTurn",
   "voiceDoctorEvaluate"
 ]);
+const PROMPT_LABEL_BY_KEY = Object.freeze({
+  voiceTurn: "Arzt-Patient-Gespraech (Patientensimulation)",
+  voiceEvaluate: "Simulationsanamnese-Bewertung",
+  doctorLetterEvaluate: "Arztbrief-Bewertung",
+  voiceDoctorTurn: "Arzt-Arzt-Gespraech (Prueferrolle)",
+  voiceDoctorEvaluate: "Arzt-Arzt-Bewertung"
+});
 const DEFAULT_VOICE_CASE = [
   "CASE_ID: default_thoraxschmerz_001",
   "Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.",
@@ -339,6 +352,9 @@ const initialDailyGoal = resolveStoredDailyGoal(
 );
 const initialXp = resolveStoredXp(loadFromStorage(STORAGE_XP_KEY, {}), initialProgress);
 const initialPromptConfig = resolvePromptConfig(loadFromStorage(STORAGE_PROMPT_CONFIG_KEY, {}));
+const initialPromptProposalMeta = resolvePromptProposalMeta(
+  loadFromStorage(STORAGE_PROMPT_PROPOSAL_META_KEY, {})
+);
 
 const state = {
   cards: [],
@@ -365,6 +381,8 @@ const state = {
   voiceMode: VOICE_MODE_QUESTION,
   voiceModel: DEFAULT_VOICE_CHAT_MODEL,
   promptConfig: initialPromptConfig,
+  promptProfilesLoaded: false,
+  promptProposalMeta: initialPromptProposalMeta,
   voiceCaseLibrary: [],
   voiceCaseResolutions: {},
   voiceCaseIndex: -1,
@@ -445,6 +463,12 @@ const refs = {
   voicePromptDoctorLetterEvaluateInput: document.getElementById("voicePromptDoctorLetterEvaluateInput"),
   voicePromptVoiceDoctorTurnInput: document.getElementById("voicePromptVoiceDoctorTurnInput"),
   voicePromptVoiceDoctorEvaluateInput: document.getElementById("voicePromptVoiceDoctorEvaluateInput"),
+  voicePromptProposalNameInput: document.getElementById("voicePromptProposalNameInput"),
+  voicePromptProposalNoteInput: document.getElementById("voicePromptProposalNoteInput"),
+  voicePromptProposalTargetSelect: document.getElementById("voicePromptProposalTargetSelect"),
+  voicePromptProposalApplyNowInput: document.getElementById("voicePromptProposalApplyNowInput"),
+  voicePromptProposalSubmitBtn: document.getElementById("voicePromptProposalSubmitBtn"),
+  voicePromptProposalStatus: document.getElementById("voicePromptProposalStatus"),
   voiceDoctorLetterPanel: document.getElementById("voiceDoctorLetterPanel"),
   voiceDoctorLetterInput: document.getElementById("voiceDoctorLetterInput"),
   voiceDoctorLetterSubmitBtn: document.getElementById("voiceDoctorLetterSubmitBtn"),
@@ -569,6 +593,13 @@ function wireEvents() {
   refs.voicePromptConfigToggleBtn?.addEventListener("click", handlePromptConfigToggle);
   refs.voicePromptConfigSaveBtn?.addEventListener("click", handlePromptConfigSave);
   refs.voicePromptConfigResetBtn?.addEventListener("click", handlePromptConfigReset);
+  refs.voicePromptProposalSubmitBtn?.addEventListener("click", () => {
+    void handlePromptProposalSubmit();
+  });
+  refs.voicePromptProposalNameInput?.addEventListener("input", handlePromptProposalMetaInput);
+  refs.voicePromptProposalNoteInput?.addEventListener("input", handlePromptProposalMetaInput);
+  refs.voicePromptProposalTargetSelect?.addEventListener("change", handlePromptProposalMetaInput);
+  refs.voicePromptProposalApplyNowInput?.addEventListener("change", handlePromptProposalMetaInput);
   refs.voiceDoctorLetterToggleBtn?.addEventListener("click", handleDoctorLetterToggle);
   refs.voiceDoctorLetterSubmitBtn?.addEventListener("click", () => {
     void handleDoctorLetterSubmit();
@@ -719,6 +750,8 @@ function initVoiceUi() {
   refs.voiceCaseInfoToggleBtn?.setAttribute("aria-expanded", "false");
   refs.voicePromptConfigToggleBtn?.setAttribute("aria-expanded", "false");
   renderPromptConfigEditor();
+  renderPromptProposalMetaEditor();
+  setPromptProposalStatus("");
   renderVoiceModelSelect();
   applyVoiceModelSelection(state.voiceModel, { preserveStatus: true });
   renderVoiceCaseSelect();
@@ -830,6 +863,7 @@ function handlePromptConfigToggle() {
   refs.voicePromptConfigToggleBtn.setAttribute("aria-expanded", willOpen ? "true" : "false");
   if (willOpen) {
     renderPromptConfigEditor();
+    renderPromptProposalMetaEditor();
   }
 }
 
@@ -896,6 +930,238 @@ function normalizePromptText(value, fallback) {
 
 function getPromptForKey(promptKey) {
   return normalizePromptText(state.promptConfig?.[promptKey], DEFAULT_PROMPT_CONFIG[promptKey]);
+}
+
+function normalizePromptProposalTarget(value) {
+  if (value === PROMPT_FEEDBACK_TARGET_ALL) return PROMPT_FEEDBACK_TARGET_ALL;
+  return PROMPT_FIELD_KEYS.includes(value) ? value : "voiceDoctorTurn";
+}
+
+function resolvePromptProposalMeta(rawValue) {
+  const source = rawValue && typeof rawValue === "object" ? rawValue : {};
+  return {
+    name: normalizePromptProposalName(source.name),
+    note: normalizePromptProposalNote(source.note),
+    target: normalizePromptProposalTarget(source.target),
+    applyNow: Boolean(source.applyNow)
+  };
+}
+
+function normalizePromptProposalName(value) {
+  if (typeof value !== "string") return "";
+  return value.trim().slice(0, MAX_PROMPT_PROPOSAL_NAME_LENGTH);
+}
+
+function normalizePromptProposalNote(value) {
+  if (typeof value !== "string") return "";
+  return value.trim().slice(0, MAX_PROMPT_PROPOSAL_NOTE_LENGTH);
+}
+
+function renderPromptProposalMetaEditor() {
+  if (refs.voicePromptProposalNameInput) {
+    refs.voicePromptProposalNameInput.value = state.promptProposalMeta?.name || "";
+  }
+  if (refs.voicePromptProposalNoteInput) {
+    refs.voicePromptProposalNoteInput.value = state.promptProposalMeta?.note || "";
+  }
+  if (refs.voicePromptProposalTargetSelect) {
+    refs.voicePromptProposalTargetSelect.value =
+      normalizePromptProposalTarget(state.promptProposalMeta?.target) || "voiceDoctorTurn";
+  }
+  if (refs.voicePromptProposalApplyNowInput) {
+    refs.voicePromptProposalApplyNowInput.checked = Boolean(state.promptProposalMeta?.applyNow);
+  }
+}
+
+function handlePromptProposalMetaInput() {
+  state.promptProposalMeta = {
+    name: normalizePromptProposalName(refs.voicePromptProposalNameInput?.value || ""),
+    note: normalizePromptProposalNote(refs.voicePromptProposalNoteInput?.value || ""),
+    target: normalizePromptProposalTarget(refs.voicePromptProposalTargetSelect?.value || ""),
+    applyNow: Boolean(refs.voicePromptProposalApplyNowInput?.checked)
+  };
+  saveToStorage(STORAGE_PROMPT_PROPOSAL_META_KEY, state.promptProposalMeta);
+}
+
+function setPromptProposalStatus(message, isError = false) {
+  if (!refs.voicePromptProposalStatus) return;
+  refs.voicePromptProposalStatus.textContent = String(message || "");
+  refs.voicePromptProposalStatus.classList.toggle("error", Boolean(isError));
+}
+
+function getPromptProposalKeys(target) {
+  if (target === PROMPT_FEEDBACK_TARGET_ALL) {
+    return [...PROMPT_FIELD_KEYS];
+  }
+  return [normalizePromptProposalTarget(target)];
+}
+
+function buildPromptPayloadJson(promptKeys) {
+  const payload = {};
+  for (const key of promptKeys) {
+    payload[key] = getPromptForKey(key);
+  }
+  return payload;
+}
+
+function buildPromptSubmissionText(target, promptKeys) {
+  if (target !== PROMPT_FEEDBACK_TARGET_ALL && promptKeys.length === 1) {
+    return getPromptForKey(promptKeys[0]);
+  }
+  return JSON.stringify(buildPromptPayloadJson(promptKeys), null, 2).slice(0, MAX_PROMPT_TEXT_LENGTH);
+}
+
+async function handlePromptProposalSubmit() {
+  if (state.voiceBusy) return;
+  if (!supabase || !state.user) {
+    setVoiceStatus("Bitte zuerst einloggen, um Prompt-Vorschlaege zu senden.", true);
+    setPromptProposalStatus("Bitte zuerst einloggen.", true);
+    return;
+  }
+
+  handlePromptProposalMetaInput();
+  const proposalName = normalizePromptProposalName(state.promptProposalMeta?.name || "");
+  const proposalNote = normalizePromptProposalNote(state.promptProposalMeta?.note || "");
+  const target = normalizePromptProposalTarget(state.promptProposalMeta?.target || "");
+  const directAdopt = Boolean(state.promptProposalMeta?.applyNow);
+  const promptKeys = getPromptProposalKeys(target);
+  const promptPayload = buildPromptPayloadJson(promptKeys);
+  const targetLabel =
+    target === PROMPT_FEEDBACK_TARGET_ALL
+      ? "alle 5 Prompts"
+      : PROMPT_LABEL_BY_KEY[target] || target;
+
+  if (!proposalName) {
+    setVoiceStatus("Bitte gib einen Namen fuer den Prompt-Vorschlag ein.", true);
+    setPromptProposalStatus("Name fehlt.", true);
+    refs.voicePromptProposalNameInput?.focus();
+    return;
+  }
+
+  let submissionId = "";
+  try {
+    setVoiceBusy(true);
+    setPromptProposalStatus("");
+    setVoiceStatus("Prompt-Vorschlag wird gespeichert ...");
+
+    const submissionPayload = {
+      user_id: state.user.id,
+      proposal_name: proposalName,
+      proposal_note: proposalNote,
+      target_prompt_key: target,
+      prompt_text: buildPromptSubmissionText(target, promptKeys),
+      prompt_payload_json: promptPayload,
+      direct_adopt_requested: directAdopt,
+      direct_adopt_applied: false
+    };
+
+    const { data: submission, error: insertError } = await supabase
+      .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
+      .insert(submissionPayload)
+      .select("id")
+      .single();
+    if (insertError) {
+      throw insertError;
+    }
+    submissionId = String(submission?.id || "");
+
+    if (directAdopt) {
+      await applyPromptProposalGlobally(promptKeys, submissionId);
+
+      const { error: updateError } = await supabase
+        .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
+        .update({
+          direct_adopt_applied: true,
+          adoption_note: "Global in Testphase sofort uebernommen."
+        })
+        .eq("id", submissionId)
+        .eq("user_id", state.user.id);
+      if (updateError) {
+        console.warn("Prompt-Feedback Status-Update fehlgeschlagen", updateError);
+      }
+
+      setVoiceStatus(`Vorschlag gespeichert und global uebernommen (${targetLabel}).`);
+      setPromptProposalStatus(`Gespeichert und global uebernommen (${targetLabel}).`);
+    } else {
+      setVoiceStatus(`Prompt-Vorschlag gespeichert (${targetLabel}).`);
+      setPromptProposalStatus(`Vorschlag gespeichert (${targetLabel}).`);
+    }
+  } catch (error) {
+    const message = String(error?.message || "");
+    if (submissionId) {
+      const trimmedError = message.slice(0, 500) || "Direkte Uebernahme fehlgeschlagen.";
+      const { error: proposalUpdateError } = await supabase
+        .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
+        .update({ adoption_note: trimmedError })
+        .eq("id", submissionId)
+        .eq("user_id", state.user.id);
+      if (proposalUpdateError) {
+        console.warn("Prompt-Feedback Fehlerstatus konnte nicht gespeichert werden", proposalUpdateError);
+      }
+    }
+    const relationMissing =
+      message.includes("relation") ||
+      message.includes("does not exist") ||
+      message.includes("42P01");
+    if (relationMissing) {
+      setVoiceStatus(
+        "Prompt-Feedback-Tabelle fehlt. Bitte SQL aus supabase/prompt_feedback.sql ausfuehren.",
+        true
+      );
+      setPromptProposalStatus(
+        "Tabellen fehlen. Bitte supabase/prompt_feedback.sql in Supabase ausfuehren.",
+        true
+      );
+    } else {
+      setVoiceStatus("Prompt-Vorschlag konnte nicht gespeichert werden.", true);
+      setPromptProposalStatus("Speichern fehlgeschlagen. Details in der Konsole.", true);
+    }
+    console.error(error);
+  } finally {
+    setVoiceBusy(false);
+  }
+}
+
+async function applyPromptProposalGlobally(promptKeys, sourceSubmissionId) {
+  if (!supabase || !state.user) return;
+  const uniqueKeys = Array.from(new Set(promptKeys.filter((key) => PROMPT_FIELD_KEYS.includes(key))));
+  if (!uniqueKeys.length) return;
+
+  const { data: existingRows, error: existingError } = await supabase
+    .from(SUPABASE_PROMPT_PROFILES_TABLE)
+    .select("prompt_key, version")
+    .in("prompt_key", uniqueKeys);
+  if (existingError) {
+    throw existingError;
+  }
+
+  const versionByKey = new Map();
+  for (const row of Array.isArray(existingRows) ? existingRows : []) {
+    const key = String(row?.prompt_key || "");
+    const version = Number(row?.version || 0);
+    if (!PROMPT_FIELD_KEYS.includes(key)) continue;
+    versionByKey.set(key, Number.isFinite(version) ? version : 0);
+  }
+
+  const nowIso = new Date().toISOString();
+  const rows = uniqueKeys.map((key) => ({
+    prompt_key: key,
+    prompt_text: getPromptForKey(key),
+    version: (versionByKey.get(key) || 0) + 1,
+    is_active: true,
+    updated_at: nowIso,
+    updated_by: state.user.id,
+    source_submission_id: sourceSubmissionId || null
+  }));
+
+  const { error: upsertError } = await supabase
+    .from(SUPABASE_PROMPT_PROFILES_TABLE)
+    .upsert(rows, { onConflict: "prompt_key" });
+  if (upsertError) {
+    throw upsertError;
+  }
+
+  state.promptProfilesLoaded = true;
 }
 
 function handleDoctorLetterToggle() {
@@ -2158,6 +2424,21 @@ function setVoiceBusy(isBusy) {
   if (refs.voicePromptConfigResetBtn) {
     refs.voicePromptConfigResetBtn.disabled = state.voiceBusy;
   }
+  if (refs.voicePromptProposalSubmitBtn) {
+    refs.voicePromptProposalSubmitBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voicePromptProposalNameInput) {
+    refs.voicePromptProposalNameInput.disabled = state.voiceBusy;
+  }
+  if (refs.voicePromptProposalNoteInput) {
+    refs.voicePromptProposalNoteInput.disabled = state.voiceBusy;
+  }
+  if (refs.voicePromptProposalTargetSelect) {
+    refs.voicePromptProposalTargetSelect.disabled = state.voiceBusy;
+  }
+  if (refs.voicePromptProposalApplyNowInput) {
+    refs.voicePromptProposalApplyNowInput.disabled = state.voiceBusy;
+  }
   for (const promptKey of PROMPT_FIELD_KEYS) {
     const refKey = PROMPT_EDITOR_REF_KEY_BY_PROMPT_KEY[promptKey];
     const input = refs[refKey];
@@ -2402,6 +2683,7 @@ async function initSupabaseSession() {
 async function applySession(session) {
   const user = session?.user || null;
   state.user = user;
+  state.promptProfilesLoaded = false;
   if (!user) {
     state.sessionXp = 0;
     renderSessionXpDisplay();
@@ -2412,7 +2694,43 @@ async function applySession(session) {
   }
   updateAuthUi();
   if (!user) return;
+  await loadGlobalPromptProfiles();
   await pullRemoteState();
+}
+
+async function loadGlobalPromptProfiles() {
+  if (!supabase || !state.user) return;
+  if (state.promptProfilesLoaded) return;
+
+  const { data, error } = await supabase
+    .from(SUPABASE_PROMPT_PROFILES_TABLE)
+    .select("prompt_key, prompt_text, is_active")
+    .eq("is_active", true);
+  if (error) {
+    console.warn("Globale Prompt-Profile konnten nicht geladen werden", error);
+    return;
+  }
+
+  const nextConfig = { ...state.promptConfig };
+  let changed = false;
+  for (const row of Array.isArray(data) ? data : []) {
+    const promptKey = String(row?.prompt_key || "");
+    if (!PROMPT_FIELD_KEYS.includes(promptKey)) continue;
+    if (!row?.is_active) continue;
+    const promptText = normalizePromptText(row?.prompt_text, DEFAULT_PROMPT_CONFIG[promptKey]);
+    if (!promptText) continue;
+    if (nextConfig[promptKey] !== promptText) {
+      nextConfig[promptKey] = promptText;
+      changed = true;
+    }
+  }
+
+  if (changed) {
+    state.promptConfig = resolvePromptConfig(nextConfig);
+    saveToStorage(STORAGE_PROMPT_CONFIG_KEY, state.promptConfig);
+    renderPromptConfigEditor();
+  }
+  state.promptProfilesLoaded = true;
 }
 
 function updateAuthUi() {

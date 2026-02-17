@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260217g" />
+    <link rel="stylesheet" href="src/styles.css?v=20260217h" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -250,6 +250,48 @@
               Alle Prompts auf Standard zuruecksetzen
             </button>
           </div>
+          <section class="voice-prompt-feedback">
+            <h5>Prompt-Vorschlag an die Website</h5>
+            <label class="voice-prompt-feedback-item" for="voicePromptProposalNameInput">
+              <span>Name des Prompt-Vorschlags</span>
+              <input
+                id="voicePromptProposalNameInput"
+                class="voice-prompt-feedback-input"
+                type="text"
+                maxlength="120"
+                placeholder="z. B. Arzt-Arzt v3 (fokussierte Rueckfragen)"
+              />
+            </label>
+            <label class="voice-prompt-feedback-item" for="voicePromptProposalNoteInput">
+              <span>Bemerkung</span>
+              <textarea
+                id="voicePromptProposalNoteInput"
+                class="voice-prompt-feedback-textarea"
+                rows="3"
+                maxlength="1200"
+                placeholder="Kurze Notiz: Was war besser/schlechter?"
+              ></textarea>
+            </label>
+            <label class="voice-prompt-feedback-item" for="voicePromptProposalTargetSelect">
+              <span>Welchen Prompt als Vorschlag senden?</span>
+              <select id="voicePromptProposalTargetSelect" class="voice-prompt-feedback-select">
+                <option value="voiceDoctorTurn">Arzt-Arzt-Gespraech (Prueferrolle)</option>
+                <option value="voiceDoctorEvaluate">Arzt-Arzt-Bewertung</option>
+                <option value="voiceTurn">Arzt-Patient-Gespraech (Patientensimulation)</option>
+                <option value="voiceEvaluate">Simulationsanamnese-Bewertung</option>
+                <option value="doctorLetterEvaluate">Arztbrief-Bewertung</option>
+                <option value="__all__">Alle 5 Prompts (aktueller Stand)</option>
+              </select>
+            </label>
+            <label class="voice-prompt-feedback-check">
+              <input id="voicePromptProposalApplyNowInput" type="checkbox" />
+              Direkt global uebernehmen (Testphase)
+            </label>
+            <button id="voicePromptProposalSubmitBtn" class="soft-btn" type="button">
+              Vorschlag senden
+            </button>
+            <p id="voicePromptProposalStatus" class="voice-prompt-feedback-status"></p>
+          </section>
         </article>
         <p id="voiceStatus" class="voice-status">Bereit. Du kannst direkt sprechen oder Text senden.</p>
         <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
@@ -515,6 +557,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260217g"></script>
+    <script type="module" src="src/app.js?v=20260217h"></script>
   </body>
 </html>
