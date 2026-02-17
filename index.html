@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260217j" />
+    <link rel="stylesheet" href="src/styles.css?v=20260217k" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -198,6 +198,11 @@
           <div class="voice-prompt-config-grid">
             <label class="voice-prompt-config-item" for="voicePromptVoiceTurnInput">
               <span>Arzt-Patient-Gespraech (Patientensimulation)</span>
+              <select
+                id="voicePromptVoiceTurnPresetSelect"
+                class="voice-prompt-config-select"
+                aria-label="Prompt-Auswahl Arzt-Patient"
+              ></select>
               <textarea
                 id="voicePromptVoiceTurnInput"
                 class="voice-prompt-config-input"
@@ -207,6 +212,11 @@
             </label>
             <label class="voice-prompt-config-item" for="voicePromptVoiceEvaluateInput">
               <span>Simulationsanamnese-Bewertung</span>
+              <select
+                id="voicePromptVoiceEvaluatePresetSelect"
+                class="voice-prompt-config-select"
+                aria-label="Prompt-Auswahl Simulationsanamnese-Bewertung"
+              ></select>
               <textarea
                 id="voicePromptVoiceEvaluateInput"
                 class="voice-prompt-config-input"
@@ -216,6 +226,11 @@
             </label>
             <label class="voice-prompt-config-item" for="voicePromptDoctorLetterEvaluateInput">
               <span>Arztbrief-Bewertung</span>
+              <select
+                id="voicePromptDoctorLetterEvaluatePresetSelect"
+                class="voice-prompt-config-select"
+                aria-label="Prompt-Auswahl Arztbrief-Bewertung"
+              ></select>
               <textarea
                 id="voicePromptDoctorLetterEvaluateInput"
                 class="voice-prompt-config-input"
@@ -225,6 +240,11 @@
             </label>
             <label class="voice-prompt-config-item" for="voicePromptVoiceDoctorTurnInput">
               <span>Arzt-Arzt-Gespraech (Prueferrolle)</span>
+              <select
+                id="voicePromptVoiceDoctorTurnPresetSelect"
+                class="voice-prompt-config-select"
+                aria-label="Prompt-Auswahl Arzt-Arzt-Gespraech"
+              ></select>
               <textarea
                 id="voicePromptVoiceDoctorTurnInput"
                 class="voice-prompt-config-input"
@@ -234,6 +254,11 @@
             </label>
             <label class="voice-prompt-config-item" for="voicePromptVoiceDoctorEvaluateInput">
               <span>Arzt-Arzt-Bewertung</span>
+              <select
+                id="voicePromptVoiceDoctorEvaluatePresetSelect"
+                class="voice-prompt-config-select"
+                aria-label="Prompt-Auswahl Arzt-Arzt-Bewertung"
+              ></select>
               <textarea
                 id="voicePromptVoiceDoctorEvaluateInput"
                 class="voice-prompt-config-input"
@@ -557,6 +582,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260217j"></script>
+    <script type="module" src="src/app.js?v=20260217k"></script>
   </body>
 </html>

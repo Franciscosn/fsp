@@ -874,6 +874,23 @@ body.auth-only .edge-deco {
   font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.voice-prompt-config-select {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(248, 73, 102, 0.25);
+  padding: 8px 10px;
+  background: #fff;
+  color: #5d2736;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.voice-prompt-config-select:focus {
+  outline: none;
+  border-color: rgba(240, 84, 118, 0.6);
+  box-shadow: 0 0 0 3px rgba(240, 84, 118, 0.14);
+}
+
 .voice-prompt-config-input:focus {
   outline: none;
   border-color: rgba(240, 84, 118, 0.6);
