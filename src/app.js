@@ -6,10 +6,11 @@ const STORAGE_XP_KEY = "fsp_xp_v1";
 const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
+const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
 const DAILY_GOAL = 20;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260216f";
-const BUILD_UPDATED_AT = "2026-02-16 17:02 UTC";
+const APP_VERSION = "20260216g";
+const BUILD_UPDATED_AT = "2026-02-16 17:19 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -21,6 +22,14 @@ const VOICE_CASE_CUSTOM = "custom";
 const VOICE_CASE_LIBRARY_PREFIX = "lib:";
 const VOICE_MODE_QUESTION = "question";
 const VOICE_MODE_DIAGNOSIS = "diagnosis";
+const DEFAULT_VOICE_CHAT_MODEL = "@cf/openai/gpt-oss-20b";
+const VOICE_MODEL_OPTIONS = [
+  { value: "@cf/openai/gpt-oss-20b", label: "gpt-oss-20b (empfohlen)" },
+  { value: "@cf/qwen/qwen3-30b-a3b-fp8", label: "qwen3-30b-a3b-fp8 (guenstig)" },
+  { value: "@cf/zai-org/glm-4.7-flash", label: "glm-4.7-flash (schnell)" },
+  { value: "@cf/openai/gpt-oss-120b", label: "gpt-oss-120b (staerker, teurer)" }
+];
+const VOICE_MODEL_SET = new Set(VOICE_MODEL_OPTIONS.map((entry) => entry.value));
 const DEFAULT_VOICE_CASE = [
   "CASE_ID: default_thoraxschmerz_001",
   "Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.",
@@ -211,6 +220,7 @@ const state = {
   voiceBusy: false,
   voiceRecording: false,
   voiceMode: VOICE_MODE_QUESTION,
+  voiceModel: DEFAULT_VOICE_CHAT_MODEL,
   voiceCaseLibrary: [],
   voiceCaseResolutions: {},
   voiceCaseIndex: -1,
@@ -235,6 +245,7 @@ const refs = {
   xpMilestone: document.getElementById("xpMilestone"),
   buildBadge: document.getElementById("buildBadge"),
   voicePanel: document.getElementById("voicePanel"),
+  voiceModelSelect: document.getElementById("voiceModelSelect"),
   voiceCaseSelect: document.getElementById("voiceCaseSelect"),
   voiceCaseMeta: document.getElementById("voiceCaseMeta"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
@@ -329,6 +340,7 @@ function wireEvents() {
   refs.voiceNextCaseBtn?.addEventListener("click", () => {
     void handleVoiceNextCase();
   });
+  refs.voiceModelSelect?.addEventListener("change", handleVoiceModelChange);
   refs.voiceCaseSelect?.addEventListener("change", handleVoiceCaseSelectionChange);
   refs.voiceCaseInput.addEventListener("input", handleVoiceCaseInput);
 
@@ -442,6 +454,14 @@ function initVoiceUi() {
   if (typeof storedMode.mode === "string") {
     state.voiceMode = normalizeVoiceMode(storedMode.mode);
   }
+  const storedModel = loadFromStorage(STORAGE_VOICE_MODEL_KEY, {
+    model: DEFAULT_VOICE_CHAT_MODEL
+  });
+  if (typeof storedModel.model === "string") {
+    state.voiceModel = normalizeVoiceModel(storedModel.model);
+  }
+  renderVoiceModelSelect();
+  applyVoiceModelSelection(state.voiceModel, { preserveStatus: true });
   renderVoiceCaseSelect();
   applyVoiceMode(state.voiceMode, { preserveStatus: true });
   applyVoiceCaseSelection(state.voiceCaseSelection, { preserveStatus: true, resetConversation: false });
@@ -477,9 +497,52 @@ function handleVoiceDiagnoseToggle() {
   applyVoiceMode(nextMode, { preserveStatus: false });
 }
 
+function handleVoiceModelChange() {
+  if (!refs.voiceModelSelect) return;
+  if (state.voiceRecording) {
+    refs.voiceModelSelect.value = state.voiceModel;
+    setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann das Modell wechseln.", true);
+    return;
+  }
+  applyVoiceModelSelection(refs.voiceModelSelect.value, { preserveStatus: false });
+}
+
 function handleVoiceCaseSelectionChange() {
   if (!refs.voiceCaseSelect) return;
   applyVoiceCaseSelection(refs.voiceCaseSelect.value, { preserveStatus: false, resetConversation: true });
+}
+
+function normalizeVoiceModel(value) {
+  if (typeof value !== "string") return DEFAULT_VOICE_CHAT_MODEL;
+  return VOICE_MODEL_SET.has(value) ? value : DEFAULT_VOICE_CHAT_MODEL;
+}
+
+function renderVoiceModelSelect() {
+  if (!refs.voiceModelSelect) return;
+  refs.voiceModelSelect.innerHTML = "";
+  for (const optionDef of VOICE_MODEL_OPTIONS) {
+    const option = document.createElement("option");
+    option.value = optionDef.value;
+    option.textContent = optionDef.label;
+    refs.voiceModelSelect.appendChild(option);
+  }
+}
+
+function getVoiceModelLabel(value) {
+  const found = VOICE_MODEL_OPTIONS.find((entry) => entry.value === value);
+  return found ? found.label : value;
+}
+
+function applyVoiceModelSelection(model, options = {}) {
+  const preserveStatus = Boolean(options.preserveStatus);
+  state.voiceModel = normalizeVoiceModel(model);
+  if (refs.voiceModelSelect && refs.voiceModelSelect.value !== state.voiceModel) {
+    refs.voiceModelSelect.value = state.voiceModel;
+  }
+  saveToStorage(STORAGE_VOICE_MODEL_KEY, { model: state.voiceModel });
+  if (!preserveStatus) {
+    setVoiceStatus(buildVoiceReadyStatus());
+  }
 }
 
 function normalizeVoiceMode(mode) {
@@ -502,9 +565,9 @@ function applyVoiceMode(mode, options = {}) {
 
 function buildVoiceReadyStatus() {
   if (isDiagnosisMode()) {
-    return `${getVoiceCaseStatusLabel()} aktiv. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
+    return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
   }
-  return `${getVoiceCaseStatusLabel()} aktiv. Du kannst aufnehmen oder Text senden.`;
+  return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Du kannst aufnehmen oder Text senden.`;
 }
 
 function updateVoiceModeUi() {
@@ -998,6 +1061,7 @@ async function runVoiceTurn(turnInput) {
   const requestBody = {
     caseText,
     history: state.voiceHistory,
+    chatModel: normalizeVoiceModel(state.voiceModel),
     preferLocalTts: canUseLocalGermanTts()
   };
   if (audioBase64) {
@@ -1075,6 +1139,7 @@ async function runVoiceEvaluation(input) {
   const requestBody = {
     caseText,
     history: state.voiceHistory,
+    chatModel: normalizeVoiceModel(state.voiceModel),
     preferLocalTts: canUseLocalGermanTts()
   };
   if (audioBase64) {
@@ -1225,6 +1290,9 @@ function setVoiceBusy(isBusy) {
   state.voiceBusy = Boolean(isBusy);
   if (refs.voiceCaseSelect) {
     refs.voiceCaseSelect.disabled = state.voiceBusy;
+  }
+  if (refs.voiceModelSelect) {
+    refs.voiceModelSelect.disabled = state.voiceBusy;
   }
   if (refs.voiceNextCaseBtn) {
     refs.voiceNextCaseBtn.disabled = state.voiceBusy;

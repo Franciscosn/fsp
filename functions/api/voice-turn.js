@@ -1,5 +1,11 @@
 const WHISPER_MODEL = "@cf/openai/whisper-large-v3-turbo";
-const CHAT_MODEL = "@cf/openai/gpt-oss-20b";
+const DEFAULT_CHAT_MODEL = "@cf/openai/gpt-oss-20b";
+const ALLOWED_CHAT_MODELS = new Set([
+  "@cf/openai/gpt-oss-20b",
+  "@cf/qwen/qwen3-30b-a3b-fp8",
+  "@cf/zai-org/glm-4.7-flash",
+  "@cf/openai/gpt-oss-120b"
+]);
 const TTS_MODEL = "@cf/myshell-ai/melotts";
 
 const MAX_AUDIO_BASE64_LENGTH = 8_000_000;
@@ -146,7 +152,8 @@ export async function onRequestPost(context) {
     const llmResult = await generatePatientTurn(context.env.AI, {
       promptInput,
       transcript,
-      caseText: payload.caseText
+      caseText: payload.caseText,
+      chatModel: payload.chatModel
     });
     const spokenReply = truncateForTts(llmResult.patient_reply);
     const replyAudioBase64 = payload.preferLocalTts
@@ -198,6 +205,7 @@ async function readPayload(request) {
   const rawAudio = typeof body?.audioBase64 === "string" ? body.audioBase64.trim() : "";
   const rawLearnerText = typeof body?.learnerText === "string" ? body.learnerText.trim() : "";
   const rawCaseText = typeof body?.caseText === "string" ? body.caseText.trim() : "";
+  const rawChatModel = typeof body?.chatModel === "string" ? body.chatModel.trim() : "";
   if (!rawAudio && !rawLearnerText) {
     return { ok: false, error: "Bitte Audio aufnehmen oder eine Textfrage senden." };
   }
@@ -236,7 +244,8 @@ async function readPayload(request) {
     learnerText,
     caseText: rawCaseText,
     history,
-    preferLocalTts
+    preferLocalTts,
+    chatModel: normalizeChatModel(rawChatModel)
   };
 }
 
@@ -272,6 +281,11 @@ function sanitizeHistory(value) {
 function safeText(value) {
   if (typeof value !== "string") return "";
   return value.trim().slice(0, MAX_TEXT_FIELD);
+}
+
+function normalizeChatModel(value) {
+  if (typeof value !== "string") return DEFAULT_CHAT_MODEL;
+  return ALLOWED_CHAT_MODELS.has(value) ? value : DEFAULT_CHAT_MODEL;
 }
 
 async function transcribeAudio(ai, audioBase64) {
@@ -324,12 +338,13 @@ async function transcribeAudio(ai, audioBase64) {
 }
 
 async function generatePatientTurn(ai, context) {
-  const raw = await runPrimaryTurnRequest(ai, context.promptInput);
+  const raw = await runPrimaryTurnRequest(ai, context.promptInput, context.chatModel);
   const candidate = buildCandidateTurn(raw);
   return finalizePatientTurn(ai, candidate, context);
 }
 
-async function runPrimaryTurnRequest(ai, promptInput) {
+async function runPrimaryTurnRequest(ai, promptInput, chatModel) {
+  const model = normalizeChatModel(chatModel);
   const request = {
     instructions: SYSTEM_INSTRUCTIONS,
     input: promptInput,
@@ -337,18 +352,18 @@ async function runPrimaryTurnRequest(ai, promptInput) {
   };
 
   try {
-    return await ai.run(CHAT_MODEL, request);
+    return await ai.run(model, request);
   } catch {
     try {
       // Safety fallback in case response_format is rejected for a specific runtime.
-      return await ai.run(CHAT_MODEL, {
+      return await ai.run(model, {
         instructions: SYSTEM_INSTRUCTIONS,
         input: promptInput
       });
     } catch {
       try {
         // Compatibility fallback for runtimes that expect chat messages.
-        return await ai.run(CHAT_MODEL, {
+        return await ai.run(model, {
           messages: [
             { role: "system", content: SYSTEM_INSTRUCTIONS },
             { role: "user", content: promptInput }
@@ -356,7 +371,7 @@ async function runPrimaryTurnRequest(ai, promptInput) {
         });
       } catch {
         // Last fallback for older prompt-based interfaces.
-        return ai.run(CHAT_MODEL, {
+        return ai.run(model, {
           prompt: `${SYSTEM_INSTRUCTIONS}\n\n${promptInput}`
         });
       }
@@ -405,8 +420,9 @@ async function finalizePatientTurn(ai, turn, context) {
 }
 
 async function repairPatientReply(ai, context) {
+  const model = normalizeChatModel(context.chatModel);
   try {
-    const raw = await ai.run(CHAT_MODEL, {
+    const raw = await ai.run(model, {
       instructions: [
         "Aufgabe: Liefere exakt eine finale Antwort als Patient auf Deutsch.",
         "Nur Patientenantwort, keine Analyse, keine Begruendung, kein Monolog.",
@@ -444,7 +460,7 @@ async function repairPatientReply(ai, context) {
   }
 
   try {
-    const plain = await ai.run(CHAT_MODEL, {
+    const plain = await ai.run(model, {
       instructions: [
         "Du bist nur der Patient in einer medizinischen Pruefung.",
         "Antworte ausschliesslich auf Deutsch in Ich-Form.",
@@ -469,7 +485,7 @@ async function repairPatientReply(ai, context) {
     // continue to translation fallback
   }
 
-  return rewriteEnglishToGermanPatient(ai, context.transcript || "");
+  return rewriteEnglishToGermanPatient(ai, context.transcript || "", model);
 }
 
 function isPatientReplyStable(text) {
@@ -514,10 +530,11 @@ function fallbackPatientReplyForTranscript(transcript, caseText) {
   return defaultPatientFallback(caseText);
 }
 
-async function rewriteEnglishToGermanPatient(ai, text) {
+async function rewriteEnglishToGermanPatient(ai, text, chatModel) {
   if (!text) return "";
+  const model = normalizeChatModel(chatModel);
   try {
-    const raw = await ai.run(CHAT_MODEL, {
+    const raw = await ai.run(model, {
       instructions: [
         "Du formulierst eine Patientenantwort auf Deutsch um.",
         "Uebersetze den Inhalt naturgetreu ins Deutsche.",

@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260216f" />
+    <link rel="stylesheet" href="src/styles.css?v=20260216g" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -104,10 +104,16 @@
         <div class="voice-head">
           <h3>Patiens ex machina</h3>
           <p class="muted">
-            Modell: <strong>gpt-oss-20b</strong> | Fallbasiertes Gespraech fuer medizinische
-            Pruefungssimulation.
+            Fallbasiertes Gespraech fuer medizinische Pruefungssimulation.
           </p>
         </div>
+        <label class="voice-label" for="voiceModelSelect">Sprachmodell</label>
+        <select id="voiceModelSelect" class="voice-case-select">
+          <option value="@cf/openai/gpt-oss-20b">gpt-oss-20b (empfohlen)</option>
+          <option value="@cf/qwen/qwen3-30b-a3b-fp8">qwen3-30b-a3b-fp8 (guenstig)</option>
+          <option value="@cf/zai-org/glm-4.7-flash">glm-4.7-flash (schnell)</option>
+          <option value="@cf/openai/gpt-oss-120b">gpt-oss-120b (staerker, teurer)</option>
+        </select>
         <label class="voice-label" for="voiceCaseSelect">Fallauswahl</label>
         <select id="voiceCaseSelect" class="voice-case-select">
           <option value="default">1</option>
@@ -337,6 +343,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260216f"></script>
+    <script type="module" src="src/app.js?v=20260216g"></script>
   </body>
 </html>

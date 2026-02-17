@@ -1,5 +1,11 @@
 const WHISPER_MODEL = "@cf/openai/whisper-large-v3-turbo";
-const CHAT_MODEL = "@cf/openai/gpt-oss-20b";
+const DEFAULT_CHAT_MODEL = "@cf/openai/gpt-oss-20b";
+const ALLOWED_CHAT_MODELS = new Set([
+  "@cf/openai/gpt-oss-20b",
+  "@cf/qwen/qwen3-30b-a3b-fp8",
+  "@cf/zai-org/glm-4.7-flash",
+  "@cf/openai/gpt-oss-120b"
+]);
 const TTS_MODEL = "@cf/myshell-ai/melotts";
 
 const MAX_AUDIO_BASE64_LENGTH = 8_000_000;
@@ -118,7 +124,7 @@ export async function onRequestPost(context) {
       2
     );
 
-    const raw = await runEvaluationRequest(context.env.AI, promptInput);
+    const raw = await runEvaluationRequest(context.env.AI, promptInput, payload.chatModel);
     const candidate = buildCandidateEvaluation(raw, {
       caseText: payload.caseText,
       history: payload.history,
@@ -172,6 +178,7 @@ async function readPayload(request) {
   const rawAudio = typeof body?.audioBase64 === "string" ? body.audioBase64.trim() : "";
   const rawDiagnosisText = typeof body?.diagnosisText === "string" ? body.diagnosisText.trim() : "";
   const rawCaseText = typeof body?.caseText === "string" ? body.caseText.trim() : "";
+  const rawChatModel = typeof body?.chatModel === "string" ? body.chatModel.trim() : "";
 
   if (!rawAudio && !rawDiagnosisText) {
     return { ok: false, error: "Bitte Diagnose sprechen oder als Text eingeben." };
@@ -208,7 +215,8 @@ async function readPayload(request) {
     diagnosisText,
     caseText: rawCaseText,
     history: sanitizeHistory(body?.history),
-    preferLocalTts: Boolean(body?.preferLocalTts)
+    preferLocalTts: Boolean(body?.preferLocalTts),
+    chatModel: normalizeChatModel(rawChatModel)
   };
 }
 
@@ -244,6 +252,11 @@ function sanitizeHistory(value) {
 function safeText(value) {
   if (typeof value !== "string") return "";
   return value.trim().slice(0, MAX_TEXT_FIELD);
+}
+
+function normalizeChatModel(value) {
+  if (typeof value !== "string") return DEFAULT_CHAT_MODEL;
+  return ALLOWED_CHAT_MODELS.has(value) ? value : DEFAULT_CHAT_MODEL;
 }
 
 function extractLearnerQuestions(history) {
@@ -287,7 +300,8 @@ async function transcribeAudio(ai, audioBase64) {
   return "";
 }
 
-async function runEvaluationRequest(ai, promptInput) {
+async function runEvaluationRequest(ai, promptInput, chatModel) {
+  const model = normalizeChatModel(chatModel);
   const request = {
     instructions: SYSTEM_INSTRUCTIONS,
     input: promptInput,
@@ -295,23 +309,23 @@ async function runEvaluationRequest(ai, promptInput) {
   };
 
   try {
-    return await ai.run(CHAT_MODEL, request);
+    return await ai.run(model, request);
   } catch {
     try {
-      return await ai.run(CHAT_MODEL, {
+      return await ai.run(model, {
         instructions: SYSTEM_INSTRUCTIONS,
         input: promptInput
       });
     } catch {
       try {
-        return await ai.run(CHAT_MODEL, {
+        return await ai.run(model, {
           messages: [
             { role: "system", content: SYSTEM_INSTRUCTIONS },
             { role: "user", content: promptInput }
           ]
         });
       } catch {
-        return ai.run(CHAT_MODEL, {
+        return ai.run(model, {
           prompt: `${SYSTEM_INSTRUCTIONS}\n\n${promptInput}`
         });
       }
