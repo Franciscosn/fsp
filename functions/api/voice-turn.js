@@ -14,6 +14,7 @@ const MAX_HISTORY_TURNS = 60;
 const MAX_TEXT_FIELD = 900;
 const MAX_LEARNER_TEXT_LENGTH = 500;
 const MAX_PATIENT_REPLY_LENGTH = 420;
+const MAX_SYSTEM_PROMPT_LENGTH = 60_000;
 const ENGLISH_MARKERS = [
   " need ",
   " respond ",
@@ -153,7 +154,8 @@ export async function onRequestPost(context) {
       promptInput,
       transcript,
       caseText: payload.caseText,
-      chatModel: payload.chatModel
+      chatModel: payload.chatModel,
+      systemPrompt: payload.systemPrompt
     });
     const spokenReply = truncateForTts(llmResult.patient_reply);
     const replyAudioBase64 = payload.preferLocalTts
@@ -206,6 +208,8 @@ async function readPayload(request) {
   const rawLearnerText = typeof body?.learnerText === "string" ? body.learnerText.trim() : "";
   const rawCaseText = typeof body?.caseText === "string" ? body.caseText.trim() : "";
   const rawChatModel = typeof body?.chatModel === "string" ? body.chatModel.trim() : "";
+  const rawSystemPrompt =
+    typeof body?.systemPromptOverride === "string" ? body.systemPromptOverride : "";
   if (!rawAudio && !rawLearnerText) {
     return { ok: false, error: "Bitte Audio aufnehmen oder eine Textfrage senden." };
   }
@@ -245,7 +249,8 @@ async function readPayload(request) {
     caseText: rawCaseText,
     history,
     preferLocalTts,
-    chatModel: normalizeChatModel(rawChatModel)
+    chatModel: normalizeChatModel(rawChatModel),
+    systemPrompt: normalizeSystemPrompt(rawSystemPrompt, SYSTEM_INSTRUCTIONS)
   };
 }
 
@@ -286,6 +291,13 @@ function safeText(value) {
 function normalizeChatModel(value) {
   if (typeof value !== "string") return DEFAULT_CHAT_MODEL;
   return ALLOWED_CHAT_MODELS.has(value) ? value : DEFAULT_CHAT_MODEL;
+}
+
+function normalizeSystemPrompt(value, fallback) {
+  if (typeof value !== "string") return fallback;
+  const trimmed = value.trim();
+  if (!trimmed) return fallback;
+  return trimmed.slice(0, MAX_SYSTEM_PROMPT_LENGTH);
 }
 
 async function transcribeAudio(ai, audioBase64) {
@@ -346,15 +358,21 @@ async function transcribeAudio(ai, audioBase64) {
 }
 
 async function generatePatientTurn(ai, context) {
-  const raw = await runPrimaryTurnRequest(ai, context.promptInput, context.chatModel);
+  const raw = await runPrimaryTurnRequest(
+    ai,
+    context.promptInput,
+    context.chatModel,
+    context.systemPrompt
+  );
   const candidate = buildCandidateTurn(raw);
   return finalizePatientTurn(ai, candidate, context);
 }
 
-async function runPrimaryTurnRequest(ai, promptInput, chatModel) {
+async function runPrimaryTurnRequest(ai, promptInput, chatModel, systemPrompt) {
   const model = normalizeChatModel(chatModel);
+  const effectivePrompt = normalizeSystemPrompt(systemPrompt, SYSTEM_INSTRUCTIONS);
   const request = {
-    instructions: SYSTEM_INSTRUCTIONS,
+    instructions: effectivePrompt,
     input: promptInput,
     response_format: RESPONSE_SCHEMA
   };
@@ -365,7 +383,7 @@ async function runPrimaryTurnRequest(ai, promptInput, chatModel) {
     try {
       // Safety fallback in case response_format is rejected for a specific runtime.
       return await ai.run(model, {
-        instructions: SYSTEM_INSTRUCTIONS,
+        instructions: effectivePrompt,
         input: promptInput
       });
     } catch {
@@ -373,14 +391,14 @@ async function runPrimaryTurnRequest(ai, promptInput, chatModel) {
         // Compatibility fallback for runtimes that expect chat messages.
         return await ai.run(model, {
           messages: [
-            { role: "system", content: SYSTEM_INSTRUCTIONS },
+            { role: "system", content: effectivePrompt },
             { role: "user", content: promptInput }
           ]
         });
       } catch {
         // Last fallback for older prompt-based interfaces.
         return ai.run(model, {
-          prompt: `${SYSTEM_INSTRUCTIONS}\n\n${promptInput}`
+          prompt: `${effectivePrompt}\n\n${promptInput}`
         });
       }
     }

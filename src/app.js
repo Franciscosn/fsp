@@ -8,17 +8,19 @@ const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
+const STORAGE_PROMPT_CONFIG_KEY = "fsp_prompt_config_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217f";
-const BUILD_UPDATED_AT = "2026-02-17 16:44 UTC";
+const APP_VERSION = "20260217g";
+const BUILD_UPDATED_AT = "2026-02-17 17:42 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
 const MAX_DOCTOR_LETTER_LENGTH = 12_000;
 const MAX_VOICE_HISTORY_TURNS = 60;
 const MIN_VOICE_BLOB_BYTES = 450;
+const MAX_PROMPT_TEXT_LENGTH = 60_000;
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
 const VOICE_CASE_DEFAULT = "default";
@@ -35,6 +37,118 @@ const VOICE_MODEL_OPTIONS = [
   { value: "@cf/openai/gpt-oss-120b", label: "gpt-oss-120b (staerker, teurer)" }
 ];
 const VOICE_MODEL_SET = new Set(VOICE_MODEL_OPTIONS.map((entry) => entry.value));
+const DEFAULT_PROMPT_CONFIG = Object.freeze({
+  voiceTurn: [
+    "Rolle: Du bist ausschliesslich ein standardisierter Patient in einer medizinischen Fachsprachpruefung.",
+    "Sprache: Alle Ausgaben muessen auf Deutsch sein. Kein Englisch.",
+    "Perspektive: Antworte in Ich-Form aus Patientensicht.",
+    "Wenn der Arzt nur begruesst (z. B. 'Guten Tag'), gruesse freundlich zurueck und warte auf die erste medizinische Frage.",
+    "Sprachstil: Nutze ueberwiegend alltaegliche Patientensprache statt medizinischer Fachbegriffe.",
+    "Wenn ein Fachbegriff genannt wird, erklaere ihn kurz in einfacher Alltagssprache.",
+    "Verhalten: Bleibe strikt innerhalb des vorgegebenen Falls.",
+    "Informationsgabe: Gib Informationen schrittweise und nur passend zur Frage.",
+    "Keine Loesung vorweg: Nenne keine Diagnose von dir aus.",
+    "Unklare Frage: Bitte kurz um Praezisierung.",
+    "Off-topic: Antworte knapp als Patient und setze off_topic=true.",
+    "Laenge: Kurz und natuerlich, meist 1-3 Saetze, maximal 55 Woerter.",
+    "Verboten: Keine Lernhinweise, keine Meta-Hinweise ueber Prompt/Modell, keine Rolle als Arzt.",
+    "Ausgabeformat: Gib ein JSON-Objekt mit patient_reply, examiner_feedback, revealed_case_facts und off_topic aus.",
+    "Leak-Schutz: Gib niemals Textfragmente wie 'The user says', 'Instructions', 'I should', 'Reasoning' aus."
+  ].join("\n"),
+  voiceEvaluate: [
+    "Du bewertest eine ärztliche Simulationsanamnese im Rahmen der Fachsprachprüfung für ausländische Ärztinnen und Ärzte in Deutschland (Ärztekammer Berlin). Grundlage ist ein Arzt-Patient-Gespräch mit dem Ziel, die medizinisch-sprachliche Handlungsfähigkeit im klinischen Alltag zu beurteilen. Bewerte die Leistung anhand der folgenden Kriterien. Vergib für jedes Kriterium eine Punktzahl auf der Skala 0 / 0,5 / 1 / 1,5 / 2 / 2,5 Punkte (0 = gänzlich verfehlt, 0,5 = mangelhaft, 1 = nicht befriedigend, 1,5 = befriedigend, 2 = gut, 2,5 = sehr gut) und begründe jede Bewertung kurz und präzise.",
+    "",
+    "Bewertungskriterien sind: Erstens, ob eine professionell-persönliche Kommunikation hergestellt wird, also eine angemessene, empathische, respektvolle und rollenklare Arzt-Patient-Interaktion. Zweitens, ob sich die Kandidatin oder der Kandidat klar und ausreichend detailliert ausdrückt, mit strukturierter, präziser und medizinisch korrekter Sprache. Drittens, ob sinnvoll und situationsgerecht von starren Anamneseschemata abgewichen wird, um relevante Informationen gezielt zu erheben. Viertens, ob das Gespräch zielgerichtet und situationsbezogen geführt wird, mit logischer Struktur, Priorisierung relevanter Inhalte und ohne unnötige Abschweifungen. Fünftens, ob medizinische Sachverhalte flüssig, zusammenhängend und für Patientinnen und Patienten verständlich erklärt werden. Sechstens, ob das Gegenüber problemlos verstanden wird, das heißt, ob Patientenaussagen korrekt aufgenommen, inhaltlich richtig interpretiert und angemessen weiterverarbeitet werden. Siebtens, ob das weitere Vorgehen (z. B. Diagnostik, Therapie, nächste Schritte) klar, verständlich und patientengerecht erklärt wird.",
+    "",
+    "Gib anschließend die Gesamtpunktzahl an (Maximalpunktzahl 17,5 Punkte) und bewerte implizit, ob das Leistungsniveau einem Bestehen der Simulationsanamnese entspricht. Abschließend formuliere eine kurze, konkrete Empfehlung zur sprachlichen Nachbesserung, die sich auf typische Defizite der gezeigten Leistung bezieht (z. B. Strukturierung der Anamnese, Präzision medizinischer Begriffe, Patientenerklärungen, Gesprächsführung).",
+    "",
+    "Wichtig: Bewerte den gesamten Gesprächsteil UND den final als Diagnose abgeschickten Teil zusammen als eine Gesamtleistung.",
+    "Nutze nur die übergebenen Inhalte.",
+    "Antworte ausschließlich auf Deutsch und ausschließlich als valides JSON gemäß Schema.",
+    "Gib in criteria exakt 7 Einträge in der vorgegebenen Reihenfolge aus.",
+    "Verwende für score ausschließlich 0, 0.5, 1, 1.5, 2 oder 2.5.",
+    "summary_feedback: 1-2 kurze Sätze mit der wichtigsten Lernbotschaft."
+  ].join("\n"),
+  doctorLetterEvaluate: [
+    "Du bewertest eine schriftliche ärztliche Dokumentation (Arztbrief) im Rahmen der Fachsprachprüfung für ausländische Ärztinnen und Ärzte in Deutschland (Ärztekammer Berlin). Grundlage ist ein zuvor geführtes Arzt-Patient-Gespräch mit einem Simulationspatienten. Ziel der Bewertung ist die Beurteilung der schriftlichen medizinisch-sprachlichen Kompetenz im klinischen Alltag. Bewerte das vorliegende Dokument anhand der folgenden Kriterien. Vergib für jedes Kriterium eine Punktzahl auf der Skala 0 / 0,5 / 1 / 1,5 / 2 / 2,5 Punkte (0 = gänzlich verfehlt, 0,5 = mangelhaft, 1 = nicht befriedigend, 1,5 = befriedigend, 2 = gut, 2,5 = sehr gut) und begründe jede Bewertung kurz und präzise. Beim ersten Kriterium sind nur die Punktwerte 0, 1,5 oder 2,5 zulässig.",
+    "",
+    "Bewertungskriterien sind: Erstens, ob das erstellte Dokument der richtigen Patientin bzw. dem richtigen Patienten eindeutig und sicher zuzuordnen ist (z. B. korrekte Identifikationsdaten, keine Verwechslungen). Zweitens, ob der Arztbrief strukturiert und vollständig abgefasst ist, insbesondere mit einer nachvollziehbaren Gliederung (z. B. Anamnese, Befunde, Diagnose, Therapie, weiteres Vorgehen) und ohne relevante inhaltliche Lücken. Drittens, ob der Text grammatisch korrekt ist, also korrekte Satzstrukturen, Zeiten und Bezüge verwendet werden. Viertens, ob der Text orthografisch korrekt ist, insbesondere hinsichtlich Rechtschreibung medizinischer und allgemeinsprachlicher Begriffe. Fünftens, ob die notwendige medizinische Detailtiefe erreicht wird, das heißt weder oberflächlich noch übermäßig ausschweifend dokumentiert wird. Sechstens, ob fremdsprachliche medizinische Fachwörter korrekt und in angemessenem Umfang angewendet werden, ohne Fehlgebrauch oder unnötige Häufung. Siebtens, ob die wesentlichen Anamnesebefunde semantisch korrekt wiedergegeben werden, also inhaltlich richtig, vollständig und ohne Sinnentstellungen. Achtens, ob klare Aussagen zu den wesentlichen Behandlungsschritten getroffen werden, einschließlich Diagnostik, Therapie und gegebenenfalls Empfehlungen oder weiterem Vorgehen.",
+    "",
+    "Gib anschließend die Gesamtpunktzahl an (Maximalpunktzahl 20 Punkte) und bewerte implizit, ob das Leistungsniveau dem Bestehen der schriftlichen Dokumentation entspricht (Bestehensgrenze 12 Punkte). Abschließend formuliere eine kurze, konkrete Empfehlung zur sprachlichen Nachbesserung, die sich auf die größten sprachlichen oder strukturellen Schwächen des Arztbriefs bezieht (z. B. Strukturierung, Präzision der Fachsprache, grammatische Sicherheit, semantische Genauigkeit).",
+    "",
+    "Antworte ausschliesslich als valides JSON gemaess Schema. Verwende fuer criteria exakt 8 Eintraege in der vorgegebenen Reihenfolge."
+  ].join("\n"),
+  voiceDoctorTurn: [
+    "Prompt-Anweisung: Prueferrolle im Arzt-Arzt-Gespraech (FSP)",
+    "",
+    "Du uebernimmst die Rolle einer pruefenden Aerztin / eines pruefenden Arztes im Rahmen der Fachsprachpruefung fuer auslaendische Aerztinnen und Aerzte in Deutschland. Du fuehrst ein Arzt-Arzt-Gespraech mit der Pruefungskandidatin / dem Pruefungskandidaten. Dein Gegenueber (der User) ist die berichtende Aerztin / der berichtende Arzt.",
+    "",
+    "Der Fall ist identisch mit dem zuvor gefuehrten Anamnesegespraech und dem dazugehoerigen Arztbrief. Es wird kein neuer Fall eingefuehrt. Du kennst den Fall in groben Zuegen, pruefst jedoch, ob die Kandidatin / der Kandidat in der Lage ist, die relevanten Informationen strukturiert, fachlich korrekt und verstaendlich muendlich zu uebergeben.",
+    "",
+    "Gespraechssteuerung (verbindlich):",
+    "1) Wenn noch keine strukturierte Fallvorstellung vorliegt, eroeffne pruefungsnah und fordere aktiv zur strukturierten Uebergabe auf.",
+    "2) Fuehre das Gespraech aktiv. Stelle pro Turn genau eine fokussierte Rueckfrage.",
+    "3) Jede Rueckfrage muss sich auf die letzte Kandidatenaussage beziehen und Unklarheiten, Luecken, Widersprueche oder fehlende Priorisierung pruefen.",
+    "4) Frage gezielt nach, wenn Informationen fehlen oder unscharf formuliert sind.",
+    "5) Gib keine Hilfestellungen, keine Bewertungen, kein Feedback, keine Musterloesung.",
+    "",
+    "Fragetypen (nutze sie pruefungsnah und situationsgerecht):",
+    "1. Verstaendnis- und Praezisierungsfragen: 'Was meinen Sie genau mit ...?', 'Koennen Sie das bitte praezisieren?', 'Wie haben Sie diesen Befund interpretiert?', 'Was war dabei ausschlaggebend?'",
+    "2. Struktur- und Priorisierungsfragen: 'Was war in diesem Fall am wichtigsten?', 'Welche Befunde sind fuer das weitere Vorgehen entscheidend?', 'Was nennen Sie bei der Uebergabe zuerst?'",
+    "3. Nachfragen zu Diagnosen (ohne Detail-Fachfragen): 'Warum ist diese Diagnose wahrscheinlich?', 'Gab es Alternativdiagnosen?', 'Was sprach dagegen?'",
+    "4. Fragen zur Therapieentscheidung: 'Was wurde bisher therapeutisch gemacht?', 'Warum haben Sie sich dafuer entschieden?', 'Was ist der naechste Schritt?'",
+    "5. Sicherheits- und Aufklaerungsaspekte: 'Gab es Risiken, ueber die aufgeklaert wurde?', 'Welche Warnzeichen wurden genannt?'",
+    "6. Weiteres Vorgehen / Organisation: 'Was passiert als Naechstes?', 'Wer uebernimmt die Weiterbehandlung?', 'Wie ist die Nachsorge geplant?'",
+    "7. Sprachliche Klaerungsfragen: 'Wie genau meinen Sie das?', 'Koennen Sie das anders formulieren?'",
+    "",
+    "Inhaltliche Priorisierung im Verlauf:",
+    "Anlass der Vorstellung -> relevante Anamnese -> wesentliche Befunde -> Haupt-/Nebendiagnosen -> bisherige Therapie -> Sicherheits-/Aufklaerungspunkte -> weiteres Vorgehen/Nachsorge.",
+    "",
+    "Achte auf professionelle, neutrale, sachliche und pruefungsnahe Sprache.",
+    "Unterbrich nur bei Unklarheit, Unvollstaendigkeit oder Widerspruch.",
+    "",
+    "Du sprichst ausschliesslich als pruefende Aerztin / pruefender Arzt.",
+    "",
+    "Wenn noch keine sinnvolle Fallvorstellung vorliegt, beginne mit einer typischen Aufforderung zur strukturierten Fallvorstellung.",
+    "Antworten ausschliesslich auf Deutsch.",
+    "Ausgabe ausschliesslich als valides JSON mit examiner_reply und off_topic.",
+    "examiner_reply: 1-2 Saetze, kurz und praezise, maximal 110 Woerter, immer mit mindestens einer konkreten Frage und Fragezeichen.",
+    "off_topic: true nur wenn die Kandidatenaussage klar am Fall/Thema vorbeigeht; sonst false."
+  ].join("\n"),
+  voiceDoctorEvaluate: [
+    "Du bewertest den Pruefungsbereich 'Aerztliches Gespraech' der Fachsprachpruefung fuer auslaendische Aerztinnen und Aerzte in Berlin (Aerztekammer Berlin).",
+    "Grundlage ist die vorliegende Arzt-Arzt-Gespraechsdokumentation zum selben klinischen Fall.",
+    "Bewerte streng am Berliner Bewertungsbogen.",
+    "",
+    "Vergib fuer jedes Kriterium eine Punktzahl auf der Skala 0 / 0,5 / 1 / 1,5 / 2 / 2,5 (0 = gaenzlich verfehlt, 2,5 = sehr gut).",
+    "Begründe jede Einzelbewertung kurz und praezise.",
+    "",
+    "Kriterien (in dieser Reihenfolge):",
+    "1) Fallvorstellung fluessig und situationsangemessen",
+    "2) Grammatik korrekt und gut verstaendlich",
+    "3) Fremdsprachliche Fachwoerter korrekt und angemessen",
+    "4) Klare Aussagen zu wesentlichen Befunden und Behandlungsschritten",
+    "5) Rueckfragen ohne sprachliche Probleme beantworten",
+    "6) An einer Diskussion ueber den Fall teilnehmen koennen",
+    "7) 5 medizinische Fachbegriffe ins verstaendliche Deutsch uebersetzen",
+    "8) 2 medizinische Abkuerzungen vervollstaendigen und 3 Laborwerte mit Zahlen und Masseinheiten korrekt vorlesen",
+    "",
+    "Wichtig: Beurteile nur anhand der uebergebenen Inhalte. Wenn ein Kriterium nicht ausreichend demonstriert wurde, bewerte entsprechend niedriger und benenne den fehlenden Nachweis knapp.",
+    "",
+    "Gib danach die Gesamtpunktzahl an (max 20 Punkte) und eine implizite Bestehenseinschaetzung (Bestehensgrenze 12 Punkte).",
+    "Formuliere abschliessend eine kurze, konkrete Empfehlung zur sprachlichen Nachbesserung.",
+    "",
+    "Antworte ausschliesslich auf Deutsch und ausschliesslich als valides JSON gemaess Schema.",
+    "criteria muss exakt 8 Eintraege in der vorgegebenen Reihenfolge enthalten."
+  ].join("\n")
+});
+const PROMPT_FIELD_KEYS = Object.freeze([
+  "voiceTurn",
+  "voiceEvaluate",
+  "doctorLetterEvaluate",
+  "voiceDoctorTurn",
+  "voiceDoctorEvaluate"
+]);
 const DEFAULT_VOICE_CASE = [
   "CASE_ID: default_thoraxschmerz_001",
   "Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.",
@@ -224,6 +338,7 @@ const initialDailyGoal = resolveStoredDailyGoal(
   loadFromStorage(STORAGE_DAILY_GOAL_KEY, { goal: DEFAULT_DAILY_GOAL })
 );
 const initialXp = resolveStoredXp(loadFromStorage(STORAGE_XP_KEY, {}), initialProgress);
+const initialPromptConfig = resolvePromptConfig(loadFromStorage(STORAGE_PROMPT_CONFIG_KEY, {}));
 
 const state = {
   cards: [],
@@ -249,6 +364,7 @@ const state = {
   voiceRecording: false,
   voiceMode: VOICE_MODE_QUESTION,
   voiceModel: DEFAULT_VOICE_CHAT_MODEL,
+  promptConfig: initialPromptConfig,
   voiceCaseLibrary: [],
   voiceCaseResolutions: {},
   voiceCaseIndex: -1,
@@ -320,6 +436,15 @@ const refs = {
   voiceDoctorLetterToggleBtn: document.getElementById("voiceDoctorLetterToggleBtn"),
   voiceDoctorConversationBtn: document.getElementById("voiceDoctorConversationBtn"),
   voiceDoctorConversationEvalBtn: document.getElementById("voiceDoctorConversationEvalBtn"),
+  voicePromptConfigToggleBtn: document.getElementById("voicePromptConfigToggleBtn"),
+  voicePromptConfigPanel: document.getElementById("voicePromptConfigPanel"),
+  voicePromptConfigSaveBtn: document.getElementById("voicePromptConfigSaveBtn"),
+  voicePromptConfigResetBtn: document.getElementById("voicePromptConfigResetBtn"),
+  voicePromptVoiceTurnInput: document.getElementById("voicePromptVoiceTurnInput"),
+  voicePromptVoiceEvaluateInput: document.getElementById("voicePromptVoiceEvaluateInput"),
+  voicePromptDoctorLetterEvaluateInput: document.getElementById("voicePromptDoctorLetterEvaluateInput"),
+  voicePromptVoiceDoctorTurnInput: document.getElementById("voicePromptVoiceDoctorTurnInput"),
+  voicePromptVoiceDoctorEvaluateInput: document.getElementById("voicePromptVoiceDoctorEvaluateInput"),
   voiceDoctorLetterPanel: document.getElementById("voiceDoctorLetterPanel"),
   voiceDoctorLetterInput: document.getElementById("voiceDoctorLetterInput"),
   voiceDoctorLetterSubmitBtn: document.getElementById("voiceDoctorLetterSubmitBtn"),
@@ -377,6 +502,14 @@ const refs = {
   kpiAccuracy: document.getElementById("kpiAccuracy")
 };
 
+const PROMPT_EDITOR_REF_KEY_BY_PROMPT_KEY = Object.freeze({
+  voiceTurn: "voicePromptVoiceTurnInput",
+  voiceEvaluate: "voicePromptVoiceEvaluateInput",
+  doctorLetterEvaluate: "voicePromptDoctorLetterEvaluateInput",
+  voiceDoctorTurn: "voicePromptVoiceDoctorTurnInput",
+  voiceDoctorEvaluate: "voicePromptVoiceDoctorEvaluateInput"
+});
+
 const DOCTOR_LETTER_TEMPLATE = [
   "Patientendaten",
   "Name:",
@@ -433,6 +566,9 @@ function wireEvents() {
   refs.voiceDoctorConversationEvalBtn?.addEventListener("click", () => {
     void handleVoiceDoctorConversationEvaluate();
   });
+  refs.voicePromptConfigToggleBtn?.addEventListener("click", handlePromptConfigToggle);
+  refs.voicePromptConfigSaveBtn?.addEventListener("click", handlePromptConfigSave);
+  refs.voicePromptConfigResetBtn?.addEventListener("click", handlePromptConfigReset);
   refs.voiceDoctorLetterToggleBtn?.addEventListener("click", handleDoctorLetterToggle);
   refs.voiceDoctorLetterSubmitBtn?.addEventListener("click", () => {
     void handleDoctorLetterSubmit();
@@ -581,6 +717,8 @@ function initVoiceUi() {
   clearVoiceDoctorConversationEvaluationReport();
   refs.voiceDoctorLetterToggleBtn?.setAttribute("aria-expanded", "false");
   refs.voiceCaseInfoToggleBtn?.setAttribute("aria-expanded", "false");
+  refs.voicePromptConfigToggleBtn?.setAttribute("aria-expanded", "false");
+  renderPromptConfigEditor();
   renderVoiceModelSelect();
   applyVoiceModelSelection(state.voiceModel, { preserveStatus: true });
   renderVoiceCaseSelect();
@@ -683,6 +821,81 @@ function handleVoiceCaseInfoToggle() {
   if (willOpen) {
     updateVoiceCaseInfoPanel();
   }
+}
+
+function handlePromptConfigToggle() {
+  if (!refs.voicePromptConfigPanel || !refs.voicePromptConfigToggleBtn) return;
+  const willOpen = refs.voicePromptConfigPanel.classList.contains("hidden");
+  refs.voicePromptConfigPanel.classList.toggle("hidden");
+  refs.voicePromptConfigToggleBtn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  if (willOpen) {
+    renderPromptConfigEditor();
+  }
+}
+
+function handlePromptConfigSave() {
+  if (state.voiceBusy) {
+    setVoiceStatus("Bitte warte, bis die laufende Anfrage abgeschlossen ist.", true);
+    return;
+  }
+  state.promptConfig = readPromptConfigFromEditor();
+  saveToStorage(STORAGE_PROMPT_CONFIG_KEY, state.promptConfig);
+  renderPromptConfigEditor();
+  setVoiceStatus("Prompt-Aenderungen gespeichert.");
+}
+
+function handlePromptConfigReset() {
+  if (state.voiceBusy) {
+    setVoiceStatus("Bitte warte, bis die laufende Anfrage abgeschlossen ist.", true);
+    return;
+  }
+  const confirmed = window.confirm("Alle Prompt-Texte auf Standard zuruecksetzen?");
+  if (!confirmed) return;
+  state.promptConfig = resolvePromptConfig({});
+  saveToStorage(STORAGE_PROMPT_CONFIG_KEY, state.promptConfig);
+  renderPromptConfigEditor();
+  setVoiceStatus("Alle Prompts wurden auf Standard zurueckgesetzt.");
+}
+
+function renderPromptConfigEditor() {
+  for (const promptKey of PROMPT_FIELD_KEYS) {
+    const refKey = PROMPT_EDITOR_REF_KEY_BY_PROMPT_KEY[promptKey];
+    const input = refs[refKey];
+    if (!input) continue;
+    input.value = getPromptForKey(promptKey);
+  }
+}
+
+function readPromptConfigFromEditor() {
+  const next = {};
+  for (const promptKey of PROMPT_FIELD_KEYS) {
+    const refKey = PROMPT_EDITOR_REF_KEY_BY_PROMPT_KEY[promptKey];
+    const input = refs[refKey];
+    const raw = typeof input?.value === "string" ? input.value : "";
+    next[promptKey] = normalizePromptText(raw, DEFAULT_PROMPT_CONFIG[promptKey]);
+  }
+  return next;
+}
+
+function resolvePromptConfig(rawValue) {
+  const source = rawValue && typeof rawValue === "object" ? rawValue : {};
+  const resolved = {};
+  for (const promptKey of PROMPT_FIELD_KEYS) {
+    resolved[promptKey] = normalizePromptText(source[promptKey], DEFAULT_PROMPT_CONFIG[promptKey]);
+  }
+  return resolved;
+}
+
+function normalizePromptText(value, fallback) {
+  const fallbackText = typeof fallback === "string" ? fallback : "";
+  if (typeof value !== "string") return fallbackText;
+  const trimmed = value.trim();
+  if (!trimmed) return fallbackText;
+  return trimmed.slice(0, MAX_PROMPT_TEXT_LENGTH);
+}
+
+function getPromptForKey(promptKey) {
+  return normalizePromptText(state.promptConfig?.[promptKey], DEFAULT_PROMPT_CONFIG[promptKey]);
 }
 
 function handleDoctorLetterToggle() {
@@ -1412,7 +1625,8 @@ async function runDoctorLetterEvaluation(doctorLetterText) {
       caseText: getActiveVoiceCaseText(),
       history: state.voiceHistory,
       doctorLetterText,
-      chatModel: normalizeVoiceModel(state.voiceModel)
+      chatModel: normalizeVoiceModel(state.voiceModel),
+      systemPromptOverride: getPromptForKey("doctorLetterEvaluate")
     })
   });
 
@@ -1430,7 +1644,8 @@ async function runVoiceDoctorConversationEvaluation() {
     body: JSON.stringify({
       caseText: getActiveVoiceCaseText(),
       history: state.voiceDoctorConversationHistory,
-      chatModel: normalizeVoiceModel(state.voiceModel)
+      chatModel: normalizeVoiceModel(state.voiceModel),
+      systemPromptOverride: getPromptForKey("voiceDoctorEvaluate")
     })
   });
 
@@ -1532,7 +1747,8 @@ async function runVoiceTurn(turnInput) {
     caseText,
     history: state.voiceHistory,
     chatModel: normalizeVoiceModel(state.voiceModel),
-    preferLocalTts: canUseLocalGermanTts()
+    preferLocalTts: canUseLocalGermanTts(),
+    systemPromptOverride: getPromptForKey("voiceTurn")
   };
   if (audioBase64) {
     requestBody.audioBase64 = audioBase64;
@@ -1612,7 +1828,8 @@ async function runVoiceDoctorConversationTurn(turnInput) {
     caseText,
     history: state.voiceDoctorConversationHistory,
     chatModel: normalizeVoiceModel(state.voiceModel),
-    preferLocalTts: canUseLocalGermanTts()
+    preferLocalTts: canUseLocalGermanTts(),
+    systemPromptOverride: getPromptForKey("voiceDoctorTurn")
   };
   if (audioBase64) {
     requestBody.audioBase64 = audioBase64;
@@ -1708,7 +1925,8 @@ async function runVoiceEvaluation(input) {
     caseText,
     history: state.voiceHistory,
     chatModel: normalizeVoiceModel(state.voiceModel),
-    preferLocalTts: canUseLocalGermanTts()
+    preferLocalTts: canUseLocalGermanTts(),
+    systemPromptOverride: getPromptForKey("voiceEvaluate")
   };
   if (conversationText) {
     requestBody.conversationText = conversationText;
@@ -1930,6 +2148,22 @@ function setVoiceBusy(isBusy) {
   }
   if (refs.voiceDoctorLetterInput) {
     refs.voiceDoctorLetterInput.disabled = state.voiceBusy;
+  }
+  if (refs.voicePromptConfigToggleBtn) {
+    refs.voicePromptConfigToggleBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voicePromptConfigSaveBtn) {
+    refs.voicePromptConfigSaveBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voicePromptConfigResetBtn) {
+    refs.voicePromptConfigResetBtn.disabled = state.voiceBusy;
+  }
+  for (const promptKey of PROMPT_FIELD_KEYS) {
+    const refKey = PROMPT_EDITOR_REF_KEY_BY_PROMPT_KEY[promptKey];
+    const input = refs[refKey];
+    if (input) {
+      input.disabled = state.voiceBusy;
+    }
   }
   refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
 }

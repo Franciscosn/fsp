@@ -14,6 +14,7 @@ const MAX_HISTORY_TURNS = 60;
 const MAX_TEXT_FIELD = 1_100;
 const MAX_LEARNER_TEXT_LENGTH = 500;
 const MAX_EXAMINER_REPLY_LENGTH = 600;
+const MAX_SYSTEM_PROMPT_LENGTH = 60_000;
 
 const RESPONSE_SCHEMA = {
   type: "json_schema",
@@ -118,7 +119,12 @@ export async function onRequestPost(context) {
         null,
         2
       );
-      const raw = await runExaminerTurnRequest(context.env.AI, promptInput, payload.chatModel);
+      const raw = await runExaminerTurnRequest(
+        context.env.AI,
+        promptInput,
+        payload.chatModel,
+        payload.systemPrompt
+      );
       candidate = buildCandidateTurn(raw);
     }
 
@@ -176,6 +182,8 @@ async function readPayload(request) {
   const rawLearnerText = typeof body?.learnerText === "string" ? body.learnerText.trim() : "";
   const rawCaseText = typeof body?.caseText === "string" ? body.caseText.trim() : "";
   const rawChatModel = typeof body?.chatModel === "string" ? body.chatModel.trim() : "";
+  const rawSystemPrompt =
+    typeof body?.systemPromptOverride === "string" ? body.systemPromptOverride : "";
 
   if (!rawAudio && !rawLearnerText) {
     return { ok: false, error: "Bitte Audio aufnehmen oder eine Textantwort senden." };
@@ -213,7 +221,8 @@ async function readPayload(request) {
     caseText: rawCaseText,
     history: sanitizeHistory(body?.history),
     preferLocalTts: Boolean(body?.preferLocalTts),
-    chatModel: normalizeChatModel(rawChatModel)
+    chatModel: normalizeChatModel(rawChatModel),
+    systemPrompt: normalizeSystemPrompt(rawSystemPrompt, SYSTEM_INSTRUCTIONS)
   };
 }
 
@@ -254,6 +263,13 @@ function safeText(value) {
 function normalizeChatModel(value) {
   if (typeof value !== "string") return DEFAULT_CHAT_MODEL;
   return ALLOWED_CHAT_MODELS.has(value) ? value : DEFAULT_CHAT_MODEL;
+}
+
+function normalizeSystemPrompt(value, fallback) {
+  if (typeof value !== "string") return fallback;
+  const trimmed = value.trim();
+  if (!trimmed) return fallback;
+  return trimmed.slice(0, MAX_SYSTEM_PROMPT_LENGTH);
 }
 
 async function transcribeAudio(ai, audioBase64) {
@@ -310,10 +326,11 @@ async function transcribeAudio(ai, audioBase64) {
   return "";
 }
 
-async function runExaminerTurnRequest(ai, promptInput, chatModel) {
+async function runExaminerTurnRequest(ai, promptInput, chatModel, systemPrompt) {
   const model = normalizeChatModel(chatModel);
+  const effectivePrompt = normalizeSystemPrompt(systemPrompt, SYSTEM_INSTRUCTIONS);
   const request = {
-    instructions: SYSTEM_INSTRUCTIONS,
+    instructions: effectivePrompt,
     input: promptInput,
     response_format: RESPONSE_SCHEMA
   };
@@ -323,20 +340,20 @@ async function runExaminerTurnRequest(ai, promptInput, chatModel) {
   } catch {
     try {
       return await ai.run(model, {
-        instructions: SYSTEM_INSTRUCTIONS,
+        instructions: effectivePrompt,
         input: promptInput
       });
     } catch {
       try {
         return await ai.run(model, {
           messages: [
-            { role: "system", content: SYSTEM_INSTRUCTIONS },
+            { role: "system", content: effectivePrompt },
             { role: "user", content: promptInput }
           ]
         });
       } catch {
         return ai.run(model, {
-          prompt: `${SYSTEM_INSTRUCTIONS}\n\n${promptInput}`
+          prompt: `${effectivePrompt}\n\n${promptInput}`
         });
       }
     }

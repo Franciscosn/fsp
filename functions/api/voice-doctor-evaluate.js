@@ -9,6 +9,7 @@ const ALLOWED_CHAT_MODELS = new Set([
 const MAX_CASE_LENGTH = 8_000;
 const MAX_HISTORY_TURNS = 60;
 const MAX_TEXT_FIELD = 1_100;
+const MAX_SYSTEM_PROMPT_LENGTH = 60_000;
 
 const DOCTOR_CONVERSATION_CRITERIA_NAMES = [
   "Fallvorstellung: fluessig und situationsangemessen",
@@ -93,9 +94,10 @@ export async function onRequestPost(context) {
       return json({ error: payload.error }, 400);
     }
 
+    const effectivePrompt = normalizeSystemPrompt(payload.systemPrompt, SYSTEM_PROMPT);
     const modelResponse = await context.env.AI.run(payload.chatModel, {
       messages: [
-        { role: "system", content: SYSTEM_PROMPT },
+        { role: "system", content: effectivePrompt },
         {
           role: "user",
           content: JSON.stringify(
@@ -137,6 +139,8 @@ async function readPayload(request) {
 
   const caseText = safeText(body?.caseText, MAX_CASE_LENGTH);
   const rawChatModel = safeText(body?.chatModel, 120);
+  const rawSystemPrompt =
+    typeof body?.systemPromptOverride === "string" ? body.systemPromptOverride : "";
   const history = sanitizeHistory(body?.history);
 
   if (!caseText) {
@@ -150,7 +154,8 @@ async function readPayload(request) {
     ok: true,
     caseText,
     history,
-    chatModel: normalizeChatModel(rawChatModel)
+    chatModel: normalizeChatModel(rawChatModel),
+    systemPrompt: normalizeSystemPrompt(rawSystemPrompt, SYSTEM_PROMPT)
   };
 }
 
@@ -171,6 +176,13 @@ function sanitizeHistory(value) {
 function normalizeChatModel(value) {
   if (!value) return DEFAULT_CHAT_MODEL;
   return ALLOWED_CHAT_MODELS.has(value) ? value : DEFAULT_CHAT_MODEL;
+}
+
+function normalizeSystemPrompt(value, fallback) {
+  if (typeof value !== "string") return fallback;
+  const trimmed = value.trim();
+  if (!trimmed) return fallback;
+  return trimmed.slice(0, MAX_SYSTEM_PROMPT_LENGTH);
 }
 
 function parseAiJson(response) {

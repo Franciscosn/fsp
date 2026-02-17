@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260217c" />
+    <link rel="stylesheet" href="src/styles.css?v=20260217g" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -169,6 +169,14 @@
           <button id="voiceDoctorLetterToggleBtn" class="soft-btn" type="button">
             Arztbrief erstellen
           </button>
+          <button
+            id="voicePromptConfigToggleBtn"
+            class="soft-btn voice-prompt-config-toggle-btn"
+            type="button"
+            aria-expanded="false"
+          >
+            Prompt-Editor
+          </button>
         </div>
         <article id="voiceDoctorLetterPanel" class="voice-doctor-letter hidden">
           <h4>Arztbrief</h4>
@@ -181,6 +189,67 @@
           <button id="voiceDoctorLetterSubmitBtn" class="soft-btn voice-doctor-letter-submit" type="button">
             Arztbrief abschicken
           </button>
+        </article>
+        <article id="voicePromptConfigPanel" class="voice-prompt-config hidden">
+          <h4>Prompt-Editor (Testphase)</h4>
+          <p class="voice-prompt-config-hint">
+            Hier kannst du die kompletten Systemprompts bearbeiten. Aenderungen gelten lokal auf diesem Geraet.
+          </p>
+          <div class="voice-prompt-config-grid">
+            <label class="voice-prompt-config-item" for="voicePromptVoiceTurnInput">
+              <span>Arzt-Patient-Gespraech (Patientensimulation)</span>
+              <textarea
+                id="voicePromptVoiceTurnInput"
+                class="voice-prompt-config-input"
+                rows="8"
+                maxlength="60000"
+              ></textarea>
+            </label>
+            <label class="voice-prompt-config-item" for="voicePromptVoiceEvaluateInput">
+              <span>Simulationsanamnese-Bewertung</span>
+              <textarea
+                id="voicePromptVoiceEvaluateInput"
+                class="voice-prompt-config-input"
+                rows="8"
+                maxlength="60000"
+              ></textarea>
+            </label>
+            <label class="voice-prompt-config-item" for="voicePromptDoctorLetterEvaluateInput">
+              <span>Arztbrief-Bewertung</span>
+              <textarea
+                id="voicePromptDoctorLetterEvaluateInput"
+                class="voice-prompt-config-input"
+                rows="8"
+                maxlength="60000"
+              ></textarea>
+            </label>
+            <label class="voice-prompt-config-item" for="voicePromptVoiceDoctorTurnInput">
+              <span>Arzt-Arzt-Gespraech (Prueferrolle)</span>
+              <textarea
+                id="voicePromptVoiceDoctorTurnInput"
+                class="voice-prompt-config-input"
+                rows="8"
+                maxlength="60000"
+              ></textarea>
+            </label>
+            <label class="voice-prompt-config-item" for="voicePromptVoiceDoctorEvaluateInput">
+              <span>Arzt-Arzt-Bewertung</span>
+              <textarea
+                id="voicePromptVoiceDoctorEvaluateInput"
+                class="voice-prompt-config-input"
+                rows="8"
+                maxlength="60000"
+              ></textarea>
+            </label>
+          </div>
+          <div class="voice-prompt-config-actions">
+            <button id="voicePromptConfigSaveBtn" class="soft-btn" type="button">
+              Prompt-Aenderungen speichern
+            </button>
+            <button id="voicePromptConfigResetBtn" class="soft-btn" type="button">
+              Alle Prompts auf Standard zuruecksetzen
+            </button>
+          </div>
         </article>
         <p id="voiceStatus" class="voice-status">Bereit. Du kannst direkt sprechen oder Text senden.</p>
         <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
@@ -446,6 +515,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260217c"></script>
+    <script type="module" src="src/app.js?v=20260217g"></script>
   </body>
 </html>

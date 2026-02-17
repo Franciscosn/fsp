@@ -817,6 +817,75 @@ body.auth-only .edge-deco {
   justify-self: start;
 }
 
+.voice-prompt-config-toggle-btn {
+  border-color: rgba(143, 47, 73, 0.44);
+}
+
+.voice-prompt-config {
+  border: 1px solid rgba(248, 73, 102, 0.24);
+  border-radius: 14px;
+  background: #fff9fb;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.voice-prompt-config h4 {
+  margin: 0;
+  color: #8f2f49;
+}
+
+.voice-prompt-config-hint {
+  margin: 0;
+  color: #6c3e4b;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.voice-prompt-config-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.voice-prompt-config-item {
+  display: grid;
+  gap: 6px;
+}
+
+.voice-prompt-config-item > span {
+  color: #8f3650;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.voice-prompt-config-input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(248, 73, 102, 0.25);
+  padding: 10px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  resize: vertical;
+  min-height: 130px;
+  background: #fff;
+  color: #5d2736;
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.voice-prompt-config-input:focus {
+  outline: none;
+  border-color: rgba(240, 84, 118, 0.6);
+  box-shadow: 0 0 0 3px rgba(240, 84, 118, 0.14);
+}
+
+.voice-prompt-config-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .voice-resolution {
   border: 1px solid rgba(248, 73, 102, 0.24);
   border-radius: 14px;
@@ -2015,6 +2084,11 @@ body.immersive .stats-fab {
   }
 
   .voice-resolution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .voice-prompt-config-actions {
+    display: grid;
     grid-template-columns: 1fr;
   }
 
