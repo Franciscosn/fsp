@@ -11,8 +11,8 @@ const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217b";
-const BUILD_UPDATED_AT = "2026-02-17 10:08 UTC";
+const APP_VERSION = "20260217c";
+const BUILD_UPDATED_AT = "2026-02-17 10:22 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -264,7 +264,6 @@ const refs = {
   voiceCreateCaseBtn: document.getElementById("voiceCreateCaseBtn"),
   voiceCaseInput: document.getElementById("voiceCaseInput"),
   voiceDiagnoseBtn: document.getElementById("voiceDiagnoseBtn"),
-  voiceTextLabel: document.getElementById("voiceTextLabel"),
   voiceTextInput: document.getElementById("voiceTextInput"),
   voiceTextSendBtn: document.getElementById("voiceTextSendBtn"),
   voiceResolutionTitle: document.getElementById("voiceResolutionTitle"),
@@ -630,9 +629,6 @@ function buildVoiceReadyStatus() {
 
 function updateVoiceModeUi() {
   const diagnosisMode = isDiagnosisMode();
-  if (refs.voiceTextLabel) {
-    refs.voiceTextLabel.textContent = diagnosisMode ? "Diagnose per Text" : "Frage per Text";
-  }
   if (refs.voiceTextInput) {
     refs.voiceTextInput.placeholder = diagnosisMode
       ? "Formuliere hier deine Verdachtsdiagnose (z. B. 'Akute Appendizitis')."

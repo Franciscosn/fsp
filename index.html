@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260217b" />
+    <link rel="stylesheet" href="src/styles.css?v=20260217c" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -128,7 +128,6 @@
             i
           </button>
         </div>
-        <label id="voiceTextLabel" class="voice-label" for="voiceTextInput">Frage per Text</label>
         <div class="voice-text-compact">
           <button id="voiceRecordBtn" class="primary-btn voice-record-top" type="button">
             🎤 Aufnahme starten
@@ -142,6 +141,13 @@
           ></textarea>
           <button id="voiceTextSendBtn" class="soft-btn voice-send-btn" type="button">Text senden</button>
         </div>
+        <article id="voiceLastTurn" class="voice-turn hidden">
+          <p class="voice-turn-label">Du:</p>
+          <p id="voiceUserTranscript" class="voice-turn-text"></p>
+          <p class="voice-turn-label">Patient:</p>
+          <p id="voiceAssistantReply" class="voice-turn-text"></p>
+          <p id="voiceCoachHint" class="voice-coach-hint hidden"></p>
+        </article>
         <div class="voice-actions">
           <button id="voiceNextCaseBtn" class="soft-btn" type="button">Naechster Fall</button>
           <button id="voiceDiagnoseBtn" class="soft-btn voice-diagnose-btn" type="button">
@@ -170,13 +176,6 @@
             </div>
           </details>
         </div>
-        <article id="voiceLastTurn" class="voice-turn hidden">
-          <p class="voice-turn-label">Du:</p>
-          <p id="voiceUserTranscript" class="voice-turn-text"></p>
-          <p class="voice-turn-label">Patient:</p>
-          <p id="voiceAssistantReply" class="voice-turn-text"></p>
-          <p id="voiceCoachHint" class="voice-coach-hint hidden"></p>
-        </article>
         <p id="voiceStatus" class="voice-status">Bereit. Du kannst direkt sprechen oder Text senden.</p>
         <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
         <div class="voice-config-row">
@@ -380,6 +379,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260217b"></script>
+    <script type="module" src="src/app.js?v=20260217c"></script>
   </body>
 </html>
