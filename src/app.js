@@ -16,6 +16,7 @@ const BUILD_UPDATED_AT = "2026-02-17 10:22 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
+const MAX_DOCTOR_LETTER_LENGTH = 12_000;
 const MIN_VOICE_BLOB_BYTES = 450;
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
@@ -304,6 +305,15 @@ const refs = {
   voiceEvalQuestionReview: document.getElementById("voiceEvalQuestionReview"),
   voiceEvalDiagnosisReview: document.getElementById("voiceEvalDiagnosisReview"),
   voiceEvalTeacherFeedback: document.getElementById("voiceEvalTeacherFeedback"),
+  voiceDoctorLetterToggleBtn: document.getElementById("voiceDoctorLetterToggleBtn"),
+  voiceDoctorLetterPanel: document.getElementById("voiceDoctorLetterPanel"),
+  voiceDoctorLetterInput: document.getElementById("voiceDoctorLetterInput"),
+  voiceDoctorLetterSubmitBtn: document.getElementById("voiceDoctorLetterSubmitBtn"),
+  voiceDoctorLetterEvalPanel: document.getElementById("voiceDoctorLetterEvalPanel"),
+  voiceDoctorLetterEvalScore: document.getElementById("voiceDoctorLetterEvalScore"),
+  voiceDoctorLetterEvalPass: document.getElementById("voiceDoctorLetterEvalPass"),
+  voiceDoctorLetterEvalRecommendation: document.getElementById("voiceDoctorLetterEvalRecommendation"),
+  voiceDoctorLetterEvalCriteria: document.getElementById("voiceDoctorLetterEvalCriteria"),
   authPortrait: document.getElementById("authPortrait"),
   levelAvatar: document.getElementById("levelAvatar"),
   levelBadge: document.getElementById("levelBadge"),
@@ -345,6 +355,66 @@ const refs = {
   kpiAccuracy: document.getElementById("kpiAccuracy")
 };
 
+const DOCTOR_LETTER_TEMPLATE = [
+  "Patientendaten",
+  "",
+  "Name:",
+  "Geburtsdatum:",
+  "Geschlecht:",
+  "Aufnahmedatum:",
+  "Entlassungsdatum:",
+  "",
+  "⸻",
+  "",
+  "Anlass der Vorstellung",
+  "",
+  "⸻",
+  "",
+  "Anamnese",
+  "",
+  "Beschwerdebeginn und -verlauf:",
+  "Begleitsymptome:",
+  "Vorerkrankungen:",
+  "Medikamente:",
+  "Allergien / Unverträglichkeiten:",
+  "Sozialanamnese (falls relevant):",
+  "Familienanamnese (falls relevant):",
+  "",
+  "⸻",
+  "",
+  "Klinischer Befund",
+  "",
+  "Allgemeinzustand:",
+  "Vitalparameter:",
+  "Relevante körperliche Befunde:",
+  "",
+  "⸻",
+  "",
+  "Diagnostik / Befunde",
+  "",
+  "Untersuchungen:",
+  "Wesentliche Ergebnisse:",
+  "",
+  "⸻",
+  "",
+  "Diagnose",
+  "",
+  "Hauptdiagnose:",
+  "Nebendiagnosen:",
+  "",
+  "⸻",
+  "",
+  "Therapie",
+  "",
+  "⸻",
+  "",
+  "Weiteres Vorgehen / Empfehlungen",
+  "",
+  "⸻",
+  "",
+  "Entlassungszustand"
+].join("\n");
+
 wireEvents();
 init();
 
@@ -357,6 +427,10 @@ function wireEvents() {
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
   refs.voiceDiagnoseBtn?.addEventListener("click", handleVoiceDiagnoseToggle);
+  refs.voiceDoctorLetterToggleBtn?.addEventListener("click", handleDoctorLetterToggle);
+  refs.voiceDoctorLetterSubmitBtn?.addEventListener("click", () => {
+    void handleDoctorLetterSubmit();
+  });
   refs.voiceCreateCaseBtn?.addEventListener("click", handleVoiceCreateCase);
   refs.voiceInfoBtn?.addEventListener("click", openVoiceInfoModal);
   refs.voiceInfoCloseBtn?.addEventListener("click", closeVoiceInfoModal);
@@ -493,6 +567,10 @@ function initVoiceUi() {
   if (typeof storedModel.model === "string") {
     state.voiceModel = normalizeVoiceModel(storedModel.model);
   }
+  if (refs.voiceDoctorLetterInput && !refs.voiceDoctorLetterInput.value.trim()) {
+    refs.voiceDoctorLetterInput.value = DOCTOR_LETTER_TEMPLATE;
+  }
+  clearDoctorLetterEvaluationReport();
   renderVoiceModelSelect();
   applyVoiceModelSelection(state.voiceModel, { preserveStatus: true });
   renderVoiceCaseSelect();
@@ -566,6 +644,45 @@ function handleVoiceDiagnoseToggle() {
   }
   const nextMode = isDiagnosisMode() ? VOICE_MODE_QUESTION : VOICE_MODE_DIAGNOSIS;
   applyVoiceMode(nextMode, { preserveStatus: false });
+}
+
+function handleDoctorLetterToggle() {
+  if (!refs.voiceDoctorLetterPanel || !refs.voiceDoctorLetterInput) return;
+  const opening = refs.voiceDoctorLetterPanel.classList.contains("hidden");
+  refs.voiceDoctorLetterPanel.classList.toggle("hidden", !opening);
+  if (opening && !refs.voiceDoctorLetterInput.value.trim()) {
+    refs.voiceDoctorLetterInput.value = DOCTOR_LETTER_TEMPLATE;
+  }
+  if (opening) {
+    refs.voiceDoctorLetterInput.focus();
+  }
+}
+
+async function handleDoctorLetterSubmit() {
+  if (state.voiceBusy) return;
+  const doctorLetterText = String(refs.voiceDoctorLetterInput?.value || "").trim();
+  if (!doctorLetterText) {
+    setVoiceStatus("Bitte zuerst den Arztbrief ausfuellen.", true);
+    refs.voiceDoctorLetterInput?.focus();
+    return;
+  }
+  if (doctorLetterText.length > MAX_DOCTOR_LETTER_LENGTH) {
+    setVoiceStatus(`Arztbrief zu lang (max ${MAX_DOCTOR_LETTER_LENGTH} Zeichen).`, true);
+    return;
+  }
+
+  try {
+    setVoiceBusy(true);
+    setVoiceStatus("Arztbrief wird bewertet ...");
+    const result = await runDoctorLetterEvaluation(doctorLetterText);
+    renderDoctorLetterEvaluationReport(result);
+    setVoiceStatus("Arztbrief-Bewertung ist da.");
+  } catch (error) {
+    setVoiceStatus("Arztbrief-Bewertung fehlgeschlagen. Bitte erneut versuchen.", true);
+    console.error(error);
+  } finally {
+    setVoiceBusy(false);
+  }
 }
 
 function handleVoiceModelChange() {
@@ -693,6 +810,7 @@ async function handleVoiceTextSend() {
       await runVoiceEvaluation({ diagnosisText: learnerText });
     } else {
       clearVoiceEvaluationReport();
+      clearDoctorLetterEvaluationReport();
       setVoiceStatus("Sende Textfrage und simuliere Patientenantwort ...");
       await runVoiceTurn({ learnerText });
     }
@@ -1137,6 +1255,65 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
   }
 }
 
+async function runDoctorLetterEvaluation(doctorLetterText) {
+  const response = await fetch("/api/doctor-letter-evaluate", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      caseText: getActiveVoiceCaseText(),
+      history: state.voiceHistory,
+      doctorLetterText,
+      chatModel: normalizeVoiceModel(state.voiceModel)
+    })
+  });
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || !payload?.evaluation) {
+    throw new Error(payload.error || "API Fehler");
+  }
+  return payload.evaluation;
+}
+
+function renderDoctorLetterEvaluationReport(report) {
+  if (
+    !refs.voiceDoctorLetterEvalPanel ||
+    !refs.voiceDoctorLetterEvalScore ||
+    !refs.voiceDoctorLetterEvalPass ||
+    !refs.voiceDoctorLetterEvalRecommendation ||
+    !refs.voiceDoctorLetterEvalCriteria
+  ) {
+    return;
+  }
+
+  refs.voiceDoctorLetterEvalScore.textContent = `Gesamt: ${String(report.total_score || "0")} / 20`;
+  refs.voiceDoctorLetterEvalPass.textContent =
+    Number(report.total_score) >= 12
+      ? "Leistungsniveau: voraussichtlich bestanden (>= 12 Punkte)."
+      : "Leistungsniveau: voraussichtlich nicht bestanden (< 12 Punkte).";
+  refs.voiceDoctorLetterEvalRecommendation.textContent = String(report.recommendation || "");
+
+  const criteria = Array.isArray(report.criteria) ? report.criteria : [];
+  refs.voiceDoctorLetterEvalCriteria.innerHTML = "";
+  for (const item of criteria) {
+    const p = document.createElement("p");
+    const label = String(item?.name || "Kriterium");
+    const score = String(item?.score ?? "0");
+    const justification = String(item?.justification || "");
+    p.textContent = `${label}: ${score} Punkte. ${justification}`;
+    refs.voiceDoctorLetterEvalCriteria.appendChild(p);
+  }
+
+  refs.voiceDoctorLetterEvalPanel.classList.remove("hidden");
+}
+
+function clearDoctorLetterEvaluationReport() {
+  refs.voiceDoctorLetterEvalPanel?.classList.add("hidden");
+  if (refs.voiceDoctorLetterEvalScore) refs.voiceDoctorLetterEvalScore.textContent = "";
+  if (refs.voiceDoctorLetterEvalPass) refs.voiceDoctorLetterEvalPass.textContent = "";
+  if (refs.voiceDoctorLetterEvalRecommendation) refs.voiceDoctorLetterEvalRecommendation.textContent = "";
+  if (refs.voiceDoctorLetterEvalCriteria) refs.voiceDoctorLetterEvalCriteria.innerHTML = "";
+}
+
 async function runVoiceTurn(turnInput) {
   const audioBase64 = typeof turnInput?.audioBase64 === "string" ? turnInput.audioBase64 : "";
   const learnerText = typeof turnInput?.learnerText === "string" ? turnInput.learnerText : "";
@@ -1391,6 +1568,15 @@ function setVoiceBusy(isBusy) {
   }
   if (refs.voiceCreateCaseBtn) {
     refs.voiceCreateCaseBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceDoctorLetterToggleBtn) {
+    refs.voiceDoctorLetterToggleBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceDoctorLetterSubmitBtn) {
+    refs.voiceDoctorLetterSubmitBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceDoctorLetterInput) {
+    refs.voiceDoctorLetterInput.disabled = state.voiceBusy;
   }
   refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
 }
