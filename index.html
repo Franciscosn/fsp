@@ -153,6 +153,9 @@
           <button id="voiceDiagnoseBtn" class="soft-btn voice-diagnose-btn" type="button">
             Diagnostizieren
           </button>
+          <button id="voiceDoctorLetterToggleBtn" class="soft-btn" type="button">
+            Arztbrief erstellen
+          </button>
           <details class="voice-resolution voice-resolution-inline">
             <summary class="voice-resolution-toggle">Fall aufloesen</summary>
             <div class="voice-resolution-content">
@@ -228,6 +231,30 @@
               <p id="voiceEvalTeacherFeedback" class="voice-eval-prose"></p>
             </article>
           </div>
+        </article>
+        <article id="voiceDoctorLetterPanel" class="voice-doctor-letter hidden">
+          <h4>Arztbrief</h4>
+          <textarea
+            id="voiceDoctorLetterInput"
+            class="voice-doctor-letter-input"
+            rows="18"
+            placeholder="Ergaenze hier den Arztbrief und sende ihn anschliessend zur Bewertung."
+          ></textarea>
+          <button id="voiceDoctorLetterSubmitBtn" class="soft-btn voice-doctor-letter-submit" type="button">
+            Arztbrief abschicken
+          </button>
+        </article>
+        <article id="voiceDoctorLetterEvalPanel" class="voice-eval hidden">
+          <div class="voice-eval-head">
+            <h4>Arztbrief-Bewertung</h4>
+            <p id="voiceDoctorLetterEvalScore" class="voice-eval-diagnosis"></p>
+          </div>
+          <p id="voiceDoctorLetterEvalPass" class="voice-eval-likely"></p>
+          <p id="voiceDoctorLetterEvalRecommendation" class="voice-eval-summary"></p>
+          <article class="voice-eval-block">
+            <h5>Einzelkriterien</h5>
+            <div id="voiceDoctorLetterEvalCriteria" class="voice-eval-prose"></div>
+          </article>
         </article>
         <div id="voiceInfoModal" class="voice-info-modal hidden" role="dialog" aria-modal="true" aria-labelledby="voiceInfoTitle">
           <button

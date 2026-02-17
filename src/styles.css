@@ -707,6 +707,44 @@ body.auth-only .edge-deco {
   white-space: pre-wrap;
 }
 
+
+.voice-doctor-letter {
+  border: 1px solid rgba(248, 73, 102, 0.24);
+  border-radius: 14px;
+  background: #fff9fb;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.voice-doctor-letter h4 {
+  margin: 0;
+  color: #8f2f49;
+}
+
+.voice-doctor-letter-input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(248, 73, 102, 0.25);
+  padding: 10px;
+  font-size: 0.93rem;
+  line-height: 1.45;
+  resize: vertical;
+  min-height: 270px;
+  background: #fff;
+  color: #5d2736;
+}
+
+.voice-doctor-letter-input:focus {
+  outline: none;
+  border-color: rgba(240, 84, 118, 0.6);
+  box-shadow: 0 0 0 3px rgba(240, 84, 118, 0.14);
+}
+
+.voice-doctor-letter-submit {
+  justify-self: start;
+}
+
 .voice-resolution {
   border: 1px solid rgba(248, 73, 102, 0.24);
   border-radius: 14px;
