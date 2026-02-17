@@ -1103,7 +1103,7 @@ h3 {
 .folder-grid {
   margin-top: 12px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -1112,7 +1112,7 @@ h3 {
   border-radius: 12px;
   background: #fff;
   color: #6d2636;
-  padding: 10px 11px;
+  padding: 8px 9px;
   text-align: left;
   font-family: inherit;
   cursor: pointer;
@@ -1129,15 +1129,21 @@ h3 {
 }
 
 .folder-title {
-  display: block;
-  font-size: 0.95rem;
+  display: flex;
+  align-items: baseline;
+  font-size: 0.88rem;
   font-weight: 800;
+  line-height: 1.2;
+}
+
+.folder-title-short {
+  display: none;
 }
 
 .folder-count {
   display: block;
-  font-size: 0.8rem;
-  margin-top: 4px;
+  font-size: 0.75rem;
+  margin-top: 2px;
 }
 
 .selection-footer {
@@ -1780,7 +1786,29 @@ body.immersive .stats-fab {
   }
 
   .folder-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .folder {
+    padding: 7px 8px;
+  }
+
+  .folder-title {
+    font-size: 0.8rem;
+  }
+
+  .folder-title-full {
+    display: none;
+  }
+
+  .folder-title-short {
+    display: inline;
+  }
+
+  .folder-count {
+    font-size: 0.68rem;
+    margin-top: 1px;
   }
 
   .selection-footer {
