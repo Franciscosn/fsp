@@ -768,18 +768,75 @@ body.auth-only .edge-deco {
 
 .top-xp-text {
   margin: 0;
-  display: inline-flex;
-  align-items: center;
+  display: block;
   justify-self: start;
-  padding: 5px 10px;
+  color: #342028;
+  font-size: clamp(1.5rem, 3.1vw, 2.3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.daily-goal-panel {
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  width: min(560px, 100%);
+  margin: 2px 0 0;
+  padding: 9px 12px;
+  border-radius: 13px;
+  border: 1px solid rgba(214, 74, 101, 0.34);
+  background: rgba(255, 255, 255, 0.94);
+  display: grid;
+  gap: 6px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease;
+}
+
+.daily-goal-panel:hover {
+  transform: translateY(-1px);
+  border-color: rgba(214, 74, 101, 0.55);
+}
+
+.daily-goal-panel:focus-visible {
+  outline: 2px solid rgba(214, 74, 101, 0.45);
+  outline-offset: 2px;
+}
+
+.daily-goal-text {
+  margin: 0;
+  color: #6a2b3b;
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
+.daily-goal-track {
+  display: block;
+  width: 100%;
+  height: 7px;
   border-radius: 999px;
-  border: 1px solid rgba(123, 123, 123, 0.35);
-  background: rgba(255, 255, 255, 0.92);
-  color: #3f3f3f;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  overflow: hidden;
+  background: rgba(214, 74, 101, 0.16);
+}
+
+.daily-goal-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #ce3152, #f46884);
+  transition: width 180ms ease;
+}
+
+.daily-goal-hint {
+  color: #915867;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.daily-goal-panel.done .daily-goal-fill {
+  background: linear-gradient(90deg, #8f1733, #cd4664);
 }
 
 .xp-milestone {
@@ -1618,6 +1675,23 @@ body.immersive .stats-fab {
 
   .practice-headline {
     font-size: 1.05rem;
+  }
+
+  .top-xp-text {
+    font-size: 1.34rem;
+  }
+
+  .daily-goal-panel {
+    padding: 8px 10px;
+    gap: 5px;
+  }
+
+  .daily-goal-text {
+    font-size: 0.85rem;
+  }
+
+  .daily-goal-hint {
+    font-size: 0.68rem;
   }
 
   .practice-btn {

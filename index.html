@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260216g" />
+    <link rel="stylesheet" href="src/styles.css?v=20260216h" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -92,8 +92,19 @@
 
       <header class="panel dedication reveal" style="--i: 2">
         <div class="dedication-copy">
-          <p id="topXpText" class="top-xp-text">XP: 0</p>
+          <p id="topXpText" class="top-xp-text">Gesamt XP 0</p>
           <p id="xpMilestone" class="xp-milestone hidden" aria-live="polite">+10 XP</p>
+          <button
+            id="dailyGoalPanel"
+            class="daily-goal-panel"
+            type="button"
+            title="Tagesziel setzen"
+            aria-label="Tagesziel in XP setzen"
+          >
+            <span id="dailyGoalText" class="daily-goal-text">Heute 0 / 20 XP</span>
+            <span class="daily-goal-track"><span id="dailyGoalFill" class="daily-goal-fill"></span></span>
+            <span class="daily-goal-hint">Klicken, um Tagesziel zu aendern</span>
+          </button>
           <h2 class="practice-headline">some german a day keeps the doctor not away</h2>
           <button id="quickPracticeBtn" class="primary-btn practice-btn" type="button">Üben</button>
           <p class="muted">regular spaced repetition mode</p>
@@ -343,6 +354,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260216g"></script>
+    <script type="module" src="src/app.js?v=20260216h"></script>
   </body>
 </html>

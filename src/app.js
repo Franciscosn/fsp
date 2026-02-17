@@ -2,15 +2,17 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const STORAGE_PROGRESS_KEY = "fsp_heart_progress_v1";
 const STORAGE_DAILY_KEY = "fsp_heart_daily_v1";
+const STORAGE_DAILY_GOAL_KEY = "fsp_daily_goal_v1";
 const STORAGE_XP_KEY = "fsp_xp_v1";
 const STORAGE_VOICE_CASE_KEY = "fsp_voice_case_v1";
 const STORAGE_VOICE_CASE_SELECTION_KEY = "fsp_voice_case_selection_v1";
 const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
-const DAILY_GOAL = 20;
+const DEFAULT_DAILY_GOAL = 20;
+const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260216g";
-const BUILD_UPDATED_AT = "2026-02-16 17:19 UTC";
+const APP_VERSION = "20260216h";
+const BUILD_UPDATED_AT = "2026-02-16 17:41 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -197,6 +199,9 @@ const FOLDERS = [
 
 const initialProgress = migrateStoredProgress(loadFromStorage(STORAGE_PROGRESS_KEY, {}));
 const initialDailyStats = loadFromStorage(STORAGE_DAILY_KEY, {});
+const initialDailyGoal = resolveStoredDailyGoal(
+  loadFromStorage(STORAGE_DAILY_GOAL_KEY, { goal: DEFAULT_DAILY_GOAL })
+);
 const initialXp = resolveStoredXp(loadFromStorage(STORAGE_XP_KEY, {}), initialProgress);
 
 const state = {
@@ -213,6 +218,7 @@ const state = {
   currentCorrectIndex: -1,
   progress: initialProgress,
   dailyStats: initialDailyStats,
+  dailyGoal: initialDailyGoal,
   xp: initialXp,
   sessionXp: 0,
   user: null,
@@ -243,6 +249,9 @@ const refs = {
   sessionText: document.getElementById("sessionText"),
   topXpText: document.getElementById("topXpText"),
   xpMilestone: document.getElementById("xpMilestone"),
+  dailyGoalPanel: document.getElementById("dailyGoalPanel"),
+  dailyGoalText: document.getElementById("dailyGoalText"),
+  dailyGoalFill: document.getElementById("dailyGoalFill"),
   buildBadge: document.getElementById("buildBadge"),
   voicePanel: document.getElementById("voicePanel"),
   voiceModelSelect: document.getElementById("voiceModelSelect"),
@@ -326,6 +335,7 @@ function wireEvents() {
   refs.signupBtn.addEventListener("click", handleSignup);
   refs.logoutBtn.addEventListener("click", handleLogout);
   refs.quickPracticeBtn.addEventListener("click", startQuickPractice);
+  refs.dailyGoalPanel?.addEventListener("click", handleDailyGoalEdit);
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
   refs.voiceDiagnoseBtn?.addEventListener("click", handleVoiceDiagnoseToggle);
@@ -1635,6 +1645,27 @@ async function handleLogout() {
   refs.authStatus.textContent = "Ausgeloggt";
 }
 
+function handleDailyGoalEdit() {
+  const current = normalizeDailyGoal(state.dailyGoal);
+  const rawInput = window.prompt("Tagesziel in XP festlegen (1-500):", String(current));
+  if (rawInput === null) return;
+
+  const parsed = Number.parseInt(rawInput.trim(), 10);
+  if (!Number.isFinite(parsed)) {
+    return;
+  }
+  setDailyGoal(parsed);
+}
+
+function setDailyGoal(nextGoal) {
+  const normalized = normalizeDailyGoal(nextGoal);
+  if (normalized === state.dailyGoal) return;
+  state.dailyGoal = normalized;
+  saveToStorage(STORAGE_DAILY_GOAL_KEY, { goal: normalized });
+  scheduleRemoteSync();
+  renderStats();
+}
+
 function startQuickPractice() {
   state.sessionXp = 0;
   renderSessionXpDisplay();
@@ -2157,18 +2188,32 @@ function showXpMilestone(text) {
 function renderStats() {
   const day = ensureDayStats(todayKey());
   const rate = day.attempts > 0 ? Math.round((day.correct / day.attempts) * 100) : 0;
+  const todayXp = normalizeXpValue(day.correct);
+  const dailyGoal = normalizeDailyGoal(state.dailyGoal);
 
   refs.todayAttempts.textContent = String(day.attempts);
   refs.todayCorrect.textContent = String(day.correct);
   refs.todayWrong.textContent = String(day.wrong);
   refs.todayRate.textContent = `${rate}%`;
-  refs.kpiGoal.textContent = `${day.attempts} / ${DAILY_GOAL}`;
+  refs.kpiGoal.textContent = `${todayXp} / ${dailyGoal} XP`;
   refs.kpiAccuracy.textContent = `${rate}%`;
   refs.kpiStreak.textContent = `${computeStreak()} Tage`;
 
+  renderDailyGoalDisplay(todayXp, dailyGoal);
   renderSessionXpDisplay();
   renderWeekChart();
   renderXpDisplay();
+}
+
+function renderDailyGoalDisplay(todayXp, dailyGoal) {
+  if (!refs.dailyGoalText || !refs.dailyGoalFill || !refs.dailyGoalPanel) return;
+  const progress = dailyGoal > 0 ? Math.min(100, Math.round((todayXp / dailyGoal) * 100)) : 0;
+  refs.dailyGoalText.textContent = `Heute ${todayXp} / ${dailyGoal} XP`;
+  refs.dailyGoalFill.style.width = `${progress}%`;
+  refs.dailyGoalPanel.setAttribute("aria-valuemin", "0");
+  refs.dailyGoalPanel.setAttribute("aria-valuemax", String(dailyGoal));
+  refs.dailyGoalPanel.setAttribute("aria-valuenow", String(Math.min(todayXp, dailyGoal)));
+  refs.dailyGoalPanel.classList.toggle("done", todayXp >= dailyGoal);
 }
 
 function renderSessionXpDisplay() {
@@ -2190,7 +2235,7 @@ function renderXpDisplay() {
   refs.levelProgressText.textContent = `${blockProgress} / 10 bis +10 XP`;
   refs.levelFill.style.width = `${percent}%`;
   if (refs.topXpText) {
-    refs.topXpText.textContent = `XP: ${xp}`;
+    refs.topXpText.textContent = `Gesamt XP ${xp}`;
   }
 
   const track = refs.levelFill.parentElement;
@@ -2402,6 +2447,18 @@ function resolveStoredXp(rawValue, progressMap) {
   return deriveXpFromProgress(progressMap);
 }
 
+function resolveStoredDailyGoal(rawValue) {
+  if (rawValue && typeof rawValue === "object") {
+    if (Object.prototype.hasOwnProperty.call(rawValue, "goal")) {
+      return normalizeDailyGoal(rawValue.goal);
+    }
+    if (Object.prototype.hasOwnProperty.call(rawValue, "dailyGoal")) {
+      return normalizeDailyGoal(rawValue.dailyGoal);
+    }
+  }
+  return DEFAULT_DAILY_GOAL;
+}
+
 function deriveXpFromProgress(progressMap) {
   if (!progressMap || typeof progressMap !== "object") return 0;
   let total = 0;
@@ -2416,6 +2473,12 @@ function normalizeXpValue(value) {
   const numeric = Number(value);
   if (!Number.isFinite(numeric)) return 0;
   return Math.max(0, Math.floor(numeric));
+}
+
+function normalizeDailyGoal(value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return DEFAULT_DAILY_GOAL;
+  return Math.max(1, Math.min(MAX_DAILY_GOAL, Math.round(numeric)));
 }
 
 function createDefaultProgressEntry() {
@@ -2539,7 +2602,8 @@ async function pullRemoteState() {
     if (
       Object.keys(state.progress).length ||
       Object.keys(state.dailyStats).length ||
-      normalizeXpValue(state.xp) > 0
+      normalizeXpValue(state.xp) > 0 ||
+      state.dailyGoal !== DEFAULT_DAILY_GOAL
     ) {
       await pushRemoteState();
     }
@@ -2559,9 +2623,11 @@ async function pullRemoteState() {
         ? payload.dailyStats
         : {};
     state.xp = resolveStoredXp(payload, migratedProgress);
+    state.dailyGoal = resolveStoredDailyGoal(payload);
     saveToStorage(STORAGE_PROGRESS_KEY, state.progress);
     saveToStorage(STORAGE_DAILY_KEY, state.dailyStats);
     saveToStorage(STORAGE_XP_KEY, { total: state.xp });
+    saveToStorage(STORAGE_DAILY_GOAL_KEY, { goal: state.dailyGoal });
     renderFolderFilters();
     rebuildQueue(false);
     renderStats();
@@ -2578,7 +2644,8 @@ async function pushRemoteState() {
   const payload = JSON.stringify({
     progress: state.progress,
     dailyStats: state.dailyStats,
-    xp: normalizeXpValue(state.xp)
+    xp: normalizeXpValue(state.xp),
+    dailyGoal: normalizeDailyGoal(state.dailyGoal)
   });
 
   if (remoteStateRowId) {
