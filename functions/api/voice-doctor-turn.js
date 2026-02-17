@@ -46,30 +46,35 @@ const SYSTEM_INSTRUCTIONS = [
   "",
   "Der Fall ist identisch mit dem zuvor gefuehrten Anamnesegespraech und dem dazugehoerigen Arztbrief. Es wird kein neuer Fall eingefuehrt. Du kennst den Fall in groben Zuegen, pruefst jedoch, ob die Kandidatin / der Kandidat in der Lage ist, die relevanten Informationen strukturiert, fachlich korrekt und verstaendlich muendlich zu uebergeben.",
   "",
-  "Deine Aufgabe ist es:",
-  "- das Arzt-Arzt-Gespraech realistisch zu eroeffnen",
-  "- die Kandidatin / den Kandidaten zur strukturierten Fallvorstellung aufzufordern",
-  "- gezielte aerztliche Rueckfragen zu stellen, wie sie in der Fachsprachpruefung ueblich sind",
-  "- Verstaendnis, Struktur, medizinische Fachsprache und Relevanz der Inhalte zu ueberpruefen",
+  "Gespraechssteuerung (verbindlich):",
+  "1) Wenn noch keine strukturierte Fallvorstellung vorliegt, eroeffne pruefungsnah und fordere aktiv zur strukturierten Uebergabe auf.",
+  "2) Fuehre das Gespraech aktiv. Stelle pro Turn genau eine fokussierte Rueckfrage.",
+  "3) Jede Rueckfrage muss sich auf die letzte Kandidatenaussage beziehen und Unklarheiten, Luecken, Widersprueche oder fehlende Priorisierung pruefen.",
+  "4) Frage gezielt nach, wenn Informationen fehlen oder unscharf formuliert sind.",
+  "5) Gib keine Hilfestellungen, keine Bewertungen, kein Feedback, keine Musterloesung.",
   "",
-  "Stelle Rueckfragen insbesondere zu:",
-  "- Anlass der Vorstellung",
-  "- relevanten Anamnesebefunden",
-  "- wesentlichen Untersuchungsergebnissen",
-  "- Haupt- und Nebendiagnosen",
-  "- bisheriger Therapie",
-  "- geplantem weiteren Vorgehen",
+  "Fragetypen (nutze sie pruefungsnah und situationsgerecht):",
+  "1. Verstaendnis- und Praezisierungsfragen: 'Was meinen Sie genau mit ...?', 'Koennen Sie das bitte praezisieren?', 'Wie haben Sie diesen Befund interpretiert?', 'Was war dabei ausschlaggebend?'",
+  "2. Struktur- und Priorisierungsfragen: 'Was war in diesem Fall am wichtigsten?', 'Welche Befunde sind fuer das weitere Vorgehen entscheidend?', 'Was nennen Sie bei der Uebergabe zuerst?'",
+  "3. Nachfragen zu Diagnosen (ohne Detail-Fachfragen): 'Warum ist diese Diagnose wahrscheinlich?', 'Gab es Alternativdiagnosen?', 'Was sprach dagegen?'",
+  "4. Fragen zur Therapieentscheidung: 'Was wurde bisher therapeutisch gemacht?', 'Warum haben Sie sich dafuer entschieden?', 'Was ist der naechste Schritt?'",
+  "5. Sicherheits- und Aufklaerungsaspekte: 'Gab es Risiken, ueber die aufgeklaert wurde?', 'Welche Warnzeichen wurden genannt?'",
+  "6. Weiteres Vorgehen / Organisation: 'Was passiert als Naechstes?', 'Wer uebernimmt die Weiterbehandlung?', 'Wie ist die Nachsorge geplant?'",
+  "7. Sprachliche Klaerungsfragen: 'Wie genau meinen Sie das?', 'Koennen Sie das anders formulieren?'",
   "",
-  "Achte darauf, dass deine Fragen pruefungsnah, sachlich und auf aerztlichem Niveau gestellt werden. Unterbrich nur, wenn Inhalte unklar, unvollstaendig oder widerspruechlich sind. Frage gezielt nach, wenn wichtige Informationen fehlen oder unscharf formuliert werden.",
+  "Inhaltliche Priorisierung im Verlauf:",
+  "Anlass der Vorstellung -> relevante Anamnese -> wesentliche Befunde -> Haupt-/Nebendiagnosen -> bisherige Therapie -> Sicherheits-/Aufklaerungspunkte -> weiteres Vorgehen/Nachsorge.",
   "",
-  "Verhalte dich professionell, neutral und zurueckhaltend. Gib keine Hilfestellungen, keine Bewertungen, kein Feedback waehrend des Gespraechs. Keine Meta-Kommentare, keine Rollenerklaerungen.",
+  "Achte auf professionelle, neutrale, sachliche und pruefungsnahe Sprache.",
+  "Unterbrich nur bei Unklarheit, Unvollstaendigkeit oder Widerspruch.",
   "",
   "Du sprichst ausschliesslich als pruefende Aerztin / pruefender Arzt.",
   "",
-  "Wenn noch keine sinnvolle Fallvorstellung vorliegt, beginne mit einer typischen pruefungsnahen Aufforderung zur Fallvorstellung.",
+  "Wenn noch keine sinnvolle Fallvorstellung vorliegt, beginne mit einer typischen Aufforderung zur strukturierten Fallvorstellung.",
   "Antworten ausschliesslich auf Deutsch.",
   "Ausgabe ausschliesslich als valides JSON mit examiner_reply und off_topic.",
-  "examiner_reply: kurz und praezise, maximal 80 Woerter."
+  "examiner_reply: 1-2 Saetze, kurz und praezise, maximal 110 Woerter, immer mit mindestens einer konkreten Frage und Fragezeichen.",
+  "off_topic: true nur wenn die Kandidatenaussage klar am Fall/Thema vorbeigeht; sonst false."
 ].join("\n");
 
 export async function onRequestPost(context) {
@@ -94,20 +99,34 @@ export async function onRequestPost(context) {
       return json({ error: "Keine Eingabe erkannt. Bitte sprechen oder Text eingeben." }, 422);
     }
 
-    const promptInput = JSON.stringify(
-      {
-        case_profile: payload.caseText,
-        conversation_history: payload.history,
-        candidate_latest_utterance: transcript
-      },
-      null,
-      2
-    );
+    const firstTurn = payload.history.length === 0;
+    const forceOpening = shouldForceOpeningPrompt(payload.history, transcript);
 
-    const raw = await runExaminerTurnRequest(context.env.AI, promptInput, payload.chatModel);
-    const candidate = buildCandidateTurn(raw);
-    const examinerReply = normalizeExaminerReply(candidate.examiner_reply, transcript);
-    const offTopic = Boolean(candidate.off_topic);
+    let candidate = { examiner_reply: "", off_topic: false };
+    if (forceOpening) {
+      candidate = {
+        examiner_reply: buildOpeningExaminerReply(),
+        off_topic: false
+      };
+    } else {
+      const promptInput = JSON.stringify(
+        {
+          case_profile: payload.caseText,
+          conversation_history: payload.history,
+          candidate_latest_utterance: transcript
+        },
+        null,
+        2
+      );
+      const raw = await runExaminerTurnRequest(context.env.AI, promptInput, payload.chatModel);
+      candidate = buildCandidateTurn(raw);
+    }
+
+    const examinerReply = normalizeExaminerReply(candidate.examiner_reply, transcript, {
+      firstTurn,
+      forceOpening
+    });
+    const offTopic = firstTurn || forceOpening ? false : Boolean(candidate.off_topic);
 
     const spokenReply = truncateForTts(examinerReply);
     const replyAudioBase64 = payload.preferLocalTts
@@ -435,16 +454,26 @@ function stripCodeFence(value) {
   return value.replace(/^```(?:json)?/i, "").replace(/```$/i, "").trim();
 }
 
-function normalizeExaminerReply(text, transcript) {
+function normalizeExaminerReply(text, transcript, options = {}) {
+  const firstTurn = Boolean(options.firstTurn);
+  const forceOpening = Boolean(options.forceOpening);
   let cleaned = sanitizeModelText(String(text || ""));
   cleaned = cleaned.replace(/^(examiner|examiner_reply|antwort)\s*:\s*/i, "").trim();
   cleaned = cleaned.replace(/\s{2,}/g, " ");
+  if (forceOpening) {
+    return buildOpeningExaminerReply();
+  }
   if (looksLikeMetaResponse(cleaned)) {
     cleaned = "";
   }
+  if (firstTurn && !looksLikeOpeningPrompt(cleaned)) {
+    cleaned = "";
+  }
+  cleaned = cleaned.slice(0, MAX_EXAMINER_REPLY_LENGTH);
+  cleaned = ensureReplyContainsQuestion(cleaned, transcript, firstTurn);
   cleaned = cleaned.slice(0, MAX_EXAMINER_REPLY_LENGTH);
   if (cleaned) return cleaned;
-  return fallbackExaminerReply(transcript);
+  return fallbackExaminerReply(transcript, { firstTurn });
 }
 
 function looksLikeMetaResponse(text) {
@@ -458,12 +487,122 @@ function looksLikeMetaResponse(text) {
   );
 }
 
-function fallbackExaminerReply(transcript) {
+function fallbackExaminerReply(transcript, options = {}) {
+  const firstTurn = Boolean(options.firstTurn);
   const lower = String(transcript || "").toLowerCase();
-  if (!lower || /\b(hallo|guten tag|moin|servus)\b/.test(lower)) {
-    return "Guten Tag. Bitte stellen Sie den Fall strukturiert vor: Anlass der Vorstellung, relevante Anamnese, Befunde, Diagnose, Therapie und weiteres Vorgehen.";
+  if (firstTurn || !lower || /\b(hallo|guten tag|moin|servus)\b/.test(lower)) {
+    return buildOpeningExaminerReply();
   }
-  return "Bitte bleiben Sie beim selben Fall und berichten Sie strukturiert: relevante Anamnese, zentrale Befunde, Haupt- und Nebendiagnosen, bisherige Therapie und geplantes weiteres Vorgehen.";
+  return buildTargetedFollowUpQuestion(transcript);
+}
+
+function shouldForceOpeningPrompt(history, transcript) {
+  if (Array.isArray(history) && history.length > 0) return false;
+  return !looksLikeStructuredPresentation(transcript);
+}
+
+function looksLikeStructuredPresentation(text) {
+  const lower = String(text || "").toLowerCase();
+  if (!lower) return false;
+  const keywords = [
+    "anlass",
+    "anamnese",
+    "befund",
+    "diagnose",
+    "therapie",
+    "vorgehen",
+    "weiteres",
+    "aufnahme"
+  ];
+  let hits = 0;
+  for (const keyword of keywords) {
+    if (lower.includes(keyword)) {
+      hits += 1;
+    }
+  }
+  return lower.length >= 150 && hits >= 3;
+}
+
+function looksLikeOpeningPrompt(text) {
+  const lower = String(text || "").toLowerCase();
+  if (!lower) return false;
+  return (
+    lower.includes("fall strukturiert vor") ||
+    lower.includes("fallvorstellung") ||
+    lower.includes("berichten sie strukturiert") ||
+    lower.includes("stellen sie den fall")
+  );
+}
+
+function buildOpeningExaminerReply() {
+  return "Guten Tag. Bitte stellen Sie den Fall jetzt strukturiert vor: Anlass der Vorstellung, relevante Anamnese, wesentliche Befunde, Haupt- und Nebendiagnosen, bisherige Therapie sowie geplantes weiteres Vorgehen. Womit beginnen Sie?";
+}
+
+function ensureReplyContainsQuestion(reply, transcript, firstTurn) {
+  const normalized = String(reply || "").trim();
+  if (!normalized) return "";
+  if (normalized.includes("?")) return normalized;
+  const followUp = firstTurn
+    ? "Womit beginnen Sie?"
+    : buildTargetedFollowUpQuestion(transcript);
+  const sentence = followUp.replace(/\s+/g, " ").trim();
+  return `${normalized} ${sentence}`.trim().slice(0, MAX_EXAMINER_REPLY_LENGTH);
+}
+
+function buildTargetedFollowUpQuestion(transcript) {
+  const lower = String(transcript || "").toLowerCase();
+  if (!lower) {
+    return "Koennen Sie das bitte praezisieren: Was war in diesem Fall klinisch am wichtigsten?";
+  }
+
+  if (
+    lower.includes("diagnose") ||
+    lower.includes("verdacht") ||
+    lower.includes("dd") ||
+    lower.includes("differenzial")
+  ) {
+    return "Warum halten Sie diese Diagnose fuer wahrscheinlich, und welche Alternativdiagnose haben Sie geprueft?";
+  }
+
+  if (
+    lower.includes("therapie") ||
+    lower.includes("behandl") ||
+    lower.includes("medik") ||
+    lower.includes("gegeben")
+  ) {
+    return "Was wurde bisher therapeutisch umgesetzt, und was planen Sie als naechsten Schritt?";
+  }
+
+  if (
+    lower.includes("befund") ||
+    lower.includes("labor") ||
+    lower.includes("ct") ||
+    lower.includes("mrt") ||
+    lower.includes("sono") ||
+    lower.includes("ekg")
+  ) {
+    return "Welche dieser Befunde waren fuer Ihre Entscheidung ausschlaggebend?";
+  }
+
+  if (
+    lower.includes("weiter") ||
+    lower.includes("nachsorge") ||
+    lower.includes("entlass") ||
+    lower.includes("uebernahme") ||
+    lower.includes("organisation")
+  ) {
+    return "Wie ist das weitere Vorgehen organisatorisch geplant, und wer uebernimmt die Weiterbehandlung?";
+  }
+
+  if (
+    lower.includes("risiko") ||
+    lower.includes("aufklaer") ||
+    lower.includes("warnzeichen")
+  ) {
+    return "Welche Risiken oder Warnzeichen wurden angesprochen, und wie wurde darueber aufgeklaert?";
+  }
+
+  return "Koennen Sie das bitte praezisieren: Was war in diesem Fall am wichtigsten, und welche Information nennen Sie bei der Uebergabe zuerst?";
 }
 
 function truncateForTts(text) {
