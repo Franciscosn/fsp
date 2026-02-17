@@ -302,14 +302,22 @@ async function transcribeAudio(ai, audioBase64) {
   try {
     result = await ai.run(WHISPER_MODEL, primaryPayload);
   } catch {
-    const audioBytes = base64ToUint8Array(audioBase64);
+    let audioBytes = null;
     try {
-      result = await ai.run(WHISPER_MODEL, {
-        ...primaryPayload,
-        audio: Array.from(audioBytes)
-      });
+      audioBytes = base64ToUint8Array(audioBase64);
     } catch {
       result = null;
+      audioBytes = null;
+    }
+    if (audioBytes) {
+      try {
+        result = await ai.run(WHISPER_MODEL, {
+          ...primaryPayload,
+          audio: Array.from(audioBytes)
+        });
+      } catch {
+        result = null;
+      }
     }
   }
 
