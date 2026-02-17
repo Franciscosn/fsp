@@ -1,7 +1,7 @@
 {
   "deckName": "FSP-Berlin-Masterdeck",
   "language": "de",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "terms": [
     {
       "termId": "hypoglykaemie",
@@ -3500,6 +3500,1334 @@
           "type": "differenzial_text",
           "question": "Ein 66-jähriger Patient klagt über diffuse proximale Muskelschmerzen und Leistungsschwäche. Vor drei Monaten wurde eine Statintherapie begonnen. Fieber besteht nicht, neurologische Ausfälle sind nicht fokal. Der Schmerz ist beidseits ähnlich ausgeprägt. Welche zwei Differenzialdiagnosen sind am wahrscheinlichsten?",
           "answer_de": "Wahrscheinlichste Differenzialdiagnosen:\n1) Statin-assoziierte Myopathie\n2) Polymyalgia rheumatica\n\nWarum:\nZeitlicher Zusammenhang mit Statinbeginn spricht für medikamentöse Myopathie. Bei höherem Alter und proximalen Beschwerden bleibt Polymyalgia rheumatica differenzialdiagnostisch relevant.\n\nPraktischer nächster Schritt:\nCK/Entzündungsparameter bestimmen, Medikamentenreview durchführen und je nach Befund Therapie anpassen."
+        }
+      ]
+    },
+    {
+      "termId": "berlin_vorlesen",
+      "fachbegriff": "Berlin FSP Zusatzfragen - Vorlesen",
+      "patientensprache": "Vorlesetexte mit Einheiten",
+      "cards": [
+        {
+          "cardId": "berlin-vorlesen-01",
+          "type": "story_text",
+          "question": "Vorlesetext 1: Aufnahme wegen retrosternalem Druck seit 2 Stunden. Vitalparameter: RR 168/96 mmHg, HF 112/min, AF 22/min, SpO2 94 % an Raumluft, Temp. 37,4 C. Im 12-Kanal-EKG zeigen sich ST-Senkungen in V4 bis V6. Erstes hs-Troponin T: 48 ng/l (Norm < 14 ng/l)."
+        },
+        {
+          "cardId": "berlin-vorlesen-02",
+          "type": "story_text",
+          "question": "Vorlesetext 2: Patient mit exazerbierter COPD, Dyspnoe in Ruhe und produktivem Husten. BGA unter 2 l O2: pH 7,31, pCO2 58 mmHg, pO2 62 mmHg, HCO3- 28 mmol/l. Auskultatorisch beidseits exspiratorisches Giemen, AF 28/min."
+        },
+        {
+          "cardId": "berlin-vorlesen-03",
+          "type": "story_text",
+          "question": "Vorlesetext 3: Entgleister Diabetes mellitus mit Polydipsie und Polyurie. BZ 426 mg/dl, Ketone im Urin positiv, pH 7,24, Bikarbonat 15 mmol/l, Anionenluecke erhoeht. Initiale Therapie mit 0,9 % NaCl 1000 ml i.v. und ICT-Schema."
+        },
+        {
+          "cardId": "berlin-vorlesen-04",
+          "type": "story_text",
+          "question": "Vorlesetext 4: Sepsisverdacht bei Pneumonie. Temp. 39,2 C, RR 92/58 mmHg, HF 124/min, AF 30/min, Laktat 3,8 mmol/l, Leukozyten 18,4 /nl, CRP 224 mg/l. Es erfolgten Blutkulturen, kalkulierte Antibiose mit Piperacillin/Tazobactam und 30 ml/kg Volumentherapie."
+        },
+        {
+          "cardId": "berlin-vorlesen-05",
+          "type": "story_text",
+          "question": "Vorlesetext 5: Akuter neurologischer Ausfall seit 35 Minuten mit Fazialisparese rechts und Dysarthrie. NIHSS 7 Punkte. CCT ohne Blutung, CTA mit Verschluss der A. cerebri media links. Blutdruck bei Aufnahme 186/101 mmHg, Glukose 132 mg/dl."
+        },
+        {
+          "cardId": "berlin-vorlesen-06",
+          "type": "story_text",
+          "question": "Vorlesetext 6: Obere GI-Blutung mit Haematemesis und Melaena. Hb 7,9 g/dl, RR 98/60 mmHg, HF 118/min, INR 1,8 unter OAK. Notfallgastroskopie geplant, vorher 2 EK angefordert, PPI-Bolus 80 mg i.v. und anschliessend Perfusor 8 mg/h."
+        },
+        {
+          "cardId": "berlin-vorlesen-07",
+          "type": "story_text",
+          "question": "Vorlesetext 7: Akute Nierenfunktionsverschlechterung bei Exsikkose. Kreatinin 2,4 mg/dl (Vorwert 1,0), Harnstoff 86 mg/dl, Kalium 5,6 mmol/l, Natrium 149 mmol/l. Diurese in 12 Stunden 250 ml, sonografisch kein Harnstau."
+        },
+        {
+          "cardId": "berlin-vorlesen-08",
+          "type": "story_text",
+          "question": "Vorlesetext 8: Symptomatische Hyponatriaemie mit Verwirrtheit und Gangunsicherheit. Natrium 118 mmol/l, Serum-Osmolalitaet 258 mosmol/kg, Urin-Natrium 62 mmol/l. Es wurde eine engmaschig kontrollierte Therapie mit 3 % NaCl eingeleitet."
+        },
+        {
+          "cardId": "berlin-vorlesen-09",
+          "type": "story_text",
+          "question": "Vorlesetext 9: Ambulant erworbene Pneumonie rechts basal. Temp. 38,7 C, CRP 186 mg/l, Prokalzitonin 2,1 ng/ml, Leukozyten 15,2 /nl. Röntgen-Thorax mit Infiltrat im rechten Unterlappen, initial Ceftriaxon 2 g i.v. plus Azithromycin 500 mg."
+        },
+        {
+          "cardId": "berlin-vorlesen-10",
+          "type": "story_text",
+          "question": "Vorlesetext 10: Akute kardiale Dekompensation mit Orthopnoe und Beinödemen. NT-proBNP 6840 pg/ml, Kreatinin 1,6 mg/dl, Troponin ohne Dynamik. Rasselgeraeusche beidseits basal, SpO2 89 % an Raumluft. Therapie: Furosemid 40 mg i.v. und Sauerstoffgabe."
+        },
+        {
+          "cardId": "berlin-vorlesen-11",
+          "type": "story_text",
+          "question": "Vorlesetext 11: Hyperthyreose mit Gewichtsverlust, Tremor und Tachykardie. TSH supprimiert < 0,01 mU/l, fT4 38 pmol/l, fT3 11 pmol/l. Klinisch warme Haut, feinschlaegiger Tremor, HF 118/min. Beginn mit Thiamazol 20 mg 1-0-1 und Propranolol 20 mg 1-1-1."
+        },
+        {
+          "cardId": "berlin-vorlesen-12",
+          "type": "story_text",
+          "question": "Vorlesetext 12: Lungenembolie bei immobilisierter Patientin. D-Dimere 4,2 mg/l FEU, HF 116/min, SpO2 91 % unter Raumluft, RR 132/84 mmHg. CT-Angiografie mit segmentalen Embolien beidseits, Beginn einer therapeutischen Antikoagulation mit Enoxaparin 1 mg/kg 2-mal taeglich."
+        },
+        {
+          "cardId": "berlin-vorlesen-13",
+          "type": "story_text",
+          "question": "Vorlesetext 13: Akute Pankreatitis mit epigastrischen Schmerzen und Erbrechen. Lipase 1450 U/l, CRP 92 mg/l, Leukozyten 14,1 /nl. Sonografie ohne Cholezystitis, aber Cholelithiasis bekannt. Therapie: Nahrungskarenz, balancierte Elektrolytloesung 250 ml/h und Analgesie."
+        },
+        {
+          "cardId": "berlin-vorlesen-14",
+          "type": "story_text",
+          "question": "Vorlesetext 14: Meningitisverdacht mit hohem Fieber, Nackensteife und Photophobie. RR 110/70 mmHg, HF 108/min, Temp. 39,4 C. Vor Lumbalpunktion erfolgte Blutkulturabnahme und sofortiger Beginn mit Ceftriaxon 2 g alle 12 Stunden plus Ampicillin 2 g alle 4 Stunden."
+        },
+        {
+          "cardId": "berlin-vorlesen-15",
+          "type": "story_text",
+          "question": "Vorlesetext 15: Komplizierte Harnwegsinfektion mit Flankenschmerz rechts. Temp. 38,9 C, CRP 176 mg/l, Leukozyten 17,0 /nl, Kreatinin 1,9 mg/dl. Urinstatus nitritpositiv, Leukozyturie deutlich. Nach Blut- und Urinkultur kalkulierte Antibiose mit Cefotaxim 2 g i.v."
+        },
+        {
+          "cardId": "berlin-vorlesen-16",
+          "type": "story_text",
+          "question": "Vorlesetext 16: Asthmaexazerbation mit exspiratorischem Stridor und verlängerter Exspiration. Peak-Flow 180 l/min bei Sollwert 420 l/min. AF 30/min, SpO2 90 % unter Raumluft. Inhalativ Salbutamol plus Ipratropium, zusaetzlich Prednisolon 50 mg p.o."
+        },
+        {
+          "cardId": "berlin-vorlesen-17",
+          "type": "story_text",
+          "question": "Vorlesetext 17: Anaphylaxie nach Penicillin mit Urtikaria, Dyspnoe und Hypotonie. RR 78/46 mmHg, HF 132/min, SpO2 88 %. Sofortmassnahmen: Adrenalin 0,5 mg i.m., Volumenbolus 1000 ml kristalloid, Antihistaminikum und Kortikosteroid i.v."
+        },
+        {
+          "cardId": "berlin-vorlesen-18",
+          "type": "story_text",
+          "question": "Vorlesetext 18: Vorhofflimmern unter Marcumar-Therapie. INR bei Aufnahme 4,6, Hb 11,2 g/dl, keine aktive Blutung. Dosis pausiert, engmaschige INR-Kontrollen veranlasst und Interaktionsanamnese erhoben, insbesondere wegen neu gestarteter Antibiotikatherapie."
+        },
+        {
+          "cardId": "berlin-vorlesen-19",
+          "type": "story_text",
+          "question": "Vorlesetext 19: Praeeklampsie in der 33. SSW mit RR 172/108 mmHg und Kopfschmerzen. Proteinurie im Spot-Urin +++, Thrombozyten 132 /nl, GOT 74 U/l. Stationaere Ueberwachung, Antihypertensiva und fetomaternales Monitoring wurden eingeleitet."
+        },
+        {
+          "cardId": "berlin-vorlesen-20",
+          "type": "story_text",
+          "question": "Vorlesetext 20: Postoperatives Delir nach HTEP am zweiten Tag. Patient desorientiert, wechselnde Aufmerksamkeit, nachts ausgepraegte Unruhe. Vitalparameter stabil: RR 138/82 mmHg, HF 92/min, Temp. 37,1 C, SpO2 96 %. Ausloeserdiagnostik inklusive Elektrolyte, Infektfokus und Medikamentenreview gestartet."
+        }
+      ]
+    },
+    {
+      "termId": "berlin_abkuerzungen",
+      "fachbegriff": "Berlin FSP Zusatzfragen - Abkuerzungen",
+      "patientensprache": "Medizinische Kurzformen",
+      "cards": [
+        {
+          "cardId": "berlin-abkuerzung-01",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"RR\" im klinischen Kontext?",
+          "choices": [
+            "Arterieller Blutdruck",
+            "Blutzucker",
+            "Magnetresonanztomographie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"RR\" lautet: Arterieller Blutdruck."
+        },
+        {
+          "cardId": "berlin-abkuerzung-02",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"HF\" im klinischen Kontext?",
+          "choices": [
+            "Herzfrequenz",
+            "Blutgasanalyse",
+            "Intravenoes"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"HF\" lautet: Herzfrequenz."
+        },
+        {
+          "cardId": "berlin-abkuerzung-03",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"AF\" im klinischen Kontext?",
+          "choices": [
+            "Atemfrequenz",
+            "Elektrokardiogramm",
+            "Per os (ueber den Mund)"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"AF\" lautet: Atemfrequenz."
+        },
+        {
+          "cardId": "berlin-abkuerzung-04",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"SpO2\" im klinischen Kontext?",
+          "choices": [
+            "Periphere Sauerstoffsaettigung",
+            "Computertomographie",
+            "Subkutan"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"SpO2\" lautet: Periphere Sauerstoffsaettigung."
+        },
+        {
+          "cardId": "berlin-abkuerzung-05",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"BZ\" im klinischen Kontext?",
+          "choices": [
+            "Blutzucker",
+            "Magnetresonanztomographie",
+            "Bei Bedarf"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"BZ\" lautet: Blutzucker."
+        },
+        {
+          "cardId": "berlin-abkuerzung-06",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"BGA\" im klinischen Kontext?",
+          "choices": [
+            "Blutgasanalyse",
+            "Intravenoes",
+            "Verdacht auf"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"BGA\" lautet: Blutgasanalyse."
+        },
+        {
+          "cardId": "berlin-abkuerzung-07",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"EKG\" im klinischen Kontext?",
+          "choices": [
+            "Elektrokardiogramm",
+            "Per os (ueber den Mund)",
+            "Differenzialdiagnose"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"EKG\" lautet: Elektrokardiogramm."
+        },
+        {
+          "cardId": "berlin-abkuerzung-08",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"CT\" im klinischen Kontext?",
+          "choices": [
+            "Computertomographie",
+            "Subkutan",
+            "Zustand nach"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"CT\" lautet: Computertomographie."
+        },
+        {
+          "cardId": "berlin-abkuerzung-09",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"MRT\" im klinischen Kontext?",
+          "choices": [
+            "Magnetresonanztomographie",
+            "Bei Bedarf",
+            "Ohne pathologischen Befund"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"MRT\" lautet: Magnetresonanztomographie."
+        },
+        {
+          "cardId": "berlin-abkuerzung-10",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"i.v.\" im klinischen Kontext?",
+          "choices": [
+            "Intravenoes",
+            "Verdacht auf",
+            "Glasgow Coma Scale"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"i.v.\" lautet: Intravenoes."
+        },
+        {
+          "cardId": "berlin-abkuerzung-11",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"p.o.\" im klinischen Kontext?",
+          "choices": [
+            "Per os (ueber den Mund)",
+            "Differenzialdiagnose",
+            "International Normalized Ratio"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"p.o.\" lautet: Per os (ueber den Mund)."
+        },
+        {
+          "cardId": "berlin-abkuerzung-12",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"s.c.\" im klinischen Kontext?",
+          "choices": [
+            "Subkutan",
+            "Zustand nach",
+            "Haemoglobin"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"s.c.\" lautet: Subkutan."
+        },
+        {
+          "cardId": "berlin-abkuerzung-13",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"p.r.n.\" im klinischen Kontext?",
+          "choices": [
+            "Bei Bedarf",
+            "Ohne pathologischen Befund",
+            "Arterieller Blutdruck"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"p.r.n.\" lautet: Bei Bedarf."
+        },
+        {
+          "cardId": "berlin-abkuerzung-14",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"V.a.\" im klinischen Kontext?",
+          "choices": [
+            "Verdacht auf",
+            "Glasgow Coma Scale",
+            "Herzfrequenz"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"V.a.\" lautet: Verdacht auf."
+        },
+        {
+          "cardId": "berlin-abkuerzung-15",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"DD\" im klinischen Kontext?",
+          "choices": [
+            "Differenzialdiagnose",
+            "International Normalized Ratio",
+            "Atemfrequenz"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"DD\" lautet: Differenzialdiagnose."
+        },
+        {
+          "cardId": "berlin-abkuerzung-16",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"Z.n.\" im klinischen Kontext?",
+          "choices": [
+            "Zustand nach",
+            "Haemoglobin",
+            "Periphere Sauerstoffsaettigung"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"Z.n.\" lautet: Zustand nach."
+        },
+        {
+          "cardId": "berlin-abkuerzung-17",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"o.B.\" im klinischen Kontext?",
+          "choices": [
+            "Ohne pathologischen Befund",
+            "Arterieller Blutdruck",
+            "Blutzucker"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"o.B.\" lautet: Ohne pathologischen Befund."
+        },
+        {
+          "cardId": "berlin-abkuerzung-18",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"GCS\" im klinischen Kontext?",
+          "choices": [
+            "Glasgow Coma Scale",
+            "Herzfrequenz",
+            "Blutgasanalyse"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"GCS\" lautet: Glasgow Coma Scale."
+        },
+        {
+          "cardId": "berlin-abkuerzung-19",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"INR\" im klinischen Kontext?",
+          "choices": [
+            "International Normalized Ratio",
+            "Atemfrequenz",
+            "Elektrokardiogramm"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"INR\" lautet: International Normalized Ratio."
+        },
+        {
+          "cardId": "berlin-abkuerzung-20",
+          "type": "interesting_fach",
+          "question": "Was bedeutet die Abkuerzung \"Hb\" im klinischen Kontext?",
+          "choices": [
+            "Haemoglobin",
+            "Periphere Sauerstoffsaettigung",
+            "Computertomographie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die korrekte Aufloesung von \"Hb\" lautet: Haemoglobin."
+        }
+      ]
+    },
+    {
+      "termId": "berlin_patient_fach",
+      "fachbegriff": "Berlin FSP Zusatzfragen - Patient zu Fach",
+      "patientensprache": "Patientensprache in Fachsprache",
+      "cards": [
+        {
+          "cardId": "berlin-p2f-01",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Mir geht bei kleinster Belastung die Luft aus.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Dyspnoe",
+            "Dysarthrie",
+            "Emesis"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Dyspnoe."
+        },
+        {
+          "cardId": "berlin-p2f-02",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Sobald ich mich hinlege, bekomme ich kaum Luft.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Orthopnoe",
+            "Aphasie",
+            "Diarrhoe"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Orthopnoe."
+        },
+        {
+          "cardId": "berlin-p2f-03",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Mein Herz rast ploetzlich ganz stark.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Tachykardie",
+            "Hemiparese",
+            "Obstipation"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Tachykardie."
+        },
+        {
+          "cardId": "berlin-p2f-04",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich spuere dauernd Herzstolpern.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Palpitationen",
+            "Paraesthesie",
+            "Melaena"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Palpitationen."
+        },
+        {
+          "cardId": "berlin-p2f-05",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich war kurz komplett weg.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Synkope",
+            "Odynophagie",
+            "Haematochezie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Synkope."
+        },
+        {
+          "cardId": "berlin-p2f-06",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Meine Sprache war ploetzlich verwaschen.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Dysarthrie",
+            "Dysphagie",
+            "Haematemesis"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Dysarthrie."
+        },
+        {
+          "cardId": "berlin-p2f-07",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich wusste, was ich sagen wollte, fand aber keine Worte.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Aphasie",
+            "Nausea",
+            "Haematurie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Aphasie."
+        },
+        {
+          "cardId": "berlin-p2f-08",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Meine rechte Seite ist deutlich schwaecher.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Hemiparese",
+            "Emesis",
+            "Dysurie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Hemiparese."
+        },
+        {
+          "cardId": "berlin-p2f-09",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"In den Fingern kribbelt es staendig.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Paraesthesie",
+            "Diarrhoe",
+            "Pollakisurie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Paraesthesie."
+        },
+        {
+          "cardId": "berlin-p2f-10",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Schlucken tut richtig weh.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Odynophagie",
+            "Obstipation",
+            "Nykturie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Odynophagie."
+        },
+        {
+          "cardId": "berlin-p2f-11",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich bekomme feste Nahrung kaum runter.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Dysphagie",
+            "Melaena",
+            "Oligurie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Dysphagie."
+        },
+        {
+          "cardId": "berlin-p2f-12",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Mir ist seit Stunden schlecht.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Nausea",
+            "Haematochezie",
+            "Anurie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Nausea."
+        },
+        {
+          "cardId": "berlin-p2f-13",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich musste mehrfach erbrechen.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Emesis",
+            "Haematemesis",
+            "Harnverhalt"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Emesis."
+        },
+        {
+          "cardId": "berlin-p2f-14",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Seit gestern habe ich waessrigen Durchfall.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Diarrhoe",
+            "Haematurie",
+            "Oedem"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Diarrhoe."
+        },
+        {
+          "cardId": "berlin-p2f-15",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Seit Tagen habe ich keinen Stuhlgang.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Obstipation",
+            "Dysurie",
+            "Aszites"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Obstipation."
+        },
+        {
+          "cardId": "berlin-p2f-16",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Mein Stuhl ist schwarz wie Teer.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Melaena",
+            "Pollakisurie",
+            "Ikterus"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Melaena."
+        },
+        {
+          "cardId": "berlin-p2f-17",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich hatte frisches rotes Blut im Stuhl.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Haematochezie",
+            "Nykturie",
+            "Nachtschweiss"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Haematochezie."
+        },
+        {
+          "cardId": "berlin-p2f-18",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich habe Blut erbrochen.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Haematemesis",
+            "Oligurie",
+            "Haemoptyse"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Haematemesis."
+        },
+        {
+          "cardId": "berlin-p2f-19",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Mein Urin ist rot verfaerbt.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Haematurie",
+            "Anurie",
+            "Dyspnoe"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Haematurie."
+        },
+        {
+          "cardId": "berlin-p2f-20",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Beim Wasserlassen brennt es.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Dysurie",
+            "Harnverhalt",
+            "Orthopnoe"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Dysurie."
+        },
+        {
+          "cardId": "berlin-p2f-21",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich muss staendig aufs Klo, es kommt aber wenig.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Pollakisurie",
+            "Oedem",
+            "Tachykardie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Pollakisurie."
+        },
+        {
+          "cardId": "berlin-p2f-22",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich muss nachts vier- bis fuenfmal Wasser lassen.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Nykturie",
+            "Aszites",
+            "Palpitationen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Nykturie."
+        },
+        {
+          "cardId": "berlin-p2f-23",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Heute kam nur sehr wenig Urin.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Oligurie",
+            "Ikterus",
+            "Synkope"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Oligurie."
+        },
+        {
+          "cardId": "berlin-p2f-24",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Seit gestern kommt gar kein Urin mehr.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Anurie",
+            "Nachtschweiss",
+            "Dysarthrie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Anurie."
+        },
+        {
+          "cardId": "berlin-p2f-25",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich habe Harndrang, kann aber nicht wasserlassen.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Harnverhalt",
+            "Haemoptyse",
+            "Aphasie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Harnverhalt."
+        },
+        {
+          "cardId": "berlin-p2f-26",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Meine Unterschenkel schwellen abends deutlich an.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Oedem",
+            "Dyspnoe",
+            "Hemiparese"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Oedem."
+        },
+        {
+          "cardId": "berlin-p2f-27",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Mein Bauch wird voller, als waere Wasser drin.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Aszites",
+            "Orthopnoe",
+            "Paraesthesie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Aszites."
+        },
+        {
+          "cardId": "berlin-p2f-28",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Meine Haut und Augen sind gelb geworden.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Ikterus",
+            "Tachykardie",
+            "Odynophagie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Ikterus."
+        },
+        {
+          "cardId": "berlin-p2f-29",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich schwitze nachts so stark, dass alles nass ist.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Nachtschweiss",
+            "Palpitationen",
+            "Dysphagie"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Nachtschweiss."
+        },
+        {
+          "cardId": "berlin-p2f-30",
+          "type": "patient_to_fachbegriff",
+          "question": "Patientin/Patient sagt: \"Ich huste seit heute Morgen Blut.\" Welcher Fachbegriff passt am besten?",
+          "choices": [
+            "Haemoptyse",
+            "Synkope",
+            "Nausea"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "Die patientennahe Aussage entspricht fachsprachlich am ehesten: Haemoptyse."
+        }
+      ]
+    },
+    {
+      "termId": "berlin_fach_patient",
+      "fachbegriff": "Berlin FSP Zusatzfragen - Fach zu Patient",
+      "patientensprache": "Fachsprache in Patientensprache",
+      "cards": [
+        {
+          "cardId": "berlin-f2p-01",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Dyspnoe\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Atemnot oder Luftnot",
+            "Beinahe-Ohnmacht mit Schwarzwerden vor Augen",
+            "Durchfall"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Dyspnoe\" wird in Patientensprache am besten als \"Atemnot oder Luftnot\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-02",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Orthopnoe\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Luftnot im Liegen",
+            "Sprachstoerung mit Wortfindungsproblemen",
+            "Verstopfung"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Orthopnoe\" wird in Patientensprache am besten als \"Luftnot im Liegen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-03",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Tachykardie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Herzrasen mit schnellem Puls",
+            "Verwaschene, undeutliche Sprache",
+            "Schwarzer teerartiger Stuhl"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Tachykardie\" wird in Patientensprache am besten als \"Herzrasen mit schnellem Puls\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-04",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Bradykardie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Zu langsamer Puls",
+            "Halbseitige Schwaeche",
+            "Frisches rotes Blut im Stuhl"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Bradykardie\" wird in Patientensprache am besten als \"Zu langsamer Puls\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-05",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Palpitationen\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Herzstolpern oder Herzklopfen",
+            "Kribbeln oder Ameisenlaufen",
+            "Blut erbrechen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Palpitationen\" wird in Patientensprache am besten als \"Herzstolpern oder Herzklopfen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-06",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Synkope\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Kurze Ohnmacht mit Bewusstseinsverlust",
+            "Schluckbeschwerden",
+            "Blut im Urin"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Synkope\" wird in Patientensprache am besten als \"Kurze Ohnmacht mit Bewusstseinsverlust\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-07",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Praesynkope\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Beinahe-Ohnmacht mit Schwarzwerden vor Augen",
+            "Schmerzen beim Schlucken",
+            "Brennen oder Schmerzen beim Wasserlassen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Praesynkope\" wird in Patientensprache am besten als \"Beinahe-Ohnmacht mit Schwarzwerden vor Augen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-08",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Aphasie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Sprachstoerung mit Wortfindungsproblemen",
+            "Uebelkeit",
+            "Haeufiges Wasserlassen kleiner Mengen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Aphasie\" wird in Patientensprache am besten als \"Sprachstoerung mit Wortfindungsproblemen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-09",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Dysarthrie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Verwaschene, undeutliche Sprache",
+            "Erbrechen",
+            "Haeufiges Wasserlassen in der Nacht"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Dysarthrie\" wird in Patientensprache am besten als \"Verwaschene, undeutliche Sprache\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-10",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Hemiparese\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Halbseitige Schwaeche",
+            "Durchfall",
+            "Kein Urin trotz Trinkmenge"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Hemiparese\" wird in Patientensprache am besten als \"Halbseitige Schwaeche\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-11",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Paraesthesie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Kribbeln oder Ameisenlaufen",
+            "Verstopfung",
+            "Deutlich zu wenig Urin"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Paraesthesie\" wird in Patientensprache am besten als \"Kribbeln oder Ameisenlaufen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-12",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Dysphagie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Schluckbeschwerden",
+            "Schwarzer teerartiger Stuhl",
+            "Die Blase nicht entleeren koennen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Dysphagie\" wird in Patientensprache am besten als \"Schluckbeschwerden\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-13",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Odynophagie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Schmerzen beim Schlucken",
+            "Frisches rotes Blut im Stuhl",
+            "Austrocknung durch Fluessigkeitsmangel"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Odynophagie\" wird in Patientensprache am besten als \"Schmerzen beim Schlucken\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-14",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Nausea\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Uebelkeit",
+            "Blut erbrechen",
+            "Wassereinlagerung mit Schwellung"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Nausea\" wird in Patientensprache am besten als \"Uebelkeit\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-15",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Emesis\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Erbrechen",
+            "Blut im Urin",
+            "Wasseransammlung im Bauch"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Emesis\" wird in Patientensprache am besten als \"Erbrechen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-16",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Diarrhoe\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Durchfall",
+            "Brennen oder Schmerzen beim Wasserlassen",
+            "Gelbfaerbung von Haut und Augen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Diarrhoe\" wird in Patientensprache am besten als \"Durchfall\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-17",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Obstipation\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Verstopfung",
+            "Haeufiges Wasserlassen kleiner Mengen",
+            "Hautausschlag"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Obstipation\" wird in Patientensprache am besten als \"Verstopfung\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-18",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Melaena\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Schwarzer teerartiger Stuhl",
+            "Haeufiges Wasserlassen in der Nacht",
+            "Juckende Quaddeln, Nesselsucht"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Melaena\" wird in Patientensprache am besten als \"Schwarzer teerartiger Stuhl\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-19",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Haematochezie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Frisches rotes Blut im Stuhl",
+            "Kein Urin trotz Trinkmenge",
+            "Juckreiz"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Haematochezie\" wird in Patientensprache am besten als \"Frisches rotes Blut im Stuhl\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-20",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Haematemesis\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Blut erbrechen",
+            "Deutlich zu wenig Urin",
+            "Muskelschmerzen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Haematemesis\" wird in Patientensprache am besten als \"Blut erbrechen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-21",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Haematurie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Blut im Urin",
+            "Die Blase nicht entleeren koennen",
+            "Gelenkschmerzen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Haematurie\" wird in Patientensprache am besten als \"Blut im Urin\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-22",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Dysurie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Brennen oder Schmerzen beim Wasserlassen",
+            "Austrocknung durch Fluessigkeitsmangel",
+            "Ausgepraegte Erschoepfung"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Dysurie\" wird in Patientensprache am besten als \"Brennen oder Schmerzen beim Wasserlassen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-23",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Pollakisurie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Haeufiges Wasserlassen kleiner Mengen",
+            "Wassereinlagerung mit Schwellung",
+            "Erhoehte Koerpertemperatur"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Pollakisurie\" wird in Patientensprache am besten als \"Haeufiges Wasserlassen kleiner Mengen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-24",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Nykturie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Haeufiges Wasserlassen in der Nacht",
+            "Wasseransammlung im Bauch",
+            "Starkes Frieren mit Zittern"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Nykturie\" wird in Patientensprache am besten als \"Haeufiges Wasserlassen in der Nacht\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-25",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Anurie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Kein Urin trotz Trinkmenge",
+            "Gelbfaerbung von Haut und Augen",
+            "Starkes Schwitzen in der Nacht"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Anurie\" wird in Patientensprache am besten als \"Kein Urin trotz Trinkmenge\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-26",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Oligurie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Deutlich zu wenig Urin",
+            "Hautausschlag",
+            "Appetitlosigkeit"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Oligurie\" wird in Patientensprache am besten als \"Deutlich zu wenig Urin\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-27",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Harnverhalt\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Die Blase nicht entleeren koennen",
+            "Juckende Quaddeln, Nesselsucht",
+            "Ungewollte Gewichtsabnahme"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Harnverhalt\" wird in Patientensprache am besten als \"Die Blase nicht entleeren koennen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-28",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Exsikkose\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Austrocknung durch Fluessigkeitsmangel",
+            "Juckreiz",
+            "Zu hoher Blutdruck"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Exsikkose\" wird in Patientensprache am besten als \"Austrocknung durch Fluessigkeitsmangel\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-29",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Oedem\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Wassereinlagerung mit Schwellung",
+            "Muskelschmerzen",
+            "Zu niedriger Blutdruck"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Oedem\" wird in Patientensprache am besten als \"Wassereinlagerung mit Schwellung\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-30",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Aszites\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Wasseransammlung im Bauch",
+            "Gelenkschmerzen",
+            "Zu hoher Blutzucker"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Aszites\" wird in Patientensprache am besten als \"Wasseransammlung im Bauch\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-31",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Ikterus\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Gelbfaerbung von Haut und Augen",
+            "Ausgepraegte Erschoepfung",
+            "Unterzuckerung"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Ikterus\" wird in Patientensprache am besten als \"Gelbfaerbung von Haut und Augen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-32",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Exanthem\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Hautausschlag",
+            "Erhoehte Koerpertemperatur",
+            "Schilddruese arbeitet zu stark"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Exanthem\" wird in Patientensprache am besten als \"Hautausschlag\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-33",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Urtikaria\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Juckende Quaddeln, Nesselsucht",
+            "Starkes Frieren mit Zittern",
+            "Schilddruese arbeitet zu langsam"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Urtikaria\" wird in Patientensprache am besten als \"Juckende Quaddeln, Nesselsucht\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-34",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Pruritus\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Juckreiz",
+            "Starkes Schwitzen in der Nacht",
+            "Schmerz oder Druck in der Brust"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Pruritus\" wird in Patientensprache am besten als \"Juckreiz\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-35",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Myalgie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Muskelschmerzen",
+            "Appetitlosigkeit",
+            "Blut abhusten"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Myalgie\" wird in Patientensprache am besten als \"Muskelschmerzen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-36",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Arthralgie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Gelenkschmerzen",
+            "Ungewollte Gewichtsabnahme",
+            "Atemnot oder Luftnot"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Arthralgie\" wird in Patientensprache am besten als \"Gelenkschmerzen\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-37",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Fatigue\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Ausgepraegte Erschoepfung",
+            "Zu hoher Blutdruck",
+            "Luftnot im Liegen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Fatigue\" wird in Patientensprache am besten als \"Ausgepraegte Erschoepfung\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-38",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Fieber\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Erhoehte Koerpertemperatur",
+            "Zu niedriger Blutdruck",
+            "Herzrasen mit schnellem Puls"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Fieber\" wird in Patientensprache am besten als \"Erhoehte Koerpertemperatur\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-39",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Schuettelfrost\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Starkes Frieren mit Zittern",
+            "Zu hoher Blutzucker",
+            "Zu langsamer Puls"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Schuettelfrost\" wird in Patientensprache am besten als \"Starkes Frieren mit Zittern\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-40",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Nachtschweiss\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Starkes Schwitzen in der Nacht",
+            "Unterzuckerung",
+            "Herzstolpern oder Herzklopfen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Nachtschweiss\" wird in Patientensprache am besten als \"Starkes Schwitzen in der Nacht\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-41",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Inappetenz\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Appetitlosigkeit",
+            "Schilddruese arbeitet zu stark",
+            "Kurze Ohnmacht mit Bewusstseinsverlust"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Inappetenz\" wird in Patientensprache am besten als \"Appetitlosigkeit\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-42",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Gewichtsverlust\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Ungewollte Gewichtsabnahme",
+            "Schilddruese arbeitet zu langsam",
+            "Beinahe-Ohnmacht mit Schwarzwerden vor Augen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Gewichtsverlust\" wird in Patientensprache am besten als \"Ungewollte Gewichtsabnahme\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-43",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Hypertonie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Zu hoher Blutdruck",
+            "Schmerz oder Druck in der Brust",
+            "Sprachstoerung mit Wortfindungsproblemen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Hypertonie\" wird in Patientensprache am besten als \"Zu hoher Blutdruck\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-44",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Hypotonie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Zu niedriger Blutdruck",
+            "Blut abhusten",
+            "Verwaschene, undeutliche Sprache"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Hypotonie\" wird in Patientensprache am besten als \"Zu niedriger Blutdruck\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-45",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Hyperglykaemie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Zu hoher Blutzucker",
+            "Atemnot oder Luftnot",
+            "Halbseitige Schwaeche"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Hyperglykaemie\" wird in Patientensprache am besten als \"Zu hoher Blutzucker\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-46",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Hypoglykaemie\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Unterzuckerung",
+            "Luftnot im Liegen",
+            "Kribbeln oder Ameisenlaufen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Hypoglykaemie\" wird in Patientensprache am besten als \"Unterzuckerung\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-47",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Hyperthyreose\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Schilddruese arbeitet zu stark",
+            "Herzrasen mit schnellem Puls",
+            "Schluckbeschwerden"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Hyperthyreose\" wird in Patientensprache am besten als \"Schilddruese arbeitet zu stark\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-48",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Hypothyreose\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Schilddruese arbeitet zu langsam",
+            "Zu langsamer Puls",
+            "Schmerzen beim Schlucken"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Hypothyreose\" wird in Patientensprache am besten als \"Schilddruese arbeitet zu langsam\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-49",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Thoraxschmerz\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Schmerz oder Druck in der Brust",
+            "Herzstolpern oder Herzklopfen",
+            "Uebelkeit"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Thoraxschmerz\" wird in Patientensprache am besten als \"Schmerz oder Druck in der Brust\" vermittelt."
+        },
+        {
+          "cardId": "berlin-f2p-50",
+          "type": "fachbegriff_to_patient",
+          "question": "Im Arztbrief steht: \"Haemoptyse\". Wie erklaerst du das patientengerecht?",
+          "choices": [
+            "Blut abhusten",
+            "Kurze Ohnmacht mit Bewusstseinsverlust",
+            "Erbrechen"
+          ],
+          "correctIndex": 0,
+          "explanation_de": "\"Haemoptyse\" wird in Patientensprache am besten als \"Blut abhusten\" vermittelt."
         }
       ]
     }

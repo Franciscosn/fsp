@@ -11,8 +11,8 @@ const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217c";
-const BUILD_UPDATED_AT = "2026-02-17 10:22 UTC";
+const APP_VERSION = "20260217d";
+const BUILD_UPDATED_AT = "2026-02-17 14:58 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -107,6 +107,10 @@ let shouldSendVoiceAfterStop = false;
 let xpMilestoneHideTimer = null;
 
 const CATEGORY_MAP = {
+  berlin_abkuerzungen: "Berlin Zusatzfragen: Abkuerzungen",
+  berlin_fach_patient: "Berlin Zusatzfragen: Fach -> Patient",
+  berlin_patient_fach: "Berlin Zusatzfragen: Patient -> Fach",
+  berlin_vorlesen: "Berlin Zusatzfragen: Vorlesen",
   adipositas: "Gewicht",
   angina_pectoris: "Kardio/Pneumo",
   angststoerung: "Psychiatrie",
@@ -2155,7 +2159,11 @@ function renderCategoryFilters() {
       state.currentIndex = 0;
       renderCategoryFilters();
       renderFolderFilters();
-      rebuildQueue(false);
+      if (state.isImmersive) {
+        rebuildQueue(false);
+      } else {
+        enterImmersiveMode();
+      }
     });
     refs.categoryFilters.appendChild(button);
   }

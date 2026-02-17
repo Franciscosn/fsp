@@ -149,28 +149,6 @@
           <p id="voiceCoachHint" class="voice-coach-hint hidden"></p>
         </article>
         <div class="voice-actions">
-          <details class="voice-resolution voice-resolution-inline">
-            <summary class="voice-resolution-toggle">Fall aufloesen</summary>
-            <div class="voice-resolution-content">
-              <h4 id="voiceResolutionTitle">Fall aufloesen</h4>
-              <p id="voiceResolutionHint" class="voice-resolution-hint">Aufloesung wird geladen ...</p>
-              <p id="voiceResolutionSummary" class="voice-resolution-summary"></p>
-              <div class="voice-resolution-grid">
-                <article class="voice-resolution-block">
-                  <h5>Wichtige Arztfragen</h5>
-                  <ul id="voiceResolutionQuestions" class="voice-resolution-list"></ul>
-                </article>
-                <article class="voice-resolution-block">
-                  <h5>Relevante Fachbegriffe</h5>
-                  <ul id="voiceResolutionTerms" class="voice-resolution-list"></ul>
-                </article>
-              </div>
-              <article class="voice-resolution-block">
-                <h5>Diagnose / moegliche Diagnosen</h5>
-                <ul id="voiceResolutionDiagnoses" class="voice-resolution-list"></ul>
-              </article>
-            </div>
-          </details>
           <button id="voiceNextCaseBtn" class="soft-btn" type="button">Naechster Fall</button>
           <button id="voiceDiagnoseBtn" class="soft-btn voice-diagnose-btn" type="button">
             Diagnostizieren
@@ -208,9 +186,33 @@
           </select>
         </div>
         <p id="voiceCaseMeta" class="voice-case-meta">Aktiv: Fall 1</p>
-        <button id="voiceCreateCaseBtn" class="soft-btn voice-create-case-btn" type="button">
-          Neuen Fall kreieren
-        </button>
+        <div class="voice-case-actions">
+          <details class="voice-resolution voice-resolution-inline">
+            <summary class="voice-resolution-toggle">Fall aufloesen</summary>
+            <div class="voice-resolution-content">
+              <h4 id="voiceResolutionTitle">Fall aufloesen</h4>
+              <p id="voiceResolutionHint" class="voice-resolution-hint">Aufloesung wird geladen ...</p>
+              <p id="voiceResolutionSummary" class="voice-resolution-summary"></p>
+              <div class="voice-resolution-grid">
+                <article class="voice-resolution-block">
+                  <h5>Wichtige Arztfragen</h5>
+                  <ul id="voiceResolutionQuestions" class="voice-resolution-list"></ul>
+                </article>
+                <article class="voice-resolution-block">
+                  <h5>Relevante Fachbegriffe</h5>
+                  <ul id="voiceResolutionTerms" class="voice-resolution-list"></ul>
+                </article>
+              </div>
+              <article class="voice-resolution-block">
+                <h5>Diagnose / moegliche Diagnosen</h5>
+                <ul id="voiceResolutionDiagnoses" class="voice-resolution-list"></ul>
+              </article>
+            </div>
+          </details>
+          <button id="voiceCreateCaseBtn" class="soft-btn voice-create-case-btn" type="button">
+            Neuen Fall kreieren
+          </button>
+        </div>
         <label class="voice-label hidden" for="voiceCaseInput">Eigener Falltext (intern)</label>
         <textarea
           id="voiceCaseInput"

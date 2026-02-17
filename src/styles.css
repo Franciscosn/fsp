@@ -426,6 +426,17 @@ body.auth-only .edge-deco {
   font-weight: 700;
 }
 
+.voice-case-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: start;
+}
+
+.voice-case-actions .voice-resolution-inline {
+  min-width: 0;
+}
+
 .voice-case-input {
   width: 100%;
   border-radius: 12px;
@@ -455,10 +466,6 @@ body.auth-only .edge-deco {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
   align-items: start;
-}
-
-.voice-actions .voice-resolution-inline {
-  grid-column: 1 / -1;
 }
 
 .voice-diagnose-btn.active {
@@ -529,7 +536,8 @@ body.auth-only .edge-deco {
 }
 
 .voice-create-case-btn {
-  width: 100%;
+  width: auto;
+  justify-self: end;
   min-width: 0;
 }
 
@@ -1900,10 +1908,18 @@ body.immersive .stats-fab {
     grid-template-columns: 1fr;
   }
 
-  .voice-actions .soft-btn,
-  .voice-actions .voice-resolution-inline {
+  .voice-actions .soft-btn {
     width: 100%;
     min-width: 0;
+  }
+
+  .voice-case-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .voice-case-actions .voice-create-case-btn {
+    width: 100%;
+    justify-self: stretch;
   }
 
   .voice-text-compact {
