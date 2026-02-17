@@ -897,6 +897,13 @@ body.auth-only .edge-deco {
   opacity: 0.98;
 }
 
+.level-summary {
+  display: grid;
+  gap: 8px;
+  align-content: center;
+  justify-items: start;
+}
+
 .level-copy {
   display: grid;
   gap: 8px;
@@ -1636,11 +1643,16 @@ body.immersive .stats-fab {
   .level-panel {
     grid-template-columns: 112px 1fr;
     gap: 10px;
+    align-items: start;
   }
 
   .level-visual {
     width: 100%;
     justify-self: stretch;
+  }
+
+  .level-summary {
+    gap: 6px;
   }
 
   .level-copy {
