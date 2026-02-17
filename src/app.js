@@ -193,9 +193,23 @@ const FOLDERS = [
   { id: "streak_4", label: "4x richtig" },
   { id: "streak_5", label: "5x richtig" },
   { id: "streak_6", label: "6x richtig" },
-  { id: "diamonds", label: "7x richtig (Diamonds)" },
-  { id: "all", label: "Alle Karten" }
+  { id: "diamonds", label: "7x Diamonds" },
+  { id: "all", label: "Alle" }
 ];
+
+const FOLDER_SHORT_LABELS = {
+  regular: "Ueben",
+  new: "Neu",
+  unsure: "Unsicher",
+  one_right: "1x",
+  streak_2: "2x",
+  streak_3: "3x",
+  streak_4: "4x",
+  streak_5: "5x",
+  streak_6: "6x",
+  diamonds: "7x+",
+  all: "Alle"
+};
 
 const initialProgress = migrateStoredProgress(loadFromStorage(STORAGE_PROGRESS_KEY, {}));
 const initialDailyStats = loadFromStorage(STORAGE_DAILY_KEY, {});
@@ -1783,7 +1797,8 @@ function renderFolderFilters() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = `folder ${state.selectedFolder === folder.id ? "active" : ""}`;
-    button.innerHTML = `<span class="folder-title">${folder.label}</span><span class="folder-count">${count} Karten</span>`;
+    const shortLabel = FOLDER_SHORT_LABELS[folder.id] || folder.label;
+    button.innerHTML = `<span class="folder-title"><span class="folder-title-full">${folder.label}</span><span class="folder-title-short">${shortLabel}</span></span><span class="folder-count">${count}</span>`;
     button.addEventListener("click", () => {
       state.selectedFolder = folder.id;
       state.currentIndex = 0;
