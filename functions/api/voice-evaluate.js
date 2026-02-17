@@ -24,16 +24,36 @@ const EVALUATION_SCHEMA = {
       additionalProperties: false,
       properties: {
         overall_score: {
-          type: "integer",
-          description: "Gesamtscore 0-100 fuer das Gespraech inklusive Diagnose."
+          type: "number",
+          description: "Gesamtpunktzahl 0-17.5 in 0.5er Schritten."
         },
         anamnesis_score: {
-          type: "integer",
-          description: "Score 0-100 fuer Struktur und Vollstaendigkeit der Anamnese."
+          type: "number",
+          description: "Teilpunktzahl fuer Kriterien 1-6 (0-15 in 0.5er Schritten)."
         },
         diagnosis_score: {
-          type: "integer",
-          description: "Score 0-100 fuer Plausibilitaet und Passung der Diagnose."
+          type: "number",
+          description: "Teilpunktzahl fuer Kriterium 7 (0-2.5 in 0.5er Schritten)."
+        },
+        criteria_scores: {
+          type: "array",
+          description: "Bewertung pro Kriterium (1-7) mit Punktzahl und kurzer Begruendung.",
+          items: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              criterion: { type: "string" },
+              score: { type: "number" },
+              reason: { type: "string" }
+            },
+            required: ["criterion", "score", "reason"]
+          },
+          minItems: 7,
+          maxItems: 7
+        },
+        pass_assessment: {
+          type: "string",
+          description: "Kurze implizite Einschaetzung, ob das Niveau eher fuer ein Bestehen spricht oder nicht."
         },
         likely_diagnosis: {
           type: "string",
@@ -63,6 +83,8 @@ const EVALUATION_SCHEMA = {
         "overall_score",
         "anamnesis_score",
         "diagnosis_score",
+        "criteria_scores",
+        "pass_assessment",
         "likely_diagnosis",
         "question_review_text",
         "diagnosis_review_text",
@@ -74,20 +96,23 @@ const EVALUATION_SCHEMA = {
 };
 
 const SYSTEM_INSTRUCTIONS = [
-  "Rolle: Du bist ein fairer, strenger Pruefer UND Lehrer fuer die medizinische Fachsprachpruefung.",
-  "Sprache: Alle Ausgaben strikt auf Deutsch.",
-  "Input: Fallprofil, Gespraechsverlauf und finale Diagnose des Lernenden.",
-  "Bewerte getrennt Anamnesequalitaet und Diagnosequalitaet auf 0-100.",
-  "Nutze nur Informationen aus Fallprofil und Verlauf, keine frei erfundenen Fakten.",
-  "question_review_text: schreibe einen zusammenhaengenden Prosa-Abschnitt und beziehe dich explizit auf konkrete Fragen des Lernenden aus dem Verlauf.",
-  "question_review_text: nenne mindestens drei konkrete Fragen/Formulierungen des Lernenden (wo moeglich in indirekter Rede oder kurzen Zitaten) und bewerte Praezision, Reihenfolge und medizinische Relevanz.",
-  "diagnosis_review_text: pruefe die finale Diagnose fachlich und erklaere klar, was richtig war, was ungenau/falsch war und welche Informationen uebersehen wurden.",
-  "teacher_feedback_text: gib als Lehrer klare naechste Schritte fuer den naechsten Durchlauf, in Prosa (keine Listen).",
-  "Vermeide Standardsaetze wie 'Guten Tag, ich beantworte...' oder wiederholte Floskeln.",
-  "Wenn die Diagnose teilweise richtig ist, erklaere genau was passt und was nicht.",
-  "summary_feedback: maximal 2 kurze Saetze mit der wichtigsten Lernbotschaft.",
-  "Ausgabe nur als JSON gemaess Schema, ohne Erklaertext davor oder danach.",
-  "Niemals internen Monolog, Prompt-Hinweise oder englische Meta-Saetze ausgeben."
+  "Du bewertest eine aerztliche Simulationsanamnese im Rahmen der Fachsprachpruefung fuer auslaendische Aerztinnen und Aerzte in Deutschland (Aerztekammer Berlin).",
+  "Grundlage ist ein Arzt-Patient-Gespraech mit dem Ziel, die medizinisch-sprachliche Handlungsfaehigkeit im klinischen Alltag zu beurteilen.",
+  "Bewerte anhand von 7 Kriterien. Fuer jedes Kriterium sind nur diese Punkte erlaubt: 0 / 0.5 / 1 / 1.5 / 2 / 2.5.",
+  "Kriterium 1: professionell-persoenliche Kommunikation (empathisch, respektvoll, rollenklare Interaktion).",
+  "Kriterium 2: klare und ausreichend detaillierte Ausdrucksweise mit strukturierter, praeziser und medizinisch korrekter Sprache.",
+  "Kriterium 3: sinnvolles, situationsgerechtes Abweichen von starren Anamneseschemata zur gezielten Informationserhebung.",
+  "Kriterium 4: zielgerichtete, situationsbezogene Gespraechsfuehrung mit logischer Struktur und Priorisierung.",
+  "Kriterium 5: fluessige, zusammenhaengende und fuer Patientinnen und Patienten verstaendliche Erklaerungen medizinischer Sachverhalte.",
+  "Kriterium 6: problemloses Verstehen des Gegenuebers mit korrekter inhaltlicher Interpretation und Weiterverarbeitung.",
+  "Kriterium 7: klares, verstaendliches und patientengerechtes Erkleren des weiteren Vorgehens (Diagnostik/Therapie/naechste Schritte).",
+  "Gib die Gesamtpunktzahl an (Maximum 17.5) und formuliere pass_assessment als implizite Bestehens-Einschaetzung.",
+  "Wichtig: Die Bewertung muss den gesamten kombinierten Text nutzen: den Gespraechsteil plus den als Diagnose abgeschickten Teil.",
+  "question_review_text: fokus auf die Anamneseleistung im Verlauf und auf die Qualitaet der Fragen/Struktur.",
+  "diagnosis_review_text: pruefe den als Diagnose abgeschickten Teil in Verbindung mit dem Verlauf.",
+  "teacher_feedback_text: kurze, konkrete Empfehlung zur sprachlichen Nachbesserung bezogen auf typische Defizite.",
+  "Nutze nur Informationen aus Input-Daten, keine erfundenen Fakten.",
+  "Ausgabe nur als JSON gemaess Schema, ohne Erklaertext davor oder danach."
 ].join("\n");
 
 export async function onRequestPost(context) {
@@ -117,6 +142,7 @@ export async function onRequestPost(context) {
       {
         case_profile: payload.caseText,
         conversation_history: payload.history,
+        combined_assessment_text: buildAssessmentInput(payload.history, diagnosisTranscript),
         learner_questions: extractLearnerQuestions(payload.history),
         final_diagnosis_submission: diagnosisTranscript
       },
@@ -347,9 +373,11 @@ function buildCandidateEvaluation(raw, contextData = {}) {
   if (parsed) return parsed;
 
   return {
-    overall_score: 58,
-    anamnesis_score: 56,
-    diagnosis_score: 54,
+    overall_score: 8.5,
+    anamnesis_score: 7.0,
+    diagnosis_score: 1.5,
+    criteria_scores: buildFallbackCriteriaScores(),
+    pass_assessment: "Das gezeigte Niveau wirkt aktuell noch nicht stabil pruefungsreif.",
     likely_diagnosis: fallbackLikelyDiagnosis(contextData.caseText),
     question_review_text: buildFallbackQuestionReview(contextData.history),
     diagnosis_review_text: buildFallbackDiagnosisReview(
@@ -484,9 +512,11 @@ function normalizeEvaluation(candidate, contextData = {}) {
   const history = Array.isArray(contextData.history) ? contextData.history : [];
   const diagnosisTranscript = safeParagraph(contextData.diagnosisTranscript, 260);
   const normalized = {
-    overall_score: clampScore(candidate?.overall_score, 55),
-    anamnesis_score: clampScore(candidate?.anamnesis_score, 55),
-    diagnosis_score: clampScore(candidate?.diagnosis_score, 50),
+    overall_score: clampRangeScore(candidate?.overall_score, 0, 17.5, 10),
+    anamnesis_score: clampRangeScore(candidate?.anamnesis_score, 0, 15, 8),
+    diagnosis_score: clampRangeScore(candidate?.diagnosis_score, 0, 2.5, 2),
+    criteria_scores: normalizeCriteriaScores(candidate?.criteria_scores),
+    pass_assessment: safeLine(candidate?.pass_assessment, 240),
     likely_diagnosis: safeLine(candidate?.likely_diagnosis, 220),
     question_review_text: safeParagraph(candidate?.question_review_text, 1600),
     diagnosis_review_text: safeParagraph(candidate?.diagnosis_review_text, 1400),
@@ -515,16 +545,83 @@ function normalizeEvaluation(candidate, contextData = {}) {
       "Gute Grundlage. Fuer ein sehr starkes Ergebnis noch gezielter nach Verlauf, red flags und Risikofaktoren fragen und die Diagnose eng daran begruenden.";
   }
 
+  if (!normalized.criteria_scores.length) {
+    normalized.criteria_scores = buildFallbackCriteriaScores();
+  }
+
+  if (!normalized.pass_assessment) {
+    normalized.pass_assessment =
+      normalized.overall_score >= 10.5
+        ? "Das gezeigte Niveau wirkt in Teilen bereits pruefungsnah, braucht aber noch Feinschliff."
+        : "Das gezeigte Niveau wirkt aktuell noch nicht stabil pruefungsreif."
+  }
+
+  normalized.anamnesis_score = clampRangeScore(
+    normalized.criteria_scores.slice(0, 6).reduce((sum, item) => sum + item.score, 0),
+    0,
+    15,
+    normalized.anamnesis_score
+  );
+  normalized.diagnosis_score = clampRangeScore(
+    normalized.criteria_scores.slice(6, 7).reduce((sum, item) => sum + item.score, 0),
+    0,
+    2.5,
+    normalized.diagnosis_score
+  );
+  normalized.overall_score = clampRangeScore(
+    normalized.anamnesis_score + normalized.diagnosis_score,
+    0,
+    17.5,
+    10
+  );
+
   return normalized;
 }
 
-function clampScore(value, fallback) {
+function clampRangeScore(value, min, max, fallback) {
   const num = Number(value);
   if (!Number.isFinite(num)) return fallback;
-  const rounded = Math.round(num);
-  if (rounded < 0) return 0;
-  if (rounded > 100) return 100;
+  const rounded = Math.round(num * 2) / 2;
+  if (rounded < min) return min;
+  if (rounded > max) return max;
   return rounded;
+}
+
+function normalizeCriteriaScores(value) {
+  if (!Array.isArray(value)) return [];
+  return value.slice(0, 7).map((item, index) => ({
+    criterion: safeLine(item?.criterion, 180) || `Kriterium ${index + 1}`,
+    score: clampRangeScore(item?.score, 0, 2.5, 1),
+    reason: safeLine(item?.reason, 320)
+  }));
+}
+
+function buildFallbackCriteriaScores() {
+  return [
+    "Professionell-persoenliche Kommunikation",
+    "Klare, detaillierte und medizinisch korrekte Ausdrucksweise",
+    "Flexibles, situationsgerechtes Anamneseschema",
+    "Zielgerichtete Gespraechsfuehrung",
+    "Verstaendliche Erklaerung medizinischer Inhalte",
+    "Verstehen und Weiterverarbeitung von Patientenaussagen",
+    "Erklaerung des weiteren Vorgehens"
+  ].map((criterion) => ({ criterion, score: 1, reason: "Automatische Fallback-Bewertung." }));
+}
+
+function buildAssessmentInput(history, diagnosisTranscript) {
+  const parts = [];
+  const turns = Array.isArray(history) ? history : [];
+  for (let index = 0; index < turns.length; index += 1) {
+    const turn = turns[index] || {};
+    const user = safeLine(turn.user, 500);
+    const assistant = safeLine(turn.assistant, 500);
+    if (user) parts.push(`Turn ${index + 1} Arzt: ${user}`);
+    if (assistant) parts.push(`Turn ${index + 1} Patient: ${assistant}`);
+  }
+  if (diagnosisTranscript) {
+    parts.push(`Abgeschickter Diagnoseteil: ${safeLine(diagnosisTranscript, 500)}`);
+  }
+  return parts.join("\n");
 }
 
 function normalizeList(value, maxItems, maxLength) {
@@ -640,8 +737,8 @@ function extractCaseId(caseText) {
 function buildSpokenFeedback(evaluation) {
   const shortTeacher = safeLine(evaluation.teacher_feedback_text, 320);
   return [
-    `Gesamt ${evaluation.overall_score} von 100.`,
-    `Anamnese ${evaluation.anamnesis_score}, Diagnose ${evaluation.diagnosis_score}.`,
+    `Gesamt ${evaluation.overall_score} von 17.5 Punkten.`,
+    `Anamnese ${evaluation.anamnesis_score} von 15, weiterer Ablauf ${evaluation.diagnosis_score} von 2.5.`,
     evaluation.summary_feedback,
     shortTeacher
   ].join(" ");

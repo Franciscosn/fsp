@@ -301,7 +301,9 @@ const refs = {
   voiceEvalAnamnesis: document.getElementById("voiceEvalAnamnesis"),
   voiceEvalDiagnosisScore: document.getElementById("voiceEvalDiagnosisScore"),
   voiceEvalLikely: document.getElementById("voiceEvalLikely"),
+  voiceEvalPass: document.getElementById("voiceEvalPass"),
   voiceEvalSummary: document.getElementById("voiceEvalSummary"),
+  voiceEvalCriteria: document.getElementById("voiceEvalCriteria"),
   voiceEvalQuestionReview: document.getElementById("voiceEvalQuestionReview"),
   voiceEvalDiagnosisReview: document.getElementById("voiceEvalDiagnosisReview"),
   voiceEvalTeacherFeedback: document.getElementById("voiceEvalTeacherFeedback"),
@@ -1476,7 +1478,9 @@ function renderVoiceEvaluationReport(report, diagnosisText) {
     !refs.voiceEvalAnamnesis ||
     !refs.voiceEvalDiagnosisScore ||
     !refs.voiceEvalLikely ||
+    !refs.voiceEvalPass ||
     !refs.voiceEvalSummary ||
+    !refs.voiceEvalCriteria ||
     !refs.voiceEvalQuestionReview ||
     !refs.voiceEvalDiagnosisReview ||
     !refs.voiceEvalTeacherFeedback
@@ -1487,13 +1491,17 @@ function renderVoiceEvaluationReport(report, diagnosisText) {
   refs.voiceEvalDiagnosis.textContent = diagnosisText
     ? `Deine Diagnose: ${diagnosisText}`
     : "Deine Diagnose wurde uebermittelt.";
-  refs.voiceEvalOverall.textContent = String(Math.round(Number(report.overall_score) || 0));
-  refs.voiceEvalAnamnesis.textContent = String(Math.round(Number(report.anamnesis_score) || 0));
-  refs.voiceEvalDiagnosisScore.textContent = String(Math.round(Number(report.diagnosis_score) || 0));
+  refs.voiceEvalOverall.textContent = formatVoiceScore(report.overall_score);
+  refs.voiceEvalAnamnesis.textContent = formatVoiceScore(report.anamnesis_score);
+  refs.voiceEvalDiagnosisScore.textContent = formatVoiceScore(report.diagnosis_score);
   refs.voiceEvalLikely.textContent = report.likely_diagnosis
     ? `Fallnahe Hauptdiagnose laut KI: ${report.likely_diagnosis}`
     : "";
+  refs.voiceEvalPass.textContent = report.pass_assessment
+    ? `Bestehensniveau (implizit): ${report.pass_assessment}`
+    : "";
   refs.voiceEvalSummary.textContent = String(report.summary_feedback || "");
+  refs.voiceEvalCriteria.textContent = formatVoiceCriteria(report.criteria_scores);
   refs.voiceEvalQuestionReview.textContent = String(report.question_review_text || "");
   refs.voiceEvalDiagnosisReview.textContent = String(report.diagnosis_review_text || "");
   refs.voiceEvalTeacherFeedback.textContent = String(report.teacher_feedback_text || "");
@@ -1509,10 +1517,30 @@ function clearVoiceEvaluationReport() {
   if (refs.voiceEvalAnamnesis) refs.voiceEvalAnamnesis.textContent = "0";
   if (refs.voiceEvalDiagnosisScore) refs.voiceEvalDiagnosisScore.textContent = "0";
   if (refs.voiceEvalLikely) refs.voiceEvalLikely.textContent = "";
+  if (refs.voiceEvalPass) refs.voiceEvalPass.textContent = "";
   if (refs.voiceEvalSummary) refs.voiceEvalSummary.textContent = "";
+  if (refs.voiceEvalCriteria) refs.voiceEvalCriteria.textContent = "";
   if (refs.voiceEvalQuestionReview) refs.voiceEvalQuestionReview.textContent = "";
   if (refs.voiceEvalDiagnosisReview) refs.voiceEvalDiagnosisReview.textContent = "";
   if (refs.voiceEvalTeacherFeedback) refs.voiceEvalTeacherFeedback.textContent = "";
+}
+
+function formatVoiceCriteria(criteriaScores) {
+  if (!Array.isArray(criteriaScores) || !criteriaScores.length) return "";
+  return criteriaScores
+    .map((item, index) => {
+      const criterion = typeof item?.criterion === "string" ? item.criterion.trim() : `Kriterium ${index + 1}`;
+      const reason = typeof item?.reason === "string" ? item.reason.trim() : "";
+      const score = Number.isFinite(Number(item?.score)) ? Number(item.score) : 0;
+      return `${index + 1}) ${criterion}: ${score} Punkte${reason ? ` – ${reason}` : ""}`;
+    })
+    .join("\n");
+}
+
+function formatVoiceScore(value) {
+  const num = Number(value);
+  if (!Number.isFinite(num)) return "0";
+  return Number.isInteger(num) ? String(num) : num.toFixed(1);
 }
 
 function resetVoiceConversation(options = {}) {
