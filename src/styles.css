@@ -452,7 +452,7 @@ body.auth-only .edge-deco {
 
 .voice-actions {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
   align-items: start;
 }
@@ -464,6 +464,12 @@ body.auth-only .edge-deco {
 .voice-diagnose-btn.active {
   background: linear-gradient(126deg, #b32c47, #dd4c69);
   border-color: rgba(179, 44, 71, 0.8);
+  color: #fff7fa;
+}
+
+.voice-doctor-conversation-btn.active {
+  background: linear-gradient(126deg, #7f2e45, #bb4662);
+  border-color: rgba(127, 46, 69, 0.84);
   color: #fff7fa;
 }
 

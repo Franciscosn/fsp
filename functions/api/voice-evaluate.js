@@ -10,110 +10,90 @@ const TTS_MODEL = "@cf/myshell-ai/melotts";
 
 const MAX_AUDIO_BASE64_LENGTH = 8_000_000;
 const MAX_CASE_LENGTH = 8_000;
-const MAX_HISTORY_TURNS = 20;
-const MAX_TEXT_FIELD = 900;
+const MAX_HISTORY_TURNS = 60;
+const MAX_TEXT_FIELD = 1_400;
+const MAX_CONVERSATION_TEXT_LENGTH = 40_000;
 const MAX_DIAGNOSIS_TEXT_LENGTH = 500;
 
 const EVALUATION_SCHEMA = {
   type: "json_schema",
   json_schema: {
-    name: "medical_exam_evaluation",
+    name: "fsp_simulationsanamnese_evaluation",
     strict: true,
     schema: {
       type: "object",
       additionalProperties: false,
       properties: {
-        overall_score: {
-          type: "number",
-          description: "Gesamtpunktzahl 0-17.5 in 0.5er Schritten."
-        },
-        anamnesis_score: {
-          type: "number",
-          description: "Teilpunktzahl fuer Kriterien 1-6 (0-15 in 0.5er Schritten)."
-        },
-        diagnosis_score: {
-          type: "number",
-          description: "Teilpunktzahl fuer Kriterium 7 (0-2.5 in 0.5er Schritten)."
-        },
-        criteria_scores: {
+        criteria: {
           type: "array",
-          description: "Bewertung pro Kriterium (1-7) mit Punktzahl und kurzer Begruendung.",
+          description: "Exakt 7 Kriterien in der vorgegebenen Reihenfolge.",
+          minItems: 7,
+          maxItems: 7,
           items: {
             type: "object",
             additionalProperties: false,
             properties: {
-              criterion: { type: "string" },
-              score: { type: "number" },
-              reason: { type: "string" }
+              name: {
+                type: "string",
+                description: "Kriterienname"
+              },
+              score: {
+                type: "number",
+                description: "Punktzahl pro Kriterium. Erlaubt: 0 / 0.5 / 1 / 1.5 / 2 / 2.5."
+              },
+              justification: {
+                type: "string",
+                description: "Kurze, praezise Begruendung."
+              }
             },
-            required: ["criterion", "score", "reason"]
-          },
-          minItems: 7,
-          maxItems: 7
+            required: ["name", "score", "justification"]
+          }
+        },
+        total_score: {
+          type: "number",
+          description: "Gesamtpunktzahl als Summe aller 7 Kriterien (max 17.5)."
         },
         pass_assessment: {
           type: "string",
-          description: "Kurze implizite Einschaetzung, ob das Niveau eher fuer ein Bestehen spricht oder nicht."
+          description: "Implizite Einschaetzung, ob das Niveau einem Bestehen entspricht."
         },
-        likely_diagnosis: {
+        recommendation: {
           type: "string",
-          description: "Wahrscheinlichste Diagnose anhand des Falls."
-        },
-        question_review_text: {
-          type: "string",
-          description:
-            "Prosa-Abschnitt zur Qualitaet der gestellten Arztfragen. Muss konkrete Fragen aus dem Verlauf referenzieren."
-        },
-        diagnosis_review_text: {
-          type: "string",
-          description:
-            "Prosa-Abschnitt zur finalen Diagnose: was passt, was passt nicht, was wurde uebersehen."
-        },
-        teacher_feedback_text: {
-          type: "string",
-          description:
-            "Didaktischer Prosa-Abschnitt in Rolle Pruefer/Lehrer mit klaren Verbesserungsimpulsen fuer den naechsten Durchlauf."
+          description: "Kurze, konkrete Empfehlung zur sprachlichen Nachbesserung."
         },
         summary_feedback: {
-          type: "string",
-          description: "Kurze Zusammenfassung in 1-2 Saetzen fuer Audio-Wiedergabe."
+          type: "string"
         }
       },
-      required: [
-        "overall_score",
-        "anamnesis_score",
-        "diagnosis_score",
-        "criteria_scores",
-        "pass_assessment",
-        "likely_diagnosis",
-        "question_review_text",
-        "diagnosis_review_text",
-        "teacher_feedback_text",
-        "summary_feedback"
-      ]
+      required: ["criteria", "total_score", "pass_assessment", "recommendation", "summary_feedback"]
     }
   }
 };
 
-const SYSTEM_INSTRUCTIONS = [
-  "Du bewertest eine aerztliche Simulationsanamnese im Rahmen der Fachsprachpruefung fuer auslaendische Aerztinnen und Aerzte in Deutschland (Aerztekammer Berlin).",
-  "Grundlage ist ein Arzt-Patient-Gespraech mit dem Ziel, die medizinisch-sprachliche Handlungsfaehigkeit im klinischen Alltag zu beurteilen.",
-  "Bewerte anhand von 7 Kriterien. Fuer jedes Kriterium sind nur diese Punkte erlaubt: 0 / 0.5 / 1 / 1.5 / 2 / 2.5.",
-  "Kriterium 1: professionell-persoenliche Kommunikation (empathisch, respektvoll, rollenklare Interaktion).",
-  "Kriterium 2: klare und ausreichend detaillierte Ausdrucksweise mit strukturierter, praeziser und medizinisch korrekter Sprache.",
-  "Kriterium 3: sinnvolles, situationsgerechtes Abweichen von starren Anamneseschemata zur gezielten Informationserhebung.",
-  "Kriterium 4: zielgerichtete, situationsbezogene Gespraechsfuehrung mit logischer Struktur und Priorisierung.",
-  "Kriterium 5: fluessige, zusammenhaengende und fuer Patientinnen und Patienten verstaendliche Erklaerungen medizinischer Sachverhalte.",
-  "Kriterium 6: problemloses Verstehen des Gegenuebers mit korrekter inhaltlicher Interpretation und Weiterverarbeitung.",
-  "Kriterium 7: klares, verstaendliches und patientengerechtes Erkleren des weiteren Vorgehens (Diagnostik/Therapie/naechste Schritte).",
-  "Gib die Gesamtpunktzahl an (Maximum 17.5) und formuliere pass_assessment als implizite Bestehens-Einschaetzung.",
-  "Wichtig: Die Bewertung muss den gesamten kombinierten Text nutzen: den Gespraechsteil plus den als Diagnose abgeschickten Teil.",
-  "question_review_text: fokus auf die Anamneseleistung im Verlauf und auf die Qualitaet der Fragen/Struktur.",
-  "diagnosis_review_text: pruefe den als Diagnose abgeschickten Teil in Verbindung mit dem Verlauf.",
-  "teacher_feedback_text: kurze, konkrete Empfehlung zur sprachlichen Nachbesserung bezogen auf typische Defizite.",
-  "Nutze nur Informationen aus Input-Daten, keine erfundenen Fakten.",
-  "Ausgabe nur als JSON gemaess Schema, ohne Erklaertext davor oder danach."
+const SYSTEM_PROMPT = [
+  "Du bewertest eine ärztliche Simulationsanamnese im Rahmen der Fachsprachprüfung für ausländische Ärztinnen und Ärzte in Deutschland (Ärztekammer Berlin). Grundlage ist ein Arzt-Patient-Gespräch mit dem Ziel, die medizinisch-sprachliche Handlungsfähigkeit im klinischen Alltag zu beurteilen. Bewerte die Leistung anhand der folgenden Kriterien. Vergib für jedes Kriterium eine Punktzahl auf der Skala 0 / 0,5 / 1 / 1,5 / 2 / 2,5 Punkte (0 = gänzlich verfehlt, 0,5 = mangelhaft, 1 = nicht befriedigend, 1,5 = befriedigend, 2 = gut, 2,5 = sehr gut) und begründe jede Bewertung kurz und präzise.",
+  "",
+  "Bewertungskriterien sind: Erstens, ob eine professionell-persönliche Kommunikation hergestellt wird, also eine angemessene, empathische, respektvolle und rollenklare Arzt-Patient-Interaktion. Zweitens, ob sich die Kandidatin oder der Kandidat klar und ausreichend detailliert ausdrückt, mit strukturierter, präziser und medizinisch korrekter Sprache. Drittens, ob sinnvoll und situationsgerecht von starren Anamneseschemata abgewichen wird, um relevante Informationen gezielt zu erheben. Viertens, ob das Gespräch zielgerichtet und situationsbezogen geführt wird, mit logischer Struktur, Priorisierung relevanter Inhalte und ohne unnötige Abschweifungen. Fünftens, ob medizinische Sachverhalte flüssig, zusammenhängend und für Patientinnen und Patienten verständlich erklärt werden. Sechstens, ob das Gegenüber problemlos verstanden wird, das heißt, ob Patientenaussagen korrekt aufgenommen, inhaltlich richtig interpretiert und angemessen weiterverarbeitet werden. Siebtens, ob das weitere Vorgehen (z. B. Diagnostik, Therapie, nächste Schritte) klar, verständlich und patientengerecht erklärt wird.",
+  "",
+  "Gib anschließend die Gesamtpunktzahl an (Maximalpunktzahl 17,5 Punkte) und bewerte implizit, ob das Leistungsniveau einem Bestehen der Simulationsanamnese entspricht. Abschließend formuliere eine kurze, konkrete Empfehlung zur sprachlichen Nachbesserung, die sich auf typische Defizite der gezeigten Leistung bezieht (z. B. Strukturierung der Anamnese, Präzision medizinischer Begriffe, Patientenerklärungen, Gesprächsführung).",
+  "",
+  "Wichtig: Bewerte den gesamten Gesprächsteil UND den final als Diagnose abgeschickten Teil zusammen als eine Gesamtleistung.",
+  "Nutze nur die übergebenen Inhalte.",
+  "Antworte ausschließlich auf Deutsch und ausschließlich als valides JSON gemäß Schema.",
+  "Gib in criteria exakt 7 Einträge in der vorgegebenen Reihenfolge aus.",
+  "Verwende für score ausschließlich 0, 0.5, 1, 1.5, 2 oder 2.5.",
+  "summary_feedback: 1-2 kurze Sätze mit der wichtigsten Lernbotschaft."
 ].join("\n");
+
+const ANAMNESIS_CRITERIA_NAMES = [
+  "Professionell-persönliche Kommunikation",
+  "Klarheit, Detailtiefe und medizinische Sprachpräzision",
+  "Situationsgerechtes Abweichen von starren Anamneseschemata",
+  "Zielgerichtete und strukturierte Gesprächsführung",
+  "Verständliche Erklärung medizinischer Sachverhalte",
+  "Verständnis des Gegenübers und korrekte Weiterverarbeitung",
+  "Klare, patientengerechte Erklärung des weiteren Vorgehens"
+];
 
 export async function onRequestPost(context) {
   try {
@@ -137,14 +117,16 @@ export async function onRequestPost(context) {
     if (!diagnosisTranscript) {
       return json({ error: "Keine Diagnose erkannt. Bitte sprechen oder tippen." }, 422);
     }
+    const conversationText = payload.conversationText || buildConversationTranscript(payload.history);
+    const combinedSubmissionText = buildCombinedSubmissionText(conversationText, diagnosisTranscript);
 
     const promptInput = JSON.stringify(
       {
         case_profile: payload.caseText,
         conversation_history: payload.history,
-        combined_assessment_text: buildAssessmentInput(payload.history, diagnosisTranscript),
-        learner_questions: extractLearnerQuestions(payload.history),
-        final_diagnosis_submission: diagnosisTranscript
+        conversation_transcript: conversationText,
+        final_diagnosis_submission: diagnosisTranscript,
+        combined_submission_text: combinedSubmissionText
       },
       null,
       2
@@ -154,12 +136,14 @@ export async function onRequestPost(context) {
     const candidate = buildCandidateEvaluation(raw, {
       caseText: payload.caseText,
       history: payload.history,
-      diagnosisTranscript
+      diagnosisTranscript,
+      conversationText
     });
     const evaluation = normalizeEvaluation(candidate, {
       caseText: payload.caseText,
       history: payload.history,
-      diagnosisTranscript
+      diagnosisTranscript,
+      conversationText
     });
 
     const spokenFeedback = truncateForTts(buildSpokenFeedback(evaluation));
@@ -174,7 +158,10 @@ export async function onRequestPost(context) {
     });
   } catch (error) {
     console.error("voice-evaluate error", error);
-    return json({ error: "Diagnose-Bewertung fehlgeschlagen. Bitte spaeter erneut versuchen." }, 500);
+    return json(
+      { error: "Anamnese-Bewertung fehlgeschlagen. Bitte spaeter erneut versuchen." },
+      500
+    );
   }
 }
 
@@ -204,6 +191,8 @@ async function readPayload(request) {
   const rawAudio = typeof body?.audioBase64 === "string" ? body.audioBase64.trim() : "";
   const rawDiagnosisText = typeof body?.diagnosisText === "string" ? body.diagnosisText.trim() : "";
   const rawCaseText = typeof body?.caseText === "string" ? body.caseText.trim() : "";
+  const rawConversationText =
+    typeof body?.conversationText === "string" ? body.conversationText.trim() : "";
   const rawChatModel = typeof body?.chatModel === "string" ? body.chatModel.trim() : "";
 
   if (!rawAudio && !rawDiagnosisText) {
@@ -234,12 +223,14 @@ async function readPayload(request) {
       error: `Diagnosetext zu lang (max ${MAX_DIAGNOSIS_TEXT_LENGTH} Zeichen).`
     };
   }
+  const conversationText = rawConversationText.slice(0, MAX_CONVERSATION_TEXT_LENGTH);
 
   return {
     ok: true,
     audioBase64: cleanedAudio,
     diagnosisText,
     caseText: rawCaseText,
+    conversationText,
     history: sanitizeHistory(body?.history),
     preferLocalTts: Boolean(body?.preferLocalTts),
     chatModel: normalizeChatModel(rawChatModel)
@@ -285,12 +276,32 @@ function normalizeChatModel(value) {
   return ALLOWED_CHAT_MODELS.has(value) ? value : DEFAULT_CHAT_MODEL;
 }
 
-function extractLearnerQuestions(history) {
-  if (!Array.isArray(history)) return [];
+function buildConversationTranscript(history) {
+  if (!Array.isArray(history) || !history.length) return "";
   return history
-    .map((turn) => safeText(turn?.user))
-    .filter(Boolean)
-    .slice(-MAX_HISTORY_TURNS);
+    .map((turn, index) => {
+      const user = safeText(turn?.user);
+      const assistant = safeText(turn?.assistant);
+      const lines = [`Turn ${index + 1}:`];
+      if (user) lines.push(`Arzt: ${user}`);
+      if (assistant) lines.push(`Patient: ${assistant}`);
+      return lines.join("\n");
+    })
+    .join("\n\n")
+    .slice(0, MAX_CONVERSATION_TEXT_LENGTH);
+}
+
+function buildCombinedSubmissionText(conversationText, diagnosisText) {
+  const parts = [];
+  if (conversationText) {
+    parts.push("GESPRAECHSVERLAUF:");
+    parts.push(conversationText);
+  }
+  if (diagnosisText) {
+    parts.push("FINAL ABGEGEBENE DIAGNOSE:");
+    parts.push(diagnosisText);
+  }
+  return parts.join("\n\n").trim().slice(0, MAX_CONVERSATION_TEXT_LENGTH);
 }
 
 async function transcribeAudio(ai, audioBase64) {
@@ -334,7 +345,7 @@ async function transcribeAudio(ai, audioBase64) {
 async function runEvaluationRequest(ai, promptInput, chatModel) {
   const model = normalizeChatModel(chatModel);
   const request = {
-    instructions: SYSTEM_INSTRUCTIONS,
+    instructions: SYSTEM_PROMPT,
     input: promptInput,
     response_format: EVALUATION_SCHEMA
   };
@@ -344,20 +355,20 @@ async function runEvaluationRequest(ai, promptInput, chatModel) {
   } catch {
     try {
       return await ai.run(model, {
-        instructions: SYSTEM_INSTRUCTIONS,
+        instructions: SYSTEM_PROMPT,
         input: promptInput
       });
     } catch {
       try {
         return await ai.run(model, {
           messages: [
-            { role: "system", content: SYSTEM_INSTRUCTIONS },
+            { role: "system", content: SYSTEM_PROMPT },
             { role: "user", content: promptInput }
           ]
         });
       } catch {
         return ai.run(model, {
-          prompt: `${SYSTEM_INSTRUCTIONS}\n\n${promptInput}`
+          prompt: `${SYSTEM_PROMPT}\n\n${promptInput}`
         });
       }
     }
@@ -373,20 +384,20 @@ function buildCandidateEvaluation(raw, contextData = {}) {
   if (parsed) return parsed;
 
   return {
-    overall_score: 8.5,
-    anamnesis_score: 7.0,
-    diagnosis_score: 1.5,
-    criteria_scores: buildFallbackCriteriaScores(),
-    pass_assessment: "Das gezeigte Niveau wirkt aktuell noch nicht stabil pruefungsreif.",
-    likely_diagnosis: fallbackLikelyDiagnosis(contextData.caseText),
-    question_review_text: buildFallbackQuestionReview(contextData.history),
-    diagnosis_review_text: buildFallbackDiagnosisReview(
-      contextData.caseText,
-      contextData.diagnosisTranscript
-    ),
-    teacher_feedback_text: buildFallbackTeacherFeedback(),
+    criteria: ANAMNESIS_CRITERIA_NAMES.map((name, index) => ({
+      name,
+      score: index < 6 ? 1.5 : 1.0,
+      justification:
+        index < 6
+          ? "Teilweise erfüllt, aber mit erkennbarem sprachlich-strukturellem Verbesserungsbedarf."
+          : "Das weitere Vorgehen wurde nur teilweise klar und patientengerecht erläutert."
+    })),
+    total_score: 10,
+    pass_assessment: "Leistungsniveau aktuell eher grenzwertig, ein Bestehen ist noch nicht sicher.",
+    recommendation:
+      "Strukturiere die Anamnese konsequent, arbeite sprachlich präziser und erkläre das weitere Vorgehen klarer für Patientinnen und Patienten.",
     summary_feedback:
-      "Solide Grundlage. Im naechsten Durchlauf die Fragen noch strukturierter aufbauen und die Diagnose enger mit den erhobenen Befunden begruenden."
+      "Solide Grundlage mit Lücken in Struktur und sprachlicher Präzision. Nächstes Mal Gesprächsführung und patientengerechte Erklärungen klarer aufbauen."
   };
 }
 
@@ -427,11 +438,7 @@ function extractStructuredFromRaw(raw) {
 
 function looksLikeEvaluationObject(value) {
   if (!value || typeof value !== "object") return false;
-  return (
-    typeof value.overall_score !== "undefined" &&
-    typeof value.anamnesis_score !== "undefined" &&
-    typeof value.diagnosis_score !== "undefined"
-  );
+  return Array.isArray(value.criteria);
 }
 
 function parseStructuredResponse(rawText) {
@@ -507,129 +514,101 @@ function sanitizeModelText(text) {
   return cleaned;
 }
 
-function normalizeEvaluation(candidate, contextData = {}) {
-  const caseText = contextData.caseText || "";
-  const history = Array.isArray(contextData.history) ? contextData.history : [];
-  const diagnosisTranscript = safeParagraph(contextData.diagnosisTranscript, 260);
-  const normalized = {
-    overall_score: clampRangeScore(candidate?.overall_score, 0, 17.5, 10),
-    anamnesis_score: clampRangeScore(candidate?.anamnesis_score, 0, 15, 8),
-    diagnosis_score: clampRangeScore(candidate?.diagnosis_score, 0, 2.5, 2),
-    criteria_scores: normalizeCriteriaScores(candidate?.criteria_scores),
-    pass_assessment: safeLine(candidate?.pass_assessment, 240),
-    likely_diagnosis: safeLine(candidate?.likely_diagnosis, 220),
-    question_review_text: safeParagraph(candidate?.question_review_text, 1600),
-    diagnosis_review_text: safeParagraph(candidate?.diagnosis_review_text, 1400),
-    teacher_feedback_text: safeParagraph(candidate?.teacher_feedback_text, 1400),
-    summary_feedback: safeParagraph(candidate?.summary_feedback, 420)
+function normalizeEvaluation(candidate) {
+  const rawCriteria = Array.isArray(candidate?.criteria) ? candidate.criteria.slice(0, 7) : [];
+  const criteria = ANAMNESIS_CRITERIA_NAMES.map((name, index) => {
+    const source = rawCriteria[index] || {};
+    return {
+      name,
+      score: normalizeCriterionScore(source.score),
+      justification:
+        safeParagraph(source.justification, 420) || "Keine ausreichende Begründung geliefert."
+    };
+  });
+
+  const anamnesisScore = Number(
+    criteria
+      .slice(0, 6)
+      .reduce((sum, item) => sum + Number(item.score || 0), 0)
+      .toFixed(1)
+  );
+  const diagnosisScore = Number((criteria[6]?.score || 0).toFixed(1));
+  const totalFromCriteria = Number((anamnesisScore + diagnosisScore).toFixed(1));
+  const requestedTotal = clampTotalScore(candidate?.total_score, totalFromCriteria);
+  const totalScore =
+    Math.abs(requestedTotal - totalFromCriteria) <= 0.5 ? requestedTotal : totalFromCriteria;
+  const passAssessment = safeParagraph(candidate?.pass_assessment, 420) || inferPassAssessment(totalScore);
+  const recommendation =
+    safeParagraph(candidate?.recommendation, 520) ||
+    "Arbeite mit klarer Gesprächsstruktur, präzisen medizinischen Begriffen und verständlicher Erklärung des weiteren Vorgehens.";
+  const summaryFeedback =
+    safeParagraph(candidate?.summary_feedback, 420) ||
+    safeParagraph(`${passAssessment} ${recommendation}`, 420);
+
+  return {
+    criteria,
+    total_score: totalScore,
+    overall_score: totalScore,
+    anamnesis_score: anamnesisScore,
+    diagnosis_score: diagnosisScore,
+    pass_assessment: passAssessment,
+    recommendation,
+    summary_feedback: summaryFeedback,
+    question_review_text: buildCriteriaReviewText(criteria),
+    diagnosis_review_text: passAssessment,
+    teacher_feedback_text: recommendation,
+    likely_diagnosis: ""
   };
-
-  if (!normalized.likely_diagnosis) {
-    normalized.likely_diagnosis = fallbackLikelyDiagnosis(caseText);
-  }
-  if (!normalized.question_review_text) {
-    normalized.question_review_text = buildQuestionReviewFromLegacy(candidate, history);
-  }
-  if (!normalized.diagnosis_review_text) {
-    normalized.diagnosis_review_text = buildDiagnosisReviewFromLegacy(
-      candidate,
-      caseText,
-      diagnosisTranscript
-    );
-  }
-  if (!normalized.teacher_feedback_text) {
-    normalized.teacher_feedback_text = buildTeacherFeedbackFromLegacy(candidate);
-  }
-  if (!normalized.summary_feedback) {
-    normalized.summary_feedback =
-      "Gute Grundlage. Fuer ein sehr starkes Ergebnis noch gezielter nach Verlauf, red flags und Risikofaktoren fragen und die Diagnose eng daran begruenden.";
-  }
-
-  if (!normalized.criteria_scores.length) {
-    normalized.criteria_scores = buildFallbackCriteriaScores();
-  }
-
-  if (!normalized.pass_assessment) {
-    normalized.pass_assessment =
-      normalized.overall_score >= 10.5
-        ? "Das gezeigte Niveau wirkt in Teilen bereits pruefungsnah, braucht aber noch Feinschliff."
-        : "Das gezeigte Niveau wirkt aktuell noch nicht stabil pruefungsreif."
-  }
-
-  normalized.anamnesis_score = clampRangeScore(
-    normalized.criteria_scores.slice(0, 6).reduce((sum, item) => sum + item.score, 0),
-    0,
-    15,
-    normalized.anamnesis_score
-  );
-  normalized.diagnosis_score = clampRangeScore(
-    normalized.criteria_scores.slice(6, 7).reduce((sum, item) => sum + item.score, 0),
-    0,
-    2.5,
-    normalized.diagnosis_score
-  );
-  normalized.overall_score = clampRangeScore(
-    normalized.anamnesis_score + normalized.diagnosis_score,
-    0,
-    17.5,
-    10
-  );
-
-  return normalized;
 }
 
-function clampRangeScore(value, min, max, fallback) {
-  const num = Number(value);
-  if (!Number.isFinite(num)) return fallback;
-  const rounded = Math.round(num * 2) / 2;
-  if (rounded < min) return min;
-  if (rounded > max) return max;
-  return rounded;
-}
-
-function normalizeCriteriaScores(value) {
-  if (!Array.isArray(value)) return [];
-  return value.slice(0, 7).map((item, index) => ({
-    criterion: safeLine(item?.criterion, 180) || `Kriterium ${index + 1}`,
-    score: clampRangeScore(item?.score, 0, 2.5, 1),
-    reason: safeLine(item?.reason, 320)
-  }));
-}
-
-function buildFallbackCriteriaScores() {
-  return [
-    "Professionell-persoenliche Kommunikation",
-    "Klare, detaillierte und medizinisch korrekte Ausdrucksweise",
-    "Flexibles, situationsgerechtes Anamneseschema",
-    "Zielgerichtete Gespraechsfuehrung",
-    "Verstaendliche Erklaerung medizinischer Inhalte",
-    "Verstehen und Weiterverarbeitung von Patientenaussagen",
-    "Erklaerung des weiteren Vorgehens"
-  ].map((criterion) => ({ criterion, score: 1, reason: "Automatische Fallback-Bewertung." }));
-}
-
-function buildAssessmentInput(history, diagnosisTranscript) {
-  const parts = [];
-  const turns = Array.isArray(history) ? history : [];
-  for (let index = 0; index < turns.length; index += 1) {
-    const turn = turns[index] || {};
-    const user = safeLine(turn.user, 500);
-    const assistant = safeLine(turn.assistant, 500);
-    if (user) parts.push(`Turn ${index + 1} Arzt: ${user}`);
-    if (assistant) parts.push(`Turn ${index + 1} Patient: ${assistant}`);
+function normalizeCriterionScore(value) {
+  const allowed = [0, 0.5, 1, 1.5, 2, 2.5];
+  const numeric = parseLocaleNumber(value);
+  if (!Number.isFinite(numeric)) return 0;
+  let best = allowed[0];
+  let bestDistance = Math.abs(numeric - best);
+  for (const option of allowed) {
+    const distance = Math.abs(numeric - option);
+    if (distance < bestDistance) {
+      best = option;
+      bestDistance = distance;
+    }
   }
-  if (diagnosisTranscript) {
-    parts.push(`Abgeschickter Diagnoseteil: ${safeLine(diagnosisTranscript, 500)}`);
-  }
-  return parts.join("\n");
+  return best;
 }
 
-function normalizeList(value, maxItems, maxLength) {
-  if (!Array.isArray(value)) return [];
-  return value
-    .map((item) => safeLine(item, maxLength))
-    .filter(Boolean)
-    .slice(0, maxItems);
+function clampTotalScore(value, fallback) {
+  const numeric = parseLocaleNumber(value);
+  if (!Number.isFinite(numeric)) return fallback;
+  const clamped = Math.min(17.5, Math.max(0, numeric));
+  return Math.round(clamped * 2) / 2;
+}
+
+function parseLocaleNumber(value) {
+  if (typeof value === "number") return value;
+  if (typeof value === "string") {
+    return Number(value.replace(",", ".").trim());
+  }
+  return Number(value);
+}
+
+function inferPassAssessment(totalScore) {
+  if (totalScore >= 10.5) {
+    return "Leistungsniveau: tendenziell bestanden, sofern die Leistung in dieser Qualität stabil reproduzierbar ist.";
+  }
+  return "Leistungsniveau: aktuell eher nicht bestanden; die sprachlich-strukturelle Leistung sollte vor der Prüfung verbessert werden.";
+}
+
+function buildCriteriaReviewText(criteria) {
+  if (!Array.isArray(criteria) || !criteria.length) return "";
+  return criteria
+    .map((item, index) => {
+      const name = safeLine(item?.name, 180) || `Kriterium ${index + 1}`;
+      const score = Number(item?.score ?? 0).toFixed(1);
+      const justification = safeParagraph(item?.justification, 240);
+      return `${index + 1}. ${name}: ${score} Punkte.${justification ? ` ${justification}` : ""}`;
+    })
+    .join("\n");
 }
 
 function safeLine(value, maxLength) {
@@ -650,96 +629,14 @@ function safeParagraph(value, maxLength) {
   return cleaned.slice(0, maxLength);
 }
 
-function buildQuestionReviewFromLegacy(candidate, history) {
-  const strengths = buildLegacyListText(candidate?.strengths, 3);
-  const missing = buildLegacyListText(candidate?.missing_questions, 3);
-  const suggested = buildLegacyListText(candidate?.suggested_questions, 3);
-  const examples = extractLearnerQuestions(history)
-    .slice(-4)
-    .map((q) => quoteQuestion(q))
-    .join(", ");
-
-  if (examples) {
-    return safeParagraph(
-      `In deiner Anamnese sind mehrere konkrete Fragen erkennbar, zum Beispiel ${examples}. ${strengths ? `Positiv war: ${strengths}. ` : ""}${missing ? `Verbesserungsbedarf: ${missing}. ` : ""}${suggested ? `Naechstes Mal hilfreicher: ${suggested}.` : ""}`,
-      1600
-    );
-  }
-  return safeParagraph(
-    `${strengths ? `Positiv war: ${strengths}. ` : ""}${missing ? `Es fehlten noch wichtige Punkte: ${missing}. ` : ""}${suggested ? `Hilfreiche Anschlussfragen waeren: ${suggested}.` : "Strukturiere die Anamnese noch klarer nach Beginn, Verlauf, Begleitsymptomen und Risikofaktoren."}`,
-    1600
-  );
-}
-
-function buildDiagnosisReviewFromLegacy(candidate, caseText, diagnosisTranscript) {
-  const mistakes = buildLegacyListText(candidate?.mistakes, 3);
-  const likely = safeLine(candidate?.likely_diagnosis, 180) || fallbackLikelyDiagnosis(caseText);
-  const submitted = diagnosisTranscript ? `Deine abgegebene Diagnose war: ${diagnosisTranscript}. ` : "";
-  return safeParagraph(
-    `${submitted}Die fallnahe Hauptdiagnose ist am ehesten ${likely}. ${mistakes ? `Kritische Punkte waren: ${mistakes}.` : "Pruefe im naechsten Durchlauf genauer, ob alle erhobenen Befunde wirklich zu deiner Enddiagnose passen."}`,
-    1400
-  );
-}
-
-function buildTeacherFeedbackFromLegacy(candidate) {
-  const differentials = buildLegacyListText(candidate?.differentials, 3);
-  return safeParagraph(
-    `Als Pruefer und Lehrer empfehle ich dir, das Gespraech konsequent in Bloecke zu strukturieren: Leitsymptom, zeitlicher Verlauf, Begleitsymptome, red flags und Risikoprofil. Danach solltest du deine Verdachtsdiagnose explizit mit den erhobenen Informationen verknuepfen und kurz begruenden, warum Alternativen weniger wahrscheinlich sind.${differentials ? ` Denk dabei aktiv an Differenzialdiagnosen wie: ${differentials}.` : ""}`,
-    1400
-  );
-}
-
-function buildFallbackQuestionReview(history) {
-  const questions = extractLearnerQuestions(history);
-  if (!questions.length) {
-    return "Es liegen kaum verwertbare Arztfragen im Verlauf vor. Fuer eine belastbare Bewertung solltest du kuenftig gezielt nach Beginn, Verlauf, Begleitsymptomen, Vorerkrankungen und Risikofaktoren fragen.";
-  }
-  const examples = questions
-    .slice(-4)
-    .map((question) => quoteQuestion(question))
-    .join(", ");
-  return `Im Gespraech waren konkrete Arztfragen erkennbar, zum Beispiel ${examples}. Fuer ein pruefungsstarkes Vorgehen sollten diese Fragen noch klarer geordnet werden: zuerst Leitsymptom und zeitlicher Verlauf, danach Begleitsymptome, red flags und relevante Risiken.`;
-}
-
-function buildFallbackDiagnosisReview(caseText, diagnosisTranscript) {
-  const likely = fallbackLikelyDiagnosis(caseText);
-  const submitted = diagnosisTranscript ? `Deine Diagnose lautete: ${diagnosisTranscript}. ` : "";
-  return `${submitted}Im Abgleich mit dem Fall wirkt am ehesten ${likely} plausibel. Pruefe, ob deine Diagnose wirklich alle zentralen Befunde erklaert, und benenne offen, welche Informationen noch fehlen, bevor du dich festlegst.`;
-}
-
-function buildFallbackTeacherFeedback() {
-  return "Als Pruefer und Lehrer rate ich dir, kuenftig gezielter in diagnostischen Schritten zu arbeiten: zuerst strukturierte Anamnese, dann Verdachtsdiagnose mit Begruendung, danach aktive Abgrenzung gegen wichtige Alternativen. So wird dein Gespraech fachlich klarer und pruefungssicherer.";
-}
-
-function buildLegacyListText(value, maxItems) {
-  return normalizeList(value, maxItems, 180).join("; ");
-}
-
-function quoteQuestion(question) {
-  const cleaned = safeLine(question, 140);
-  if (!cleaned) return "";
-  return `„${cleaned}“`;
-}
-
-function fallbackLikelyDiagnosis(caseText) {
-  const caseId = extractCaseId(caseText);
-  if (!caseId) {
-    return "Diagnose aus den vorliegenden Angaben nicht eindeutig.";
-  }
-  return `V. a. ${caseId.replace(/_/g, " ")}`;
-}
-
-function extractCaseId(caseText) {
-  const match = String(caseText || "").match(/^CASE_ID:\s*(.+)$/m);
-  return match ? match[1].trim() : "";
-}
-
 function buildSpokenFeedback(evaluation) {
-  const shortTeacher = safeLine(evaluation.teacher_feedback_text, 320);
+  const shortTeacher = safeLine(evaluation.recommendation || evaluation.teacher_feedback_text, 320);
+  const passHint = safeLine(evaluation.pass_assessment, 260);
   return [
-    `Gesamt ${evaluation.overall_score} von 17.5 Punkten.`,
-    `Anamnese ${evaluation.anamnesis_score} von 15, weiterer Ablauf ${evaluation.diagnosis_score} von 2.5.`,
+    `Gesamt ${Number(evaluation.total_score || 0).toFixed(1)} von 17 Komma 5.`,
+    `Gespraechsteil ${Number(evaluation.anamnesis_score || 0).toFixed(1)} von 15, Diagnose und Vorgehen ${Number(evaluation.diagnosis_score || 0).toFixed(1)} von 2 Komma 5.`,
     evaluation.summary_feedback,
+    passHint,
     shortTeacher
   ].join(" ");
 }

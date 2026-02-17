@@ -10,7 +10,7 @@ const TTS_MODEL = "@cf/myshell-ai/melotts";
 
 const MAX_AUDIO_BASE64_LENGTH = 8_000_000;
 const MAX_CASE_LENGTH = 8_000;
-const MAX_HISTORY_TURNS = 20;
+const MAX_HISTORY_TURNS = 60;
 const MAX_TEXT_FIELD = 900;
 const MAX_LEARNER_TEXT_LENGTH = 500;
 const MAX_PATIENT_REPLY_LENGTH = 420;

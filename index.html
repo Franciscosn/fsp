@@ -144,7 +144,7 @@
         <article id="voiceLastTurn" class="voice-turn hidden">
           <p class="voice-turn-label">Du:</p>
           <p id="voiceUserTranscript" class="voice-turn-text"></p>
-          <p class="voice-turn-label">Patient:</p>
+          <p id="voiceAssistantLabel" class="voice-turn-label">Patient:</p>
           <p id="voiceAssistantReply" class="voice-turn-text"></p>
           <p id="voiceCoachHint" class="voice-coach-hint hidden"></p>
         </article>
@@ -174,6 +174,9 @@
           <button id="voiceNextCaseBtn" class="soft-btn" type="button">Naechster Fall</button>
           <button id="voiceDiagnoseBtn" class="soft-btn voice-diagnose-btn" type="button">
             Diagnostizieren
+          </button>
+          <button id="voiceDoctorConversationBtn" class="soft-btn voice-doctor-conversation-btn" type="button">
+            Arzt-Arzt Gespräch
           </button>
           <button id="voiceDoctorLetterToggleBtn" class="soft-btn" type="button">
             Arztbrief erstellen
@@ -217,36 +220,29 @@
         ></textarea>
         <article id="voiceEvalPanel" class="voice-eval hidden">
           <div class="voice-eval-head">
-            <h4>Diagnose-Feedback</h4>
+            <h4>Simulationsanamnese-Bewertung</h4>
             <p id="voiceEvalDiagnosis" class="voice-eval-diagnosis"></p>
           </div>
           <div class="voice-eval-score-grid">
-            <p><span>Gesamt</span><strong id="voiceEvalOverall">0</strong></p>
-            <p><span>Anamnese</span><strong id="voiceEvalAnamnesis">0</strong></p>
-            <p><span>Diagnose</span><strong id="voiceEvalDiagnosisScore">0</strong></p>
+            <p><span>Gesamt (max. 17,5)</span><strong id="voiceEvalOverall">0</strong></p>
+            <p><span>Gesprächsteil (max. 15)</span><strong id="voiceEvalAnamnesis">0</strong></p>
+            <p><span>Diagnose/Vorgehen (max. 2,5)</span><strong id="voiceEvalDiagnosisScore">0</strong></p>
           </div>
           <p id="voiceEvalLikely" class="voice-eval-likely"></p>
-          <p id="voiceEvalPass" class="voice-eval-summary"></p>
           <p id="voiceEvalSummary" class="voice-eval-summary"></p>
           <div class="voice-eval-grid">
             <article class="voice-eval-block">
-              <h5>Kriterienbewertung (0 bis 2,5)</h5>
-              <p id="voiceEvalCriteria" class="voice-eval-prose"></p>
-            </article>
-          </div>
-          <div class="voice-eval-grid">
-            <article class="voice-eval-block">
-              <h5>Anamnese-Prüfung</h5>
+              <h5>Einzelkriterien (7)</h5>
               <p id="voiceEvalQuestionReview" class="voice-eval-prose"></p>
             </article>
           </div>
           <div class="voice-eval-grid">
             <article class="voice-eval-block">
-              <h5>Diagnose-Prüfung</h5>
+              <h5>Bestehensniveau</h5>
               <p id="voiceEvalDiagnosisReview" class="voice-eval-prose"></p>
             </article>
             <article class="voice-eval-block">
-              <h5>Prüfer- und Lehrerfeedback</h5>
+              <h5>Empfehlung zur Nachbesserung</h5>
               <p id="voiceEvalTeacherFeedback" class="voice-eval-prose"></p>
             </article>
           </div>

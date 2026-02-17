@@ -17,6 +17,7 @@ const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
 const MAX_DOCTOR_LETTER_LENGTH = 12_000;
+const MAX_VOICE_HISTORY_TURNS = 60;
 const MIN_VOICE_BLOB_BYTES = 450;
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
@@ -25,6 +26,7 @@ const VOICE_CASE_CUSTOM = "custom";
 const VOICE_CASE_LIBRARY_PREFIX = "lib:";
 const VOICE_MODE_QUESTION = "question";
 const VOICE_MODE_DIAGNOSIS = "diagnosis";
+const VOICE_MODE_DOCTOR_CONVERSATION = "doctor_conversation";
 const DEFAULT_VOICE_CHAT_MODEL = "@cf/openai/gpt-oss-20b";
 const VOICE_MODEL_OPTIONS = [
   { value: "@cf/openai/gpt-oss-20b", label: "gpt-oss-20b (empfohlen)" },
@@ -238,6 +240,7 @@ const state = {
   sessionXp: 0,
   user: null,
   voiceHistory: [],
+  voiceDoctorConversationHistory: [],
   voiceBusy: false,
   voiceRecording: false,
   voiceMode: VOICE_MODE_QUESTION,
@@ -293,6 +296,7 @@ const refs = {
   voiceReplyAudio: document.getElementById("voiceReplyAudio"),
   voiceLastTurn: document.getElementById("voiceLastTurn"),
   voiceUserTranscript: document.getElementById("voiceUserTranscript"),
+  voiceAssistantLabel: document.getElementById("voiceAssistantLabel"),
   voiceAssistantReply: document.getElementById("voiceAssistantReply"),
   voiceCoachHint: document.getElementById("voiceCoachHint"),
   voiceEvalPanel: document.getElementById("voiceEvalPanel"),
@@ -301,13 +305,12 @@ const refs = {
   voiceEvalAnamnesis: document.getElementById("voiceEvalAnamnesis"),
   voiceEvalDiagnosisScore: document.getElementById("voiceEvalDiagnosisScore"),
   voiceEvalLikely: document.getElementById("voiceEvalLikely"),
-  voiceEvalPass: document.getElementById("voiceEvalPass"),
   voiceEvalSummary: document.getElementById("voiceEvalSummary"),
-  voiceEvalCriteria: document.getElementById("voiceEvalCriteria"),
   voiceEvalQuestionReview: document.getElementById("voiceEvalQuestionReview"),
   voiceEvalDiagnosisReview: document.getElementById("voiceEvalDiagnosisReview"),
   voiceEvalTeacherFeedback: document.getElementById("voiceEvalTeacherFeedback"),
   voiceDoctorLetterToggleBtn: document.getElementById("voiceDoctorLetterToggleBtn"),
+  voiceDoctorConversationBtn: document.getElementById("voiceDoctorConversationBtn"),
   voiceDoctorLetterPanel: document.getElementById("voiceDoctorLetterPanel"),
   voiceDoctorLetterInput: document.getElementById("voiceDoctorLetterInput"),
   voiceDoctorLetterSubmitBtn: document.getElementById("voiceDoctorLetterSubmitBtn"),
@@ -358,63 +361,41 @@ const refs = {
 };
 
 const DOCTOR_LETTER_TEMPLATE = [
-  "Patientendaten",
-  "",
-  "Name:",
-  "Geburtsdatum:",
-  "Geschlecht:",
-  "Aufnahmedatum:",
-  "Entlassungsdatum:",
-  "",
-  "⸻",
-  "",
-  "Anlass der Vorstellung",
-  "",
-  "⸻",
-  "",
-  "Anamnese",
-  "",
-  "Beschwerdebeginn und -verlauf:",
-  "Begleitsymptome:",
-  "Vorerkrankungen:",
-  "Medikamente:",
-  "Allergien / Unverträglichkeiten:",
-  "Sozialanamnese (falls relevant):",
-  "Familienanamnese (falls relevant):",
-  "",
-  "⸻",
-  "",
-  "Klinischer Befund",
-  "",
-  "Allgemeinzustand:",
-  "Vitalparameter:",
-  "Relevante körperliche Befunde:",
-  "",
-  "⸻",
-  "",
-  "Diagnostik / Befunde",
-  "",
-  "Untersuchungen:",
-  "Wesentliche Ergebnisse:",
-  "",
-  "⸻",
-  "",
-  "Diagnose",
-  "",
-  "Hauptdiagnose:",
-  "Nebendiagnosen:",
-  "",
-  "⸻",
-  "",
-  "Therapie",
-  "",
-  "⸻",
-  "",
-  "Weiteres Vorgehen / Empfehlungen",
-  "",
-  "⸻",
-  "",
-  "Entlassungszustand"
+  "{",
+  '  "Patientendaten": {',
+  '    "Name": "<STRING>",',
+  '    "Geburtsdatum": "<DATE>",',
+  '    "Geschlecht": "<STRING>",',
+  '    "Aufnahmedatum": "<DATE>",',
+  '    "Entlassungsdatum": "<DATE>"',
+  "  },",
+  '  "Anlass_der_Vorstellung": "<STRING>",',
+  '  "Anamnese": {',
+  '    "Beschwerdebeginn_und_verlauf": "<STRING>",',
+  '    "Begleitsymptome": "<STRING>",',
+  '    "Vorerkrankungen": "<STRING>",',
+  '    "Medikamente": "<STRING>",',
+  '    "Allergien_Unvertraeglichkeiten": "<STRING>",',
+  '    "Sozialanamnese": "<STRING>",',
+  '    "Familienanamnese": "<STRING>"',
+  "  },",
+  '  "Klinischer_Befund": {',
+  '    "Allgemeinzustand": "<STRING>",',
+  '    "Vitalparameter": "<STRING>",',
+  '    "Relevante_koerperliche_Befunde": "<STRING>"',
+  "  },",
+  '  "Diagnostik_Befunde": {',
+  '    "Untersuchungen": "<STRING>",',
+  '    "Wesentliche_Ergebnisse": "<STRING>"',
+  "  },",
+  '  "Diagnose": {',
+  '    "Hauptdiagnose": "<STRING>",',
+  '    "Nebendiagnosen": "<STRING>"',
+  "  },",
+  '  "Therapie": "<STRING>",',
+  '  "Weiteres_Vorgehen_Empfehlungen": "<STRING>",',
+  '  "Entlassungszustand": "<STRING>"',
+  "}"
 ].join("\n");
 
 wireEvents();
@@ -429,6 +410,7 @@ function wireEvents() {
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
   refs.voiceDiagnoseBtn?.addEventListener("click", handleVoiceDiagnoseToggle);
+  refs.voiceDoctorConversationBtn?.addEventListener("click", handleVoiceDoctorConversationToggle);
   refs.voiceDoctorLetterToggleBtn?.addEventListener("click", handleDoctorLetterToggle);
   refs.voiceDoctorLetterSubmitBtn?.addEventListener("click", () => {
     void handleDoctorLetterSubmit();
@@ -649,6 +631,15 @@ function handleVoiceDiagnoseToggle() {
   applyVoiceMode(nextMode, { preserveStatus: false });
 }
 
+function handleVoiceDoctorConversationToggle() {
+  if (state.voiceRecording) {
+    setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
+    return;
+  }
+  const nextMode = isDoctorConversationMode() ? VOICE_MODE_QUESTION : VOICE_MODE_DOCTOR_CONVERSATION;
+  applyVoiceMode(nextMode, { preserveStatus: false });
+}
+
 function handleDoctorLetterToggle() {
   if (!refs.voiceDoctorLetterPanel || !refs.voiceDoctorLetterInput) return;
   const willOpen = refs.voiceDoctorLetterPanel.classList.contains("hidden");
@@ -740,11 +731,17 @@ function applyVoiceModelSelection(model, options = {}) {
 }
 
 function normalizeVoiceMode(mode) {
-  return mode === VOICE_MODE_DIAGNOSIS ? VOICE_MODE_DIAGNOSIS : VOICE_MODE_QUESTION;
+  if (mode === VOICE_MODE_DIAGNOSIS) return VOICE_MODE_DIAGNOSIS;
+  if (mode === VOICE_MODE_DOCTOR_CONVERSATION) return VOICE_MODE_DOCTOR_CONVERSATION;
+  return VOICE_MODE_QUESTION;
 }
 
 function isDiagnosisMode() {
   return state.voiceMode === VOICE_MODE_DIAGNOSIS;
+}
+
+function isDoctorConversationMode() {
+  return state.voiceMode === VOICE_MODE_DOCTOR_CONVERSATION;
 }
 
 function applyVoiceMode(mode, options = {}) {
@@ -761,22 +758,39 @@ function buildVoiceReadyStatus() {
   if (isDiagnosisMode()) {
     return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
   }
+  if (isDoctorConversationMode()) {
+    return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Arzt-Arzt-Modus: Stelle den Fall strukturiert vor und beantworte pruefungsnahe Rueckfragen.`;
+  }
   return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Du kannst aufnehmen oder Text senden.`;
 }
 
 function updateVoiceModeUi() {
   const diagnosisMode = isDiagnosisMode();
+  const doctorConversationMode = isDoctorConversationMode();
   if (refs.voiceTextInput) {
     refs.voiceTextInput.placeholder = diagnosisMode
       ? "Formuliere hier deine Verdachtsdiagnose (z. B. 'Akute Appendizitis')."
-      : "Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'.";
+      : doctorConversationMode
+        ? "Stelle den Fall strukturiert vor oder beantworte die Rueckfrage der pruefenden Aerztin/des pruefenden Arztes."
+        : "Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'.";
   }
   if (refs.voiceTextSendBtn) {
-    refs.voiceTextSendBtn.textContent = diagnosisMode ? "Diagnose abschicken" : "Text senden";
+    refs.voiceTextSendBtn.textContent = diagnosisMode
+      ? "Diagnose abschicken"
+      : doctorConversationMode
+        ? "Bericht senden"
+        : "Text senden";
   }
   if (refs.voiceDiagnoseBtn) {
     refs.voiceDiagnoseBtn.classList.toggle("active", diagnosisMode);
     refs.voiceDiagnoseBtn.setAttribute("aria-pressed", diagnosisMode ? "true" : "false");
+  }
+  if (refs.voiceDoctorConversationBtn) {
+    refs.voiceDoctorConversationBtn.classList.toggle("active", doctorConversationMode);
+    refs.voiceDoctorConversationBtn.setAttribute("aria-pressed", doctorConversationMode ? "true" : "false");
+  }
+  if (refs.voiceAssistantLabel) {
+    refs.voiceAssistantLabel.textContent = doctorConversationMode ? "Prueferarzt:" : "Patient:";
   }
   updateVoiceRecordButton();
 }
@@ -802,7 +816,11 @@ async function handleVoiceTextSend() {
     .slice(0, MAX_VOICE_QUESTION_LENGTH);
   if (!learnerText) {
     setVoiceStatus(
-      isDiagnosisMode() ? "Bitte zuerst eine Diagnose als Text eingeben." : "Bitte zuerst eine Frage als Text eingeben.",
+      isDiagnosisMode()
+        ? "Bitte zuerst eine Diagnose als Text eingeben."
+        : isDoctorConversationMode()
+          ? "Bitte zuerst eine strukturierte Fallvorstellung oder Antwort als Text eingeben."
+          : "Bitte zuerst eine Frage als Text eingeben.",
       true
     );
     refs.voiceTextInput?.focus();
@@ -812,8 +830,13 @@ async function handleVoiceTextSend() {
   try {
     setVoiceBusy(true);
     if (isDiagnosisMode()) {
-      setVoiceStatus("Sende Diagnose und starte Bewertung ...");
+      setVoiceStatus("Sende Diagnose und starte Gesamtbewertung ...");
       await runVoiceEvaluation({ diagnosisText: learnerText });
+    } else if (isDoctorConversationMode()) {
+      clearVoiceEvaluationReport();
+      clearDoctorLetterEvaluationReport();
+      setVoiceStatus("Sende Bericht und starte Arzt-Arzt-Gespraech ...");
+      await runVoiceDoctorConversationTurn({ learnerText });
     } else {
       clearVoiceEvaluationReport();
       clearDoctorLetterEvaluationReport();
@@ -826,7 +849,9 @@ async function handleVoiceTextSend() {
   } catch (error) {
     setVoiceStatus(
       isDiagnosisMode()
-        ? "Diagnosebewertung fehlgeschlagen. Bitte erneut versuchen."
+        ? "Anamnese-Bewertung fehlgeschlagen. Bitte erneut versuchen."
+        : isDoctorConversationMode()
+          ? "Arzt-Arzt-Gespraech fehlgeschlagen. Bitte erneut versuchen."
         : "Text-Turn fehlgeschlagen. Bitte erneut versuchen.",
       true
     );
@@ -1164,6 +1189,8 @@ async function startVoiceRecording() {
     setVoiceStatus(
       isDiagnosisMode()
         ? "Diagnose-Aufnahme laeuft ... tippe erneut, um zu stoppen und zu bewerten."
+        : isDoctorConversationMode()
+          ? "Bericht-Aufnahme laeuft ... tippe erneut, um zu stoppen und Rueckfrage zu erhalten."
         : "Aufnahme laeuft ... tippe erneut, um zu stoppen und an die KI zu senden."
     );
 
@@ -1199,7 +1226,13 @@ function stopVoiceRecording(sendToAi, reason) {
   if (reason === "auto-stop") {
     setVoiceStatus("Maximale Aufnahmedauer erreicht. Audio wird jetzt verarbeitet ...");
   } else if (sendToAi) {
-    setVoiceStatus(isDiagnosisMode() ? "Verarbeite Diagnose-Audio ..." : "Verarbeite Aufnahme ...");
+    setVoiceStatus(
+      isDiagnosisMode()
+        ? "Verarbeite Diagnose-Audio ..."
+        : isDoctorConversationMode()
+          ? "Verarbeite Bericht-Audio ..."
+          : "Verarbeite Aufnahme ..."
+    );
   } else {
     setVoiceStatus("Aufnahme verworfen.");
   }
@@ -1239,19 +1272,28 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
     setVoiceStatus(
       isDiagnosisMode()
         ? "Transkribiere Diagnose und erstelle Bewertung ..."
+        : isDoctorConversationMode()
+          ? "Transkribiere Bericht und simuliere pruefende Rueckfrage ..."
         : "Transkribiere und simuliere Patientenantwort ..."
     );
     const audioBase64 = await blobToBase64(blob);
     if (isDiagnosisMode()) {
       await runVoiceEvaluation({ audioBase64 });
+    } else if (isDoctorConversationMode()) {
+      clearVoiceEvaluationReport();
+      clearDoctorLetterEvaluationReport();
+      await runVoiceDoctorConversationTurn({ audioBase64 });
     } else {
       clearVoiceEvaluationReport();
+      clearDoctorLetterEvaluationReport();
       await runVoiceTurn({ audioBase64 });
     }
   } catch (error) {
     setVoiceStatus(
       isDiagnosisMode()
-        ? "Diagnosebewertung fehlgeschlagen. Bitte erneut versuchen."
+        ? "Anamnese-Bewertung fehlgeschlagen. Bitte erneut versuchen."
+        : isDoctorConversationMode()
+          ? "Arzt-Arzt-Gespraech fehlgeschlagen. Bitte erneut versuchen."
         : "Voice-Turn fehlgeschlagen. Bitte erneut versuchen.",
       true
     );
@@ -1326,7 +1368,7 @@ async function runVoiceTurn(turnInput) {
   const caseText = getActiveVoiceCaseText();
   const requestBody = {
     caseText,
-    history: state.voiceHistory,
+    history: state.voiceDoctorConversationHistory,
     chatModel: normalizeVoiceModel(state.voiceModel),
     preferLocalTts: canUseLocalGermanTts()
   };
@@ -1353,9 +1395,11 @@ async function runVoiceTurn(turnInput) {
   const offTopic = Boolean(payload.offTopic);
 
   if (Array.isArray(payload.history)) {
-    state.voiceHistory = payload.history.slice(-20);
+    state.voiceHistory = payload.history.slice(-MAX_VOICE_HISTORY_TURNS);
   } else if (transcript || patientReply) {
-    state.voiceHistory = [...state.voiceHistory, { user: transcript, assistant: patientReply }].slice(-20);
+    state.voiceHistory = [...state.voiceHistory, { user: transcript, assistant: patientReply }].slice(
+      -MAX_VOICE_HISTORY_TURNS
+    );
   }
 
   refs.voiceUserTranscript.textContent = transcript || "Keine Transkription.";
@@ -1398,16 +1442,115 @@ async function runVoiceTurn(turnInput) {
   setVoiceStatus("Antwort da. Du kannst direkt weiterfragen (Voice oder Text).");
 }
 
+async function runVoiceDoctorConversationTurn(turnInput) {
+  const audioBase64 = typeof turnInput?.audioBase64 === "string" ? turnInput.audioBase64 : "";
+  const learnerText = typeof turnInput?.learnerText === "string" ? turnInput.learnerText : "";
+  const caseText = getActiveVoiceCaseText();
+  const requestBody = {
+    caseText,
+    history: state.voiceDoctorConversationHistory,
+    chatModel: normalizeVoiceModel(state.voiceModel),
+    preferLocalTts: canUseLocalGermanTts()
+  };
+  if (audioBase64) {
+    requestBody.audioBase64 = audioBase64;
+  }
+  if (learnerText) {
+    requestBody.learnerText = learnerText;
+  }
+
+  const response = await fetch("/api/voice-doctor-turn", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(requestBody)
+  });
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(payload.error || "API Fehler");
+  }
+
+  const transcript = typeof payload.transcript === "string" ? payload.transcript.trim() : "";
+  const examinerReply = typeof payload.examinerReply === "string" ? payload.examinerReply.trim() : "";
+  const offTopic = Boolean(payload.offTopic);
+
+  if (Array.isArray(payload.history)) {
+    state.voiceDoctorConversationHistory = payload.history.slice(-MAX_VOICE_HISTORY_TURNS);
+  } else if (transcript || examinerReply) {
+    state.voiceDoctorConversationHistory = [
+      ...state.voiceDoctorConversationHistory,
+      { user: transcript, assistant: examinerReply }
+    ].slice(-MAX_VOICE_HISTORY_TURNS);
+  }
+
+  refs.voiceUserTranscript.textContent = transcript || "Keine Transkription.";
+  refs.voiceAssistantReply.textContent = examinerReply || "Keine Rueckfrage erhalten.";
+  refs.voiceLastTurn.classList.remove("hidden");
+
+  refs.voiceCoachHint.textContent = "";
+  refs.voiceCoachHint.classList.add("hidden");
+
+  const localTtsStarted = speakWithLocalGermanVoice(examinerReply);
+  if (localTtsStarted) {
+    refs.voiceReplyAudio.pause();
+    refs.voiceReplyAudio.removeAttribute("src");
+    refs.voiceReplyAudio.classList.add("hidden");
+  } else {
+    const audioSrc = buildReplyAudioSrc(payload.replyAudioBase64);
+    if (audioSrc) {
+      refs.voiceReplyAudio.src = audioSrc;
+      refs.voiceReplyAudio.classList.remove("hidden");
+      try {
+        await refs.voiceReplyAudio.play();
+      } catch {
+        // autoplay may be blocked; controls are visible as fallback.
+      }
+    } else {
+      refs.voiceReplyAudio.removeAttribute("src");
+      refs.voiceReplyAudio.classList.add("hidden");
+    }
+  }
+
+  if (offTopic) {
+    setVoiceStatus("Rueckfrage da. Hinweis: Bitte die Fallvorstellung enger am klinischen Kern halten.");
+    return;
+  }
+  if (localTtsStarted) {
+    setVoiceStatus("Rueckfrage da. Wiedergabe mit lokaler deutscher Stimme. Du kannst direkt antworten.");
+    return;
+  }
+  setVoiceStatus("Rueckfrage da. Du kannst direkt weiterberichten (Voice oder Text).");
+}
+
+function buildVoiceEvaluationConversationText(history) {
+  if (!Array.isArray(history) || !history.length) return "";
+  return history
+    .map((turn, index) => {
+      const user = String(turn?.user || "").trim();
+      const assistant = String(turn?.assistant || "").trim();
+      const parts = [`Turn ${index + 1}`];
+      if (user) parts.push(`Arzt: ${user}`);
+      if (assistant) parts.push(`Patient: ${assistant}`);
+      return parts.join("\n");
+    })
+    .join("\n\n")
+    .trim();
+}
+
 async function runVoiceEvaluation(input) {
   const audioBase64 = typeof input?.audioBase64 === "string" ? input.audioBase64 : "";
   const diagnosisText = typeof input?.diagnosisText === "string" ? input.diagnosisText.trim() : "";
   const caseText = getActiveVoiceCaseText();
+  const conversationText = buildVoiceEvaluationConversationText(state.voiceHistory);
   const requestBody = {
     caseText,
     history: state.voiceHistory,
     chatModel: normalizeVoiceModel(state.voiceModel),
     preferLocalTts: canUseLocalGermanTts()
   };
+  if (conversationText) {
+    requestBody.conversationText = conversationText;
+  }
   if (audioBase64) {
     requestBody.audioBase64 = audioBase64;
   }
@@ -1438,6 +1581,8 @@ async function runVoiceEvaluation(input) {
   const localTtsText =
     typeof evaluation.summary_feedback === "string" && evaluation.summary_feedback.trim()
       ? evaluation.summary_feedback.trim()
+      : typeof evaluation.recommendation === "string" && evaluation.recommendation.trim()
+        ? evaluation.recommendation.trim()
       : typeof evaluation.teacher_feedback_text === "string"
         ? evaluation.teacher_feedback_text.trim()
         : "";
@@ -1470,6 +1615,28 @@ async function runVoiceEvaluation(input) {
   setVoiceStatus("Bewertung da. Du kannst den Fall jetzt resetten oder weiterfragen.");
 }
 
+function formatScoreForUi(value) {
+  const numeric = Number(value);
+  const safe = Number.isFinite(numeric) ? numeric : 0;
+  return safe.toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+}
+
+function formatScoreWithMax(value, maxValue) {
+  return `${formatScoreForUi(value)} / ${formatScoreForUi(maxValue)}`;
+}
+
+function formatVoiceCriteriaText(criteria) {
+  if (!Array.isArray(criteria) || !criteria.length) return "";
+  return criteria
+    .map((item, index) => {
+      const name = String(item?.name || `Kriterium ${index + 1}`);
+      const score = formatScoreForUi(item?.score);
+      const justification = String(item?.justification || "").trim();
+      return `${index + 1}. ${name}: ${score} Punkte.${justification ? ` ${justification}` : ""}`;
+    })
+    .join("\n");
+}
+
 function renderVoiceEvaluationReport(report, diagnosisText) {
   if (
     !refs.voiceEvalPanel ||
@@ -1478,9 +1645,7 @@ function renderVoiceEvaluationReport(report, diagnosisText) {
     !refs.voiceEvalAnamnesis ||
     !refs.voiceEvalDiagnosisScore ||
     !refs.voiceEvalLikely ||
-    !refs.voiceEvalPass ||
     !refs.voiceEvalSummary ||
-    !refs.voiceEvalCriteria ||
     !refs.voiceEvalQuestionReview ||
     !refs.voiceEvalDiagnosisReview ||
     !refs.voiceEvalTeacherFeedback
@@ -1489,22 +1654,22 @@ function renderVoiceEvaluationReport(report, diagnosisText) {
   }
 
   refs.voiceEvalDiagnosis.textContent = diagnosisText
-    ? `Deine Diagnose: ${diagnosisText}`
-    : "Deine Diagnose wurde uebermittelt.";
-  refs.voiceEvalOverall.textContent = formatVoiceScore(report.overall_score);
-  refs.voiceEvalAnamnesis.textContent = formatVoiceScore(report.anamnesis_score);
-  refs.voiceEvalDiagnosisScore.textContent = formatVoiceScore(report.diagnosis_score);
-  refs.voiceEvalLikely.textContent = report.likely_diagnosis
-    ? `Fallnahe Hauptdiagnose laut KI: ${report.likely_diagnosis}`
-    : "";
-  refs.voiceEvalPass.textContent = report.pass_assessment
-    ? `Bestehensniveau (implizit): ${report.pass_assessment}`
-    : "";
+    ? `Bewertungsgrundlage: Gesprächsverlauf plus abgegebene Diagnose („${diagnosisText}“).`
+    : "Bewertungsgrundlage: Gesprächsverlauf plus abgegebene Diagnose.";
+  refs.voiceEvalOverall.textContent = formatScoreWithMax(
+    report.total_score ?? report.overall_score,
+    17.5
+  );
+  refs.voiceEvalAnamnesis.textContent = formatScoreWithMax(report.anamnesis_score, 15);
+  refs.voiceEvalDiagnosisScore.textContent = formatScoreWithMax(report.diagnosis_score, 2.5);
+  refs.voiceEvalLikely.textContent = String(report.pass_assessment || report.diagnosis_review_text || "");
   refs.voiceEvalSummary.textContent = String(report.summary_feedback || "");
-  refs.voiceEvalCriteria.textContent = formatVoiceCriteria(report.criteria_scores);
-  refs.voiceEvalQuestionReview.textContent = String(report.question_review_text || "");
-  refs.voiceEvalDiagnosisReview.textContent = String(report.diagnosis_review_text || "");
-  refs.voiceEvalTeacherFeedback.textContent = String(report.teacher_feedback_text || "");
+  refs.voiceEvalQuestionReview.textContent =
+    formatVoiceCriteriaText(report.criteria) || String(report.question_review_text || "");
+  refs.voiceEvalDiagnosisReview.textContent = String(report.pass_assessment || report.diagnosis_review_text || "");
+  refs.voiceEvalTeacherFeedback.textContent = String(
+    report.recommendation || report.teacher_feedback_text || ""
+  );
 
   refs.voiceEvalPanel.classList.remove("hidden");
 }
@@ -1513,34 +1678,14 @@ function clearVoiceEvaluationReport() {
   if (!refs.voiceEvalPanel) return;
   refs.voiceEvalPanel.classList.add("hidden");
   if (refs.voiceEvalDiagnosis) refs.voiceEvalDiagnosis.textContent = "";
-  if (refs.voiceEvalOverall) refs.voiceEvalOverall.textContent = "0";
-  if (refs.voiceEvalAnamnesis) refs.voiceEvalAnamnesis.textContent = "0";
-  if (refs.voiceEvalDiagnosisScore) refs.voiceEvalDiagnosisScore.textContent = "0";
+  if (refs.voiceEvalOverall) refs.voiceEvalOverall.textContent = formatScoreWithMax(0, 17.5);
+  if (refs.voiceEvalAnamnesis) refs.voiceEvalAnamnesis.textContent = formatScoreWithMax(0, 15);
+  if (refs.voiceEvalDiagnosisScore) refs.voiceEvalDiagnosisScore.textContent = formatScoreWithMax(0, 2.5);
   if (refs.voiceEvalLikely) refs.voiceEvalLikely.textContent = "";
-  if (refs.voiceEvalPass) refs.voiceEvalPass.textContent = "";
   if (refs.voiceEvalSummary) refs.voiceEvalSummary.textContent = "";
-  if (refs.voiceEvalCriteria) refs.voiceEvalCriteria.textContent = "";
   if (refs.voiceEvalQuestionReview) refs.voiceEvalQuestionReview.textContent = "";
   if (refs.voiceEvalDiagnosisReview) refs.voiceEvalDiagnosisReview.textContent = "";
   if (refs.voiceEvalTeacherFeedback) refs.voiceEvalTeacherFeedback.textContent = "";
-}
-
-function formatVoiceCriteria(criteriaScores) {
-  if (!Array.isArray(criteriaScores) || !criteriaScores.length) return "";
-  return criteriaScores
-    .map((item, index) => {
-      const criterion = typeof item?.criterion === "string" ? item.criterion.trim() : `Kriterium ${index + 1}`;
-      const reason = typeof item?.reason === "string" ? item.reason.trim() : "";
-      const score = Number.isFinite(Number(item?.score)) ? Number(item.score) : 0;
-      return `${index + 1}) ${criterion}: ${score} Punkte${reason ? ` – ${reason}` : ""}`;
-    })
-    .join("\n");
-}
-
-function formatVoiceScore(value) {
-  const num = Number(value);
-  if (!Number.isFinite(num)) return "0";
-  return Number.isInteger(num) ? String(num) : num.toFixed(1);
 }
 
 function resetVoiceConversation(options = {}) {
@@ -1548,6 +1693,7 @@ function resetVoiceConversation(options = {}) {
   const preserveStatus = Boolean(options.preserveStatus);
 
   state.voiceHistory = [];
+  state.voiceDoctorConversationHistory = [];
   setVoiceBusy(false);
 
   if (state.voiceRecording) {
@@ -1592,6 +1738,9 @@ function setVoiceBusy(isBusy) {
   if (refs.voiceDiagnoseBtn) {
     refs.voiceDiagnoseBtn.disabled = state.voiceBusy;
   }
+  if (refs.voiceDoctorConversationBtn) {
+    refs.voiceDoctorConversationBtn.disabled = state.voiceBusy;
+  }
   if (refs.voiceTextSendBtn) {
     refs.voiceTextSendBtn.disabled = state.voiceBusy;
   }
@@ -1623,6 +1772,10 @@ function updateVoiceRecordButton() {
     refs.voiceRecordBtn.textContent = state.voiceRecording
       ? "⏹ Diagnose stoppen"
       : "🎤 Diagnose sprechen";
+  } else if (isDoctorConversationMode()) {
+    refs.voiceRecordBtn.textContent = state.voiceRecording
+      ? "⏹ Bericht stoppen"
+      : "🎤 Bericht sprechen";
   } else {
     refs.voiceRecordBtn.textContent = state.voiceRecording
       ? "⏹ Aufnahme stoppen"
