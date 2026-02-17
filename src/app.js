@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217i";
-const BUILD_UPDATED_AT = "2026-02-17 18:39 UTC";
+const APP_VERSION = "20260217j";
+const BUILD_UPDATED_AT = "2026-02-17 18:50 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -24,6 +24,7 @@ const MIN_VOICE_BLOB_BYTES = 450;
 const MAX_PROMPT_TEXT_LENGTH = 60_000;
 const MAX_PROMPT_PROPOSAL_NAME_LENGTH = 120;
 const MAX_PROMPT_PROPOSAL_NOTE_LENGTH = 1_200;
+const SUPABASE_REQUEST_TIMEOUT_MS = 15_000;
 const PROMPT_FEEDBACK_TARGET_ALL = "__all__";
 const SUPABASE_PROMPT_FEEDBACK_TABLE = "prompt_feedback_submissions";
 const SUPABASE_PROMPT_PROFILES_TABLE = "prompt_profiles";
@@ -989,6 +990,28 @@ function setPromptProposalStatus(message, isError = false) {
   refs.voicePromptProposalStatus.classList.toggle("error", Boolean(isError));
 }
 
+async function runSupabaseWithTimeout(promise, stageLabel, timeoutMs = SUPABASE_REQUEST_TIMEOUT_MS) {
+  let timeoutId = null;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise((_, reject) => {
+        timeoutId = window.setTimeout(() => {
+          reject({
+            code: "TIMEOUT",
+            message: `Zeitlimit ueberschritten (${Math.round(timeoutMs / 1000)}s)`,
+            details: stageLabel
+          });
+        }, timeoutMs);
+      })
+    ]);
+  } finally {
+    if (timeoutId) {
+      window.clearTimeout(timeoutId);
+    }
+  }
+}
+
 function normalizeDbError(error) {
   if (error && typeof error === "object") {
     return {
@@ -1025,6 +1048,9 @@ function isPermissionDbError(dbError) {
 }
 
 function buildPromptProposalErrorMessage(dbError, stageLabel) {
+  if (dbError.code === "TIMEOUT") {
+    return `Zeitueberschreitung bei "${stageLabel}". Bitte Netzwerk/Supabase pruefen und erneut senden.`;
+  }
   if (isSchemaMissingDbError(dbError)) {
     return `Tabellen fehlen. Bitte /supabase/prompt_feedback.sql in Supabase ausfuehren. (${stageLabel})`;
   }
@@ -1096,7 +1122,7 @@ async function handlePromptProposalSubmit() {
   let stageLabel = "Vorschlag speichern";
   try {
     setVoiceBusy(true);
-    setPromptProposalStatus("");
+    setPromptProposalStatus("Sende Vorschlag an Supabase ...");
     setVoiceStatus("Prompt-Vorschlag wird gespeichert ...");
 
     const submissionPayload = {
@@ -1110,11 +1136,14 @@ async function handlePromptProposalSubmit() {
       direct_adopt_applied: false
     };
 
-    const { data: submission, error: insertError } = await supabase
-      .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
-      .insert(submissionPayload)
-      .select("id")
-      .single();
+    const { data: submission, error: insertError } = await runSupabaseWithTimeout(
+      supabase
+        .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
+        .insert(submissionPayload)
+        .select("id")
+        .single(),
+      stageLabel
+    );
     if (insertError) {
       throw insertError;
     }
@@ -1122,17 +1151,22 @@ async function handlePromptProposalSubmit() {
 
     if (directAdopt) {
       stageLabel = "Direkte globale Uebernahme";
+      setPromptProposalStatus("Vorschlag gespeichert. Uebernehme global ...");
       await applyPromptProposalGlobally(promptKeys, submissionId);
 
       stageLabel = "Rueckmeldung nach globaler Uebernahme";
-      const { error: updateError } = await supabase
-        .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
-        .update({
-          direct_adopt_applied: true,
-          adoption_note: "Global in Testphase sofort uebernommen."
-        })
-        .eq("id", submissionId)
-        .eq("user_id", state.user.id);
+      setPromptProposalStatus("Global uebernommen. Finalisiere Rueckmeldung ...");
+      const { error: updateError } = await runSupabaseWithTimeout(
+        supabase
+          .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
+          .update({
+            direct_adopt_applied: true,
+            adoption_note: "Global in Testphase sofort uebernommen."
+          })
+          .eq("id", submissionId)
+          .eq("user_id", state.user.id),
+        stageLabel
+      );
       if (updateError) {
         console.warn("Prompt-Feedback Status-Update fehlgeschlagen", updateError);
       }
@@ -1149,13 +1183,24 @@ async function handlePromptProposalSubmit() {
       buildPromptProposalErrorMessage(dbError, stageLabel).slice(0, 500) ||
       "Direkte Uebernahme fehlgeschlagen.";
     if (submissionId) {
-      const { error: proposalUpdateError } = await supabase
-        .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
-        .update({ adoption_note: adoptionErrorText })
-        .eq("id", submissionId)
-        .eq("user_id", state.user.id);
-      if (proposalUpdateError) {
-        console.warn("Prompt-Feedback Fehlerstatus konnte nicht gespeichert werden", proposalUpdateError);
+      try {
+        const { error: proposalUpdateError } = await runSupabaseWithTimeout(
+          supabase
+            .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
+            .update({ adoption_note: adoptionErrorText })
+            .eq("id", submissionId)
+            .eq("user_id", state.user.id),
+          "Fehlerstatus speichern",
+          6_000
+        );
+        if (proposalUpdateError) {
+          console.warn("Prompt-Feedback Fehlerstatus konnte nicht gespeichert werden", proposalUpdateError);
+        }
+      } catch (proposalUpdateTimeoutError) {
+        console.warn(
+          "Prompt-Feedback Fehlerstatus konnte wegen Timeout nicht gespeichert werden",
+          proposalUpdateTimeoutError
+        );
       }
     }
 
@@ -1173,10 +1218,13 @@ async function applyPromptProposalGlobally(promptKeys, sourceSubmissionId) {
   const uniqueKeys = Array.from(new Set(promptKeys.filter((key) => PROMPT_FIELD_KEYS.includes(key))));
   if (!uniqueKeys.length) return;
 
-  const { data: existingRows, error: existingError } = await supabase
-    .from(SUPABASE_PROMPT_PROFILES_TABLE)
-    .select("prompt_key, version")
-    .in("prompt_key", uniqueKeys);
+  const { data: existingRows, error: existingError } = await runSupabaseWithTimeout(
+    supabase
+      .from(SUPABASE_PROMPT_PROFILES_TABLE)
+      .select("prompt_key, version")
+      .in("prompt_key", uniqueKeys),
+    "Globale Prompt-Versionen laden"
+  );
   if (existingError) {
     throw existingError;
   }
@@ -1200,9 +1248,10 @@ async function applyPromptProposalGlobally(promptKeys, sourceSubmissionId) {
     source_submission_id: sourceSubmissionId || null
   }));
 
-  const { error: upsertError } = await supabase
-    .from(SUPABASE_PROMPT_PROFILES_TABLE)
-    .upsert(rows, { onConflict: "prompt_key" });
+  const { error: upsertError } = await runSupabaseWithTimeout(
+    supabase.from(SUPABASE_PROMPT_PROFILES_TABLE).upsert(rows, { onConflict: "prompt_key" }),
+    "Globale Prompt-Profile speichern"
+  );
   if (upsertError) {
     throw upsertError;
   }
