@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260219e";
-const BUILD_UPDATED_AT = "2026-02-19 11:35 UTC";
+const APP_VERSION = "20260219f";
+const BUILD_UPDATED_AT = "2026-02-19 11:55 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -46,6 +46,16 @@ const VOICE_MODEL_OPTIONS = [
   { value: "@cf/openai/gpt-oss-120b", label: "gpt-oss-120b (staerker, teurer)" }
 ];
 const VOICE_MODEL_SET = new Set(VOICE_MODEL_OPTIONS.map((entry) => entry.value));
+const DOCTOR_EVAL_REQUIRED_PROMPT_BLOCK = [
+  "Zusaetzlich ist ein ausfuehrlicher, aussagekraeftiger Fliesstext Pflicht (detailed_feedback_text): 120-220 Woerter, konkret, fehlerbezogen und individuell.",
+  "Der Fliesstext muss klar benennen:",
+  "- welche sprachlichen/kommunikativen Fehler aufgetreten sind,",
+  "- wie sich diese Fehler im Gespraech gezeigt haben,",
+  "- wie die Aussagen sprachlich besser formuliert werden koennen,",
+  "- welche 2-3 priorisierten Trainingsschritte als Naechstes sinnvoll sind.",
+  "Keine allgemeinen Floskeln, keine reinen Standardsaetze, kein Copy-Paste der Kriterienliste.",
+  "JSON-Felder: criteria, total_score, pass_assessment, recommendation, summary_feedback, detailed_feedback_text."
+].join("\n");
 const DEFAULT_PROMPT_CONFIG = Object.freeze({
   voiceTurn: [
     "Rolle: Du bist ausschliesslich ein standardisierter Patient in einer medizinischen Fachsprachpruefung.",
@@ -957,9 +967,23 @@ function resolvePromptConfig(rawValue) {
   const source = rawValue && typeof rawValue === "object" ? rawValue : {};
   const resolved = {};
   for (const promptKey of PROMPT_FIELD_KEYS) {
-    resolved[promptKey] = normalizePromptText(source[promptKey], DEFAULT_PROMPT_CONFIG[promptKey]);
+    const normalized = normalizePromptText(source[promptKey], DEFAULT_PROMPT_CONFIG[promptKey]);
+    resolved[promptKey] =
+      promptKey === "voiceDoctorEvaluate"
+        ? upgradeDoctorEvaluatePromptIfNeeded(normalized)
+        : normalized;
   }
   return resolved;
+}
+
+function upgradeDoctorEvaluatePromptIfNeeded(promptText) {
+  const normalized = normalizePromptText(promptText, DEFAULT_PROMPT_CONFIG.voiceDoctorEvaluate);
+  const hasDetailedField = normalized.includes("detailed_feedback_text");
+  if (hasDetailedField) {
+    return normalized;
+  }
+  const upgraded = `${normalized}\n${DOCTOR_EVAL_REQUIRED_PROMPT_BLOCK}`.trim();
+  return upgraded.slice(0, MAX_PROMPT_TEXT_LENGTH);
 }
 
 function normalizePromptText(value, fallback) {
