@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260219c";
-const BUILD_UPDATED_AT = "2026-02-19 10:35 UTC";
+const APP_VERSION = "20260219d";
+const BUILD_UPDATED_AT = "2026-02-19 11:05 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -25,6 +25,7 @@ const MAX_PROMPT_TEXT_LENGTH = 60_000;
 const MAX_PROMPT_PROPOSAL_NAME_LENGTH = 120;
 const MAX_PROMPT_PROPOSAL_NOTE_LENGTH = 1_200;
 const SUPABASE_REQUEST_TIMEOUT_MS = 15_000;
+const PROMPT_API_TIMEOUT_MS = 20_000;
 const PROMPT_PRESET_QUERY_LIMIT = 200;
 const PROMPT_FEEDBACK_TARGET_ALL = "__all__";
 const SUPABASE_PROMPT_FEEDBACK_TABLE = "prompt_feedback_submissions";
@@ -386,6 +387,7 @@ const state = {
   voiceHistory: [],
   voiceDoctorConversationHistory: [],
   voiceBusy: false,
+  promptProposalBusy: false,
   voiceRecording: false,
   voiceMode: VOICE_MODE_QUESTION,
   voiceModel: DEFAULT_VOICE_CHAT_MODEL,
@@ -959,6 +961,18 @@ function normalizePromptText(value, fallback) {
   return trimmed.slice(0, MAX_PROMPT_TEXT_LENGTH);
 }
 
+function safeLine(value, maxLength = 200) {
+  if (value === null || value === undefined) return "";
+  const text = String(value).replace(/\s+/g, " ").trim();
+  return text.slice(0, Math.max(0, maxLength));
+}
+
+function safeParagraph(value, maxLength = 600) {
+  if (value === null || value === undefined) return "";
+  const text = String(value).replace(/\s+/g, " ").trim();
+  return text.slice(0, Math.max(0, maxLength));
+}
+
 function getPromptForKey(promptKey) {
   return normalizePromptText(state.promptConfig?.[promptKey], DEFAULT_PROMPT_CONFIG[promptKey]);
 }
@@ -1115,18 +1129,14 @@ async function loadPromptPresetOptions(options = {}) {
   const nextOptions = createEmptyPromptPresetOptions();
 
   try {
-    const { data: profileRows, error: profileError } = await runSupabaseWithTimeout(
-      supabase
-        .from(SUPABASE_PROMPT_PROFILES_TABLE)
-        .select("prompt_key, prompt_text, version, is_active, updated_at")
-        .eq("is_active", true),
-      "Globale Prompt-Profile laden"
-    );
-    if (profileError) {
-      throw profileError;
-    }
+    const payload = await runPromptProposalApiRequest("GET", {
+      query: `limit=${PROMPT_PRESET_QUERY_LIMIT}`,
+      stageLabel: "Prompt-Auswahl laden"
+    });
+    const profileRows = Array.isArray(payload?.profiles) ? payload.profiles : [];
+    const submissionRows = Array.isArray(payload?.submissions) ? payload.submissions : [];
 
-    for (const row of Array.isArray(profileRows) ? profileRows : []) {
+    for (const row of profileRows) {
       const promptKey = String(row?.prompt_key || "");
       if (!PROMPT_FIELD_KEYS.includes(promptKey)) continue;
       const promptText = normalizePromptText(row?.prompt_text, "");
@@ -1139,19 +1149,7 @@ async function loadPromptPresetOptions(options = {}) {
       });
     }
 
-    const { data: submissionRows, error: submissionError } = await runSupabaseWithTimeout(
-      supabase
-        .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
-        .select("id, proposal_name, target_prompt_key, prompt_text, prompt_payload_json, created_at, direct_adopt_applied")
-        .order("created_at", { ascending: false })
-        .limit(PROMPT_PRESET_QUERY_LIMIT),
-      "Prompt-Vorschlaege laden"
-    );
-    if (submissionError) {
-      throw submissionError;
-    }
-
-    for (const row of Array.isArray(submissionRows) ? submissionRows : []) {
+    for (const row of submissionRows) {
       for (const promptKey of PROMPT_FIELD_KEYS) {
         const promptText = extractPromptTextFromSubmission(row, promptKey);
         if (!promptText) continue;
@@ -1297,15 +1295,15 @@ async function getSupabaseAccessToken() {
   return accessToken;
 }
 
-async function runSupabaseRestWithTimeout(pathWithQuery, options = {}) {
-  const stageLabel = String(options.stageLabel || "Supabase REST");
-  const timeoutMs = Number(options.timeoutMs) > 0 ? Number(options.timeoutMs) : SUPABASE_REQUEST_TIMEOUT_MS;
-  const method = String(options.method || "GET").toUpperCase();
+async function runPromptProposalApiRequest(method, options = {}) {
+  const upperMethod = String(method || "GET").toUpperCase();
+  const stageLabel = String(options.stageLabel || "Prompt-API");
+  const query = String(options.query || "").trim();
   const body = options.body;
-  const prefer = typeof options.prefer === "string" ? options.prefer.trim() : "";
-
+  const timeoutMs = Number(options.timeoutMs) > 0 ? Number(options.timeoutMs) : PROMPT_API_TIMEOUT_MS;
   const accessToken = await getSupabaseAccessToken();
   const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+
   let timeoutId = null;
   if (controller) {
     timeoutId = window.setTimeout(() => {
@@ -1314,32 +1312,31 @@ async function runSupabaseRestWithTimeout(pathWithQuery, options = {}) {
   }
 
   try {
-    const url = `${SUPABASE_URL}/rest/v1/${pathWithQuery}`;
+    const url = `/api/prompt-proposals${query ? `?${query}` : ""}`;
     const headers = {
-      apikey: SUPABASE_ANON_KEY,
       authorization: `Bearer ${accessToken}`
     };
-    if (prefer) {
-      headers.prefer = prefer;
-    }
-    if (body !== undefined) {
+    if (upperMethod !== "GET") {
       headers["content-type"] = "application/json";
     }
 
     const response = await fetch(url, {
-      method,
+      method: upperMethod,
       headers,
-      body: body === undefined ? undefined : JSON.stringify(body),
+      body: upperMethod === "GET" ? undefined : JSON.stringify(body || {}),
       signal: controller ? controller.signal : undefined
     });
 
-    const payload = await response.json().catch(() => null);
+    const payload = await response.json().catch(() => ({}));
     if (!response.ok) {
       throw {
-        code: `HTTP_${response.status}`,
-        message: safeParagraph(payload?.message || response.statusText || "REST request fehlgeschlagen", 500),
-        details: safeParagraph(payload?.details, 500),
-        hint: safeParagraph(payload?.hint, 300)
+        code: safeLine(payload?.code || `HTTP_${response.status}`, 40),
+        message: safeParagraph(
+          payload?.error || response.statusText || `${stageLabel} fehlgeschlagen.`,
+          600
+        ),
+        details: safeParagraph(payload?.details, 600),
+        hint: safeParagraph(payload?.hint, 400)
       };
     }
     return payload;
@@ -1356,46 +1353,6 @@ async function runSupabaseRestWithTimeout(pathWithQuery, options = {}) {
     if (timeoutId) {
       window.clearTimeout(timeoutId);
     }
-  }
-}
-
-async function insertPromptSubmissionWithFallback(submissionPayload, stageLabel) {
-  try {
-    const result = await runSupabaseWithTimeout(
-      supabase
-        .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
-        .insert(submissionPayload)
-        .select("id, created_at")
-        .single(),
-      stageLabel
-    );
-    if (result?.error) {
-      throw result.error;
-    }
-    return result?.data || null;
-  } catch (error) {
-    const dbError = normalizeDbError(error);
-    if (dbError.code !== "TIMEOUT") {
-      throw error;
-    }
-
-    const restRows = await runSupabaseRestWithTimeout(
-      `${SUPABASE_PROMPT_FEEDBACK_TABLE}?select=id,created_at`,
-      {
-        method: "POST",
-        body: [submissionPayload],
-        prefer: "return=representation",
-        stageLabel: `${stageLabel} (REST-Fallback)`
-      }
-    );
-    if (!Array.isArray(restRows) || !restRows[0]) {
-      throw {
-        code: "EMPTY_REST_RESPONSE",
-        message: "Supabase REST hat keine gespeicherten Daten zurueckgegeben.",
-        details: `${stageLabel} (REST-Fallback)`
-      };
-    }
-    return restRows[0];
   }
 }
 
@@ -1521,7 +1478,11 @@ function mergePromptPresetFromSubmission(entry) {
 }
 
 async function handlePromptProposalSubmit() {
-  if (state.voiceBusy) return;
+  if (state.promptProposalBusy) return;
+  if (state.voiceBusy) {
+    setVoiceStatus("Bitte warte, bis die laufende Anfrage abgeschlossen ist.", true);
+    return;
+  }
   if (!supabase || !state.user) {
     setVoiceStatus("Bitte zuerst einloggen, um Prompt-Vorschlaege zu senden.", true);
     setPromptProposalStatus("Bitte zuerst einloggen.", true);
@@ -1553,161 +1514,55 @@ async function handlePromptProposalSubmit() {
   let submissionId = "";
   let submissionCreatedAt = "";
   let stageLabel = "Vorschlag speichern";
-  let watchdogId = null;
-  let submitCompleted = false;
   try {
-    watchdogId = window.setTimeout(() => {
-      if (submitCompleted) return;
-      const timeoutMessage =
-        "Zeitueberschreitung bei Prompt-Vorschlag. Bitte Netzwerk/Supabase pruefen und erneut senden.";
-      setVoiceBusy(false);
-      setVoiceStatus(timeoutMessage, true);
-      setPromptProposalStatus(timeoutMessage, true);
-    }, SUPABASE_REQUEST_TIMEOUT_MS + 3_000);
-
-    setVoiceBusy(true);
+    setPromptProposalBusy(true);
     setPromptProposalStatus("Sende Vorschlag an Supabase ...");
     setVoiceStatus("Prompt-Vorschlag wird gespeichert ...");
 
-    const submissionPayload = {
-      user_id: state.user.id,
-      proposal_name: proposalName,
-      proposal_note: proposalNote,
-      target_prompt_key: target,
-      prompt_text: buildPromptSubmissionText(target, promptKeys, promptPayload),
-      prompt_payload_json: promptPayload,
-      direct_adopt_requested: directAdopt,
-      direct_adopt_applied: false
-    };
-
-    const submission = await insertPromptSubmissionWithFallback(submissionPayload, stageLabel);
-    submissionId = String(submission?.id || "");
-    submissionCreatedAt = typeof submission?.created_at === "string" ? submission.created_at : "";
+    const apiPayload = await runPromptProposalApiRequest("POST", {
+      stageLabel,
+      timeoutMs: PROMPT_API_TIMEOUT_MS,
+      body: {
+        proposalName,
+        proposalNote,
+        targetPromptKey: target,
+        promptText: buildPromptSubmissionText(target, promptKeys, promptPayload),
+        promptPayloadJson: promptPayload,
+        directAdoptRequested: directAdopt
+      }
+    });
+    const submission = apiPayload?.submission || {};
+    submissionId = String(submission.id || "");
+    submissionCreatedAt = typeof submission.created_at === "string" ? submission.created_at : "";
+    const directAdoptApplied = Boolean(apiPayload?.directAdoptApplied);
     mergePromptPresetFromSubmission({
       submissionId,
       target,
       proposalName,
       promptPayload,
       createdAt: submissionCreatedAt,
-      directAdoptApplied: directAdopt
+      directAdoptApplied
     });
 
-    if (directAdopt) {
-      stageLabel = "Direkte globale Uebernahme";
-      setPromptProposalStatus("Vorschlag gespeichert. Uebernehme global ...");
-      await applyPromptProposalGlobally(promptKeys, submissionId);
-
-      stageLabel = "Rueckmeldung nach globaler Uebernahme";
-      setPromptProposalStatus("Global uebernommen. Finalisiere Rueckmeldung ...");
-      const { error: updateError } = await runSupabaseWithTimeout(
-        supabase
-          .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
-          .update({
-            direct_adopt_applied: true,
-            adoption_note: "Global in Testphase sofort uebernommen."
-          })
-          .eq("id", submissionId)
-          .eq("user_id", state.user.id),
-        stageLabel
-      );
-      if (updateError) {
-        console.warn("Prompt-Feedback Status-Update fehlgeschlagen", updateError);
-      }
-
-      void loadPromptPresetOptions({ silent: true });
+    if (directAdoptApplied) {
+      await loadPromptPresetOptions({ silent: true });
       setVoiceStatus(`Vorschlag gespeichert und global uebernommen (${targetLabel}).`);
       setPromptProposalStatus(`Gespeichert und global uebernommen (${targetLabel}).`);
     } else {
       setPromptProposalStatus("Vorschlag gespeichert. Aktualisiere Auswahl ...");
-      void loadPromptPresetOptions({ silent: true });
+      await loadPromptPresetOptions({ silent: true });
       setVoiceStatus(`Prompt-Vorschlag gespeichert (${targetLabel}).`);
       setPromptProposalStatus(`Vorschlag gespeichert (${targetLabel}).`);
     }
-    submitCompleted = true;
   } catch (error) {
     const dbError = normalizeDbError(error);
-    const adoptionErrorText =
-      buildPromptProposalErrorMessage(dbError, stageLabel).slice(0, 500) ||
-      "Direkte Uebernahme fehlgeschlagen.";
-    if (submissionId) {
-      try {
-        const { error: proposalUpdateError } = await runSupabaseWithTimeout(
-          supabase
-            .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
-            .update({ adoption_note: adoptionErrorText })
-            .eq("id", submissionId)
-            .eq("user_id", state.user.id),
-          "Fehlerstatus speichern",
-          6_000
-        );
-        if (proposalUpdateError) {
-          console.warn("Prompt-Feedback Fehlerstatus konnte nicht gespeichert werden", proposalUpdateError);
-        }
-      } catch (proposalUpdateTimeoutError) {
-        console.warn(
-          "Prompt-Feedback Fehlerstatus konnte wegen Timeout nicht gespeichert werden",
-          proposalUpdateTimeoutError
-        );
-      }
-    }
-
     const uiMessage = buildPromptProposalErrorMessage(dbError, stageLabel);
     setVoiceStatus(uiMessage, true);
     setPromptProposalStatus(uiMessage, true);
     console.error(error);
   } finally {
-    submitCompleted = true;
-    if (watchdogId) {
-      window.clearTimeout(watchdogId);
-    }
-    setVoiceBusy(false);
+    setPromptProposalBusy(false);
   }
-}
-
-async function applyPromptProposalGlobally(promptKeys, sourceSubmissionId) {
-  if (!supabase || !state.user) return;
-  const uniqueKeys = Array.from(new Set(promptKeys.filter((key) => PROMPT_FIELD_KEYS.includes(key))));
-  if (!uniqueKeys.length) return;
-
-  const { data: existingRows, error: existingError } = await runSupabaseWithTimeout(
-    supabase
-      .from(SUPABASE_PROMPT_PROFILES_TABLE)
-      .select("prompt_key, version")
-      .in("prompt_key", uniqueKeys),
-    "Globale Prompt-Versionen laden"
-  );
-  if (existingError) {
-    throw existingError;
-  }
-
-  const versionByKey = new Map();
-  for (const row of Array.isArray(existingRows) ? existingRows : []) {
-    const key = String(row?.prompt_key || "");
-    const version = Number(row?.version || 0);
-    if (!PROMPT_FIELD_KEYS.includes(key)) continue;
-    versionByKey.set(key, Number.isFinite(version) ? version : 0);
-  }
-
-  const nowIso = new Date().toISOString();
-  const rows = uniqueKeys.map((key) => ({
-    prompt_key: key,
-    prompt_text: getPromptForKey(key),
-    version: (versionByKey.get(key) || 0) + 1,
-    is_active: true,
-    updated_at: nowIso,
-    updated_by: state.user.id,
-    source_submission_id: sourceSubmissionId || null
-  }));
-
-  const { error: upsertError } = await runSupabaseWithTimeout(
-    supabase.from(SUPABASE_PROMPT_PROFILES_TABLE).upsert(rows, { onConflict: "prompt_key" }),
-    "Globale Prompt-Profile speichern"
-  );
-  if (upsertError) {
-    throw upsertError;
-  }
-
-  state.promptProfilesLoaded = true;
 }
 
 function handleDoctorLetterToggle() {
@@ -2917,6 +2772,51 @@ function resetVoiceConversation(options = {}) {
   }
 }
 
+function setPromptProposalBusy(isBusy) {
+  state.promptProposalBusy = Boolean(isBusy);
+  const promptUiBusy = state.voiceBusy || state.promptProposalBusy;
+  applyPromptEditorBusyState(promptUiBusy);
+}
+
+function applyPromptEditorBusyState(isBusy) {
+  if (refs.voicePromptConfigToggleBtn) {
+    refs.voicePromptConfigToggleBtn.disabled = isBusy;
+  }
+  if (refs.voicePromptConfigSaveBtn) {
+    refs.voicePromptConfigSaveBtn.disabled = isBusy;
+  }
+  if (refs.voicePromptConfigResetBtn) {
+    refs.voicePromptConfigResetBtn.disabled = isBusy;
+  }
+  if (refs.voicePromptProposalSubmitBtn) {
+    refs.voicePromptProposalSubmitBtn.disabled = isBusy;
+  }
+  if (refs.voicePromptProposalNameInput) {
+    refs.voicePromptProposalNameInput.disabled = isBusy;
+  }
+  if (refs.voicePromptProposalNoteInput) {
+    refs.voicePromptProposalNoteInput.disabled = isBusy;
+  }
+  if (refs.voicePromptProposalTargetSelect) {
+    refs.voicePromptProposalTargetSelect.disabled = isBusy;
+  }
+  if (refs.voicePromptProposalApplyNowInput) {
+    refs.voicePromptProposalApplyNowInput.disabled = isBusy;
+  }
+  for (const promptKey of PROMPT_FIELD_KEYS) {
+    const refKey = PROMPT_EDITOR_REF_KEY_BY_PROMPT_KEY[promptKey];
+    const input = refs[refKey];
+    if (input) {
+      input.disabled = isBusy;
+    }
+    const presetSelectRefKey = PROMPT_PRESET_SELECT_REF_KEY_BY_PROMPT_KEY[promptKey];
+    const presetSelect = refs[presetSelectRefKey];
+    if (presetSelect) {
+      presetSelect.disabled = isBusy;
+    }
+  }
+}
+
 function setVoiceBusy(isBusy) {
   state.voiceBusy = Boolean(isBusy);
   if (refs.voiceCaseSelect) {
@@ -2961,42 +2861,7 @@ function setVoiceBusy(isBusy) {
   if (refs.voiceDoctorLetterInput) {
     refs.voiceDoctorLetterInput.disabled = state.voiceBusy;
   }
-  if (refs.voicePromptConfigToggleBtn) {
-    refs.voicePromptConfigToggleBtn.disabled = state.voiceBusy;
-  }
-  if (refs.voicePromptConfigSaveBtn) {
-    refs.voicePromptConfigSaveBtn.disabled = state.voiceBusy;
-  }
-  if (refs.voicePromptConfigResetBtn) {
-    refs.voicePromptConfigResetBtn.disabled = state.voiceBusy;
-  }
-  if (refs.voicePromptProposalSubmitBtn) {
-    refs.voicePromptProposalSubmitBtn.disabled = state.voiceBusy;
-  }
-  if (refs.voicePromptProposalNameInput) {
-    refs.voicePromptProposalNameInput.disabled = state.voiceBusy;
-  }
-  if (refs.voicePromptProposalNoteInput) {
-    refs.voicePromptProposalNoteInput.disabled = state.voiceBusy;
-  }
-  if (refs.voicePromptProposalTargetSelect) {
-    refs.voicePromptProposalTargetSelect.disabled = state.voiceBusy;
-  }
-  if (refs.voicePromptProposalApplyNowInput) {
-    refs.voicePromptProposalApplyNowInput.disabled = state.voiceBusy;
-  }
-  for (const promptKey of PROMPT_FIELD_KEYS) {
-    const refKey = PROMPT_EDITOR_REF_KEY_BY_PROMPT_KEY[promptKey];
-    const input = refs[refKey];
-    if (input) {
-      input.disabled = state.voiceBusy;
-    }
-    const presetSelectRefKey = PROMPT_PRESET_SELECT_REF_KEY_BY_PROMPT_KEY[promptKey];
-    const presetSelect = refs[presetSelectRefKey];
-    if (presetSelect) {
-      presetSelect.disabled = state.voiceBusy;
-    }
-  }
+  applyPromptEditorBusyState(state.voiceBusy || state.promptProposalBusy);
   refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
 }
 
@@ -3237,6 +3102,7 @@ async function applySession(session) {
   state.promptProfilesLoaded = false;
   if (!user) {
     state.sessionXp = 0;
+    state.promptProposalBusy = false;
     state.promptPresetOptionsByKey = createEmptyPromptPresetOptions();
     renderPromptPresetSelects();
     renderSessionXpDisplay();
