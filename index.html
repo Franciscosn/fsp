@@ -177,6 +177,15 @@
           >
             Prompt-Editor
           </button>
+          <button id="voiceSamplePatientBtn" class="soft-btn voice-sample-patient-btn" type="button">
+            Muster Arzt-Patient Gespraech
+          </button>
+          <button id="voiceSampleLetterBtn" class="soft-btn voice-sample-letter-btn" type="button">
+            Muster Arztbrief
+          </button>
+          <button id="voiceSampleDoctorBtn" class="soft-btn voice-sample-doctor-btn" type="button">
+            Muster Arzt-Arzt Gespraech
+          </button>
         </div>
         <article id="voiceDoctorLetterPanel" class="voice-doctor-letter hidden">
           <h4>Arztbrief</h4>
@@ -317,6 +326,13 @@
             </button>
             <p id="voicePromptProposalStatus" class="voice-prompt-feedback-status"></p>
           </section>
+        </article>
+        <article id="voiceSamplePanel" class="voice-sample hidden">
+          <div class="voice-eval-head">
+            <h4 id="voiceSampleTitle">Musteransicht</h4>
+            <p id="voiceSampleMeta" class="voice-eval-diagnosis"></p>
+          </div>
+          <pre id="voiceSampleText" class="voice-sample-text"></pre>
         </article>
         <p id="voiceStatus" class="voice-status">Bereit. Du kannst direkt sprechen oder Text senden.</p>
         <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>

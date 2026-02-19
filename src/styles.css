@@ -507,7 +507,7 @@ body.auth-only .edge-deco {
 
 .voice-actions {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 8px;
   align-items: start;
 }
@@ -532,6 +532,24 @@ body.auth-only .edge-deco {
 
 .voice-doctor-conversation-eval-btn {
   border-color: rgba(143, 47, 73, 0.44);
+}
+
+.voice-sample-patient-btn.active {
+  background: linear-gradient(126deg, #2d6278, #3c88a8);
+  border-color: rgba(45, 98, 120, 0.85);
+  color: #f3fbff;
+}
+
+.voice-sample-letter-btn.active {
+  background: linear-gradient(126deg, #4f5f2e, #7c933c);
+  border-color: rgba(79, 95, 46, 0.84);
+  color: #f8ffef;
+}
+
+.voice-sample-doctor-btn.active {
+  background: linear-gradient(126deg, #6f315e, #a24686);
+  border-color: rgba(111, 49, 94, 0.86);
+  color: #fff3fc;
 }
 
 .voice-text-compact {
@@ -815,6 +833,29 @@ body.auth-only .edge-deco {
 
 .voice-doctor-letter-submit {
   justify-self: start;
+}
+
+.voice-sample {
+  border: 1px solid rgba(248, 73, 102, 0.24);
+  border-radius: 14px;
+  background: #fff9fb;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.voice-sample-text {
+  margin: 0;
+  border: 1px solid rgba(248, 73, 102, 0.2);
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+  color: #5d2736;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow: auto;
+  max-height: 520px;
 }
 
 .voice-prompt-config-toggle-btn {
@@ -2144,6 +2185,10 @@ body.immersive .stats-fab {
 
   .voice-case-info-text {
     max-height: 220px;
+  }
+
+  .voice-sample-text {
+    max-height: 320px;
   }
 
   .voice-text-compact {

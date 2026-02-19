@@ -32,12 +32,33 @@ const SUPABASE_PROMPT_FEEDBACK_TABLE = "prompt_feedback_submissions";
 const SUPABASE_PROMPT_PROFILES_TABLE = "prompt_profiles";
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
+const VOICE_CASE_SAMPLE_PATH = "data/voice_case_samples_de.json";
 const VOICE_CASE_DEFAULT = "default";
 const VOICE_CASE_CUSTOM = "custom";
 const VOICE_CASE_LIBRARY_PREFIX = "lib:";
 const VOICE_MODE_QUESTION = "question";
 const VOICE_MODE_DIAGNOSIS = "diagnosis";
 const VOICE_MODE_DOCTOR_CONVERSATION = "doctor_conversation";
+const VOICE_SAMPLE_VIEW_PATIENT = "sample_patient";
+const VOICE_SAMPLE_VIEW_LETTER = "sample_letter";
+const VOICE_SAMPLE_VIEW_DOCTOR = "sample_doctor";
+const VOICE_SAMPLE_VIEW_MAP = Object.freeze({
+  [VOICE_SAMPLE_VIEW_PATIENT]: {
+    title: "Muster Arzt-Patient Gespraech",
+    field: "muster_arzt_patient_gespraech",
+    buttonRef: "voiceSamplePatientBtn"
+  },
+  [VOICE_SAMPLE_VIEW_LETTER]: {
+    title: "Muster Arztbrief",
+    field: "muster_arztbrief",
+    buttonRef: "voiceSampleLetterBtn"
+  },
+  [VOICE_SAMPLE_VIEW_DOCTOR]: {
+    title: "Muster Arzt-Arzt Gespraech",
+    field: "muster_arzt_arzt_gespraech",
+    buttonRef: "voiceSampleDoctorBtn"
+  }
+});
 const DEFAULT_VOICE_CHAT_MODEL = "@cf/openai/gpt-oss-20b";
 const VOICE_MODEL_OPTIONS = [
   { value: "@cf/openai/gpt-oss-20b", label: "gpt-oss-20b (empfohlen)" },
@@ -297,9 +318,6 @@ const CATEGORY_MAP = {
   krampfanfall: "Neurologie",
   melaena: "Gastro",
   meteorismus: "Gastro",
-  muster_arzt_arzt_gespraech: "Muster Arzt-Arzt Gespraech",
-  muster_arzt_patient_gespraech: "Muster Arzt-Patient Gespraech",
-  muster_arztbrief: "Muster Arztbrief",
   myalgie: "Muskuloskeletal",
   nachtschweiss: "Infekt/Allgemein",
   nausea: "Gastro",
@@ -411,6 +429,7 @@ const state = {
   promptProposalBusy: false,
   voiceRecording: false,
   voiceMode: VOICE_MODE_QUESTION,
+  voiceSampleView: "",
   voiceModel: DEFAULT_VOICE_CHAT_MODEL,
   promptConfig: initialPromptConfig,
   promptProfilesLoaded: false,
@@ -418,9 +437,11 @@ const state = {
   promptProposalMeta: initialPromptProposalMeta,
   voiceCaseLibrary: [],
   voiceCaseResolutions: {},
+  voiceCaseSamples: {},
   voiceCaseIndex: -1,
   voiceCaseLibraryLoaded: false,
   voiceCaseResolutionsLoaded: false,
+  voiceCaseSamplesLoaded: false,
   voiceCaseSelection: VOICE_CASE_DEFAULT
 };
 
@@ -488,6 +509,13 @@ const refs = {
   voiceDoctorConversationBtn: document.getElementById("voiceDoctorConversationBtn"),
   voiceDoctorConversationEvalBtn: document.getElementById("voiceDoctorConversationEvalBtn"),
   voicePromptConfigToggleBtn: document.getElementById("voicePromptConfigToggleBtn"),
+  voiceSamplePatientBtn: document.getElementById("voiceSamplePatientBtn"),
+  voiceSampleLetterBtn: document.getElementById("voiceSampleLetterBtn"),
+  voiceSampleDoctorBtn: document.getElementById("voiceSampleDoctorBtn"),
+  voiceSamplePanel: document.getElementById("voiceSamplePanel"),
+  voiceSampleTitle: document.getElementById("voiceSampleTitle"),
+  voiceSampleMeta: document.getElementById("voiceSampleMeta"),
+  voiceSampleText: document.getElementById("voiceSampleText"),
   voicePromptConfigPanel: document.getElementById("voicePromptConfigPanel"),
   voicePromptConfigSaveBtn: document.getElementById("voicePromptConfigSaveBtn"),
   voicePromptConfigResetBtn: document.getElementById("voicePromptConfigResetBtn"),
@@ -638,6 +666,15 @@ function wireEvents() {
     void handleVoiceDoctorConversationEvaluate();
   });
   refs.voicePromptConfigToggleBtn?.addEventListener("click", handlePromptConfigToggle);
+  refs.voiceSamplePatientBtn?.addEventListener("click", () => {
+    handleVoiceSampleToggle(VOICE_SAMPLE_VIEW_PATIENT);
+  });
+  refs.voiceSampleLetterBtn?.addEventListener("click", () => {
+    handleVoiceSampleToggle(VOICE_SAMPLE_VIEW_LETTER);
+  });
+  refs.voiceSampleDoctorBtn?.addEventListener("click", () => {
+    handleVoiceSampleToggle(VOICE_SAMPLE_VIEW_DOCTOR);
+  });
   refs.voicePromptConfigSaveBtn?.addEventListener("click", handlePromptConfigSave);
   refs.voicePromptConfigResetBtn?.addEventListener("click", handlePromptConfigReset);
   refs.voicePromptProposalSubmitBtn?.addEventListener("click", () => {
@@ -801,6 +838,7 @@ function initVoiceUi() {
   refs.voiceDoctorLetterToggleBtn?.setAttribute("aria-expanded", "false");
   refs.voiceCaseInfoToggleBtn?.setAttribute("aria-expanded", "false");
   refs.voicePromptConfigToggleBtn?.setAttribute("aria-expanded", "false");
+  applyVoiceSampleView(state.voiceSampleView, { preserveStatus: true });
   renderPromptConfigEditor();
   renderPromptPresetSelects();
   renderPromptProposalMetaEditor();
@@ -813,6 +851,7 @@ function initVoiceUi() {
   updateVoiceCaseInfoPanel();
   void ensureVoiceCaseLibraryLoaded();
   void ensureVoiceCaseResolutionLibraryLoaded();
+  void ensureVoiceCaseSampleLibraryLoaded();
   void loadPromptPresetOptions({ silent: true });
 
   if (!isVoiceCaptureSupported()) {
@@ -898,6 +937,78 @@ function handleVoiceDoctorConversationToggle() {
   }
   const nextMode = isDoctorConversationMode() ? VOICE_MODE_QUESTION : VOICE_MODE_DOCTOR_CONVERSATION;
   applyVoiceMode(nextMode, { preserveStatus: false });
+}
+
+function normalizeVoiceSampleView(value) {
+  if (typeof value !== "string") return "";
+  return Object.prototype.hasOwnProperty.call(VOICE_SAMPLE_VIEW_MAP, value) ? value : "";
+}
+
+function applyVoiceSampleView(view, options = {}) {
+  const preserveStatus = Boolean(options.preserveStatus);
+  state.voiceSampleView = normalizeVoiceSampleView(view);
+  updateVoiceSampleButtons();
+  updateVoiceSamplePanel();
+  if (!preserveStatus) {
+    setVoiceStatus(buildVoiceReadyStatus());
+  }
+}
+
+function updateVoiceSampleButtons() {
+  for (const [viewKey, config] of Object.entries(VOICE_SAMPLE_VIEW_MAP)) {
+    const button = refs[config.buttonRef];
+    if (!button) continue;
+    const active = state.voiceSampleView === viewKey;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", active ? "true" : "false");
+  }
+}
+
+function handleVoiceSampleToggle(view) {
+  if (state.voiceRecording) {
+    setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
+    return;
+  }
+  const normalized = normalizeVoiceSampleView(view);
+  const nextView = state.voiceSampleView === normalized ? "" : normalized;
+  if (nextView && !state.voiceCaseSamplesLoaded) {
+    void ensureVoiceCaseSampleLibraryLoaded();
+  }
+  applyVoiceSampleView(nextView, { preserveStatus: false });
+}
+
+function updateVoiceSamplePanel() {
+  if (!refs.voiceSamplePanel || !refs.voiceSampleTitle || !refs.voiceSampleMeta || !refs.voiceSampleText) return;
+
+  const activeView = normalizeVoiceSampleView(state.voiceSampleView);
+  if (!activeView) {
+    refs.voiceSamplePanel.classList.add("hidden");
+    refs.voiceSampleTitle.textContent = "Musteransicht";
+    refs.voiceSampleMeta.textContent = "";
+    refs.voiceSampleText.textContent = "";
+    return;
+  }
+
+  const sampleConfig = VOICE_SAMPLE_VIEW_MAP[activeView];
+  const activeCaseId = getActiveVoiceCaseId();
+  refs.voiceSamplePanel.classList.remove("hidden");
+  refs.voiceSampleTitle.textContent = sampleConfig.title;
+  refs.voiceSampleMeta.textContent = activeCaseId ? `CASE_ID: ${activeCaseId}` : "Kein CASE_ID erkannt.";
+
+  if (!state.voiceCaseSamplesLoaded) {
+    refs.voiceSampleText.textContent = "Mustertext wird geladen ...";
+    return;
+  }
+
+  const caseEntry =
+    activeCaseId && state.voiceCaseSamples && typeof state.voiceCaseSamples === "object"
+      ? state.voiceCaseSamples[activeCaseId]
+      : null;
+  const text =
+    caseEntry && typeof caseEntry[sampleConfig.field] === "string"
+      ? String(caseEntry[sampleConfig.field]).trim()
+      : "";
+  refs.voiceSampleText.textContent = text || "Fuer diesen Fall ist hier noch kein Muster hinterlegt.";
 }
 
 function handleVoiceCaseInfoToggle() {
@@ -2002,6 +2113,7 @@ function applyVoiceCaseSelection(selection, options = {}) {
   updateVoiceCaseMeta();
   updateVoiceCaseResolution();
   updateVoiceCaseInfoPanel();
+  updateVoiceSamplePanel();
   if (resetConversation) {
     resetVoiceConversation({ keepCaseText: true, preserveStatus: true });
   }
@@ -2056,6 +2168,36 @@ function getActiveVoiceCaseId() {
     return customId || "";
   }
   return "";
+}
+
+async function ensureVoiceCaseSampleLibraryLoaded() {
+  if (state.voiceCaseSamplesLoaded) {
+    return true;
+  }
+
+  try {
+    const url = new URL(`../${VOICE_CASE_SAMPLE_PATH}?v=${APP_VERSION}`, import.meta.url);
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("voice-case-sample-fetch-failed");
+    }
+
+    const raw = await response.json();
+    if (!raw || typeof raw !== "object") {
+      throw new Error("voice-case-sample-invalid-json");
+    }
+
+    state.voiceCaseSamples = raw;
+    state.voiceCaseSamplesLoaded = true;
+    updateVoiceSamplePanel();
+    return true;
+  } catch (error) {
+    console.warn("Mustertexte konnten nicht geladen werden", error);
+    state.voiceCaseSamples = {};
+    state.voiceCaseSamplesLoaded = true;
+    updateVoiceSamplePanel();
+    return false;
+  }
 }
 
 async function ensureVoiceCaseResolutionLibraryLoaded() {
@@ -2899,6 +3041,15 @@ function setVoiceBusy(isBusy) {
   }
   if (refs.voiceDoctorLetterInput) {
     refs.voiceDoctorLetterInput.disabled = state.voiceBusy;
+  }
+  if (refs.voiceSamplePatientBtn) {
+    refs.voiceSamplePatientBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceSampleLetterBtn) {
+    refs.voiceSampleLetterBtn.disabled = state.voiceBusy;
+  }
+  if (refs.voiceSampleDoctorBtn) {
+    refs.voiceSampleDoctorBtn.disabled = state.voiceBusy;
   }
   applyPromptEditorBusyState(state.voiceBusy || state.promptProposalBusy);
   refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
