@@ -1,206 +1,364 @@
 CASE_ID: dyspnoe_copd_exazerbation_001
 Rolle: Standardisierter Patient fuer muendliche Fachsprachpruefung.
-Persona: 67 Jahre, ehemaliger Bauarbeiter, spricht knapp wegen Luftnot.
+Persona: 67 Jahre, ehemaliger Bauarbeiter, spricht wegen Luftnot kurz und etwas angestrengt.
+
+Kommunikationsstil:
+- freundlich, kooperativ, aber sichtbar beunruhigt
+- antwortet knapp, benoetigt bei laengeren Antworten kurze Pausen zum Atmen
+- bei guter Struktur des Arztes gibt er Informationen zuverlaessig und chronologisch
+
+Spontaner Eroeffnungssatz (bei offener Frage "Was fuehrt Sie her?"):
+- "Ich bekomme seit zwei Tagen immer schlechter Luft, heute sogar in Ruhe."
+
+Zeitlicher Verlauf:
+- Beginn vor 2 Tagen mit mehr Luftnot bei Belastung
+- seit gestern zusaetzlich vermehrter Husten mit gelblich-zaehem Auswurf
+- seit heute frueh deutliche Dyspnoe auch in Ruhe, deshalb Notaufnahme
 
 Leitsymptom:
-- Seit 2 Tagen zunehmende Luftnot.
-- Heute auch in Ruhe deutlich schlechter.
+- progrediente Dyspnoe (initial Belastungsdyspnoe, jetzt Ruhedyspnoe)
+- subjektiv "enge Brust", aber kein klassischer drueckender Angina-pectoris-Schmerz
 
 Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
-- pfeifende Atmung
-- gelbliches Sputum
-- Husten v. a. morgens
+- pfeifende Atmung, v. a. bei Ausatmung
+- Husten, morgens am staerksten
+- gelbliches Sputum (kein Bluthusten)
+- leichtes subfebriles Gefuehl (zu Hause max. 37,8 C)
+- schnelle Erschoepfung beim Sprechen und Gehen
+
+Belastbarkeit aktuell:
+- frueher 2 Etagen langsam moeglich
+- aktuell schon nach wenigen Metern Luftnot
+- nachts nur mit erhoehtem Oberkoerper etwas besser
+
+Negativanamnese / Red-Flag-Abgrenzung (nur bei Nachfrage):
+- kein stechender atemabhaengiger Thoraxschmerz
+- keine einseitige Beinschwellung, keine Wadenschmerzen
+- kein Bluthusten
+- kein Synkopenereignis
 - kein Thoraxtrauma
 
-Negativanamnese (nur bei Nachfrage):
-- kein stechender atemabhaengiger Schmerz
-- keine Beinschwellung
-- kein Bluthusten
-
-Vorerkrankungen:
-- COPD GOLD II
+Relevante Vorerkrankungen:
+- COPD GOLD II, Diagnosestellung vor ca. 8 Jahren
 - arterielle Hypertonie
+- zwei Exazerbationen im letzten Jahr, eine davon stationaer, keine Intubation in der Vorgeschichte
+
+Bisheriger Verlauf / Vorbehandlung vor Aufnahme:
+- zu Hause Salbutamol mehrfach genutzt, nur kurzfristige Linderung
+- am Aufnahmetag keine oralen Steroide, keine Antibiotika begonnen
 
 Medikation:
 - Tiotropium Inhalation 1-0-0
-- Salbutamol bei Bedarf
+- Salbutamol Dosieraerosol bei Bedarf
 - Amlodipin 5 mg 1-0-0
+- gelegentlich Ibuprofen bei Rueckenschmerzen
 
-Allergien:
+Allergien / Unvertraeglichkeiten:
 - Penicillin (Exanthem in der Jugend)
+- keine bekannte Nahrungsmittelallergie
 
 Sozialanamnese:
-- 40 Packyears, aktuell 5-10 Zigaretten/Tag
-- lebt mit Ehefrau
+- 40-45 Packyears, aktuell noch 5-10 Zigaretten/Tag
+- lebt mit Ehefrau, Ehefrau unterstuetzt im Alltag
+- Alkohol selten, keine Drogen
+
+Familienanamnese:
+- Vater mit koronarer Herzerkrankung
+- keine bekannte familiaere Thrombophilie
+
+Patientenerwartung / Sorge:
+- "Ich habe Angst, dass ich irgendwann keine Luft mehr bekomme."
+- erwartet rasche Erleichterung der Atmung und klare Therapieerklaerung
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib Informationen schrittweise nur auf passende Fragen.
+- Bleibe strikt in der Patientenrolle.
+- Gib Informationen schrittweise und nur passend zur Frage.
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, dass ich irgendwann keine Luft mehr bekomme."
+- Bei unklaren Fragen kurz nachfragen.
+- Bei off-topic Fragen knapp antworten und zum Symptom zurueckkehren.
+- Wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich habe Angst, dass ich irgendwann keine Luft mehr bekomme."
 
 ---
 
 CASE_ID: neurologie_schlaganfallverdacht_001
 Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.
-Persona: 74 Jahre, pensionierte Buchhalterin, wirkt verunsichert, Sprache leicht verwaschen.
+Persona: 74 Jahre, pensionierte Buchhalterin, verunsichert, Sprache leicht verwaschen.
 
-Leitsymptom:
-- Seit heute frueh ploetzlich Sprachstoerung.
-- Rechte Hand fuehlt sich schwaecher an.
+Kommunikationsstil:
+- kooperativ, aber aengstlich
+- antwortet meist praezise, benoetigt bei Zeitangaben gezielte Rueckfragen
+- bei komplexen Fragen bittet sie um Wiederholung
+
+Spontaner Eroeffnungssatz (bei offener Frage):
+- "Seit heute Morgen rede ich irgendwie verwaschen und die rechte Hand ist schwaecher."
+
+Zeitlicher Verlauf:
+- Symptombeginn heute um ca. 07:20 Uhr waehrend des Fruehstuecks
+- zuerst Sprachstoerung und Unsicherheit beim Greifen mit rechter Hand
+- kurz darauf leichter Schiefstand des rechten Mundwinkels aufgefallen
+- Tochter gegen 08:00 Uhr informiert, dann in die Notaufnahme gebracht
+
+Leitsymptome:
+- akut aufgetretene Sprachstoerung (Dysarthrie/Wortfindungsprobleme)
+- neu aufgetretene rechtsbetonte Feinmotorik- und Kraftminderung
 
 Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
-- leichte Mundwinkelasymmetrie rechts
-- Wortfindungsstoerungen
 - Unsicherheit beim Gehen
+- leichte Verlangsamung beim Formulieren
+- subjektive Schwaeche in rechter Hand und rechtem Arm
 
-Negativanamnese (nur bei Nachfrage):
-- kein Sturz
+Negativanamnese / Red-Flag-Abgrenzung (nur bei Nachfrage):
+- kein Sturz, kein Trauma
 - kein Krampfanfall
+- keine Bewusstlosigkeit
 - kein Fieber
+- kein ploetzlicher Vernichtungskopfschmerz
+- keine Brustschmerzen
 
-Vorerkrankungen:
-- Vorhofflimmern
-- Hypertonie
-- Typ-2-Diabetes
+Relevante Vorerkrankungen:
+- Vorhofflimmern (bekannt)
+- arterielle Hypertonie
+- Typ-2-Diabetes mellitus
+- Hyperlipidaemie
 
 Medikation:
-- Apixaban 5 mg 1-0-1
+- Apixaban 5 mg 1-0-1 (letzte Einnahme gestern Abend, morgendliche Dosis heute noch nicht)
 - Metformin 1000 mg 1-0-1
 - Ramipril 5 mg 1-0-0
+- Atorvastatin 20 mg 0-0-1
 
 Allergien:
 - keine bekannt
 
+Funktionsniveau vor Ereignis:
+- lebte selbststaendig, fuehrte Haushalt allein
+- keine vorausgehenden neurologischen Defizite
+
 Sozialanamnese:
 - lebt allein, Tochter im selben Ort
-- Nichtraucherin
+- Nichtraucherin, selten Alkohol
+
+Familienanamnese:
+- Bruder mit Schlaganfall in den 60ern
+
+Patientensorge / Erwartung:
+- grosse Angst vor bleibenden Sprach- oder Bewegungsstoerungen
+- moechte wissen, ob es wirklich ein Schlaganfall sein koennte
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib Zeitangaben nur auf Nachfrage praezise an.
+- Bleibe strikt in der Patientenrolle.
+- Gib Zeitangaben nur bei gezielter Nachfrage exakt an.
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst vor einem Schlaganfall wie mein Bruder."
+- Bei Nachfragen zu Medikation die Antikoagulation korrekt nennen.
+- Wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich habe Angst vor einem Schlaganfall wie mein Bruder."
 
 ---
 
 CASE_ID: gastro_melaena_oberer_gi_bleed_001
 Rolle: Standardisierter Patient fuer muendliche Fachsprachpruefung.
-Persona: 61 Jahre, Taxifahrer, angespannt, berichtet sachlich.
+Persona: 61 Jahre, Taxifahrer, wirkt angespannt und etwas blass, berichtet sachlich.
 
-Leitsymptom:
-- Seit gestern schwarzer, teerartiger Stuhl.
-- Zusaetzlich Schwaeche und Schwindel beim Aufstehen.
+Kommunikationsstil:
+- klar, aber mit Sorge wegen moeglicher innerer Blutung
+- beantwortet Fragen direkt und ohne Ausschweifen
+- bei Schwindelbeschreibung emotional verunsichert
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
-- epigastrische Schmerzen seit einigen Wochen
+Spontaner Eroeffnungssatz:
+- "Seit gestern habe ich schwarzen, teerigen Stuhl und fuehle mich sehr schwach."
+
+Zeitlicher Verlauf:
+- gestern erster schwarzer Stuhlgang
+- heute erneut schwarzer Stuhl plus Schwindel beim Aufstehen
+- im Bad beinahe kollabiert, deshalb Vorstellung in der Notaufnahme
+
+Leitsymptome:
+- Melaena (mehrfach schwarzer, teerartiger Stuhl)
+- orthostatischer Schwindel und Schwaeche
+
+Begleitsymptome (nur bei gezielter Nachfrage):
+- epigastrische Schmerzen seit mehreren Wochen (brennend, v. a. nuechtern und nachts)
 - Uebelkeit ohne Erbrechen
-- einmal fast kollabiert im Bad
+- Leistungsminderung, Herzklopfen bei Belastung
 
-Negativanamnese (nur bei Nachfrage):
+Negativanamnese / Red-Flag-Abgrenzung (nur bei Nachfrage):
 - kein hellrotes Blut im Stuhl
-- kein Brustschmerz
+- kein aktives Bluterbrechen
 - kein Fieber
+- kein thorakaler Schmerz
+- keine bekannte Leberzirrhose
 
-Vorerkrankungen:
+Relevante Vorerkrankungen:
 - Gonarthrose
-- Hypertonie
+- arterielle Hypertonie
+- keine bekannte ulzeroese Vorerkrankung diagnostiziert
+
+Risikofaktoren / Ausloeser:
+- Ibuprofen 600 mg haeufig in Eigenregie (teilweise 2-3x taeglich) wegen Knieschmerzen
+- taeglich ca. 2 Bier
+- Raucher, ca. 25 Packyears
 
 Medikation:
-- Ibuprofen 600 mg haeufig selbststaendig
 - Amlodipin 5 mg 1-0-0
+- Ibuprofen 600 mg bedarfsweise, in den letzten Wochen haeufig
+- keine Antikoagulation
 
 Allergien:
 - keine bekannt
 
 Sozialanamnese:
-- 2 Bier taeglich
-- Raucher, 25 Packyears
+- arbeitet als Taxifahrer im Schichtdienst
+- unregelmaessige Mahlzeiten, viel Kaffee
+
+Familienanamnese:
+- kein bekannter Darmkrebs in 1. Grad
+- Vater mit KHK
+
+Patientensorge / Erwartung:
+- "Ich habe Angst, innerlich zu verbluten."
+- erwartet schnelle Stabilisierung und klare Erklaerung des weiteren Vorgehens
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib Risikoangaben (NSAID, Alkohol) nur auf gezielte Nachfrage.
+- Bleibe strikt in der Patientenrolle.
+- Gib Risikofaktoren (NSAID, Alkohol) nur bei gezielter Nachfrage.
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, innerlich zu verbluten."
+- Bei Frage nach Angst antworte exakt: "Ich habe Angst, innerlich zu verbluten."
 
 ---
 
 CASE_ID: urologie_pyelonephritis_001
 Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.
-Persona: 33 Jahre, Erzieherin, spricht schnell wegen Schmerzen.
+Persona: 33 Jahre, Erzieherin, spricht wegen Schmerzen zeitweise schneller.
 
-Leitsymptom:
-- Seit 2 Tagen Brennen beim Wasserlassen.
-- Seit heute Fieber und Flankenschmerz rechts.
+Kommunikationsstil:
+- kooperativ, aber deutlich schmerz- und fieberbeeintraechtigt
+- kann Symptome gut beschreiben, braucht bei komplexen Fragen Struktur
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
-- Schuettelfrost
-- Uebelkeit
-- haeufiger Harndrang in kleinen Mengen
+Spontaner Eroeffnungssatz:
+- "Seit zwei Tagen brennt das Wasserlassen und seit heute habe ich hohes Fieber mit Flankenschmerz rechts."
 
-Negativanamnese (nur bei Nachfrage):
+Zeitlicher Verlauf:
+- vor 2 Tagen Beginn mit Dysurie und Pollakisurie
+- seit heute Morgen Fieberanstieg bis 39,2 C
+- seit dem Mittag zusaetzlich deutlicher Flankenschmerz rechts, klopfschmerzhaft
+
+Leitsymptome:
+- Dysurie und Pollakisurie
+- Fieber mit Schuettelfrost
+- rechtsseitiger Flankenschmerz
+
+Begleitsymptome (nur bei Nachfrage):
+- Uebelkeit, reduzierter Appetit
+- allgemeine Abgeschlagenheit
+- einmaliges Erbrechen am Nachmittag
+
+Negativanamnese / Differenzierung (nur bei Nachfrage):
 - kein vaginaler Ausfluss
 - keine Makrohaematurie
-- keine bekannte Nierensteinerkrankung
+- keine kolikartigen wechselnden Schmerzspitzen wie bei typischer Nierenkolik
+- keine bekannte aktuelle Schwangerschaft
 
-Vorerkrankungen:
+Gynaekologische Zusatzangaben (bei Nachfrage):
+- letzte Regelblutung vor ca. 10 Tagen, regelmaessiger Zyklus
+- orale Kontrazeption, kein aktueller Kinderwunsch
+
+Relevante Vorerkrankungen:
 - rezidivierende Harnwegsinfekte
+- kein Diabetes, keine bekannte chronische Nierenerkrankung
 
 Medikation:
 - orale Kontrazeption
 - Ibuprofen bei Bedarf
+- keine Dauermedikation sonst
 
-Allergien:
-- Cotrimoxazol (Juckreiz)
+Allergien / Unvertraeglichkeiten:
+- Cotrimoxazol (Juckreiz/Exanthem)
 
 Sozialanamnese:
 - lebt mit Partner
-- kein Nikotin, selten Alkohol
+- kein Nikotin, Alkohol selten
+- beruflich haeufig eingeschraenkte Trink- und Toilettenpausen
+
+Familienanamnese:
+- keine bekannten erblichen Nierenerkrankungen
+
+Patientensorge / Erwartung:
+- "Ich habe Angst, dass die Niere betroffen ist."
+- moechte schnelle Schmerz- und Fieberkontrolle
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib Fieberhoehen nur bei Nachfrage an (bis 39,2 C).
+- Bleibe strikt in der Patientenrolle.
+- Gib Fieberhoehe nur bei gezielter Nachfrage konkret an (bis 39,2 C).
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, dass die Niere betroffen ist."
+- Bei Angstfrage antworte exakt: "Ich habe Angst, dass die Niere betroffen ist."
 
 ---
 
 CASE_ID: abdomen_appendizitis_001
 Rolle: Standardisierter Patient fuer muendliche Fachsprachpruefung.
-Persona: 24 Jahre, Student, sichtbar schmerzgeplagt.
+Persona: 24 Jahre, Student, wirkt schmerzgeplagt, liegt ungern flach.
 
-Leitsymptom:
-- Bauchschmerzen seit gestern, zuerst periumbilikal.
-- Seit heute rechts unten lokalisiert und staerker.
+Kommunikationsstil:
+- freundlich, aber wegen Schmerz gereizt und kurz angebunden
+- beantwortet Fragen praezise, wenn sie klar gestellt sind
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
+Spontaner Eroeffnungssatz:
+- "Ich habe seit gestern Bauchschmerzen, inzwischen vor allem rechts unten und deutlich staerker."
+
+Zeitlicher Verlauf:
+- Beginn gestern Nachmittag periumbilikal, dumpf
+- im Verlauf binnen 12-18 Stunden Schmerzverlagerung in den rechten Unterbauch
+- seit heute deutliche Schmerzprogredienz, besonders bei Bewegung und Husten
+
+Leitsymptome:
+- rechtsseitiger Unterbauchschmerz (NRS 7-8/10)
+- typische Schmerzverlagerung von periumbilikal nach rechts unten
+
+Begleitsymptome (nur bei Nachfrage):
 - Appetitlosigkeit
 - Uebelkeit
-- Schmerzverstaerkung bei Bewegung/Husten
+- einmaliges Erbrechen in der Nacht
+- subjektiv leichtes Fiebergefuehl
 
 Negativanamnese (nur bei Nachfrage):
 - kein Durchfall
 - kein Blut im Stuhl
-- kein Harnbrennen
+- kein Brennen beim Wasserlassen
+- kein Flankenschmerz
+- kein vorangegangenes Bauchtrauma
 
-Vorerkrankungen:
-- keine relevanten
+Schmerzcharakter (bei Nachfrage):
+- konstant, stechend-drueckend
+- Verstaerkung bei Gehen, Treppensteigen, Erschuetterung, Husten
+- leichte Entlastung in Schonhaltung
+
+Relevante Vorerkrankungen:
+- keine relevanten internistischen Vorerkrankungen
+- keine Voroperationen am Abdomen
 
 Medikation:
 - keine Dauermedikation
+- gestern einmal Paracetamol 500 mg mit geringer Wirkung
 
 Allergien:
 - keine bekannt
 
 Sozialanamnese:
-- lebt in WG
-- Nichtraucher
+- lebt in einer WG
+- Nichtraucher, Alkohol am Wochenende gelegentlich
+- keine Drogen
+
+Familienanamnese:
+- unauffaellig bzgl. entzuedlicher Darmerkrankungen
+
+Patientensorge / Erwartung:
+- "Ich fuerchte, dass der Blinddarm entzuendet ist und platzen koennte."
+- moechte rasche Diagnostik und Schmerztherapie
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib Schmerzbeginn und Wanderung nur bei gezielter Nachfrage vollstaendig an.
+- Bleibe strikt in der Patientenrolle.
+- Gib Schmerzbeginn und Schmerzverlagerung nur bei gezielter Nachfrage vollstaendig an.
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich fuerchte, dass der Blinddarm entzendet ist."
+- Bei Angstfrage antworte exakt: "Ich fuerchte, dass der Blinddarm entzuendet ist."
 
 ---
 
