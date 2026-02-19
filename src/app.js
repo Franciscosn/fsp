@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260219a";
-const BUILD_UPDATED_AT = "2026-02-19 09:40 UTC";
+const APP_VERSION = "20260219b";
+const BUILD_UPDATED_AT = "2026-02-19 10:05 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -1036,12 +1036,28 @@ function extractPromptTextFromSubmission(row, promptKey) {
     return normalizePromptText(row.prompt_text, "");
   }
   if (targetKey === PROMPT_FEEDBACK_TARGET_ALL) {
-    if (row.prompt_payload_json && typeof row.prompt_payload_json === "object") {
-      return normalizePromptText(row.prompt_payload_json[promptKey], "");
+    const payload = parsePromptPayloadObject(row.prompt_payload_json);
+    if (payload) {
+      return normalizePromptText(payload[promptKey], "");
     }
     return "";
   }
   return "";
+}
+
+function parsePromptPayloadObject(rawValue) {
+  if (rawValue && typeof rawValue === "object") {
+    return rawValue;
+  }
+  if (typeof rawValue !== "string") {
+    return null;
+  }
+  try {
+    const parsed = JSON.parse(rawValue);
+    return parsed && typeof parsed === "object" ? parsed : null;
+  } catch {
+    return null;
+  }
 }
 
 function handlePromptPresetSelectChange(promptKey) {
@@ -1074,6 +1090,11 @@ function handlePromptPresetSelectChange(promptKey) {
   }
 
   input.value = nextPromptText;
+  state.promptConfig = resolvePromptConfig({
+    ...state.promptConfig,
+    [promptKey]: nextPromptText
+  });
+  saveToStorage(STORAGE_PROMPT_CONFIG_KEY, state.promptConfig);
   if (refs.voicePromptProposalTargetSelect) {
     refs.voicePromptProposalTargetSelect.value = promptKey;
     handlePromptProposalMetaInput();
@@ -1145,11 +1166,12 @@ async function loadPromptPresetOptions(options = {}) {
     }
 
     for (const promptKey of PROMPT_FIELD_KEYS) {
-      const seen = new Set();
+      const seenValues = new Set();
       nextOptions[promptKey] = nextOptions[promptKey].filter((entry) => {
-        const signature = `${entry.label}::${entry.promptText}`;
-        if (seen.has(signature)) return false;
-        seen.add(signature);
+        const valueKey = String(entry?.value || "");
+        if (!valueKey) return false;
+        if (seenValues.has(valueKey)) return false;
+        seenValues.add(valueKey);
         return true;
       });
     }
@@ -1157,7 +1179,8 @@ async function loadPromptPresetOptions(options = {}) {
     state.promptPresetOptionsByKey = nextOptions;
     renderPromptPresetSelects();
   } catch (error) {
-    state.promptPresetOptionsByKey = createEmptyPromptPresetOptions();
+    // Keep existing preset options (including freshly submitted local entries)
+    // if background reloading from Supabase fails.
     renderPromptPresetSelects();
     if (!silent) {
       const dbError = normalizeDbError(error);
