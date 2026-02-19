@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260219b";
-const BUILD_UPDATED_AT = "2026-02-19 10:05 UTC";
+const APP_VERSION = "20260219c";
+const BUILD_UPDATED_AT = "2026-02-19 10:35 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -1254,12 +1254,7 @@ async function runSupabaseWithTimeout(queryOrPromise, stageLabel, timeoutMs = SU
   const canAbort = Boolean(queryOrPromise && typeof queryOrPromise.abortSignal === "function");
   const controller = hasAbortController && canAbort ? new AbortController() : null;
   const request = controller ? queryOrPromise.abortSignal(controller.signal) : queryOrPromise;
-  const executionPromise =
-    request && typeof request.then === "function"
-      ? new Promise((resolve, reject) => {
-          request.then(resolve, reject);
-        })
-      : Promise.resolve(request);
+  const executionPromise = Promise.resolve(request);
 
   const timeoutPromise = new Promise((_, reject) => {
     timeoutId = window.setTimeout(() => {
@@ -1284,6 +1279,123 @@ async function runSupabaseWithTimeout(queryOrPromise, stageLabel, timeoutMs = SU
     if (timeoutId) {
       window.clearTimeout(timeoutId);
     }
+  }
+}
+
+async function getSupabaseAccessToken() {
+  if (!supabase) {
+    throw { code: "NO_SUPABASE", message: "Supabase ist nicht initialisiert." };
+  }
+  const { data, error } = await supabase.auth.getSession();
+  if (error) {
+    throw error;
+  }
+  const accessToken = String(data?.session?.access_token || "");
+  if (!accessToken) {
+    throw { code: "NO_SESSION", message: "Keine aktive Supabase-Session." };
+  }
+  return accessToken;
+}
+
+async function runSupabaseRestWithTimeout(pathWithQuery, options = {}) {
+  const stageLabel = String(options.stageLabel || "Supabase REST");
+  const timeoutMs = Number(options.timeoutMs) > 0 ? Number(options.timeoutMs) : SUPABASE_REQUEST_TIMEOUT_MS;
+  const method = String(options.method || "GET").toUpperCase();
+  const body = options.body;
+  const prefer = typeof options.prefer === "string" ? options.prefer.trim() : "";
+
+  const accessToken = await getSupabaseAccessToken();
+  const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+  let timeoutId = null;
+  if (controller) {
+    timeoutId = window.setTimeout(() => {
+      controller.abort();
+    }, timeoutMs);
+  }
+
+  try {
+    const url = `${SUPABASE_URL}/rest/v1/${pathWithQuery}`;
+    const headers = {
+      apikey: SUPABASE_ANON_KEY,
+      authorization: `Bearer ${accessToken}`
+    };
+    if (prefer) {
+      headers.prefer = prefer;
+    }
+    if (body !== undefined) {
+      headers["content-type"] = "application/json";
+    }
+
+    const response = await fetch(url, {
+      method,
+      headers,
+      body: body === undefined ? undefined : JSON.stringify(body),
+      signal: controller ? controller.signal : undefined
+    });
+
+    const payload = await response.json().catch(() => null);
+    if (!response.ok) {
+      throw {
+        code: `HTTP_${response.status}`,
+        message: safeParagraph(payload?.message || response.statusText || "REST request fehlgeschlagen", 500),
+        details: safeParagraph(payload?.details, 500),
+        hint: safeParagraph(payload?.hint, 300)
+      };
+    }
+    return payload;
+  } catch (error) {
+    if (error?.name === "AbortError") {
+      throw {
+        code: "TIMEOUT",
+        message: `Zeitlimit ueberschritten (${Math.round(timeoutMs / 1000)}s)`,
+        details: stageLabel
+      };
+    }
+    throw error;
+  } finally {
+    if (timeoutId) {
+      window.clearTimeout(timeoutId);
+    }
+  }
+}
+
+async function insertPromptSubmissionWithFallback(submissionPayload, stageLabel) {
+  try {
+    const result = await runSupabaseWithTimeout(
+      supabase
+        .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
+        .insert(submissionPayload)
+        .select("id, created_at")
+        .single(),
+      stageLabel
+    );
+    if (result?.error) {
+      throw result.error;
+    }
+    return result?.data || null;
+  } catch (error) {
+    const dbError = normalizeDbError(error);
+    if (dbError.code !== "TIMEOUT") {
+      throw error;
+    }
+
+    const restRows = await runSupabaseRestWithTimeout(
+      `${SUPABASE_PROMPT_FEEDBACK_TABLE}?select=id,created_at`,
+      {
+        method: "POST",
+        body: [submissionPayload],
+        prefer: "return=representation",
+        stageLabel: `${stageLabel} (REST-Fallback)`
+      }
+    );
+    if (!Array.isArray(restRows) || !restRows[0]) {
+      throw {
+        code: "EMPTY_REST_RESPONSE",
+        message: "Supabase REST hat keine gespeicherten Daten zurueckgegeben.",
+        details: `${stageLabel} (REST-Fallback)`
+      };
+    }
+    return restRows[0];
   }
 }
 
@@ -1442,9 +1554,10 @@ async function handlePromptProposalSubmit() {
   let submissionCreatedAt = "";
   let stageLabel = "Vorschlag speichern";
   let watchdogId = null;
+  let submitCompleted = false;
   try {
     watchdogId = window.setTimeout(() => {
-      if (!state.voiceBusy) return;
+      if (submitCompleted) return;
       const timeoutMessage =
         "Zeitueberschreitung bei Prompt-Vorschlag. Bitte Netzwerk/Supabase pruefen und erneut senden.";
       setVoiceBusy(false);
@@ -1467,17 +1580,7 @@ async function handlePromptProposalSubmit() {
       direct_adopt_applied: false
     };
 
-    const { data: submission, error: insertError } = await runSupabaseWithTimeout(
-      supabase
-        .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
-        .insert(submissionPayload)
-        .select("id, created_at")
-        .single(),
-      stageLabel
-    );
-    if (insertError) {
-      throw insertError;
-    }
+    const submission = await insertPromptSubmissionWithFallback(submissionPayload, stageLabel);
     submissionId = String(submission?.id || "");
     submissionCreatedAt = typeof submission?.created_at === "string" ? submission.created_at : "";
     mergePromptPresetFromSubmission({
@@ -1520,6 +1623,7 @@ async function handlePromptProposalSubmit() {
       setVoiceStatus(`Prompt-Vorschlag gespeichert (${targetLabel}).`);
       setPromptProposalStatus(`Vorschlag gespeichert (${targetLabel}).`);
     }
+    submitCompleted = true;
   } catch (error) {
     const dbError = normalizeDbError(error);
     const adoptionErrorText =
@@ -1552,6 +1656,7 @@ async function handlePromptProposalSubmit() {
     setPromptProposalStatus(uiMessage, true);
     console.error(error);
   } finally {
+    submitCompleted = true;
     if (watchdogId) {
       window.clearTimeout(watchdogId);
     }
