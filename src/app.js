@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260219d";
-const BUILD_UPDATED_AT = "2026-02-19 11:05 UTC";
+const APP_VERSION = "20260219e";
+const BUILD_UPDATED_AT = "2026-02-19 11:35 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -146,9 +146,17 @@ const DEFAULT_PROMPT_CONFIG = Object.freeze({
     "",
     "Gib danach die Gesamtpunktzahl an (max 20 Punkte) und eine implizite Bestehenseinschaetzung (Bestehensgrenze 12 Punkte).",
     "Formuliere abschliessend eine kurze, konkrete Empfehlung zur sprachlichen Nachbesserung.",
+    "Zusaetzlich ist ein ausfuehrlicher, aussagekraeftiger Fliesstext Pflicht (detailed_feedback_text): 120-220 Woerter, konkret, fehlerbezogen und individuell.",
+    "Der Fliesstext muss klar benennen:",
+    "- welche sprachlichen/kommunikativen Fehler aufgetreten sind,",
+    "- wie sich diese Fehler im Gespraech gezeigt haben,",
+    "- wie die Aussagen sprachlich besser formuliert werden koennen,",
+    "- welche 2-3 priorisierten Trainingsschritte als Naechstes sinnvoll sind.",
+    "Keine allgemeinen Floskeln, keine reinen Standardsaetze, kein Copy-Paste der Kriterienliste.",
     "",
     "Antworte ausschliesslich auf Deutsch und ausschliesslich als valides JSON gemaess Schema.",
-    "criteria muss exakt 8 Eintraege in der vorgegebenen Reihenfolge enthalten."
+    "criteria muss exakt 8 Eintraege in der vorgegebenen Reihenfolge enthalten.",
+    "JSON-Felder: criteria, total_score, pass_assessment, recommendation, summary_feedback, detailed_feedback_text."
   ].join("\n")
 });
 const PROMPT_FIELD_KEYS = Object.freeze([
@@ -509,6 +517,7 @@ const refs = {
   voiceDoctorConversationEvalRecommendation: document.getElementById(
     "voiceDoctorConversationEvalRecommendation"
   ),
+  voiceDoctorConversationEvalDetailed: document.getElementById("voiceDoctorConversationEvalDetailed"),
   voiceDoctorConversationEvalCriteria: document.getElementById("voiceDoctorConversationEvalCriteria"),
   authPortrait: document.getElementById("authPortrait"),
   levelAvatar: document.getElementById("levelAvatar"),
@@ -2370,6 +2379,7 @@ function renderVoiceDoctorConversationEvaluationReport(report) {
     !refs.voiceDoctorConversationEvalPass ||
     !refs.voiceDoctorConversationEvalSummary ||
     !refs.voiceDoctorConversationEvalRecommendation ||
+    !refs.voiceDoctorConversationEvalDetailed ||
     !refs.voiceDoctorConversationEvalCriteria
   ) {
     return;
@@ -2382,6 +2392,7 @@ function renderVoiceDoctorConversationEvaluationReport(report) {
   refs.voiceDoctorConversationEvalPass.textContent = String(report.pass_assessment || "");
   refs.voiceDoctorConversationEvalSummary.textContent = String(report.summary_feedback || "");
   refs.voiceDoctorConversationEvalRecommendation.textContent = String(report.recommendation || "");
+  refs.voiceDoctorConversationEvalDetailed.textContent = String(report.detailed_feedback_text || "");
 
   const criteria = Array.isArray(report.criteria) ? report.criteria : [];
   refs.voiceDoctorConversationEvalCriteria.innerHTML = "";
@@ -2403,6 +2414,7 @@ function clearVoiceDoctorConversationEvaluationReport() {
   if (refs.voiceDoctorConversationEvalPass) refs.voiceDoctorConversationEvalPass.textContent = "";
   if (refs.voiceDoctorConversationEvalSummary) refs.voiceDoctorConversationEvalSummary.textContent = "";
   if (refs.voiceDoctorConversationEvalRecommendation) refs.voiceDoctorConversationEvalRecommendation.textContent = "";
+  if (refs.voiceDoctorConversationEvalDetailed) refs.voiceDoctorConversationEvalDetailed.textContent = "";
   if (refs.voiceDoctorConversationEvalCriteria) refs.voiceDoctorConversationEvalCriteria.innerHTML = "";
 }
 

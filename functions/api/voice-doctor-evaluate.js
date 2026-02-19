@@ -49,9 +49,17 @@ const EVALUATION_SCHEMA = {
         total_score: { type: "number" },
         pass_assessment: { type: "string" },
         recommendation: { type: "string" },
-        summary_feedback: { type: "string" }
+        summary_feedback: { type: "string" },
+        detailed_feedback_text: { type: "string" }
       },
-      required: ["criteria", "total_score", "pass_assessment", "recommendation", "summary_feedback"]
+      required: [
+        "criteria",
+        "total_score",
+        "pass_assessment",
+        "recommendation",
+        "summary_feedback",
+        "detailed_feedback_text"
+      ]
     }
   }
 };
@@ -78,6 +86,13 @@ const SYSTEM_PROMPT = [
   "",
   "Gib danach die Gesamtpunktzahl an (max 20 Punkte) und eine implizite Bestehenseinschaetzung (Bestehensgrenze 12 Punkte).",
   "Formuliere abschliessend eine kurze, konkrete Empfehlung zur sprachlichen Nachbesserung.",
+  "Zusaetzlich ist ein ausfuehrlicher, aussagekraeftiger Fliesstext Pflicht (detailed_feedback_text): 120-220 Woerter, konkret, fehlerbezogen und individuell.",
+  "Der Fliesstext muss klar benennen:",
+  "- welche sprachlichen/kommunikativen Fehler aufgetreten sind,",
+  "- wie sich diese Fehler im Gespraech gezeigt haben,",
+  "- wie die Aussagen sprachlich besser formuliert werden koennen,",
+  "- welche 2-3 priorisierten Trainingsschritte als Naechstes sinnvoll sind.",
+  "Keine allgemeinen Floskeln, keine reinen Standardsaetze, kein Copy-Paste der Kriterienliste.",
   "",
   "Antworte ausschliesslich auf Deutsch und ausschliesslich als valides JSON gemaess Schema.",
   "criteria muss exakt 8 Eintraege in der vorgegebenen Reihenfolge enthalten."
@@ -230,6 +245,9 @@ function normalizeEvaluation(candidate) {
   const recommendation =
     safeText(candidate?.recommendation, 520) ||
     "Strukturiere die Fallvorstellung klarer, beantworte Rueckfragen praeziser und trainiere Fachwort-zu-Alltagssprache sowie Abkuerzungen/Laborwerte.";
+  const detailedFeedbackText =
+    safeText(candidate?.detailed_feedback_text, 2400) ||
+    buildFallbackDetailedFeedback(criteria, totalScore, passAssessment);
   const summaryFeedback =
     safeText(candidate?.summary_feedback, 420) ||
     safeText(`${passAssessment} ${recommendation}`, 420);
@@ -239,8 +257,24 @@ function normalizeEvaluation(candidate) {
     total_score: totalScore,
     pass_assessment: passAssessment,
     recommendation,
-    summary_feedback: summaryFeedback
+    summary_feedback: summaryFeedback,
+    detailed_feedback_text: detailedFeedbackText
   };
+}
+
+function buildFallbackDetailedFeedback(criteria, totalScore, passAssessment) {
+  const weakest = [...criteria]
+    .sort((a, b) => Number(a?.score || 0) - Number(b?.score || 0))
+    .slice(0, 3)
+    .map((item) => `${item.name} (${item.score} Punkte): ${item.justification}`)
+    .join(" ");
+  return safeText(
+    `Gesamteindruck: ${passAssessment} (Gesamt ${totalScore} / 20). Besonders verbesserungsbeduerftig waren folgende Bereiche: ${weakest} ` +
+      "Fuer den naechsten Durchlauf sollte die Fallvorstellung zuerst klar gegliedert werden (Anlass, relevante Anamnese, Befunde, Diagnose, Vorgehen), danach Rueckfragen kuerzer und praeziser beantwortet werden. " +
+      "Achte darauf, Fachbegriffe sicher zu verwenden und bei Bedarf in verstaendliche Alltagssprache zu uebertragen. " +
+      "Trainiere ausserdem das strukturierte Vorlesen von Abkuerzungen und Laborwerten mit korrekten Zahlen und Einheiten.",
+    2400
+  );
 }
 
 function normalizeScore(value) {
