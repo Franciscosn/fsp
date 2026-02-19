@@ -38,11 +38,12 @@ alter table public.prompt_feedback_submissions enable row level security;
 alter table public.prompt_profiles enable row level security;
 
 drop policy if exists "prompt_feedback_select_own" on public.prompt_feedback_submissions;
-create policy "prompt_feedback_select_own"
+drop policy if exists "prompt_feedback_select_all_authenticated" on public.prompt_feedback_submissions;
+create policy "prompt_feedback_select_all_authenticated"
 on public.prompt_feedback_submissions
 for select
 to authenticated
-using (auth.uid() = user_id);
+using (true);
 
 drop policy if exists "prompt_feedback_insert_own" on public.prompt_feedback_submissions;
 create policy "prompt_feedback_insert_own"
@@ -80,4 +81,3 @@ for update
 to authenticated
 using (true)
 with check (true);
-

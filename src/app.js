@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260217k";
-const BUILD_UPDATED_AT = "2026-02-17 19:08 UTC";
+const APP_VERSION = "20260219a";
+const BUILD_UPDATED_AT = "2026-02-19 09:40 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -1230,6 +1230,13 @@ async function runSupabaseWithTimeout(queryOrPromise, stageLabel, timeoutMs = SU
   const hasAbortController = typeof AbortController !== "undefined";
   const canAbort = Boolean(queryOrPromise && typeof queryOrPromise.abortSignal === "function");
   const controller = hasAbortController && canAbort ? new AbortController() : null;
+  const request = controller ? queryOrPromise.abortSignal(controller.signal) : queryOrPromise;
+  const executionPromise =
+    request && typeof request.then === "function"
+      ? new Promise((resolve, reject) => {
+          request.then(resolve, reject);
+        })
+      : Promise.resolve(request);
 
   const timeoutPromise = new Promise((_, reject) => {
     timeoutId = window.setTimeout(() => {
@@ -1249,8 +1256,7 @@ async function runSupabaseWithTimeout(queryOrPromise, stageLabel, timeoutMs = SU
   });
 
   try {
-    const request = controller ? queryOrPromise.abortSignal(controller.signal) : queryOrPromise;
-    return await Promise.race([Promise.resolve(request), timeoutPromise]);
+    return await Promise.race([executionPromise, timeoutPromise]);
   } finally {
     if (timeoutId) {
       window.clearTimeout(timeoutId);
@@ -1322,19 +1328,61 @@ function getPromptProposalKeys(target) {
   return [normalizePromptProposalTarget(target)];
 }
 
-function buildPromptPayloadJson(promptKeys) {
+function buildPromptPayloadJson(promptKeys, promptSourceConfig = null) {
   const payload = {};
   for (const key of promptKeys) {
-    payload[key] = getPromptForKey(key);
+    const sourceValue =
+      promptSourceConfig && typeof promptSourceConfig === "object"
+        ? promptSourceConfig[key]
+        : state.promptConfig?.[key];
+    payload[key] = normalizePromptText(sourceValue, DEFAULT_PROMPT_CONFIG[key]);
   }
   return payload;
 }
 
-function buildPromptSubmissionText(target, promptKeys) {
+function buildPromptSubmissionText(target, promptKeys, promptPayload = null) {
+  const payload = promptPayload || buildPromptPayloadJson(promptKeys);
   if (target !== PROMPT_FEEDBACK_TARGET_ALL && promptKeys.length === 1) {
-    return getPromptForKey(promptKeys[0]);
+    return normalizePromptText(payload[promptKeys[0]], "");
   }
-  return JSON.stringify(buildPromptPayloadJson(promptKeys), null, 2).slice(0, MAX_PROMPT_TEXT_LENGTH);
+  return JSON.stringify(payload, null, 2).slice(0, MAX_PROMPT_TEXT_LENGTH);
+}
+
+function mergePromptPresetFromSubmission(entry) {
+  if (!entry || typeof entry !== "object") return;
+  const submissionId = safeLine(String(entry.submissionId || ""), 120);
+  const target = normalizePromptProposalTarget(String(entry.target || ""));
+  const promptPayload = entry.promptPayload && typeof entry.promptPayload === "object" ? entry.promptPayload : {};
+  const proposalName = normalizePromptProposalName(String(entry.proposalName || ""));
+  const createdAt = typeof entry.createdAt === "string" ? entry.createdAt : new Date().toISOString();
+  const adopted = Boolean(entry.directAdoptApplied);
+  if (!submissionId) return;
+
+  const promptKeys = getPromptProposalKeys(target);
+  const rowForLabel = {
+    proposal_name: proposalName || "Vorschlag",
+    created_at: createdAt,
+    direct_adopt_applied: adopted
+  };
+
+  for (const promptKey of promptKeys) {
+    if (!PROMPT_FIELD_KEYS.includes(promptKey)) continue;
+    const promptText = normalizePromptText(promptPayload[promptKey], "");
+    if (!promptText) continue;
+    const optionValue = `submission:${submissionId}:${promptKey}`;
+    const optionLabel = buildPromptPresetOptionLabel(rowForLabel, "Vorschlag");
+    const existingOptions = Array.isArray(state.promptPresetOptionsByKey?.[promptKey])
+      ? state.promptPresetOptionsByKey[promptKey]
+      : [];
+    const withoutDuplicate = existingOptions.filter((option) => String(option?.value || "") !== optionValue);
+    withoutDuplicate.unshift({
+      value: optionValue,
+      label: optionLabel,
+      promptText
+    });
+    state.promptPresetOptionsByKey[promptKey] = withoutDuplicate;
+  }
+  renderPromptPresetSelects();
 }
 
 async function handlePromptProposalSubmit() {
@@ -1351,7 +1399,10 @@ async function handlePromptProposalSubmit() {
   const target = normalizePromptProposalTarget(state.promptProposalMeta?.target || "");
   const directAdopt = Boolean(state.promptProposalMeta?.applyNow);
   const promptKeys = getPromptProposalKeys(target);
-  const promptPayload = buildPromptPayloadJson(promptKeys);
+  const latestPromptConfig = readPromptConfigFromEditor();
+  state.promptConfig = resolvePromptConfig(latestPromptConfig);
+  saveToStorage(STORAGE_PROMPT_CONFIG_KEY, state.promptConfig);
+  const promptPayload = buildPromptPayloadJson(promptKeys, state.promptConfig);
   const targetLabel =
     target === PROMPT_FEEDBACK_TARGET_ALL
       ? "alle 5 Prompts"
@@ -1365,6 +1416,7 @@ async function handlePromptProposalSubmit() {
   }
 
   let submissionId = "";
+  let submissionCreatedAt = "";
   let stageLabel = "Vorschlag speichern";
   let watchdogId = null;
   try {
@@ -1386,7 +1438,7 @@ async function handlePromptProposalSubmit() {
       proposal_name: proposalName,
       proposal_note: proposalNote,
       target_prompt_key: target,
-      prompt_text: buildPromptSubmissionText(target, promptKeys),
+      prompt_text: buildPromptSubmissionText(target, promptKeys, promptPayload),
       prompt_payload_json: promptPayload,
       direct_adopt_requested: directAdopt,
       direct_adopt_applied: false
@@ -1396,7 +1448,7 @@ async function handlePromptProposalSubmit() {
       supabase
         .from(SUPABASE_PROMPT_FEEDBACK_TABLE)
         .insert(submissionPayload)
-        .select("id")
+        .select("id, created_at")
         .single(),
       stageLabel
     );
@@ -1404,6 +1456,15 @@ async function handlePromptProposalSubmit() {
       throw insertError;
     }
     submissionId = String(submission?.id || "");
+    submissionCreatedAt = typeof submission?.created_at === "string" ? submission.created_at : "";
+    mergePromptPresetFromSubmission({
+      submissionId,
+      target,
+      proposalName,
+      promptPayload,
+      createdAt: submissionCreatedAt,
+      directAdoptApplied: directAdopt
+    });
 
     if (directAdopt) {
       stageLabel = "Direkte globale Uebernahme";
@@ -1431,6 +1492,7 @@ async function handlePromptProposalSubmit() {
       setVoiceStatus(`Vorschlag gespeichert und global uebernommen (${targetLabel}).`);
       setPromptProposalStatus(`Gespeichert und global uebernommen (${targetLabel}).`);
     } else {
+      setPromptProposalStatus("Vorschlag gespeichert. Aktualisiere Auswahl ...");
       void loadPromptPresetOptions({ silent: true });
       setVoiceStatus(`Prompt-Vorschlag gespeichert (${targetLabel}).`);
       setPromptProposalStatus(`Vorschlag gespeichert (${targetLabel}).`);
