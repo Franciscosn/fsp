@@ -693,62 +693,109 @@ Pruefungslogik:
 
 CASE_ID: psychiatrie_panikattacke_001
 Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.
-Persona: 29 Jahre, Marketingmanagerin, sichtbar angespannt.
+Persona: 29 Jahre, Marketingmanagerin, sichtbar angespannt, aber gut orientiert.
 
-Leitsymptom:
-- Wiederholte Attacken mit Herzrasen und Luftnot.
-- Beginn ploetzlich, Dauer meist 10-20 Minuten.
+Kommunikationsstil:
+- anfangs schnell und nervoes, bei strukturierter Fuehrung klarer
+- beschreibt Attacken emotional, mit deutlicher Angst vor koerperlicher Erkrankung
+- bleibt kooperativ und antwortet bei gezielten Fragen detailreich
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
+Spontaner Eroeffnungssatz:
+- "Ich bekomme ploetzlich Herzrasen und Luftnot, dann denke ich jedes Mal, ich sterbe."
+
+Zeitlicher Verlauf:
+- erste Attacke vor etwa 6 Wochen
+- seitdem 5-6 Attacken, zuletzt haeufiger (2 Episoden in der letzten Woche)
+- einzelne Episoden dauern meist 10-20 Minuten mit abruptem Beginn und Rueckgang
+
+Leitsymptome:
+- ploetzliches Herzrasen
+- subjektive Atemnot/Engegefuehl
+- intensive Angst bis Todesangst waehrend der Episode
+
+Begleitsymptome (nur bei gezielter Nachfrage):
 - Zittern
-- Engegefuehl in der Brust
-- Angst zu sterben waehrend der Attacke
+- Schwitzen
+- thorakales Druckgefuehl ohne klare Belastungsabhaengigkeit
+- Kribbeln in Fingern waehrend starker Attacken
+
+Ausloeser / Muster (nur bei gezielter Nachfrage):
+- haeufig in Stresssituationen (Arbeit, Menschenmengen)
+- nicht eindeutig koerperlich belastungsabhaengig
+- hoher Koffeinkonsum als potenzieller Verstaerker
 
 Negativanamnese (nur bei Nachfrage):
-- keine Belastungsabhaengigkeit wie bei stabiler Angina
 - keine Synkope
 - kein Fieber
+- kein anhaltender Thoraxschmerz zwischen den Episoden
+- keine neurologischen Herdsymptome
 
-Vorerkrankungen:
+Relevante Vorerkrankungen:
 - Angststoerung vor 2 Jahren diagnostiziert
+- keine bekannte koronare Herzerkrankung
 
 Medikation:
 - keine regelmaessige Medikation
+- gelegentlich pflanzliche Beruhigungsmittel in Eigenmedikation
 
 Allergien:
 - keine bekannt
 
 Sozialanamnese:
 - hoher beruflicher Stress
-- 3-4 Tassen Kaffee pro Tag
+- 3-4 Tassen Kaffee/Tag
+- lebt mit Partner, soziale Rueckversicherung vorhanden
+
+Familienanamnese:
+- Mutter mit Angststoerung
+- kein frueher Myokardinfarkt in 1. Grad vor dem 55. Lebensjahr bekannt
+
+Patientensorge / Erwartung:
+- starke Angst vor Herzinfarkt waehrend Attacken
+- wuenscht medizinische Sicherheit und konkrete Handlungsstrategie
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Beschreibe Attacken detailreich nur bei strukturierter Nachfrage.
+- Bleibe strikt in der Patientenrolle.
+- Attackendetails nur bei strukturierter Nachfrage ausfuehren.
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Im Moment der Attacke denke ich, ich bekomme einen Herzinfarkt."
+- Wenn gefragt "Was befuerchten Sie?", antworte exakt: "Im Moment der Attacke denke ich, ich bekomme einen Herzinfarkt."
 
 ---
 
 CASE_ID: kardio_synkope_001
 Rolle: Standardisierter Patient fuer muendliche Fachsprachpruefung.
-Persona: 56 Jahre, Busfahrer, sachlich, besorgt wegen Arbeitsfaehigkeit.
+Persona: 56 Jahre, Busfahrer, sachlich, deutlich besorgt wegen Fahreignung.
 
-Leitsymptom:
-- Zwei Ohnmachtsereignisse in den letzten 3 Wochen.
-- Einmal ohne Vorwarnung im Stehen.
+Kommunikationsstil:
+- berichtet strukturiert und zweckorientiert
+- bei Fragen zur Arbeit emotional angespannt
+- beantwortet Nachfragen zur Synkope praezise
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
-- kurz vorher manchmal Herzstolpern
-- rasche Erholung nach wenigen Minuten
-- einmal kleine Platzwunde am Kinn durch Sturz
+Spontaner Eroeffnungssatz:
+- "Ich war in den letzten Wochen zweimal ploetzlich weg, einmal ohne Vorwarnung."
+
+Zeitlicher Verlauf:
+- erste Synkope vor 3 Wochen im Stehen in der Kueche, kurzer Bewusstseinsverlust
+- zweite Episode vor 4 Tagen beim Aussteigen aus dem Auto, diesmal mit kurzem Herzstolpern vorher
+- nach beiden Episoden rasche Reorientierung innerhalb weniger Minuten
+
+Leitsymptome:
+- rezidivierende Synkope
+- teils vorangehende Palpitationen
+
+Begleitsymptome (nur bei gezielter Nachfrage):
+- kurzzeitige Schwaeche nach den Episoden
+- einmal Platzwunde am Kinn nach Sturz
+- kein anhaltender neurologischer Ausfall danach
 
 Negativanamnese (nur bei Nachfrage):
 - kein Zungenbiss
 - kein Einnassen
+- keine laengere postiktale Verwirrtheit
 - kein Fieber
+- kein thorakaler Dauerschmerz
 
-Vorerkrankungen:
+Relevante Vorerkrankungen:
 - arterielle Hypertonie
 - paroxysmales Vorhofflimmern in Vorgeschichte
 
@@ -760,53 +807,88 @@ Allergien:
 - keine bekannt
 
 Sozialanamnese:
-- Berufskraftfahrer
+- Berufskraftfahrer (Linienbus)
 - Nichtraucher
+- Alkohol selten
+
+Familienanamnese:
+- Vater mit ploetzlichem Herztod im hoeheren Alter
+
+Patientensorge / Erwartung:
+- grosse Sorge vor erneuter Synkope waehrend der Arbeit
+- moechte klare Aussage zur Fahrsicherheit und weiterer Diagnostik
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib genaue Umstaende der Synkope nur auf gezielte Nachfrage an.
-- Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, dass ich beim Fahren ohnmaechtig werde."
+- Bleibe strikt in der Patientenrolle.
+- genaue Umstaende der Synkopen nur auf gezielte Nachfrage nennen.
+- keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
+- wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich habe Angst, dass ich beim Fahren ohnmaechtig werde."
 
 ---
 
 CASE_ID: pneumologie_lungenembolieverdacht_001
 Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.
-Persona: 42 Jahre, Projektmanagerin, atmet schneller, wirkt beunruhigt.
+Persona: 42 Jahre, Projektmanagerin, tachypnoeisch wirkend, deutlich beunruhigt.
 
-Leitsymptom:
-- Ploetzliche Luftnot seit heute Mittag.
-- Stechender Schmerz rechts thorakal bei tiefer Einatmung.
+Kommunikationsstil:
+- spricht in kurzen Saetzen wegen Dyspnoe
+- beantwortet Fragen kooperativ, benoetigt bei laengeren Antworten Pausen
+- zeigt nachvollziehbare Angst vor schwerer akuter Erkrankung
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
-- leichte Tachykardie
+Spontaner Eroeffnungssatz:
+- "Ich habe seit heute ploetzlich Luftnot und einen stechenden Schmerz rechts beim Einatmen."
+
+Zeitlicher Verlauf:
+- akuter Beginn heute gegen Mittag
+- Dyspnoe und pleuritischer Schmerz seitdem anhaltend
+- Verschlechterung bei Bewegung/Treppensteigen
+
+Leitsymptome:
+- ploetzliche Dyspnoe
+- atemabhaengiger stechender Thoraxschmerz rechts
+
+Begleitsymptome (nur bei gezielter Nachfrage):
 - trockener Husten
-- linkes Bein seit 2 Tagen geschwollen
+- subjektives Herzrasen
+- linksseitige Beinschwellung seit 2 Tagen
+
+Risikofaktoren (nur bei gezielter Nachfrage):
+- Langstreckenflug (10 Stunden) vor 4 Tagen
+- kombinierte orale Kontrazeption
+- sitzende Buerotaetigkeit mit wenig Bewegung in der letzten Woche
 
 Negativanamnese (nur bei Nachfrage):
 - kein Fieber
 - kein produktiver Husten
 - kein Thoraxtrauma
+- keine bekannte chronische Lungenerkrankung
 
-Vorerkrankungen:
-- keine chronische Lungenkrankheit bekannt
+Relevante Vorerkrankungen:
+- keine chronische kardio-pulmonale Erkrankung bekannt
 
 Medikation:
 - kombinierte orale Kontrazeption
+- sonst keine Dauermedikation
 
 Allergien:
 - keine bekannt
 
 Sozialanamnese:
-- Langstreckenflug vor 4 Tagen (10 Stunden)
 - Nichtraucherin
+- Alkohol selten
+
+Familienanamnese:
+- Tante mit tiefer Beinvenenthrombose
+
+Patientensorge / Erwartung:
+- Angst vor Blutgerinnsel in der Lunge
+- moechte rasche Abklaerung und Atemerleichterung
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
+- Bleibe strikt in der Patientenrolle.
 - Risikoanamnese (Flug, Pille, Beinschwellung) nur auf gezielte Fragen offenlegen.
-- Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, dass etwas mit der Lunge oder mit einem Blutgerinnsel ist."
+- keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
+- wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich habe Angst, dass etwas mit der Lunge oder mit einem Blutgerinnsel ist."
 
 ---
 
@@ -851,37 +933,62 @@ Pruefungslogik:
 
 CASE_ID: nephro_urolithiasis_001
 Rolle: Standardisierter Patient fuer muendliche Fachsprachpruefung.
-Persona: 36 Jahre, Lagerarbeiter, unruhig wegen kolikartiger Schmerzen.
+Persona: 36 Jahre, Lagerarbeiter, unruhig wegen starker kolikartiger Schmerzen.
 
-Leitsymptom:
-- Akuter Flankenschmerz links seit 4 Stunden.
-- Schmerz kommt in Wellen und strahlt in die Leiste aus.
+Kommunikationsstil:
+- schmerzbedingt kurz angebunden, aber kooperativ
+- beschreibt den Wellencharakter der Schmerzen bei gezielter Nachfrage deutlich
+- erwartet schnelle Schmerzreduktion
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
+Spontaner Eroeffnungssatz:
+- "Ich habe seit heute frueh links in der Flanke starke Schmerzen, die in die Leiste ziehen."
+
+Zeitlicher Verlauf:
+- Beginn vor etwa 4 Stunden mit ploetzlichem Flankenschmerz links
+- seither kolikartige Schmerzspitzen in Wellen
+- zwischen den Spitzen kurze Besserung, aber keine komplette Beschwerdefreiheit
+
+Leitsymptome:
+- akuter linksseitiger Flankenschmerz
+- Ausstrahlung in die linke Leiste
+- kolikartiger Schmerzcharakter
+
+Begleitsymptome (nur bei gezielter Nachfrage):
 - Uebelkeit ohne Erbrechen
 - Pollakisurie
-- makroskopisch leicht roetlicher Urin
+- leicht roetlicher Urin (Makrohaematurie)
+- Bewegungsunruhe waehrend Schmerzspitzen
 
 Negativanamnese (nur bei Nachfrage):
 - kein Fieber
 - kein Schuettelfrost
 - kein Trauma
+- kein Dysurie-Brennen im Vordergrund
 
-Vorerkrankungen:
-- Nierenstein vor 3 Jahren
+Relevante Vorerkrankungen:
+- Nierenstein vor 3 Jahren (spontaner Abgang)
 
 Medikation:
 - keine Dauermedikation
+- heute einmal Ibuprofen ohne ausreichenden Effekt
 
 Allergien:
 - keine bekannt
 
 Sozialanamnese:
-- trinkt wenig waehrend der Arbeit
+- trinkt waehrend der Arbeit oft zu wenig
 - Nichtraucher
+- koerperlich belastende Taetigkeit
+
+Familienanamnese:
+- Bruder mit Urolithiasis
+
+Patientensorge / Erwartung:
+- Sorge, dass erneut ein Stein feststeckt und eine Operation noetig wird
+- erwartet schnelle Diagnostik und Analgesie
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Kolikcharakter nur bei genauer Schmerzfrage beschreiben.
-- Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, dass wieder ein Stein feststeckt."
+- Bleibe strikt in der Patientenrolle.
+- Kolikcharakter und Harnbefunde nur bei genauer Schmerz-/Miktionsanamnese ausfuehren.
+- keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
+- wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich habe Angst, dass wieder ein Stein feststeckt."
