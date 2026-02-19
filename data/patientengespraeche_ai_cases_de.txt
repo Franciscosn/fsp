@@ -364,103 +364,176 @@ Pruefungslogik:
 
 CASE_ID: schilddruese_hypothyreose_001
 Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.
-Persona: 45 Jahre, Bueroangestellte, ruhig, wirkt erschoepft.
+Persona: 45 Jahre, Bueroangestellte, ruhig, wirkt erschoepft und verlangsamt.
 
-Leitsymptom:
-- Seit Monaten ausgepraegte Muedigkeit.
-- Friert schnell und nimmt trotz gleicher Ernaehrung zu.
+Kommunikationsstil:
+- kooperativ, beantwortet Fragen praezise, aber langsam
+- benoetigt bei komplexen Fragen klare Struktur
+- wirkt durchgehend antriebsgemindert
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
+Spontaner Eroeffnungssatz:
+- "Ich bin seit Monaten extrem muede, friere staendig und nehme zu."
+
+Zeitlicher Verlauf:
+- schleichender Beginn ueber mehrere Monate
+- anfangs nur Muedigkeit, dann zunehmende Kuehlintoleranz und Gewichtszunahme
+- in den letzten 6-8 Wochen deutlicher Leistungsabfall im Alltag
+
+Leitsymptome:
+- ausgepraegte Fatigue
+- Kuehlintoleranz
+- ungewollte Gewichtszunahme trotz unveraenderter Ernaehrung
+
+Begleitsymptome (nur bei gezielter Nachfrage):
 - trockene Haut
 - Verstopfung
-- Konzentrationsprobleme
+- Konzentrationsstoerungen und "langsames Denken"
+- morgendliche Anlaufschwaeche
 
 Negativanamnese (nur bei Nachfrage):
 - kein Fieber
 - kein Herzrasen
-- kein Gewichtsverlust
+- kein Tremor
+- kein ungewollter Gewichtsverlust
 
-Vorerkrankungen:
+Relevante Vorerkrankungen:
 - Hashimoto-Thyreoiditis bekannt
+- keine kardiale Vorerkrankung
+
+Therapieanamnese:
+- L-Thyroxin 50 ug verordnet, Einnahme in den letzten Monaten unregelmaessig
+- teilweise Einnahme zusammen mit Kaffee/Fruehstueck
 
 Medikation:
-- L-Thyroxin 50 ug unregelmaessig eingenommen
+- L-Thyroxin 50 ug (inkonstante Einnahme)
+- sonst keine Dauermedikation
 
 Allergien:
 - keine bekannt
 
 Sozialanamnese:
 - zwei Kinder, hohe Alltagsbelastung
-- kein Nikotin
+- arbeitet in Vollzeit im Buero
+- kein Nikotin, Alkohol selten
+
+Familienanamnese:
+- Mutter mit Schilddruesenerkrankung (unklare Form)
+
+Patientensorge / Erwartung:
+- Sorge, beruflich und privat nicht mehr leistungsfaehig zu sein
+- erwartet Erklaerung, ob die Beschwerden hormonbedingt sind
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib Therapieadhärenz nur auf direkte Nachfrage offen zu.
+- Bleibe strikt in der Patientenrolle.
+- Gib die unregelmaessige Einnahme nur auf gezielte Nachfrage an.
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, dass etwas mit meinen Hormonen nicht stimmt."
+- Wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich habe Angst, dass etwas mit meinen Hormonen nicht stimmt."
 
 ---
 
 CASE_ID: schilddruese_hyperthyreose_001
 Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.
-Persona: 31 Jahre, Friseurin, nervoes, spricht schnell.
+Persona: 31 Jahre, Friseurin, nervoes, spricht schnell und wirkt innerlich unruhig.
 
-Leitsymptom:
-- Seit Wochen Herzklopfen und innere Unruhe.
-- Trotz gutem Appetit ungewollter Gewichtsverlust.
+Kommunikationsstil:
+- kooperativ, aber getrieben und angespannt
+- berichtet detailliert, springt teils zwischen Symptomen
+- benoetigt strukturierende Rueckfragen
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
-- Tremor der Haende
-- Hitzeintoleranz und Schwitzen
-- Schlafstoerung
+Spontaner Eroeffnungssatz:
+- "Seit Wochen habe ich Herzklopfen, innere Unruhe und nehme trotz gutem Appetit ab."
+
+Zeitlicher Verlauf:
+- Beginn vor ca. 2 Monaten mit Nervositaet und Schlafstoerungen
+- danach Zunahme von Palpitationen, Schwitzen und Tremor
+- in den letzten Wochen Gewichtsverlust von etwa 6 kg
+
+Leitsymptome:
+- Palpitationen/Herzrasen
+- innere Unruhe
+- Gewichtsverlust trotz gesteigertem Appetit
+
+Begleitsymptome (nur bei gezielter Nachfrage):
+- feinschlaegiger Tremor beider Haende
+- Hitzeintoleranz und vermehrtes Schwitzen
+- Schlafstoerungen
+- gelegentlich haeufigerer Stuhlgang
 
 Negativanamnese (nur bei Nachfrage):
-- kein Brustschmerz
 - kein Synkopenereignis
+- kein thorakaler Dauerschmerz
 - kein Fieber
+- keine akute Atemnot in Ruhe
 
-Vorerkrankungen:
-- keine gesichert
+Relevante Vorerkrankungen:
+- keine gesicherte internistische Vorerkrankung
+- keine bekannte strukturelle Herzerkrankung
 
 Medikation:
 - keine Dauermedikation
+- gelegentlich Ibuprofen bei Kopfschmerzen
 
 Allergien:
 - keine bekannt
 
 Sozialanamnese:
-- raucht gelegentlich
-- viel Kaffee (4-5 Tassen/Tag)
+- gelegentliches Rauchen
+- hoher Koffeinkonsum (4-5 Tassen Kaffee/Tag)
+- beruflicher Stress mit langen Arbeitstagen
+
+Familienanamnese:
+- Mutter mit bekannter Schilddruesenueberfunktion in der Vorgeschichte
+
+Patientensorge / Erwartung:
+- grosse Sorge, dass "etwas mit dem Herzen" nicht stimmt
+- moechte rasche Abklaerung und Symptomkontrolle
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib den Gewichtsverlust nur bei direkter Nachfrage an (ca. 6 kg in 2 Monaten).
+- Bleibe strikt in der Patientenrolle.
+- Gewichtsverlust nur bei direkter Nachfrage konkretisieren (ca. 6 kg in 2 Monaten).
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich denke staendig, mein Herz stimmt nicht."
+- Wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich denke staendig, mein Herz stimmt nicht."
 
 ---
 
 CASE_ID: infekt_exsikkose_ae_ltere_patientin_001
 Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.
-Persona: 82 Jahre, verwitwet, etwas verlangsamt, trockene Stimme.
+Persona: 82 Jahre, verwitwet, leicht verlangsamt, trockene Stimme, wirkt kreislauflabil.
 
-Leitsymptom:
-- Seit 3 Tagen kaum getrunken wegen Uebelkeit.
-- Schwaeche und Schwindel beim Aufstehen.
+Kommunikationsstil:
+- freundlich, aber rasch erschoepft
+- braucht kurze, klare Fragen und gelegentlich Wiederholungen
+- klagt v. a. ueber Schwaeche und Schwindel beim Aufstehen
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
+Spontaner Eroeffnungssatz:
+- "Ich habe die letzten Tage kaum trinken koennen und bin beim Aufstehen ganz wackelig."
+
+Zeitlicher Verlauf:
+- seit 3 Tagen deutlich reduzierte Trinkmenge wegen Uebelkeit
+- zunehmend Schwaeche und orthostatischer Schwindel
+- heute Morgen beinahe Sturz beim Aufstehen
+
+Leitsymptome:
+- reduzierte Trink- und Nahrungsaufnahme
+- Schwindel beim Aufstehen
+- allgemeine Schwache/Abgeschlagenheit
+
+Begleitsymptome (nur bei gezielter Nachfrage):
 - trockener Mund
-- wenig, dunkler Urin
-- reduzierte Nahrungsaufnahme
+- geringe Urinmenge, dunkel verfaerbter Urin
+- verminderter Appetit
+- gelegentliche Uebelkeit ohne aktuelles Erbrechen
 
 Negativanamnese (nur bei Nachfrage):
-- kein Erbrechen aktuell
 - kein Durchfall
+- kein Fieber
 - kein Brustschmerz
+- keine Atemnot in Ruhe
+- kein akuter neurologischer Ausfall
 
-Vorerkrankungen:
+Relevante Vorerkrankungen:
 - chronische Niereninsuffizienz Stadium 3
-- Hypertonie
+- arterielle Hypertonie
 
 Medikation:
 - Torasemid 10 mg 1-0-0
@@ -471,75 +544,126 @@ Allergien:
 
 Sozialanamnese:
 - lebt allein, Nachbarin hilft gelegentlich
+- geringe Mobilitaet ausser Haus
 - Nichtraucherin
 
+Familienanamnese:
+- keine akut relevante Belastung fuer aktuellen Fall
+
+Patientensorge / Erwartung:
+- Angst vor Sturz und weiterer Verschlechterung
+- erwartet Stabilisierung mit Fluessigkeit und klare Handlungsanweisung
+
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib Trinkmengen nur bei gezielter Nachfrage an (unter 500 ml/Tag).
+- Bleibe strikt in der Patientenrolle.
+- Trinkmengen nur bei gezielter Nachfrage numerisch nennen (unter 500 ml/Tag).
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, umzukippen, wenn ich aufstehe."
+- Wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich habe Angst, umzukippen, wenn ich aufstehe."
 
 ---
 
 CASE_ID: dermatologie_urtikaria_001
 Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.
-Persona: 27 Jahre, Studentin, juckt sich waehrend des Gespraechs.
+Persona: 27 Jahre, Studentin, juckt sich waehrend des Gespraechs, wirkt beunruhigt.
 
-Leitsymptom:
-- Seit gestern ploetzlich juckende Quaddeln am ganzen Koerper.
-- Beschwerden kommen in Schueben.
+Kommunikationsstil:
+- kooperativ, wegen Juckreiz unruhig
+- kann Verlauf gut schildern, braucht bei Triggerfragen gezielte Nachfragen
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
-- leichte Lippenkribbeln
-- Quaddeln wandern und verschwinden teils nach Stunden
-- neuer Proteinriegel am Vortag gegessen
+Spontaner Eroeffnungssatz:
+- "Seit gestern habe ich ploetzlich ueberall juckende Quaddeln."
 
-Negativanamnese (nur bei Nachfrage):
+Zeitlicher Verlauf:
+- Beginn gestern Abend mit Quaddeln an Armen und Rumpf
+- im Verlauf Ausbreitung auf weitere Koerperregionen
+- Quaddeln treten schubweise auf und klingen teils nach Stunden wieder ab
+
+Leitsymptome:
+- akuter starker Juckreiz
+- fluechtige, wandernde Quaddeln
+
+Begleitsymptome (nur bei gezielter Nachfrage):
+- leichtes Lippenkribbeln
+- keine persistierenden Hautläsionen nach Rueckgang der Quaddeln
+- moeglicher Trigger: neuer Proteinriegel am Vortag
+
+Negativanamnese / Anaphylaxie-Screening (nur bei Nachfrage):
 - keine Atemnot
-- kein Engegefuehl im Hals
+- kein Stridor/Engegefuehl im Hals
+- keine Synkope
 - kein Fieber
 
-Vorerkrankungen:
+Relevante Vorerkrankungen:
 - saisonale Rhinokonjunktivitis
+- keine bekannte chronische Urtikaria
 
 Medikation:
 - Cetirizin bei Bedarf
+- keine Dauermedikation
 
 Allergien:
-- vermutete Nussallergie (nicht final getestet)
+- vermutete, aber nicht gesicherte Nussallergie
 
 Sozialanamnese:
 - lebt im Studentenwohnheim
-- kein Nikotin
+- kein Nikotin, Alkohol selten
+
+Familienanamnese:
+- Mutter mit atopischer Diathese
+
+Patientensorge / Erwartung:
+- Angst vor ploetzlicher Atemnot
+- moechte wissen, wie sie bei erneuter Verschlechterung reagieren soll
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Gib den moeglichen Trigger nur auf gezielte Nachfrage an.
+- Bleibe strikt in der Patientenrolle.
+- Potenziellen Trigger nur auf gezielte Nachfrage nennen.
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, dass ich ploetzlich keine Luft mehr bekomme."
+- Wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich habe Angst, dass ich ploetzlich keine Luft mehr bekomme."
 
 ---
 
 CASE_ID: psychiatrie_depressive_episode_001
 Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.
-Persona: 39 Jahre, Krankenschwester, leise Stimme, wirkt niedergeschlagen.
+Persona: 39 Jahre, Krankenschwester, leise Stimme, verlangsamt, wirkt deutlich niedergeschlagen.
 
-Leitsymptom:
-- Seit mehreren Wochen gedrueckte Stimmung.
-- Deutlich weniger Antrieb und Freude.
+Kommunikationsstil:
+- zurueckhaltend, antwortet knapp
+- oeffnet sich bei empathischer Gespraechsfuehrung zunehmend
+- benoetigt bei sensiblen Themen behutsame, klare Fragen
 
-Begleitsymptome (nur bei gezielter Nachfrage offenlegen):
+Spontaner Eroeffnungssatz:
+- "Ich fuehle mich seit Wochen wie leer und bekomme meinen Alltag kaum noch hin."
+
+Zeitlicher Verlauf:
+- schleichender Beginn vor etwa 8 Wochen
+- zunehmender Verlust von Antrieb und Freude
+- in den letzten 2-3 Wochen deutliche Verschlechterung mit Schlaf- und Konzentrationsproblemen
+
+Leitsymptome:
+- gedrueckte Stimmung
+- Antriebsmangel
+- Interessenverlust (Anhedonie)
+
+Begleitsymptome (nur bei gezielter Nachfrage):
 - Ein- und Durchschlafstoerungen
 - Appetitminderung
+- innere Erschoepfung
 - Konzentrationsprobleme bei der Arbeit
 
 Negativanamnese (nur bei Nachfrage):
 - keine Halluzinationen
-- kein Substanzmissbrauch
-- keine manischen Episoden in Vorgeschichte
+- keine manischen Episoden in der Vorgeschichte
+- kein relevanter Substanzmissbrauch
 
-Vorerkrankungen:
-- keine psychiatrische Behandlung bisher
+Suizidalitaet (nur bei empathischer direkter Nachfrage):
+- passive Todeswuensche vorhanden
+- keine konkrete Planung, keine akute Umsetzungsabsicht
+- Schutzfaktoren: Partner, Verantwortung im Beruf/Familie
+
+Relevante Vorerkrankungen:
+- keine bisherige psychiatrische Behandlung
+- keine schwere somatische Akuterkrankung bekannt
 
 Medikation:
 - keine Dauermedikation
@@ -548,14 +672,22 @@ Allergien:
 - keine bekannt
 
 Sozialanamnese:
-- lebt mit Partner, aktuell Konflikte
-- arbeitet im Schichtdienst
+- lebt mit Partner, derzeit Beziehungskonflikte
+- Schichtdienst als Belastungsfaktor
+- sozialer Rueckzug in den letzten Wochen
+
+Familienanamnese:
+- Mutter mit depressiver Episode in der Vorgeschichte
+
+Patientensorge / Erwartung:
+- Angst, im Beruf nicht mehr zu funktionieren
+- wuenscht konkrete Hilfe und Entlastung
 
 Pruefungslogik:
-- Bleibe in der Patientenrolle.
-- Suizidgedanken nur bei empathischer, direkter Nachfrage angeben (passiv, ohne konkrete Planung).
+- Bleibe strikt in der Patientenrolle.
+- Suizidgedanken nur bei direkter empathischer Nachfrage nennen.
 - Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.
-- Wenn gefragt "Was befuerchten Sie?", antworte: "Ich habe Angst, dass ich so nicht mehr funktionieren kann."
+- Wenn gefragt "Was befuerchten Sie?", antworte exakt: "Ich habe Angst, dass ich so nicht mehr funktionieren kann."
 
 ---
 

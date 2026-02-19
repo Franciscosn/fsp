@@ -1008,7 +1008,28 @@ function updateVoiceSamplePanel() {
     caseEntry && typeof caseEntry[sampleConfig.field] === "string"
       ? String(caseEntry[sampleConfig.field]).trim()
       : "";
-  refs.voiceSampleText.textContent = text || "Fuer diesen Fall ist hier noch kein Muster hinterlegt.";
+  refs.voiceSampleText.textContent = text
+    ? formatVoiceSampleTextForDisplay(text)
+    : "Fuer diesen Fall ist hier noch kein Muster hinterlegt.";
+}
+
+function formatVoiceSampleTextForDisplay(text) {
+  const normalized = String(text || "").replace(/\r\n/g, "\n");
+  const lines = normalized.split("\n");
+  const out = [];
+
+  for (const rawLine of lines) {
+    const line = rawLine.replace(/^Turn\s+\d+\s*-\s*/i, "");
+    const isSpeakerLine = /^(Arzt|Patient|Patientin|Prueferarzt|Kandidat|Kandidatin):/.test(line);
+
+    if (isSpeakerLine && out.length > 0 && out[out.length - 1].trim() !== "") {
+      out.push("");
+    }
+
+    out.push(line);
+  }
+
+  return out.join("\n").trim();
 }
 
 function handleVoiceCaseInfoToggle() {

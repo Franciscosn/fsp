@@ -849,10 +849,12 @@ body.auth-only .edge-deco {
   border: 1px solid rgba(248, 73, 102, 0.2);
   border-radius: 12px;
   background: #fff;
-  padding: 10px;
+  padding: 14px;
   color: #5d2736;
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.96rem;
+  line-height: 1.72;
+  letter-spacing: 0.004em;
+  font-family: inherit;
   white-space: pre-wrap;
   overflow: auto;
   max-height: 520px;
