@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260221b";
-const BUILD_UPDATED_AT = "2026-02-21 14:48 UTC";
+const APP_VERSION = "20260221c";
+const BUILD_UPDATED_AT = "2026-02-21 15:02 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3665,6 +3665,9 @@ function showLearningView(viewId) {
     refs.learningSubcategoryView.classList.toggle("hidden", viewId !== LEARNING_VIEW_SUBCATEGORIES);
   }
   if (refs.learningReadingView) refs.learningReadingView.classList.toggle("hidden", viewId !== LEARNING_VIEW_READING);
+  if (refs.learningPanel) {
+    refs.learningPanel.classList.toggle("is-reader-view", viewId === LEARNING_VIEW_READING);
+  }
 }
 
 function renderLearningRootList() {

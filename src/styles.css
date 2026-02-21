@@ -2409,6 +2409,53 @@ body.immersive .stats-fab {
     height: 36px;
   }
 
+  .learning-panel.is-reader-view .learning-head {
+    display: none;
+  }
+
+  .learning-panel.is-reader-view .learning-reading-view {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    gap: 10px;
+  }
+
+  .learning-panel.is-reader-view #learningReadingTitle,
+  .learning-panel.is-reader-view .learning-meta,
+  .learning-panel.is-reader-view .learning-status,
+  .learning-panel.is-reader-view .learning-question-head,
+  .learning-panel.is-reader-view .learning-question-groups,
+  .learning-panel.is-reader-view .learning-sources {
+    display: none;
+  }
+
+  .learning-panel.is-reader-view .learning-prose {
+    gap: 12px;
+  }
+
+  .learning-panel.is-reader-view .learning-prose p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .learning-panel.is-reader-view .learning-back-btn {
+    width: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .learning-panel.is-reader-view .learning-back-text {
+    display: none;
+  }
+
+  .learning-panel.is-reader-view .learning-back-avatar {
+    width: 46px;
+    height: 46px;
+  }
+
   .selection-footer {
     order: 1;
     flex-direction: column-reverse;
