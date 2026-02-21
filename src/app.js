@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "3";
-const BUILD_UPDATED_AT = "2026-02-21 13:27 CET";
+const APP_VERSION = "4";
+const BUILD_UPDATED_AT = "2026-02-21 13:49 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -43,8 +43,119 @@ const VOICE_MODE_DOCTOR_CONVERSATION = "doctor_conversation";
 const LEARNING_VIEW_ROOT = "root";
 const LEARNING_VIEW_SUBCATEGORIES = "subcategories";
 const LEARNING_VIEW_READING = "reading";
+const LEARNING_VIEW_BODY = "body";
+const BODY_MODEL_DEFAULT_REGION_ID = "thorax";
 const LEARNING_ROOT_ITEMS = Object.freeze([
-  { id: "anamnese", label: "Anamnese" }
+  {
+    id: "anamnese",
+    label: "Anamnese",
+    cta: "Symptomkataloge oeffnen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "body",
+    label: "3D Koerpermodell",
+    cta: "Per Klick zoomen und lernen",
+    view: LEARNING_VIEW_BODY
+  }
+]);
+const BODY_MODEL_REGION_ITEMS = Object.freeze([
+  {
+    id: "kopf",
+    label: "Kopf / Neurologie",
+    hint: "Kopfschmerz, Schwindel, Bewusstsein, Sehen",
+    bullets: [
+      "Frage nach Beginn, Dauer, Verlauf und Triggern.",
+      "Pruefe Red Flags: neue neurologische Ausfaelle, Vigilanzminderung, starker Vernichtungskopfschmerz.",
+      "Klaere Begleitsymptome wie Uebelkeit, Lichtempfindlichkeit, Sehstoerungen."
+    ],
+    focusTarget: [0, 1.72, 0],
+    cameraOffset: [0.95, 0.2, 1.25]
+  },
+  {
+    id: "thorax",
+    label: "Thorax / Herz-Lunge",
+    hint: "Brustschmerz, Dyspnoe, Husten, Palpitationen",
+    bullets: [
+      "Differenziere Schmerzqualitaet, Ausstrahlung, Belastungsabhaengigkeit und Dauer.",
+      "Erfrage Dyspnoe in Ruhe vs. unter Belastung sowie orthopnoeartige Beschwerden.",
+      "Achte auf kardiale und pulmonale Risikofaktoren in Eigen- und Familienanamnese."
+    ],
+    focusTarget: [0, 1.18, 0],
+    cameraOffset: [1.15, 0.2, 1.45]
+  },
+  {
+    id: "abdomen",
+    label: "Abdomen",
+    hint: "Bauchschmerz, Uebelkeit, Stuhlveraenderung, Appetit",
+    bullets: [
+      "Lokalisierung mit Schmerzcharakter und zeitlichem Verlauf systematisch klaeren.",
+      "Begleitzeichen wie Erbrechen, Fieber, Diarrhoe, Melaena oder Haematochezie nachfragen.",
+      "Voroperationen, Medikamente und Alkohol als wichtige Kontextfaktoren erfassen."
+    ],
+    focusTarget: [0, 0.78, 0],
+    cameraOffset: [1.1, 0.12, 1.45]
+  },
+  {
+    id: "becken",
+    label: "Becken / Urogenital",
+    hint: "Dysurie, Pollakisurie, Unterbauch, Blutung",
+    bullets: [
+      "Miktionsbeschwerden strukturiert nach Brennen, Frequenz und Restharngefuehl abfragen.",
+      "Bei Unterbauchbeschwerden an gyn/urologische Differenzialdiagnosen denken.",
+      "Sexualanamnese und Schwangerschaftsrelevanz nur situativ und respektvoll erheben."
+    ],
+    focusTarget: [0, 0.46, 0],
+    cameraOffset: [1.0, 0.02, 1.3]
+  },
+  {
+    id: "arm_links",
+    label: "Linker Arm",
+    hint: "Sensibilitaet, Kraft, Trauma, Ausstrahlung",
+    bullets: [
+      "Neu aufgetretene Schwaeche, Taubheit oder Koordinationsstoerung klar dokumentieren.",
+      "Bei Thoraxschmerz Ausstrahlung in den linken Arm gezielt einordnen.",
+      "Nach Unfallmechanismus, Schwellung und Funktionseinschraenkung fragen."
+    ],
+    focusTarget: [-0.55, 1.06, 0],
+    cameraOffset: [-1.22, 0.15, 1.32]
+  },
+  {
+    id: "arm_rechts",
+    label: "Rechter Arm",
+    hint: "Schmerz, Kraft, Taubheit, Ueberlastung",
+    bullets: [
+      "Unterscheide radikulaere Symptome von lokalem muskuloskelettalem Schmerz.",
+      "Erfrage Belastungsbezug, Dominanzseite und alltagsrelevante Einschraenkung.",
+      "Verlauf unter Schonung, Kuehlung oder Analgetika kurz erfassen."
+    ],
+    focusTarget: [0.55, 1.06, 0],
+    cameraOffset: [1.22, 0.15, 1.32]
+  },
+  {
+    id: "bein_links",
+    label: "Linkes Bein",
+    hint: "Oedem, Schmerz, Claudicatio, Sensibilitaet",
+    bullets: [
+      "Einseitige Schwellung und Schmerz immer auf Thrombosezeichen screenen.",
+      "Belastungsabhaengige Beschwerden und Gehstrecke fuer Gefaessanamnese erfassen.",
+      "Neurologische Symptome wie Kribbeln oder Fussheberschwaeche systematisch einordnen."
+    ],
+    focusTarget: [-0.18, -0.04, 0],
+    cameraOffset: [-1.0, -0.12, 1.48]
+  },
+  {
+    id: "bein_rechts",
+    label: "Rechtes Bein",
+    hint: "Gangbild, Schmerzverlauf, Schwellung, Trauma",
+    bullets: [
+      "Frage nach akutem vs. chronischem Verlauf und nach ausloesenden Bewegungen.",
+      "Vergleiche Seitenbefunde: Umfang, Roetung, Ueberwaermung, Druckschmerz.",
+      "Sicherheitsfrage: Warnzeichen fuer Embolie oder Ischaemie klar kommunizieren."
+    ],
+    focusTarget: [0.18, -0.04, 0],
+    cameraOffset: [1.0, -0.12, 1.48]
+  }
 ]);
 const VOICE_SAMPLE_VIEW_PATIENT = "sample_patient";
 const VOICE_SAMPLE_VIEW_LETTER = "sample_letter";
@@ -288,6 +399,8 @@ let voiceChunkBuffer = [];
 let voiceAutoStopTimer = null;
 let shouldSendVoiceAfterStop = false;
 let xpMilestoneHideTimer = null;
+let learningBodyModelEngine = null;
+let learningBodyThreeLoadPromise = null;
 
 const CATEGORY_MAP = {
   berlin_abkuerzungen: "Berlin Zusatzfragen: Abkuerzungen",
@@ -453,7 +566,8 @@ const state = {
   learningView: LEARNING_VIEW_ROOT,
   learningRootId: "anamnese",
   learningAnamnese: null,
-  learningActiveCategoryId: ""
+  learningActiveCategoryId: "",
+  learningBodyActiveRegionId: BODY_MODEL_DEFAULT_REGION_ID
 };
 
 const refs = {
@@ -524,6 +638,7 @@ const refs = {
   voiceSampleLetterBtn: document.getElementById("voiceSampleLetterBtn"),
   voiceSampleDoctorBtn: document.getElementById("voiceSampleDoctorBtn"),
   openLearningBtn: document.getElementById("openLearningBtn"),
+  openBodyModelBtn: document.getElementById("openBodyModelBtn"),
   voiceSamplePanel: document.getElementById("voiceSamplePanel"),
   voiceSampleTitle: document.getElementById("voiceSampleTitle"),
   voiceSampleMeta: document.getElementById("voiceSampleMeta"),
@@ -584,6 +699,14 @@ const refs = {
   learningSubcategoryView: document.getElementById("learningSubcategoryView"),
   learningSubcategoryTitle: document.getElementById("learningSubcategoryTitle"),
   learningSubcategoryList: document.getElementById("learningSubcategoryList"),
+  learningBodyView: document.getElementById("learningBodyView"),
+  learningBodyBackBtn: document.getElementById("learningBodyBackBtn"),
+  learningBodyStatus: document.getElementById("learningBodyStatus"),
+  learningBodyCanvas: document.getElementById("learningBodyCanvas"),
+  learningBodyRegionButtons: document.getElementById("learningBodyRegionButtons"),
+  learningBodyRegionTitle: document.getElementById("learningBodyRegionTitle"),
+  learningBodyRegionHint: document.getElementById("learningBodyRegionHint"),
+  learningBodyRegionBullets: document.getElementById("learningBodyRegionBullets"),
   learningReadingView: document.getElementById("learningReadingView"),
   learningBackBtn: document.getElementById("learningBackBtn"),
   learningBackAvatar: document.getElementById("learningBackAvatar"),
@@ -703,7 +826,9 @@ function wireEvents() {
     handleVoiceSampleToggle(VOICE_SAMPLE_VIEW_DOCTOR);
   });
   refs.openLearningBtn?.addEventListener("click", handleOpenLearningPanel);
+  refs.openBodyModelBtn?.addEventListener("click", handleOpenBodyModel);
   refs.learningBackBtn?.addEventListener("click", handleLearningBackClick);
+  refs.learningBodyBackBtn?.addEventListener("click", handleLearningBodyBackClick);
   refs.voicePromptConfigSaveBtn?.addEventListener("click", handlePromptConfigSave);
   refs.voicePromptConfigResetBtn?.addEventListener("click", handlePromptConfigReset);
   refs.voicePromptProposalSubmitBtn?.addEventListener("click", () => {
@@ -805,6 +930,7 @@ function renderBuildBadge() {
 }
 
 function initAuthUi() {
+  stopLearningBodyModelLoop();
   document.body.classList.remove("learning-reader");
   document.body.classList.add("auth-only");
   refs.authPage.classList.remove("hidden");
@@ -3103,6 +3229,12 @@ function setVoiceBusy(isBusy) {
   if (refs.voiceSampleDoctorBtn) {
     refs.voiceSampleDoctorBtn.disabled = state.voiceBusy;
   }
+  if (refs.openLearningBtn) {
+    refs.openLearningBtn.disabled = state.voiceBusy;
+  }
+  if (refs.openBodyModelBtn) {
+    refs.openBodyModelBtn.disabled = state.voiceBusy;
+  }
   applyPromptEditorBusyState(state.voiceBusy || state.promptProposalBusy);
   refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
 }
@@ -3511,7 +3643,15 @@ function startQuickPractice() {
 }
 
 function handleOpenLearningPanel() {
+  state.learningRootId = "anamnese";
   state.learningView = LEARNING_VIEW_ROOT;
+  renderLearningFlow();
+  refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function handleOpenBodyModel() {
+  state.learningRootId = "body";
+  state.learningView = LEARNING_VIEW_BODY;
   renderLearningFlow();
   refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -3521,6 +3661,12 @@ function handleLearningBackClick() {
     state.learningView = LEARNING_VIEW_SUBCATEGORIES;
     renderLearningFlow();
   }
+}
+
+function handleLearningBodyBackClick() {
+  if (state.learningView !== LEARNING_VIEW_BODY) return;
+  state.learningView = LEARNING_VIEW_ROOT;
+  renderLearningFlow();
 }
 
 async function loadLearningAnamneseContent() {
@@ -3626,27 +3772,44 @@ function normalizeLearningQuestionGroup(rawValue) {
 function renderLearningLoading(message) {
   if (refs.learningRootView) refs.learningRootView.classList.remove("hidden");
   if (refs.learningSubcategoryView) refs.learningSubcategoryView.classList.add("hidden");
+  if (refs.learningBodyView) refs.learningBodyView.classList.add("hidden");
   if (refs.learningReadingView) refs.learningReadingView.classList.add("hidden");
   if (refs.learningRootList) refs.learningRootList.innerHTML = "";
   if (refs.learningSubcategoryList) refs.learningSubcategoryList.innerHTML = "";
+  if (refs.learningBodyRegionButtons) refs.learningBodyRegionButtons.innerHTML = "";
+  if (refs.learningBodyRegionBullets) refs.learningBodyRegionBullets.innerHTML = "";
+  if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = "Bereich";
+  if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = "";
+  if (refs.learningBodyStatus) refs.learningBodyStatus.textContent = "";
   if (refs.learningReadingTitle) refs.learningReadingTitle.textContent = "Lernbereich";
   if (refs.learningReadingMeta) refs.learningReadingMeta.textContent = "";
   if (refs.learningReadingText) refs.learningReadingText.innerHTML = "";
   if (refs.learningReadingQuestionGroups) refs.learningReadingQuestionGroups.innerHTML = "";
   if (refs.learningReadingSources) refs.learningReadingSources.innerHTML = "";
   if (refs.learningReadingStatus) refs.learningReadingStatus.textContent = safeLine(message, 220);
+  stopLearningBodyModelLoop();
 }
 
 function renderLearningFlow() {
   const bundle = state.learningAnamnese;
-  if (!bundle || !Array.isArray(bundle.categories) || bundle.categories.length === 0) {
-    renderLearningLoading("Noch keine Lerninhalte vorhanden.");
-    return;
-  }
+  const hasAnamnese = Boolean(bundle && Array.isArray(bundle.categories) && bundle.categories.length > 0);
 
   renderLearningRootList();
   if (state.learningView === LEARNING_VIEW_ROOT) {
     showLearningView(LEARNING_VIEW_ROOT);
+    return;
+  }
+
+  if (state.learningRootId === "body" || state.learningView === LEARNING_VIEW_BODY) {
+    state.learningRootId = "body";
+    state.learningView = LEARNING_VIEW_BODY;
+    renderLearningBodyView();
+    showLearningView(LEARNING_VIEW_BODY);
+    return;
+  }
+
+  if (!hasAnamnese) {
+    renderLearningLoading("Noch keine Lerninhalte vorhanden.");
     return;
   }
 
@@ -3665,11 +3828,18 @@ function showLearningView(viewId) {
   if (refs.learningSubcategoryView) {
     refs.learningSubcategoryView.classList.toggle("hidden", viewId !== LEARNING_VIEW_SUBCATEGORIES);
   }
+  if (refs.learningBodyView) refs.learningBodyView.classList.toggle("hidden", viewId !== LEARNING_VIEW_BODY);
   if (refs.learningReadingView) refs.learningReadingView.classList.toggle("hidden", viewId !== LEARNING_VIEW_READING);
   document.body.classList.toggle("learning-reader", viewId === LEARNING_VIEW_READING);
   if (refs.learningPanel) {
     refs.learningPanel.classList.toggle("is-reader-view", viewId === LEARNING_VIEW_READING);
   }
+  if (viewId === LEARNING_VIEW_BODY) {
+    void ensureLearningBodyModelReady();
+    startLearningBodyModelLoop();
+    return;
+  }
+  stopLearningBodyModelLoop();
 }
 
 function renderLearningRootList() {
@@ -3684,12 +3854,12 @@ function renderLearningRootList() {
     title.textContent = rootEntry.label;
     const count = document.createElement("span");
     count.className = "learning-root-count";
-    count.textContent = "Themen oeffnen";
+    count.textContent = rootEntry.cta || "Themen oeffnen";
     button.appendChild(title);
     button.appendChild(count);
     button.addEventListener("click", () => {
       state.learningRootId = rootEntry.id;
-      state.learningView = LEARNING_VIEW_SUBCATEGORIES;
+      state.learningView = rootEntry.view || LEARNING_VIEW_SUBCATEGORIES;
       renderLearningFlow();
     });
     refs.learningRootList.appendChild(button);
@@ -3722,6 +3892,475 @@ function renderLearningSubcategoryList(categories) {
     });
     refs.learningSubcategoryList.appendChild(button);
   }
+}
+
+function getLearningBodyRegionById(regionId) {
+  return (
+    BODY_MODEL_REGION_ITEMS.find((entry) => entry.id === regionId) ||
+    BODY_MODEL_REGION_ITEMS.find((entry) => entry.id === BODY_MODEL_DEFAULT_REGION_ID) ||
+    BODY_MODEL_REGION_ITEMS[0] ||
+    null
+  );
+}
+
+function renderLearningBodyView() {
+  const activeRegion = getLearningBodyRegionById(state.learningBodyActiveRegionId);
+  if (!activeRegion) return;
+  state.learningBodyActiveRegionId = activeRegion.id;
+  renderLearningBodyRegionButtons();
+  updateLearningBodyRegionCard(activeRegion.id);
+  if (refs.learningBodyStatus && !refs.learningBodyStatus.textContent.trim()) {
+    refs.learningBodyStatus.textContent =
+      "Klicke auf einen Koerperbereich oder nutze das Mausrad zum Zoomen.";
+  }
+  void ensureLearningBodyModelReady();
+}
+
+function renderLearningBodyRegionButtons() {
+  if (!refs.learningBodyRegionButtons) return;
+  refs.learningBodyRegionButtons.innerHTML = "";
+
+  for (const region of BODY_MODEL_REGION_ITEMS) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "learning-body-region-btn";
+    button.dataset.regionId = region.id;
+    button.textContent = region.label;
+    button.addEventListener("click", () => {
+      selectLearningBodyRegion(region.id, { focusModel: true });
+    });
+    refs.learningBodyRegionButtons.appendChild(button);
+  }
+  updateLearningBodyRegionButtonState();
+}
+
+function updateLearningBodyRegionButtonState() {
+  if (!refs.learningBodyRegionButtons) return;
+  const activeRegionId = state.learningBodyActiveRegionId;
+  const buttons = refs.learningBodyRegionButtons.querySelectorAll(".learning-body-region-btn");
+  for (const button of buttons) {
+    const isActive = button.dataset.regionId === activeRegionId;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+  }
+}
+
+function updateLearningBodyRegionCard(regionId) {
+  const region = getLearningBodyRegionById(regionId);
+  if (!region) return;
+  if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = region.label;
+  if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = region.hint;
+  if (refs.learningBodyRegionBullets) {
+    refs.learningBodyRegionBullets.innerHTML = "";
+    for (const bullet of region.bullets) {
+      const li = document.createElement("li");
+      li.textContent = bullet;
+      refs.learningBodyRegionBullets.appendChild(li);
+    }
+  }
+}
+
+function selectLearningBodyRegion(regionId, options = {}) {
+  const focusModel = options.focusModel !== false;
+  const silent = Boolean(options.silent);
+  const region = getLearningBodyRegionById(regionId);
+  if (!region) return;
+
+  state.learningBodyActiveRegionId = region.id;
+  updateLearningBodyRegionButtonState();
+  updateLearningBodyRegionCard(region.id);
+
+  if (focusModel) {
+    focusLearningBodyRegionInModel(region.id, { animate: true });
+  }
+  if (!silent && refs.learningBodyStatus) {
+    refs.learningBodyStatus.textContent = `${region.label}: ${region.hint}`;
+  }
+}
+
+function focusLearningBodyRegionInModel(regionId, options = {}) {
+  if (!learningBodyModelEngine) return;
+  const region = getLearningBodyRegionById(regionId);
+  if (!region) return;
+  learningBodyModelEngine.setActiveRegion(region.id, { animate: options.animate !== false });
+}
+
+function startLearningBodyModelLoop() {
+  learningBodyModelEngine?.start();
+}
+
+function stopLearningBodyModelLoop() {
+  learningBodyModelEngine?.stop();
+}
+
+async function ensureLearningBodyModelReady() {
+  if (!refs.learningBodyCanvas) return false;
+  const activeRegion = getLearningBodyRegionById(state.learningBodyActiveRegionId);
+  if (!activeRegion) return false;
+  state.learningBodyActiveRegionId = activeRegion.id;
+
+  if (learningBodyModelEngine) {
+    learningBodyModelEngine.resize();
+    focusLearningBodyRegionInModel(activeRegion.id, { animate: false });
+    return true;
+  }
+
+  if (
+    typeof window.WebGLRenderingContext === "undefined" ||
+    typeof window.HTMLCanvasElement === "undefined"
+  ) {
+    if (refs.learningBodyStatus) {
+      refs.learningBodyStatus.textContent = "3D ist in diesem Browser nicht verfuegbar.";
+    }
+    return false;
+  }
+
+  if (!learningBodyThreeLoadPromise) {
+    learningBodyThreeLoadPromise = Promise.all([
+      import("https://esm.sh/three@0.165.0"),
+      import("https://esm.sh/three@0.165.0/examples/jsm/controls/OrbitControls.js")
+    ]);
+  }
+
+  if (refs.learningBodyStatus) {
+    refs.learningBodyStatus.textContent = "3D Modell wird geladen ...";
+  }
+
+  try {
+    const [threeModule, controlsModule] = await learningBodyThreeLoadPromise;
+    const THREE = threeModule;
+    const OrbitControls = controlsModule.OrbitControls;
+    learningBodyModelEngine = createLearningBodyModelEngine(
+      THREE,
+      OrbitControls,
+      refs.learningBodyCanvas,
+      (pickedRegionId) => {
+        selectLearningBodyRegion(pickedRegionId, { focusModel: true });
+      }
+    );
+    focusLearningBodyRegionInModel(activeRegion.id, { animate: false });
+    if (state.learningView === LEARNING_VIEW_BODY) {
+      startLearningBodyModelLoop();
+    }
+    if (refs.learningBodyStatus) {
+      refs.learningBodyStatus.textContent =
+        "Klicke auf einen Koerperbereich oder nutze das Mausrad zum Zoomen.";
+    }
+    return true;
+  } catch (error) {
+    console.error("3D Koerpermodell konnte nicht geladen werden", error);
+    learningBodyThreeLoadPromise = null;
+    learningBodyModelEngine = null;
+    if (refs.learningBodyCanvas) refs.learningBodyCanvas.innerHTML = "";
+    if (refs.learningBodyStatus) {
+      refs.learningBodyStatus.textContent =
+        "3D konnte nicht geladen werden. Bitte Seite neu laden oder Netzwerk pruefen.";
+    }
+    return false;
+  }
+}
+
+function createLearningBodyModelEngine(THREE, OrbitControls, mountElement, onRegionSelect) {
+  mountElement.innerHTML = "";
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 40);
+  camera.position.set(0.24, 1.22, 3.5);
+
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true,
+    powerPreference: "low-power"
+  });
+  if ("outputColorSpace" in renderer && "SRGBColorSpace" in THREE) {
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  mountElement.appendChild(renderer.domElement);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enablePan = false;
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.1;
+  controls.minDistance = 1.45;
+  controls.maxDistance = 5.4;
+  controls.minPolarAngle = 0.58;
+  controls.maxPolarAngle = 1.74;
+  controls.target.set(0, 1.02, 0);
+  controls.update();
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.82);
+  const keyLight = new THREE.DirectionalLight(0xfff1df, 0.78);
+  keyLight.position.set(2.2, 3.4, 2.6);
+  const rimLight = new THREE.DirectionalLight(0xb9d8ff, 0.4);
+  rimLight.position.set(-2.6, 1.8, -1.4);
+  scene.add(ambientLight, keyLight, rimLight);
+
+  const baseGroup = new THREE.Group();
+  scene.add(baseGroup);
+
+  const hoverDisk = new THREE.Mesh(
+    new THREE.CircleGeometry(1.22, 40),
+    new THREE.MeshBasicMaterial({
+      color: 0xbad4ef,
+      transparent: true,
+      opacity: 0.25
+    })
+  );
+  hoverDisk.rotation.x = -Math.PI / 2;
+  hoverDisk.position.y = -0.78;
+  baseGroup.add(hoverDisk);
+
+  const regionMeshes = new Map();
+  const clickTargets = [];
+  const warmHighlight = new THREE.Color(0xff8b5e);
+
+  function addRegionMesh(regionId, geometry, position, rotation, colorHex) {
+    const material = new THREE.MeshStandardMaterial({
+      color: colorHex,
+      roughness: 0.8,
+      metalness: 0.03
+    });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(position[0], position[1], position[2]);
+    mesh.rotation.set(rotation[0], rotation[1], rotation[2]);
+    mesh.userData.regionId = regionId;
+    mesh.userData.baseColor = material.color.clone();
+    baseGroup.add(mesh);
+    clickTargets.push(mesh);
+
+    if (!regionMeshes.has(regionId)) {
+      regionMeshes.set(regionId, []);
+    }
+    regionMeshes.get(regionId).push(mesh);
+  }
+
+  addRegionMesh("kopf", new THREE.SphereGeometry(0.22, 24, 18), [0, 1.75, 0], [0, 0, 0], 0xf0c3a9);
+  addRegionMesh("thorax", new THREE.BoxGeometry(0.62, 0.52, 0.3), [0, 1.18, 0], [0, 0, 0], 0xe7ad8f);
+  addRegionMesh("abdomen", new THREE.BoxGeometry(0.52, 0.42, 0.28), [0, 0.78, 0], [0, 0, 0], 0xe3a481);
+  addRegionMesh("becken", new THREE.BoxGeometry(0.46, 0.24, 0.25), [0, 0.48, 0], [0, 0, 0], 0xd99574);
+
+  addRegionMesh(
+    "arm_links",
+    new THREE.CylinderGeometry(0.08, 0.08, 0.38, 18),
+    [-0.44, 1.16, 0],
+    [0, 0, 0.4],
+    0xefbc9f
+  );
+  addRegionMesh(
+    "arm_links",
+    new THREE.CylinderGeometry(0.07, 0.07, 0.36, 18),
+    [-0.59, 0.88, 0],
+    [0, 0, 0.24],
+    0xecb696
+  );
+  addRegionMesh(
+    "arm_rechts",
+    new THREE.CylinderGeometry(0.08, 0.08, 0.38, 18),
+    [0.44, 1.16, 0],
+    [0, 0, -0.4],
+    0xefbc9f
+  );
+  addRegionMesh(
+    "arm_rechts",
+    new THREE.CylinderGeometry(0.07, 0.07, 0.36, 18),
+    [0.59, 0.88, 0],
+    [0, 0, -0.24],
+    0xecb696
+  );
+
+  addRegionMesh(
+    "bein_links",
+    new THREE.CylinderGeometry(0.1, 0.09, 0.55, 20),
+    [-0.15, 0.14, 0],
+    [0, 0, 0.03],
+    0xe1a182
+  );
+  addRegionMesh(
+    "bein_links",
+    new THREE.CylinderGeometry(0.09, 0.08, 0.5, 20),
+    [-0.15, -0.39, 0.01],
+    [0, 0, 0.02],
+    0xdc9c7f
+  );
+  addRegionMesh(
+    "bein_links",
+    new THREE.BoxGeometry(0.16, 0.06, 0.28),
+    [-0.15, -0.69, 0.08],
+    [0, 0, 0],
+    0xcf8f72
+  );
+
+  addRegionMesh(
+    "bein_rechts",
+    new THREE.CylinderGeometry(0.1, 0.09, 0.55, 20),
+    [0.15, 0.14, 0],
+    [0, 0, -0.03],
+    0xe1a182
+  );
+  addRegionMesh(
+    "bein_rechts",
+    new THREE.CylinderGeometry(0.09, 0.08, 0.5, 20),
+    [0.15, -0.39, 0.01],
+    [0, 0, -0.02],
+    0xdc9c7f
+  );
+  addRegionMesh(
+    "bein_rechts",
+    new THREE.BoxGeometry(0.16, 0.06, 0.28),
+    [0.15, -0.69, 0.08],
+    [0, 0, 0],
+    0xcf8f72
+  );
+
+  const raycaster = new THREE.Raycaster();
+  const pointer = new THREE.Vector2();
+  let running = false;
+  let frameId = 0;
+  let focusSteps = 0;
+  let activeRegionId = "";
+  const targetFocus = new THREE.Vector3(0, 1.02, 0);
+  const positionFocus = new THREE.Vector3(0.24, 1.22, 3.5);
+
+  function applyRegionStyle(regionId) {
+    for (const [entryRegionId, meshes] of regionMeshes.entries()) {
+      const isActive = entryRegionId === regionId;
+      for (const mesh of meshes) {
+        const material = mesh.material;
+        const baseColor = mesh.userData?.baseColor;
+        if (!material || !baseColor || !material.color) continue;
+        if (isActive) {
+          material.color.copy(baseColor).lerp(warmHighlight, 0.62);
+          if (material.emissive) material.emissive.setHex(0x2f0b00);
+          material.emissiveIntensity = 0.18;
+        } else {
+          material.color.copy(baseColor);
+          if (material.emissive) material.emissive.setHex(0x000000);
+          material.emissiveIntensity = 0;
+        }
+      }
+    }
+  }
+
+  function setActiveRegion(regionId, options = {}) {
+    const region = getLearningBodyRegionById(regionId);
+    if (!region) return;
+
+    activeRegionId = region.id;
+    applyRegionStyle(activeRegionId);
+
+    targetFocus.set(region.focusTarget[0], region.focusTarget[1], region.focusTarget[2]);
+    positionFocus.set(
+      region.focusTarget[0] + region.cameraOffset[0],
+      region.focusTarget[1] + region.cameraOffset[1],
+      region.focusTarget[2] + region.cameraOffset[2]
+    );
+
+    if (options.animate === false) {
+      controls.target.copy(targetFocus);
+      camera.position.copy(positionFocus);
+      focusSteps = 0;
+      controls.update();
+      renderer.render(scene, camera);
+      return;
+    }
+    focusSteps = 26;
+  }
+
+  const handlePointerDown = (event) => {
+    const rect = renderer.domElement.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(pointer, camera);
+    const intersections = raycaster.intersectObjects(clickTargets, false);
+    const picked = intersections.find((entry) => entry.object?.userData?.regionId);
+    const pickedRegionId = picked?.object?.userData?.regionId || "";
+    if (!pickedRegionId || pickedRegionId === activeRegionId) return;
+
+    if (typeof onRegionSelect === "function") {
+      onRegionSelect(String(pickedRegionId));
+    } else {
+      setActiveRegion(String(pickedRegionId), { animate: true });
+    }
+  };
+  renderer.domElement.addEventListener("pointerdown", handlePointerDown);
+
+  const resize = () => {
+    const width = Math.max(220, Math.floor(mountElement.clientWidth || 0));
+    const height = Math.max(300, Math.floor(mountElement.clientHeight || 0));
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.render(scene, camera);
+  };
+
+  const handleWindowResize = () => {
+    resize();
+  };
+  window.addEventListener("resize", handleWindowResize);
+
+  const resizeObserver =
+    typeof ResizeObserver !== "undefined"
+      ? new ResizeObserver(() => {
+          resize();
+        })
+      : null;
+  if (resizeObserver) {
+    resizeObserver.observe(mountElement);
+  }
+
+  const renderLoop = () => {
+    if (!running) return;
+    if (focusSteps > 0) {
+      controls.target.lerp(targetFocus, 0.18);
+      camera.position.lerp(positionFocus, 0.18);
+      focusSteps -= 1;
+    }
+    controls.update();
+    renderer.render(scene, camera);
+    frameId = window.requestAnimationFrame(renderLoop);
+  };
+
+  resize();
+
+  return {
+    start() {
+      if (running) return;
+      running = true;
+      renderLoop();
+    },
+    stop() {
+      if (!running) return;
+      running = false;
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+        frameId = 0;
+      }
+    },
+    resize,
+    setActiveRegion,
+    destroy() {
+      this.stop();
+      renderer.domElement.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("resize", handleWindowResize);
+      if (resizeObserver) resizeObserver.disconnect();
+      for (const mesh of clickTargets) {
+        mesh.geometry?.dispose?.();
+        if (mesh.material) {
+          if (Array.isArray(mesh.material)) {
+            for (const mat of mesh.material) mat.dispose?.();
+          } else {
+            mesh.material.dispose?.();
+          }
+        }
+      }
+      hoverDisk.geometry?.dispose?.();
+      hoverDisk.material?.dispose?.();
+      renderer.dispose();
+      mountElement.innerHTML = "";
+    }
+  };
 }
 
 function renderLearningReadingMode(categories) {

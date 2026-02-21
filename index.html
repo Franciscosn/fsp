@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=3" />
+    <link rel="stylesheet" href="src/styles.css?v=4" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -188,6 +188,9 @@
           </button>
           <button id="openLearningBtn" class="soft-btn voice-learning-btn" type="button">
             Lernbereich
+          </button>
+          <button id="openBodyModelBtn" class="soft-btn voice-body-model-btn" type="button">
+            3D Koerpermodell
           </button>
         </div>
         <article id="voiceDoctorLetterPanel" class="voice-doctor-letter hidden">
@@ -481,6 +484,33 @@
           <h4 id="learningSubcategoryTitle">Anamnese</h4>
           <div id="learningSubcategoryList" class="learning-subcategory-list"></div>
         </article>
+        <article id="learningBodyView" class="learning-body-view hidden">
+          <div class="learning-body-head">
+            <button id="learningBodyBackBtn" class="learning-body-back-btn" type="button">
+              Zurueck zur Lernauswahl
+            </button>
+            <h4>3D Koerpermodell</h4>
+            <p id="learningBodyStatus" class="learning-body-status">
+              Klicke auf einen Koerperbereich oder nutze das Mausrad zum Zoomen.
+            </p>
+          </div>
+          <div class="learning-body-layout">
+            <div
+              id="learningBodyCanvas"
+              class="learning-body-canvas"
+              role="img"
+              aria-label="Interaktives Koerpermodell mit klickbaren Bereichen"
+            ></div>
+            <aside class="learning-body-side">
+              <div id="learningBodyRegionButtons" class="learning-body-region-buttons"></div>
+              <article class="learning-body-card">
+                <h5 id="learningBodyRegionTitle">Bereich</h5>
+                <p id="learningBodyRegionHint" class="learning-body-region-hint"></p>
+                <ul id="learningBodyRegionBullets" class="learning-body-region-bullets"></ul>
+              </article>
+            </aside>
+          </div>
+        </article>
         <article id="learningReadingView" class="learning-reading-view hidden">
           <button id="learningBackBtn" class="learning-back-btn" type="button">
             <img
@@ -638,6 +668,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=3"></script>
+    <script type="module" src="src/app.js?v=4"></script>
   </body>
 </html>
