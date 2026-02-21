@@ -5570,11 +5570,14 @@ function renderLearningReadingMode(categories) {
 function flattenCards(deck) {
   const cards = [];
   for (const term of deck.terms || []) {
-    const category = CATEGORY_MAP[term.termId] || "Allgemein";
+    const termId = String(term.termId || "");
+    const category = termId.startsWith("online_kurs_")
+      ? "online kurs"
+      : CATEGORY_MAP[termId] || "Allgemein";
     for (const card of term.cards || []) {
       cards.push({
         ...card,
-        termId: term.termId,
+        termId,
         fachbegriff: term.fachbegriff,
         patientensprache: term.patientensprache,
         category
