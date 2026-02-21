@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "10";
-const BUILD_UPDATED_AT = "2026-02-21 15:22 CET";
+const APP_VERSION = "11";
+const BUILD_UPDATED_AT = "2026-02-21 15:41 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -78,22 +78,134 @@ const BODY_ATLAS_REGION_IMAGE_BY_ID = Object.freeze({
   linkes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/femur_01.png",
   rechtes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_08.png"
 });
-const BODY_ATLAS_REGION_RELATED_IMAGE_BY_ID = Object.freeze({
-  kopf_gehirn: "https://smart.servier.com/wp-content/uploads/2016/10/Cavite_nasale.png",
-  gesicht_hno: "https://smart.servier.com/wp-content/uploads/2016/10/Larynx.png",
-  hals: "https://smart.servier.com/wp-content/uploads/2016/10/poumon_01.png",
-  thorax: "https://smart.servier.com/wp-content/uploads/2016/10/coeur.png",
-  herz_lunge: "https://smart.servier.com/wp-content/uploads/2016/10/poumon_01.png",
-  oberbauch: "https://smart.servier.com/wp-content/uploads/2016/10/App_urinaire_femme.png",
-  unterbauch_darm: "https://smart.servier.com/wp-content/uploads/2016/10/App_urinaire_femme.png",
-  becken_uro: "https://smart.servier.com/wp-content/uploads/2016/10/syst_dig_complet.png",
-  ruecken_wirbelsaeule: "https://smart.servier.com/wp-content/uploads/2016/10/femur_01.png",
-  linker_oberarm: "https://smart.servier.com/wp-content/uploads/2016/10/Main.png",
-  rechter_oberarm: "https://smart.servier.com/wp-content/uploads/2016/10/Main.png",
-  linker_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_04.png",
-  rechter_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_04.png",
-  linkes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_08.png",
-  rechtes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/femur_01.png"
+const BODY_ATLAS_HITBOX_OVERRIDE_BY_ID = Object.freeze({
+  kopf_gehirn: { left: 42, top: 2, width: 16, height: 12 },
+  gesicht_hno: { left: 42, top: 9, width: 16, height: 9 },
+  hals: { left: 45, top: 17, width: 10, height: 6 },
+  thorax: { left: 38, top: 22, width: 24, height: 16 },
+  herz_lunge: { left: 39, top: 24, width: 22, height: 17 },
+  oberbauch: { left: 39, top: 39, width: 22, height: 10 },
+  unterbauch_darm: { left: 39, top: 49, width: 22, height: 10 },
+  becken_uro: { left: 39, top: 58, width: 22, height: 9 },
+  ruecken_wirbelsaeule: { left: 48, top: 22, width: 6, height: 44 },
+  linker_oberarm: {
+    left: 28,
+    top: 23,
+    width: 11,
+    height: 16,
+    transform: "rotate(16deg)",
+    originX: 34,
+    originY: 31
+  },
+  rechter_oberarm: {
+    left: 61,
+    top: 23,
+    width: 11,
+    height: 16,
+    transform: "rotate(-16deg)",
+    originX: 66,
+    originY: 31
+  },
+  linker_unterarm_hand: {
+    left: 21,
+    top: 37,
+    width: 13,
+    height: 24,
+    transform: "rotate(8deg)",
+    originX: 27,
+    originY: 49
+  },
+  rechter_unterarm_hand: {
+    left: 66,
+    top: 37,
+    width: 13,
+    height: 24,
+    transform: "rotate(-8deg)",
+    originX: 72,
+    originY: 49
+  },
+  linkes_bein: { left: 43, top: 67, width: 7, height: 29 },
+  rechtes_bein: { left: 50, top: 67, width: 7, height: 29 }
+});
+const BODY_ATLAS_EXTRA_TERMS_BY_GROUP = Object.freeze({
+  head: [
+    { fach: "Lobus occipitalis", patient: "Hinterhauptlappen", info: "Verarbeitet Sehreize.", x: 126, y: 98 },
+    { fach: "Thalamus", patient: "Umschaltzentrum im Gehirn", info: "Filtert sensorische Signale.", x: 158, y: 132 },
+    { fach: "Hypothalamus", patient: "Regelzentrum fuer Hormone", info: "Steuert Temperatur und Hunger.", x: 168, y: 148 },
+    { fach: "Truncus encephali", patient: "Hirnstamm", info: "Kontrolliert lebenswichtige Grundfunktionen.", x: 170, y: 172 },
+    { fach: "Ventriculus lateralis", patient: "Hirnkammer", info: "Liquorraum im Gehirn.", x: 196, y: 114 }
+  ],
+  hno: [
+    { fach: "Sinus frontalis", patient: "Stirnhoehle", info: "Nebenhoehle im Stirnbereich.", x: 160, y: 84 },
+    { fach: "Septum nasi", patient: "Nasenscheidewand", info: "Trennt rechte und linke Nasenseite.", x: 162, y: 132 },
+    { fach: "Concha nasalis", patient: "Nasenmuschel", info: "Erwaermt und befeuchtet Luft.", x: 145, y: 124 },
+    { fach: "Epiglottis", patient: "Kehldeckel", info: "Schuetzt die Atemwege beim Schlucken.", x: 164, y: 186 },
+    { fach: "Larynx", patient: "Kehlkopf", info: "Enthaelt die Stimmbildung.", x: 170, y: 198 }
+  ],
+  thorax: [
+    { fach: "Clavicula", patient: "Schluesselbein", info: "Verbindet Brustbein und Schulter.", x: 111, y: 72 },
+    { fach: "Bronchus principalis", patient: "Hauptbronchie", info: "Leitet Luft in die Lungenfluegel.", x: 164, y: 112 },
+    { fach: "Pleura visceralis", patient: "Lungenfell", info: "Liegt direkt auf der Lunge.", x: 226, y: 156 },
+    { fach: "Mediastinum", patient: "Mittelfellraum", info: "Raum zwischen den Lungen.", x: 162, y: 152 },
+    { fach: "Arcus costalis", patient: "Rippenbogen", info: "Untere Rippenkante des Brustkorbs.", x: 166, y: 214 }
+  ],
+  cardio: [
+    { fach: "Atrium dextrum", patient: "rechter Vorhof", info: "Nimmt venoeses Blut auf.", x: 146, y: 136 },
+    { fach: "Ventriculus sinister", patient: "linke Herzkammer", info: "Pumpt Blut in den Koerperkreislauf.", x: 172, y: 182 },
+    { fach: "Valva mitralis", patient: "Mitralklappe", info: "Klappe zwischen linkem Vorhof und Kammer.", x: 160, y: 156 },
+    { fach: "Vena cava superior", patient: "obere Hohlvene", info: "Fuehrt Blut zum Herzen.", x: 142, y: 90 },
+    { fach: "Vena pulmonalis", patient: "Lungenvene", info: "Bringt oxygeniertes Blut zum Herzen.", x: 194, y: 124 }
+  ],
+  upper_abdomen: [
+    { fach: "Duodenum", patient: "Zwoelffingerdarm", info: "Erster Abschnitt des Duenndarms.", x: 172, y: 170 },
+    { fach: "Cardia", patient: "Mageneingang", info: "Uebergang Speiseroehre-Magen.", x: 208, y: 92 },
+    { fach: "Lobus hepatis dexter", patient: "rechter Leberlappen", info: "Groesster Leberanteil.", x: 108, y: 96 },
+    { fach: "Lobus hepatis sinister", patient: "linker Leberlappen", info: "Leberanteil zur Mitte hin.", x: 140, y: 102 },
+    { fach: "Ductus choledochus", patient: "Gallengang", info: "Fuehrt Galle in den Darm.", x: 146, y: 152 }
+  ],
+  lower_abdomen: [
+    { fach: "Caecum", patient: "Blinddarmabschnitt", info: "Anfang des Dickdarms.", x: 114, y: 150 },
+    { fach: "Ileocaecalklappe", patient: "Darmklappe", info: "Grenze zwischen Duenn- und Dickdarm.", x: 130, y: 144 },
+    { fach: "Colon sigmoideum", patient: "Sigma", info: "S-foermiger Dickdarmabschnitt.", x: 188, y: 166 },
+    { fach: "Jejunum", patient: "Leerdarm", info: "Mittlerer Duenndarmabschnitt.", x: 158, y: 136 },
+    { fach: "Canalis analis", patient: "Analkanal", info: "Letzter Abschnitt vor dem After.", x: 170, y: 228 }
+  ],
+  pelvis: [
+    { fach: "Ren sinister", patient: "linke Niere", info: "Filtert Blut und bildet Urin.", x: 122, y: 76 },
+    { fach: "Ren dexter", patient: "rechte Niere", info: "Filtert Blut und bildet Urin.", x: 206, y: 76 },
+    { fach: "Uterus", patient: "Gebaermutter", info: "Zentrales Organ des weiblichen Beckens.", x: 162, y: 136 },
+    { fach: "Prostata", patient: "Vorsteherdruese", info: "Liegt unterhalb der Blase beim Mann.", x: 166, y: 186 },
+    { fach: "Pelvis ossea", patient: "Beckenknochen", info: "Traegt die Beckenorgane.", x: 238, y: 172 }
+  ],
+  spine: [
+    { fach: "Discus intervertebralis", patient: "Bandscheibe", info: "Puffer zwischen den Wirbeln.", x: 160, y: 150 },
+    { fach: "Medulla spinalis", patient: "Rueckenmark", info: "Nervenleitung vom Gehirn in den Koerper.", x: 160, y: 130 },
+    { fach: "Sacrum", patient: "Kreuzbein", info: "Teil des hinteren Beckens.", x: 160, y: 212 },
+    { fach: "Coccyx", patient: "Steissbein", info: "Unterstes Ende der Wirbelsaeule.", x: 160, y: 236 },
+    { fach: "Foramen intervertebrale", patient: "Nervenaustrittsloch", info: "Austrittsstelle der Spinalnerven.", x: 188, y: 162 }
+  ],
+  upper_arm: [
+    { fach: "Caput humeri", patient: "Oberarmkopf", info: "Teil des Schultergelenks.", x: 150, y: 62 },
+    { fach: "Arteria brachialis", patient: "Oberarmarterie", info: "Wichtige Gefaessversorgung im Arm.", x: 170, y: 132 },
+    { fach: "Nervus ulnaris", patient: "Ellennerv", info: "Verlaeuft zur Kleinfingerseite.", x: 138, y: 166 },
+    { fach: "Musculus brachialis", patient: "tiefer Beugemuskel", info: "Unterstuetzt Ellenbogenbeugung.", x: 174, y: 146 },
+    { fach: "Olecranon", patient: "Ellenbogenspitze", info: "Knoecherner Ellenbogenfortsatz.", x: 158, y: 198 }
+  ],
+  forearm_hand: [
+    { fach: "Articulatio radiocarpalis", patient: "Handgelenk", info: "Verbindet Unterarm und Hand.", x: 164, y: 144 },
+    { fach: "Metacarpalia", patient: "Mittelhandknochen", info: "Knochen zwischen Handwurzel und Fingern.", x: 170, y: 188 },
+    { fach: "Phalanges", patient: "Fingerknochen", info: "Knochen der Finger.", x: 186, y: 224 },
+    { fach: "Nervus ulnaris", patient: "Ellennerv in der Hand", info: "Versorgt Ring- und Kleinfingerbereich.", x: 136, y: 198 },
+    { fach: "Retinaculum flexorum", patient: "Beugesehnenband", info: "Stabilisiert Sehnen am Handgelenk.", x: 158, y: 162 }
+  ],
+  leg: [
+    { fach: "Articulatio coxae", patient: "Hueftgelenk", info: "Verbindung Becken-Oberschenkel.", x: 160, y: 52 },
+    { fach: "Trochanter major", patient: "grosser Rollhuegel", info: "Knochenvorsprung am Femur.", x: 148, y: 82 },
+    { fach: "Patella", patient: "Kniescheibe", info: "Schuetzt die Vorderseite des Knies.", x: 160, y: 138 },
+    { fach: "Malleolus medialis", patient: "Innenknochel", info: "Innerer Sprunggelenkfortsatz.", x: 150, y: 236 },
+    { fach: "Malleolus lateralis", patient: "Aussenknochel", info: "Aeusserer Sprunggelenkfortsatz.", x: 182, y: 236 }
+  ],
+  general: []
 });
 const BODY_ATLAS_REGIONS = Object.freeze([
   {
@@ -4565,9 +4677,62 @@ function getLearningBodyRegionImageSrc(regionId) {
   return BODY_ATLAS_REGION_IMAGE_BY_ID[key] || BODY_ATLAS_MAP_IMAGE_SRC;
 }
 
-function getLearningBodyRegionRelatedImageSrc(regionId) {
-  const key = String(regionId || "");
-  return BODY_ATLAS_REGION_RELATED_IMAGE_BY_ID[key] || BODY_ATLAS_MAP_IMAGE_SRC;
+function getLearningBodyMarkerFallback(index) {
+  const fallbackPoints = [
+    { x: 72, y: 70 },
+    { x: 246, y: 72 },
+    { x: 82, y: 126 },
+    { x: 236, y: 132 },
+    { x: 94, y: 188 },
+    { x: 226, y: 188 },
+    { x: 160, y: 60 },
+    { x: 160, y: 110 },
+    { x: 160, y: 162 },
+    { x: 160, y: 216 },
+    { x: 124, y: 224 },
+    { x: 196, y: 226 }
+  ];
+  return fallbackPoints[index % fallbackPoints.length];
+}
+
+function getLearningBodyRegionDetailedTerms(region) {
+  const base = Array.isArray(region?.hotspots) ? region.hotspots : [];
+  const group = getLearningBodyRegionGroup(region?.id || "");
+  const extras = BODY_ATLAS_EXTRA_TERMS_BY_GROUP[group] || [];
+  const merged = [];
+  const seen = new Set();
+
+  const addTerm = (term) => {
+    if (!term || typeof term !== "object") return;
+    const fach = safeLine(term.fach || "", 160);
+    if (!fach) return;
+    const key = fach.toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    merged.push({
+      fach,
+      patient: safeLine(term.patient || "", 180),
+      info: safeParagraph(term.info || "", 220),
+      x: Number(term.x),
+      y: Number(term.y)
+    });
+  };
+
+  base.forEach(addTerm);
+  extras.forEach(addTerm);
+
+  return merged.map((entry, index) => {
+    const fallback = getLearningBodyMarkerFallback(index);
+    const x = Number.isFinite(entry.x) ? entry.x : fallback.x;
+    const y = Number.isFinite(entry.y) ? entry.y : fallback.y;
+    return {
+      fach: entry.fach,
+      patient: entry.patient || "-",
+      info: entry.info || "",
+      x: Math.max(28, Math.min(292, x)),
+      y: Math.max(34, Math.min(244, y))
+    };
+  });
 }
 
 function getLearningBodyRegionGroup(regionId) {
@@ -4918,43 +5083,34 @@ function getLearningBodyDeepDive(region) {
 }
 
 function getLearningBodyRegionFigureSet(region) {
-  const hotspots = Array.isArray(region?.hotspots) ? region.hotspots : [];
-  const splitAt = Math.max(3, Math.ceil(hotspots.length * 0.5));
-  const firstLabelSet = hotspots.slice(0, splitAt);
-  const secondLabelSet = hotspots.slice(splitAt);
-  const fallbackSecondSet = hotspots.slice(0, Math.min(4, hotspots.length));
-  const focusLabels = hotspots.slice(0, Math.min(4, hotspots.length));
   const primarySrc = getLearningBodyRegionImageSrc(region.id);
-  const relatedSrc = getLearningBodyRegionRelatedImageSrc(region.id);
+  const detailedTerms = getLearningBodyRegionDetailedTerms(region);
   return [
     {
-      title: `${region.label}: Anatomische Hauptansicht`,
-      description: "Primaere anatomische Darstellung mit zentralen Leitstrukturen.",
+      title: `${region.label}: Nummerierte Detailansicht`,
+      description: "Ausfuehrliche Nummerierung mit erweiterten Fachbegriffen.",
       src: primarySrc,
-      labels: firstLabelSet.length ? firstLabelSet : hotspots
-    },
-    {
-      title: `${region.label}: Nachbarstrukturen`,
-      description: "Funktionelle Nachbarschaft und regionenuebergreifende Orientierung.",
-      src: relatedSrc,
-      labels: secondLabelSet.length >= 2 ? secondLabelSet : fallbackSecondSet
-    },
-    {
-      title: `${region.label}: Ganzkoerper-Orientierung`,
-      description: "Einordnung der Region in den Gesamtkoerper fuer klinische Lokalisierung.",
-      src: BODY_ATLAS_MAP_IMAGE_SRC,
-      labels: focusLabels.length ? focusLabels : hotspots
-    },
-    {
-      title: `${region.label}: Fachsprache -> Patientensprache`,
-      description: "Trainingsansicht fuer sprachliche Uebersetzung im Arzt-Patient-Kontext.",
-      src: primarySrc,
-      labels: hotspots
+      labels: detailedTerms,
+      showMarkers: true
     }
   ];
 }
 
-function getLearningBodyHitboxFromShape(shape) {
+function getLearningBodyHitbox(region) {
+  const override = BODY_ATLAS_HITBOX_OVERRIDE_BY_ID[region?.id || ""];
+  if (override) {
+    return {
+      left: Number(override.left) || 40,
+      top: Number(override.top) || 40,
+      width: Number(override.width) || 20,
+      height: Number(override.height) || 20,
+      transform: safeLine(override.transform || "", 48),
+      originX: Number.isFinite(Number(override.originX)) ? Number(override.originX) : 50,
+      originY: Number.isFinite(Number(override.originY)) ? Number(override.originY) : 50
+    };
+  }
+
+  const shape = region?.map;
   if (!shape || typeof shape !== "object") {
     return { left: 40, top: 40, width: 20, height: 20, transform: "", originX: 50, originY: 50 };
   }
@@ -5003,7 +5159,15 @@ function getLearningBodyHitboxFromShape(shape) {
     originY = Math.max(0, Math.min(100, (cy / 640) * 100));
   }
 
-  return { left, top, width: safeWidth, height: safeHeight, transform, originX, originY };
+  return {
+    left,
+    top,
+    width: safeWidth,
+    height: safeHeight,
+    transform,
+    originX,
+    originY
+  };
 }
 
 function renderLearningBodyMap() {
@@ -5037,7 +5201,7 @@ function renderLearningBodyMap() {
     hitbox.dataset.regionId = region.id;
     hitbox.setAttribute("aria-label", region.label);
     hitbox.title = region.label;
-    const box = getLearningBodyHitboxFromShape(region.map);
+    const box = getLearningBodyHitbox(region);
     hitbox.style.left = `${box.left}%`;
     hitbox.style.top = `${box.top}%`;
     hitbox.style.width = `${box.width}%`;
@@ -5101,6 +5265,7 @@ function openLearningBodyRegionDetail(regionId) {
 
 function renderLearningBodyRegionDetail(region) {
   const deepDive = getLearningBodyDeepDive(region);
+  const detailedTerms = getLearningBodyRegionDetailedTerms(region);
   state.learningBodyDetailOpen = true;
   if (refs.learningBodySelectionView) refs.learningBodySelectionView.classList.add("hidden");
   if (refs.learningBodyRegionDetailView) refs.learningBodyRegionDetailView.classList.remove("hidden");
@@ -5137,24 +5302,37 @@ function renderLearningBodyRegionDetail(region) {
       image.loading = "lazy";
       image.decoding = "async";
       image.addEventListener("error", () => {
-        if (image.dataset.fallbackApplied !== "1" && image.src !== BODY_ATLAS_MAP_IMAGE_SRC) {
-          image.dataset.fallbackApplied = "1";
-          image.src = BODY_ATLAS_MAP_IMAGE_SRC;
-          return;
-        }
         imageWrap.classList.add("is-image-missing");
       });
       imageWrap.appendChild(image);
+
+      if (figure.showMarkers && Array.isArray(figure.labels) && figure.labels.length > 0) {
+        const markerLayer = document.createElement("div");
+        markerLayer.className = "learning-body-figure-marker-layer";
+        figure.labels.forEach((entry, labelIndex) => {
+          const marker = document.createElement("div");
+          marker.className = "learning-body-figure-marker";
+          marker.style.left = `${Math.max(6, Math.min(94, (Number(entry.x) / 320) * 100))}%`;
+          marker.style.top = `${Math.max(8, Math.min(92, (Number(entry.y) / 260) * 100))}%`;
+          marker.title = `${labelIndex + 1}. ${entry.fach} - ${entry.patient}`;
+          marker.setAttribute("aria-label", marker.title);
+          marker.textContent = String(labelIndex + 1);
+          markerLayer.appendChild(marker);
+        });
+        imageWrap.appendChild(markerLayer);
+      }
       card.appendChild(imageWrap);
 
-      const labels = document.createElement("ol");
-      labels.className = "learning-body-figure-labels";
-      figure.labels.forEach((entry, labelIndex) => {
-        const li = document.createElement("li");
-        li.innerHTML = `<strong>${labelIndex + 1}. ${entry.fach}</strong> - ${entry.patient}`;
-        labels.appendChild(li);
-      });
-      card.appendChild(labels);
+      if (Array.isArray(figure.labels) && figure.labels.length > 0) {
+        const labels = document.createElement("ol");
+        labels.className = "learning-body-figure-labels";
+        figure.labels.forEach((entry, labelIndex) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${labelIndex + 1}. ${entry.fach}</strong> - ${entry.patient}`;
+          labels.appendChild(li);
+        });
+        card.appendChild(labels);
+      }
       refs.learningBodyRegionGallery.appendChild(card);
     });
   }
@@ -5188,7 +5366,7 @@ function renderLearningBodyRegionDetail(region) {
 
   if (refs.learningBodyRegionBullets) {
     refs.learningBodyRegionBullets.innerHTML = "";
-    region.hotspots.forEach((hotspot, index) => {
+    detailedTerms.forEach((hotspot, index) => {
       const li = document.createElement("li");
       li.className = "learning-body-coverage-item";
       li.innerHTML = `
