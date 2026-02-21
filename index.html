@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=8" />
+    <link rel="stylesheet" href="src/styles.css?v=9" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -491,38 +491,25 @@
             </button>
             <h4>Koerperatlas Anatomie</h4>
             <p id="learningBodyStatus" class="learning-body-status">
-              Waehle eine Region am Koerper aus. Danach siehst du eine gezoomte Detailansicht.
+              Waehle eine Regionsnummer. Danach oeffnet sich nur diese Region mit mehreren beschrifteten Bildern.
             </p>
             <p class="learning-body-credit">
               Illustrationen: <a href="https://smart.servier.com/" target="_blank" rel="noopener noreferrer">Servier Medical Art</a> (CC BY 4.0)
             </p>
           </div>
-          <div class="learning-body-layout">
-            <div
-              id="learningBodyCanvas"
-              class="learning-body-canvas"
-              role="img"
-              aria-label="Interaktive 2D-Koerperkarte mit klickbaren Bereichen"
-            ></div>
-            <aside class="learning-body-side">
-              <div id="learningBodyRegionButtons" class="learning-body-region-buttons"></div>
-              <article class="learning-body-card">
-                <h5 id="learningBodyRegionTitle">Bereich</h5>
-                <p id="learningBodyRegionHint" class="learning-body-region-hint"></p>
-                <div id="learningBodyZoomCanvas" class="learning-body-zoom-canvas" aria-live="polite"></div>
-                <p class="learning-body-term-line">
-                  <strong>Fachsprache:</strong> <span id="learningBodyRegionFach"></span>
-                </p>
-                <p class="learning-body-term-line">
-                  <strong>Patientensprache:</strong> <span id="learningBodyRegionPatient"></span>
-                </p>
-                <p class="learning-body-term-line">
-                  <strong>Aktiver Marker:</strong> <span id="learningBodyRegionModelName"></span>
-                </p>
-                <ul id="learningBodyRegionBullets" class="learning-body-region-bullets"></ul>
-              </article>
-            </aside>
+          <div id="learningBodySelectionView" class="learning-body-selection-view">
+            <div id="learningBodyRegionButtons" class="learning-body-region-buttons"></div>
+            <ol id="learningBodyRegionLegend" class="learning-body-region-legend"></ol>
           </div>
+          <section id="learningBodyRegionDetailView" class="learning-body-region-detail hidden">
+            <button id="learningBodyRegionBackBtn" class="learning-body-region-back-btn" type="button">
+              Zurueck zur Regionsauswahl
+            </button>
+            <h5 id="learningBodyRegionTitle">Bereich</h5>
+            <p id="learningBodyRegionHint" class="learning-body-region-hint"></p>
+            <div id="learningBodyRegionGallery" class="learning-body-region-gallery"></div>
+            <ul id="learningBodyRegionBullets" class="learning-body-region-bullets"></ul>
+          </section>
         </article>
         <article id="learningReadingView" class="learning-reading-view hidden">
           <button id="learningBackBtn" class="learning-back-btn" type="button">
@@ -681,6 +668,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=8"></script>
+    <script type="module" src="src/app.js?v=9"></script>
   </body>
 </html>

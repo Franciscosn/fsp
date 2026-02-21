@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "8";
-const BUILD_UPDATED_AT = "2026-02-21 14:54 CET";
+const APP_VERSION = "9";
+const BUILD_UPDATED_AT = "2026-02-21 15:09 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -59,24 +59,6 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
   }
 ]);
 const BODY_ATLAS_DEFAULT_REGION_ID = "thorax";
-const BODY_ATLAS_VIEWBOX = "0 0 320 640";
-const BODY_ATLAS_COLORS = Object.freeze([
-  "#e95f7d",
-  "#f07c8f",
-  "#ef9a6f",
-  "#d36ea9",
-  "#6c95cf",
-  "#4ea3c2",
-  "#59b39d",
-  "#8f8ec8",
-  "#c7835e",
-  "#b96ec9",
-  "#6f9ec2",
-  "#7999d1",
-  "#7cae66",
-  "#64b48f",
-  "#739ad8"
-]);
 const BODY_ATLAS_MAP_IMAGE_SRC =
   "https://smart.servier.com/wp-content/uploads/2016/10/squelette_03.png";
 const BODY_ATLAS_REGION_IMAGE_BY_ID = Object.freeze({
@@ -800,7 +782,6 @@ const BODY_ATLAS_REGION_BY_ID = Object.freeze(
     return acc;
   }, {})
 );
-const BODY_ATLAS_SVG_NS = "http://www.w3.org/2000/svg";
 const VOICE_SAMPLE_VIEW_PATIENT = "sample_patient";
 const VOICE_SAMPLE_VIEW_LETTER = "sample_letter";
 const VOICE_SAMPLE_VIEW_DOCTOR = "sample_doctor";
@@ -1210,8 +1191,7 @@ const state = {
   learningAnamnese: null,
   learningActiveCategoryId: "",
   learningBodyActiveRegionId: BODY_ATLAS_DEFAULT_REGION_ID,
-  learningBodyActiveModelNodeName: "",
-  learningBodyActiveHotspotIndex: 0
+  learningBodyDetailOpen: false
 };
 
 const refs = {
@@ -1346,14 +1326,14 @@ const refs = {
   learningBodyView: document.getElementById("learningBodyView"),
   learningBodyBackBtn: document.getElementById("learningBodyBackBtn"),
   learningBodyStatus: document.getElementById("learningBodyStatus"),
-  learningBodyCanvas: document.getElementById("learningBodyCanvas"),
-  learningBodyZoomCanvas: document.getElementById("learningBodyZoomCanvas"),
+  learningBodySelectionView: document.getElementById("learningBodySelectionView"),
   learningBodyRegionButtons: document.getElementById("learningBodyRegionButtons"),
+  learningBodyRegionLegend: document.getElementById("learningBodyRegionLegend"),
+  learningBodyRegionDetailView: document.getElementById("learningBodyRegionDetailView"),
+  learningBodyRegionBackBtn: document.getElementById("learningBodyRegionBackBtn"),
   learningBodyRegionTitle: document.getElementById("learningBodyRegionTitle"),
   learningBodyRegionHint: document.getElementById("learningBodyRegionHint"),
-  learningBodyRegionFach: document.getElementById("learningBodyRegionFach"),
-  learningBodyRegionPatient: document.getElementById("learningBodyRegionPatient"),
-  learningBodyRegionModelName: document.getElementById("learningBodyRegionModelName"),
+  learningBodyRegionGallery: document.getElementById("learningBodyRegionGallery"),
   learningBodyRegionBullets: document.getElementById("learningBodyRegionBullets"),
   learningReadingView: document.getElementById("learningReadingView"),
   learningBackBtn: document.getElementById("learningBackBtn"),
@@ -1477,6 +1457,7 @@ function wireEvents() {
   refs.openBodyModelBtn?.addEventListener("click", handleOpenBodyModel);
   refs.learningBackBtn?.addEventListener("click", handleLearningBackClick);
   refs.learningBodyBackBtn?.addEventListener("click", handleLearningBodyBackClick);
+  refs.learningBodyRegionBackBtn?.addEventListener("click", handleLearningBodyRegionBackClick);
   refs.voicePromptConfigSaveBtn?.addEventListener("click", handlePromptConfigSave);
   refs.voicePromptConfigResetBtn?.addEventListener("click", handlePromptConfigReset);
   refs.voicePromptProposalSubmitBtn?.addEventListener("click", () => {
@@ -4300,6 +4281,7 @@ function handleOpenLearningPanel() {
 function handleOpenBodyModel() {
   state.learningRootId = "body";
   state.learningView = LEARNING_VIEW_BODY;
+  state.learningBodyDetailOpen = false;
   renderLearningFlow();
   refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -4313,7 +4295,18 @@ function handleLearningBackClick() {
 
 function handleLearningBodyBackClick() {
   if (state.learningView !== LEARNING_VIEW_BODY) return;
+  if (state.learningBodyDetailOpen) {
+    state.learningBodyDetailOpen = false;
+    renderLearningFlow();
+    return;
+  }
   state.learningView = LEARNING_VIEW_ROOT;
+  renderLearningFlow();
+}
+
+function handleLearningBodyRegionBackClick() {
+  if (state.learningView !== LEARNING_VIEW_BODY) return;
+  state.learningBodyDetailOpen = false;
   renderLearningFlow();
 }
 
@@ -4425,17 +4418,15 @@ function renderLearningLoading(message) {
   if (refs.learningRootList) refs.learningRootList.innerHTML = "";
   if (refs.learningSubcategoryList) refs.learningSubcategoryList.innerHTML = "";
   if (refs.learningBodyRegionButtons) refs.learningBodyRegionButtons.innerHTML = "";
+  if (refs.learningBodyRegionLegend) refs.learningBodyRegionLegend.innerHTML = "";
+  if (refs.learningBodyRegionGallery) refs.learningBodyRegionGallery.innerHTML = "";
   if (refs.learningBodyRegionBullets) refs.learningBodyRegionBullets.innerHTML = "";
-  if (refs.learningBodyCanvas) refs.learningBodyCanvas.innerHTML = "";
-  if (refs.learningBodyZoomCanvas) refs.learningBodyZoomCanvas.innerHTML = "";
   if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = "Bereich";
   if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = "";
-  if (refs.learningBodyRegionFach) refs.learningBodyRegionFach.textContent = "-";
-  if (refs.learningBodyRegionPatient) refs.learningBodyRegionPatient.textContent = "-";
-  if (refs.learningBodyRegionModelName) refs.learningBodyRegionModelName.textContent = "-";
+  if (refs.learningBodySelectionView) refs.learningBodySelectionView.classList.remove("hidden");
+  if (refs.learningBodyRegionDetailView) refs.learningBodyRegionDetailView.classList.add("hidden");
   if (refs.learningBodyStatus) refs.learningBodyStatus.textContent = "";
-  state.learningBodyActiveModelNodeName = "";
-  state.learningBodyActiveHotspotIndex = 0;
+  state.learningBodyDetailOpen = false;
   if (refs.learningReadingTitle) refs.learningReadingTitle.textContent = "Lernbereich";
   if (refs.learningReadingMeta) refs.learningReadingMeta.textContent = "";
   if (refs.learningReadingText) refs.learningReadingText.innerHTML = "";
@@ -4552,80 +4543,31 @@ function getLearningBodyRegionById(regionId) {
   );
 }
 
-function createBodyAtlasSvgNode(tagName, attrs = {}) {
-  const node = document.createElementNS(BODY_ATLAS_SVG_NS, tagName);
-  for (const [key, value] of Object.entries(attrs)) {
-    if (value === null || value === undefined || value === "") continue;
-    node.setAttribute(key, String(value));
-  }
-  return node;
-}
-
-function appendBodyAtlasShape(parent, shape, className = "") {
-  if (!shape || !parent) return null;
-  let node = null;
-  if (shape.type === "ellipse") {
-    node = createBodyAtlasSvgNode("ellipse", {
-      cx: shape.cx,
-      cy: shape.cy,
-      rx: shape.rx,
-      ry: shape.ry
-    });
-  } else if (shape.type === "rect") {
-    node = createBodyAtlasSvgNode("rect", {
-      x: shape.x,
-      y: shape.y,
-      width: shape.width,
-      height: shape.height,
-      rx: shape.rx,
-      ry: shape.ry
-    });
-  } else if (shape.type === "path") {
-    node = createBodyAtlasSvgNode("path", { d: shape.d });
-  }
-  if (!node) return null;
-  if (shape.transform) {
-    node.setAttribute("transform", String(shape.transform));
-  }
-  if (className) {
-    node.setAttribute("class", className);
-  }
-  parent.appendChild(node);
-  return node;
-}
-
-function getBodyAtlasShapeCenter(shape) {
-  if (!shape) return { x: 160, y: 160 };
-  if (shape.type === "ellipse") {
-    return { x: Number(shape.cx), y: Number(shape.cy) };
-  }
-  if (shape.type === "rect") {
-    return {
-      x: Number(shape.x) + Number(shape.width) / 2,
-      y: Number(shape.y) + Number(shape.height) / 2
-    };
-  }
-  return { x: 160, y: 160 };
-}
-
 function getLearningBodyRegionImageSrc(regionId) {
   const key = String(regionId || "");
   return BODY_ATLAS_REGION_IMAGE_BY_ID[key] || BODY_ATLAS_MAP_IMAGE_SRC;
 }
 
-function toBodyAtlasPercent(value, max) {
-  const numeric = Number(value);
-  if (!Number.isFinite(numeric)) return 50;
-  if (numeric >= 0 && numeric <= 100) return numeric;
-  if (max <= 0) return 50;
-  return Math.min(98, Math.max(2, (numeric / max) * 100));
-}
-
-function getBodyAtlasHotspotPosition(hotspot) {
-  return {
-    left: toBodyAtlasPercent(hotspot?.x, 320),
-    top: toBodyAtlasPercent(hotspot?.y, 260)
-  };
+function getLearningBodyRegionFigureSet(region) {
+  const hotspots = Array.isArray(region?.hotspots) ? region.hotspots : [];
+  const splitAt = Math.max(3, Math.ceil(hotspots.length / 2));
+  const firstLabelSet = hotspots.slice(0, splitAt);
+  const secondLabelSet = hotspots.slice(splitAt);
+  const fallbackSecondSet = hotspots.slice(0, Math.min(4, hotspots.length));
+  return [
+    {
+      title: `${region.label}: Fokusbild`,
+      description: "Primäre Anatomie der gewählten Region.",
+      src: getLearningBodyRegionImageSrc(region.id),
+      labels: firstLabelSet.length ? firstLabelSet : hotspots
+    },
+    {
+      title: `${region.label}: Orientierung im Gesamtkörper`,
+      description: "Kontextbild zur räumlichen Einordnung der Region.",
+      src: BODY_ATLAS_MAP_IMAGE_SRC,
+      labels: secondLabelSet.length >= 2 ? secondLabelSet : fallbackSecondSet
+    }
+  ];
 }
 
 function renderLearningBodyView() {
@@ -4633,94 +4575,16 @@ function renderLearningBodyView() {
   if (!activeRegion) return;
   state.learningBodyActiveRegionId = activeRegion.id;
   renderLearningBodyRegionButtons();
-  renderLearningBodyMap();
-  selectLearningBodyRegion(activeRegion.id, { silent: true, keepHotspot: true });
+  renderLearningBodyRegionLegend();
+  updateLearningBodyRegionButtonState();
+  if (state.learningBodyDetailOpen) {
+    renderLearningBodyRegionDetail(activeRegion);
+  } else {
+    renderLearningBodySelection();
+  }
   if (refs.learningBodyStatus && !refs.learningBodyStatus.textContent.trim()) {
     refs.learningBodyStatus.textContent =
-      "Waehle eine Region am Koerper aus. Danach siehst du eine gezoomte Detailansicht.";
-  }
-}
-
-function renderLearningBodyMap() {
-  if (!refs.learningBodyCanvas) return;
-  refs.learningBodyCanvas.innerHTML = "";
-
-  const svg = createBodyAtlasSvgNode("svg", {
-    viewBox: BODY_ATLAS_VIEWBOX,
-    class: "learning-body-map-svg",
-    role: "img",
-    "aria-label": "2D Koerperkarte mit 15 Regionen"
-  });
-
-  const mapImage = createBodyAtlasSvgNode("image", {
-    x: 0,
-    y: 0,
-    width: 320,
-    height: 640,
-    href: BODY_ATLAS_MAP_IMAGE_SRC,
-    preserveAspectRatio: "xMidYMid meet",
-    class: "learning-body-map-image"
-  });
-  mapImage.setAttributeNS("http://www.w3.org/1999/xlink", "href", BODY_ATLAS_MAP_IMAGE_SRC);
-  mapImage.addEventListener("error", () => {
-    if (refs.learningBodyStatus) {
-      refs.learningBodyStatus.textContent =
-        "Servier-Koerperbild konnte nicht geladen werden. Bitte Seite neu laden.";
-    }
-    svg.classList.add("is-map-image-missing");
-  });
-  svg.appendChild(mapImage);
-
-  BODY_ATLAS_REGIONS.forEach((region, idx) => {
-    const group = createBodyAtlasSvgNode("g", {
-      class: "learning-body-map-region",
-      "data-region-id": region.id,
-      tabindex: 0
-    });
-    const shape = appendBodyAtlasShape(group, region.map, "learning-body-map-region-shape");
-    if (shape) {
-      shape.style.setProperty("--region-color", BODY_ATLAS_COLORS[idx % BODY_ATLAS_COLORS.length]);
-    }
-    const center = getBodyAtlasShapeCenter(region.map);
-    const text = createBodyAtlasSvgNode("text", {
-      x: center.x,
-      y: center.y + 4,
-      class: "learning-body-map-region-number"
-    });
-    text.textContent = String(idx + 1);
-    group.appendChild(text);
-    const title = createBodyAtlasSvgNode("title");
-    title.textContent = `${idx + 1}. ${region.label}`;
-    group.appendChild(title);
-    group.addEventListener("click", () => {
-      selectLearningBodyRegion(region.id);
-    });
-    group.addEventListener("mouseenter", () => {
-      if (refs.learningBodyStatus) refs.learningBodyStatus.textContent = `${idx + 1}. ${region.label}`;
-    });
-    group.addEventListener("focus", () => {
-      if (refs.learningBodyStatus) refs.learningBodyStatus.textContent = `${idx + 1}. ${region.label}`;
-    });
-    group.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        selectLearningBodyRegion(region.id);
-      }
-    });
-    svg.appendChild(group);
-  });
-
-  refs.learningBodyCanvas.appendChild(svg);
-  updateLearningBodyMapActiveState();
-}
-
-function updateLearningBodyMapActiveState() {
-  if (!refs.learningBodyCanvas) return;
-  const activeId = state.learningBodyActiveRegionId;
-  const nodes = refs.learningBodyCanvas.querySelectorAll(".learning-body-map-region");
-  for (const node of nodes) {
-    const isActive = node.getAttribute("data-region-id") === activeId;
-    node.classList.toggle("is-active", isActive);
+      "Waehle eine Regionsnummer. Anschliessend siehst du nur diese Region mit mehreren beschrifteten Bildern.";
   }
 }
 
@@ -4732,13 +4596,14 @@ function renderLearningBodyRegionButtons() {
     button.type = "button";
     button.className = "learning-body-region-btn";
     button.dataset.regionId = region.id;
-    button.textContent = `${region.order || BODY_ATLAS_REGION_BY_ID[region.id]?.order || ""}. ${region.label}`;
+    button.textContent = String(region.order || BODY_ATLAS_REGION_BY_ID[region.id]?.order || "");
+    button.title = `${region.order || ""}. ${region.label}`;
+    button.setAttribute("aria-label", `${region.order || ""}. ${region.label}`);
     button.addEventListener("click", () => {
-      selectLearningBodyRegion(region.id);
+      openLearningBodyRegionDetail(region.id);
     });
     refs.learningBodyRegionButtons.appendChild(button);
   }
-  updateLearningBodyRegionButtonState();
 }
 
 function updateLearningBodyRegionButtonState() {
@@ -4752,137 +4617,97 @@ function updateLearningBodyRegionButtonState() {
   }
 }
 
-function selectLearningBodyRegion(regionId, options = {}) {
-  const silent = Boolean(options.silent);
-  const keepHotspot = Boolean(options.keepHotspot);
-  const region = getLearningBodyRegionById(regionId);
-  if (!region) return;
-
-  const changedRegion = state.learningBodyActiveRegionId !== region.id;
-  state.learningBodyActiveRegionId = region.id;
-  if (changedRegion && !keepHotspot) {
-    state.learningBodyActiveHotspotIndex = 0;
+function renderLearningBodyRegionLegend() {
+  if (!refs.learningBodyRegionLegend) return;
+  refs.learningBodyRegionLegend.innerHTML = "";
+  for (const region of BODY_ATLAS_REGIONS) {
+    const li = document.createElement("li");
+    li.className = "learning-body-region-legend-item";
+    li.textContent = `${region.order}. ${region.label}`;
+    refs.learningBodyRegionLegend.appendChild(li);
   }
-
-  updateLearningBodyRegionButtonState();
-  updateLearningBodyMapActiveState();
-  renderLearningBodyZoom(region);
-  setLearningBodyHotspot(region, state.learningBodyActiveHotspotIndex, { silent });
 }
 
-function renderLearningBodyZoom(region) {
-  if (refs.learningBodyZoomCanvas) {
-    refs.learningBodyZoomCanvas.innerHTML = "";
+function renderLearningBodySelection() {
+  state.learningBodyDetailOpen = false;
+  if (refs.learningBodySelectionView) refs.learningBodySelectionView.classList.remove("hidden");
+  if (refs.learningBodyRegionDetailView) refs.learningBodyRegionDetailView.classList.add("hidden");
+  if (refs.learningBodyStatus) {
+    refs.learningBodyStatus.textContent =
+      "Waehle eine Regionsnummer. Anschliessend oeffnet sich die Region in einer eigenen Detailsektion.";
+  }
+}
 
-    const stage = document.createElement("div");
-    stage.className = "learning-body-zoom-stage";
+function openLearningBodyRegionDetail(regionId) {
+  const region = getLearningBodyRegionById(regionId);
+  if (!region) return;
+  state.learningBodyActiveRegionId = region.id;
+  state.learningBodyDetailOpen = true;
+  updateLearningBodyRegionButtonState();
+  renderLearningBodyRegionDetail(region);
+}
 
-    const image = document.createElement("img");
-    image.className = "learning-body-zoom-image";
-    image.src = getLearningBodyRegionImageSrc(region.id);
-    image.alt = `${region.label} - anatomische Skizze (Servier Medical Art)`;
-    image.loading = "lazy";
-    image.decoding = "async";
-    image.addEventListener("error", () => {
-      stage.classList.add("is-image-missing");
-      if (refs.learningBodyStatus) {
-        refs.learningBodyStatus.textContent =
-          "Servier-Detailbild konnte nicht geladen werden. Waehle eine andere Region oder lade neu.";
-      }
-    });
-    stage.appendChild(image);
+function renderLearningBodyRegionDetail(region) {
+  state.learningBodyDetailOpen = true;
+  if (refs.learningBodySelectionView) refs.learningBodySelectionView.classList.add("hidden");
+  if (refs.learningBodyRegionDetailView) refs.learningBodyRegionDetailView.classList.remove("hidden");
+  if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = `${region.order}. ${region.label}`;
+  if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = region.hint;
+  if (refs.learningBodyStatus) {
+    refs.learningBodyStatus.textContent = `${region.label}: Detailansicht mit beschrifteten Anatomie-Bildern.`;
+  }
 
-    const hotspotLayer = document.createElement("div");
-    hotspotLayer.className = "learning-body-hotspot-layer";
+  if (refs.learningBodyRegionGallery) {
+    refs.learningBodyRegionGallery.innerHTML = "";
+    const figures = getLearningBodyRegionFigureSet(region);
+    figures.forEach((figure, figureIndex) => {
+      const card = document.createElement("article");
+      card.className = "learning-body-figure";
 
-    region.hotspots.forEach((hotspot, index) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "learning-body-hotspot";
-      button.dataset.hotspotIndex = String(index);
-      button.title = `${index + 1}. ${hotspot.fach} / ${hotspot.patient}`;
-      button.setAttribute("aria-label", button.title);
+      const heading = document.createElement("h6");
+      heading.className = "learning-body-figure-title";
+      heading.textContent = `Bild ${figureIndex + 1}: ${figure.title}`;
+      card.appendChild(heading);
 
-      const position = getBodyAtlasHotspotPosition(hotspot);
-      button.style.left = `${position.left}%`;
-      button.style.top = `${position.top}%`;
+      const caption = document.createElement("p");
+      caption.className = "learning-body-figure-caption";
+      caption.textContent = figure.description;
+      card.appendChild(caption);
 
-      const dot = document.createElement("span");
-      dot.className = "learning-body-hotspot-dot";
-      const number = document.createElement("span");
-      number.className = "learning-body-hotspot-number";
-      number.textContent = String(index + 1);
-      dot.appendChild(number);
-      button.appendChild(dot);
-
-      button.addEventListener("mouseenter", () => {
-        setLearningBodyHotspot(region, index, { silent: true });
+      const imageWrap = document.createElement("div");
+      imageWrap.className = "learning-body-figure-image-wrap";
+      const image = document.createElement("img");
+      image.className = "learning-body-figure-image";
+      image.src = figure.src;
+      image.alt = `${figure.title} (Servier Medical Art)`;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.addEventListener("error", () => {
+        imageWrap.classList.add("is-image-missing");
       });
-      button.addEventListener("click", () => {
-        setLearningBodyHotspot(region, index);
-      });
-      hotspotLayer.appendChild(button);
-    });
+      imageWrap.appendChild(image);
+      card.appendChild(imageWrap);
 
-    stage.appendChild(hotspotLayer);
-    refs.learningBodyZoomCanvas.appendChild(stage);
+      const labels = document.createElement("ol");
+      labels.className = "learning-body-figure-labels";
+      figure.labels.forEach((entry, labelIndex) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${labelIndex + 1}. ${entry.fach}</strong> - ${entry.patient}`;
+        labels.appendChild(li);
+      });
+      card.appendChild(labels);
+      refs.learningBodyRegionGallery.appendChild(card);
+    });
   }
 
   if (refs.learningBodyRegionBullets) {
     refs.learningBodyRegionBullets.innerHTML = "";
     region.hotspots.forEach((hotspot, index) => {
       const li = document.createElement("li");
-      li.className = "learning-body-label-item";
-      li.dataset.hotspotIndex = String(index);
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "learning-body-label-btn";
-      button.innerHTML = `
-        <span class="learning-body-label-number">${index + 1}</span>
-        <span class="learning-body-label-main"><strong>${hotspot.fach}</strong> - ${hotspot.patient}</span>
-        <span class="learning-body-label-info">${hotspot.info}</span>
-      `;
-      button.addEventListener("mouseenter", () => {
-        setLearningBodyHotspot(region, index, { silent: true });
-      });
-      button.addEventListener("click", () => {
-        setLearningBodyHotspot(region, index);
-      });
-      li.appendChild(button);
+      li.className = "learning-body-coverage-item";
+      li.innerHTML = `<strong>${index + 1}. ${hotspot.fach}</strong> - ${hotspot.patient} (${hotspot.info})`;
       refs.learningBodyRegionBullets.appendChild(li);
     });
-  }
-}
-
-function setLearningBodyHotspot(region, index, options = {}) {
-  if (!region || !Array.isArray(region.hotspots) || region.hotspots.length === 0) return;
-  const safeIndex = Math.min(Math.max(Number(index) || 0, 0), region.hotspots.length - 1);
-  const hotspot = region.hotspots[safeIndex];
-  state.learningBodyActiveHotspotIndex = safeIndex;
-  state.learningBodyActiveModelNodeName = `#${safeIndex + 1}`;
-
-  if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = region.label;
-  if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = region.hint;
-  if (refs.learningBodyRegionFach) refs.learningBodyRegionFach.textContent = hotspot.fach;
-  if (refs.learningBodyRegionPatient) refs.learningBodyRegionPatient.textContent = hotspot.patient;
-  if (refs.learningBodyRegionModelName) refs.learningBodyRegionModelName.textContent = `#${safeIndex + 1}`;
-
-  if (refs.learningBodyZoomCanvas) {
-    const nodes = refs.learningBodyZoomCanvas.querySelectorAll(".learning-body-hotspot");
-    for (const node of nodes) {
-      const nodeIndex = Number(node.getAttribute("data-hotspot-index"));
-      node.classList.toggle("is-active", nodeIndex === safeIndex);
-    }
-  }
-  if (refs.learningBodyRegionBullets) {
-    const items = refs.learningBodyRegionBullets.querySelectorAll(".learning-body-label-item");
-    for (const item of items) {
-      const itemIndex = Number(item.dataset.hotspotIndex || "-1");
-      item.classList.toggle("is-active", itemIndex === safeIndex);
-    }
-  }
-  if (!options.silent && refs.learningBodyStatus) {
-    refs.learningBodyStatus.textContent = `${region.label} - Marker ${safeIndex + 1}: ${hotspot.patient}`;
   }
 }
 
