@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=4" />
+    <link rel="stylesheet" href="src/styles.css?v=5" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -506,7 +506,19 @@
               <article class="learning-body-card">
                 <h5 id="learningBodyRegionTitle">Bereich</h5>
                 <p id="learningBodyRegionHint" class="learning-body-region-hint"></p>
+                <p class="learning-body-term-line">
+                  <strong>Fachsprache:</strong> <span id="learningBodyRegionFach"></span>
+                </p>
+                <p class="learning-body-term-line">
+                  <strong>Patientensprache:</strong> <span id="learningBodyRegionPatient"></span>
+                </p>
+                <p class="learning-body-term-line">
+                  <strong>Modellstruktur:</strong> <span id="learningBodyRegionModelName"></span>
+                </p>
                 <ul id="learningBodyRegionBullets" class="learning-body-region-bullets"></ul>
+                <p class="learning-body-license">
+                  Modellbasis: Z-Anatomy / BodyParts3D (CC BY-SA)
+                </p>
               </article>
             </aside>
           </div>
@@ -668,6 +680,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=4"></script>
+    <script type="module" src="src/app.js?v=5"></script>
   </body>
 </html>

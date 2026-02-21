@@ -1350,6 +1350,17 @@ body.auth-only .edge-deco {
   font-weight: 700;
 }
 
+.learning-body-term-line {
+  margin: 0;
+  color: #314754;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.learning-body-term-line strong {
+  color: #2b4f66;
+}
+
 .learning-body-region-bullets {
   margin: 0;
   padding-left: 18px;
@@ -1358,6 +1369,13 @@ body.auth-only .edge-deco {
   line-height: 1.48;
   display: grid;
   gap: 4px;
+}
+
+.learning-body-license {
+  margin: 2px 0 0;
+  color: #5f7280;
+  font-size: 0.73rem;
+  line-height: 1.35;
 }
 
 .learning-reading-view {

@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "4";
-const BUILD_UPDATED_AT = "2026-02-21 13:49 CET";
+const APP_VERSION = "5";
+const BUILD_UPDATED_AT = "2026-02-21 13:59 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -64,6 +64,9 @@ const BODY_MODEL_REGION_ITEMS = Object.freeze([
     id: "kopf",
     label: "Kopf / Neurologie",
     hint: "Kopfschmerz, Schwindel, Bewusstsein, Sehen",
+    fach: "Kopf- und ZNS-Bereich",
+    patient: "Kopf und Gehirn",
+    keywords: ["head", "brain", "cerebr", "encephal", "cortex", "cerebell", "skull", "cranium"],
     bullets: [
       "Frage nach Beginn, Dauer, Verlauf und Triggern.",
       "Pruefe Red Flags: neue neurologische Ausfaelle, Vigilanzminderung, starker Vernichtungskopfschmerz.",
@@ -76,6 +79,22 @@ const BODY_MODEL_REGION_ITEMS = Object.freeze([
     id: "thorax",
     label: "Thorax / Herz-Lunge",
     hint: "Brustschmerz, Dyspnoe, Husten, Palpitationen",
+    fach: "Thorax mit kardio-pulmonalem Fokus",
+    patient: "Brustkorb mit Herz und Lunge",
+    keywords: [
+      "thorax",
+      "heart",
+      "cor",
+      "cardi",
+      "lung",
+      "pulmo",
+      "pulmon",
+      "trachea",
+      "bronch",
+      "rib",
+      "costa",
+      "sternum"
+    ],
     bullets: [
       "Differenziere Schmerzqualitaet, Ausstrahlung, Belastungsabhaengigkeit und Dauer.",
       "Erfrage Dyspnoe in Ruhe vs. unter Belastung sowie orthopnoeartige Beschwerden.",
@@ -88,6 +107,25 @@ const BODY_MODEL_REGION_ITEMS = Object.freeze([
     id: "abdomen",
     label: "Abdomen",
     hint: "Bauchschmerz, Uebelkeit, Stuhlveraenderung, Appetit",
+    fach: "Abdomen / Viszeralorgane",
+    patient: "Bauchraum und Verdauungsorgane",
+    keywords: [
+      "abdomen",
+      "abdominal",
+      "liver",
+      "hepar",
+      "stomach",
+      "ventricul",
+      "gaster",
+      "intestin",
+      "colon",
+      "duoden",
+      "ileum",
+      "jejun",
+      "pancreas",
+      "spleen",
+      "lien"
+    ],
     bullets: [
       "Lokalisierung mit Schmerzcharakter und zeitlichem Verlauf systematisch klaeren.",
       "Begleitzeichen wie Erbrechen, Fieber, Diarrhoe, Melaena oder Haematochezie nachfragen.",
@@ -100,6 +138,20 @@ const BODY_MODEL_REGION_ITEMS = Object.freeze([
     id: "becken",
     label: "Becken / Urogenital",
     hint: "Dysurie, Pollakisurie, Unterbauch, Blutung",
+    fach: "Becken- und Urogenitalbereich",
+    patient: "Unterbauch und Harn-/Geschlechtsorgane",
+    keywords: [
+      "pelvis",
+      "pelvic",
+      "bladder",
+      "vesica",
+      "uter",
+      "ovar",
+      "prostat",
+      "ureter",
+      "urethra",
+      "genital"
+    ],
     bullets: [
       "Miktionsbeschwerden strukturiert nach Brennen, Frequenz und Restharngefuehl abfragen.",
       "Bei Unterbauchbeschwerden an gyn/urologische Differenzialdiagnosen denken.",
@@ -112,6 +164,9 @@ const BODY_MODEL_REGION_ITEMS = Object.freeze([
     id: "arm_links",
     label: "Linker Arm",
     hint: "Sensibilitaet, Kraft, Trauma, Ausstrahlung",
+    fach: "Linke obere Extremitaet",
+    patient: "Linker Arm",
+    keywords: ["left arm", "humerus", "radius", "ulna", "brach", "arm_l", "upper limb"],
     bullets: [
       "Neu aufgetretene Schwaeche, Taubheit oder Koordinationsstoerung klar dokumentieren.",
       "Bei Thoraxschmerz Ausstrahlung in den linken Arm gezielt einordnen.",
@@ -124,6 +179,9 @@ const BODY_MODEL_REGION_ITEMS = Object.freeze([
     id: "arm_rechts",
     label: "Rechter Arm",
     hint: "Schmerz, Kraft, Taubheit, Ueberlastung",
+    fach: "Rechte obere Extremitaet",
+    patient: "Rechter Arm",
+    keywords: ["right arm", "humerus", "radius", "ulna", "brach", "arm_r", "upper limb"],
     bullets: [
       "Unterscheide radikulaere Symptome von lokalem muskuloskelettalem Schmerz.",
       "Erfrage Belastungsbezug, Dominanzseite und alltagsrelevante Einschraenkung.",
@@ -136,6 +194,9 @@ const BODY_MODEL_REGION_ITEMS = Object.freeze([
     id: "bein_links",
     label: "Linkes Bein",
     hint: "Oedem, Schmerz, Claudicatio, Sensibilitaet",
+    fach: "Linke untere Extremitaet",
+    patient: "Linkes Bein",
+    keywords: ["left leg", "femur", "tibia", "fibula", "knee", "ankle", "leg_l", "lower limb"],
     bullets: [
       "Einseitige Schwellung und Schmerz immer auf Thrombosezeichen screenen.",
       "Belastungsabhaengige Beschwerden und Gehstrecke fuer Gefaessanamnese erfassen.",
@@ -148,6 +209,9 @@ const BODY_MODEL_REGION_ITEMS = Object.freeze([
     id: "bein_rechts",
     label: "Rechtes Bein",
     hint: "Gangbild, Schmerzverlauf, Schwellung, Trauma",
+    fach: "Rechte untere Extremitaet",
+    patient: "Rechtes Bein",
+    keywords: ["right leg", "femur", "tibia", "fibula", "knee", "ankle", "leg_r", "lower limb"],
     bullets: [
       "Frage nach akutem vs. chronischem Verlauf und nach ausloesenden Bewegungen.",
       "Vergleiche Seitenbefunde: Umfang, Roetung, Ueberwaermung, Druckschmerz.",
@@ -157,6 +221,162 @@ const BODY_MODEL_REGION_ITEMS = Object.freeze([
     cameraOffset: [1.0, -0.12, 1.48]
   }
 ]);
+const ANATOMY_TERM_ITEMS = Object.freeze([
+  {
+    id: "heart",
+    regionId: "thorax",
+    fach: "Cor / Herz",
+    patient: "Herz",
+    info: "Pumpt das Blut durch den Koerper und versorgt Organe mit Sauerstoff.",
+    keywords: ["heart", "cor", "cardi", "myocard", "atrium", "ventric"]
+  },
+  {
+    id: "lung",
+    regionId: "thorax",
+    fach: "Pulmo / Lunge",
+    patient: "Lunge",
+    info: "Nimmt Sauerstoff auf und gibt Kohlendioxid ab.",
+    keywords: ["lung", "pulmo", "pulmon", "bronch", "alveol", "pleura"]
+  },
+  {
+    id: "trachea",
+    regionId: "thorax",
+    fach: "Trachea",
+    patient: "Luftröhre",
+    info: "Leitet Luft von Mund/Nase in die Bronchien.",
+    keywords: ["trachea", "windpipe"]
+  },
+  {
+    id: "esophagus",
+    regionId: "thorax",
+    fach: "Oesophagus",
+    patient: "Speiseroehre",
+    info: "Transportiert Nahrung vom Rachen in den Magen.",
+    keywords: ["esophagus", "oesophagus", "oesoph", "esophag"]
+  },
+  {
+    id: "aorta",
+    regionId: "thorax",
+    fach: "Aorta",
+    patient: "Hauptschlagader",
+    info: "Groesste Arterie; verteilt Blut aus dem Herzen in den Koerper.",
+    keywords: ["aorta"]
+  },
+  {
+    id: "liver",
+    regionId: "abdomen",
+    fach: "Hepar / Leber",
+    patient: "Leber",
+    info: "Zentrales Stoffwechselorgan, entgiftet und bildet wichtige Proteine.",
+    keywords: ["liver", "hepar", "hepatic"]
+  },
+  {
+    id: "stomach",
+    regionId: "abdomen",
+    fach: "Gaster / Ventriculus",
+    patient: "Magen",
+    info: "Mischt Nahrung vor und startet die Verdauung mit Saeure und Enzymen.",
+    keywords: ["stomach", "gaster", "ventricul"]
+  },
+  {
+    id: "pancreas",
+    regionId: "abdomen",
+    fach: "Pancreas",
+    patient: "Bauchspeicheldruese",
+    info: "Produziert Verdauungsenzyme und Hormone wie Insulin.",
+    keywords: ["pancreas", "pancreat"]
+  },
+  {
+    id: "spleen",
+    regionId: "abdomen",
+    fach: "Lien / Milz",
+    patient: "Milz",
+    info: "Teil des Immunsystems und am Abbau alter Blutzellen beteiligt.",
+    keywords: ["spleen", "lien", "splen"]
+  },
+  {
+    id: "intestine_small",
+    regionId: "abdomen",
+    fach: "Intestinum tenue",
+    patient: "Duenndarm",
+    info: "Ort der Hauptaufnahme von Naehrstoffen.",
+    keywords: ["small intestine", "intestinum tenue", "duoden", "jejun", "ileum"]
+  },
+  {
+    id: "intestine_large",
+    regionId: "abdomen",
+    fach: "Intestinum crassum / Colon",
+    patient: "Dickdarm",
+    info: "Entzieht Wasser und formt den Stuhl.",
+    keywords: ["large intestine", "colon", "cecum", "caecum", "sigmoid", "rectum"]
+  },
+  {
+    id: "kidney",
+    regionId: "becken",
+    fach: "Ren / Niere",
+    patient: "Niere",
+    info: "Filtert das Blut und bildet Urin.",
+    keywords: ["kidney", "ren", "renal", "nephr"]
+  },
+  {
+    id: "bladder",
+    regionId: "becken",
+    fach: "Vesica urinaria",
+    patient: "Harnblase",
+    info: "Speichert Urin bis zur Entleerung.",
+    keywords: ["bladder", "vesica", "urinary bladder"]
+  },
+  {
+    id: "brain",
+    regionId: "kopf",
+    fach: "Encephalon / Cerebrum",
+    patient: "Gehirn",
+    info: "Steuert Bewusstsein, Bewegung, Sprache und Wahrnehmung.",
+    keywords: ["brain", "encephal", "cerebr", "cortex", "cerebell", "thalam"]
+  },
+  {
+    id: "thyroid",
+    regionId: "kopf",
+    fach: "Glandula thyroidea",
+    patient: "Schilddruese",
+    info: "Reguliert den Stoffwechsel ueber Schilddruesenhormone.",
+    keywords: ["thyroid", "thyro", "glandula thyroidea"]
+  },
+  {
+    id: "spine",
+    regionId: "thorax",
+    fach: "Columna vertebralis",
+    patient: "Wirbelsaeule",
+    info: "Stuetzt den Koerper und schuetzt das Rueckenmark.",
+    keywords: ["spine", "vertebra", "vertebral", "columna"]
+  },
+  {
+    id: "humerus",
+    regionId: "arm_rechts",
+    fach: "Humerus",
+    patient: "Oberarmknochen",
+    info: "Knochen des Oberarms zwischen Schulter und Ellenbogen.",
+    keywords: ["humerus", "upper arm"]
+  },
+  {
+    id: "femur",
+    regionId: "bein_rechts",
+    fach: "Femur",
+    patient: "Oberschenkelknochen",
+    info: "Laengster und kraeftigster Knochen des Menschen.",
+    keywords: ["femur", "thigh bone"]
+  },
+  {
+    id: "pelvis",
+    regionId: "becken",
+    fach: "Pelvis",
+    patient: "Becken",
+    info: "Verbindet Wirbelsaeule mit den Beinen und traegt innere Organe.",
+    keywords: ["pelvis", "ilium", "ischium", "pubis", "acetabul"]
+  }
+]);
+const SKETCHFAB_VIEWER_SCRIPT_SRC = "https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js";
+const SKETCHFAB_ANATOMY_MODEL_UID = "5cfafb312f504815aa3fec55735607a6";
 const VOICE_SAMPLE_VIEW_PATIENT = "sample_patient";
 const VOICE_SAMPLE_VIEW_LETTER = "sample_letter";
 const VOICE_SAMPLE_VIEW_DOCTOR = "sample_doctor";
@@ -401,6 +621,7 @@ let shouldSendVoiceAfterStop = false;
 let xpMilestoneHideTimer = null;
 let learningBodyModelEngine = null;
 let learningBodyThreeLoadPromise = null;
+let learningBodySketchfabScriptPromise = null;
 
 const CATEGORY_MAP = {
   berlin_abkuerzungen: "Berlin Zusatzfragen: Abkuerzungen",
@@ -567,7 +788,8 @@ const state = {
   learningRootId: "anamnese",
   learningAnamnese: null,
   learningActiveCategoryId: "",
-  learningBodyActiveRegionId: BODY_MODEL_DEFAULT_REGION_ID
+  learningBodyActiveRegionId: BODY_MODEL_DEFAULT_REGION_ID,
+  learningBodyActiveModelNodeName: ""
 };
 
 const refs = {
@@ -706,6 +928,9 @@ const refs = {
   learningBodyRegionButtons: document.getElementById("learningBodyRegionButtons"),
   learningBodyRegionTitle: document.getElementById("learningBodyRegionTitle"),
   learningBodyRegionHint: document.getElementById("learningBodyRegionHint"),
+  learningBodyRegionFach: document.getElementById("learningBodyRegionFach"),
+  learningBodyRegionPatient: document.getElementById("learningBodyRegionPatient"),
+  learningBodyRegionModelName: document.getElementById("learningBodyRegionModelName"),
   learningBodyRegionBullets: document.getElementById("learningBodyRegionBullets"),
   learningReadingView: document.getElementById("learningReadingView"),
   learningBackBtn: document.getElementById("learningBackBtn"),
@@ -3780,7 +4005,11 @@ function renderLearningLoading(message) {
   if (refs.learningBodyRegionBullets) refs.learningBodyRegionBullets.innerHTML = "";
   if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = "Bereich";
   if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = "";
+  if (refs.learningBodyRegionFach) refs.learningBodyRegionFach.textContent = "-";
+  if (refs.learningBodyRegionPatient) refs.learningBodyRegionPatient.textContent = "-";
+  if (refs.learningBodyRegionModelName) refs.learningBodyRegionModelName.textContent = "-";
   if (refs.learningBodyStatus) refs.learningBodyStatus.textContent = "";
+  state.learningBodyActiveModelNodeName = "";
   if (refs.learningReadingTitle) refs.learningReadingTitle.textContent = "Lernbereich";
   if (refs.learningReadingMeta) refs.learningReadingMeta.textContent = "";
   if (refs.learningReadingText) refs.learningReadingText.innerHTML = "";
@@ -3903,12 +4132,67 @@ function getLearningBodyRegionById(regionId) {
   );
 }
 
+function normalizeAnatomyTokenInput(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[_\-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isAnatomyKeywordMatch(text, keywords) {
+  if (!text || !Array.isArray(keywords) || keywords.length === 0) return false;
+  return keywords.some((keyword) => {
+    const needle = normalizeAnatomyTokenInput(keyword);
+    return needle ? text.includes(needle) : false;
+  });
+}
+
+function resolveAnatomyTermFromNodeName(nodeName) {
+  const normalized = normalizeAnatomyTokenInput(nodeName);
+  if (!normalized) return null;
+  return ANATOMY_TERM_ITEMS.find((entry) => isAnatomyKeywordMatch(normalized, entry.keywords)) || null;
+}
+
+function resolveLearningBodyRegionFromNodeName(nodeName) {
+  const normalized = normalizeAnatomyTokenInput(nodeName);
+  if (!normalized) return getLearningBodyRegionById(BODY_MODEL_DEFAULT_REGION_ID);
+
+  const isLeft =
+    normalized.includes(" left") ||
+    normalized.startsWith("left ") ||
+    normalized.includes("_l") ||
+    normalized.includes(" sin");
+  const isRight =
+    normalized.includes(" right") ||
+    normalized.startsWith("right ") ||
+    normalized.includes("_r") ||
+    normalized.includes(" dex");
+  const isArmLike = isAnatomyKeywordMatch(normalized, ["arm", "humerus", "radius", "ulna", "brach"]);
+  const isLegLike = isAnatomyKeywordMatch(normalized, ["leg", "femur", "tibia", "fibula", "crus"]);
+  if (isLeft && isArmLike) return getLearningBodyRegionById("arm_links");
+  if (isRight && isArmLike) return getLearningBodyRegionById("arm_rechts");
+  if (isLeft && isLegLike) return getLearningBodyRegionById("bein_links");
+  if (isRight && isLegLike) return getLearningBodyRegionById("bein_rechts");
+
+  const termMatch = resolveAnatomyTermFromNodeName(normalized);
+  if (termMatch?.regionId) {
+    return getLearningBodyRegionById(termMatch.regionId);
+  }
+  return (
+    BODY_MODEL_REGION_ITEMS.find((entry) => isAnatomyKeywordMatch(normalized, entry.keywords)) ||
+    getLearningBodyRegionById(BODY_MODEL_DEFAULT_REGION_ID)
+  );
+}
+
 function renderLearningBodyView() {
   const activeRegion = getLearningBodyRegionById(state.learningBodyActiveRegionId);
   if (!activeRegion) return;
   state.learningBodyActiveRegionId = activeRegion.id;
   renderLearningBodyRegionButtons();
-  updateLearningBodyRegionCard(activeRegion.id);
+  updateLearningBodyRegionCard(activeRegion.id, {
+    modelNodeName: state.learningBodyActiveModelNodeName
+  });
   if (refs.learningBodyStatus && !refs.learningBodyStatus.textContent.trim()) {
     refs.learningBodyStatus.textContent =
       "Klicke auf einen Koerperbereich oder nutze das Mausrad zum Zoomen.";
@@ -3945,13 +4229,26 @@ function updateLearningBodyRegionButtonState() {
   }
 }
 
-function updateLearningBodyRegionCard(regionId) {
+function updateLearningBodyRegionCard(regionId, options = {}) {
   const region = getLearningBodyRegionById(regionId);
   if (!region) return;
+  const modelNodeName = String(options.modelNodeName || state.learningBodyActiveModelNodeName || "").trim();
+  const termInfo = resolveAnatomyTermFromNodeName(modelNodeName);
+  const fachLabel = termInfo?.fach || region.fach || region.label;
+  const patientLabel = termInfo?.patient || region.patient || region.label;
+  const modelLabel = modelNodeName || "-";
   if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = region.label;
   if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = region.hint;
+  if (refs.learningBodyRegionFach) refs.learningBodyRegionFach.textContent = fachLabel;
+  if (refs.learningBodyRegionPatient) refs.learningBodyRegionPatient.textContent = patientLabel;
+  if (refs.learningBodyRegionModelName) refs.learningBodyRegionModelName.textContent = modelLabel;
   if (refs.learningBodyRegionBullets) {
     refs.learningBodyRegionBullets.innerHTML = "";
+    if (termInfo?.info) {
+      const infoLi = document.createElement("li");
+      infoLi.textContent = termInfo.info;
+      refs.learningBodyRegionBullets.appendChild(infoLi);
+    }
     for (const bullet of region.bullets) {
       const li = document.createElement("li");
       li.textContent = bullet;
@@ -3963,18 +4260,34 @@ function updateLearningBodyRegionCard(regionId) {
 function selectLearningBodyRegion(regionId, options = {}) {
   const focusModel = options.focusModel !== false;
   const silent = Boolean(options.silent);
+  const modelNodeName = String(options.modelNodeName || "").trim();
+  const modelNodeId = Number.isFinite(Number(options.modelNodeId))
+    ? Number(options.modelNodeId)
+    : null;
   const region = getLearningBodyRegionById(regionId);
   if (!region) return;
 
   state.learningBodyActiveRegionId = region.id;
+  if (modelNodeName) {
+    state.learningBodyActiveModelNodeName = modelNodeName;
+  } else if (!options.keepModelNodeName) {
+    state.learningBodyActiveModelNodeName = "";
+  }
   updateLearningBodyRegionButtonState();
-  updateLearningBodyRegionCard(region.id);
+  updateLearningBodyRegionCard(region.id, {
+    modelNodeName: modelNodeName || state.learningBodyActiveModelNodeName
+  });
 
   if (focusModel) {
-    focusLearningBodyRegionInModel(region.id, { animate: true });
+    focusLearningBodyRegionInModel(region.id, {
+      animate: options.animate !== false,
+      modelNodeId
+    });
   }
   if (!silent && refs.learningBodyStatus) {
-    refs.learningBodyStatus.textContent = `${region.label}: ${region.hint}`;
+    refs.learningBodyStatus.textContent = modelNodeName
+      ? `${region.label}: ${modelNodeName}`
+      : `${region.label}: ${region.hint}`;
   }
 }
 
@@ -3982,7 +4295,10 @@ function focusLearningBodyRegionInModel(regionId, options = {}) {
   if (!learningBodyModelEngine) return;
   const region = getLearningBodyRegionById(regionId);
   if (!region) return;
-  learningBodyModelEngine.setActiveRegion(region.id, { animate: options.animate !== false });
+  learningBodyModelEngine.setActiveRegion(region.id, {
+    animate: options.animate !== false,
+    modelNodeId: Number.isFinite(Number(options.modelNodeId)) ? Number(options.modelNodeId) : null
+  });
 }
 
 function startLearningBodyModelLoop() {
@@ -4015,17 +4331,50 @@ async function ensureLearningBodyModelReady() {
     return false;
   }
 
+  if (refs.learningBodyStatus) {
+    refs.learningBodyStatus.textContent = "3D Modell wird geladen ...";
+  }
+
+  try {
+    learningBodyModelEngine = await createLearningBodySketchfabEngine(
+      refs.learningBodyCanvas,
+      (pickedRegionId, payload = {}) => {
+        selectLearningBodyRegion(pickedRegionId, {
+          focusModel: true,
+          modelNodeName: String(payload.modelNodeName || ""),
+          modelNodeId: Number.isFinite(Number(payload.modelNodeId)) ? Number(payload.modelNodeId) : null,
+          animate: true
+        });
+      }
+    );
+    focusLearningBodyRegionInModel(activeRegion.id, { animate: false });
+    if (state.learningView === LEARNING_VIEW_BODY) {
+      startLearningBodyModelLoop();
+    }
+    if (refs.learningBodyStatus) {
+      refs.learningBodyStatus.textContent =
+        "Anatomisches Modell aktiv: Klicke auf Strukturen fuer Fach-/Patientensprache.";
+    }
+    return true;
+  } catch (sketchfabError) {
+    console.warn("Sketchfab Anatomiemodell nicht verfuegbar, fallback auf lokales Modell.", sketchfabError);
+    const fallbackOk = await ensureLearningBodyPrimitiveFallback(activeRegion);
+    if (!fallbackOk && refs.learningBodyStatus) {
+      refs.learningBodyStatus.textContent =
+        "3D konnte nicht geladen werden. Bitte Seite neu laden oder Netzwerk pruefen.";
+    }
+    return fallbackOk;
+  }
+}
+
+async function ensureLearningBodyPrimitiveFallback(activeRegion) {
+  if (!activeRegion || !refs.learningBodyCanvas) return false;
   if (!learningBodyThreeLoadPromise) {
     learningBodyThreeLoadPromise = Promise.all([
       import("https://esm.sh/three@0.165.0"),
       import("https://esm.sh/three@0.165.0/examples/jsm/controls/OrbitControls.js")
     ]);
   }
-
-  if (refs.learningBodyStatus) {
-    refs.learningBodyStatus.textContent = "3D Modell wird geladen ...";
-  }
-
   try {
     const [threeModule, controlsModule] = await learningBodyThreeLoadPromise;
     const THREE = threeModule;
@@ -4044,20 +4393,264 @@ async function ensureLearningBodyModelReady() {
     }
     if (refs.learningBodyStatus) {
       refs.learningBodyStatus.textContent =
-        "Klicke auf einen Koerperbereich oder nutze das Mausrad zum Zoomen.";
+        "Fallback-Modell aktiv. Internetverbindung noetig fuer das anatomische Vollmodell.";
     }
     return true;
   } catch (error) {
-    console.error("3D Koerpermodell konnte nicht geladen werden", error);
+    console.error("Fallback-3D Koerpermodell konnte nicht geladen werden", error);
     learningBodyThreeLoadPromise = null;
     learningBodyModelEngine = null;
     if (refs.learningBodyCanvas) refs.learningBodyCanvas.innerHTML = "";
-    if (refs.learningBodyStatus) {
-      refs.learningBodyStatus.textContent =
-        "3D konnte nicht geladen werden. Bitte Seite neu laden oder Netzwerk pruefen.";
-    }
     return false;
   }
+}
+
+function loadSketchfabViewerApi() {
+  if (typeof window === "undefined") {
+    return Promise.reject(new Error("window-not-available"));
+  }
+  if (typeof window.Sketchfab === "function") {
+    return Promise.resolve(window.Sketchfab);
+  }
+  if (learningBodySketchfabScriptPromise) {
+    return learningBodySketchfabScriptPromise;
+  }
+
+  learningBodySketchfabScriptPromise = new Promise((resolve, reject) => {
+    const existing = document.querySelector(`script[src="${SKETCHFAB_VIEWER_SCRIPT_SRC}"]`);
+    if (existing) {
+      existing.addEventListener(
+        "load",
+        () => {
+          if (typeof window.Sketchfab === "function") {
+            resolve(window.Sketchfab);
+            return;
+          }
+          reject(new Error("sketchfab-global-missing"));
+        },
+        { once: true }
+      );
+      existing.addEventListener(
+        "error",
+        () => {
+          reject(new Error("sketchfab-script-load-failed"));
+        },
+        { once: true }
+      );
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = SKETCHFAB_VIEWER_SCRIPT_SRC;
+    script.async = true;
+    script.onload = () => {
+      if (typeof window.Sketchfab === "function") {
+        resolve(window.Sketchfab);
+        return;
+      }
+      reject(new Error("sketchfab-global-missing"));
+    };
+    script.onerror = () => {
+      reject(new Error("sketchfab-script-load-failed"));
+    };
+    document.head.appendChild(script);
+  }).catch((error) => {
+    learningBodySketchfabScriptPromise = null;
+    throw error;
+  });
+
+  return learningBodySketchfabScriptPromise;
+}
+
+function normalizeSketchfabNodeMap(rawValue) {
+  const list = [];
+  if (Array.isArray(rawValue)) {
+    for (const entry of rawValue) {
+      if (!entry || typeof entry !== "object") continue;
+      list.push(entry);
+    }
+    return list;
+  }
+  if (rawValue && typeof rawValue === "object") {
+    for (const value of Object.values(rawValue)) {
+      if (!value || typeof value !== "object") continue;
+      list.push(value);
+    }
+  }
+  return list;
+}
+
+function pickSketchfabNodePosition(matrixArray) {
+  const values = Array.isArray(matrixArray)
+    ? matrixArray
+    : matrixArray && typeof matrixArray === "object"
+      ? Object.values(matrixArray)
+      : null;
+  if (!Array.isArray(values) || values.length < 16) return null;
+  const x = Number(values[12]);
+  const y = Number(values[13]);
+  const z = Number(values[14]);
+  if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(z)) return null;
+  return [x, y, z];
+}
+
+function getSketchfabRegionKeywords(regionId) {
+  const region = getLearningBodyRegionById(regionId);
+  if (!region) return [];
+  const termKeywords = ANATOMY_TERM_ITEMS.filter((entry) => entry.regionId === region.id).flatMap(
+    (entry) => entry.keywords || []
+  );
+  return [...(region.keywords || []), ...termKeywords];
+}
+
+function findSketchfabNodeForRegion(regionId, nodes) {
+  if (!Array.isArray(nodes) || nodes.length === 0) return null;
+  const keywords = getSketchfabRegionKeywords(regionId);
+  if (keywords.length === 0) return null;
+  for (const node of nodes) {
+    const name = normalizeAnatomyTokenInput(node?.name || "");
+    if (!name) continue;
+    if (isAnatomyKeywordMatch(name, keywords)) {
+      return node;
+    }
+  }
+  return null;
+}
+
+async function createLearningBodySketchfabEngine(mountElement, onRegionSelect) {
+  const Sketchfab = await loadSketchfabViewerApi();
+  mountElement.innerHTML = "";
+  const iframe = document.createElement("iframe");
+  iframe.title = "Interaktives anatomisches 3D Koerpermodell";
+  iframe.allow = "autoplay; fullscreen; xr-spatial-tracking";
+  iframe.referrerPolicy = "origin";
+  iframe.style.width = "100%";
+  iframe.style.height = "100%";
+  iframe.style.border = "0";
+  mountElement.appendChild(iframe);
+
+  const api = await new Promise((resolve, reject) => {
+    const client = new Sketchfab(iframe);
+    client.init(SKETCHFAB_ANATOMY_MODEL_UID, {
+      autostart: 1,
+      preload: 1,
+      transparent: 1,
+      ui_infos: 0,
+      ui_hint: 0,
+      ui_annotations: 0,
+      ui_inspector: 0,
+      success(sketchfabApi) {
+        sketchfabApi.start();
+        sketchfabApi.addEventListener("viewerready", () => {
+          resolve(sketchfabApi);
+        });
+      },
+      error() {
+        reject(new Error("sketchfab-init-failed"));
+      }
+    });
+  });
+
+  const nodes = await new Promise((resolve, reject) => {
+    api.getNodeMap((error, nodeMap) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      const normalized = normalizeSketchfabNodeMap(nodeMap)
+        .map((entry) => ({
+          id: Number(entry?.instanceID ?? entry?.id),
+          name: String(entry?.name || ""),
+          raw: entry
+        }))
+        .filter((entry) => Number.isFinite(entry.id) && entry.name);
+      resolve(normalized);
+    });
+  });
+
+  const nodeById = new Map(nodes.map((entry) => [entry.id, entry]));
+
+  function focusNode(nodeId, duration = 1.1) {
+    const numericId = Number(nodeId);
+    if (!Number.isFinite(numericId)) return;
+    api.getMatrix(numericId, (matrixError, matrix) => {
+      if (matrixError) return;
+      const target = pickSketchfabNodePosition(matrix);
+      if (!target) return;
+      api.getCameraLookAt((cameraError, camera) => {
+        if (cameraError || !camera) return;
+        const position = Array.isArray(camera.position) ? camera.position : [0, 0, 2];
+        const currentTarget = Array.isArray(camera.target) ? camera.target : [0, 0, 0];
+        const vector = [
+          Number(position[0]) - Number(currentTarget[0]),
+          Number(position[1]) - Number(currentTarget[1]),
+          Number(position[2]) - Number(currentTarget[2])
+        ];
+        const length = Math.hypot(vector[0], vector[1], vector[2]) || 1.6;
+        const normalized = length > 0 ? vector.map((entry) => entry / length) : [0.3, 0.15, 0.95];
+        const distance = Math.max(0.85, Math.min(length, 2.4));
+        const nextPosition = [
+          target[0] + normalized[0] * distance,
+          target[1] + normalized[1] * distance,
+          target[2] + normalized[2] * distance
+        ];
+        api.setCameraLookAt(nextPosition, target, duration);
+      });
+    });
+  }
+
+  api.addEventListener("click", (event) => {
+    const modelNodeId = Number(event?.instanceID);
+    if (!Number.isFinite(modelNodeId)) return;
+    const node = nodeById.get(modelNodeId);
+    if (!node) return;
+    const region = resolveLearningBodyRegionFromNodeName(node.name);
+    if (!region) return;
+    if (typeof onRegionSelect === "function") {
+      onRegionSelect(region.id, {
+        modelNodeId,
+        modelNodeName: node.name
+      });
+    }
+  });
+
+  return {
+    start() {
+      if (typeof api.start === "function") {
+        api.start();
+      }
+    },
+    stop() {
+      if (typeof api.stop === "function") {
+        api.stop();
+      }
+    },
+    resize() {
+      // Sketchfab handles iframe resizing internally.
+    },
+    setActiveRegion(regionId, options = {}) {
+      const modelNodeId = Number.isFinite(Number(options.modelNodeId))
+        ? Number(options.modelNodeId)
+        : null;
+      if (modelNodeId !== null) {
+        focusNode(modelNodeId, options.animate === false ? 0 : 1.1);
+        return;
+      }
+      const match = findSketchfabNodeForRegion(regionId, nodes);
+      if (!match) return;
+      focusNode(match.id, options.animate === false ? 0 : 1.1);
+    },
+    destroy() {
+      try {
+        if (typeof api.stop === "function") {
+          api.stop();
+        }
+      } catch {
+        // ignore
+      }
+      mountElement.innerHTML = "";
+    }
+  };
 }
 
 function createLearningBodyModelEngine(THREE, OrbitControls, mountElement, onRegionSelect) {
