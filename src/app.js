@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260219f";
-const BUILD_UPDATED_AT = "2026-02-19 11:55 UTC";
+const APP_VERSION = "20260221a";
+const BUILD_UPDATED_AT = "2026-02-21 14:10 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -33,12 +33,14 @@ const SUPABASE_PROMPT_PROFILES_TABLE = "prompt_profiles";
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
 const VOICE_CASE_SAMPLE_PATH = "data/voice_case_samples_de.json";
+const LEARNING_ANAMNESE_PATH = "data/learning_anamnese_de.json";
 const VOICE_CASE_DEFAULT = "default";
 const VOICE_CASE_CUSTOM = "custom";
 const VOICE_CASE_LIBRARY_PREFIX = "lib:";
 const VOICE_MODE_QUESTION = "question";
 const VOICE_MODE_DIAGNOSIS = "diagnosis";
 const VOICE_MODE_DOCTOR_CONVERSATION = "doctor_conversation";
+const LEARNING_TAB_ANAMNESE = "anamnese";
 const VOICE_SAMPLE_VIEW_PATIENT = "sample_patient";
 const VOICE_SAMPLE_VIEW_LETTER = "sample_letter";
 const VOICE_SAMPLE_VIEW_DOCTOR = "sample_doctor";
@@ -442,7 +444,10 @@ const state = {
   voiceCaseLibraryLoaded: false,
   voiceCaseResolutionsLoaded: false,
   voiceCaseSamplesLoaded: false,
-  voiceCaseSelection: VOICE_CASE_DEFAULT
+  voiceCaseSelection: VOICE_CASE_DEFAULT,
+  learningTab: LEARNING_TAB_ANAMNESE,
+  learningAnamnese: null,
+  learningActiveCategoryId: ""
 };
 
 const refs = {
@@ -512,6 +517,7 @@ const refs = {
   voiceSamplePatientBtn: document.getElementById("voiceSamplePatientBtn"),
   voiceSampleLetterBtn: document.getElementById("voiceSampleLetterBtn"),
   voiceSampleDoctorBtn: document.getElementById("voiceSampleDoctorBtn"),
+  openLearningBtn: document.getElementById("openLearningBtn"),
   voiceSamplePanel: document.getElementById("voiceSamplePanel"),
   voiceSampleTitle: document.getElementById("voiceSampleTitle"),
   voiceSampleMeta: document.getElementById("voiceSampleMeta"),
@@ -566,6 +572,17 @@ const refs = {
   levelTitle: document.getElementById("levelTitle"),
   levelProgressText: document.getElementById("levelProgressText"),
   levelFill: document.getElementById("levelFill"),
+  learningPanel: document.getElementById("learningPanel"),
+  learningTabAnamneseBtn: document.getElementById("learningTabAnamneseBtn"),
+  learningAnamneseWrap: document.getElementById("learningAnamneseWrap"),
+  learningAnamneseCategoryList: document.getElementById("learningAnamneseCategoryList"),
+  learningAnamneseTitle: document.getElementById("learningAnamneseTitle"),
+  learningAnamneseMeta: document.getElementById("learningAnamneseMeta"),
+  learningAnamneseSummary: document.getElementById("learningAnamneseSummary"),
+  learningAnamneseText: document.getElementById("learningAnamneseText"),
+  learningAnamneseStatus: document.getElementById("learningAnamneseStatus"),
+  learningAnamneseQuestionGroups: document.getElementById("learningAnamneseQuestionGroups"),
+  learningAnamneseSources: document.getElementById("learningAnamneseSources"),
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
   queueInfo: document.getElementById("queueInfo"),
@@ -675,6 +692,10 @@ function wireEvents() {
   refs.voiceSampleDoctorBtn?.addEventListener("click", () => {
     handleVoiceSampleToggle(VOICE_SAMPLE_VIEW_DOCTOR);
   });
+  refs.openLearningBtn?.addEventListener("click", handleOpenLearningPanel);
+  refs.learningTabAnamneseBtn?.addEventListener("click", () => {
+    setLearningTab(LEARNING_TAB_ANAMNESE);
+  });
   refs.voicePromptConfigSaveBtn?.addEventListener("click", handlePromptConfigSave);
   refs.voicePromptConfigResetBtn?.addEventListener("click", handlePromptConfigReset);
   refs.voicePromptProposalSubmitBtn?.addEventListener("click", () => {
@@ -740,6 +761,7 @@ async function init() {
   initAuthUi();
   initAuthPortrait();
   initVoiceUi();
+  await loadLearningAnamneseContent();
   try {
     const url = new URL(`../data/cards.json?v=${APP_VERSION}`, import.meta.url);
     const response = await fetch(url, { cache: "no-store" });
@@ -3477,6 +3499,236 @@ function startQuickPractice() {
   state.selectedFolder = "regular";
   renderFolderFilters();
   enterImmersiveMode();
+}
+
+function handleOpenLearningPanel() {
+  setLearningTab(LEARNING_TAB_ANAMNESE);
+  refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function setLearningTab() {
+  state.learningTab = LEARNING_TAB_ANAMNESE;
+  if (refs.learningTabAnamneseBtn) {
+    const active = state.learningTab === LEARNING_TAB_ANAMNESE;
+    refs.learningTabAnamneseBtn.classList.toggle("active", active);
+    refs.learningTabAnamneseBtn.setAttribute("aria-pressed", active ? "true" : "false");
+  }
+  refs.learningAnamneseWrap?.classList.toggle("hidden", state.learningTab !== LEARNING_TAB_ANAMNESE);
+}
+
+async function loadLearningAnamneseContent() {
+  if (!refs.learningPanel) {
+    return;
+  }
+
+  renderLearningPanelLoading("Lerninhalte werden geladen ...");
+  try {
+    const url = new URL(`../${LEARNING_ANAMNESE_PATH}?v=${APP_VERSION}`, import.meta.url);
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("learning-fetch-failed");
+    }
+    const payload = await response.json();
+    const normalized = normalizeLearningAnamnesePayload(payload);
+    state.learningAnamnese = normalized;
+    const firstCategoryId = normalized.categories[0]?.id || "";
+    const hasActiveCategory = normalized.categories.some(
+      (entry) => entry.id === state.learningActiveCategoryId
+    );
+    state.learningActiveCategoryId = hasActiveCategory ? state.learningActiveCategoryId : firstCategoryId;
+    renderLearningPanel();
+  } catch (error) {
+    console.error("Lernbereich konnte nicht geladen werden", error);
+    state.learningAnamnese = null;
+    state.learningActiveCategoryId = "";
+    renderLearningPanelLoading("Lerninhalte konnten nicht geladen werden.");
+  }
+}
+
+function normalizeLearningAnamnesePayload(rawValue) {
+  const source = rawValue && typeof rawValue === "object" ? rawValue : {};
+  const categoriesRaw = Array.isArray(source.categories) ? source.categories : [];
+  const categories = categoriesRaw
+    .map((item) => normalizeLearningCategory(item))
+    .filter((item) => Boolean(item));
+  return {
+    title: safeLine(source.title || "Lernbereich", 120),
+    subtitle: safeLine(source.subtitle || "Anamnese", 180),
+    scopeNote: safeParagraph(source.scope_note || "", 500),
+    categories,
+    references: normalizeLearningReferenceList(source.references)
+  };
+}
+
+function normalizeLearningReferenceList(rawValue) {
+  if (!Array.isArray(rawValue)) return [];
+  const out = [];
+  for (const entry of rawValue) {
+    if (!entry || typeof entry !== "object") continue;
+    const label = safeLine(entry.label || "", 180);
+    const url = safeLine(entry.url || "", 500);
+    if (!label) continue;
+    out.push({ label, url });
+  }
+  return out;
+}
+
+function normalizeLearningCategory(rawValue) {
+  if (!rawValue || typeof rawValue !== "object") return null;
+  const id = safeLine(rawValue.id || "", 80);
+  const title = safeLine(rawValue.title || "", 160);
+  if (!id || !title) return null;
+
+  const learningText = Array.isArray(rawValue.learning_text)
+    ? rawValue.learning_text
+        .map((item) => safeParagraph(item, 3000))
+        .filter((item) => Boolean(item))
+    : [];
+  const questionGroups = Array.isArray(rawValue.question_groups)
+    ? rawValue.question_groups
+        .map((group) => normalizeLearningQuestionGroup(group))
+        .filter((group) => Boolean(group))
+    : [];
+  const questionCount = questionGroups.reduce((sum, group) => sum + group.questions.length, 0);
+  const sourceTags = Array.isArray(rawValue.source_tags)
+    ? rawValue.source_tags.map((item) => safeLine(item, 220)).filter((item) => Boolean(item))
+    : [];
+
+  return {
+    id,
+    title,
+    focus: safeLine(rawValue.focus || "", 240),
+    summary: safeParagraph(rawValue.summary || "", 600),
+    learningText,
+    questionGroups,
+    questionCount,
+    sourceTags
+  };
+}
+
+function normalizeLearningQuestionGroup(rawValue) {
+  if (!rawValue || typeof rawValue !== "object") return null;
+  const title = safeLine(rawValue.title || "", 180);
+  if (!title) return null;
+  const questions = Array.isArray(rawValue.questions)
+    ? rawValue.questions.map((item) => safeParagraph(item, 320)).filter((item) => Boolean(item))
+    : [];
+  return { title, questions };
+}
+
+function renderLearningPanelLoading(message) {
+  if (refs.learningAnamneseCategoryList) refs.learningAnamneseCategoryList.innerHTML = "";
+  if (refs.learningAnamneseTitle) refs.learningAnamneseTitle.textContent = "Anamnese";
+  if (refs.learningAnamneseMeta) refs.learningAnamneseMeta.textContent = "";
+  if (refs.learningAnamneseSummary) refs.learningAnamneseSummary.textContent = "";
+  if (refs.learningAnamneseText) refs.learningAnamneseText.innerHTML = "";
+  if (refs.learningAnamneseQuestionGroups) refs.learningAnamneseQuestionGroups.innerHTML = "";
+  if (refs.learningAnamneseSources) refs.learningAnamneseSources.innerHTML = "";
+  if (refs.learningAnamneseStatus) refs.learningAnamneseStatus.textContent = safeLine(message, 220);
+}
+
+function renderLearningPanel() {
+  const bundle = state.learningAnamnese;
+  if (!bundle || !Array.isArray(bundle.categories) || bundle.categories.length === 0) {
+    renderLearningPanelLoading("Noch keine Lerninhalte vorhanden.");
+    return;
+  }
+
+  setLearningTab(LEARNING_TAB_ANAMNESE);
+  renderLearningCategoryButtons(bundle.categories);
+  renderLearningCategoryContent(bundle);
+}
+
+function renderLearningCategoryButtons(categories) {
+  if (!refs.learningAnamneseCategoryList) return;
+  refs.learningAnamneseCategoryList.innerHTML = "";
+  for (const category of categories) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `learning-category-btn ${state.learningActiveCategoryId === category.id ? "active" : ""}`;
+    const title = document.createElement("span");
+    title.className = "learning-category-title";
+    title.textContent = category.title;
+    const count = document.createElement("span");
+    count.className = "learning-category-count";
+    count.textContent = `${category.questionCount} Fragen`;
+    button.appendChild(title);
+    button.appendChild(count);
+    button.addEventListener("click", () => {
+      state.learningActiveCategoryId = category.id;
+      renderLearningPanel();
+    });
+    refs.learningAnamneseCategoryList.appendChild(button);
+  }
+}
+
+function renderLearningCategoryContent(bundle) {
+  const categories = Array.isArray(bundle?.categories) ? bundle.categories : [];
+  const activeCategory =
+    categories.find((entry) => entry.id === state.learningActiveCategoryId) || categories[0] || null;
+  if (!activeCategory) {
+    renderLearningPanelLoading("Kategorie konnte nicht geladen werden.");
+    return;
+  }
+  if (activeCategory.id !== state.learningActiveCategoryId) {
+    state.learningActiveCategoryId = activeCategory.id;
+  }
+
+  if (refs.learningAnamneseTitle) refs.learningAnamneseTitle.textContent = activeCategory.title;
+  if (refs.learningAnamneseMeta) {
+    refs.learningAnamneseMeta.textContent = [activeCategory.focus, `${activeCategory.questionCount} Fragen`]
+      .filter((item) => Boolean(item))
+      .join(" | ");
+  }
+  if (refs.learningAnamneseSummary) refs.learningAnamneseSummary.textContent = activeCategory.summary;
+  if (refs.learningAnamneseStatus) refs.learningAnamneseStatus.textContent = "";
+
+  if (refs.learningAnamneseText) {
+    refs.learningAnamneseText.innerHTML = "";
+    for (const paragraph of activeCategory.learningText) {
+      const p = document.createElement("p");
+      p.textContent = paragraph;
+      refs.learningAnamneseText.appendChild(p);
+    }
+  }
+
+  if (refs.learningAnamneseQuestionGroups) {
+    refs.learningAnamneseQuestionGroups.innerHTML = "";
+    for (const group of activeCategory.questionGroups) {
+      const block = document.createElement("article");
+      block.className = "learning-question-group";
+      const heading = document.createElement("h6");
+      heading.textContent = group.title;
+      block.appendChild(heading);
+      const list = document.createElement("ol");
+      for (const question of group.questions) {
+        const li = document.createElement("li");
+        li.textContent = question;
+        list.appendChild(li);
+      }
+      block.appendChild(list);
+      refs.learningAnamneseQuestionGroups.appendChild(block);
+    }
+  }
+
+  if (refs.learningAnamneseSources) {
+    refs.learningAnamneseSources.innerHTML = "";
+    if (activeCategory.sourceTags.length > 0) {
+      const heading = document.createElement("p");
+      heading.className = "learning-sources-title";
+      heading.textContent = "Leitlinienbasis";
+      refs.learningAnamneseSources.appendChild(heading);
+
+      const list = document.createElement("ul");
+      list.className = "learning-sources-list";
+      for (const sourceTag of activeCategory.sourceTags) {
+        const li = document.createElement("li");
+        li.textContent = sourceTag;
+        list.appendChild(li);
+      }
+      refs.learningAnamneseSources.appendChild(list);
+    }
+  }
 }
 
 function flattenCards(deck) {

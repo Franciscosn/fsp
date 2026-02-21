@@ -1140,6 +1140,219 @@ body.auth-only .edge-deco {
   font-size: 0.9rem;
 }
 
+.voice-learning-btn {
+  border-color: rgba(65, 92, 123, 0.45);
+}
+
+.learning-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.learning-head {
+  display: grid;
+  gap: 6px;
+}
+
+.learning-lead {
+  margin: 0;
+  color: #6c3f4b;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.learning-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.learning-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) 1fr;
+  gap: 12px;
+}
+
+.learning-nav {
+  border: 1px solid rgba(248, 73, 102, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 11px;
+  display: grid;
+  gap: 10px;
+  align-self: start;
+}
+
+.learning-nav h4 {
+  margin: 0;
+  color: #8f3650;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.learning-category-list {
+  display: grid;
+  gap: 8px;
+  max-height: 620px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.learning-category-btn {
+  border: 1px solid rgba(248, 73, 102, 0.28);
+  border-radius: 12px;
+  background: #fff;
+  color: #6d2636;
+  font: inherit;
+  text-align: left;
+  padding: 9px 10px;
+  display: grid;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.learning-category-btn:hover {
+  transform: translateY(-1px);
+}
+
+.learning-category-btn.active {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(130deg, #c23857, #eb6784);
+}
+
+.learning-category-title {
+  font-weight: 900;
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+.learning-category-count {
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+.learning-content {
+  border: 1px solid rgba(248, 73, 102, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.learning-content h4 {
+  margin: 0;
+  color: #8f2f49;
+  font-size: 1.04rem;
+}
+
+.learning-meta {
+  margin: 0;
+  color: #81525e;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.learning-summary {
+  margin: 0;
+  color: #5d2736;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.learning-prose {
+  display: grid;
+  gap: 10px;
+}
+
+.learning-prose p {
+  margin: 0;
+  color: #5d2736;
+  font-size: 0.95rem;
+  line-height: 1.58;
+}
+
+.learning-question-head {
+  display: grid;
+  gap: 4px;
+}
+
+.learning-question-head h5 {
+  margin: 0;
+  color: #8f3650;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.learning-status {
+  margin: 0;
+  color: #81525e;
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.learning-question-groups {
+  display: grid;
+  gap: 10px;
+}
+
+.learning-question-group {
+  border: 1px solid rgba(248, 73, 102, 0.17);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.learning-question-group h6 {
+  margin: 0;
+  color: #8f3650;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.learning-question-group ol {
+  margin: 0;
+  padding-left: 18px;
+  color: #5d2736;
+  font-size: 0.92rem;
+  line-height: 1.44;
+  display: grid;
+  gap: 5px;
+}
+
+.learning-sources {
+  border-top: 1px dashed rgba(248, 73, 102, 0.26);
+  padding-top: 8px;
+  display: grid;
+  gap: 6px;
+}
+
+.learning-sources-title {
+  margin: 0;
+  color: #81525e;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.learning-sources-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #70414d;
+  font-size: 0.84rem;
+  line-height: 1.42;
+  display: grid;
+  gap: 4px;
+}
+
 .dedication-copy {
   display: grid;
   gap: 8px;
@@ -1879,6 +2092,7 @@ h3 {
 body.immersive #levelPanel,
 body.immersive .dedication,
 body.immersive .voice-panel,
+body.immersive #learningPanel,
 body.immersive #selectionPanel,
 body.immersive .feedback-panel,
 body.immersive .session-panel {
@@ -1965,6 +2179,14 @@ body.immersive .stats-fab {
   .control-grid,
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .learning-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .learning-category-list {
+    max-height: none;
   }
 
   .level-panel {
@@ -2133,6 +2355,18 @@ body.immersive .stats-fab {
   .selection-panel {
     display: flex;
     flex-direction: column;
+  }
+
+  .learning-content {
+    padding: 11px;
+  }
+
+  .learning-prose p {
+    font-size: 0.92rem;
+  }
+
+  .learning-question-group ol {
+    font-size: 0.9rem;
   }
 
   .selection-footer {

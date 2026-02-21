@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260217k" />
+    <link rel="stylesheet" href="src/styles.css?v=20260221a" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -185,6 +185,9 @@
           </button>
           <button id="voiceSampleDoctorBtn" class="soft-btn voice-sample-doctor-btn" type="button">
             Muster Arzt-Arzt Gespraech
+          </button>
+          <button id="openLearningBtn" class="soft-btn voice-learning-btn" type="button">
+            Lernbereich
           </button>
         </div>
         <article id="voiceDoctorLetterPanel" class="voice-doctor-letter hidden">
@@ -467,7 +470,44 @@
         </div>
       </section>
 
-      <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 4">
+      <section id="learningPanel" class="panel learning-panel reveal" style="--i: 4">
+        <div class="learning-head">
+          <h3>Lernbereich</h3>
+          <p class="learning-lead">
+            Strukturierter Lernmodus ohne Karteikarten. Schwerpunkt: Anamnese fuer die FSP Berlin.
+          </p>
+        </div>
+        <div class="learning-tabs">
+          <button
+            id="learningTabAnamneseBtn"
+            class="chip active"
+            type="button"
+            aria-pressed="true"
+          >
+            Anamnese
+          </button>
+        </div>
+        <div id="learningAnamneseWrap" class="learning-layout">
+          <article class="learning-nav">
+            <h4>Anamnese-Kategorien</h4>
+            <div id="learningAnamneseCategoryList" class="learning-category-list"></div>
+          </article>
+          <article class="learning-content">
+            <h4 id="learningAnamneseTitle">Anamnese</h4>
+            <p id="learningAnamneseMeta" class="learning-meta"></p>
+            <p id="learningAnamneseSummary" class="learning-summary"></p>
+            <div id="learningAnamneseText" class="learning-prose"></div>
+            <div class="learning-question-head">
+              <h5>Fragen nach Untergebieten</h5>
+              <p id="learningAnamneseStatus" class="learning-status"></p>
+            </div>
+            <div id="learningAnamneseQuestionGroups" class="learning-question-groups"></div>
+            <div id="learningAnamneseSources" class="learning-sources"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 5">
         <div class="control-grid">
           <article class="selection-card">
             <h3>Kategorien</h3>
@@ -490,7 +530,7 @@
         </div>
       </section>
 
-      <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 5">
+      <section id="quizPanel" class="panel reveal quiz-panel hidden" style="--i: 6">
         <div id="sessionXpStrip" class="session-xp-strip" role="progressbar" aria-label="Session XP" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <div class="session-xp-track">
             <div id="sessionXpFill" class="session-xp-fill"></div>
@@ -536,7 +576,7 @@
         </article>
       </section>
 
-      <footer class="panel feedback-panel reveal" style="--i: 6">
+      <footer class="panel feedback-panel reveal" style="--i: 7">
         <div class="footer-actions">
           <a
             class="soft-btn feedback-link"
@@ -602,6 +642,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260219f"></script>
+    <script type="module" src="src/app.js?v=20260221a"></script>
   </body>
 </html>
