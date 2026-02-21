@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "6";
-const BUILD_UPDATED_AT = "2026-02-21 14:21 CET";
+const APP_VERSION = "7";
+const BUILD_UPDATED_AT = "2026-02-21 14:40 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -77,6 +77,27 @@ const BODY_ATLAS_COLORS = Object.freeze([
   "#64b48f",
   "#739ad8"
 ]);
+const BODY_ATLAS_MAP_IMAGE_SRC =
+  "https://smart.servier.com/wp-content/uploads/2020/05/Loc_Bon_skeleton-face.png";
+const BODY_ATLAS_REGION_IMAGE_BY_ID = Object.freeze({
+  kopf_gehirn: "https://smart.servier.com/wp-content/uploads/2020/05/brain-overview-smart.png",
+  gesicht_hno: "https://smart.servier.com/wp-content/uploads/2020/05/nasal-cavity.png",
+  hals: "https://smart.servier.com/wp-content/uploads/2020/05/larynx.png",
+  thorax: "https://smart.servier.com/wp-content/uploads/2020/05/lungs-11.png",
+  herz_lunge: "https://smart.servier.com/wp-content/uploads/2020/05/heart.png",
+  oberbauch: "https://smart.servier.com/wp-content/uploads/2020/05/complete-digestive-apparatus.png",
+  unterbauch_darm:
+    "https://smart.servier.com/wp-content/uploads/2020/05/complete-digestive-apparatus.png",
+  becken_uro: "https://smart.servier.com/wp-content/uploads/2020/05/urinary-tract.png",
+  ruecken_wirbelsaeule:
+    "https://smart.servier.com/wp-content/uploads/2020/05/overview-vertebral-column.png",
+  linker_oberarm: "https://smart.servier.com/wp-content/uploads/2020/05/smart-joint-elbow.png",
+  rechter_oberarm: "https://smart.servier.com/wp-content/uploads/2020/05/smart-joint-elbow.png",
+  linker_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2020/05/hand.png",
+  rechter_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2020/05/hand.png",
+  linkes_bein: "https://smart.servier.com/wp-content/uploads/2020/05/femur.png",
+  rechtes_bein: "https://smart.servier.com/wp-content/uploads/2020/05/knee-frontal-view.png"
+});
 const BODY_ATLAS_REGIONS = Object.freeze([
   {
     id: "kopf_gehirn",
@@ -4589,114 +4610,24 @@ function getBodyAtlasShapeCenter(shape) {
   return { x: 160, y: 160 };
 }
 
-function getBodyAtlasZoomShapes(zoomType) {
-  switch (zoomType) {
-    case "head":
-      return [
-        { type: "ellipse", cx: 160, cy: 130, rx: 95, ry: 108 },
-        { type: "ellipse", cx: 160, cy: 88, rx: 70, ry: 65 }
-      ];
-    case "face":
-      return [
-        { type: "ellipse", cx: 160, cy: 122, rx: 84, ry: 110 },
-        { type: "ellipse", cx: 130, cy: 108, rx: 20, ry: 14 },
-        { type: "ellipse", cx: 190, cy: 108, rx: 20, ry: 14 }
-      ];
-    case "neck":
-      return [
-        { type: "rect", x: 120, y: 44, width: 80, height: 196, rx: 34, ry: 34 },
-        { type: "ellipse", cx: 160, cy: 60, rx: 28, ry: 18 }
-      ];
-    case "chest":
-      return [{ type: "rect", x: 92, y: 24, width: 136, height: 226, rx: 58, ry: 58 }];
-    case "cardio":
-      return [
-        { type: "ellipse", cx: 118, cy: 132, rx: 52, ry: 82 },
-        { type: "ellipse", cx: 202, cy: 132, rx: 52, ry: 82 },
-        { type: "path", d: "M160 206 C117 171 98 149 98 123 C98 95 122 80 144 95 C153 102 156 109 160 115 C164 109 167 102 176 95 C198 80 222 95 222 123 C222 149 203 171 160 206 Z" }
-      ];
-    case "upper_abdomen":
-      return [{ type: "rect", x: 88, y: 38, width: 144, height: 188, rx: 48, ry: 48 }];
-    case "lower_abdomen":
-      return [{ type: "rect", x: 90, y: 52, width: 140, height: 180, rx: 44, ry: 44 }];
-    case "pelvis":
-      return [
-        { type: "path", d: "M80 150 C80 92 114 50 160 50 C206 50 240 92 240 150 C240 202 203 230 160 230 C117 230 80 202 80 150 Z" },
-        { type: "rect", x: 132, y: 204, width: 56, height: 26, rx: 10, ry: 10 }
-      ];
-    case "spine":
-      return [
-        { type: "rect", x: 146, y: 24, width: 28, height: 220, rx: 14, ry: 14 },
-        { type: "ellipse", cx: 160, cy: 72, rx: 28, ry: 24 },
-        { type: "ellipse", cx: 160, cy: 196, rx: 38, ry: 32 }
-      ];
-    case "upper_arm_left":
-      return [
-        {
-          type: "rect",
-          x: 120,
-          y: 30,
-          width: 62,
-          height: 212,
-          rx: 30,
-          ry: 30,
-          transform: "rotate(12 151 136)"
-        }
-      ];
-    case "upper_arm_right":
-      return [
-        {
-          type: "rect",
-          x: 138,
-          y: 30,
-          width: 62,
-          height: 212,
-          rx: 30,
-          ry: 30,
-          transform: "rotate(-12 169 136)"
-        }
-      ];
-    case "forearm_left":
-      return [
-        {
-          type: "rect",
-          x: 110,
-          y: 24,
-          width: 64,
-          height: 188,
-          rx: 28,
-          ry: 28,
-          transform: "rotate(10 142 120)"
-        },
-        { type: "ellipse", cx: 173, cy: 214, rx: 38, ry: 30 }
-      ];
-    case "forearm_right":
-      return [
-        {
-          type: "rect",
-          x: 146,
-          y: 24,
-          width: 64,
-          height: 188,
-          rx: 28,
-          ry: 28,
-          transform: "rotate(-10 178 120)"
-        },
-        { type: "ellipse", cx: 147, cy: 214, rx: 38, ry: 30 }
-      ];
-    case "leg_left":
-      return [
-        { type: "rect", x: 124, y: 20, width: 62, height: 220, rx: 30, ry: 30 },
-        { type: "ellipse", cx: 168, cy: 236, rx: 44, ry: 18 }
-      ];
-    case "leg_right":
-      return [
-        { type: "rect", x: 134, y: 20, width: 62, height: 220, rx: 30, ry: 30 },
-        { type: "ellipse", cx: 150, cy: 236, rx: 44, ry: 18 }
-      ];
-    default:
-      return [{ type: "rect", x: 90, y: 40, width: 140, height: 180, rx: 30, ry: 30 }];
-  }
+function getLearningBodyRegionImageSrc(regionId) {
+  const key = String(regionId || "");
+  return BODY_ATLAS_REGION_IMAGE_BY_ID[key] || BODY_ATLAS_MAP_IMAGE_SRC;
+}
+
+function toBodyAtlasPercent(value, max) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return 50;
+  if (numeric >= 0 && numeric <= 100) return numeric;
+  if (max <= 0) return 50;
+  return Math.min(98, Math.max(2, (numeric / max) * 100));
+}
+
+function getBodyAtlasHotspotPosition(hotspot) {
+  return {
+    left: toBodyAtlasPercent(hotspot?.x, 320),
+    top: toBodyAtlasPercent(hotspot?.y, 260)
+  };
 }
 
 function renderLearningBodyView() {
@@ -4723,14 +4654,17 @@ function renderLearningBodyMap() {
     "aria-label": "2D Koerperkarte mit 15 Regionen"
   });
 
-  const base = createBodyAtlasSvgNode("g", { class: "learning-body-map-base" });
-  appendBodyAtlasShape(base, { type: "ellipse", cx: 160, cy: 58, rx: 31, ry: 31 }, "learning-body-map-base-shape");
-  appendBodyAtlasShape(base, { type: "rect", x: 144, y: 96, width: 32, height: 40, rx: 12, ry: 12 }, "learning-body-map-base-shape");
-  appendBodyAtlasShape(base, { type: "rect", x: 122, y: 142, width: 76, height: 240, rx: 28, ry: 28 }, "learning-body-map-base-shape");
-  appendBodyAtlasShape(base, { type: "rect", x: 88, y: 156, width: 28, height: 235, rx: 12, ry: 12, transform: "rotate(12 102 274)" }, "learning-body-map-base-shape");
-  appendBodyAtlasShape(base, { type: "rect", x: 204, y: 156, width: 28, height: 235, rx: 12, ry: 12, transform: "rotate(-12 218 274)" }, "learning-body-map-base-shape");
-  appendBodyAtlasShape(base, { type: "rect", x: 130, y: 444, width: 62, height: 165, rx: 18, ry: 18 }, "learning-body-map-base-shape");
-  svg.appendChild(base);
+  const mapImage = createBodyAtlasSvgNode("image", {
+    x: 0,
+    y: 0,
+    width: 320,
+    height: 640,
+    href: BODY_ATLAS_MAP_IMAGE_SRC,
+    preserveAspectRatio: "xMidYMid meet",
+    class: "learning-body-map-image"
+  });
+  mapImage.setAttributeNS("http://www.w3.org/1999/xlink", "href", BODY_ATLAS_MAP_IMAGE_SRC);
+  svg.appendChild(mapImage);
 
   BODY_ATLAS_REGIONS.forEach((region, idx) => {
     const group = createBodyAtlasSvgNode("g", {
@@ -4834,51 +4768,52 @@ function selectLearningBodyRegion(regionId, options = {}) {
 function renderLearningBodyZoom(region) {
   if (refs.learningBodyZoomCanvas) {
     refs.learningBodyZoomCanvas.innerHTML = "";
-    const svg = createBodyAtlasSvgNode("svg", {
-      viewBox: "0 0 320 260",
-      class: "learning-body-zoom-svg",
-      role: "img",
-      "aria-label": `${region.label} - Detailansicht`
-    });
-    const shapeLayer = createBodyAtlasSvgNode("g", { class: "learning-body-zoom-shapes" });
-    const shapes = getBodyAtlasZoomShapes(region.zoomType);
-    for (const shape of shapes) {
-      appendBodyAtlasShape(shapeLayer, shape, "learning-body-zoom-shape");
-    }
-    svg.appendChild(shapeLayer);
+
+    const stage = document.createElement("div");
+    stage.className = "learning-body-zoom-stage";
+
+    const image = document.createElement("img");
+    image.className = "learning-body-zoom-image";
+    image.src = getLearningBodyRegionImageSrc(region.id);
+    image.alt = `${region.label} - anatomische Skizze (Servier Medical Art)`;
+    image.loading = "lazy";
+    image.decoding = "async";
+    stage.appendChild(image);
+
+    const hotspotLayer = document.createElement("div");
+    hotspotLayer.className = "learning-body-hotspot-layer";
 
     region.hotspots.forEach((hotspot, index) => {
-      const group = createBodyAtlasSvgNode("g", {
-        class: "learning-body-hotspot",
-        "data-hotspot-index": String(index)
-      });
-      const circle = createBodyAtlasSvgNode("circle", {
-        cx: hotspot.x,
-        cy: hotspot.y,
-        r: 13,
-        class: "learning-body-hotspot-dot"
-      });
-      const text = createBodyAtlasSvgNode("text", {
-        x: hotspot.x,
-        y: hotspot.y + 4,
-        class: "learning-body-hotspot-number"
-      });
-      text.textContent = String(index + 1);
-      const title = createBodyAtlasSvgNode("title");
-      title.textContent = `${index + 1}. ${hotspot.fach} / ${hotspot.patient}`;
-      group.appendChild(circle);
-      group.appendChild(text);
-      group.appendChild(title);
-      group.addEventListener("mouseenter", () => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "learning-body-hotspot";
+      button.dataset.hotspotIndex = String(index);
+      button.title = `${index + 1}. ${hotspot.fach} / ${hotspot.patient}`;
+      button.setAttribute("aria-label", button.title);
+
+      const position = getBodyAtlasHotspotPosition(hotspot);
+      button.style.left = `${position.left}%`;
+      button.style.top = `${position.top}%`;
+
+      const dot = document.createElement("span");
+      dot.className = "learning-body-hotspot-dot";
+      const number = document.createElement("span");
+      number.className = "learning-body-hotspot-number";
+      number.textContent = String(index + 1);
+      dot.appendChild(number);
+      button.appendChild(dot);
+
+      button.addEventListener("mouseenter", () => {
         setLearningBodyHotspot(region, index, { silent: true });
       });
-      group.addEventListener("click", () => {
+      button.addEventListener("click", () => {
         setLearningBodyHotspot(region, index);
       });
-      svg.appendChild(group);
+      hotspotLayer.appendChild(button);
     });
 
-    refs.learningBodyZoomCanvas.appendChild(svg);
+    stage.appendChild(hotspotLayer);
+    refs.learningBodyZoomCanvas.appendChild(stage);
   }
 
   if (refs.learningBodyRegionBullets) {
