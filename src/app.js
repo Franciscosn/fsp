@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20260221a";
-const BUILD_UPDATED_AT = "2026-02-21 14:10 UTC";
+const APP_VERSION = "20260221b";
+const BUILD_UPDATED_AT = "2026-02-21 14:48 UTC";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -40,7 +40,12 @@ const VOICE_CASE_LIBRARY_PREFIX = "lib:";
 const VOICE_MODE_QUESTION = "question";
 const VOICE_MODE_DIAGNOSIS = "diagnosis";
 const VOICE_MODE_DOCTOR_CONVERSATION = "doctor_conversation";
-const LEARNING_TAB_ANAMNESE = "anamnese";
+const LEARNING_VIEW_ROOT = "root";
+const LEARNING_VIEW_SUBCATEGORIES = "subcategories";
+const LEARNING_VIEW_READING = "reading";
+const LEARNING_ROOT_ITEMS = Object.freeze([
+  { id: "anamnese", label: "Anamnese" }
+]);
 const VOICE_SAMPLE_VIEW_PATIENT = "sample_patient";
 const VOICE_SAMPLE_VIEW_LETTER = "sample_letter";
 const VOICE_SAMPLE_VIEW_DOCTOR = "sample_doctor";
@@ -445,7 +450,8 @@ const state = {
   voiceCaseResolutionsLoaded: false,
   voiceCaseSamplesLoaded: false,
   voiceCaseSelection: VOICE_CASE_DEFAULT,
-  learningTab: LEARNING_TAB_ANAMNESE,
+  learningView: LEARNING_VIEW_ROOT,
+  learningRootId: "anamnese",
   learningAnamnese: null,
   learningActiveCategoryId: ""
 };
@@ -573,16 +579,20 @@ const refs = {
   levelProgressText: document.getElementById("levelProgressText"),
   levelFill: document.getElementById("levelFill"),
   learningPanel: document.getElementById("learningPanel"),
-  learningTabAnamneseBtn: document.getElementById("learningTabAnamneseBtn"),
-  learningAnamneseWrap: document.getElementById("learningAnamneseWrap"),
-  learningAnamneseCategoryList: document.getElementById("learningAnamneseCategoryList"),
-  learningAnamneseTitle: document.getElementById("learningAnamneseTitle"),
-  learningAnamneseMeta: document.getElementById("learningAnamneseMeta"),
-  learningAnamneseSummary: document.getElementById("learningAnamneseSummary"),
-  learningAnamneseText: document.getElementById("learningAnamneseText"),
-  learningAnamneseStatus: document.getElementById("learningAnamneseStatus"),
-  learningAnamneseQuestionGroups: document.getElementById("learningAnamneseQuestionGroups"),
-  learningAnamneseSources: document.getElementById("learningAnamneseSources"),
+  learningRootView: document.getElementById("learningRootView"),
+  learningRootList: document.getElementById("learningRootList"),
+  learningSubcategoryView: document.getElementById("learningSubcategoryView"),
+  learningSubcategoryTitle: document.getElementById("learningSubcategoryTitle"),
+  learningSubcategoryList: document.getElementById("learningSubcategoryList"),
+  learningReadingView: document.getElementById("learningReadingView"),
+  learningBackBtn: document.getElementById("learningBackBtn"),
+  learningBackAvatar: document.getElementById("learningBackAvatar"),
+  learningReadingTitle: document.getElementById("learningReadingTitle"),
+  learningReadingMeta: document.getElementById("learningReadingMeta"),
+  learningReadingStatus: document.getElementById("learningReadingStatus"),
+  learningReadingText: document.getElementById("learningReadingText"),
+  learningReadingQuestionGroups: document.getElementById("learningReadingQuestionGroups"),
+  learningReadingSources: document.getElementById("learningReadingSources"),
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
   queueInfo: document.getElementById("queueInfo"),
@@ -693,9 +703,7 @@ function wireEvents() {
     handleVoiceSampleToggle(VOICE_SAMPLE_VIEW_DOCTOR);
   });
   refs.openLearningBtn?.addEventListener("click", handleOpenLearningPanel);
-  refs.learningTabAnamneseBtn?.addEventListener("click", () => {
-    setLearningTab(LEARNING_TAB_ANAMNESE);
-  });
+  refs.learningBackBtn?.addEventListener("click", handleLearningBackClick);
   refs.voicePromptConfigSaveBtn?.addEventListener("click", handlePromptConfigSave);
   refs.voicePromptConfigResetBtn?.addEventListener("click", handlePromptConfigReset);
   refs.voicePromptProposalSubmitBtn?.addEventListener("click", () => {
@@ -3502,18 +3510,16 @@ function startQuickPractice() {
 }
 
 function handleOpenLearningPanel() {
-  setLearningTab(LEARNING_TAB_ANAMNESE);
+  state.learningView = LEARNING_VIEW_ROOT;
+  renderLearningFlow();
   refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function setLearningTab() {
-  state.learningTab = LEARNING_TAB_ANAMNESE;
-  if (refs.learningTabAnamneseBtn) {
-    const active = state.learningTab === LEARNING_TAB_ANAMNESE;
-    refs.learningTabAnamneseBtn.classList.toggle("active", active);
-    refs.learningTabAnamneseBtn.setAttribute("aria-pressed", active ? "true" : "false");
+function handleLearningBackClick() {
+  if (state.learningView === LEARNING_VIEW_READING) {
+    state.learningView = LEARNING_VIEW_SUBCATEGORIES;
+    renderLearningFlow();
   }
-  refs.learningAnamneseWrap?.classList.toggle("hidden", state.learningTab !== LEARNING_TAB_ANAMNESE);
 }
 
 async function loadLearningAnamneseContent() {
@@ -3521,7 +3527,7 @@ async function loadLearningAnamneseContent() {
     return;
   }
 
-  renderLearningPanelLoading("Lerninhalte werden geladen ...");
+  renderLearningLoading("Lerninhalte werden geladen ...");
   try {
     const url = new URL(`../${LEARNING_ANAMNESE_PATH}?v=${APP_VERSION}`, import.meta.url);
     const response = await fetch(url, { cache: "no-store" });
@@ -3536,12 +3542,12 @@ async function loadLearningAnamneseContent() {
       (entry) => entry.id === state.learningActiveCategoryId
     );
     state.learningActiveCategoryId = hasActiveCategory ? state.learningActiveCategoryId : firstCategoryId;
-    renderLearningPanel();
+    renderLearningFlow();
   } catch (error) {
     console.error("Lernbereich konnte nicht geladen werden", error);
     state.learningAnamnese = null;
     state.learningActiveCategoryId = "";
-    renderLearningPanelLoading("Lerninhalte konnten nicht geladen werden.");
+    renderLearningLoading("Lerninhalte konnten nicht geladen werden.");
   }
 }
 
@@ -3616,84 +3622,142 @@ function normalizeLearningQuestionGroup(rawValue) {
   return { title, questions };
 }
 
-function renderLearningPanelLoading(message) {
-  if (refs.learningAnamneseCategoryList) refs.learningAnamneseCategoryList.innerHTML = "";
-  if (refs.learningAnamneseTitle) refs.learningAnamneseTitle.textContent = "Anamnese";
-  if (refs.learningAnamneseMeta) refs.learningAnamneseMeta.textContent = "";
-  if (refs.learningAnamneseSummary) refs.learningAnamneseSummary.textContent = "";
-  if (refs.learningAnamneseText) refs.learningAnamneseText.innerHTML = "";
-  if (refs.learningAnamneseQuestionGroups) refs.learningAnamneseQuestionGroups.innerHTML = "";
-  if (refs.learningAnamneseSources) refs.learningAnamneseSources.innerHTML = "";
-  if (refs.learningAnamneseStatus) refs.learningAnamneseStatus.textContent = safeLine(message, 220);
+function renderLearningLoading(message) {
+  if (refs.learningRootView) refs.learningRootView.classList.remove("hidden");
+  if (refs.learningSubcategoryView) refs.learningSubcategoryView.classList.add("hidden");
+  if (refs.learningReadingView) refs.learningReadingView.classList.add("hidden");
+  if (refs.learningRootList) refs.learningRootList.innerHTML = "";
+  if (refs.learningSubcategoryList) refs.learningSubcategoryList.innerHTML = "";
+  if (refs.learningReadingTitle) refs.learningReadingTitle.textContent = "Lernbereich";
+  if (refs.learningReadingMeta) refs.learningReadingMeta.textContent = "";
+  if (refs.learningReadingText) refs.learningReadingText.innerHTML = "";
+  if (refs.learningReadingQuestionGroups) refs.learningReadingQuestionGroups.innerHTML = "";
+  if (refs.learningReadingSources) refs.learningReadingSources.innerHTML = "";
+  if (refs.learningReadingStatus) refs.learningReadingStatus.textContent = safeLine(message, 220);
 }
 
-function renderLearningPanel() {
+function renderLearningFlow() {
   const bundle = state.learningAnamnese;
   if (!bundle || !Array.isArray(bundle.categories) || bundle.categories.length === 0) {
-    renderLearningPanelLoading("Noch keine Lerninhalte vorhanden.");
+    renderLearningLoading("Noch keine Lerninhalte vorhanden.");
     return;
   }
 
-  setLearningTab(LEARNING_TAB_ANAMNESE);
-  renderLearningCategoryButtons(bundle.categories);
-  renderLearningCategoryContent(bundle);
+  renderLearningRootList();
+  if (state.learningView === LEARNING_VIEW_ROOT) {
+    showLearningView(LEARNING_VIEW_ROOT);
+    return;
+  }
+
+  if (state.learningView === LEARNING_VIEW_SUBCATEGORIES) {
+    renderLearningSubcategoryList(bundle.categories);
+    showLearningView(LEARNING_VIEW_SUBCATEGORIES);
+    return;
+  }
+
+  renderLearningReadingMode(bundle.categories);
+  showLearningView(LEARNING_VIEW_READING);
 }
 
-function renderLearningCategoryButtons(categories) {
-  if (!refs.learningAnamneseCategoryList) return;
-  refs.learningAnamneseCategoryList.innerHTML = "";
+function showLearningView(viewId) {
+  if (refs.learningRootView) refs.learningRootView.classList.toggle("hidden", viewId !== LEARNING_VIEW_ROOT);
+  if (refs.learningSubcategoryView) {
+    refs.learningSubcategoryView.classList.toggle("hidden", viewId !== LEARNING_VIEW_SUBCATEGORIES);
+  }
+  if (refs.learningReadingView) refs.learningReadingView.classList.toggle("hidden", viewId !== LEARNING_VIEW_READING);
+}
+
+function renderLearningRootList() {
+  if (!refs.learningRootList) return;
+  refs.learningRootList.innerHTML = "";
+  for (const rootEntry of LEARNING_ROOT_ITEMS) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "learning-root-btn";
+    const title = document.createElement("span");
+    title.className = "learning-root-title";
+    title.textContent = rootEntry.label;
+    const count = document.createElement("span");
+    count.className = "learning-root-count";
+    count.textContent = "Themen oeffnen";
+    button.appendChild(title);
+    button.appendChild(count);
+    button.addEventListener("click", () => {
+      state.learningRootId = rootEntry.id;
+      state.learningView = LEARNING_VIEW_SUBCATEGORIES;
+      renderLearningFlow();
+    });
+    refs.learningRootList.appendChild(button);
+  }
+}
+
+function renderLearningSubcategoryList(categories) {
+  if (refs.learningSubcategoryTitle) {
+    const selectedRoot = LEARNING_ROOT_ITEMS.find((entry) => entry.id === state.learningRootId);
+    refs.learningSubcategoryTitle.textContent = selectedRoot?.label || "Unterkategorien";
+  }
+  if (!refs.learningSubcategoryList) return;
+  refs.learningSubcategoryList.innerHTML = "";
   for (const category of categories) {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `learning-category-btn ${state.learningActiveCategoryId === category.id ? "active" : ""}`;
+    button.className = "learning-subcategory-btn";
     const title = document.createElement("span");
-    title.className = "learning-category-title";
+    title.className = "learning-subcategory-title";
     title.textContent = category.title;
     const count = document.createElement("span");
-    count.className = "learning-category-count";
+    count.className = "learning-subcategory-count";
     count.textContent = `${category.questionCount} Fragen`;
     button.appendChild(title);
     button.appendChild(count);
     button.addEventListener("click", () => {
       state.learningActiveCategoryId = category.id;
-      renderLearningPanel();
+      state.learningView = LEARNING_VIEW_READING;
+      renderLearningFlow();
     });
-    refs.learningAnamneseCategoryList.appendChild(button);
+    refs.learningSubcategoryList.appendChild(button);
   }
 }
 
-function renderLearningCategoryContent(bundle) {
-  const categories = Array.isArray(bundle?.categories) ? bundle.categories : [];
+function renderLearningReadingMode(categories) {
   const activeCategory =
     categories.find((entry) => entry.id === state.learningActiveCategoryId) || categories[0] || null;
   if (!activeCategory) {
-    renderLearningPanelLoading("Kategorie konnte nicht geladen werden.");
+    renderLearningLoading("Kategorie konnte nicht geladen werden.");
     return;
   }
   if (activeCategory.id !== state.learningActiveCategoryId) {
     state.learningActiveCategoryId = activeCategory.id;
   }
 
-  if (refs.learningAnamneseTitle) refs.learningAnamneseTitle.textContent = activeCategory.title;
-  if (refs.learningAnamneseMeta) {
-    refs.learningAnamneseMeta.textContent = [activeCategory.focus, `${activeCategory.questionCount} Fragen`]
+  if (refs.learningReadingTitle) refs.learningReadingTitle.textContent = activeCategory.title;
+  if (refs.learningReadingMeta) {
+    refs.learningReadingMeta.textContent = [activeCategory.focus, `${activeCategory.questionCount} Fragen`]
       .filter((item) => Boolean(item))
       .join(" | ");
   }
-  if (refs.learningAnamneseSummary) refs.learningAnamneseSummary.textContent = activeCategory.summary;
-  if (refs.learningAnamneseStatus) refs.learningAnamneseStatus.textContent = "";
+  if (refs.learningReadingStatus) refs.learningReadingStatus.textContent = "";
 
-  if (refs.learningAnamneseText) {
-    refs.learningAnamneseText.innerHTML = "";
+  if (refs.learningBackAvatar) {
+    refs.learningBackAvatar.src = refs.levelAvatar?.src || "assets/levels/level-0.png";
+  }
+  if (refs.learningReadingText) {
+    refs.learningReadingText.innerHTML = "";
+    if (activeCategory.summary) {
+      const lead = document.createElement("p");
+      lead.className = "learning-reading-summary";
+      lead.textContent = activeCategory.summary;
+      refs.learningReadingText.appendChild(lead);
+    }
     for (const paragraph of activeCategory.learningText) {
       const p = document.createElement("p");
       p.textContent = paragraph;
-      refs.learningAnamneseText.appendChild(p);
+      refs.learningReadingText.appendChild(p);
     }
   }
 
-  if (refs.learningAnamneseQuestionGroups) {
-    refs.learningAnamneseQuestionGroups.innerHTML = "";
+  if (refs.learningReadingQuestionGroups) {
+    refs.learningReadingQuestionGroups.innerHTML = "";
     for (const group of activeCategory.questionGroups) {
       const block = document.createElement("article");
       block.className = "learning-question-group";
@@ -3707,17 +3771,17 @@ function renderLearningCategoryContent(bundle) {
         list.appendChild(li);
       }
       block.appendChild(list);
-      refs.learningAnamneseQuestionGroups.appendChild(block);
+      refs.learningReadingQuestionGroups.appendChild(block);
     }
   }
 
-  if (refs.learningAnamneseSources) {
-    refs.learningAnamneseSources.innerHTML = "";
+  if (refs.learningReadingSources) {
+    refs.learningReadingSources.innerHTML = "";
     if (activeCategory.sourceTags.length > 0) {
       const heading = document.createElement("p");
       heading.className = "learning-sources-title";
       heading.textContent = "Leitlinienbasis";
-      refs.learningAnamneseSources.appendChild(heading);
+      refs.learningReadingSources.appendChild(heading);
 
       const list = document.createElement("ul");
       list.className = "learning-sources-list";
@@ -3726,7 +3790,7 @@ function renderLearningCategoryContent(bundle) {
         li.textContent = sourceTag;
         list.appendChild(li);
       }
-      refs.learningAnamneseSources.appendChild(list);
+      refs.learningReadingSources.appendChild(list);
     }
   }
 }

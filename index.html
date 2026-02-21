@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=20260221a" />
+    <link rel="stylesheet" href="src/styles.css?v=20260221b" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -473,38 +473,34 @@
       <section id="learningPanel" class="panel learning-panel reveal" style="--i: 4">
         <div class="learning-head">
           <h3>Lernbereich</h3>
-          <p class="learning-lead">
-            Strukturierter Lernmodus ohne Karteikarten. Schwerpunkt: Anamnese fuer die FSP Berlin.
-          </p>
         </div>
-        <div class="learning-tabs">
-          <button
-            id="learningTabAnamneseBtn"
-            class="chip active"
-            type="button"
-            aria-pressed="true"
-          >
-            Anamnese
+        <article id="learningRootView" class="learning-root-view">
+          <div id="learningRootList" class="learning-root-list"></div>
+        </article>
+        <article id="learningSubcategoryView" class="learning-subcategory-view hidden">
+          <h4 id="learningSubcategoryTitle">Anamnese</h4>
+          <div id="learningSubcategoryList" class="learning-subcategory-list"></div>
+        </article>
+        <article id="learningReadingView" class="learning-reading-view hidden">
+          <button id="learningBackBtn" class="learning-back-btn" type="button">
+            <img
+              id="learningBackAvatar"
+              class="learning-back-avatar"
+              src="assets/levels/level-0.png"
+              alt=""
+            />
+            <span class="learning-back-text">Oops. Zurueck ins Trainingslager.</span>
           </button>
-        </div>
-        <div id="learningAnamneseWrap" class="learning-layout">
-          <article class="learning-nav">
-            <h4>Anamnese-Kategorien</h4>
-            <div id="learningAnamneseCategoryList" class="learning-category-list"></div>
-          </article>
-          <article class="learning-content">
-            <h4 id="learningAnamneseTitle">Anamnese</h4>
-            <p id="learningAnamneseMeta" class="learning-meta"></p>
-            <p id="learningAnamneseSummary" class="learning-summary"></p>
-            <div id="learningAnamneseText" class="learning-prose"></div>
-            <div class="learning-question-head">
-              <h5>Fragen nach Untergebieten</h5>
-              <p id="learningAnamneseStatus" class="learning-status"></p>
-            </div>
-            <div id="learningAnamneseQuestionGroups" class="learning-question-groups"></div>
-            <div id="learningAnamneseSources" class="learning-sources"></div>
-          </article>
-        </div>
+          <h4 id="learningReadingTitle">Anamnese</h4>
+          <p id="learningReadingMeta" class="learning-meta"></p>
+          <p id="learningReadingStatus" class="learning-status"></p>
+          <div id="learningReadingText" class="learning-prose"></div>
+          <div class="learning-question-head">
+            <h5>Fragen nach Untergebieten</h5>
+          </div>
+          <div id="learningReadingQuestionGroups" class="learning-question-groups"></div>
+          <div id="learningReadingSources" class="learning-sources"></div>
+        </article>
       </section>
 
       <section id="selectionPanel" class="panel selection-panel reveal" style="--i: 5">
@@ -642,6 +638,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=20260221a"></script>
+    <script type="module" src="src/app.js?v=20260221b"></script>
   </body>
 </html>
