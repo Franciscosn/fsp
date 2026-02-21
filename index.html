@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=9" />
+    <link rel="stylesheet" href="src/styles.css?v=10" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -491,15 +491,22 @@
             </button>
             <h4>Koerperatlas Anatomie</h4>
             <p id="learningBodyStatus" class="learning-body-status">
-              Waehle eine Regionsnummer. Danach oeffnet sich nur diese Region mit mehreren beschrifteten Bildern.
+              Tippe auf eine Koerperregion im Modell. Danach oeffnet sich nur diese Region.
             </p>
             <p class="learning-body-credit">
               Illustrationen: <a href="https://smart.servier.com/" target="_blank" rel="noopener noreferrer">Servier Medical Art</a> (CC BY 4.0)
             </p>
           </div>
           <div id="learningBodySelectionView" class="learning-body-selection-view">
-            <div id="learningBodyRegionButtons" class="learning-body-region-buttons"></div>
-            <ol id="learningBodyRegionLegend" class="learning-body-region-legend"></ol>
+            <div
+              id="learningBodyCanvas"
+              class="learning-body-canvas"
+              role="img"
+              aria-label="Ganzkoerpermodell mit unsichtbaren klickbaren Bereichen"
+            ></div>
+            <p class="learning-body-selection-hint">
+              Tippe auf die gewuenschte Koerperregion im Modell.
+            </p>
           </div>
           <section id="learningBodyRegionDetailView" class="learning-body-region-detail hidden">
             <button id="learningBodyRegionBackBtn" class="learning-body-region-back-btn" type="button">
@@ -508,6 +515,7 @@
             <h5 id="learningBodyRegionTitle">Bereich</h5>
             <p id="learningBodyRegionHint" class="learning-body-region-hint"></p>
             <div id="learningBodyRegionGallery" class="learning-body-region-gallery"></div>
+            <div id="learningBodyRegionDeepDive" class="learning-body-region-deep-dive"></div>
             <ul id="learningBodyRegionBullets" class="learning-body-region-bullets"></ul>
           </section>
         </article>
@@ -668,6 +676,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=9"></script>
+    <script type="module" src="src/app.js?v=10"></script>
   </body>
 </html>

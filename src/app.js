@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "9";
-const BUILD_UPDATED_AT = "2026-02-21 15:09 CET";
+const APP_VERSION = "10";
+const BUILD_UPDATED_AT = "2026-02-21 15:22 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -77,6 +77,23 @@ const BODY_ATLAS_REGION_IMAGE_BY_ID = Object.freeze({
   rechter_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2016/10/Main.png",
   linkes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/femur_01.png",
   rechtes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_08.png"
+});
+const BODY_ATLAS_REGION_RELATED_IMAGE_BY_ID = Object.freeze({
+  kopf_gehirn: "https://smart.servier.com/wp-content/uploads/2016/10/Cavite_nasale.png",
+  gesicht_hno: "https://smart.servier.com/wp-content/uploads/2016/10/Larynx.png",
+  hals: "https://smart.servier.com/wp-content/uploads/2016/10/poumon_01.png",
+  thorax: "https://smart.servier.com/wp-content/uploads/2016/10/coeur.png",
+  herz_lunge: "https://smart.servier.com/wp-content/uploads/2016/10/poumon_01.png",
+  oberbauch: "https://smart.servier.com/wp-content/uploads/2016/10/App_urinaire_femme.png",
+  unterbauch_darm: "https://smart.servier.com/wp-content/uploads/2016/10/App_urinaire_femme.png",
+  becken_uro: "https://smart.servier.com/wp-content/uploads/2016/10/syst_dig_complet.png",
+  ruecken_wirbelsaeule: "https://smart.servier.com/wp-content/uploads/2016/10/femur_01.png",
+  linker_oberarm: "https://smart.servier.com/wp-content/uploads/2016/10/Main.png",
+  rechter_oberarm: "https://smart.servier.com/wp-content/uploads/2016/10/Main.png",
+  linker_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_04.png",
+  rechter_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_04.png",
+  linkes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_08.png",
+  rechtes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/femur_01.png"
 });
 const BODY_ATLAS_REGIONS = Object.freeze([
   {
@@ -1327,13 +1344,13 @@ const refs = {
   learningBodyBackBtn: document.getElementById("learningBodyBackBtn"),
   learningBodyStatus: document.getElementById("learningBodyStatus"),
   learningBodySelectionView: document.getElementById("learningBodySelectionView"),
-  learningBodyRegionButtons: document.getElementById("learningBodyRegionButtons"),
-  learningBodyRegionLegend: document.getElementById("learningBodyRegionLegend"),
+  learningBodyCanvas: document.getElementById("learningBodyCanvas"),
   learningBodyRegionDetailView: document.getElementById("learningBodyRegionDetailView"),
   learningBodyRegionBackBtn: document.getElementById("learningBodyRegionBackBtn"),
   learningBodyRegionTitle: document.getElementById("learningBodyRegionTitle"),
   learningBodyRegionHint: document.getElementById("learningBodyRegionHint"),
   learningBodyRegionGallery: document.getElementById("learningBodyRegionGallery"),
+  learningBodyRegionDeepDive: document.getElementById("learningBodyRegionDeepDive"),
   learningBodyRegionBullets: document.getElementById("learningBodyRegionBullets"),
   learningReadingView: document.getElementById("learningReadingView"),
   learningBackBtn: document.getElementById("learningBackBtn"),
@@ -4417,9 +4434,9 @@ function renderLearningLoading(message) {
   if (refs.learningReadingView) refs.learningReadingView.classList.add("hidden");
   if (refs.learningRootList) refs.learningRootList.innerHTML = "";
   if (refs.learningSubcategoryList) refs.learningSubcategoryList.innerHTML = "";
-  if (refs.learningBodyRegionButtons) refs.learningBodyRegionButtons.innerHTML = "";
-  if (refs.learningBodyRegionLegend) refs.learningBodyRegionLegend.innerHTML = "";
+  if (refs.learningBodyCanvas) refs.learningBodyCanvas.innerHTML = "";
   if (refs.learningBodyRegionGallery) refs.learningBodyRegionGallery.innerHTML = "";
+  if (refs.learningBodyRegionDeepDive) refs.learningBodyRegionDeepDive.innerHTML = "";
   if (refs.learningBodyRegionBullets) refs.learningBodyRegionBullets.innerHTML = "";
   if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = "Bereich";
   if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = "";
@@ -4548,35 +4565,510 @@ function getLearningBodyRegionImageSrc(regionId) {
   return BODY_ATLAS_REGION_IMAGE_BY_ID[key] || BODY_ATLAS_MAP_IMAGE_SRC;
 }
 
+function getLearningBodyRegionRelatedImageSrc(regionId) {
+  const key = String(regionId || "");
+  return BODY_ATLAS_REGION_RELATED_IMAGE_BY_ID[key] || BODY_ATLAS_MAP_IMAGE_SRC;
+}
+
+function getLearningBodyRegionGroup(regionId) {
+  switch (regionId) {
+    case "kopf_gehirn":
+      return "head";
+    case "gesicht_hno":
+    case "hals":
+      return "hno";
+    case "thorax":
+      return "thorax";
+    case "herz_lunge":
+      return "cardio";
+    case "oberbauch":
+      return "upper_abdomen";
+    case "unterbauch_darm":
+      return "lower_abdomen";
+    case "becken_uro":
+      return "pelvis";
+    case "ruecken_wirbelsaeule":
+      return "spine";
+    case "linker_oberarm":
+    case "rechter_oberarm":
+      return "upper_arm";
+    case "linker_unterarm_hand":
+    case "rechter_unterarm_hand":
+      return "forearm_hand";
+    case "linkes_bein":
+    case "rechtes_bein":
+      return "leg";
+    default:
+      return "general";
+  }
+}
+
+function getLearningBodyDeepDive(region) {
+  const group = getLearningBodyRegionGroup(region.id);
+  switch (group) {
+    case "head":
+      return {
+        anamnese: [
+          "Seit wann bestehen die Beschwerden und wie war der Beginn (ploetzlich/schleichend)?",
+          "Gab es neurologische Ausfaelle wie Sprachstoerung, Sehstoerung, Laehmungsgefuehl oder Taubheit?",
+          "Wie intensiv ist der Schmerz (NRS 0-10) und gibt es Trigger wie Belastung, Licht oder Stress?",
+          "Bestehen Begleitsymptome wie Uebelkeit, Erbrechen, Fieber oder Nackensteife?",
+          "Gab es kuerzlich Kopftrauma, Infekt oder Medikamentenumstellung?",
+          "Welche Vorerkrankungen (Hypertonie, Migraene, Schlaganfall) sind bekannt?"
+        ],
+        untersuchung: [
+          "Bewusstseinslage, Orientierung, Sprache und Reaktionsverhalten.",
+          "Pupillenreaktion, Blickbewegungen, grobe Hirnnervenpruefung.",
+          "Motorik und Sensibilitaet beidseits vergleichen.",
+          "Meningismuszeichen und Koordinationspruefung.",
+          "Vitalparameter mit Fokus auf RR, Temperatur, Sauerstoffsaettigung."
+        ],
+        redFlags: [
+          "Thunderclap-Kopfschmerz (maximal innerhalb einer Minute).",
+          "Neu aufgetretene fokal-neurologische Defizite.",
+          "Bewusstseinsstoerung, Krampfanfall oder progrediente Verschlechterung.",
+          "Kopfschmerz mit Fieber/Nackensteife oder nach Trauma/Antikoagulation."
+        ],
+        naechsteSchritte: [
+          "Sofortige Priorisierung potenziell vital bedrohlicher Ursachen.",
+          "Fruehe Bildgebung bei Warnzeichen (cCT/MRT je nach Situation).",
+          "Neurologisches Monitoring und engmaschige Re-Evaluation.",
+          "Patientengerechte Aufklaerung ueber Warnzeichen und Notfallkriterien."
+        ]
+      };
+    case "hno":
+      return {
+        anamnese: [
+          "Welche Hauptbeschwerden stehen im Vordergrund (Schlucken, Stimme, Atmung, Schmerz)?",
+          "Bestehen Fieber, eitriges Sekret, Husten oder belastungsabhaengige Dyspnoe?",
+          "Gab es kuerzlich Infektkontakte, Rauchexposition oder berufliche Reizstoffe?",
+          "Sind Schluckstoerungen, Gewichtsverlust oder anhaltende Heiserkeit vorhanden?",
+          "Treten Beschwerden ein- oder beidseitig auf und strahlen sie aus?",
+          "Welche bisherigen Therapieversuche (Sprays, Antibiotika, Analgetika) gab es?"
+        ],
+        untersuchung: [
+          "Inspektion von Mundhoehle, Rachen und Halsweichteilen.",
+          "Palpation zervikaler Lymphknoten und Schilddruesenregion.",
+          "Atemwegsbeurteilung inkl. Stridor/Heiserkeit.",
+          "Nasale Durchgaengigkeit und Nebenhoehlen-Druckpunkte.",
+          "Fieber, Puls, RR und Entzuendungszeichen dokumentieren."
+        ],
+        redFlags: [
+          "Atemnot, inspiratorischer Stridor oder rasch zunehmende Schluckstoerung.",
+          "Peritonsillaerer Prozess mit Kieferklemme oder kloessiger Sprache.",
+          "Persistierende Heiserkeit >3 Wochen ohne klare Ursache.",
+          "Schmerzhafte Halsweichteilschwellung mit systemischer Verschlechterung."
+        ],
+        naechsteSchritte: [
+          "Atemwegssicherheit zuerst, danach differenzierte HNO-Abklaerung.",
+          "Entzuendungsdiagnostik und ggf. Sonografie/Endoskopie einplanen.",
+          "Therapieplan mit Analgesie, ggf. antientzuendlicher oder antiinfektiver Strategie.",
+          "Klare Rueckkehrkriterien bei Warnzeichen kommunizieren."
+        ]
+      };
+    case "thorax":
+      return {
+        anamnese: [
+          "Lokalisation und Charakter: Druck, Stechen, Brennen oder atemabhaengig?",
+          "Belastungsbezug, Ausstrahlung und Dauer einzelner Episoden.",
+          "Begleitsymptome wie Dyspnoe, Husten, Fieber, Palpitationen, Schweiss.",
+          "Risikoprofil: Rauchen, Immobilisation, kardiale Vorerkrankungen.",
+          "Trauma, kuerzliche Infekte oder neue Medikamente erfragen.",
+          "Vorherige Thoraxdiagnostik und bekannte Befunde dokumentieren."
+        ],
+        untersuchung: [
+          "Auskultation von Herz und Lunge, Atemarbeit beurteilen.",
+          "Thoraxinspektion, Druckschmerz und asymmetrische Atemexkursion pruefen.",
+          "Sauerstoffsaettigung in Ruhe/Belastung und Vitalparameter.",
+          "Periphere Oedeme, Halsvenenstauung, Zeichen der Kreislaufbelastung.",
+          "Kurze Funktionsbeurteilung (Treppensteigen/Gehtest falls stabil)."
+        ],
+        redFlags: [
+          "Akute Luftnot, Zyanose oder Haemodynamikinstabilitaet.",
+          "Thoraxschmerz mit Synkope, Schockzeichen oder Rhythmusstoerung.",
+          "Einseitig abgeschwaechtes Atemgeraesch mit ploetzlichem Schmerzbeginn.",
+          "Thoraxschmerz + Fieber + deutliche Allgemeinzustandsverschlechterung."
+        ],
+        naechsteSchritte: [
+          "Sofortpriorisierung vital bedrohlicher Ursachen (ACS, LE, Pneumothorax).",
+          "Basisdiagnostik: EKG, Labor, Bildgebung je nach Klinik.",
+          "Fruehe Verlaufskontrolle unter initialer Therapie.",
+          "Patientensprache fuer Verdachtsdiagnosen und Plan nutzen."
+        ]
+      };
+    case "cardio":
+      return {
+        anamnese: [
+          "Thoraxschmerz: Charakter, Ausstrahlung, Belastungsbezug, Dauer.",
+          "Dyspnoe, Orthopnoe, Belastungsabfall, Palpitationen, Synkopen erfragen.",
+          "Kardiovaskulaere Risiken (Hypertonie, Diabetes, Lipide, Rauchen).",
+          "Medikamentenanamnese inkl. Antikoagulation/Herzmedikamente.",
+          "Vorbefunde: Herzkatheter, Echo, Rhythmusdiagnosen, Klappenfehler.",
+          "Familiaere Vorbelastung fuer kardiovaskulaere Ereignisse."
+        ],
+        untersuchung: [
+          "Herzauskultation (Rhythmus, Nebengeraeusche), periphere Pulse.",
+          "Lungenauskultation auf Stauungszeichen.",
+          "Perfusion, Hautkolorit, Rekapillarisierung, Oedeme.",
+          "Vitalparameter trendbasiert erfassen.",
+          "Belastbarkeit und kardio-pulmonale Reserve einschaetzen."
+        ],
+        redFlags: [
+          "Anhaltender Druckschmerz mit vegetativer Symptomatik.",
+          "Neu aufgetretene schwere Dyspnoe oder Synkope.",
+          "Tachy-/Bradyarrhythmie mit Kreislaufinstabilitaet.",
+          "Zeichen der akuten Herzinsuffizienz mit Hypoxie."
+        ],
+        naechsteSchritte: [
+          "Dringliche EKG-/Labor-/Monitoring-Strategie.",
+          "Differenzialdiagnosen sprachlich klar priorisieren.",
+          "Therapeutische Erstschritte mit begruendetem Timing benennen.",
+          "Risikokommunikation und naechste Versorgungsetappe erklaeren."
+        ]
+      };
+    case "upper_abdomen":
+      return {
+        anamnese: [
+          "Schmerzort, Qualitaet und Ausstrahlung (Ruecken/Schulter) erfassen.",
+          "Nahrungsbezug, Uebelkeit, Erbrechen, Stuhlveraenderung, Ikterus.",
+          "Alkoholkonsum, NSAR-Einnahme, biliaere oder pankreatische Vorgeschichte.",
+          "Fieber, Schuettelfrost, Appetitverlust, Gewichtsveraenderung.",
+          "Voroperationen im Oberbauch und bekannte Leber-/Magenkrankheiten.",
+          "Medikamente inkl. Antikoagulation und Protonenpumpenhemmer."
+        ],
+        untersuchung: [
+          "Abdomeninspektion, Palpation (Abwehrspannung, Druckdolenz).",
+          "Leber-/Milzgroesse, Murphy-Zeichen und epigastrischer Druckschmerz.",
+          "Haut/Skleren auf Ikterus, Dehydratation, Blaesse.",
+          "Auskultation Darmgeraeusche, Peritonismuszeichen.",
+          "Vitalparameter mit Fokus auf Fieber und Kreislaufstabilitaet."
+        ],
+        redFlags: [
+          "Peritonitischer Bauch, Abwehrspannung, Kreislaufinstabilitaet.",
+          "Ikterus plus Fieber/Schmerz (Hinweis auf Cholangitis).",
+          "Haematemesis/Melaena oder progrediente Anaemiezeichen.",
+          "Starker guertelfoermiger Schmerz mit Erbrechen und AZ-Abfall."
+        ],
+        naechsteSchritte: [
+          "Labordiagnostik (Entzuendung, Leber, Pankreas) gezielt priorisieren.",
+          "Sonografie als fruehe bildgebende Basis, ggf. CT-Ergaenzung.",
+          "Analgesie, Fluessigkeit, Nahrungsstrategie klar planen.",
+          "Aufklaerung ueber Warnzeichen und Reevaluationszeitpunkt."
+        ]
+      };
+    case "lower_abdomen":
+      return {
+        anamnese: [
+          "Schmerzbeginn, Verlauf und Lokalisation (rechts/links/median).",
+          "Stuhlgangveraenderung, Obstipation, Diarrhoe, Blutbeimengung.",
+          "Fieber, Uebelkeit, Erbrechen, Appetitverlust, Meteorismus.",
+          "Urologische und (falls relevant) gynaekologische Begleitsymptome.",
+          "Voroperationen, bekannte Divertikulose/IBD oder Appendixvorgeschichte.",
+          "Ernaehrungs-, Reise- und Antibiotikaanamnese."
+        ],
+        untersuchung: [
+          "Gezielte Unterbauchpalpation mit Loslassschmerz und Abwehrspannung.",
+          "Perkussion/Auskultation und Zeichen eines Ileus erfassen.",
+          "Rektale Untersuchung je nach klinischer Situation erwaegen.",
+          "Hydratationszustand und Kreislaufparameter beurteilen.",
+          "Differenzierung viszeraler vs. parietaler Schmerzcharakteristik."
+        ],
+        redFlags: [
+          "Progrediente Schmerzen mit Peritonismuszeichen.",
+          "Ileusverdacht mit fehlendem Stuhl/Windabgang und Erbrechen.",
+          "Fieber plus Tachykardie plus lokalisierte starke Druckdolenz.",
+          "Blutige Stuehle oder deutlicher Allgemeinzustandsabfall."
+        ],
+        naechsteSchritte: [
+          "Labor und Sonografie als erster strukturierter Diagnostikschritt.",
+          "CT bei unklarer oder komplizierter Konstellation frueh erwaegen.",
+          "Analgesie und Verlaufskontrolle engmaschig dokumentieren.",
+          "Stationaere Einweisung bei red-flag-Konstellationen."
+        ]
+      };
+    case "pelvis":
+      return {
+        anamnese: [
+          "Miktionsbeschwerden: Dysurie, Pollakisurie, Harnverhalt, Inkontinenz.",
+          "Flankenschmerz, Unterbauchschmerz, Fieber, Schuettelfrost.",
+          "Makro-/Mikrohaematurie oder veraenderter Uringeruch.",
+          "Vorinfektionen, Steinleiden, urologische Eingriffe/Operationen.",
+          "Gynaekologische oder prostatabezogene Begleitanamnese je nach Geschlecht.",
+          "Trinkmenge, Medikamente und nephrotoxische Substanzen."
+        ],
+        untersuchung: [
+          "Unterbauchpalpation auf Blasenfuellung und Druckdolenz.",
+          "Klopfschmerz Nierenlager beidseits.",
+          "Temperatur, Puls, RR, Zeichen systemischer Infektion.",
+          "Hydratation und Harnbilanzierung.",
+          "Bei Bedarf fokussierte urologische Zusatzuntersuchung."
+        ],
+        redFlags: [
+          "Fieber plus Flankenschmerz plus reduzierter Allgemeinzustand.",
+          "Akuter Harnverhalt mit Schmerzen und fehlender Miktion.",
+          "Makrohaematurie mit Koageln oder Kreislaufrelevanz.",
+          "Sepsisverdacht bei urogenitalem Fokus."
+        ],
+        naechsteSchritte: [
+          "Urinstatus/-kultur und laborchemische Entzuendungsabklaerung.",
+          "Sonografie Harntrakt/Restharn zielgerichtet einsetzen.",
+          "Fruehe antiinfektive oder entlastende Therapie je nach Befund.",
+          "Nachsorgeplan mit Trink-/Warnzeichenberatung formulieren."
+        ]
+      };
+    case "spine":
+      return {
+        anamnese: [
+          "Rueckenschmerzlokalisation, Belastungsbezug und Schmerzdynamik.",
+          "Radikulaere Symptome: Ausstrahlung, Kribbeln, Taubheit, Kraftverlust.",
+          "Trauma, Ueberlastung, bekannte Bandscheiben-/Wirbelerkrankung.",
+          "Fieber, Gewichtsverlust, Tumoranamnese, Immunsuppression.",
+          "Miktions-/Defaekationsstoerung oder Sattelanaesthesie gezielt erfragen.",
+          "Bisherige Therapie und Funktionseinschraenkung im Alltag."
+        ],
+        untersuchung: [
+          "Inspektion Haltung, Beweglichkeit, Druckschmerz entlang Wirbelsaeule.",
+          "Neurologischer Status (Kraft, Sensibilitaet, Reflexe).",
+          "Lasègue/umgekehrter Lasègue je nach Beschwerdebild.",
+          "Gangbild und Standstabilitaet.",
+          "Fieber und systemische Warnzeichen erfassen."
+        ],
+        redFlags: [
+          "Cauda-Equina-Zeichen (Sattelanaesthesie, Blasen-/Mastdarmstoerung).",
+          "Neu progrediente motorische Ausfaelle.",
+          "Infekt-/Tumorverdacht mit Nachtschmerz und Allgemeinsymptomen.",
+          "Schmerz nach relevantem Trauma oder bei Osteoporoserisiko."
+        ],
+        naechsteSchritte: [
+          "Strukturierte Schmerz- und Funktionsklassifikation.",
+          "Fruehe Bildgebung bei red flags, sonst stufenweise Diagnostik.",
+          "Multimodales Management (Analgesie, Mobilisation, Physio).",
+          "Klare Sicherheitsnetze mit sofortigen Wiedervorstellungskriterien."
+        ]
+      };
+    case "upper_arm":
+    case "forearm_hand":
+      return {
+        anamnese: [
+          "Verletzungsmechanismus oder Ueberlastungssituation genau erfragen.",
+          "Schmerzort, Schwellung, Bewegungseinschraenkung, Kraftverlust.",
+          "Paraesthesien, Taubheit, Kaeltegefuehl oder Farbveraenderungen.",
+          "Dominante Hand, berufliche Belastung und Sportprofil.",
+          "Vorverletzungen, Operationen, Arthrose-/Rheumaanamnese.",
+          "Bisherige Schonung, Bandage, Analgetika und Effekt."
+        ],
+        untersuchung: [
+          "Inspektion Achse, Schwellung, Haematom, Fehlstellung.",
+          "Aktive/passive Beweglichkeit in Schulter/Ellenbogen/Handgelenk.",
+          "Funktion von N. medianus, ulnaris, radialis orientierend testen.",
+          "Durchblutung distal (Puls, Rekapillarisierung, Temperatur).",
+          "Sehnen-/Bandstabilitaet je nach Verdacht differenziert pruefen."
+        ],
+        redFlags: [
+          "Akute Durchblutungsstoerung oder neurologischer Ausfall.",
+          "Offene Verletzung, Fehlstellung oder Frakturverdacht.",
+          "Progrediente Schwellung mit Kompartmentsyndrom-Verdacht.",
+          "Infektzeichen nach Punktion/Verletzung."
+        ],
+        naechsteSchritte: [
+          "Ruhigstellung und schmerzarme Fruehversorgung.",
+          "Bildgebung je nach Trauma- und Befundkonstellation.",
+          "Neurovaskulaere Verlaufskontrollen dokumentieren.",
+          "Patientenhinweise zu Belastung, Schwellungsmanagement, Kontrolle."
+        ]
+      };
+    case "leg":
+      return {
+        anamnese: [
+          "Schmerzlokalisation (Huefte/Knie/Unterschenkel/Fuss) praezisieren.",
+          "Trauma, Verdrehung, Sturz, sportliche Belastung erheben.",
+          "Belastbarkeit: Gehen, Treppen, Standzeit, Instabilitaetsgefuehl.",
+          "Schwellung, Ueberwaermung, Roetung, naechtlicher Schmerz.",
+          "Thromboserisiko, Voroperationen, bekannte Gelenkerkrankungen.",
+          "Neurologische Begleitsymptome oder Claudicatiozeichen."
+        ],
+        untersuchung: [
+          "Inspektion Achse, Umfangsdifferenz, Haematom, Erguss.",
+          "Beweglichkeit und Band-/Meniskuszeichen am Knie (falls passend).",
+          "Palpation entlang Femur, Tibia, Fibula, Achillessehne.",
+          "Durchblutung, Sensibilitaet und Motorik distal sichern.",
+          "Gangbild und schmerzadaptierte Belastungsprobe."
+        ],
+        redFlags: [
+          "Unfaehigkeit zu belasten nach Trauma.",
+          "Schwellung + Dyspnoe/Thoraxschmerz (Thromboembolieverdacht).",
+          "Akute Durchblutungsstoerung oder motorischer Ausfall.",
+          "Heftiger Waden-/Sehnenschmerz mit Funktionsverlust."
+        ],
+        naechsteSchritte: [
+          "Sofortige Stabilisierung und Schmerzmanagement.",
+          "Bildgebung/Thrombosediagnostik indikationsgerecht priorisieren.",
+          "Funktionelle Nachkontrolle und Belastungsaufbau planen.",
+          "Warnzeichen fuer Notfallwiedervorstellung klar benennen."
+        ]
+      };
+    default:
+      return {
+        anamnese: ["Beschwerdebeginn, Verlauf und Belastungsbezug systematisch erheben."],
+        untersuchung: ["Koerperliche Untersuchung regionenspezifisch strukturieren."],
+        redFlags: ["Warnzeichen aktiv erfragen und dokumentieren."],
+        naechsteSchritte: ["Diagnostik und Therapie patientengerecht erklaeren."]
+      };
+  }
+}
+
 function getLearningBodyRegionFigureSet(region) {
   const hotspots = Array.isArray(region?.hotspots) ? region.hotspots : [];
-  const splitAt = Math.max(3, Math.ceil(hotspots.length / 2));
+  const splitAt = Math.max(3, Math.ceil(hotspots.length * 0.5));
   const firstLabelSet = hotspots.slice(0, splitAt);
   const secondLabelSet = hotspots.slice(splitAt);
   const fallbackSecondSet = hotspots.slice(0, Math.min(4, hotspots.length));
+  const focusLabels = hotspots.slice(0, Math.min(4, hotspots.length));
+  const primarySrc = getLearningBodyRegionImageSrc(region.id);
+  const relatedSrc = getLearningBodyRegionRelatedImageSrc(region.id);
   return [
     {
-      title: `${region.label}: Fokusbild`,
-      description: "Primäre Anatomie der gewählten Region.",
-      src: getLearningBodyRegionImageSrc(region.id),
+      title: `${region.label}: Anatomische Hauptansicht`,
+      description: "Primaere anatomische Darstellung mit zentralen Leitstrukturen.",
+      src: primarySrc,
       labels: firstLabelSet.length ? firstLabelSet : hotspots
     },
     {
-      title: `${region.label}: Orientierung im Gesamtkörper`,
-      description: "Kontextbild zur räumlichen Einordnung der Region.",
-      src: BODY_ATLAS_MAP_IMAGE_SRC,
+      title: `${region.label}: Nachbarstrukturen`,
+      description: "Funktionelle Nachbarschaft und regionenuebergreifende Orientierung.",
+      src: relatedSrc,
       labels: secondLabelSet.length >= 2 ? secondLabelSet : fallbackSecondSet
+    },
+    {
+      title: `${region.label}: Ganzkoerper-Orientierung`,
+      description: "Einordnung der Region in den Gesamtkoerper fuer klinische Lokalisierung.",
+      src: BODY_ATLAS_MAP_IMAGE_SRC,
+      labels: focusLabels.length ? focusLabels : hotspots
+    },
+    {
+      title: `${region.label}: Fachsprache -> Patientensprache`,
+      description: "Trainingsansicht fuer sprachliche Uebersetzung im Arzt-Patient-Kontext.",
+      src: primarySrc,
+      labels: hotspots
     }
   ];
+}
+
+function getLearningBodyHitboxFromShape(shape) {
+  if (!shape || typeof shape !== "object") {
+    return { left: 40, top: 40, width: 20, height: 20, transform: "", originX: 50, originY: 50 };
+  }
+
+  let x = 0;
+  let y = 0;
+  let width = 0;
+  let height = 0;
+  if (shape.type === "rect") {
+    x = Number(shape.x) || 0;
+    y = Number(shape.y) || 0;
+    width = Number(shape.width) || 0;
+    height = Number(shape.height) || 0;
+  } else if (shape.type === "ellipse") {
+    const cx = Number(shape.cx) || 0;
+    const cy = Number(shape.cy) || 0;
+    const rx = Number(shape.rx) || 0;
+    const ry = Number(shape.ry) || 0;
+    x = cx - rx;
+    y = cy - ry;
+    width = rx * 2;
+    height = ry * 2;
+  } else {
+    x = 120;
+    y = 220;
+    width = 80;
+    height = 100;
+  }
+
+  const left = Math.max(0, Math.min(98, (x / 320) * 100));
+  const top = Math.max(0, Math.min(98, (y / 640) * 100));
+  const safeWidth = Math.max(3, Math.min(98, (width / 320) * 100));
+  const safeHeight = Math.max(3, Math.min(98, (height / 640) * 100));
+
+  let transform = "";
+  let originX = left + safeWidth / 2;
+  let originY = top + safeHeight / 2;
+  const transformText = String(shape.transform || "");
+  const rotateMatch = transformText.match(/rotate\(([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\)/);
+  if (rotateMatch) {
+    const angle = Number(rotateMatch[1]) || 0;
+    const cx = Number(rotateMatch[2]) || 160;
+    const cy = Number(rotateMatch[3]) || 320;
+    transform = `rotate(${angle}deg)`;
+    originX = Math.max(0, Math.min(100, (cx / 320) * 100));
+    originY = Math.max(0, Math.min(100, (cy / 640) * 100));
+  }
+
+  return { left, top, width: safeWidth, height: safeHeight, transform, originX, originY };
+}
+
+function renderLearningBodyMap() {
+  if (!refs.learningBodyCanvas) return;
+  refs.learningBodyCanvas.innerHTML = "";
+
+  const stage = document.createElement("div");
+  stage.className = "learning-body-map-stage";
+
+  const image = document.createElement("img");
+  image.className = "learning-body-map-image";
+  image.src = BODY_ATLAS_MAP_IMAGE_SRC;
+  image.alt = "Ganzkoerpermodell";
+  image.loading = "lazy";
+  image.decoding = "async";
+  image.addEventListener("error", () => {
+    stage.classList.add("is-image-missing");
+    if (refs.learningBodyStatus) {
+      refs.learningBodyStatus.textContent =
+        "Koerpermodell konnte nicht geladen werden. Bitte Seite neu laden.";
+    }
+  });
+  stage.appendChild(image);
+
+  const overlay = document.createElement("div");
+  overlay.className = "learning-body-map-overlay";
+  BODY_ATLAS_REGIONS.forEach((region) => {
+    const hitbox = document.createElement("button");
+    hitbox.type = "button";
+    hitbox.className = "learning-body-map-hitbox";
+    hitbox.dataset.regionId = region.id;
+    hitbox.setAttribute("aria-label", region.label);
+    hitbox.title = region.label;
+    const box = getLearningBodyHitboxFromShape(region.map);
+    hitbox.style.left = `${box.left}%`;
+    hitbox.style.top = `${box.top}%`;
+    hitbox.style.width = `${box.width}%`;
+    hitbox.style.height = `${box.height}%`;
+    if (box.transform) {
+      hitbox.style.transform = box.transform;
+      hitbox.style.transformOrigin = `${box.originX}% ${box.originY}%`;
+    }
+    hitbox.addEventListener("mouseenter", () => {
+      if (refs.learningBodyStatus) {
+        refs.learningBodyStatus.textContent = `${region.order}. ${region.label}`;
+      }
+    });
+    hitbox.addEventListener("focus", () => {
+      if (refs.learningBodyStatus) {
+        refs.learningBodyStatus.textContent = `${region.order}. ${region.label}`;
+      }
+    });
+    hitbox.addEventListener("click", () => {
+      openLearningBodyRegionDetail(region.id);
+    });
+    overlay.appendChild(hitbox);
+  });
+  stage.appendChild(overlay);
+  refs.learningBodyCanvas.appendChild(stage);
 }
 
 function renderLearningBodyView() {
   const activeRegion = getLearningBodyRegionById(state.learningBodyActiveRegionId);
   if (!activeRegion) return;
   state.learningBodyActiveRegionId = activeRegion.id;
-  renderLearningBodyRegionButtons();
-  renderLearningBodyRegionLegend();
-  updateLearningBodyRegionButtonState();
   if (state.learningBodyDetailOpen) {
     renderLearningBodyRegionDetail(activeRegion);
   } else {
@@ -4584,47 +5076,7 @@ function renderLearningBodyView() {
   }
   if (refs.learningBodyStatus && !refs.learningBodyStatus.textContent.trim()) {
     refs.learningBodyStatus.textContent =
-      "Waehle eine Regionsnummer. Anschliessend siehst du nur diese Region mit mehreren beschrifteten Bildern.";
-  }
-}
-
-function renderLearningBodyRegionButtons() {
-  if (!refs.learningBodyRegionButtons) return;
-  refs.learningBodyRegionButtons.innerHTML = "";
-  for (const region of BODY_ATLAS_REGIONS) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "learning-body-region-btn";
-    button.dataset.regionId = region.id;
-    button.textContent = String(region.order || BODY_ATLAS_REGION_BY_ID[region.id]?.order || "");
-    button.title = `${region.order || ""}. ${region.label}`;
-    button.setAttribute("aria-label", `${region.order || ""}. ${region.label}`);
-    button.addEventListener("click", () => {
-      openLearningBodyRegionDetail(region.id);
-    });
-    refs.learningBodyRegionButtons.appendChild(button);
-  }
-}
-
-function updateLearningBodyRegionButtonState() {
-  if (!refs.learningBodyRegionButtons) return;
-  const activeRegionId = state.learningBodyActiveRegionId;
-  const buttons = refs.learningBodyRegionButtons.querySelectorAll(".learning-body-region-btn");
-  for (const button of buttons) {
-    const isActive = button.dataset.regionId === activeRegionId;
-    button.classList.toggle("active", isActive);
-    button.setAttribute("aria-pressed", isActive ? "true" : "false");
-  }
-}
-
-function renderLearningBodyRegionLegend() {
-  if (!refs.learningBodyRegionLegend) return;
-  refs.learningBodyRegionLegend.innerHTML = "";
-  for (const region of BODY_ATLAS_REGIONS) {
-    const li = document.createElement("li");
-    li.className = "learning-body-region-legend-item";
-    li.textContent = `${region.order}. ${region.label}`;
-    refs.learningBodyRegionLegend.appendChild(li);
+      "Tippe auf die gewuenschte Koerperregion im Modell. Die Unterteilung bleibt unsichtbar.";
   }
 }
 
@@ -4632,9 +5084,10 @@ function renderLearningBodySelection() {
   state.learningBodyDetailOpen = false;
   if (refs.learningBodySelectionView) refs.learningBodySelectionView.classList.remove("hidden");
   if (refs.learningBodyRegionDetailView) refs.learningBodyRegionDetailView.classList.add("hidden");
+  renderLearningBodyMap();
   if (refs.learningBodyStatus) {
     refs.learningBodyStatus.textContent =
-      "Waehle eine Regionsnummer. Anschliessend oeffnet sich die Region in einer eigenen Detailsektion.";
+      "Tippe auf die gewuenschte Koerperregion im Modell. Danach oeffnet sich nur diese Region.";
   }
 }
 
@@ -4643,18 +5096,19 @@ function openLearningBodyRegionDetail(regionId) {
   if (!region) return;
   state.learningBodyActiveRegionId = region.id;
   state.learningBodyDetailOpen = true;
-  updateLearningBodyRegionButtonState();
   renderLearningBodyRegionDetail(region);
 }
 
 function renderLearningBodyRegionDetail(region) {
+  const deepDive = getLearningBodyDeepDive(region);
   state.learningBodyDetailOpen = true;
   if (refs.learningBodySelectionView) refs.learningBodySelectionView.classList.add("hidden");
   if (refs.learningBodyRegionDetailView) refs.learningBodyRegionDetailView.classList.remove("hidden");
   if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = `${region.order}. ${region.label}`;
   if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = region.hint;
   if (refs.learningBodyStatus) {
-    refs.learningBodyStatus.textContent = `${region.label}: Detailansicht mit beschrifteten Anatomie-Bildern.`;
+    refs.learningBodyStatus.textContent =
+      `${region.label}: detaillierte Anatomieansicht mit klinischer Vertiefung.`;
   }
 
   if (refs.learningBodyRegionGallery) {
@@ -4683,6 +5137,11 @@ function renderLearningBodyRegionDetail(region) {
       image.loading = "lazy";
       image.decoding = "async";
       image.addEventListener("error", () => {
+        if (image.dataset.fallbackApplied !== "1" && image.src !== BODY_ATLAS_MAP_IMAGE_SRC) {
+          image.dataset.fallbackApplied = "1";
+          image.src = BODY_ATLAS_MAP_IMAGE_SRC;
+          return;
+        }
         imageWrap.classList.add("is-image-missing");
       });
       imageWrap.appendChild(image);
@@ -4700,12 +5159,43 @@ function renderLearningBodyRegionDetail(region) {
     });
   }
 
+  if (refs.learningBodyRegionDeepDive) {
+    refs.learningBodyRegionDeepDive.innerHTML = "";
+    const sections = [
+      { title: "Gezielte Anamnesefragen", items: deepDive.anamnese },
+      { title: "Untersuchungsfokus", items: deepDive.untersuchung },
+      { title: "Red Flags", items: deepDive.redFlags },
+      { title: "Priorisierte naechste Schritte", items: deepDive.naechsteSchritte }
+    ];
+    sections.forEach((section) => {
+      const card = document.createElement("article");
+      card.className = "learning-body-deep-card";
+      const heading = document.createElement("h6");
+      heading.className = "learning-body-deep-title";
+      heading.textContent = section.title;
+      card.appendChild(heading);
+      const list = document.createElement("ul");
+      list.className = "learning-body-deep-list";
+      section.items.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+      card.appendChild(list);
+      refs.learningBodyRegionDeepDive.appendChild(card);
+    });
+  }
+
   if (refs.learningBodyRegionBullets) {
     refs.learningBodyRegionBullets.innerHTML = "";
     region.hotspots.forEach((hotspot, index) => {
       const li = document.createElement("li");
       li.className = "learning-body-coverage-item";
-      li.innerHTML = `<strong>${index + 1}. ${hotspot.fach}</strong> - ${hotspot.patient} (${hotspot.info})`;
+      li.innerHTML = `
+        <strong>${index + 1}. ${hotspot.fach}</strong>
+        <span class="learning-body-coverage-line">Patientensprache: ${hotspot.patient}</span>
+        <span class="learning-body-coverage-line">Klinischer Fokus: ${hotspot.info}</span>
+      `;
       refs.learningBodyRegionBullets.appendChild(li);
     });
   }
