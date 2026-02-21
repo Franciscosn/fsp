@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=5" />
+    <link rel="stylesheet" href="src/styles.css?v=6" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -190,7 +190,7 @@
             Lernbereich
           </button>
           <button id="openBodyModelBtn" class="soft-btn voice-body-model-btn" type="button">
-            3D Koerpermodell
+            Koerperatlas 2D
           </button>
         </div>
         <article id="voiceDoctorLetterPanel" class="voice-doctor-letter hidden">
@@ -489,9 +489,9 @@
             <button id="learningBodyBackBtn" class="learning-body-back-btn" type="button">
               Zurueck zur Lernauswahl
             </button>
-            <h4>3D Koerpermodell</h4>
+            <h4>Koerperatlas 2D</h4>
             <p id="learningBodyStatus" class="learning-body-status">
-              Klicke auf einen Koerperbereich oder nutze das Mausrad zum Zoomen.
+              Waehle eine Region am Koerper aus. Danach siehst du eine gezoomte Detailansicht.
             </p>
           </div>
           <div class="learning-body-layout">
@@ -499,13 +499,14 @@
               id="learningBodyCanvas"
               class="learning-body-canvas"
               role="img"
-              aria-label="Interaktives Koerpermodell mit klickbaren Bereichen"
+              aria-label="Interaktive 2D-Koerperkarte mit klickbaren Bereichen"
             ></div>
             <aside class="learning-body-side">
               <div id="learningBodyRegionButtons" class="learning-body-region-buttons"></div>
               <article class="learning-body-card">
                 <h5 id="learningBodyRegionTitle">Bereich</h5>
                 <p id="learningBodyRegionHint" class="learning-body-region-hint"></p>
+                <div id="learningBodyZoomCanvas" class="learning-body-zoom-canvas" aria-live="polite"></div>
                 <p class="learning-body-term-line">
                   <strong>Fachsprache:</strong> <span id="learningBodyRegionFach"></span>
                 </p>
@@ -513,12 +514,9 @@
                   <strong>Patientensprache:</strong> <span id="learningBodyRegionPatient"></span>
                 </p>
                 <p class="learning-body-term-line">
-                  <strong>Modellstruktur:</strong> <span id="learningBodyRegionModelName"></span>
+                  <strong>Aktiver Marker:</strong> <span id="learningBodyRegionModelName"></span>
                 </p>
                 <ul id="learningBodyRegionBullets" class="learning-body-region-bullets"></ul>
-                <p class="learning-body-license">
-                  Modellbasis: Z-Anatomy / BodyParts3D (CC BY-SA)
-                </p>
               </article>
             </aside>
           </div>
@@ -680,6 +678,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=5"></script>
+    <script type="module" src="src/app.js?v=6"></script>
   </body>
 </html>

@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "5";
-const BUILD_UPDATED_AT = "2026-02-21 13:59 CET";
+const APP_VERSION = "6";
+const BUILD_UPDATED_AT = "2026-02-21 14:21 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -44,7 +44,6 @@ const LEARNING_VIEW_ROOT = "root";
 const LEARNING_VIEW_SUBCATEGORIES = "subcategories";
 const LEARNING_VIEW_READING = "reading";
 const LEARNING_VIEW_BODY = "body";
-const BODY_MODEL_DEFAULT_REGION_ID = "thorax";
 const LEARNING_ROOT_ITEMS = Object.freeze([
   {
     id: "anamnese",
@@ -54,329 +53,735 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
   },
   {
     id: "body",
-    label: "3D Koerpermodell",
-    cta: "Per Klick zoomen und lernen",
+    label: "Koerperatlas 2D",
+    cta: "15 Regionen mit Zoom und Labels",
     view: LEARNING_VIEW_BODY
   }
 ]);
-const BODY_MODEL_REGION_ITEMS = Object.freeze([
+const BODY_ATLAS_DEFAULT_REGION_ID = "thorax";
+const BODY_ATLAS_VIEWBOX = "0 0 320 640";
+const BODY_ATLAS_COLORS = Object.freeze([
+  "#e95f7d",
+  "#f07c8f",
+  "#ef9a6f",
+  "#d36ea9",
+  "#6c95cf",
+  "#4ea3c2",
+  "#59b39d",
+  "#8f8ec8",
+  "#c7835e",
+  "#b96ec9",
+  "#6f9ec2",
+  "#7999d1",
+  "#7cae66",
+  "#64b48f",
+  "#739ad8"
+]);
+const BODY_ATLAS_REGIONS = Object.freeze([
   {
-    id: "kopf",
-    label: "Kopf / Neurologie",
-    hint: "Kopfschmerz, Schwindel, Bewusstsein, Sehen",
-    fach: "Kopf- und ZNS-Bereich",
-    patient: "Kopf und Gehirn",
-    keywords: ["head", "brain", "cerebr", "encephal", "cortex", "cerebell", "skull", "cranium"],
-    bullets: [
-      "Frage nach Beginn, Dauer, Verlauf und Triggern.",
-      "Pruefe Red Flags: neue neurologische Ausfaelle, Vigilanzminderung, starker Vernichtungskopfschmerz.",
-      "Klaere Begleitsymptome wie Uebelkeit, Lichtempfindlichkeit, Sehstoerungen."
-    ],
-    focusTarget: [0, 1.72, 0],
-    cameraOffset: [0.95, 0.2, 1.25]
+    id: "kopf_gehirn",
+    label: "Kopf und Gehirn",
+    hint: "Zentrale neurologische Strukturen",
+    map: { type: "ellipse", cx: 160, cy: 58, rx: 31, ry: 31 },
+    zoomType: "head",
+    hotspots: [
+      {
+        x: 160,
+        y: 70,
+        fach: "Lobus frontalis",
+        patient: "Stirnhirn",
+        info: "Wichtig fuer Planung, Aufmerksamkeit und Verhalten."
+      },
+      {
+        x: 210,
+        y: 122,
+        fach: "Lobus temporalis",
+        patient: "Schlaefenhirn",
+        info: "Beteiligt an Sprachverstehen und Hoehrverarbeitung."
+      },
+      {
+        x: 157,
+        y: 190,
+        fach: "Cerebellum",
+        patient: "Kleinhirn",
+        info: "Koordiniert Bewegungen und Gleichgewicht."
+      },
+      {
+        x: 118,
+        y: 138,
+        fach: "Lobus parietalis",
+        patient: "Scheitelbereich des Gehirns",
+        info: "Verarbeitet Beruehrung, Lageempfinden und Raumorientierung."
+      },
+      {
+        x: 162,
+        y: 146,
+        fach: "Hypophyse",
+        patient: "Hirnanhangsdruese",
+        info: "Steuert mehrere Hormonsysteme."
+      }
+    ]
+  },
+  {
+    id: "gesicht_hno",
+    label: "Gesicht und HNO",
+    hint: "Augen, Nase, Nebenhoehlen, Rachen",
+    map: { type: "ellipse", cx: 160, cy: 91, rx: 24, ry: 20 },
+    zoomType: "face",
+    hotspots: [
+      {
+        x: 118,
+        y: 108,
+        fach: "Orbita",
+        patient: "Augenhoehle",
+        info: "Knoecherner Raum fuer Auge und Augenmuskeln."
+      },
+      {
+        x: 205,
+        y: 110,
+        fach: "Sinus maxillaris",
+        patient: "Kieferhoehle",
+        info: "Nebenhoehle, haeufiger Ort bei Sinusitis."
+      },
+      {
+        x: 161,
+        y: 132,
+        fach: "Cavitas nasi",
+        patient: "Nasenhoehle",
+        info: "Erwaermt, reinigt und befeuchtet Atemluft."
+      },
+      {
+        x: 164,
+        y: 171,
+        fach: "Pharynx",
+        patient: "Rachen",
+        info: "Gemeinsamer Abschnitt fuer Luft- und Speiseweg."
+      },
+      {
+        x: 159,
+        y: 206,
+        fach: "Tonsilla palatina",
+        patient: "Gaumenmandel",
+        info: "Teil der lokalen Immunabwehr im Rachen."
+      }
+    ]
+  },
+  {
+    id: "hals",
+    label: "Hals",
+    hint: "Atemweg, Speiseweg, Gefaesse und Schilddruese",
+    map: { type: "rect", x: 142, y: 104, width: 36, height: 36, rx: 12, ry: 12 },
+    zoomType: "neck",
+    hotspots: [
+      {
+        x: 160,
+        y: 86,
+        fach: "Glandula thyroidea",
+        patient: "Schilddruese",
+        info: "Reguliert den Stoffwechsel ueber Schilddruesenhormone."
+      },
+      {
+        x: 160,
+        y: 133,
+        fach: "Trachea",
+        patient: "Luftroehre",
+        info: "Leitet Luft in die Bronchien."
+      },
+      {
+        x: 198,
+        y: 138,
+        fach: "Oesophagus",
+        patient: "Speiseroehre",
+        info: "Transportiert Nahrung in den Magen."
+      },
+      {
+        x: 122,
+        y: 130,
+        fach: "Arteria carotis communis",
+        patient: "Halsschlagader",
+        info: "Wichtige Blutversorgung fuer Kopf und Gehirn."
+      },
+      {
+        x: 104,
+        y: 98,
+        fach: "Nodi lymphatici cervicales",
+        patient: "Halslymphknoten",
+        info: "Koennen bei Infekten anschwellen."
+      }
+    ]
   },
   {
     id: "thorax",
-    label: "Thorax / Herz-Lunge",
-    hint: "Brustschmerz, Dyspnoe, Husten, Palpitationen",
-    fach: "Thorax mit kardio-pulmonalem Fokus",
-    patient: "Brustkorb mit Herz und Lunge",
-    keywords: [
-      "thorax",
-      "heart",
-      "cor",
-      "cardi",
-      "lung",
-      "pulmo",
-      "pulmon",
-      "trachea",
-      "bronch",
-      "rib",
-      "costa",
-      "sternum"
-    ],
-    bullets: [
-      "Differenziere Schmerzqualitaet, Ausstrahlung, Belastungsabhaengigkeit und Dauer.",
-      "Erfrage Dyspnoe in Ruhe vs. unter Belastung sowie orthopnoeartige Beschwerden.",
-      "Achte auf kardiale und pulmonale Risikofaktoren in Eigen- und Familienanamnese."
-    ],
-    focusTarget: [0, 1.18, 0],
-    cameraOffset: [1.15, 0.2, 1.45]
+    label: "Thoraxwand",
+    hint: "Brustkorb, Rippen, Pleura, Atemmechanik",
+    map: { type: "rect", x: 122, y: 142, width: 76, height: 98, rx: 26, ry: 26 },
+    zoomType: "chest",
+    hotspots: [
+      {
+        x: 160,
+        y: 82,
+        fach: "Sternum",
+        patient: "Brustbein",
+        info: "Vordere knoecherne Struktur des Brustkorbs."
+      },
+      {
+        x: 97,
+        y: 126,
+        fach: "Costae",
+        patient: "Rippen",
+        info: "Schuetzen Herz und Lunge."
+      },
+      {
+        x: 230,
+        y: 146,
+        fach: "Musculi intercostales",
+        patient: "Zwischenrippenmuskeln",
+        info: "Unterstuetzen die Atembewegung."
+      },
+      {
+        x: 199,
+        y: 180,
+        fach: "Pleura parietalis",
+        patient: "Brustfell",
+        info: "Auskleidung der Brusthoehle."
+      },
+      {
+        x: 162,
+        y: 236,
+        fach: "Diaphragma",
+        patient: "Zwerchfell",
+        info: "Wichtigster Atemmuskel."
+      }
+    ]
   },
   {
-    id: "abdomen",
-    label: "Abdomen",
-    hint: "Bauchschmerz, Uebelkeit, Stuhlveraenderung, Appetit",
-    fach: "Abdomen / Viszeralorgane",
-    patient: "Bauchraum und Verdauungsorgane",
-    keywords: [
-      "abdomen",
-      "abdominal",
-      "liver",
-      "hepar",
-      "stomach",
-      "ventricul",
-      "gaster",
-      "intestin",
-      "colon",
-      "duoden",
-      "ileum",
-      "jejun",
-      "pancreas",
-      "spleen",
-      "lien"
-    ],
-    bullets: [
-      "Lokalisierung mit Schmerzcharakter und zeitlichem Verlauf systematisch klaeren.",
-      "Begleitzeichen wie Erbrechen, Fieber, Diarrhoe, Melaena oder Haematochezie nachfragen.",
-      "Voroperationen, Medikamente und Alkohol als wichtige Kontextfaktoren erfassen."
-    ],
-    focusTarget: [0, 0.78, 0],
-    cameraOffset: [1.1, 0.12, 1.45]
+    id: "herz_lunge",
+    label: "Herz und Lunge",
+    hint: "Kardio-pulmonaler Kernbereich",
+    map: { type: "ellipse", cx: 160, cy: 189, rx: 41, ry: 49 },
+    zoomType: "cardio",
+    hotspots: [
+      {
+        x: 168,
+        y: 150,
+        fach: "Cor",
+        patient: "Herz",
+        info: "Pumpt Blut durch den gesamten Kreislauf."
+      },
+      {
+        x: 96,
+        y: 136,
+        fach: "Pulmo dexter",
+        patient: "rechte Lunge",
+        info: "Drei Lappen, rechts im Brustkorb."
+      },
+      {
+        x: 233,
+        y: 136,
+        fach: "Pulmo sinister",
+        patient: "linke Lunge",
+        info: "Zwei Lappen, grenzt ans Herz."
+      },
+      {
+        x: 161,
+        y: 100,
+        fach: "Aorta",
+        patient: "Hauptschlagader",
+        info: "Groesste Arterie aus dem linken Herzen."
+      },
+      {
+        x: 155,
+        y: 74,
+        fach: "Truncus pulmonalis",
+        patient: "Lungenschlagader",
+        info: "Fuehrt Blut vom Herzen zur Lunge."
+      }
+    ]
   },
   {
-    id: "becken",
-    label: "Becken / Urogenital",
-    hint: "Dysurie, Pollakisurie, Unterbauch, Blutung",
-    fach: "Becken- und Urogenitalbereich",
-    patient: "Unterbauch und Harn-/Geschlechtsorgane",
-    keywords: [
-      "pelvis",
-      "pelvic",
-      "bladder",
-      "vesica",
-      "uter",
-      "ovar",
-      "prostat",
-      "ureter",
-      "urethra",
-      "genital"
-    ],
-    bullets: [
-      "Miktionsbeschwerden strukturiert nach Brennen, Frequenz und Restharngefuehl abfragen.",
-      "Bei Unterbauchbeschwerden an gyn/urologische Differenzialdiagnosen denken.",
-      "Sexualanamnese und Schwangerschaftsrelevanz nur situativ und respektvoll erheben."
-    ],
-    focusTarget: [0, 0.46, 0],
-    cameraOffset: [1.0, 0.02, 1.3]
+    id: "oberbauch",
+    label: "Oberbauchorgane",
+    hint: "Leber, Magen, Pankreas, Milz",
+    map: { type: "rect", x: 126, y: 248, width: 68, height: 65, rx: 20, ry: 20 },
+    zoomType: "upper_abdomen",
+    hotspots: [
+      {
+        x: 111,
+        y: 108,
+        fach: "Hepar",
+        patient: "Leber",
+        info: "Zentrales Stoffwechsel- und Entgiftungsorgan."
+      },
+      {
+        x: 206,
+        y: 118,
+        fach: "Ventriculus",
+        patient: "Magen",
+        info: "Erster grosser Verdauungsabschnitt."
+      },
+      {
+        x: 166,
+        y: 155,
+        fach: "Pancreas",
+        patient: "Bauchspeicheldruese",
+        info: "Bildet Verdauungsenzyme und Insulin."
+      },
+      {
+        x: 233,
+        y: 137,
+        fach: "Lien",
+        patient: "Milz",
+        info: "Teil des Immunsystems."
+      },
+      {
+        x: 124,
+        y: 145,
+        fach: "Vesica biliaris",
+        patient: "Gallenblase",
+        info: "Speichert Gallensekret."
+      }
+    ]
   },
   {
-    id: "arm_links",
-    label: "Linker Arm",
-    hint: "Sensibilitaet, Kraft, Trauma, Ausstrahlung",
-    fach: "Linke obere Extremitaet",
-    patient: "Linker Arm",
-    keywords: ["left arm", "humerus", "radius", "ulna", "brach", "arm_l", "upper limb"],
-    bullets: [
-      "Neu aufgetretene Schwaeche, Taubheit oder Koordinationsstoerung klar dokumentieren.",
-      "Bei Thoraxschmerz Ausstrahlung in den linken Arm gezielt einordnen.",
-      "Nach Unfallmechanismus, Schwellung und Funktionseinschraenkung fragen."
-    ],
-    focusTarget: [-0.55, 1.06, 0],
-    cameraOffset: [-1.22, 0.15, 1.32]
+    id: "unterbauch_darm",
+    label: "Unterbauch und Darm",
+    hint: "Duenndarm, Dickdarm, Appendix, Rektum",
+    map: { type: "rect", x: 126, y: 318, width: 68, height: 60, rx: 19, ry: 19 },
+    zoomType: "lower_abdomen",
+    hotspots: [
+      {
+        x: 151,
+        y: 112,
+        fach: "Intestinum tenue",
+        patient: "Duenndarm",
+        info: "Hauptort der Naehrstoffaufnahme."
+      },
+      {
+        x: 100,
+        y: 116,
+        fach: "Colon ascendens",
+        patient: "aufsteigender Dickdarm",
+        info: "Transportiert Darminhalt nach oben."
+      },
+      {
+        x: 225,
+        y: 119,
+        fach: "Colon descendens",
+        patient: "absteigender Dickdarm",
+        info: "Transportiert Darminhalt nach unten."
+      },
+      {
+        x: 121,
+        y: 176,
+        fach: "Appendix vermiformis",
+        patient: "Wurmfortsatz",
+        info: "Entzuendet sich bei Appendizitis."
+      },
+      {
+        x: 168,
+        y: 205,
+        fach: "Rectum",
+        patient: "Enddarm",
+        info: "Speichert Stuhl vor der Entleerung."
+      }
+    ]
   },
   {
-    id: "arm_rechts",
-    label: "Rechter Arm",
-    hint: "Schmerz, Kraft, Taubheit, Ueberlastung",
-    fach: "Rechte obere Extremitaet",
-    patient: "Rechter Arm",
-    keywords: ["right arm", "humerus", "radius", "ulna", "brach", "arm_r", "upper limb"],
-    bullets: [
-      "Unterscheide radikulaere Symptome von lokalem muskuloskelettalem Schmerz.",
-      "Erfrage Belastungsbezug, Dominanzseite und alltagsrelevante Einschraenkung.",
-      "Verlauf unter Schonung, Kuehlung oder Analgetika kurz erfassen."
-    ],
-    focusTarget: [0.55, 1.06, 0],
-    cameraOffset: [1.22, 0.15, 1.32]
+    id: "becken_uro",
+    label: "Becken und Urogenital",
+    hint: "Harnwege und Reproduktionsorgane",
+    map: { type: "rect", x: 124, y: 385, width: 72, height: 56, rx: 18, ry: 18 },
+    zoomType: "pelvis",
+    hotspots: [
+      {
+        x: 160,
+        y: 156,
+        fach: "Vesica urinaria",
+        patient: "Harnblase",
+        info: "Speichert Urin bis zur Miktion."
+      },
+      {
+        x: 116,
+        y: 114,
+        fach: "Ureter sinister",
+        patient: "linker Harnleiter",
+        info: "Leitet Urin von der Niere zur Blase."
+      },
+      {
+        x: 206,
+        y: 114,
+        fach: "Ureter dexter",
+        patient: "rechter Harnleiter",
+        info: "Leitet Urin von der Niere zur Blase."
+      },
+      {
+        x: 161,
+        y: 206,
+        fach: "Urethra",
+        patient: "Harnroehre",
+        info: "Ausfuehrgang der Blase."
+      },
+      {
+        x: 160,
+        y: 116,
+        fach: "Organa genitalia interna",
+        patient: "innere Geschlechtsorgane",
+        info: "Je nach Geschlecht z. B. Uterus/Ovarien oder Prostata."
+      }
+    ]
   },
   {
-    id: "bein_links",
+    id: "ruecken_wirbelsaeule",
+    label: "Ruecken und Wirbelsaeule",
+    hint: "Wirbelsaeule, Spinalkanal, ISG",
+    map: { type: "rect", x: 228, y: 184, width: 20, height: 214, rx: 10, ry: 10 },
+    zoomType: "spine",
+    hotspots: [
+      {
+        x: 160,
+        y: 72,
+        fach: "Columna cervicalis",
+        patient: "Halswirbelsaeule",
+        info: "Beweglicher oberer Wirbelsaeulenabschnitt."
+      },
+      {
+        x: 160,
+        y: 122,
+        fach: "Columna thoracica",
+        patient: "Brustwirbelsaeule",
+        info: "Abschnitt mit Rippenanbindung."
+      },
+      {
+        x: 160,
+        y: 177,
+        fach: "Columna lumbalis",
+        patient: "Lendenwirbelsaeule",
+        info: "Haeufiger Ort fuer Rueckenschmerz."
+      },
+      {
+        x: 160,
+        y: 134,
+        fach: "Canalis vertebralis",
+        patient: "Wirbelkanal",
+        info: "Enthaelt das Rueckenmark."
+      },
+      {
+        x: 160,
+        y: 226,
+        fach: "Articulatio sacroiliaca",
+        patient: "Iliosakralgelenk",
+        info: "Verbindung zwischen Becken und Kreuzbein."
+      }
+    ]
+  },
+  {
+    id: "linker_oberarm",
+    label: "Linker Oberarm",
+    hint: "Schulter bis Ellenbogen links",
+    map: {
+      type: "rect",
+      x: 93,
+      y: 156,
+      width: 28,
+      height: 100,
+      rx: 12,
+      ry: 12,
+      transform: "rotate(18 107 205)"
+    },
+    zoomType: "upper_arm_left",
+    hotspots: [
+      {
+        x: 156,
+        y: 80,
+        fach: "Humerus",
+        patient: "Oberarmknochen",
+        info: "Knochen zwischen Schulter und Ellenbogen."
+      },
+      {
+        x: 127,
+        y: 118,
+        fach: "Musculus deltoideus",
+        patient: "Schultermuskel",
+        info: "Wichtig fuer Armheben und Stabilitaet."
+      },
+      {
+        x: 180,
+        y: 118,
+        fach: "Musculus biceps brachii",
+        patient: "vorderer Oberarmmuskel",
+        info: "Beugt den Ellenbogen."
+      },
+      {
+        x: 144,
+        y: 164,
+        fach: "Musculus triceps brachii",
+        patient: "hinterer Oberarmmuskel",
+        info: "Streckt den Ellenbogen."
+      },
+      {
+        x: 182,
+        y: 170,
+        fach: "Nervus radialis",
+        patient: "wichtiger Armnerv",
+        info: "Relevant bei Sensibilitaets- und Kraftausfaellen."
+      }
+    ]
+  },
+  {
+    id: "rechter_oberarm",
+    label: "Rechter Oberarm",
+    hint: "Schulter bis Ellenbogen rechts",
+    map: {
+      type: "rect",
+      x: 199,
+      y: 156,
+      width: 28,
+      height: 100,
+      rx: 12,
+      ry: 12,
+      transform: "rotate(-18 213 205)"
+    },
+    zoomType: "upper_arm_right",
+    hotspots: [
+      {
+        x: 164,
+        y: 80,
+        fach: "Humerus",
+        patient: "Oberarmknochen",
+        info: "Knochen zwischen Schulter und Ellenbogen."
+      },
+      {
+        x: 196,
+        y: 118,
+        fach: "Musculus deltoideus",
+        patient: "Schultermuskel",
+        info: "Wichtig fuer Armheben und Stabilitaet."
+      },
+      {
+        x: 140,
+        y: 118,
+        fach: "Musculus biceps brachii",
+        patient: "vorderer Oberarmmuskel",
+        info: "Beugt den Ellenbogen."
+      },
+      {
+        x: 178,
+        y: 164,
+        fach: "Musculus triceps brachii",
+        patient: "hinterer Oberarmmuskel",
+        info: "Streckt den Ellenbogen."
+      },
+      {
+        x: 138,
+        y: 170,
+        fach: "Nervus radialis",
+        patient: "wichtiger Armnerv",
+        info: "Relevant bei Sensibilitaets- und Kraftausfaellen."
+      }
+    ]
+  },
+  {
+    id: "linker_unterarm_hand",
+    label: "Linker Unterarm und Hand",
+    hint: "Ellenbogen bis Finger links",
+    map: {
+      type: "rect",
+      x: 62,
+      y: 262,
+      width: 30,
+      height: 132,
+      rx: 14,
+      ry: 14,
+      transform: "rotate(10 77 328)"
+    },
+    zoomType: "forearm_left",
+    hotspots: [
+      {
+        x: 134,
+        y: 82,
+        fach: "Radius",
+        patient: "Speiche",
+        info: "Unterarmknochen auf Daumenseite."
+      },
+      {
+        x: 186,
+        y: 94,
+        fach: "Ulna",
+        patient: "Elle",
+        info: "Unterarmknochen auf Kleinfingerseite."
+      },
+      {
+        x: 164,
+        y: 150,
+        fach: "Ossa carpi",
+        patient: "Handwurzelknochen",
+        info: "Mehrere kleine Knochen am Handgelenk."
+      },
+      {
+        x: 136,
+        y: 177,
+        fach: "Nervus medianus",
+        patient: "Mittelhandnerv",
+        info: "Relevant beim Karpaltunnelsyndrom."
+      },
+      {
+        x: 199,
+        y: 177,
+        fach: "Arteria radialis",
+        patient: "Pulsarterie",
+        info: "Hier tastet man haeufig den Puls."
+      }
+    ]
+  },
+  {
+    id: "rechter_unterarm_hand",
+    label: "Rechter Unterarm und Hand",
+    hint: "Ellenbogen bis Finger rechts",
+    map: {
+      type: "rect",
+      x: 228,
+      y: 262,
+      width: 30,
+      height: 132,
+      rx: 14,
+      ry: 14,
+      transform: "rotate(-10 243 328)"
+    },
+    zoomType: "forearm_right",
+    hotspots: [
+      {
+        x: 186,
+        y: 82,
+        fach: "Radius",
+        patient: "Speiche",
+        info: "Unterarmknochen auf Daumenseite."
+      },
+      {
+        x: 134,
+        y: 94,
+        fach: "Ulna",
+        patient: "Elle",
+        info: "Unterarmknochen auf Kleinfingerseite."
+      },
+      {
+        x: 156,
+        y: 150,
+        fach: "Ossa carpi",
+        patient: "Handwurzelknochen",
+        info: "Mehrere kleine Knochen am Handgelenk."
+      },
+      {
+        x: 184,
+        y: 177,
+        fach: "Nervus medianus",
+        patient: "Mittelhandnerv",
+        info: "Relevant beim Karpaltunnelsyndrom."
+      },
+      {
+        x: 121,
+        y: 177,
+        fach: "Arteria radialis",
+        patient: "Pulsarterie",
+        info: "Hier tastet man haeufig den Puls."
+      }
+    ]
+  },
+  {
+    id: "linkes_bein",
     label: "Linkes Bein",
-    hint: "Oedem, Schmerz, Claudicatio, Sensibilitaet",
-    fach: "Linke untere Extremitaet",
-    patient: "Linkes Bein",
-    keywords: ["left leg", "femur", "tibia", "fibula", "knee", "ankle", "leg_l", "lower limb"],
-    bullets: [
-      "Einseitige Schwellung und Schmerz immer auf Thrombosezeichen screenen.",
-      "Belastungsabhaengige Beschwerden und Gehstrecke fuer Gefaessanamnese erfassen.",
-      "Neurologische Symptome wie Kribbeln oder Fussheberschwaeche systematisch einordnen."
-    ],
-    focusTarget: [-0.18, -0.04, 0],
-    cameraOffset: [-1.0, -0.12, 1.48]
+    hint: "Huefte, Knie, Unterschenkel links",
+    map: { type: "rect", x: 130, y: 444, width: 30, height: 165, rx: 14, ry: 14 },
+    zoomType: "leg_left",
+    hotspots: [
+      {
+        x: 154,
+        y: 72,
+        fach: "Femur",
+        patient: "Oberschenkelknochen",
+        info: "Laengster Knochen des Koerpers."
+      },
+      {
+        x: 158,
+        y: 130,
+        fach: "Articulatio genus",
+        patient: "Kniegelenk",
+        info: "Verbindet Ober- und Unterschenkel."
+      },
+      {
+        x: 146,
+        y: 186,
+        fach: "Tibia",
+        patient: "Schienbein",
+        info: "Traegt einen grossen Teil der Last."
+      },
+      {
+        x: 188,
+        y: 186,
+        fach: "Fibula",
+        patient: "Wadenbein",
+        info: "Stabilisiert den Unterschenkel seitlich."
+      },
+      {
+        x: 162,
+        y: 232,
+        fach: "Tendo calcaneus",
+        patient: "Achillessehne",
+        info: "Kraeftige Sehne zwischen Wade und Ferse."
+      }
+    ]
   },
   {
-    id: "bein_rechts",
+    id: "rechtes_bein",
     label: "Rechtes Bein",
-    hint: "Gangbild, Schmerzverlauf, Schwellung, Trauma",
-    fach: "Rechte untere Extremitaet",
-    patient: "Rechtes Bein",
-    keywords: ["right leg", "femur", "tibia", "fibula", "knee", "ankle", "leg_r", "lower limb"],
-    bullets: [
-      "Frage nach akutem vs. chronischem Verlauf und nach ausloesenden Bewegungen.",
-      "Vergleiche Seitenbefunde: Umfang, Roetung, Ueberwaermung, Druckschmerz.",
-      "Sicherheitsfrage: Warnzeichen fuer Embolie oder Ischaemie klar kommunizieren."
-    ],
-    focusTarget: [0.18, -0.04, 0],
-    cameraOffset: [1.0, -0.12, 1.48]
+    hint: "Huefte, Knie, Unterschenkel rechts",
+    map: { type: "rect", x: 162, y: 444, width: 30, height: 165, rx: 14, ry: 14 },
+    zoomType: "leg_right",
+    hotspots: [
+      {
+        x: 166,
+        y: 72,
+        fach: "Femur",
+        patient: "Oberschenkelknochen",
+        info: "Laengster Knochen des Koerpers."
+      },
+      {
+        x: 162,
+        y: 130,
+        fach: "Articulatio genus",
+        patient: "Kniegelenk",
+        info: "Verbindet Ober- und Unterschenkel."
+      },
+      {
+        x: 174,
+        y: 186,
+        fach: "Tibia",
+        patient: "Schienbein",
+        info: "Traegt einen grossen Teil der Last."
+      },
+      {
+        x: 132,
+        y: 186,
+        fach: "Fibula",
+        patient: "Wadenbein",
+        info: "Stabilisiert den Unterschenkel seitlich."
+      },
+      {
+        x: 158,
+        y: 232,
+        fach: "Tendo calcaneus",
+        patient: "Achillessehne",
+        info: "Kraeftige Sehne zwischen Wade und Ferse."
+      }
+    ]
   }
 ]);
-const ANATOMY_TERM_ITEMS = Object.freeze([
-  {
-    id: "heart",
-    regionId: "thorax",
-    fach: "Cor / Herz",
-    patient: "Herz",
-    info: "Pumpt das Blut durch den Koerper und versorgt Organe mit Sauerstoff.",
-    keywords: ["heart", "cor", "cardi", "myocard", "atrium", "ventric"]
-  },
-  {
-    id: "lung",
-    regionId: "thorax",
-    fach: "Pulmo / Lunge",
-    patient: "Lunge",
-    info: "Nimmt Sauerstoff auf und gibt Kohlendioxid ab.",
-    keywords: ["lung", "pulmo", "pulmon", "bronch", "alveol", "pleura"]
-  },
-  {
-    id: "trachea",
-    regionId: "thorax",
-    fach: "Trachea",
-    patient: "Luftröhre",
-    info: "Leitet Luft von Mund/Nase in die Bronchien.",
-    keywords: ["trachea", "windpipe"]
-  },
-  {
-    id: "esophagus",
-    regionId: "thorax",
-    fach: "Oesophagus",
-    patient: "Speiseroehre",
-    info: "Transportiert Nahrung vom Rachen in den Magen.",
-    keywords: ["esophagus", "oesophagus", "oesoph", "esophag"]
-  },
-  {
-    id: "aorta",
-    regionId: "thorax",
-    fach: "Aorta",
-    patient: "Hauptschlagader",
-    info: "Groesste Arterie; verteilt Blut aus dem Herzen in den Koerper.",
-    keywords: ["aorta"]
-  },
-  {
-    id: "liver",
-    regionId: "abdomen",
-    fach: "Hepar / Leber",
-    patient: "Leber",
-    info: "Zentrales Stoffwechselorgan, entgiftet und bildet wichtige Proteine.",
-    keywords: ["liver", "hepar", "hepatic"]
-  },
-  {
-    id: "stomach",
-    regionId: "abdomen",
-    fach: "Gaster / Ventriculus",
-    patient: "Magen",
-    info: "Mischt Nahrung vor und startet die Verdauung mit Saeure und Enzymen.",
-    keywords: ["stomach", "gaster", "ventricul"]
-  },
-  {
-    id: "pancreas",
-    regionId: "abdomen",
-    fach: "Pancreas",
-    patient: "Bauchspeicheldruese",
-    info: "Produziert Verdauungsenzyme und Hormone wie Insulin.",
-    keywords: ["pancreas", "pancreat"]
-  },
-  {
-    id: "spleen",
-    regionId: "abdomen",
-    fach: "Lien / Milz",
-    patient: "Milz",
-    info: "Teil des Immunsystems und am Abbau alter Blutzellen beteiligt.",
-    keywords: ["spleen", "lien", "splen"]
-  },
-  {
-    id: "intestine_small",
-    regionId: "abdomen",
-    fach: "Intestinum tenue",
-    patient: "Duenndarm",
-    info: "Ort der Hauptaufnahme von Naehrstoffen.",
-    keywords: ["small intestine", "intestinum tenue", "duoden", "jejun", "ileum"]
-  },
-  {
-    id: "intestine_large",
-    regionId: "abdomen",
-    fach: "Intestinum crassum / Colon",
-    patient: "Dickdarm",
-    info: "Entzieht Wasser und formt den Stuhl.",
-    keywords: ["large intestine", "colon", "cecum", "caecum", "sigmoid", "rectum"]
-  },
-  {
-    id: "kidney",
-    regionId: "becken",
-    fach: "Ren / Niere",
-    patient: "Niere",
-    info: "Filtert das Blut und bildet Urin.",
-    keywords: ["kidney", "ren", "renal", "nephr"]
-  },
-  {
-    id: "bladder",
-    regionId: "becken",
-    fach: "Vesica urinaria",
-    patient: "Harnblase",
-    info: "Speichert Urin bis zur Entleerung.",
-    keywords: ["bladder", "vesica", "urinary bladder"]
-  },
-  {
-    id: "brain",
-    regionId: "kopf",
-    fach: "Encephalon / Cerebrum",
-    patient: "Gehirn",
-    info: "Steuert Bewusstsein, Bewegung, Sprache und Wahrnehmung.",
-    keywords: ["brain", "encephal", "cerebr", "cortex", "cerebell", "thalam"]
-  },
-  {
-    id: "thyroid",
-    regionId: "kopf",
-    fach: "Glandula thyroidea",
-    patient: "Schilddruese",
-    info: "Reguliert den Stoffwechsel ueber Schilddruesenhormone.",
-    keywords: ["thyroid", "thyro", "glandula thyroidea"]
-  },
-  {
-    id: "spine",
-    regionId: "thorax",
-    fach: "Columna vertebralis",
-    patient: "Wirbelsaeule",
-    info: "Stuetzt den Koerper und schuetzt das Rueckenmark.",
-    keywords: ["spine", "vertebra", "vertebral", "columna"]
-  },
-  {
-    id: "humerus",
-    regionId: "arm_rechts",
-    fach: "Humerus",
-    patient: "Oberarmknochen",
-    info: "Knochen des Oberarms zwischen Schulter und Ellenbogen.",
-    keywords: ["humerus", "upper arm"]
-  },
-  {
-    id: "femur",
-    regionId: "bein_rechts",
-    fach: "Femur",
-    patient: "Oberschenkelknochen",
-    info: "Laengster und kraeftigster Knochen des Menschen.",
-    keywords: ["femur", "thigh bone"]
-  },
-  {
-    id: "pelvis",
-    regionId: "becken",
-    fach: "Pelvis",
-    patient: "Becken",
-    info: "Verbindet Wirbelsaeule mit den Beinen und traegt innere Organe.",
-    keywords: ["pelvis", "ilium", "ischium", "pubis", "acetabul"]
-  }
-]);
-const SKETCHFAB_VIEWER_SCRIPT_SRC = "https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js";
-const SKETCHFAB_ANATOMY_MODEL_UID = "5cfafb312f504815aa3fec55735607a6";
+const BODY_ATLAS_REGION_BY_ID = Object.freeze(
+  BODY_ATLAS_REGIONS.reduce((acc, entry, index) => {
+    acc[entry.id] = { ...entry, order: index + 1 };
+    return acc;
+  }, {})
+);
+const BODY_ATLAS_SVG_NS = "http://www.w3.org/2000/svg";
 const VOICE_SAMPLE_VIEW_PATIENT = "sample_patient";
 const VOICE_SAMPLE_VIEW_LETTER = "sample_letter";
 const VOICE_SAMPLE_VIEW_DOCTOR = "sample_doctor";
@@ -619,9 +1024,6 @@ let voiceChunkBuffer = [];
 let voiceAutoStopTimer = null;
 let shouldSendVoiceAfterStop = false;
 let xpMilestoneHideTimer = null;
-let learningBodyModelEngine = null;
-let learningBodyThreeLoadPromise = null;
-let learningBodySketchfabScriptPromise = null;
 
 const CATEGORY_MAP = {
   berlin_abkuerzungen: "Berlin Zusatzfragen: Abkuerzungen",
@@ -788,8 +1190,9 @@ const state = {
   learningRootId: "anamnese",
   learningAnamnese: null,
   learningActiveCategoryId: "",
-  learningBodyActiveRegionId: BODY_MODEL_DEFAULT_REGION_ID,
-  learningBodyActiveModelNodeName: ""
+  learningBodyActiveRegionId: BODY_ATLAS_DEFAULT_REGION_ID,
+  learningBodyActiveModelNodeName: "",
+  learningBodyActiveHotspotIndex: 0
 };
 
 const refs = {
@@ -925,6 +1328,7 @@ const refs = {
   learningBodyBackBtn: document.getElementById("learningBodyBackBtn"),
   learningBodyStatus: document.getElementById("learningBodyStatus"),
   learningBodyCanvas: document.getElementById("learningBodyCanvas"),
+  learningBodyZoomCanvas: document.getElementById("learningBodyZoomCanvas"),
   learningBodyRegionButtons: document.getElementById("learningBodyRegionButtons"),
   learningBodyRegionTitle: document.getElementById("learningBodyRegionTitle"),
   learningBodyRegionHint: document.getElementById("learningBodyRegionHint"),
@@ -4003,6 +4407,8 @@ function renderLearningLoading(message) {
   if (refs.learningSubcategoryList) refs.learningSubcategoryList.innerHTML = "";
   if (refs.learningBodyRegionButtons) refs.learningBodyRegionButtons.innerHTML = "";
   if (refs.learningBodyRegionBullets) refs.learningBodyRegionBullets.innerHTML = "";
+  if (refs.learningBodyCanvas) refs.learningBodyCanvas.innerHTML = "";
+  if (refs.learningBodyZoomCanvas) refs.learningBodyZoomCanvas.innerHTML = "";
   if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = "Bereich";
   if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = "";
   if (refs.learningBodyRegionFach) refs.learningBodyRegionFach.textContent = "-";
@@ -4010,13 +4416,13 @@ function renderLearningLoading(message) {
   if (refs.learningBodyRegionModelName) refs.learningBodyRegionModelName.textContent = "-";
   if (refs.learningBodyStatus) refs.learningBodyStatus.textContent = "";
   state.learningBodyActiveModelNodeName = "";
+  state.learningBodyActiveHotspotIndex = 0;
   if (refs.learningReadingTitle) refs.learningReadingTitle.textContent = "Lernbereich";
   if (refs.learningReadingMeta) refs.learningReadingMeta.textContent = "";
   if (refs.learningReadingText) refs.learningReadingText.innerHTML = "";
   if (refs.learningReadingQuestionGroups) refs.learningReadingQuestionGroups.innerHTML = "";
   if (refs.learningReadingSources) refs.learningReadingSources.innerHTML = "";
   if (refs.learningReadingStatus) refs.learningReadingStatus.textContent = safeLine(message, 220);
-  stopLearningBodyModelLoop();
 }
 
 function renderLearningFlow() {
@@ -4063,12 +4469,6 @@ function showLearningView(viewId) {
   if (refs.learningPanel) {
     refs.learningPanel.classList.toggle("is-reader-view", viewId === LEARNING_VIEW_READING);
   }
-  if (viewId === LEARNING_VIEW_BODY) {
-    void ensureLearningBodyModelReady();
-    startLearningBodyModelLoop();
-    return;
-  }
-  stopLearningBodyModelLoop();
 }
 
 function renderLearningRootList() {
@@ -4124,65 +4524,179 @@ function renderLearningSubcategoryList(categories) {
 }
 
 function getLearningBodyRegionById(regionId) {
+  const key = String(regionId || "");
   return (
-    BODY_MODEL_REGION_ITEMS.find((entry) => entry.id === regionId) ||
-    BODY_MODEL_REGION_ITEMS.find((entry) => entry.id === BODY_MODEL_DEFAULT_REGION_ID) ||
-    BODY_MODEL_REGION_ITEMS[0] ||
+    BODY_ATLAS_REGION_BY_ID[key] ||
+    BODY_ATLAS_REGION_BY_ID[BODY_ATLAS_DEFAULT_REGION_ID] ||
+    BODY_ATLAS_REGIONS[0] ||
     null
   );
 }
 
-function normalizeAnatomyTokenInput(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/[_\-]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function isAnatomyKeywordMatch(text, keywords) {
-  if (!text || !Array.isArray(keywords) || keywords.length === 0) return false;
-  return keywords.some((keyword) => {
-    const needle = normalizeAnatomyTokenInput(keyword);
-    return needle ? text.includes(needle) : false;
-  });
-}
-
-function resolveAnatomyTermFromNodeName(nodeName) {
-  const normalized = normalizeAnatomyTokenInput(nodeName);
-  if (!normalized) return null;
-  return ANATOMY_TERM_ITEMS.find((entry) => isAnatomyKeywordMatch(normalized, entry.keywords)) || null;
-}
-
-function resolveLearningBodyRegionFromNodeName(nodeName) {
-  const normalized = normalizeAnatomyTokenInput(nodeName);
-  if (!normalized) return getLearningBodyRegionById(BODY_MODEL_DEFAULT_REGION_ID);
-
-  const isLeft =
-    normalized.includes(" left") ||
-    normalized.startsWith("left ") ||
-    normalized.includes("_l") ||
-    normalized.includes(" sin");
-  const isRight =
-    normalized.includes(" right") ||
-    normalized.startsWith("right ") ||
-    normalized.includes("_r") ||
-    normalized.includes(" dex");
-  const isArmLike = isAnatomyKeywordMatch(normalized, ["arm", "humerus", "radius", "ulna", "brach"]);
-  const isLegLike = isAnatomyKeywordMatch(normalized, ["leg", "femur", "tibia", "fibula", "crus"]);
-  if (isLeft && isArmLike) return getLearningBodyRegionById("arm_links");
-  if (isRight && isArmLike) return getLearningBodyRegionById("arm_rechts");
-  if (isLeft && isLegLike) return getLearningBodyRegionById("bein_links");
-  if (isRight && isLegLike) return getLearningBodyRegionById("bein_rechts");
-
-  const termMatch = resolveAnatomyTermFromNodeName(normalized);
-  if (termMatch?.regionId) {
-    return getLearningBodyRegionById(termMatch.regionId);
+function createBodyAtlasSvgNode(tagName, attrs = {}) {
+  const node = document.createElementNS(BODY_ATLAS_SVG_NS, tagName);
+  for (const [key, value] of Object.entries(attrs)) {
+    if (value === null || value === undefined || value === "") continue;
+    node.setAttribute(key, String(value));
   }
-  return (
-    BODY_MODEL_REGION_ITEMS.find((entry) => isAnatomyKeywordMatch(normalized, entry.keywords)) ||
-    getLearningBodyRegionById(BODY_MODEL_DEFAULT_REGION_ID)
-  );
+  return node;
+}
+
+function appendBodyAtlasShape(parent, shape, className = "") {
+  if (!shape || !parent) return null;
+  let node = null;
+  if (shape.type === "ellipse") {
+    node = createBodyAtlasSvgNode("ellipse", {
+      cx: shape.cx,
+      cy: shape.cy,
+      rx: shape.rx,
+      ry: shape.ry
+    });
+  } else if (shape.type === "rect") {
+    node = createBodyAtlasSvgNode("rect", {
+      x: shape.x,
+      y: shape.y,
+      width: shape.width,
+      height: shape.height,
+      rx: shape.rx,
+      ry: shape.ry
+    });
+  } else if (shape.type === "path") {
+    node = createBodyAtlasSvgNode("path", { d: shape.d });
+  }
+  if (!node) return null;
+  if (shape.transform) {
+    node.setAttribute("transform", String(shape.transform));
+  }
+  if (className) {
+    node.setAttribute("class", className);
+  }
+  parent.appendChild(node);
+  return node;
+}
+
+function getBodyAtlasShapeCenter(shape) {
+  if (!shape) return { x: 160, y: 160 };
+  if (shape.type === "ellipse") {
+    return { x: Number(shape.cx), y: Number(shape.cy) };
+  }
+  if (shape.type === "rect") {
+    return {
+      x: Number(shape.x) + Number(shape.width) / 2,
+      y: Number(shape.y) + Number(shape.height) / 2
+    };
+  }
+  return { x: 160, y: 160 };
+}
+
+function getBodyAtlasZoomShapes(zoomType) {
+  switch (zoomType) {
+    case "head":
+      return [
+        { type: "ellipse", cx: 160, cy: 130, rx: 95, ry: 108 },
+        { type: "ellipse", cx: 160, cy: 88, rx: 70, ry: 65 }
+      ];
+    case "face":
+      return [
+        { type: "ellipse", cx: 160, cy: 122, rx: 84, ry: 110 },
+        { type: "ellipse", cx: 130, cy: 108, rx: 20, ry: 14 },
+        { type: "ellipse", cx: 190, cy: 108, rx: 20, ry: 14 }
+      ];
+    case "neck":
+      return [
+        { type: "rect", x: 120, y: 44, width: 80, height: 196, rx: 34, ry: 34 },
+        { type: "ellipse", cx: 160, cy: 60, rx: 28, ry: 18 }
+      ];
+    case "chest":
+      return [{ type: "rect", x: 92, y: 24, width: 136, height: 226, rx: 58, ry: 58 }];
+    case "cardio":
+      return [
+        { type: "ellipse", cx: 118, cy: 132, rx: 52, ry: 82 },
+        { type: "ellipse", cx: 202, cy: 132, rx: 52, ry: 82 },
+        { type: "path", d: "M160 206 C117 171 98 149 98 123 C98 95 122 80 144 95 C153 102 156 109 160 115 C164 109 167 102 176 95 C198 80 222 95 222 123 C222 149 203 171 160 206 Z" }
+      ];
+    case "upper_abdomen":
+      return [{ type: "rect", x: 88, y: 38, width: 144, height: 188, rx: 48, ry: 48 }];
+    case "lower_abdomen":
+      return [{ type: "rect", x: 90, y: 52, width: 140, height: 180, rx: 44, ry: 44 }];
+    case "pelvis":
+      return [
+        { type: "path", d: "M80 150 C80 92 114 50 160 50 C206 50 240 92 240 150 C240 202 203 230 160 230 C117 230 80 202 80 150 Z" },
+        { type: "rect", x: 132, y: 204, width: 56, height: 26, rx: 10, ry: 10 }
+      ];
+    case "spine":
+      return [
+        { type: "rect", x: 146, y: 24, width: 28, height: 220, rx: 14, ry: 14 },
+        { type: "ellipse", cx: 160, cy: 72, rx: 28, ry: 24 },
+        { type: "ellipse", cx: 160, cy: 196, rx: 38, ry: 32 }
+      ];
+    case "upper_arm_left":
+      return [
+        {
+          type: "rect",
+          x: 120,
+          y: 30,
+          width: 62,
+          height: 212,
+          rx: 30,
+          ry: 30,
+          transform: "rotate(12 151 136)"
+        }
+      ];
+    case "upper_arm_right":
+      return [
+        {
+          type: "rect",
+          x: 138,
+          y: 30,
+          width: 62,
+          height: 212,
+          rx: 30,
+          ry: 30,
+          transform: "rotate(-12 169 136)"
+        }
+      ];
+    case "forearm_left":
+      return [
+        {
+          type: "rect",
+          x: 110,
+          y: 24,
+          width: 64,
+          height: 188,
+          rx: 28,
+          ry: 28,
+          transform: "rotate(10 142 120)"
+        },
+        { type: "ellipse", cx: 173, cy: 214, rx: 38, ry: 30 }
+      ];
+    case "forearm_right":
+      return [
+        {
+          type: "rect",
+          x: 146,
+          y: 24,
+          width: 64,
+          height: 188,
+          rx: 28,
+          ry: 28,
+          transform: "rotate(-10 178 120)"
+        },
+        { type: "ellipse", cx: 147, cy: 214, rx: 38, ry: 30 }
+      ];
+    case "leg_left":
+      return [
+        { type: "rect", x: 124, y: 20, width: 62, height: 220, rx: 30, ry: 30 },
+        { type: "ellipse", cx: 168, cy: 236, rx: 44, ry: 18 }
+      ];
+    case "leg_right":
+      return [
+        { type: "rect", x: 134, y: 20, width: 62, height: 220, rx: 30, ry: 30 },
+        { type: "ellipse", cx: 150, cy: 236, rx: 44, ry: 18 }
+      ];
+    default:
+      return [{ type: "rect", x: 90, y: 40, width: 140, height: 180, rx: 30, ry: 30 }];
+  }
 }
 
 function renderLearningBodyView() {
@@ -4190,28 +4704,98 @@ function renderLearningBodyView() {
   if (!activeRegion) return;
   state.learningBodyActiveRegionId = activeRegion.id;
   renderLearningBodyRegionButtons();
-  updateLearningBodyRegionCard(activeRegion.id, {
-    modelNodeName: state.learningBodyActiveModelNodeName
-  });
+  renderLearningBodyMap();
+  selectLearningBodyRegion(activeRegion.id, { silent: true, keepHotspot: true });
   if (refs.learningBodyStatus && !refs.learningBodyStatus.textContent.trim()) {
     refs.learningBodyStatus.textContent =
-      "Klicke auf einen Koerperbereich oder nutze das Mausrad zum Zoomen.";
+      "Waehle eine Region am Koerper aus. Danach siehst du eine gezoomte Detailansicht.";
   }
-  void ensureLearningBodyModelReady();
+}
+
+function renderLearningBodyMap() {
+  if (!refs.learningBodyCanvas) return;
+  refs.learningBodyCanvas.innerHTML = "";
+
+  const svg = createBodyAtlasSvgNode("svg", {
+    viewBox: BODY_ATLAS_VIEWBOX,
+    class: "learning-body-map-svg",
+    role: "img",
+    "aria-label": "2D Koerperkarte mit 15 Regionen"
+  });
+
+  const base = createBodyAtlasSvgNode("g", { class: "learning-body-map-base" });
+  appendBodyAtlasShape(base, { type: "ellipse", cx: 160, cy: 58, rx: 31, ry: 31 }, "learning-body-map-base-shape");
+  appendBodyAtlasShape(base, { type: "rect", x: 144, y: 96, width: 32, height: 40, rx: 12, ry: 12 }, "learning-body-map-base-shape");
+  appendBodyAtlasShape(base, { type: "rect", x: 122, y: 142, width: 76, height: 240, rx: 28, ry: 28 }, "learning-body-map-base-shape");
+  appendBodyAtlasShape(base, { type: "rect", x: 88, y: 156, width: 28, height: 235, rx: 12, ry: 12, transform: "rotate(12 102 274)" }, "learning-body-map-base-shape");
+  appendBodyAtlasShape(base, { type: "rect", x: 204, y: 156, width: 28, height: 235, rx: 12, ry: 12, transform: "rotate(-12 218 274)" }, "learning-body-map-base-shape");
+  appendBodyAtlasShape(base, { type: "rect", x: 130, y: 444, width: 62, height: 165, rx: 18, ry: 18 }, "learning-body-map-base-shape");
+  svg.appendChild(base);
+
+  BODY_ATLAS_REGIONS.forEach((region, idx) => {
+    const group = createBodyAtlasSvgNode("g", {
+      class: "learning-body-map-region",
+      "data-region-id": region.id,
+      tabindex: 0
+    });
+    const shape = appendBodyAtlasShape(group, region.map, "learning-body-map-region-shape");
+    if (shape) {
+      shape.style.setProperty("--region-color", BODY_ATLAS_COLORS[idx % BODY_ATLAS_COLORS.length]);
+    }
+    const center = getBodyAtlasShapeCenter(region.map);
+    const text = createBodyAtlasSvgNode("text", {
+      x: center.x,
+      y: center.y + 4,
+      class: "learning-body-map-region-number"
+    });
+    text.textContent = String(idx + 1);
+    group.appendChild(text);
+    const title = createBodyAtlasSvgNode("title");
+    title.textContent = `${idx + 1}. ${region.label}`;
+    group.appendChild(title);
+    group.addEventListener("click", () => {
+      selectLearningBodyRegion(region.id);
+    });
+    group.addEventListener("mouseenter", () => {
+      if (refs.learningBodyStatus) refs.learningBodyStatus.textContent = `${idx + 1}. ${region.label}`;
+    });
+    group.addEventListener("focus", () => {
+      if (refs.learningBodyStatus) refs.learningBodyStatus.textContent = `${idx + 1}. ${region.label}`;
+    });
+    group.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        selectLearningBodyRegion(region.id);
+      }
+    });
+    svg.appendChild(group);
+  });
+
+  refs.learningBodyCanvas.appendChild(svg);
+  updateLearningBodyMapActiveState();
+}
+
+function updateLearningBodyMapActiveState() {
+  if (!refs.learningBodyCanvas) return;
+  const activeId = state.learningBodyActiveRegionId;
+  const nodes = refs.learningBodyCanvas.querySelectorAll(".learning-body-map-region");
+  for (const node of nodes) {
+    const isActive = node.getAttribute("data-region-id") === activeId;
+    node.classList.toggle("is-active", isActive);
+  }
 }
 
 function renderLearningBodyRegionButtons() {
   if (!refs.learningBodyRegionButtons) return;
   refs.learningBodyRegionButtons.innerHTML = "";
-
-  for (const region of BODY_MODEL_REGION_ITEMS) {
+  for (const region of BODY_ATLAS_REGIONS) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "learning-body-region-btn";
     button.dataset.regionId = region.id;
-    button.textContent = region.label;
+    button.textContent = `${region.order || BODY_ATLAS_REGION_BY_ID[region.id]?.order || ""}. ${region.label}`;
     button.addEventListener("click", () => {
-      selectLearningBodyRegion(region.id, { focusModel: true });
+      selectLearningBodyRegion(region.id);
     });
     refs.learningBodyRegionButtons.appendChild(button);
   }
@@ -4229,731 +4813,134 @@ function updateLearningBodyRegionButtonState() {
   }
 }
 
-function updateLearningBodyRegionCard(regionId, options = {}) {
+function selectLearningBodyRegion(regionId, options = {}) {
+  const silent = Boolean(options.silent);
+  const keepHotspot = Boolean(options.keepHotspot);
   const region = getLearningBodyRegionById(regionId);
   if (!region) return;
-  const modelNodeName = String(options.modelNodeName || state.learningBodyActiveModelNodeName || "").trim();
-  const termInfo = resolveAnatomyTermFromNodeName(modelNodeName);
-  const fachLabel = termInfo?.fach || region.fach || region.label;
-  const patientLabel = termInfo?.patient || region.patient || region.label;
-  const modelLabel = modelNodeName || "-";
-  if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = region.label;
-  if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = region.hint;
-  if (refs.learningBodyRegionFach) refs.learningBodyRegionFach.textContent = fachLabel;
-  if (refs.learningBodyRegionPatient) refs.learningBodyRegionPatient.textContent = patientLabel;
-  if (refs.learningBodyRegionModelName) refs.learningBodyRegionModelName.textContent = modelLabel;
+
+  const changedRegion = state.learningBodyActiveRegionId !== region.id;
+  state.learningBodyActiveRegionId = region.id;
+  if (changedRegion && !keepHotspot) {
+    state.learningBodyActiveHotspotIndex = 0;
+  }
+
+  updateLearningBodyRegionButtonState();
+  updateLearningBodyMapActiveState();
+  renderLearningBodyZoom(region);
+  setLearningBodyHotspot(region, state.learningBodyActiveHotspotIndex, { silent });
+}
+
+function renderLearningBodyZoom(region) {
+  if (refs.learningBodyZoomCanvas) {
+    refs.learningBodyZoomCanvas.innerHTML = "";
+    const svg = createBodyAtlasSvgNode("svg", {
+      viewBox: "0 0 320 260",
+      class: "learning-body-zoom-svg",
+      role: "img",
+      "aria-label": `${region.label} - Detailansicht`
+    });
+    const shapeLayer = createBodyAtlasSvgNode("g", { class: "learning-body-zoom-shapes" });
+    const shapes = getBodyAtlasZoomShapes(region.zoomType);
+    for (const shape of shapes) {
+      appendBodyAtlasShape(shapeLayer, shape, "learning-body-zoom-shape");
+    }
+    svg.appendChild(shapeLayer);
+
+    region.hotspots.forEach((hotspot, index) => {
+      const group = createBodyAtlasSvgNode("g", {
+        class: "learning-body-hotspot",
+        "data-hotspot-index": String(index)
+      });
+      const circle = createBodyAtlasSvgNode("circle", {
+        cx: hotspot.x,
+        cy: hotspot.y,
+        r: 13,
+        class: "learning-body-hotspot-dot"
+      });
+      const text = createBodyAtlasSvgNode("text", {
+        x: hotspot.x,
+        y: hotspot.y + 4,
+        class: "learning-body-hotspot-number"
+      });
+      text.textContent = String(index + 1);
+      const title = createBodyAtlasSvgNode("title");
+      title.textContent = `${index + 1}. ${hotspot.fach} / ${hotspot.patient}`;
+      group.appendChild(circle);
+      group.appendChild(text);
+      group.appendChild(title);
+      group.addEventListener("mouseenter", () => {
+        setLearningBodyHotspot(region, index, { silent: true });
+      });
+      group.addEventListener("click", () => {
+        setLearningBodyHotspot(region, index);
+      });
+      svg.appendChild(group);
+    });
+
+    refs.learningBodyZoomCanvas.appendChild(svg);
+  }
+
   if (refs.learningBodyRegionBullets) {
     refs.learningBodyRegionBullets.innerHTML = "";
-    if (termInfo?.info) {
-      const infoLi = document.createElement("li");
-      infoLi.textContent = termInfo.info;
-      refs.learningBodyRegionBullets.appendChild(infoLi);
-    }
-    for (const bullet of region.bullets) {
+    region.hotspots.forEach((hotspot, index) => {
       const li = document.createElement("li");
-      li.textContent = bullet;
+      li.className = "learning-body-label-item";
+      li.dataset.hotspotIndex = String(index);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "learning-body-label-btn";
+      button.innerHTML = `
+        <span class="learning-body-label-number">${index + 1}</span>
+        <span class="learning-body-label-main"><strong>${hotspot.fach}</strong> - ${hotspot.patient}</span>
+        <span class="learning-body-label-info">${hotspot.info}</span>
+      `;
+      button.addEventListener("mouseenter", () => {
+        setLearningBodyHotspot(region, index, { silent: true });
+      });
+      button.addEventListener("click", () => {
+        setLearningBodyHotspot(region, index);
+      });
+      li.appendChild(button);
       refs.learningBodyRegionBullets.appendChild(li);
-    }
-  }
-}
-
-function selectLearningBodyRegion(regionId, options = {}) {
-  const focusModel = options.focusModel !== false;
-  const silent = Boolean(options.silent);
-  const modelNodeName = String(options.modelNodeName || "").trim();
-  const modelNodeId = Number.isFinite(Number(options.modelNodeId))
-    ? Number(options.modelNodeId)
-    : null;
-  const region = getLearningBodyRegionById(regionId);
-  if (!region) return;
-
-  state.learningBodyActiveRegionId = region.id;
-  if (modelNodeName) {
-    state.learningBodyActiveModelNodeName = modelNodeName;
-  } else if (!options.keepModelNodeName) {
-    state.learningBodyActiveModelNodeName = "";
-  }
-  updateLearningBodyRegionButtonState();
-  updateLearningBodyRegionCard(region.id, {
-    modelNodeName: modelNodeName || state.learningBodyActiveModelNodeName
-  });
-
-  if (focusModel) {
-    focusLearningBodyRegionInModel(region.id, {
-      animate: options.animate !== false,
-      modelNodeId
     });
   }
-  if (!silent && refs.learningBodyStatus) {
-    refs.learningBodyStatus.textContent = modelNodeName
-      ? `${region.label}: ${modelNodeName}`
-      : `${region.label}: ${region.hint}`;
+}
+
+function setLearningBodyHotspot(region, index, options = {}) {
+  if (!region || !Array.isArray(region.hotspots) || region.hotspots.length === 0) return;
+  const safeIndex = Math.min(Math.max(Number(index) || 0, 0), region.hotspots.length - 1);
+  const hotspot = region.hotspots[safeIndex];
+  state.learningBodyActiveHotspotIndex = safeIndex;
+  state.learningBodyActiveModelNodeName = `#${safeIndex + 1}`;
+
+  if (refs.learningBodyRegionTitle) refs.learningBodyRegionTitle.textContent = region.label;
+  if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = region.hint;
+  if (refs.learningBodyRegionFach) refs.learningBodyRegionFach.textContent = hotspot.fach;
+  if (refs.learningBodyRegionPatient) refs.learningBodyRegionPatient.textContent = hotspot.patient;
+  if (refs.learningBodyRegionModelName) refs.learningBodyRegionModelName.textContent = `#${safeIndex + 1}`;
+
+  if (refs.learningBodyZoomCanvas) {
+    const nodes = refs.learningBodyZoomCanvas.querySelectorAll(".learning-body-hotspot");
+    for (const node of nodes) {
+      const nodeIndex = Number(node.getAttribute("data-hotspot-index"));
+      node.classList.toggle("is-active", nodeIndex === safeIndex);
+    }
   }
-}
-
-function focusLearningBodyRegionInModel(regionId, options = {}) {
-  if (!learningBodyModelEngine) return;
-  const region = getLearningBodyRegionById(regionId);
-  if (!region) return;
-  learningBodyModelEngine.setActiveRegion(region.id, {
-    animate: options.animate !== false,
-    modelNodeId: Number.isFinite(Number(options.modelNodeId)) ? Number(options.modelNodeId) : null
-  });
-}
-
-function startLearningBodyModelLoop() {
-  learningBodyModelEngine?.start();
+  if (refs.learningBodyRegionBullets) {
+    const items = refs.learningBodyRegionBullets.querySelectorAll(".learning-body-label-item");
+    for (const item of items) {
+      const itemIndex = Number(item.dataset.hotspotIndex || "-1");
+      item.classList.toggle("is-active", itemIndex === safeIndex);
+    }
+  }
+  if (!options.silent && refs.learningBodyStatus) {
+    refs.learningBodyStatus.textContent = `${region.label} - Marker ${safeIndex + 1}: ${hotspot.patient}`;
+  }
 }
 
 function stopLearningBodyModelLoop() {
-  learningBodyModelEngine?.stop();
-}
-
-async function ensureLearningBodyModelReady() {
-  if (!refs.learningBodyCanvas) return false;
-  const activeRegion = getLearningBodyRegionById(state.learningBodyActiveRegionId);
-  if (!activeRegion) return false;
-  state.learningBodyActiveRegionId = activeRegion.id;
-
-  if (learningBodyModelEngine) {
-    learningBodyModelEngine.resize();
-    focusLearningBodyRegionInModel(activeRegion.id, { animate: false });
-    return true;
-  }
-
-  if (
-    typeof window.WebGLRenderingContext === "undefined" ||
-    typeof window.HTMLCanvasElement === "undefined"
-  ) {
-    if (refs.learningBodyStatus) {
-      refs.learningBodyStatus.textContent = "3D ist in diesem Browser nicht verfuegbar.";
-    }
-    return false;
-  }
-
-  if (refs.learningBodyStatus) {
-    refs.learningBodyStatus.textContent = "3D Modell wird geladen ...";
-  }
-
-  try {
-    learningBodyModelEngine = await createLearningBodySketchfabEngine(
-      refs.learningBodyCanvas,
-      (pickedRegionId, payload = {}) => {
-        selectLearningBodyRegion(pickedRegionId, {
-          focusModel: true,
-          modelNodeName: String(payload.modelNodeName || ""),
-          modelNodeId: Number.isFinite(Number(payload.modelNodeId)) ? Number(payload.modelNodeId) : null,
-          animate: true
-        });
-      }
-    );
-    focusLearningBodyRegionInModel(activeRegion.id, { animate: false });
-    if (state.learningView === LEARNING_VIEW_BODY) {
-      startLearningBodyModelLoop();
-    }
-    if (refs.learningBodyStatus) {
-      refs.learningBodyStatus.textContent =
-        "Anatomisches Modell aktiv: Klicke auf Strukturen fuer Fach-/Patientensprache.";
-    }
-    return true;
-  } catch (sketchfabError) {
-    console.warn("Sketchfab Anatomiemodell nicht verfuegbar, fallback auf lokales Modell.", sketchfabError);
-    const fallbackOk = await ensureLearningBodyPrimitiveFallback(activeRegion);
-    if (!fallbackOk && refs.learningBodyStatus) {
-      refs.learningBodyStatus.textContent =
-        "3D konnte nicht geladen werden. Bitte Seite neu laden oder Netzwerk pruefen.";
-    }
-    return fallbackOk;
-  }
-}
-
-async function ensureLearningBodyPrimitiveFallback(activeRegion) {
-  if (!activeRegion || !refs.learningBodyCanvas) return false;
-  if (!learningBodyThreeLoadPromise) {
-    learningBodyThreeLoadPromise = Promise.all([
-      import("https://esm.sh/three@0.165.0"),
-      import("https://esm.sh/three@0.165.0/examples/jsm/controls/OrbitControls.js")
-    ]);
-  }
-  try {
-    const [threeModule, controlsModule] = await learningBodyThreeLoadPromise;
-    const THREE = threeModule;
-    const OrbitControls = controlsModule.OrbitControls;
-    learningBodyModelEngine = createLearningBodyModelEngine(
-      THREE,
-      OrbitControls,
-      refs.learningBodyCanvas,
-      (pickedRegionId) => {
-        selectLearningBodyRegion(pickedRegionId, { focusModel: true });
-      }
-    );
-    focusLearningBodyRegionInModel(activeRegion.id, { animate: false });
-    if (state.learningView === LEARNING_VIEW_BODY) {
-      startLearningBodyModelLoop();
-    }
-    if (refs.learningBodyStatus) {
-      refs.learningBodyStatus.textContent =
-        "Fallback-Modell aktiv. Internetverbindung noetig fuer das anatomische Vollmodell.";
-    }
-    return true;
-  } catch (error) {
-    console.error("Fallback-3D Koerpermodell konnte nicht geladen werden", error);
-    learningBodyThreeLoadPromise = null;
-    learningBodyModelEngine = null;
-    if (refs.learningBodyCanvas) refs.learningBodyCanvas.innerHTML = "";
-    return false;
-  }
-}
-
-function loadSketchfabViewerApi() {
-  if (typeof window === "undefined") {
-    return Promise.reject(new Error("window-not-available"));
-  }
-  if (typeof window.Sketchfab === "function") {
-    return Promise.resolve(window.Sketchfab);
-  }
-  if (learningBodySketchfabScriptPromise) {
-    return learningBodySketchfabScriptPromise;
-  }
-
-  learningBodySketchfabScriptPromise = new Promise((resolve, reject) => {
-    const existing = document.querySelector(`script[src="${SKETCHFAB_VIEWER_SCRIPT_SRC}"]`);
-    if (existing) {
-      existing.addEventListener(
-        "load",
-        () => {
-          if (typeof window.Sketchfab === "function") {
-            resolve(window.Sketchfab);
-            return;
-          }
-          reject(new Error("sketchfab-global-missing"));
-        },
-        { once: true }
-      );
-      existing.addEventListener(
-        "error",
-        () => {
-          reject(new Error("sketchfab-script-load-failed"));
-        },
-        { once: true }
-      );
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = SKETCHFAB_VIEWER_SCRIPT_SRC;
-    script.async = true;
-    script.onload = () => {
-      if (typeof window.Sketchfab === "function") {
-        resolve(window.Sketchfab);
-        return;
-      }
-      reject(new Error("sketchfab-global-missing"));
-    };
-    script.onerror = () => {
-      reject(new Error("sketchfab-script-load-failed"));
-    };
-    document.head.appendChild(script);
-  }).catch((error) => {
-    learningBodySketchfabScriptPromise = null;
-    throw error;
-  });
-
-  return learningBodySketchfabScriptPromise;
-}
-
-function normalizeSketchfabNodeMap(rawValue) {
-  const list = [];
-  if (Array.isArray(rawValue)) {
-    for (const entry of rawValue) {
-      if (!entry || typeof entry !== "object") continue;
-      list.push(entry);
-    }
-    return list;
-  }
-  if (rawValue && typeof rawValue === "object") {
-    for (const value of Object.values(rawValue)) {
-      if (!value || typeof value !== "object") continue;
-      list.push(value);
-    }
-  }
-  return list;
-}
-
-function pickSketchfabNodePosition(matrixArray) {
-  const values = Array.isArray(matrixArray)
-    ? matrixArray
-    : matrixArray && typeof matrixArray === "object"
-      ? Object.values(matrixArray)
-      : null;
-  if (!Array.isArray(values) || values.length < 16) return null;
-  const x = Number(values[12]);
-  const y = Number(values[13]);
-  const z = Number(values[14]);
-  if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(z)) return null;
-  return [x, y, z];
-}
-
-function getSketchfabRegionKeywords(regionId) {
-  const region = getLearningBodyRegionById(regionId);
-  if (!region) return [];
-  const termKeywords = ANATOMY_TERM_ITEMS.filter((entry) => entry.regionId === region.id).flatMap(
-    (entry) => entry.keywords || []
-  );
-  return [...(region.keywords || []), ...termKeywords];
-}
-
-function findSketchfabNodeForRegion(regionId, nodes) {
-  if (!Array.isArray(nodes) || nodes.length === 0) return null;
-  const keywords = getSketchfabRegionKeywords(regionId);
-  if (keywords.length === 0) return null;
-  for (const node of nodes) {
-    const name = normalizeAnatomyTokenInput(node?.name || "");
-    if (!name) continue;
-    if (isAnatomyKeywordMatch(name, keywords)) {
-      return node;
-    }
-  }
-  return null;
-}
-
-async function createLearningBodySketchfabEngine(mountElement, onRegionSelect) {
-  const Sketchfab = await loadSketchfabViewerApi();
-  mountElement.innerHTML = "";
-  const iframe = document.createElement("iframe");
-  iframe.title = "Interaktives anatomisches 3D Koerpermodell";
-  iframe.allow = "autoplay; fullscreen; xr-spatial-tracking";
-  iframe.referrerPolicy = "origin";
-  iframe.style.width = "100%";
-  iframe.style.height = "100%";
-  iframe.style.border = "0";
-  mountElement.appendChild(iframe);
-
-  const api = await new Promise((resolve, reject) => {
-    const client = new Sketchfab(iframe);
-    client.init(SKETCHFAB_ANATOMY_MODEL_UID, {
-      autostart: 1,
-      preload: 1,
-      transparent: 1,
-      ui_infos: 0,
-      ui_hint: 0,
-      ui_annotations: 0,
-      ui_inspector: 0,
-      success(sketchfabApi) {
-        sketchfabApi.start();
-        sketchfabApi.addEventListener("viewerready", () => {
-          resolve(sketchfabApi);
-        });
-      },
-      error() {
-        reject(new Error("sketchfab-init-failed"));
-      }
-    });
-  });
-
-  const nodes = await new Promise((resolve, reject) => {
-    api.getNodeMap((error, nodeMap) => {
-      if (error) {
-        reject(error);
-        return;
-      }
-      const normalized = normalizeSketchfabNodeMap(nodeMap)
-        .map((entry) => ({
-          id: Number(entry?.instanceID ?? entry?.id),
-          name: String(entry?.name || ""),
-          raw: entry
-        }))
-        .filter((entry) => Number.isFinite(entry.id) && entry.name);
-      resolve(normalized);
-    });
-  });
-
-  const nodeById = new Map(nodes.map((entry) => [entry.id, entry]));
-
-  function focusNode(nodeId, duration = 1.1) {
-    const numericId = Number(nodeId);
-    if (!Number.isFinite(numericId)) return;
-    api.getMatrix(numericId, (matrixError, matrix) => {
-      if (matrixError) return;
-      const target = pickSketchfabNodePosition(matrix);
-      if (!target) return;
-      api.getCameraLookAt((cameraError, camera) => {
-        if (cameraError || !camera) return;
-        const position = Array.isArray(camera.position) ? camera.position : [0, 0, 2];
-        const currentTarget = Array.isArray(camera.target) ? camera.target : [0, 0, 0];
-        const vector = [
-          Number(position[0]) - Number(currentTarget[0]),
-          Number(position[1]) - Number(currentTarget[1]),
-          Number(position[2]) - Number(currentTarget[2])
-        ];
-        const length = Math.hypot(vector[0], vector[1], vector[2]) || 1.6;
-        const normalized = length > 0 ? vector.map((entry) => entry / length) : [0.3, 0.15, 0.95];
-        const distance = Math.max(0.85, Math.min(length, 2.4));
-        const nextPosition = [
-          target[0] + normalized[0] * distance,
-          target[1] + normalized[1] * distance,
-          target[2] + normalized[2] * distance
-        ];
-        api.setCameraLookAt(nextPosition, target, duration);
-      });
-    });
-  }
-
-  api.addEventListener("click", (event) => {
-    const modelNodeId = Number(event?.instanceID);
-    if (!Number.isFinite(modelNodeId)) return;
-    const node = nodeById.get(modelNodeId);
-    if (!node) return;
-    const region = resolveLearningBodyRegionFromNodeName(node.name);
-    if (!region) return;
-    if (typeof onRegionSelect === "function") {
-      onRegionSelect(region.id, {
-        modelNodeId,
-        modelNodeName: node.name
-      });
-    }
-  });
-
-  return {
-    start() {
-      if (typeof api.start === "function") {
-        api.start();
-      }
-    },
-    stop() {
-      if (typeof api.stop === "function") {
-        api.stop();
-      }
-    },
-    resize() {
-      // Sketchfab handles iframe resizing internally.
-    },
-    setActiveRegion(regionId, options = {}) {
-      const modelNodeId = Number.isFinite(Number(options.modelNodeId))
-        ? Number(options.modelNodeId)
-        : null;
-      if (modelNodeId !== null) {
-        focusNode(modelNodeId, options.animate === false ? 0 : 1.1);
-        return;
-      }
-      const match = findSketchfabNodeForRegion(regionId, nodes);
-      if (!match) return;
-      focusNode(match.id, options.animate === false ? 0 : 1.1);
-    },
-    destroy() {
-      try {
-        if (typeof api.stop === "function") {
-          api.stop();
-        }
-      } catch {
-        // ignore
-      }
-      mountElement.innerHTML = "";
-    }
-  };
-}
-
-function createLearningBodyModelEngine(THREE, OrbitControls, mountElement, onRegionSelect) {
-  mountElement.innerHTML = "";
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 40);
-  camera.position.set(0.24, 1.22, 3.5);
-
-  const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true,
-    powerPreference: "low-power"
-  });
-  if ("outputColorSpace" in renderer && "SRGBColorSpace" in THREE) {
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-  }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-  mountElement.appendChild(renderer.domElement);
-
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enablePan = false;
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.1;
-  controls.minDistance = 1.45;
-  controls.maxDistance = 5.4;
-  controls.minPolarAngle = 0.58;
-  controls.maxPolarAngle = 1.74;
-  controls.target.set(0, 1.02, 0);
-  controls.update();
-
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.82);
-  const keyLight = new THREE.DirectionalLight(0xfff1df, 0.78);
-  keyLight.position.set(2.2, 3.4, 2.6);
-  const rimLight = new THREE.DirectionalLight(0xb9d8ff, 0.4);
-  rimLight.position.set(-2.6, 1.8, -1.4);
-  scene.add(ambientLight, keyLight, rimLight);
-
-  const baseGroup = new THREE.Group();
-  scene.add(baseGroup);
-
-  const hoverDisk = new THREE.Mesh(
-    new THREE.CircleGeometry(1.22, 40),
-    new THREE.MeshBasicMaterial({
-      color: 0xbad4ef,
-      transparent: true,
-      opacity: 0.25
-    })
-  );
-  hoverDisk.rotation.x = -Math.PI / 2;
-  hoverDisk.position.y = -0.78;
-  baseGroup.add(hoverDisk);
-
-  const regionMeshes = new Map();
-  const clickTargets = [];
-  const warmHighlight = new THREE.Color(0xff8b5e);
-
-  function addRegionMesh(regionId, geometry, position, rotation, colorHex) {
-    const material = new THREE.MeshStandardMaterial({
-      color: colorHex,
-      roughness: 0.8,
-      metalness: 0.03
-    });
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(position[0], position[1], position[2]);
-    mesh.rotation.set(rotation[0], rotation[1], rotation[2]);
-    mesh.userData.regionId = regionId;
-    mesh.userData.baseColor = material.color.clone();
-    baseGroup.add(mesh);
-    clickTargets.push(mesh);
-
-    if (!regionMeshes.has(regionId)) {
-      regionMeshes.set(regionId, []);
-    }
-    regionMeshes.get(regionId).push(mesh);
-  }
-
-  addRegionMesh("kopf", new THREE.SphereGeometry(0.22, 24, 18), [0, 1.75, 0], [0, 0, 0], 0xf0c3a9);
-  addRegionMesh("thorax", new THREE.BoxGeometry(0.62, 0.52, 0.3), [0, 1.18, 0], [0, 0, 0], 0xe7ad8f);
-  addRegionMesh("abdomen", new THREE.BoxGeometry(0.52, 0.42, 0.28), [0, 0.78, 0], [0, 0, 0], 0xe3a481);
-  addRegionMesh("becken", new THREE.BoxGeometry(0.46, 0.24, 0.25), [0, 0.48, 0], [0, 0, 0], 0xd99574);
-
-  addRegionMesh(
-    "arm_links",
-    new THREE.CylinderGeometry(0.08, 0.08, 0.38, 18),
-    [-0.44, 1.16, 0],
-    [0, 0, 0.4],
-    0xefbc9f
-  );
-  addRegionMesh(
-    "arm_links",
-    new THREE.CylinderGeometry(0.07, 0.07, 0.36, 18),
-    [-0.59, 0.88, 0],
-    [0, 0, 0.24],
-    0xecb696
-  );
-  addRegionMesh(
-    "arm_rechts",
-    new THREE.CylinderGeometry(0.08, 0.08, 0.38, 18),
-    [0.44, 1.16, 0],
-    [0, 0, -0.4],
-    0xefbc9f
-  );
-  addRegionMesh(
-    "arm_rechts",
-    new THREE.CylinderGeometry(0.07, 0.07, 0.36, 18),
-    [0.59, 0.88, 0],
-    [0, 0, -0.24],
-    0xecb696
-  );
-
-  addRegionMesh(
-    "bein_links",
-    new THREE.CylinderGeometry(0.1, 0.09, 0.55, 20),
-    [-0.15, 0.14, 0],
-    [0, 0, 0.03],
-    0xe1a182
-  );
-  addRegionMesh(
-    "bein_links",
-    new THREE.CylinderGeometry(0.09, 0.08, 0.5, 20),
-    [-0.15, -0.39, 0.01],
-    [0, 0, 0.02],
-    0xdc9c7f
-  );
-  addRegionMesh(
-    "bein_links",
-    new THREE.BoxGeometry(0.16, 0.06, 0.28),
-    [-0.15, -0.69, 0.08],
-    [0, 0, 0],
-    0xcf8f72
-  );
-
-  addRegionMesh(
-    "bein_rechts",
-    new THREE.CylinderGeometry(0.1, 0.09, 0.55, 20),
-    [0.15, 0.14, 0],
-    [0, 0, -0.03],
-    0xe1a182
-  );
-  addRegionMesh(
-    "bein_rechts",
-    new THREE.CylinderGeometry(0.09, 0.08, 0.5, 20),
-    [0.15, -0.39, 0.01],
-    [0, 0, -0.02],
-    0xdc9c7f
-  );
-  addRegionMesh(
-    "bein_rechts",
-    new THREE.BoxGeometry(0.16, 0.06, 0.28),
-    [0.15, -0.69, 0.08],
-    [0, 0, 0],
-    0xcf8f72
-  );
-
-  const raycaster = new THREE.Raycaster();
-  const pointer = new THREE.Vector2();
-  let running = false;
-  let frameId = 0;
-  let focusSteps = 0;
-  let activeRegionId = "";
-  const targetFocus = new THREE.Vector3(0, 1.02, 0);
-  const positionFocus = new THREE.Vector3(0.24, 1.22, 3.5);
-
-  function applyRegionStyle(regionId) {
-    for (const [entryRegionId, meshes] of regionMeshes.entries()) {
-      const isActive = entryRegionId === regionId;
-      for (const mesh of meshes) {
-        const material = mesh.material;
-        const baseColor = mesh.userData?.baseColor;
-        if (!material || !baseColor || !material.color) continue;
-        if (isActive) {
-          material.color.copy(baseColor).lerp(warmHighlight, 0.62);
-          if (material.emissive) material.emissive.setHex(0x2f0b00);
-          material.emissiveIntensity = 0.18;
-        } else {
-          material.color.copy(baseColor);
-          if (material.emissive) material.emissive.setHex(0x000000);
-          material.emissiveIntensity = 0;
-        }
-      }
-    }
-  }
-
-  function setActiveRegion(regionId, options = {}) {
-    const region = getLearningBodyRegionById(regionId);
-    if (!region) return;
-
-    activeRegionId = region.id;
-    applyRegionStyle(activeRegionId);
-
-    targetFocus.set(region.focusTarget[0], region.focusTarget[1], region.focusTarget[2]);
-    positionFocus.set(
-      region.focusTarget[0] + region.cameraOffset[0],
-      region.focusTarget[1] + region.cameraOffset[1],
-      region.focusTarget[2] + region.cameraOffset[2]
-    );
-
-    if (options.animate === false) {
-      controls.target.copy(targetFocus);
-      camera.position.copy(positionFocus);
-      focusSteps = 0;
-      controls.update();
-      renderer.render(scene, camera);
-      return;
-    }
-    focusSteps = 26;
-  }
-
-  const handlePointerDown = (event) => {
-    const rect = renderer.domElement.getBoundingClientRect();
-    if (!rect.width || !rect.height) return;
-    pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-    raycaster.setFromCamera(pointer, camera);
-    const intersections = raycaster.intersectObjects(clickTargets, false);
-    const picked = intersections.find((entry) => entry.object?.userData?.regionId);
-    const pickedRegionId = picked?.object?.userData?.regionId || "";
-    if (!pickedRegionId || pickedRegionId === activeRegionId) return;
-
-    if (typeof onRegionSelect === "function") {
-      onRegionSelect(String(pickedRegionId));
-    } else {
-      setActiveRegion(String(pickedRegionId), { animate: true });
-    }
-  };
-  renderer.domElement.addEventListener("pointerdown", handlePointerDown);
-
-  const resize = () => {
-    const width = Math.max(220, Math.floor(mountElement.clientWidth || 0));
-    const height = Math.max(300, Math.floor(mountElement.clientHeight || 0));
-    renderer.setSize(width, height, false);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-    renderer.render(scene, camera);
-  };
-
-  const handleWindowResize = () => {
-    resize();
-  };
-  window.addEventListener("resize", handleWindowResize);
-
-  const resizeObserver =
-    typeof ResizeObserver !== "undefined"
-      ? new ResizeObserver(() => {
-          resize();
-        })
-      : null;
-  if (resizeObserver) {
-    resizeObserver.observe(mountElement);
-  }
-
-  const renderLoop = () => {
-    if (!running) return;
-    if (focusSteps > 0) {
-      controls.target.lerp(targetFocus, 0.18);
-      camera.position.lerp(positionFocus, 0.18);
-      focusSteps -= 1;
-    }
-    controls.update();
-    renderer.render(scene, camera);
-    frameId = window.requestAnimationFrame(renderLoop);
-  };
-
-  resize();
-
-  return {
-    start() {
-      if (running) return;
-      running = true;
-      renderLoop();
-    },
-    stop() {
-      if (!running) return;
-      running = false;
-      if (frameId) {
-        window.cancelAnimationFrame(frameId);
-        frameId = 0;
-      }
-    },
-    resize,
-    setActiveRegion,
-    destroy() {
-      this.stop();
-      renderer.domElement.removeEventListener("pointerdown", handlePointerDown);
-      window.removeEventListener("resize", handleWindowResize);
-      if (resizeObserver) resizeObserver.disconnect();
-      for (const mesh of clickTargets) {
-        mesh.geometry?.dispose?.();
-        if (mesh.material) {
-          if (Array.isArray(mesh.material)) {
-            for (const mat of mesh.material) mat.dispose?.();
-          } else {
-            mesh.material.dispose?.();
-          }
-        }
-      }
-      hoverDisk.geometry?.dispose?.();
-      hoverDisk.material?.dispose?.();
-      renderer.dispose();
-      mountElement.innerHTML = "";
-    }
-  };
+  // Kein 3D-Loop mehr noetig im 2D-Atlas.
 }
 
 function renderLearningReadingMode(categories) {
