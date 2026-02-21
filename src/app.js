@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "12";
-const BUILD_UPDATED_AT = "2026-02-21 16:17 CET";
+const APP_VERSION = "13";
+const BUILD_UPDATED_AT = "2026-02-21 17:25 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -50,12 +50,6 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
     label: "Anamnese",
     cta: "Symptomkataloge oeffnen",
     view: LEARNING_VIEW_SUBCATEGORIES
-  },
-  {
-    id: "body",
-    label: "Koerperatlas Anatomie",
-    cta: "15 Regionen mit Zoom und Labels",
-    view: LEARNING_VIEW_BODY
   }
 ]);
 const BODY_ATLAS_DEFAULT_REGION_ID = "thorax";
@@ -1546,7 +1540,6 @@ const refs = {
   voiceSampleLetterBtn: document.getElementById("voiceSampleLetterBtn"),
   voiceSampleDoctorBtn: document.getElementById("voiceSampleDoctorBtn"),
   openLearningBtn: document.getElementById("openLearningBtn"),
-  openBodyModelBtn: document.getElementById("openBodyModelBtn"),
   voiceSamplePanel: document.getElementById("voiceSamplePanel"),
   voiceSampleTitle: document.getElementById("voiceSampleTitle"),
   voiceSampleMeta: document.getElementById("voiceSampleMeta"),
@@ -1738,7 +1731,6 @@ function wireEvents() {
     handleVoiceSampleToggle(VOICE_SAMPLE_VIEW_DOCTOR);
   });
   refs.openLearningBtn?.addEventListener("click", handleOpenLearningPanel);
-  refs.openBodyModelBtn?.addEventListener("click", handleOpenBodyModel);
   refs.learningBackBtn?.addEventListener("click", handleLearningBackClick);
   refs.learningBodyBackBtn?.addEventListener("click", handleLearningBodyBackClick);
   refs.learningBodyRegionBackBtn?.addEventListener("click", handleLearningBodyRegionBackClick);
@@ -4145,9 +4137,6 @@ function setVoiceBusy(isBusy) {
   if (refs.openLearningBtn) {
     refs.openLearningBtn.disabled = state.voiceBusy;
   }
-  if (refs.openBodyModelBtn) {
-    refs.openBodyModelBtn.disabled = state.voiceBusy;
-  }
   applyPromptEditorBusyState(state.voiceBusy || state.promptProposalBusy);
   refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
 }
@@ -4562,14 +4551,6 @@ function handleOpenLearningPanel() {
   refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function handleOpenBodyModel() {
-  state.learningRootId = "body";
-  state.learningView = LEARNING_VIEW_BODY;
-  state.learningBodyDetailOpen = false;
-  renderLearningFlow();
-  refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 function handleLearningBackClick() {
   if (state.learningView === LEARNING_VIEW_READING) {
     state.learningView = LEARNING_VIEW_SUBCATEGORIES;
@@ -4726,14 +4707,6 @@ function renderLearningFlow() {
   renderLearningRootList();
   if (state.learningView === LEARNING_VIEW_ROOT) {
     showLearningView(LEARNING_VIEW_ROOT);
-    return;
-  }
-
-  if (state.learningRootId === "body" || state.learningView === LEARNING_VIEW_BODY) {
-    state.learningRootId = "body";
-    state.learningView = LEARNING_VIEW_BODY;
-    renderLearningBodyView();
-    showLearningView(LEARNING_VIEW_BODY);
     return;
   }
 

@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=12" />
+    <link rel="stylesheet" href="src/styles.css?v=13" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -188,9 +188,6 @@
           </button>
           <button id="openLearningBtn" class="soft-btn voice-learning-btn" type="button">
             Lernbereich
-          </button>
-          <button id="openBodyModelBtn" class="soft-btn voice-body-model-btn" type="button">
-            Koerperatlas Anatomie
           </button>
         </div>
         <article id="voiceDoctorLetterPanel" class="voice-doctor-letter hidden">
@@ -484,41 +481,6 @@
           <h4 id="learningSubcategoryTitle">Anamnese</h4>
           <div id="learningSubcategoryList" class="learning-subcategory-list"></div>
         </article>
-        <article id="learningBodyView" class="learning-body-view hidden">
-          <div class="learning-body-head">
-            <button id="learningBodyBackBtn" class="learning-body-back-btn" type="button">
-              Zurueck zur Lernauswahl
-            </button>
-            <h4>Koerperatlas Anatomie</h4>
-            <p id="learningBodyStatus" class="learning-body-status">
-              Tippe auf eine Koerperregion im Modell. Danach oeffnet sich nur diese Region.
-            </p>
-            <p class="learning-body-credit">
-              Ganzkoerper: <a href="https://smart.servier.com/" target="_blank" rel="noopener noreferrer">Servier Medical Art</a> (CC BY 4.0) | Regionen: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> (je Datei-Lizenz)
-            </p>
-          </div>
-          <div id="learningBodySelectionView" class="learning-body-selection-view">
-            <div
-              id="learningBodyCanvas"
-              class="learning-body-canvas"
-              role="img"
-              aria-label="Ganzkoerpermodell mit unsichtbaren klickbaren Bereichen"
-            ></div>
-            <p class="learning-body-selection-hint">
-              Tippe auf die gewuenschte Koerperregion im Modell.
-            </p>
-          </div>
-          <section id="learningBodyRegionDetailView" class="learning-body-region-detail hidden">
-            <button id="learningBodyRegionBackBtn" class="learning-body-region-back-btn" type="button">
-              Zurueck zur Regionsauswahl
-            </button>
-            <h5 id="learningBodyRegionTitle">Bereich</h5>
-            <p id="learningBodyRegionHint" class="learning-body-region-hint"></p>
-            <div id="learningBodyRegionGallery" class="learning-body-region-gallery"></div>
-            <div id="learningBodyRegionDeepDive" class="learning-body-region-deep-dive"></div>
-            <ul id="learningBodyRegionBullets" class="learning-body-region-bullets"></ul>
-          </section>
-        </article>
         <article id="learningReadingView" class="learning-reading-view hidden">
           <button id="learningBackBtn" class="learning-back-btn" type="button">
             <img
@@ -676,6 +638,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=12"></script>
+    <script type="module" src="src/app.js?v=13"></script>
   </body>
 </html>
