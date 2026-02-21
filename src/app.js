@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "7";
-const BUILD_UPDATED_AT = "2026-02-21 14:40 CET";
+const APP_VERSION = "8";
+const BUILD_UPDATED_AT = "2026-02-21 14:54 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -53,7 +53,7 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
   },
   {
     id: "body",
-    label: "Koerperatlas 2D",
+    label: "Koerperatlas Anatomie",
     cta: "15 Regionen mit Zoom und Labels",
     view: LEARNING_VIEW_BODY
   }
@@ -78,25 +78,23 @@ const BODY_ATLAS_COLORS = Object.freeze([
   "#739ad8"
 ]);
 const BODY_ATLAS_MAP_IMAGE_SRC =
-  "https://smart.servier.com/wp-content/uploads/2020/05/Loc_Bon_skeleton-face.png";
+  "https://smart.servier.com/wp-content/uploads/2016/10/squelette_03.png";
 const BODY_ATLAS_REGION_IMAGE_BY_ID = Object.freeze({
-  kopf_gehirn: "https://smart.servier.com/wp-content/uploads/2020/05/brain-overview-smart.png",
-  gesicht_hno: "https://smart.servier.com/wp-content/uploads/2020/05/nasal-cavity.png",
-  hals: "https://smart.servier.com/wp-content/uploads/2020/05/larynx.png",
-  thorax: "https://smart.servier.com/wp-content/uploads/2020/05/lungs-11.png",
-  herz_lunge: "https://smart.servier.com/wp-content/uploads/2020/05/heart.png",
-  oberbauch: "https://smart.servier.com/wp-content/uploads/2020/05/complete-digestive-apparatus.png",
-  unterbauch_darm:
-    "https://smart.servier.com/wp-content/uploads/2020/05/complete-digestive-apparatus.png",
-  becken_uro: "https://smart.servier.com/wp-content/uploads/2020/05/urinary-tract.png",
-  ruecken_wirbelsaeule:
-    "https://smart.servier.com/wp-content/uploads/2020/05/overview-vertebral-column.png",
-  linker_oberarm: "https://smart.servier.com/wp-content/uploads/2020/05/smart-joint-elbow.png",
-  rechter_oberarm: "https://smart.servier.com/wp-content/uploads/2020/05/smart-joint-elbow.png",
-  linker_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2020/05/hand.png",
-  rechter_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2020/05/hand.png",
-  linkes_bein: "https://smart.servier.com/wp-content/uploads/2020/05/femur.png",
-  rechtes_bein: "https://smart.servier.com/wp-content/uploads/2020/05/knee-frontal-view.png"
+  kopf_gehirn: "https://smart.servier.com/wp-content/uploads/2016/10/cerveau_zones2.png",
+  gesicht_hno: "https://smart.servier.com/wp-content/uploads/2016/10/Cavite_nasale.png",
+  hals: "https://smart.servier.com/wp-content/uploads/2016/10/Larynx.png",
+  thorax: "https://smart.servier.com/wp-content/uploads/2016/10/poumon_01.png",
+  herz_lunge: "https://smart.servier.com/wp-content/uploads/2016/10/coeur.png",
+  oberbauch: "https://smart.servier.com/wp-content/uploads/2016/10/syst_dig_complet.png",
+  unterbauch_darm: "https://smart.servier.com/wp-content/uploads/2016/10/syst_dig_complet.png",
+  becken_uro: "https://smart.servier.com/wp-content/uploads/2016/10/App_urinaire_femme.png",
+  ruecken_wirbelsaeule: "https://smart.servier.com/wp-content/uploads/2016/10/Colonne_normale1.png",
+  linker_oberarm: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_04.png",
+  rechter_oberarm: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_04.png",
+  linker_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2016/10/Main.png",
+  rechter_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2016/10/Main.png",
+  linkes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/femur_01.png",
+  rechtes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_08.png"
 });
 const BODY_ATLAS_REGIONS = Object.freeze([
   {
@@ -4664,6 +4662,13 @@ function renderLearningBodyMap() {
     class: "learning-body-map-image"
   });
   mapImage.setAttributeNS("http://www.w3.org/1999/xlink", "href", BODY_ATLAS_MAP_IMAGE_SRC);
+  mapImage.addEventListener("error", () => {
+    if (refs.learningBodyStatus) {
+      refs.learningBodyStatus.textContent =
+        "Servier-Koerperbild konnte nicht geladen werden. Bitte Seite neu laden.";
+    }
+    svg.classList.add("is-map-image-missing");
+  });
   svg.appendChild(mapImage);
 
   BODY_ATLAS_REGIONS.forEach((region, idx) => {
@@ -4778,6 +4783,13 @@ function renderLearningBodyZoom(region) {
     image.alt = `${region.label} - anatomische Skizze (Servier Medical Art)`;
     image.loading = "lazy";
     image.decoding = "async";
+    image.addEventListener("error", () => {
+      stage.classList.add("is-image-missing");
+      if (refs.learningBodyStatus) {
+        refs.learningBodyStatus.textContent =
+          "Servier-Detailbild konnte nicht geladen werden. Waehle eine andere Region oder lade neu.";
+      }
+    });
     stage.appendChild(image);
 
     const hotspotLayer = document.createElement("div");

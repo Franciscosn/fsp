@@ -1312,6 +1312,10 @@ body.auth-only .edge-deco {
   filter: saturate(1.08) contrast(1.04);
 }
 
+.learning-body-map-svg.is-map-image-missing .learning-body-map-image {
+  opacity: 0.16;
+}
+
 .learning-body-map-base-shape {
   fill: rgba(74, 117, 140, 0.11);
   stroke: rgba(74, 117, 140, 0.25);
@@ -1426,6 +1430,20 @@ body.auth-only .edge-deco {
   height: 100%;
   object-fit: contain;
   object-position: center;
+}
+
+.learning-body-zoom-stage.is-image-missing::after {
+  content: "Detailbild nicht ladbar";
+  position: absolute;
+  inset: auto 10px 10px 10px;
+  border: 1px solid rgba(179, 78, 87, 0.35);
+  border-radius: 8px;
+  background: rgba(255, 244, 246, 0.94);
+  color: #8e3a49;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-align: center;
+  padding: 6px 8px;
 }
 
 .learning-body-hotspot-layer {
