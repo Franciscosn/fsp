@@ -13,8 +13,8 @@ const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "11";
-const BUILD_UPDATED_AT = "2026-02-21 15:41 CET";
+const APP_VERSION = "12";
+const BUILD_UPDATED_AT = "2026-02-21 16:17 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -61,23 +61,6 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
 const BODY_ATLAS_DEFAULT_REGION_ID = "thorax";
 const BODY_ATLAS_MAP_IMAGE_SRC =
   "https://smart.servier.com/wp-content/uploads/2016/10/squelette_03.png";
-const BODY_ATLAS_REGION_IMAGE_BY_ID = Object.freeze({
-  kopf_gehirn: "https://smart.servier.com/wp-content/uploads/2016/10/cerveau_zones2.png",
-  gesicht_hno: "https://smart.servier.com/wp-content/uploads/2016/10/Cavite_nasale.png",
-  hals: "https://smart.servier.com/wp-content/uploads/2016/10/Larynx.png",
-  thorax: "https://smart.servier.com/wp-content/uploads/2016/10/poumon_01.png",
-  herz_lunge: "https://smart.servier.com/wp-content/uploads/2016/10/coeur.png",
-  oberbauch: "https://smart.servier.com/wp-content/uploads/2016/10/syst_dig_complet.png",
-  unterbauch_darm: "https://smart.servier.com/wp-content/uploads/2016/10/syst_dig_complet.png",
-  becken_uro: "https://smart.servier.com/wp-content/uploads/2016/10/App_urinaire_femme.png",
-  ruecken_wirbelsaeule: "https://smart.servier.com/wp-content/uploads/2016/10/Colonne_normale1.png",
-  linker_oberarm: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_04.png",
-  rechter_oberarm: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_04.png",
-  linker_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2016/10/Main.png",
-  rechter_unterarm_hand: "https://smart.servier.com/wp-content/uploads/2016/10/Main.png",
-  linkes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/femur_01.png",
-  rechtes_bein: "https://smart.servier.com/wp-content/uploads/2016/10/articulation_08.png"
-});
 const BODY_ATLAS_HITBOX_OVERRIDE_BY_ID = Object.freeze({
   kopf_gehirn: { left: 42, top: 2, width: 16, height: 12 },
   gesicht_hno: { left: 42, top: 9, width: 16, height: 9 },
@@ -126,6 +109,178 @@ const BODY_ATLAS_HITBOX_OVERRIDE_BY_ID = Object.freeze({
   },
   linkes_bein: { left: 43, top: 67, width: 7, height: 29 },
   rechtes_bein: { left: 50, top: 67, width: 7, height: 29 }
+});
+const BODY_ATLAS_REGION_SOURCE_FIGURES_BY_ID = Object.freeze({
+  kopf_gehirn: [
+    {
+      title: "Encephalon, sagittale Schnittdarstellung (nummeriert)",
+      description: "Wikimedia Commons, nummerierte Hirnanatomie.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Encephalon_human_sagittal_section_multilingual.svg"
+    }
+  ],
+  gesicht_hno: [
+    {
+      title: "Nasennebenhoehlen (nummeriert)",
+      description: "Wikimedia Commons, koronal/sagittal nummeriert.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Paranasal_sinuses_numbers.svg"
+    },
+    {
+      title: "Inneres Ohr (nummeriert)",
+      description: "Wikimedia Commons, detaillierte HNO-Strukturen.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Anatomy_of_the_Human_Ear-Number.svg"
+    }
+  ],
+  hals: [
+    {
+      title: "Artikulations- und Halsorgane (nummeriert)",
+      description: "Wikimedia Commons, Mid-Sagittalschnitt.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Pronunciation_organs_diagram.png"
+    },
+    {
+      title: "Vocal tract (nummeriert)",
+      description: "Wikimedia Commons, Pharynx/Larynx-Orientierung.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/VocalTract_withNumbers.svg"
+    }
+  ],
+  thorax: [
+    {
+      title: "Respiratorisches System komplett (nummeriert)",
+      description: "Wikimedia Commons, Lungen- und Atemwegsstruktur.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Respiratory_system_complete_numbered.svg"
+    }
+  ],
+  herz_lunge: [
+    {
+      title: "Herzquerschnitt (nummeriert)",
+      description: "Wikimedia Commons, klassische Herznummerierung.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Heart_numlabels.svg"
+    },
+    {
+      title: "Herzdiagramm (multilingual, nummeriert)",
+      description: "Wikimedia Commons, ergänzende Herzanatomie.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Diagram_of_the_human_heart_(multilingual_2).svg"
+    }
+  ],
+  oberbauch: [
+    {
+      title: "Magenanatomie (nummeriert)",
+      description: "Wikimedia Commons, nummerierte Oberbauchfokussierung.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Anatomy_of_stomach_numbered.png"
+    },
+    {
+      title: "Digestiver Apparat (nummeriert)",
+      description: "Wikimedia Commons, obere Verdauungsorgane im Kontext.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Digestive_appareil_numbered.svg"
+    }
+  ],
+  unterbauch_darm: [
+    {
+      title: "Verdauungssystem (nummeriert)",
+      description: "Wikimedia Commons, Darmtrakt mit Nummern.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Digestive_system_diagram_numbered.svg"
+    },
+    {
+      title: "GI-Trakt Schichten (nummeriert)",
+      description: "Wikimedia Commons, vertiefte Darmstruktur.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Layers_of_the_GI_Tract_numbers.svg"
+    }
+  ],
+  becken_uro: [
+    {
+      title: "Harnsystem (nummeriert)",
+      description: "Wikimedia Commons, Urogenitalfokus mit Legende.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Urinary_system_ver_2.svg"
+    },
+    {
+      title: "Niere (nummeriert)",
+      description: "Wikimedia Commons, detaillierte renale Anatomie.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Kidney-numbered.png"
+    }
+  ],
+  ruecken_wirbelsaeule: [
+    {
+      title: "Wirbelsaeulenkruemmung (nummeriert)",
+      description: "Wikimedia Commons, gesamte Wirbelsaeule mit Segmenten.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Spinal_column_curvature_numbered.svg"
+    },
+    {
+      title: "Nervensystem (nummeriert)",
+      description: "Wikimedia Commons, rueckenmarksnahe Orientierung.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Nervous_system_diagram_numbered.svg"
+    }
+  ],
+  linker_oberarm: [
+    {
+      title: "Humerus und Ellenbogen",
+      description: "Wikimedia Commons, anatomische Detailtafel.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/804_Humerus_and_Elbow.jpg"
+    },
+    {
+      title: "Armknochen-Diagramm",
+      description: "Wikimedia Commons, uebersichtliche Armknochenstruktur.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Human_arm_bones_diagram.svg"
+    }
+  ],
+  rechter_oberarm: [
+    {
+      title: "Humerus und Ellenbogen",
+      description: "Wikimedia Commons, anatomische Detailtafel.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/804_Humerus_and_Elbow.jpg"
+    },
+    {
+      title: "Armknochen-Diagramm",
+      description: "Wikimedia Commons, uebersichtliche Armknochenstruktur.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Human_arm_bones_diagram.svg"
+    }
+  ],
+  linker_unterarm_hand: [
+    {
+      title: "Handknochen (nummeriert)",
+      description: "Wikimedia Commons, knoecherne Strukturen der Hand.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Hand_bones_numbered.png"
+    },
+    {
+      title: "Palmarer Tiefenschnitt (nummeriert)",
+      description: "Wikimedia Commons, Sehnen/Gefaesse/Nerven.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wrist_and_hand_deeper_palmar_dissection-numbers.svg"
+    }
+  ],
+  rechter_unterarm_hand: [
+    {
+      title: "Handknochen (nummeriert)",
+      description: "Wikimedia Commons, knoecherne Strukturen der Hand.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Hand_bones_numbered.png"
+    },
+    {
+      title: "Palmarer Tiefenschnitt (nummeriert)",
+      description: "Wikimedia Commons, Sehnen/Gefaesse/Nerven.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wrist_and_hand_deeper_palmar_dissection-numbers.svg"
+    }
+  ],
+  linkes_bein: [
+    {
+      title: "Knieanatomie (nummeriert)",
+      description: "Wikimedia Commons, Band- und Gelenkstrukturen.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Knee_diagram_numbered.png"
+    },
+    {
+      title: "Oberschenkelarterien (nummeriert)",
+      description: "Wikimedia Commons, Gefaessverlauf im Bein.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Thigh_arteries_schema_numbered.svg"
+    }
+  ],
+  rechtes_bein: [
+    {
+      title: "Knieanatomie (nummeriert)",
+      description: "Wikimedia Commons, Band- und Gelenkstrukturen.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Knee_diagram_numbered.png"
+    },
+    {
+      title: "Oberschenkelarterien (nummeriert)",
+      description: "Wikimedia Commons, Gefaessverlauf im Bein.",
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Thigh_arteries_schema_numbered.svg"
+    }
+  ]
 });
 const BODY_ATLAS_EXTRA_TERMS_BY_GROUP = Object.freeze({
   head: [
@@ -4672,29 +4827,6 @@ function getLearningBodyRegionById(regionId) {
   );
 }
 
-function getLearningBodyRegionImageSrc(regionId) {
-  const key = String(regionId || "");
-  return BODY_ATLAS_REGION_IMAGE_BY_ID[key] || BODY_ATLAS_MAP_IMAGE_SRC;
-}
-
-function getLearningBodyMarkerFallback(index) {
-  const fallbackPoints = [
-    { x: 72, y: 70 },
-    { x: 246, y: 72 },
-    { x: 82, y: 126 },
-    { x: 236, y: 132 },
-    { x: 94, y: 188 },
-    { x: 226, y: 188 },
-    { x: 160, y: 60 },
-    { x: 160, y: 110 },
-    { x: 160, y: 162 },
-    { x: 160, y: 216 },
-    { x: 124, y: 224 },
-    { x: 196, y: 226 }
-  ];
-  return fallbackPoints[index % fallbackPoints.length];
-}
-
 function getLearningBodyRegionDetailedTerms(region) {
   const base = Array.isArray(region?.hotspots) ? region.hotspots : [];
   const group = getLearningBodyRegionGroup(region?.id || "");
@@ -4712,27 +4844,18 @@ function getLearningBodyRegionDetailedTerms(region) {
     merged.push({
       fach,
       patient: safeLine(term.patient || "", 180),
-      info: safeParagraph(term.info || "", 220),
-      x: Number(term.x),
-      y: Number(term.y)
+      info: safeParagraph(term.info || "", 220)
     });
   };
 
   base.forEach(addTerm);
   extras.forEach(addTerm);
 
-  return merged.map((entry, index) => {
-    const fallback = getLearningBodyMarkerFallback(index);
-    const x = Number.isFinite(entry.x) ? entry.x : fallback.x;
-    const y = Number.isFinite(entry.y) ? entry.y : fallback.y;
-    return {
-      fach: entry.fach,
-      patient: entry.patient || "-",
-      info: entry.info || "",
-      x: Math.max(28, Math.min(292, x)),
-      y: Math.max(34, Math.min(244, y))
-    };
-  });
+  return merged.map((entry) => ({
+    fach: entry.fach,
+    patient: entry.patient || "-",
+    info: entry.info || ""
+  }));
 }
 
 function getLearningBodyRegionGroup(regionId) {
@@ -5083,15 +5206,38 @@ function getLearningBodyDeepDive(region) {
 }
 
 function getLearningBodyRegionFigureSet(region) {
-  const primarySrc = getLearningBodyRegionImageSrc(region.id);
-  const detailedTerms = getLearningBodyRegionDetailedTerms(region);
+  const sourceFigures = BODY_ATLAS_REGION_SOURCE_FIGURES_BY_ID[region.id] || [];
+  const seenSources = new Set();
+  const figures = [];
+
+  sourceFigures.forEach((entry, index) => {
+    if (!entry || typeof entry !== "object") return;
+    const src = safeLine(entry.src || "", 500);
+    if (!src) return;
+    const key = src.toLowerCase();
+    if (seenSources.has(key)) return;
+    seenSources.add(key);
+    figures.push({
+      title:
+        safeLine(entry.title || "", 180) || `${region.label}: Anatomische Detailansicht ${index + 1}`,
+      description:
+        safeParagraph(entry.description || "", 280) ||
+        "Nummerierte anatomische Darstellung mit fachlich ueblichen Strukturen.",
+      src,
+      sourceLabel: safeLine(entry.sourceLabel || "Wikimedia Commons", 80) || "Wikimedia Commons",
+      sourceUrl: src
+    });
+  });
+
+  if (figures.length > 0) return figures;
+
   return [
     {
-      title: `${region.label}: Nummerierte Detailansicht`,
-      description: "Ausfuehrliche Nummerierung mit erweiterten Fachbegriffen.",
-      src: primarySrc,
-      labels: detailedTerms,
-      showMarkers: true
+      title: `${region.label}: Anatomische Detailansicht`,
+      description: "Fallback auf Ganzkoerpergrafik, da keine Regionsquelle hinterlegt ist.",
+      src: BODY_ATLAS_MAP_IMAGE_SRC,
+      sourceLabel: "Servier Medical Art",
+      sourceUrl: "https://smart.servier.com/"
     }
   ];
 }
@@ -5273,7 +5419,7 @@ function renderLearningBodyRegionDetail(region) {
   if (refs.learningBodyRegionHint) refs.learningBodyRegionHint.textContent = region.hint;
   if (refs.learningBodyStatus) {
     refs.learningBodyStatus.textContent =
-      `${region.label}: detaillierte Anatomieansicht mit klinischer Vertiefung.`;
+      `${region.label}: nummerierte Quellgrafiken mit klinischer Vertiefung.`;
   }
 
   if (refs.learningBodyRegionGallery) {
@@ -5298,40 +5444,29 @@ function renderLearningBodyRegionDetail(region) {
       const image = document.createElement("img");
       image.className = "learning-body-figure-image";
       image.src = figure.src;
-      image.alt = `${figure.title} (Servier Medical Art)`;
+      image.alt = `${figure.title} (nummerierte anatomische Darstellung)`;
       image.loading = "lazy";
       image.decoding = "async";
       image.addEventListener("error", () => {
         imageWrap.classList.add("is-image-missing");
       });
       imageWrap.appendChild(image);
-
-      if (figure.showMarkers && Array.isArray(figure.labels) && figure.labels.length > 0) {
-        const markerLayer = document.createElement("div");
-        markerLayer.className = "learning-body-figure-marker-layer";
-        figure.labels.forEach((entry, labelIndex) => {
-          const marker = document.createElement("div");
-          marker.className = "learning-body-figure-marker";
-          marker.style.left = `${Math.max(6, Math.min(94, (Number(entry.x) / 320) * 100))}%`;
-          marker.style.top = `${Math.max(8, Math.min(92, (Number(entry.y) / 260) * 100))}%`;
-          marker.title = `${labelIndex + 1}. ${entry.fach} - ${entry.patient}`;
-          marker.setAttribute("aria-label", marker.title);
-          marker.textContent = String(labelIndex + 1);
-          markerLayer.appendChild(marker);
-        });
-        imageWrap.appendChild(markerLayer);
-      }
       card.appendChild(imageWrap);
 
-      if (Array.isArray(figure.labels) && figure.labels.length > 0) {
-        const labels = document.createElement("ol");
-        labels.className = "learning-body-figure-labels";
-        figure.labels.forEach((entry, labelIndex) => {
-          const li = document.createElement("li");
-          li.innerHTML = `<strong>${labelIndex + 1}. ${entry.fach}</strong> - ${entry.patient}`;
-          labels.appendChild(li);
-        });
-        card.appendChild(labels);
+      const sourceUrl = safeLine(figure.sourceUrl || "", 500);
+      if (sourceUrl) {
+        const source = document.createElement("p");
+        source.className = "learning-body-figure-source";
+        const sourceLabel = document.createElement("span");
+        sourceLabel.textContent = "Quelle: ";
+        source.appendChild(sourceLabel);
+        const sourceLink = document.createElement("a");
+        sourceLink.href = sourceUrl;
+        sourceLink.target = "_blank";
+        sourceLink.rel = "noopener noreferrer";
+        sourceLink.textContent = safeLine(figure.sourceLabel || "Bildquelle", 80) || "Bildquelle";
+        source.appendChild(sourceLink);
+        card.appendChild(source);
       }
       refs.learningBodyRegionGallery.appendChild(card);
     });

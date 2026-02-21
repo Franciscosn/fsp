@@ -1437,37 +1437,20 @@ body.auth-only .edge-deco {
   object-position: center;
 }
 
-.learning-body-figure-marker-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.learning-body-figure-marker {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 24px;
-  height: 24px;
-  border-radius: 999px;
-  background: rgba(19, 54, 86, 0.95);
-  color: #fff;
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 8px rgba(20, 47, 69, 0.24);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.72rem;
-  font-weight: 900;
-}
-
-.learning-body-figure-labels {
+.learning-body-figure-source {
   margin: 0;
-  padding-left: 18px;
-  color: #2f4758;
-  font-size: 0.82rem;
-  line-height: 1.35;
-  display: grid;
-  gap: 4px;
+  color: #375469;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.learning-body-figure-source a {
+  color: #0e5f8e;
+  text-decoration: none;
+}
+
+.learning-body-figure-source a:hover {
+  text-decoration: underline;
 }
 
 .learning-body-region-deep-dive {
@@ -2777,12 +2760,6 @@ body.learning-reader .learning-back-avatar {
   .learning-body-figure-image-wrap,
   .learning-body-figure-image {
     min-height: 190px;
-  }
-
-  .learning-body-figure-marker {
-    width: 20px;
-    height: 20px;
-    font-size: 0.64rem;
   }
 
   .learning-prose p {
