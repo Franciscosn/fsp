@@ -2185,6 +2185,78 @@ body.immersive .stats-fab {
   display: none;
 }
 
+body.learning-reader .app-shell > * {
+  display: none;
+}
+
+body.learning-reader #learningPanel {
+  display: grid;
+  gap: 10px;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+body.learning-reader .app-shell {
+  width: min(760px, 100% - 26px);
+  margin-top: 8px;
+}
+
+body.learning-reader .build-badge,
+body.learning-reader .stats-fab {
+  display: none !important;
+}
+
+body.learning-reader #learningRootView,
+body.learning-reader #learningSubcategoryView {
+  display: none !important;
+}
+
+body.learning-reader #learningReadingView {
+  display: grid !important;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+body.learning-reader .learning-head,
+body.learning-reader #learningReadingTitle,
+body.learning-reader .learning-meta,
+body.learning-reader .learning-status,
+body.learning-reader .learning-question-head,
+body.learning-reader .learning-question-groups,
+body.learning-reader .learning-sources {
+  display: none !important;
+}
+
+body.learning-reader .learning-prose {
+  gap: 12px;
+}
+
+body.learning-reader .learning-prose p {
+  font-size: 1.02rem;
+  line-height: 1.72;
+}
+
+body.learning-reader .learning-back-btn {
+  width: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.learning-reader .learning-back-text {
+  display: none;
+}
+
+body.learning-reader .learning-back-avatar {
+  width: 52px;
+  height: 52px;
+}
+
 @media (max-width: 980px) {
   .auth-stage {
     grid-template-columns: 1fr;
@@ -2454,6 +2526,21 @@ body.immersive .stats-fab {
   .learning-panel.is-reader-view .learning-back-avatar {
     width: 46px;
     height: 46px;
+  }
+
+  body.learning-reader .app-shell {
+    width: min(100% - 18px, 760px);
+    margin-top: 6px;
+  }
+
+  body.learning-reader .learning-prose p {
+    font-size: 1rem;
+    line-height: 1.74;
+  }
+
+  body.learning-reader .learning-back-avatar {
+    width: 48px;
+    height: 48px;
   }
 
   .selection-footer {
