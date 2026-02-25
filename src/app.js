@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "33";
-const BUILD_UPDATED_AT = "2026-02-26 02:29 CET";
+const APP_VERSION = "34";
+const BUILD_UPDATED_AT = "2026-02-26 03:11 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -4703,10 +4703,7 @@ async function connectRealtimeViaWebSocket(payload) {
       ? OPENAI_REALTIME_MODEL_STRONG
       : OPENAI_REALTIME_MODEL_FAST;
   const wsUrl = `wss://api.openai.com/v1/realtime?model=${encodeURIComponent(realtimeModel)}`;
-  const wsProtocolVariants = [
-    ["realtime", `openai-insecure-api-key.${clientSecret}`, "openai-beta.realtime-v1"],
-    ["realtime", `openai-insecure-api-key.${clientSecret}`]
-  ];
+  const wsProtocolVariants = [["realtime", `openai-insecure-api-key.${clientSecret}`]];
   let socket = null;
   let lastWsError = null;
   for (const protocols of wsProtocolVariants) {
