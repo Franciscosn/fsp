@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "16";
-const BUILD_UPDATED_AT = "2026-02-25 22:32 CET";
+const APP_VERSION = "17";
+const BUILD_UPDATED_AT = "2026-02-25 22:55 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3454,6 +3454,14 @@ function parseJsonSafe(value) {
   }
 }
 
+function pushUniqueSdpCandidate(list, label, value) {
+  if (!Array.isArray(list)) return;
+  const text = String(value || "").trim();
+  if (!text) return;
+  if (list.some((entry) => String(entry?.value || "") === text)) return;
+  list.push({ label: String(label || "sdp"), value: text });
+}
+
 function extractSdpFromJsonCandidate(candidate) {
   if (!candidate || typeof candidate !== "object") return "";
   const directKeys = ["sdp", "answer_sdp", "answerSdp"];
@@ -3520,6 +3528,59 @@ function looksLikeSdpAnswer(value) {
   return text.startsWith("v=0") && text.includes("\nm=") && text.includes("a=ice-");
 }
 
+function buildSdpCandidateList(rawValue) {
+  const rawText = String(rawValue || "");
+  const list = [];
+
+  pushUniqueSdpCandidate(list, "raw", rawText);
+
+  const parsedFromRaw = parseJsonSafe(rawText);
+  if (parsedFromRaw && typeof parsedFromRaw === "object") {
+    const extracted = extractSdpFromJsonCandidate(parsedFromRaw);
+    pushUniqueSdpCandidate(list, "json-extracted", extracted);
+  }
+
+  if (rawText.includes("\\r\\n") || rawText.includes("\\n")) {
+    const unescaped = rawText.replace(/\\r\\n/g, "\r\n").replace(/\\n/g, "\n");
+    pushUniqueSdpCandidate(list, "unescaped", unescaped);
+  }
+
+  const normalized = normalizeSdpForWebRtc(rawText);
+  pushUniqueSdpCandidate(list, "normalized", normalized);
+
+  const lineBased = rawText
+    .replace(/\u0000/g, "")
+    .split(/\r\n|\n|\r/)
+    .map((line) => String(line || "").trimEnd())
+    .filter((line) => line.length > 0)
+    .join("\r\n");
+  pushUniqueSdpCandidate(list, "line-based", lineBased);
+
+  return list.filter((entry) => String(entry?.value || "").includes("v=0"));
+}
+
+async function setRemoteDescriptionWithSdpCandidates(peerConnection, rawSdp, contextLabel) {
+  const candidates = buildSdpCandidateList(rawSdp);
+  let lastError = null;
+
+  for (const candidate of candidates) {
+    try {
+      await peerConnection.setRemoteDescription({
+        type: "answer",
+        sdp: candidate.value
+      });
+      return candidate.label;
+    } catch (error) {
+      lastError = error;
+      console.warn(`SDP parse fehlgeschlagen (${candidate.label})`, error);
+    }
+  }
+
+  const rawPreview = String(rawSdp || "").replace(/\s+/g, " ").slice(0, 220);
+  const message = String(lastError?.message || "setRemoteDescription fehlgeschlagen.");
+  throw new Error(`${contextLabel}: ${message}. Antwortbeginn: ${rawPreview}`);
+}
+
 function buildRealtimeConnectPayload(offerSdp) {
   return {
     sdp: String(offerSdp || ""),
@@ -3542,8 +3603,8 @@ async function connectRealtimeViaUnified(peerConnection, payload) {
     REALTIME_CONNECT_TIMEOUT_MS
   );
   const body = await response.json().catch(() => ({}));
-  const normalizedSdp = normalizeSdpForWebRtc(body?.sdp || body?.answer_sdp || body?.answer || "");
-  if (!response.ok || !looksLikeSdpAnswer(normalizedSdp)) {
+  const rawSdp = body?.sdp || body?.answer_sdp || body?.answer || "";
+  if (!response.ok || !String(rawSdp || "").trim()) {
     const message = String(body?.error || "Unified-Handshake fehlgeschlagen.");
     const detail = String(body?.details || "");
     const err = new Error(detail ? `${message} ${detail}` : message);
@@ -3551,23 +3612,18 @@ async function connectRealtimeViaUnified(peerConnection, payload) {
     throw err;
   }
 
-  try {
-    await peerConnection.setRemoteDescription({
-      type: "answer",
-      sdp: normalizedSdp
-    });
-  } catch (error) {
-    const err = new Error(`Unified-SDP ungueltig: ${String(error?.message || error)}`);
-    err.code = "REALTIME_UNIFIED_SDP_INVALID";
-    throw err;
-  }
+  const sdpVariant = await setRemoteDescriptionWithSdpCandidates(
+    peerConnection,
+    rawSdp,
+    "Unified-SDP ungueltig"
+  );
 
   return {
     realtimeModel:
       body?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
         ? OPENAI_REALTIME_MODEL_STRONG
         : OPENAI_REALTIME_MODEL_FAST,
-    pathLabel: "Unified"
+    pathLabel: `Unified-${sdpVariant}`
   };
 }
 
@@ -3607,8 +3663,7 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
       REALTIME_CONNECT_TIMEOUT_MS
     );
     const rawAnswer = await sdpResponse.text();
-    const normalizedAnswer = normalizeSdpForWebRtc(rawAnswer);
-    if (!sdpResponse.ok || !looksLikeSdpAnswer(normalizedAnswer)) {
+    if (!sdpResponse.ok || !String(rawAnswer || "").trim()) {
       const err = new Error(
         `Ephemeral-SDP (calls) fehlgeschlagen (HTTP ${sdpResponse.status}). ${String(
           rawAnswer || ""
@@ -3617,37 +3672,22 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
       err.code = "REALTIME_EPHEMERAL_SDP_FAILED";
       throw err;
     }
-    return normalizedAnswer;
+    return rawAnswer;
   }
 
   const answerSdp = await requestAnswerSdp("https://api.openai.com/v1/realtime/calls");
-  try {
-    await peerConnection.setRemoteDescription({
-      type: "answer",
-      sdp: answerSdp
-    });
-  } catch (error) {
-    const message = String(error?.message || error);
-    const err = new Error(
-      `Ephemeral-SDP konnte nicht gesetzt werden: ${message}. Antwortbeginn: ${String(answerSdp).slice(0, 180)}`
-    );
-    err.code = "REALTIME_EPHEMERAL_SDP_INVALID";
-    throw err;
-  }
-
-  if (!answerSdp) {
-    const message = "Ephemeral-SDP konnte nicht gesetzt werden.";
-    const err = new Error(message);
-    err.code = "REALTIME_EPHEMERAL_SDP_INVALID";
-    throw err;
-  }
+  const sdpVariant = await setRemoteDescriptionWithSdpCandidates(
+    peerConnection,
+    answerSdp,
+    "Ephemeral-SDP konnte nicht gesetzt werden"
+  );
 
   return {
     realtimeModel:
       tokenBody?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
         ? OPENAI_REALTIME_MODEL_STRONG
         : OPENAI_REALTIME_MODEL_FAST,
-    pathLabel: "Ephemeral-calls"
+    pathLabel: `Ephemeral-calls-${sdpVariant}`
   };
 }
 
