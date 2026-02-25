@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "22";
-const BUILD_UPDATED_AT = "2026-02-25 23:49 CET";
+const APP_VERSION = "23";
+const BUILD_UPDATED_AT = "2026-02-26 00:04 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3506,6 +3506,86 @@ function normalizeSdpLineBreaks(value, mode = "crlf", ensureFinalBreak = false) 
   return mode === "lf" ? `${body}\n` : `${body}\r\n`;
 }
 
+function sanitizeCandidateLine(line) {
+  const text = String(line || "").trim();
+  const prefix = "a=candidate:";
+  if (!text.startsWith(prefix)) return text;
+
+  const body = text.slice(prefix.length).trim();
+  const tokens = body.split(/\s+/).filter(Boolean);
+  if (tokens.length < 8) return text;
+  if (tokens[6] !== "typ") return text;
+
+  const base = tokens.slice(0, 8);
+  const extras = [];
+  for (let index = 8; index + 1 < tokens.length; index += 2) {
+    const key = String(tokens[index] || "").trim();
+    const value = String(tokens[index + 1] || "").trim();
+    if (!key || !value) continue;
+    if (key === "raddr" || key === "rport" || key === "tcptype") {
+      extras.push(key, value);
+    }
+  }
+
+  return `${prefix}${[...base, ...extras].join(" ")}`;
+}
+
+function sanitizeSdpCandidateLines(value) {
+  const lines = splitSdpLines(value);
+  if (!lines.length) return "";
+  return joinSdpLines(
+    lines.map((line) => {
+      if (String(line || "").trim().startsWith("a=candidate:")) {
+        return sanitizeCandidateLine(line);
+      }
+      return String(line || "").trim();
+    })
+  );
+}
+
+function stripApplicationMediaSection(value) {
+  const lines = filterValidSdpLines(segmentSdpLines(splitSdpLines(value)));
+  if (!lines.length) return "";
+
+  const firstMediaIndex = lines.findIndex((line) => line.startsWith("m="));
+  if (firstMediaIndex < 0) return joinSdpLines(lines);
+
+  const sessionLines = lines.slice(0, firstMediaIndex);
+  const mediaLines = lines.slice(firstMediaIndex);
+  const sectionStarts = [];
+  for (let index = 0; index < mediaLines.length; index += 1) {
+    if (mediaLines[index].startsWith("m=")) sectionStarts.push(index);
+  }
+  if (!sectionStarts.length) return joinSdpLines(lines);
+
+  const keptSections = [];
+  for (let s = 0; s < sectionStarts.length; s += 1) {
+    const start = sectionStarts[s];
+    const end = sectionStarts[s + 1] ?? mediaLines.length;
+    const section = mediaLines.slice(start, end);
+    if (!section.length) continue;
+    const mLine = section[0];
+    if (mLine.startsWith("m=application ")) continue;
+    keptSections.push(section);
+  }
+  if (!keptSections.length) return joinSdpLines(lines);
+
+  const mids = keptSections
+    .map((section) => section.find((line) => line.startsWith("a=mid:")) || "")
+    .map((line) => line.replace(/^a=mid:/, "").trim())
+    .filter(Boolean);
+
+  const updatedSession = sessionLines
+    .map((line) => {
+      if (!line.startsWith("a=group:BUNDLE")) return line;
+      if (!mids.length) return "";
+      return `a=group:BUNDLE ${mids.join(" ")}`;
+    })
+    .filter(Boolean);
+
+  return joinSdpLines([...updatedSession, ...keptSections.flat()]);
+}
+
 function extractSdpFromResponseText(rawText) {
   let text = String(rawText || "").trim();
   if (!text) return "";
@@ -3678,6 +3758,7 @@ function normalizeSdpForWebRtc(rawValue) {
 
   text = rebuildFlattenedSdp(text);
   text = sanitizeSdpAscii(text).replace(/\r\n|\n|\r/g, "\r\n").trim();
+  text = sanitizeSdpCandidateLines(text);
   const strictLines = filterValidSdpLines(segmentSdpLines(splitSdpLines(text)));
   if (strictLines.length) {
     text = joinSdpLines(strictLines);
@@ -3742,6 +3823,11 @@ function buildSdpCandidateList(rawValue) {
   const optionalStripped = stripOptionalSdpLines(normalizeSdpForWebRtc(extractedText || rawText));
   pushUniqueSdpCandidate(list, "optional-stripped", optionalStripped);
 
+  const candidateSanitized = normalizeSdpForWebRtc(
+    sanitizeSdpCandidateLines(extractedText || rawText)
+  );
+  pushUniqueSdpCandidate(list, "candidate-sanitized", candidateSanitized);
+
   const lfVariant = normalizeSdpLineBreaks(extractedText || rawText, "lf", false);
   pushUniqueSdpCandidate(list, "lf-only", lfVariant);
 
@@ -3750,6 +3836,9 @@ function buildSdpCandidateList(rawValue) {
 
   const crlfFinal = normalizeSdpLineBreaks(extractedText || rawText, "crlf", true);
   pushUniqueSdpCandidate(list, "crlf-final-break", crlfFinal);
+
+  const audioOnly = stripApplicationMediaSection(candidateSanitized || normalized);
+  pushUniqueSdpCandidate(list, "audio-only", audioOnly);
 
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
 }
