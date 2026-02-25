@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "25";
-const BUILD_UPDATED_AT = "2026-02-26 00:33 CET";
+const APP_VERSION = "26";
+const BUILD_UPDATED_AT = "2026-02-26 00:43 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3661,6 +3661,64 @@ function stripApplicationMediaSection(value) {
   return joinSdpLines([...updatedSession, ...keptSections.flat()]);
 }
 
+function promoteMediaIceToSession(value) {
+  const lines = filterValidSdpLines(segmentSdpLines(splitSdpLines(value)));
+  if (!lines.length) return "";
+
+  const firstMediaIndex = lines.findIndex((line) => line.startsWith("m="));
+  if (firstMediaIndex < 0) return joinSdpLines(lines);
+
+  const sessionLines = lines.slice(0, firstMediaIndex);
+  const mediaLines = lines.slice(firstMediaIndex);
+
+  const sectionStarts = [];
+  for (let index = 0; index < mediaLines.length; index += 1) {
+    if (mediaLines[index].startsWith("m=")) sectionStarts.push(index);
+  }
+  if (!sectionStarts.length) return joinSdpLines(lines);
+
+  let sharedUfrag = "";
+  let sharedPwd = "";
+  const rewrittenSections = [];
+
+  for (let s = 0; s < sectionStarts.length; s += 1) {
+    const start = sectionStarts[s];
+    const end = sectionStarts[s + 1] ?? mediaLines.length;
+    const section = mediaLines.slice(start, end);
+    if (!section.length) continue;
+
+    for (const line of section) {
+      if (!sharedUfrag && line.startsWith("a=ice-ufrag:")) {
+        sharedUfrag = line;
+      }
+      if (!sharedPwd && line.startsWith("a=ice-pwd:")) {
+        sharedPwd = line;
+      }
+    }
+
+    const cleanedSection = section.filter(
+      (line) => !line.startsWith("a=ice-ufrag:") && !line.startsWith("a=ice-pwd:")
+    );
+    rewrittenSections.push(cleanedSection);
+  }
+
+  if (!sharedUfrag || !sharedPwd) {
+    return joinSdpLines(lines);
+  }
+
+  const cleanedSession = sessionLines.filter(
+    (line) => !line.startsWith("a=ice-ufrag:") && !line.startsWith("a=ice-pwd:")
+  );
+  const insertIndex = cleanedSession.findIndex((line) => line.startsWith("a=fingerprint:"));
+  if (insertIndex >= 0) {
+    cleanedSession.splice(insertIndex, 0, sharedUfrag, sharedPwd);
+  } else {
+    cleanedSession.push(sharedUfrag, sharedPwd);
+  }
+
+  return joinSdpLines([...cleanedSession, ...rewrittenSections.flat()]);
+}
+
 function extractSdpFromResponseText(rawText) {
   let text = String(rawText || "").trim();
   if (!text) return "";
@@ -3934,6 +3992,11 @@ function buildSdpCandidateList(rawValue) {
       });
     }
   }
+
+  const sessionIcePromoted = promoteMediaIceToSession(
+    strippedInlineCandidates || udpOnlyCandidates || candidateSanitized || normalized
+  );
+  pushUniqueSdpCandidate(list, "session-ice", sessionIcePromoted);
 
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
 }
