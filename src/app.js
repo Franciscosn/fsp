@@ -3446,6 +3446,80 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = REALTIME_CONNECT_
   }
 }
 
+function parseJsonSafe(value) {
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+}
+
+function extractSdpFromJsonCandidate(candidate) {
+  if (!candidate || typeof candidate !== "object") return "";
+  const directKeys = ["sdp", "answer_sdp", "answerSdp"];
+  for (const key of directKeys) {
+    const value = candidate[key];
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+  if (candidate.answer && typeof candidate.answer === "object") {
+    const nested = extractSdpFromJsonCandidate(candidate.answer);
+    if (nested) return nested;
+  }
+  if (candidate.data && typeof candidate.data === "object") {
+    const nested = extractSdpFromJsonCandidate(candidate.data);
+    if (nested) return nested;
+  }
+  if (candidate.response && typeof candidate.response === "object") {
+    const nested = extractSdpFromJsonCandidate(candidate.response);
+    if (nested) return nested;
+  }
+  return "";
+}
+
+function normalizeSdpForWebRtc(rawValue) {
+  let text = String(rawValue || "").trim();
+  if (!text) return "";
+
+  if (text.startsWith("{")) {
+    const parsed = parseJsonSafe(text);
+    const extracted = extractSdpFromJsonCandidate(parsed);
+    if (extracted) {
+      text = extracted;
+    }
+  }
+
+  if (
+    (text.startsWith("\"") && text.endsWith("\"")) ||
+    (text.startsWith("'") && text.endsWith("'"))
+  ) {
+    const parsedQuoted = parseJsonSafe(text);
+    if (typeof parsedQuoted === "string" && parsedQuoted.trim()) {
+      text = parsedQuoted.trim();
+    } else {
+      text = text.slice(1, -1).trim();
+    }
+  }
+
+  if (text.includes("\\r\\n") || text.includes("\\n")) {
+    text = text.replace(/\\r\\n/g, "\r\n").replace(/\\n/g, "\n");
+  }
+
+  const startIndex = text.indexOf("v=0");
+  if (startIndex > 0) {
+    text = text.slice(startIndex);
+  }
+
+  text = text.replace(/\u0000/g, "").replace(/\r?\n/g, "\r\n").trim();
+  return text;
+}
+
+function looksLikeSdpAnswer(value) {
+  const text = String(value || "");
+  return text.startsWith("v=0") && text.includes("\nm=") && text.includes("a=ice-");
+}
+
 function buildRealtimeConnectPayload(offerSdp) {
   return {
     sdp: String(offerSdp || ""),
@@ -3468,7 +3542,8 @@ async function connectRealtimeViaUnified(peerConnection, payload) {
     REALTIME_CONNECT_TIMEOUT_MS
   );
   const body = await response.json().catch(() => ({}));
-  if (!response.ok || typeof body?.sdp !== "string" || !body.sdp.trim()) {
+  const normalizedSdp = normalizeSdpForWebRtc(body?.sdp || body?.answer_sdp || body?.answer || "");
+  if (!response.ok || !looksLikeSdpAnswer(normalizedSdp)) {
     const message = String(body?.error || "Unified-Handshake fehlgeschlagen.");
     const detail = String(body?.details || "");
     const err = new Error(detail ? `${message} ${detail}` : message);
@@ -3476,10 +3551,16 @@ async function connectRealtimeViaUnified(peerConnection, payload) {
     throw err;
   }
 
-  await peerConnection.setRemoteDescription({
-    type: "answer",
-    sdp: body.sdp
-  });
+  try {
+    await peerConnection.setRemoteDescription({
+      type: "answer",
+      sdp: normalizedSdp
+    });
+  } catch (error) {
+    const err = new Error(`Unified-SDP ungueltig: ${String(error?.message || error)}`);
+    err.code = "REALTIME_UNIFIED_SDP_INVALID";
+    throw err;
+  }
 
   return {
     realtimeModel:
@@ -3510,37 +3591,74 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
     throw err;
   }
 
-  const sdpResponse = await fetchWithTimeout(
-    "https://api.openai.com/v1/realtime/calls",
-    {
-      method: "POST",
-      headers: {
-        authorization: `Bearer ${clientSecret}`,
-        "content-type": "application/sdp",
-        accept: "application/sdp"
+  const offerSdp = String(payload.sdp || "");
+  const legacyUrl = `https://api.openai.com/v1/realtime?model=${encodeURIComponent(
+    state.voiceRealtimeModel || OPENAI_REALTIME_MODEL_FAST
+  )}`;
+
+  async function requestAnswerSdp(endpointUrl, modeLabel) {
+    const sdpResponse = await fetchWithTimeout(
+      endpointUrl,
+      {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${clientSecret}`,
+          "content-type": "application/sdp",
+          accept: "application/sdp"
+        },
+        body: offerSdp
       },
-      body: String(payload.sdp || "")
-    },
-    REALTIME_CONNECT_TIMEOUT_MS
-  );
-  const answerSdp = String(await sdpResponse.text()).trim();
-  if (!sdpResponse.ok || !answerSdp) {
-    const err = new Error(`Ephemeral-SDP fehlgeschlagen (HTTP ${sdpResponse.status}).`);
-    err.code = "REALTIME_EPHEMERAL_SDP_FAILED";
-    throw err;
+      REALTIME_CONNECT_TIMEOUT_MS
+    );
+    const rawAnswer = await sdpResponse.text();
+    const normalizedAnswer = normalizeSdpForWebRtc(rawAnswer);
+    if (!sdpResponse.ok || !looksLikeSdpAnswer(normalizedAnswer)) {
+      const err = new Error(
+        `Ephemeral-SDP (${modeLabel}) fehlgeschlagen (HTTP ${sdpResponse.status}). ${String(
+          rawAnswer || ""
+        ).slice(0, 220)}`
+      );
+      err.code = "REALTIME_EPHEMERAL_SDP_FAILED";
+      throw err;
+    }
+    return normalizedAnswer;
   }
 
-  await peerConnection.setRemoteDescription({
-    type: "answer",
-    sdp: answerSdp
-  });
+  const candidates = [
+    { url: "https://api.openai.com/v1/realtime/calls", label: "calls" },
+    { url: legacyUrl, label: "legacy" }
+  ];
+  let lastError = null;
+  let connectedVia = "";
+
+  for (const candidate of candidates) {
+    try {
+      const answerSdp = await requestAnswerSdp(candidate.url, candidate.label);
+      await peerConnection.setRemoteDescription({
+        type: "answer",
+        sdp: answerSdp
+      });
+      connectedVia = candidate.label;
+      break;
+    } catch (error) {
+      lastError = error;
+      console.warn(`Ephemeral ${candidate.label} fehlgeschlagen`, error);
+    }
+  }
+
+  if (!connectedVia) {
+    const message = String(lastError?.message || "Ephemeral-SDP konnte nicht gesetzt werden.");
+    const err = new Error(message);
+    err.code = String(lastError?.code || "REALTIME_EPHEMERAL_SDP_INVALID");
+    throw err;
+  }
 
   return {
     realtimeModel:
       tokenBody?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
         ? OPENAI_REALTIME_MODEL_STRONG
         : OPENAI_REALTIME_MODEL_FAST,
-    pathLabel: "Ephemeral"
+    pathLabel: `Ephemeral-${connectedVia}`
   };
 }
 
