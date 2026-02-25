@@ -3545,6 +3545,7 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
 }
 
 async function startVoiceRealtimeSession() {
+  let activePeerConnection = null;
   state.voiceRealtimeConnecting = true;
   state.voiceRealtimeActive = false;
   state.voiceRealtimeMuted = false;
@@ -3560,6 +3561,7 @@ async function startVoiceRealtimeSession() {
     realtimeLocalStream = localStream;
 
     const peerConnection = new RTCPeerConnection();
+    activePeerConnection = peerConnection;
     realtimePeerConnection = peerConnection;
 
     for (const track of localStream.getTracks()) {
@@ -3644,7 +3646,12 @@ async function startVoiceRealtimeSession() {
       `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Du kannst direkt starten.`
     );
   } catch (error) {
-    if (peerConnection !== realtimePeerConnection && !state.voiceRealtimeConnecting && !state.voiceRealtimeActive) {
+    if (
+      activePeerConnection &&
+      activePeerConnection !== realtimePeerConnection &&
+      !state.voiceRealtimeConnecting &&
+      !state.voiceRealtimeActive
+    ) {
       return;
     }
     console.error(error);
