@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "19";
-const BUILD_UPDATED_AT = "2026-02-25 22:59 CET";
+const APP_VERSION = "20";
+const BUILD_UPDATED_AT = "2026-02-25 23:14 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3493,6 +3493,87 @@ function sanitizeSdpAscii(value) {
     .trim();
 }
 
+function splitSdpLines(value) {
+  return String(value || "")
+    .split(/\r\n|\n|\r/)
+    .map((line) => String(line || "").trim())
+    .filter(Boolean);
+}
+
+function joinSdpLines(lines) {
+  if (!Array.isArray(lines) || !lines.length) return "";
+  return lines.join("\r\n").trim();
+}
+
+function segmentSdpLines(lines) {
+  const segmented = [];
+  for (const line of lines) {
+    const text = String(line || "").trim();
+    if (!text) continue;
+    const chunks = text.split(/\s+(?=[a-z]=)/g).map((chunk) => String(chunk || "").trim());
+    for (const chunk of chunks) {
+      if (chunk) {
+        segmented.push(chunk);
+      }
+    }
+  }
+  return segmented;
+}
+
+function filterValidSdpLines(lines) {
+  return (Array.isArray(lines) ? lines : []).filter((line) => /^[a-z]=/.test(String(line || "")));
+}
+
+function moveSessionIceToMediaSections(value) {
+  const baseLines = filterValidSdpLines(segmentSdpLines(splitSdpLines(value)));
+  if (!baseLines.length) return "";
+
+  const firstMediaIndex = baseLines.findIndex((line) => line.startsWith("m="));
+  if (firstMediaIndex < 0) return joinSdpLines(baseLines);
+
+  const sessionLines = baseLines.slice(0, firstMediaIndex);
+  const mediaLines = baseLines.slice(firstMediaIndex);
+
+  const sessionIcePwd = sessionLines.find((line) => line.startsWith("a=ice-pwd:")) || "";
+  const sessionIceUfrag = sessionLines.find((line) => line.startsWith("a=ice-ufrag:")) || "";
+  if (!sessionIcePwd && !sessionIceUfrag) {
+    return joinSdpLines(baseLines);
+  }
+
+  const cleanedSession = sessionLines.filter(
+    (line) => !line.startsWith("a=ice-pwd:") && !line.startsWith("a=ice-ufrag:")
+  );
+  const sectionStarts = [];
+  for (let index = 0; index < mediaLines.length; index += 1) {
+    if (mediaLines[index].startsWith("m=")) {
+      sectionStarts.push(index);
+    }
+  }
+  if (!sectionStarts.length) {
+    return joinSdpLines(baseLines);
+  }
+
+  const rebuiltMedia = [];
+  for (let s = 0; s < sectionStarts.length; s += 1) {
+    const start = sectionStarts[s];
+    const end = sectionStarts[s + 1] ?? mediaLines.length;
+    const section = mediaLines.slice(start, end);
+    if (!section.length) continue;
+
+    const hasPwd = section.some((line) => line.startsWith("a=ice-pwd:"));
+    const hasUfrag = section.some((line) => line.startsWith("a=ice-ufrag:"));
+    const head = section[0];
+    const tail = section.slice(1);
+
+    rebuiltMedia.push(head);
+    if (!hasUfrag && sessionIceUfrag) rebuiltMedia.push(sessionIceUfrag);
+    if (!hasPwd && sessionIcePwd) rebuiltMedia.push(sessionIcePwd);
+    rebuiltMedia.push(...tail);
+  }
+
+  return joinSdpLines([...cleanedSession, ...rebuiltMedia]);
+}
+
 function rebuildFlattenedSdp(value) {
   let text = String(value || "");
   if (!text) return "";
@@ -3543,6 +3624,14 @@ function normalizeSdpForWebRtc(rawValue) {
 
   text = rebuildFlattenedSdp(text);
   text = sanitizeSdpAscii(text).replace(/\r\n|\n|\r/g, "\r\n").trim();
+  const strictLines = filterValidSdpLines(segmentSdpLines(splitSdpLines(text)));
+  if (strictLines.length) {
+    text = joinSdpLines(strictLines);
+  }
+  const withMediaIce = moveSessionIceToMediaSections(text);
+  if (withMediaIce) {
+    text = withMediaIce;
+  }
   return text;
 }
 
@@ -3585,6 +3674,14 @@ function buildSdpCandidateList(rawValue) {
   const rebuiltFlat = normalizeSdpForWebRtc(rebuildFlattenedSdp(rawText));
   pushUniqueSdpCandidate(list, "rebuilt-flat", rebuiltFlat);
 
+  const segmentedStrict = joinSdpLines(
+    filterValidSdpLines(segmentSdpLines(splitSdpLines(sanitizeSdpAscii(rawText))))
+  );
+  pushUniqueSdpCandidate(list, "segmented-strict", segmentedStrict);
+
+  const mediaIceNormalized = moveSessionIceToMediaSections(normalizeSdpForWebRtc(rawText));
+  pushUniqueSdpCandidate(list, "media-ice-normalized", mediaIceNormalized);
+
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
 }
 
@@ -3605,9 +3702,13 @@ async function setRemoteDescriptionWithSdpCandidates(peerConnection, rawSdp, con
     }
   }
 
-  const rawPreview = String(rawSdp || "").replace(/\s+/g, " ").slice(0, 220);
+  const rawPreview = String(rawSdp || "")
+    .slice(0, 420)
+    .replace(/\r/g, "\\r")
+    .replace(/\n/g, "\\n");
   const message = String(lastError?.message || "setRemoteDescription fehlgeschlagen.");
-  throw new Error(`${contextLabel}: ${message}. Antwortbeginn: ${rawPreview}`);
+  const tried = candidates.map((candidate) => candidate.label).join(", ");
+  throw new Error(`${contextLabel}: ${message}. SDP-Kandidaten: ${tried}. Antwortbeginn: ${rawPreview}`);
 }
 
 function buildRealtimeConnectPayload(offerSdp) {
