@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "20";
-const BUILD_UPDATED_AT = "2026-02-25 23:14 CET";
+const APP_VERSION = "21";
+const BUILD_UPDATED_AT = "2026-02-25 23:33 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3521,7 +3521,7 @@ function segmentSdpLines(lines) {
 }
 
 function filterValidSdpLines(lines) {
-  return (Array.isArray(lines) ? lines : []).filter((line) => /^[a-z]=/.test(String(line || "")));
+  return (Array.isArray(lines) ? lines : []).filter((line) => /^[a-z]=\S/.test(String(line || "")));
 }
 
 function moveSessionIceToMediaSections(value) {
@@ -3572,6 +3572,17 @@ function moveSessionIceToMediaSections(value) {
   }
 
   return joinSdpLines([...cleanedSession, ...rebuiltMedia]);
+}
+
+function stripOptionalSdpLines(value) {
+  const lines = filterValidSdpLines(segmentSdpLines(splitSdpLines(value)));
+  if (!lines.length) return "";
+  const filtered = lines.filter((line) => {
+    if (line === "a=extmap-allow-mixed") return false;
+    if (line.startsWith("a=msid-semantic:")) return false;
+    return true;
+  });
+  return joinSdpLines(filtered);
 }
 
 function rebuildFlattenedSdp(value) {
@@ -3682,6 +3693,9 @@ function buildSdpCandidateList(rawValue) {
   const mediaIceNormalized = moveSessionIceToMediaSections(normalizeSdpForWebRtc(rawText));
   pushUniqueSdpCandidate(list, "media-ice-normalized", mediaIceNormalized);
 
+  const optionalStripped = stripOptionalSdpLines(normalizeSdpForWebRtc(rawText));
+  pushUniqueSdpCandidate(list, "optional-stripped", optionalStripped);
+
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
 }
 
@@ -3778,22 +3792,51 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
   }
 
   const offerSdp = String(payload.sdp || "");
+  const sessionForCalls = {
+    type: "realtime",
+    model:
+      tokenBody?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
+        ? OPENAI_REALTIME_MODEL_STRONG
+        : OPENAI_REALTIME_MODEL_FAST,
+    audio: {
+      input: {
+        turn_detection: {
+          type: "server_vad"
+        }
+      },
+      output: {
+        voice: OPENAI_REALTIME_DEFAULT_VOICE
+      }
+    }
+  };
+
   async function requestAnswerSdp(endpointUrl) {
+    const formData = new FormData();
+    formData.set("sdp", offerSdp);
+    formData.set("session", JSON.stringify(sessionForCalls));
+
     const sdpResponse = await fetchWithTimeout(
       endpointUrl,
       {
         method: "POST",
         headers: {
           authorization: `Bearer ${clientSecret}`,
-          "content-type": "application/sdp",
           accept: "application/sdp"
         },
-        body: offerSdp
+        body: formData
       },
       REALTIME_CONNECT_TIMEOUT_MS
     );
     const rawAnswer = await sdpResponse.text();
-    if (!sdpResponse.ok || !String(rawAnswer || "").trim()) {
+    let answerSdp = String(rawAnswer || "").trim();
+    if (answerSdp.startsWith("{")) {
+      const parsed = parseJsonSafe(answerSdp);
+      const extracted = extractSdpFromJsonCandidate(parsed);
+      if (extracted) {
+        answerSdp = extracted;
+      }
+    }
+    if (!sdpResponse.ok || !answerSdp) {
       const err = new Error(
         `Ephemeral-SDP (calls) fehlgeschlagen (HTTP ${sdpResponse.status}). ${String(
           rawAnswer || ""
@@ -3802,7 +3845,7 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
       err.code = "REALTIME_EPHEMERAL_SDP_FAILED";
       throw err;
     }
-    return rawAnswer;
+    return answerSdp;
   }
 
   const answerSdp = await requestAnswerSdp("https://api.openai.com/v1/realtime/calls");
@@ -3901,12 +3944,22 @@ async function startVoiceRealtimeSession() {
     await peerConnection.setLocalDescription(offer);
     const connectPayload = buildRealtimeConnectPayload(offer?.sdp || "");
     let connectResult = null;
+    let unifiedErrorMessage = "";
     try {
       connectResult = await connectRealtimeViaUnified(peerConnection, connectPayload);
     } catch (unifiedError) {
+      unifiedErrorMessage = String(unifiedError?.message || "").trim();
       console.warn("Realtime Unified fehlgeschlagen, versuche Ephemeral-Fallback", unifiedError);
       setVoiceStatus("Realtime Unified fehlgeschlagen, starte Ephemeral-Fallback ...");
-      connectResult = await connectRealtimeViaEphemeral(peerConnection, connectPayload);
+      try {
+        connectResult = await connectRealtimeViaEphemeral(peerConnection, connectPayload);
+      } catch (ephemeralError) {
+        const epMsg = String(ephemeralError?.message || "Ephemeral-Fallback fehlgeschlagen.");
+        if (unifiedErrorMessage) {
+          throw new Error(`${epMsg} | Unified zuvor: ${unifiedErrorMessage}`);
+        }
+        throw ephemeralError;
+      }
     }
     if (peerConnection !== realtimePeerConnection) {
       return;
