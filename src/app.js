@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "15";
-const BUILD_UPDATED_AT = "2026-02-25 22:05 CET";
+const APP_VERSION = "16";
+const BUILD_UPDATED_AT = "2026-02-25 22:32 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3592,11 +3592,7 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
   }
 
   const offerSdp = String(payload.sdp || "");
-  const legacyUrl = `https://api.openai.com/v1/realtime?model=${encodeURIComponent(
-    state.voiceRealtimeModel || OPENAI_REALTIME_MODEL_FAST
-  )}`;
-
-  async function requestAnswerSdp(endpointUrl, modeLabel) {
+  async function requestAnswerSdp(endpointUrl) {
     const sdpResponse = await fetchWithTimeout(
       endpointUrl,
       {
@@ -3614,7 +3610,7 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
     const normalizedAnswer = normalizeSdpForWebRtc(rawAnswer);
     if (!sdpResponse.ok || !looksLikeSdpAnswer(normalizedAnswer)) {
       const err = new Error(
-        `Ephemeral-SDP (${modeLabel}) fehlgeschlagen (HTTP ${sdpResponse.status}). ${String(
+        `Ephemeral-SDP (calls) fehlgeschlagen (HTTP ${sdpResponse.status}). ${String(
           rawAnswer || ""
         ).slice(0, 220)}`
       );
@@ -3624,32 +3620,25 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
     return normalizedAnswer;
   }
 
-  const candidates = [
-    { url: "https://api.openai.com/v1/realtime/calls", label: "calls" },
-    { url: legacyUrl, label: "legacy" }
-  ];
-  let lastError = null;
-  let connectedVia = "";
-
-  for (const candidate of candidates) {
-    try {
-      const answerSdp = await requestAnswerSdp(candidate.url, candidate.label);
-      await peerConnection.setRemoteDescription({
-        type: "answer",
-        sdp: answerSdp
-      });
-      connectedVia = candidate.label;
-      break;
-    } catch (error) {
-      lastError = error;
-      console.warn(`Ephemeral ${candidate.label} fehlgeschlagen`, error);
-    }
+  const answerSdp = await requestAnswerSdp("https://api.openai.com/v1/realtime/calls");
+  try {
+    await peerConnection.setRemoteDescription({
+      type: "answer",
+      sdp: answerSdp
+    });
+  } catch (error) {
+    const message = String(error?.message || error);
+    const err = new Error(
+      `Ephemeral-SDP konnte nicht gesetzt werden: ${message}. Antwortbeginn: ${String(answerSdp).slice(0, 180)}`
+    );
+    err.code = "REALTIME_EPHEMERAL_SDP_INVALID";
+    throw err;
   }
 
-  if (!connectedVia) {
-    const message = String(lastError?.message || "Ephemeral-SDP konnte nicht gesetzt werden.");
+  if (!answerSdp) {
+    const message = "Ephemeral-SDP konnte nicht gesetzt werden.";
     const err = new Error(message);
-    err.code = String(lastError?.code || "REALTIME_EPHEMERAL_SDP_INVALID");
+    err.code = "REALTIME_EPHEMERAL_SDP_INVALID";
     throw err;
   }
 
@@ -3658,7 +3647,7 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
       tokenBody?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
         ? OPENAI_REALTIME_MODEL_STRONG
         : OPENAI_REALTIME_MODEL_FAST,
-    pathLabel: `Ephemeral-${connectedVia}`
+    pathLabel: "Ephemeral-calls"
   };
 }
 
