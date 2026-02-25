@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "28";
-const BUILD_UPDATED_AT = "2026-02-26 01:11 CET";
+const APP_VERSION = "29";
+const BUILD_UPDATED_AT = "2026-02-26 01:27 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3731,6 +3731,123 @@ function promoteMediaIceToSession(value) {
   return joinSdpLines([...cleanedSession, ...rewrittenSections.flat()]);
 }
 
+function splitSdpIntoSections(value) {
+  const lines = filterValidSdpLines(segmentSdpLines(splitSdpLines(value)));
+  if (!lines.length) {
+    return { sessionLines: [], mediaSections: [] };
+  }
+
+  const firstMediaIndex = lines.findIndex((line) => line.startsWith("m="));
+  if (firstMediaIndex < 0) {
+    return { sessionLines: lines, mediaSections: [] };
+  }
+
+  const sessionLines = lines.slice(0, firstMediaIndex);
+  const mediaLines = lines.slice(firstMediaIndex);
+  const mediaSections = [];
+  let current = [];
+  for (const line of mediaLines) {
+    if (line.startsWith("m=") && current.length) {
+      mediaSections.push(current);
+      current = [];
+    }
+    current.push(line);
+  }
+  if (current.length) {
+    mediaSections.push(current);
+  }
+
+  return { sessionLines, mediaSections };
+}
+
+function findFirstLineByPrefix(lines, prefix) {
+  return (Array.isArray(lines) ? lines : []).find((line) => String(line || "").startsWith(prefix)) || "";
+}
+
+function findLinesByRegex(lines, regex) {
+  return (Array.isArray(lines) ? lines : []).filter((line) => regex.test(String(line || "")));
+}
+
+function buildMinimalAudioAnswerSdp(value) {
+  const normalized = normalizeSdpForWebRtc(value);
+  if (!normalized) return "";
+
+  const { sessionLines, mediaSections } = splitSdpIntoSections(normalized);
+  const audioSection = mediaSections.find((section) => String(section?.[0] || "").startsWith("m=audio "));
+  if (!audioSection) return "";
+
+  const audioMLine = String(audioSection[0] || "").trim();
+  const audioCLine =
+    findFirstLineByPrefix(audioSection, "c=") || findFirstLineByPrefix(sessionLines, "c=") || "c=IN IP4 0.0.0.0";
+  const setupLine =
+    findFirstLineByPrefix(audioSection, "a=setup:") ||
+    findFirstLineByPrefix(sessionLines, "a=setup:") ||
+    "a=setup:active";
+  const midLine = "a=mid:0";
+  const iceUfrag =
+    findFirstLineByPrefix(audioSection, "a=ice-ufrag:") ||
+    findFirstLineByPrefix(sessionLines, "a=ice-ufrag:");
+  const icePwd =
+    findFirstLineByPrefix(audioSection, "a=ice-pwd:") || findFirstLineByPrefix(sessionLines, "a=ice-pwd:");
+  const rtcpMux = findFirstLineByPrefix(audioSection, "a=rtcp-mux") || "a=rtcp-mux";
+  const fingerprint =
+    findFirstLineByPrefix(sessionLines, "a=fingerprint:") ||
+    findFirstLineByPrefix(audioSection, "a=fingerprint:");
+
+  if (!iceUfrag || !icePwd || !fingerprint) return "";
+
+  const baseSession = [
+    findFirstLineByPrefix(sessionLines, "v=") || "v=0",
+    findFirstLineByPrefix(sessionLines, "o=") || "o=- 0 0 IN IP4 0.0.0.0",
+    findFirstLineByPrefix(sessionLines, "s=") || "s=-",
+    findFirstLineByPrefix(sessionLines, "t=") || "t=0 0",
+    fingerprint
+  ];
+
+  const audioAttrs = [
+    ...findLinesByRegex(audioSection, /^a=rtpmap:/),
+    ...findLinesByRegex(audioSection, /^a=fmtp:/),
+    ...findLinesByRegex(audioSection, /^a=rtcp-fb:/),
+    ...findLinesByRegex(audioSection, /^a=ptime:/),
+    ...findLinesByRegex(audioSection, /^a=maxptime:/),
+    ...findLinesByRegex(audioSection, /^a=extmap:/),
+    ...findLinesByRegex(audioSection, /^a=ssrc:/),
+    ...findLinesByRegex(audioSection, /^a=ssrc-group:/),
+    ...findLinesByRegex(audioSection, /^a=msid:/)
+  ];
+
+  const minimalLines = [
+    ...baseSession,
+    audioMLine,
+    audioCLine,
+    midLine,
+    setupLine,
+    iceUfrag,
+    icePwd,
+    rtcpMux,
+    ...audioAttrs
+  ];
+
+  return joinSdpLines(minimalLines);
+}
+
+function getAudioSectionTrickleCandidates(value) {
+  const allCandidates = collectInlineIceCandidates(value);
+  if (!allCandidates.length) return [];
+  const audioCandidates = allCandidates.filter((candidate) => {
+    if (typeof candidate?.sdpMLineIndex === "number") {
+      return candidate.sdpMLineIndex === 0;
+    }
+    return candidate?.sdpMid === "0";
+  });
+  const source = audioCandidates.length ? audioCandidates : allCandidates;
+  return source.map((candidate) => ({
+    candidate: String(candidate?.candidate || ""),
+    sdpMid: "0",
+    sdpMLineIndex: 0
+  }));
+}
+
 function extractSdpFromResponseText(rawText) {
   let text = String(rawText || "").trim();
   if (!text) return "";
@@ -4059,6 +4176,28 @@ function buildSdpCandidateList(rawValue) {
 
   const audioOnlySessionIce = promoteMediaIceToSession(audioOnlyNoInlineSctp || audioOnlyNoInline || audioOnly);
   pushUniqueSdpCandidate(list, "audio-only-session-ice", audioOnlySessionIce);
+
+  const minimalAudioSdp = buildMinimalAudioAnswerSdp(
+    audioOnlyNoInlineSctp || audioOnlyNoInline || audioOnly || normalized
+  );
+  const minimalAudioCandidates = getAudioSectionTrickleCandidates(
+    strippedInlineCandidates || udpOnlyCandidates || candidateSanitized || normalized
+  );
+  pushUniqueSdpCandidate(list, "minimal-audio", minimalAudioSdp);
+  if (minimalAudioSdp && minimalAudioCandidates.length) {
+    const existingMinimal = list.find(
+      (entry) => String(entry?.value || "").trim() === String(minimalAudioSdp).trim()
+    );
+    if (existingMinimal) {
+      existingMinimal.trickleCandidates = minimalAudioCandidates;
+    } else {
+      list.push({
+        label: "minimal-audio-trickle",
+        value: minimalAudioSdp,
+        trickleCandidates: minimalAudioCandidates
+      });
+    }
+  }
 
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
 }
