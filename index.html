@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=13" />
+    <link rel="stylesheet" href="src/styles.css?v=14" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -140,6 +140,27 @@
             placeholder="Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'."
           ></textarea>
           <button id="voiceTextSendBtn" class="soft-btn voice-send-btn" type="button">Text senden</button>
+          <div class="voice-realtime-controls">
+            <button id="voiceRealtimeToggleBtn" class="soft-btn voice-realtime-toggle-btn" type="button">
+              Realtime starten
+            </button>
+            <button
+              id="voiceRealtimeMuteBtn"
+              class="soft-btn voice-realtime-mute-btn hidden"
+              type="button"
+            >
+              Mikro stummschalten
+            </button>
+            <p id="voiceRealtimeState" class="voice-realtime-state">Realtime aus.</p>
+            <div class="voice-api-spend-tracker">
+              <p class="voice-api-spend-title">API Kosten-Tracker (geschaetzt)</p>
+              <p id="voiceApiSpendSummary" class="voice-api-spend-summary">0.0000 USD</p>
+              <p id="voiceApiSpendTokens" class="voice-api-spend-tokens">Noch keine Realtime-Nutzung erfasst.</p>
+              <button id="voiceApiSpendResetBtn" class="soft-btn voice-api-spend-reset-btn" type="button">
+                Tracker zuruecksetzen
+              </button>
+            </div>
+          </div>
         </div>
         <article id="voiceLastTurn" class="voice-turn hidden">
           <p class="voice-turn-label">Du:</p>
@@ -339,6 +360,7 @@
         </article>
         <p id="voiceStatus" class="voice-status">Bereit. Du kannst direkt sprechen oder Text senden.</p>
         <audio id="voiceReplyAudio" class="voice-reply-audio hidden" controls></audio>
+        <audio id="voiceRealtimeAudio" class="voice-realtime-audio hidden" autoplay playsinline></audio>
         <div class="voice-config-row">
           <select id="voiceCaseSelect" class="voice-case-select" aria-label="Fallauswahl">
             <option value="default">1</option>
@@ -638,6 +660,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=13"></script>
+    <script type="module" src="src/app.js?v=14"></script>
   </body>
 </html>

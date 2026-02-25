@@ -10,11 +10,12 @@ const STORAGE_VOICE_MODE_KEY = "fsp_voice_mode_v1";
 const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
 const STORAGE_PROMPT_CONFIG_KEY = "fsp_prompt_config_v1";
 const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
+const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "13";
-const BUILD_UPDATED_AT = "2026-02-21 17:25 CET";
+const APP_VERSION = "14";
+const BUILD_UPDATED_AT = "2026-02-25 20:10 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -40,6 +41,27 @@ const VOICE_CASE_LIBRARY_PREFIX = "lib:";
 const VOICE_MODE_QUESTION = "question";
 const VOICE_MODE_DIAGNOSIS = "diagnosis";
 const VOICE_MODE_DOCTOR_CONVERSATION = "doctor_conversation";
+const OPENAI_REALTIME_MODEL_FAST = "gpt-realtime-mini";
+const OPENAI_REALTIME_MODEL_STRONG = "gpt-realtime";
+const OPENAI_REALTIME_DEFAULT_VOICE = "sage";
+const OPENAI_REALTIME_PRICING_USD_PER_1M = Object.freeze({
+  "gpt-realtime": Object.freeze({
+    textInput: 4,
+    textCachedInput: 0.4,
+    textOutput: 16,
+    audioInput: 32,
+    audioCachedInput: 0.4,
+    audioOutput: 64
+  }),
+  "gpt-realtime-mini": Object.freeze({
+    textInput: 0.6,
+    textCachedInput: 0.06,
+    textOutput: 2.4,
+    audioInput: 10,
+    audioCachedInput: 0.3,
+    audioOutput: 20
+  })
+});
 const LEARNING_VIEW_ROOT = "root";
 const LEARNING_VIEW_SUBCATEGORIES = "subcategories";
 const LEARNING_VIEW_READING = "reading";
@@ -1301,6 +1323,11 @@ let activeMediaStream = null;
 let voiceChunkBuffer = [];
 let voiceAutoStopTimer = null;
 let shouldSendVoiceAfterStop = false;
+let realtimePeerConnection = null;
+let realtimeDataChannel = null;
+let realtimeLocalStream = null;
+let realtimePendingUserText = "";
+let realtimeUsageSeenResponseIds = new Set();
 let xpMilestoneHideTimer = null;
 
 const CATEGORY_MAP = {
@@ -1425,6 +1452,9 @@ const initialPromptConfig = resolvePromptConfig(loadFromStorage(STORAGE_PROMPT_C
 const initialPromptProposalMeta = resolvePromptProposalMeta(
   loadFromStorage(STORAGE_PROMPT_PROPOSAL_META_KEY, {})
 );
+const initialApiSpendTracker = resolveApiSpendTracker(
+  loadFromStorage(STORAGE_API_SPEND_TRACKER_KEY, createApiSpendTrackerSnapshot())
+);
 
 const state = {
   cards: [],
@@ -1449,6 +1479,10 @@ const state = {
   voiceBusy: false,
   promptProposalBusy: false,
   voiceRecording: false,
+  voiceRealtimeActive: false,
+  voiceRealtimeConnecting: false,
+  voiceRealtimeMuted: false,
+  voiceRealtimeModel: OPENAI_REALTIME_MODEL_FAST,
   voiceMode: VOICE_MODE_QUESTION,
   voiceSampleView: "",
   voiceModel: DEFAULT_VOICE_CHAT_MODEL,
@@ -1456,6 +1490,7 @@ const state = {
   promptProfilesLoaded: false,
   promptPresetOptionsByKey: createEmptyPromptPresetOptions(),
   promptProposalMeta: initialPromptProposalMeta,
+  apiSpendTracker: initialApiSpendTracker,
   voiceCaseLibrary: [],
   voiceCaseResolutions: {},
   voiceCaseSamples: {},
@@ -1507,6 +1542,12 @@ const refs = {
   voiceDiagnoseBtn: document.getElementById("voiceDiagnoseBtn"),
   voiceTextInput: document.getElementById("voiceTextInput"),
   voiceTextSendBtn: document.getElementById("voiceTextSendBtn"),
+  voiceRealtimeToggleBtn: document.getElementById("voiceRealtimeToggleBtn"),
+  voiceRealtimeMuteBtn: document.getElementById("voiceRealtimeMuteBtn"),
+  voiceRealtimeState: document.getElementById("voiceRealtimeState"),
+  voiceApiSpendSummary: document.getElementById("voiceApiSpendSummary"),
+  voiceApiSpendTokens: document.getElementById("voiceApiSpendTokens"),
+  voiceApiSpendResetBtn: document.getElementById("voiceApiSpendResetBtn"),
   voiceResolutionTitle: document.getElementById("voiceResolutionTitle"),
   voiceResolutionHint: document.getElementById("voiceResolutionHint"),
   voiceResolutionSummary: document.getElementById("voiceResolutionSummary"),
@@ -1517,6 +1558,7 @@ const refs = {
   voiceNextCaseBtn: document.getElementById("voiceNextCaseBtn"),
   voiceStatus: document.getElementById("voiceStatus"),
   voiceReplyAudio: document.getElementById("voiceReplyAudio"),
+  voiceRealtimeAudio: document.getElementById("voiceRealtimeAudio"),
   voiceLastTurn: document.getElementById("voiceLastTurn"),
   voiceUserTranscript: document.getElementById("voiceUserTranscript"),
   voiceAssistantLabel: document.getElementById("voiceAssistantLabel"),
@@ -1714,6 +1756,11 @@ function wireEvents() {
   refs.dailyGoalPanel?.addEventListener("click", handleDailyGoalEdit);
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
+  refs.voiceRealtimeToggleBtn?.addEventListener("click", () => {
+    void handleVoiceRealtimeToggle();
+  });
+  refs.voiceRealtimeMuteBtn?.addEventListener("click", handleVoiceRealtimeMuteToggle);
+  refs.voiceApiSpendResetBtn?.addEventListener("click", handleApiSpendTrackerReset);
   refs.voicePatientConversationBtn?.addEventListener("click", handleVoicePatientConversationActivate);
   refs.voiceDiagnoseBtn?.addEventListener("click", handleVoiceDiagnoseToggle);
   refs.voiceDoctorConversationBtn?.addEventListener("click", handleVoiceDoctorConversationToggle);
@@ -1791,6 +1838,9 @@ function wireEvents() {
       closeVoiceInfoModal();
       closeStatsOverlay();
     }
+  });
+  window.addEventListener("beforeunload", () => {
+    stopVoiceRealtimeSession({ preserveStatus: true, silent: true });
   });
 }
 
@@ -1910,6 +1960,9 @@ function initVoiceUi() {
   renderVoiceCaseSelect();
   applyVoiceMode(state.voiceMode, { preserveStatus: true });
   applyVoiceCaseSelection(state.voiceCaseSelection, { preserveStatus: true, resetConversation: false });
+  renderApiSpendTracker();
+  updateVoiceRealtimeUi();
+  setVoiceBusy(false);
   updateVoiceCaseInfoPanel();
   void ensureVoiceCaseLibraryLoaded();
   void ensureVoiceCaseResolutionLibraryLoaded();
@@ -1950,6 +2003,10 @@ function closeVoiceInfoModal() {
 }
 
 function handleVoiceCreateCase() {
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann einen neuen Fall erstellen.", true);
+    return;
+  }
   if (state.voiceRecording) {
     setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann einen neuen Fall erstellen.", true);
     return;
@@ -1976,6 +2033,10 @@ function handleVoiceCreateCase() {
 }
 
 function handleVoiceDiagnoseToggle() {
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Modus wechseln.", true);
+    return;
+  }
   if (state.voiceRecording) {
     setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
     return;
@@ -1985,6 +2046,10 @@ function handleVoiceDiagnoseToggle() {
 }
 
 function handleVoicePatientConversationActivate() {
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Modus wechseln.", true);
+    return;
+  }
   if (state.voiceRecording) {
     setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
     return;
@@ -1993,6 +2058,10 @@ function handleVoicePatientConversationActivate() {
 }
 
 function handleVoiceDoctorConversationToggle() {
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Modus wechseln.", true);
+    return;
+  }
   if (state.voiceRecording) {
     setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
     return;
@@ -2027,6 +2096,10 @@ function updateVoiceSampleButtons() {
 }
 
 function handleVoiceSampleToggle(view) {
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann in die Musteransicht wechseln.", true);
+    return;
+  }
   if (state.voiceRecording) {
     setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
     return;
@@ -2189,6 +2262,212 @@ function normalizePromptText(value, fallback) {
   const trimmed = value.trim();
   if (!trimmed) return fallbackText;
   return trimmed.slice(0, MAX_PROMPT_TEXT_LENGTH);
+}
+
+function createApiSpendTrackerSnapshot() {
+  return {
+    updatedAt: new Date().toISOString(),
+    realtimeSessions: 0,
+    realtimeTurnsTracked: 0,
+    totalUsd: 0,
+    textInputTokens: 0,
+    textCachedInputTokens: 0,
+    textOutputTokens: 0,
+    audioInputTokens: 0,
+    audioCachedInputTokens: 0,
+    audioOutputTokens: 0
+  };
+}
+
+function normalizeApiSpendNumber(value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return 0;
+  return numeric < 0 ? 0 : numeric;
+}
+
+function resolveApiSpendTracker(rawValue) {
+  const source = rawValue && typeof rawValue === "object" ? rawValue : {};
+  return {
+    updatedAt:
+      typeof source.updatedAt === "string" && source.updatedAt.trim()
+        ? source.updatedAt.trim()
+        : new Date().toISOString(),
+    realtimeSessions: Math.floor(normalizeApiSpendNumber(source.realtimeSessions)),
+    realtimeTurnsTracked: Math.floor(normalizeApiSpendNumber(source.realtimeTurnsTracked)),
+    totalUsd: normalizeApiSpendNumber(source.totalUsd),
+    textInputTokens: Math.floor(normalizeApiSpendNumber(source.textInputTokens)),
+    textCachedInputTokens: Math.floor(normalizeApiSpendNumber(source.textCachedInputTokens)),
+    textOutputTokens: Math.floor(normalizeApiSpendNumber(source.textOutputTokens)),
+    audioInputTokens: Math.floor(normalizeApiSpendNumber(source.audioInputTokens)),
+    audioCachedInputTokens: Math.floor(normalizeApiSpendNumber(source.audioCachedInputTokens)),
+    audioOutputTokens: Math.floor(normalizeApiSpendNumber(source.audioOutputTokens))
+  };
+}
+
+function saveApiSpendTracker() {
+  saveToStorage(STORAGE_API_SPEND_TRACKER_KEY, state.apiSpendTracker);
+}
+
+function formatUsdAmount(value) {
+  return normalizeApiSpendNumber(value).toLocaleString("en-US", {
+    minimumFractionDigits: 4,
+    maximumFractionDigits: 4
+  });
+}
+
+function formatTokenAmount(value) {
+  return Math.floor(normalizeApiSpendNumber(value)).toLocaleString("de-DE");
+}
+
+function buildApiSpendTokenSummary(tracker) {
+  if (!tracker.realtimeTurnsTracked) {
+    return "Noch keine Realtime-Nutzung erfasst.";
+  }
+  return [
+    `Turns: ${formatTokenAmount(tracker.realtimeTurnsTracked)}`,
+    `Text in/out: ${formatTokenAmount(tracker.textInputTokens)} / ${formatTokenAmount(
+      tracker.textOutputTokens
+    )}`,
+    `Audio in/out: ${formatTokenAmount(tracker.audioInputTokens)} / ${formatTokenAmount(
+      tracker.audioOutputTokens
+    )}`,
+    `Cached in: Text ${formatTokenAmount(tracker.textCachedInputTokens)}, Audio ${formatTokenAmount(
+      tracker.audioCachedInputTokens
+    )}`
+  ].join(" | ");
+}
+
+function renderApiSpendTracker() {
+  if (!refs.voiceApiSpendSummary || !refs.voiceApiSpendTokens) return;
+  const tracker = resolveApiSpendTracker(state.apiSpendTracker);
+  state.apiSpendTracker = tracker;
+  refs.voiceApiSpendSummary.textContent = `${formatUsdAmount(tracker.totalUsd)} USD`;
+  refs.voiceApiSpendTokens.textContent = buildApiSpendTokenSummary(tracker);
+}
+
+function handleApiSpendTrackerReset() {
+  const confirmed = window.confirm("API Kosten-Tracker wirklich zuruecksetzen?");
+  if (!confirmed) return;
+  state.apiSpendTracker = createApiSpendTrackerSnapshot();
+  saveApiSpendTracker();
+  renderApiSpendTracker();
+  setVoiceStatus("API Kosten-Tracker wurde zurueckgesetzt.");
+}
+
+function getRealtimePricingForModel(model) {
+  const normalizedModel =
+    model === OPENAI_REALTIME_MODEL_STRONG ? OPENAI_REALTIME_MODEL_STRONG : OPENAI_REALTIME_MODEL_FAST;
+  return (
+    OPENAI_REALTIME_PRICING_USD_PER_1M[normalizedModel] ||
+    OPENAI_REALTIME_PRICING_USD_PER_1M[OPENAI_REALTIME_MODEL_FAST]
+  );
+}
+
+function normalizeRealtimeUsageTokens(rawUsage) {
+  const source = rawUsage && typeof rawUsage === "object" ? rawUsage : {};
+  const inputDetails =
+    source.input_token_details && typeof source.input_token_details === "object"
+      ? source.input_token_details
+      : {};
+  const outputDetails =
+    source.output_token_details && typeof source.output_token_details === "object"
+      ? source.output_token_details
+      : {};
+
+  const inputTotal = Math.floor(normalizeApiSpendNumber(source.input_tokens));
+  const outputTotal = Math.floor(normalizeApiSpendNumber(source.output_tokens));
+  const textInputFromDetails = Math.floor(normalizeApiSpendNumber(inputDetails.text_tokens));
+  const audioInputFromDetails = Math.floor(normalizeApiSpendNumber(inputDetails.audio_tokens));
+  const textOutputFromDetails = Math.floor(normalizeApiSpendNumber(outputDetails.text_tokens));
+  const audioOutputFromDetails = Math.floor(normalizeApiSpendNumber(outputDetails.audio_tokens));
+
+  const textCachedInputTokens = Math.floor(
+    normalizeApiSpendNumber(inputDetails.cached_text_tokens ?? inputDetails.cached_tokens)
+  );
+  const audioCachedInputTokens = Math.floor(normalizeApiSpendNumber(inputDetails.cached_audio_tokens));
+
+  const textInputTokens = textInputFromDetails || (inputTotal ? inputTotal : 0);
+  const audioInputTokens = audioInputFromDetails || 0;
+  const textOutputTokens = textOutputFromDetails || (outputTotal ? outputTotal : 0);
+  const audioOutputTokens = audioOutputFromDetails || 0;
+
+  return {
+    textInputTokens,
+    textCachedInputTokens,
+    textOutputTokens,
+    audioInputTokens,
+    audioCachedInputTokens,
+    audioOutputTokens
+  };
+}
+
+function calculateRealtimeUsageCostUsd(model, usageTokens) {
+  const pricing = getRealtimePricingForModel(model);
+  const textInputBillable = Math.max(usageTokens.textInputTokens - usageTokens.textCachedInputTokens, 0);
+  const audioInputBillable = Math.max(usageTokens.audioInputTokens - usageTokens.audioCachedInputTokens, 0);
+  const perMillion = 1_000_000;
+  return (
+    (textInputBillable / perMillion) * pricing.textInput +
+    (usageTokens.textCachedInputTokens / perMillion) * pricing.textCachedInput +
+    (usageTokens.textOutputTokens / perMillion) * pricing.textOutput +
+    (audioInputBillable / perMillion) * pricing.audioInput +
+    (usageTokens.audioCachedInputTokens / perMillion) * pricing.audioCachedInput +
+    (usageTokens.audioOutputTokens / perMillion) * pricing.audioOutput
+  );
+}
+
+function extractRealtimeUsageFingerprint(eventPayload) {
+  const responseId = safeLine(eventPayload?.response?.id || eventPayload?.response_id || "", 120);
+  if (responseId) return responseId;
+  const eventId = safeLine(eventPayload?.event_id || eventPayload?.id || "", 120);
+  if (eventId) return eventId;
+  return "";
+}
+
+function trackRealtimeSessionStart(model) {
+  const next = resolveApiSpendTracker(state.apiSpendTracker);
+  next.realtimeSessions += 1;
+  next.updatedAt = new Date().toISOString();
+  state.apiSpendTracker = next;
+  state.voiceRealtimeModel =
+    model === OPENAI_REALTIME_MODEL_STRONG ? OPENAI_REALTIME_MODEL_STRONG : OPENAI_REALTIME_MODEL_FAST;
+  saveApiSpendTracker();
+  renderApiSpendTracker();
+}
+
+function trackRealtimeUsageFromEvent(eventPayload) {
+  const usage = eventPayload?.response?.usage;
+  if (!usage || typeof usage !== "object") return;
+  const fingerprint = extractRealtimeUsageFingerprint(eventPayload);
+  if (fingerprint && realtimeUsageSeenResponseIds.has(fingerprint)) {
+    return;
+  }
+  if (fingerprint) {
+    realtimeUsageSeenResponseIds.add(fingerprint);
+    if (realtimeUsageSeenResponseIds.size > 300) {
+      const iterator = realtimeUsageSeenResponseIds.values();
+      const oldest = iterator.next().value;
+      if (oldest) {
+        realtimeUsageSeenResponseIds.delete(oldest);
+      }
+    }
+  }
+
+  const usageTokens = normalizeRealtimeUsageTokens(usage);
+  const next = resolveApiSpendTracker(state.apiSpendTracker);
+  next.realtimeTurnsTracked += 1;
+  next.textInputTokens += usageTokens.textInputTokens;
+  next.textCachedInputTokens += usageTokens.textCachedInputTokens;
+  next.textOutputTokens += usageTokens.textOutputTokens;
+  next.audioInputTokens += usageTokens.audioInputTokens;
+  next.audioCachedInputTokens += usageTokens.audioCachedInputTokens;
+  next.audioOutputTokens += usageTokens.audioOutputTokens;
+  next.totalUsd += calculateRealtimeUsageCostUsd(state.voiceRealtimeModel, usageTokens);
+  next.updatedAt = new Date().toISOString();
+
+  state.apiSpendTracker = next;
+  saveApiSpendTracker();
+  renderApiSpendTracker();
 }
 
 function safeLine(value, maxLength = 200) {
@@ -2812,6 +3091,10 @@ function handleDoctorLetterToggle() {
 
 async function handleDoctorLetterSubmit() {
   if (state.voiceBusy) return;
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Arztbrief bewerten.", true);
+    return;
+  }
   const doctorLetterText = String(refs.voiceDoctorLetterInput?.value || "").trim();
   if (!doctorLetterText) {
     setVoiceStatus("Bitte zuerst den Arztbrief ausfuellen.", true);
@@ -2841,6 +3124,10 @@ async function handleVoiceDoctorConversationEvaluate() {
   if (state.voiceBusy) return;
   if (state.voiceRecording) {
     setVoiceStatus("Bitte zuerst die laufende Aufnahme stoppen.", true);
+    return;
+  }
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden und dann bewerten.", true);
     return;
   }
   if (!isDoctorConversationMode()) {
@@ -2874,6 +3161,11 @@ async function handleVoiceDoctorConversationEvaluate() {
 
 function handleVoiceModelChange() {
   if (!refs.voiceModelSelect) return;
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    refs.voiceModelSelect.value = state.voiceModel;
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann das Modell wechseln.", true);
+    return;
+  }
   if (state.voiceRecording) {
     refs.voiceModelSelect.value = state.voiceModel;
     setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann das Modell wechseln.", true);
@@ -2884,6 +3176,11 @@ function handleVoiceModelChange() {
 
 function handleVoiceCaseSelectionChange() {
   if (!refs.voiceCaseSelect) return;
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    refs.voiceCaseSelect.value = getActiveVoiceCaseSelection();
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Fall wechseln.", true);
+    return;
+  }
   applyVoiceCaseSelection(refs.voiceCaseSelect.value, { preserveStatus: false, resetConversation: true });
 }
 
@@ -2934,6 +3231,28 @@ function isDoctorConversationMode() {
   return state.voiceMode === VOICE_MODE_DOCTOR_CONVERSATION;
 }
 
+function isVoiceRealtimeSupported() {
+  return Boolean(window.RTCPeerConnection && navigator.mediaDevices?.getUserMedia);
+}
+
+function isRealtimeModeAllowed() {
+  return !isDiagnosisMode();
+}
+
+function getRealtimePromptKey() {
+  return isDoctorConversationMode() ? "voiceDoctorTurn" : "voiceTurn";
+}
+
+function getRealtimeModeLabel() {
+  return isDoctorConversationMode() ? "Arzt-Arzt" : "Arzt-Patient";
+}
+
+function selectOpenAiRealtimeModel() {
+  return state.voiceModel === "@cf/openai/gpt-oss-120b"
+    ? OPENAI_REALTIME_MODEL_STRONG
+    : OPENAI_REALTIME_MODEL_FAST;
+}
+
 function applyVoiceMode(mode, options = {}) {
   const preserveStatus = Boolean(options.preserveStatus);
   state.voiceMode = normalizeVoiceMode(mode);
@@ -2945,6 +3264,12 @@ function applyVoiceMode(mode, options = {}) {
 }
 
 function buildVoiceReadyStatus() {
+  if (state.voiceRealtimeConnecting) {
+    return `Realtime wird verbunden (${getRealtimeModeLabel()}) ...`;
+  }
+  if (state.voiceRealtimeActive) {
+    return `Realtime aktiv (${getRealtimeModeLabel()}). Sprich direkt oder sende Text in denselben Fall.`;
+  }
   if (isDiagnosisMode()) {
     return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
   }
@@ -2993,11 +3318,19 @@ function updateVoiceModeUi() {
   if (refs.voiceAssistantLabel) {
     refs.voiceAssistantLabel.textContent = doctorConversationMode ? "Prueferarzt:" : "Patient:";
   }
+  if (diagnosisMode && (state.voiceRealtimeActive || state.voiceRealtimeConnecting)) {
+    stopVoiceRealtimeSession({ preserveStatus: true, silent: true });
+  }
+  updateVoiceRealtimeUi();
   updateVoiceRecordButton();
 }
 
 async function handleVoiceRecordToggle() {
   if (state.voiceBusy) return;
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    setVoiceStatus("Realtime ist aktiv. Beende Realtime oder nutze dort direkt Sprache.", true);
+    return;
+  }
   if (state.voiceRecording) {
     stopVoiceRecording(true, "manual-stop");
     return;
@@ -3005,10 +3338,437 @@ async function handleVoiceRecordToggle() {
   await startVoiceRecording();
 }
 
+async function handleVoiceRealtimeToggle() {
+  if (state.voiceBusy) return;
+  if (state.voiceRecording) {
+    setVoiceStatus("Bitte zuerst die laufende Aufnahme stoppen.", true);
+    return;
+  }
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    stopVoiceRealtimeSession({ preserveStatus: false, reason: "manual" });
+    return;
+  }
+  if (!isRealtimeModeAllowed()) {
+    setVoiceStatus("Realtime ist nur im Arzt-Patient- oder Arzt-Arzt-Gespraech verfuegbar.", true);
+    return;
+  }
+  if (!isVoiceRealtimeSupported()) {
+    setVoiceStatus(
+      "Realtime wird auf diesem Geraet/Browser nicht unterstuetzt (WebRTC + Mikrofon erforderlich).",
+      true
+    );
+    return;
+  }
+  await startVoiceRealtimeSession();
+}
+
+function handleVoiceRealtimeMuteToggle() {
+  if (!state.voiceRealtimeActive || !realtimeLocalStream) return;
+  const nextMuted = !state.voiceRealtimeMuted;
+  for (const track of realtimeLocalStream.getAudioTracks()) {
+    track.enabled = !nextMuted;
+  }
+  state.voiceRealtimeMuted = nextMuted;
+  updateVoiceRealtimeUi();
+  setVoiceStatus(nextMuted ? "Realtime-Mikrofon stummgeschaltet." : "Realtime-Mikrofon wieder aktiv.");
+}
+
+function updateVoiceRealtimeUi() {
+  const toggleBtn = refs.voiceRealtimeToggleBtn;
+  const muteBtn = refs.voiceRealtimeMuteBtn;
+  const stateLabel = refs.voiceRealtimeState;
+  if (!toggleBtn || !muteBtn || !stateLabel) return;
+
+  const supported = isVoiceRealtimeSupported();
+  const allowedMode = isRealtimeModeAllowed();
+  const connecting = Boolean(state.voiceRealtimeConnecting);
+  const active = Boolean(state.voiceRealtimeActive);
+  const muted = Boolean(state.voiceRealtimeMuted);
+
+  if (connecting) {
+    toggleBtn.textContent = "Realtime verbindet ...";
+  } else if (active) {
+    toggleBtn.textContent = "Realtime beenden";
+  } else {
+    toggleBtn.textContent = "Realtime starten";
+  }
+  toggleBtn.classList.toggle("active", active || connecting);
+  toggleBtn.setAttribute("aria-pressed", active ? "true" : "false");
+
+  muteBtn.classList.toggle("hidden", !active);
+  muteBtn.textContent = muted ? "Mikro einschalten" : "Mikro stummschalten";
+  muteBtn.setAttribute("aria-pressed", muted ? "true" : "false");
+
+  if (!supported) {
+    stateLabel.textContent = "Realtime nicht verfuegbar (Browser/Geraet ohne WebRTC-Audio).";
+  } else if (!allowedMode) {
+    stateLabel.textContent = "Realtime: nur im Arzt-Patient- oder Arzt-Arzt-Modus.";
+  } else if (connecting) {
+    stateLabel.textContent = `Realtime verbindet (${getRealtimeModeLabel()}) ...`;
+  } else if (active) {
+    stateLabel.textContent = `Realtime aktiv (${getRealtimeModeLabel()}).`;
+  } else {
+    stateLabel.textContent = "Realtime aus.";
+  }
+
+  if (!supported) {
+    toggleBtn.disabled = true;
+  } else if (!allowedMode && !active && !connecting) {
+    toggleBtn.disabled = true;
+  } else {
+    toggleBtn.disabled = state.voiceBusy || state.voiceRecording;
+  }
+  muteBtn.disabled = state.voiceBusy || !active;
+}
+
+async function startVoiceRealtimeSession() {
+  state.voiceRealtimeConnecting = true;
+  state.voiceRealtimeActive = false;
+  state.voiceRealtimeMuted = false;
+  state.voiceRealtimeModel = selectOpenAiRealtimeModel();
+  realtimePendingUserText = "";
+  realtimeUsageSeenResponseIds = new Set();
+  updateVoiceRealtimeUi();
+  setVoiceBusy(state.voiceBusy);
+  setVoiceStatus("Realtime wird aufgebaut ...");
+
+  try {
+    const localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    realtimeLocalStream = localStream;
+
+    const peerConnection = new RTCPeerConnection();
+    realtimePeerConnection = peerConnection;
+
+    for (const track of localStream.getTracks()) {
+      peerConnection.addTrack(track, localStream);
+    }
+
+    peerConnection.ontrack = (event) => {
+      const audioEl = refs.voiceRealtimeAudio;
+      if (!audioEl) return;
+      const stream = event?.streams?.[0] || null;
+      if (!stream) return;
+      audioEl.srcObject = stream;
+      audioEl.classList.remove("hidden");
+      void audioEl.play().catch(() => {});
+    };
+
+    peerConnection.onconnectionstatechange = () => {
+      if (peerConnection !== realtimePeerConnection) return;
+      const stateValue = peerConnection.connectionState;
+      if (stateValue === "connected") {
+        state.voiceRealtimeConnecting = false;
+        state.voiceRealtimeActive = true;
+        updateVoiceRealtimeUi();
+        setVoiceBusy(state.voiceBusy);
+        return;
+      }
+      if ((stateValue === "failed" || stateValue === "disconnected") && state.voiceRealtimeActive) {
+        stopVoiceRealtimeSession({ preserveStatus: true, reason: "connection-lost", silent: true });
+        setVoiceStatus("Realtime-Verbindung wurde getrennt. Du kannst erneut starten.", true);
+      }
+    };
+
+    const events = peerConnection.createDataChannel("oai-events");
+    realtimeDataChannel = events;
+    events.onmessage = (event) => {
+      handleRealtimeEventMessage(event?.data);
+    };
+    events.onerror = () => {
+      setVoiceStatus("Realtime-Datenkanal: Verbindungsproblem erkannt.", true);
+    };
+    events.onopen = () => {
+      if (events !== realtimeDataChannel) return;
+      if (isDoctorConversationMode()) {
+        try {
+          sendRealtimeDataEvent({ type: "response.create" });
+        } catch (error) {
+          console.warn("Realtime-Startantwort konnte nicht angefordert werden", error);
+        }
+      }
+      setVoiceStatus(
+        isDoctorConversationMode()
+          ? "Realtime aktiv. Die pruefende KI startet das Arzt-Arzt-Gespraech."
+          : "Realtime aktiv. Sprich direkt mit der Patientensimulation."
+      );
+    };
+
+    const offer = await peerConnection.createOffer({
+      offerToReceiveAudio: true
+    });
+    await peerConnection.setLocalDescription(offer);
+
+    const response = await fetch("/api/voice-realtime-connect", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        sdp: String(offer?.sdp || ""),
+        mode: state.voiceMode,
+        caseText: getActiveVoiceCaseText(),
+        promptText: getPromptForKey(getRealtimePromptKey()),
+        realtimeModel: selectOpenAiRealtimeModel(),
+        realtimeVoice: OPENAI_REALTIME_DEFAULT_VOICE
+      })
+    });
+
+    const payload = await response.json().catch(() => ({}));
+    if (peerConnection !== realtimePeerConnection) {
+      return;
+    }
+    if (!response.ok || typeof payload?.sdp !== "string" || !payload.sdp.trim()) {
+      throw new Error(payload?.error || "Realtime-SDP konnte nicht aufgebaut werden.");
+    }
+
+    await peerConnection.setRemoteDescription({
+      type: "answer",
+      sdp: payload.sdp
+    });
+
+    state.voiceRealtimeConnecting = false;
+    state.voiceRealtimeActive = true;
+    state.voiceRealtimeMuted = false;
+    state.voiceRealtimeModel =
+      payload?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
+        ? OPENAI_REALTIME_MODEL_STRONG
+        : OPENAI_REALTIME_MODEL_FAST;
+    updateVoiceRealtimeUi();
+    setVoiceBusy(state.voiceBusy);
+    trackRealtimeSessionStart(state.voiceRealtimeModel);
+    setVoiceStatus(
+      `Realtime verbunden (${payload?.realtimeModel || selectOpenAiRealtimeModel()}). Du kannst direkt starten.`
+    );
+  } catch (error) {
+    if (peerConnection !== realtimePeerConnection && !state.voiceRealtimeConnecting && !state.voiceRealtimeActive) {
+      return;
+    }
+    console.error(error);
+    stopVoiceRealtimeSession({ preserveStatus: true, silent: true });
+    setVoiceStatus(
+      "Realtime-Verbindung fehlgeschlagen. Pruefe OPENAI_API_KEY in Cloudflare und versuche es erneut.",
+      true
+    );
+  }
+}
+
+function stopVoiceRealtimeSession(options = {}) {
+  const preserveStatus = Boolean(options.preserveStatus);
+  const silent = Boolean(options.silent);
+  const reason = String(options.reason || "manual");
+
+  state.voiceRealtimeConnecting = false;
+  state.voiceRealtimeActive = false;
+  state.voiceRealtimeMuted = false;
+  state.voiceRealtimeModel = selectOpenAiRealtimeModel();
+  realtimePendingUserText = "";
+  realtimeUsageSeenResponseIds = new Set();
+
+  const dataChannel = realtimeDataChannel;
+  realtimeDataChannel = null;
+  if (dataChannel) {
+    try {
+      dataChannel.onopen = null;
+      dataChannel.onmessage = null;
+      dataChannel.onerror = null;
+      dataChannel.close();
+    } catch {
+      // ignore
+    }
+  }
+
+  const peerConnection = realtimePeerConnection;
+  realtimePeerConnection = null;
+  if (peerConnection) {
+    try {
+      peerConnection.ontrack = null;
+      peerConnection.onconnectionstatechange = null;
+      peerConnection.close();
+    } catch {
+      // ignore
+    }
+  }
+
+  const localStream = realtimeLocalStream;
+  realtimeLocalStream = null;
+  if (localStream) {
+    for (const track of localStream.getTracks()) {
+      track.stop();
+    }
+  }
+
+  if (refs.voiceRealtimeAudio) {
+    refs.voiceRealtimeAudio.pause();
+    refs.voiceRealtimeAudio.srcObject = null;
+    refs.voiceRealtimeAudio.classList.add("hidden");
+  }
+
+  updateVoiceRealtimeUi();
+  setVoiceBusy(state.voiceBusy);
+
+  if (silent) return;
+  if (preserveStatus) return;
+  if (reason === "connection-lost") {
+    setVoiceStatus("Realtime-Verbindung beendet.");
+    return;
+  }
+  setVoiceStatus(buildVoiceReadyStatus());
+}
+
+function sendRealtimeDataEvent(eventBody) {
+  if (!realtimeDataChannel || realtimeDataChannel.readyState !== "open") {
+    throw new Error("Realtime-Datenkanal ist nicht offen.");
+  }
+  realtimeDataChannel.send(JSON.stringify(eventBody));
+}
+
+function sendRealtimeTextInput(text) {
+  const userText = String(text || "")
+    .trim()
+    .slice(0, MAX_VOICE_QUESTION_LENGTH);
+  if (!userText) return;
+  realtimePendingUserText = userText;
+  refs.voiceUserTranscript.textContent = userText;
+  refs.voiceLastTurn.classList.remove("hidden");
+  refs.voiceCoachHint.textContent = "";
+  refs.voiceCoachHint.classList.add("hidden");
+  sendRealtimeDataEvent({
+    type: "conversation.item.create",
+    item: {
+      type: "message",
+      role: "user",
+      content: [{ type: "input_text", text: userText }]
+    }
+  });
+  sendRealtimeDataEvent({ type: "response.create" });
+}
+
+function handleRealtimeEventMessage(rawData) {
+  let eventPayload = null;
+  try {
+    eventPayload = typeof rawData === "string" ? JSON.parse(rawData) : null;
+  } catch {
+    return;
+  }
+  if (!eventPayload || typeof eventPayload !== "object") return;
+  trackRealtimeUsageFromEvent(eventPayload);
+
+  if (String(eventPayload.type || "") === "error") {
+    const message = String(eventPayload?.error?.message || "Realtime-Fehler.");
+    setVoiceStatus(`Realtime-Fehler: ${message}`, true);
+    return;
+  }
+
+  const userText = extractRealtimeUserText(eventPayload);
+  if (userText) {
+    realtimePendingUserText = userText;
+    refs.voiceUserTranscript.textContent = userText;
+    refs.voiceLastTurn.classList.remove("hidden");
+  }
+
+  const assistantText = extractRealtimeAssistantText(eventPayload);
+  if (assistantText) {
+    refs.voiceAssistantReply.textContent = assistantText;
+    refs.voiceLastTurn.classList.remove("hidden");
+    refs.voiceCoachHint.textContent = "";
+    refs.voiceCoachHint.classList.add("hidden");
+    appendRealtimeConversationTurn(realtimePendingUserText, assistantText);
+    realtimePendingUserText = "";
+    setVoiceStatus("Realtime-Antwort erhalten. Du kannst direkt fortfahren.");
+  }
+}
+
+function extractRealtimeUserText(eventPayload) {
+  const eventType = String(eventPayload?.type || "");
+  if (eventType.includes("input_audio_transcription")) {
+    return normalizeRealtimeSnippet(eventPayload?.transcript);
+  }
+  if (eventType === "conversation.item.created" && String(eventPayload?.item?.role || "") === "user") {
+    return extractRealtimeContentText(eventPayload?.item?.content);
+  }
+  return "";
+}
+
+function extractRealtimeAssistantText(eventPayload) {
+  const eventType = String(eventPayload?.type || "");
+  if (eventType === "response.audio_transcript.done") {
+    return normalizeRealtimeSnippet(eventPayload?.transcript);
+  }
+  if (eventType === "response.output_text.done") {
+    return normalizeRealtimeSnippet(eventPayload?.text);
+  }
+  if (
+    eventType === "conversation.item.created" &&
+    String(eventPayload?.item?.role || "") === "assistant"
+  ) {
+    return extractRealtimeContentText(eventPayload?.item?.content);
+  }
+  if (eventType === "response.done") {
+    return extractRealtimeTextFromResponseDone(eventPayload?.response);
+  }
+  return "";
+}
+
+function extractRealtimeTextFromResponseDone(responsePayload) {
+  const output = Array.isArray(responsePayload?.output) ? responsePayload.output : [];
+  for (const item of output) {
+    const text = extractRealtimeContentText(item?.content);
+    if (text) return text;
+  }
+  return "";
+}
+
+function extractRealtimeContentText(contentValue) {
+  if (!Array.isArray(contentValue)) return "";
+  for (const item of contentValue) {
+    const directText = normalizeRealtimeSnippet(item?.text || item?.transcript || item?.value || "");
+    if (directText) return directText;
+  }
+  return "";
+}
+
+function normalizeRealtimeSnippet(value) {
+  if (typeof value !== "string") return "";
+  const normalized = value.trim().replace(/\s+/g, " ");
+  return normalized.slice(0, 1_100);
+}
+
+function appendRealtimeConversationTurn(userText, assistantText) {
+  const user = normalizeRealtimeSnippet(userText);
+  const assistant = normalizeRealtimeSnippet(assistantText);
+  if (!user && !assistant) return;
+  if (isDoctorConversationMode()) {
+    state.voiceDoctorConversationHistory = [
+      ...state.voiceDoctorConversationHistory,
+      { user, assistant }
+    ].slice(-MAX_VOICE_HISTORY_TURNS);
+    return;
+  }
+  state.voiceHistory = [...state.voiceHistory, { user, assistant }].slice(-MAX_VOICE_HISTORY_TURNS);
+}
+
 async function handleVoiceTextSend() {
   if (state.voiceBusy) return;
   if (state.voiceRecording) {
     setVoiceStatus("Bitte zuerst die laufende Aufnahme stoppen.", true);
+    return;
+  }
+
+  if (state.voiceRealtimeActive) {
+    const learnerText = String(refs.voiceTextInput?.value || "")
+      .trim()
+      .slice(0, MAX_VOICE_QUESTION_LENGTH);
+    if (!learnerText) {
+      setVoiceStatus("Bitte zuerst einen Text eingeben.", true);
+      refs.voiceTextInput?.focus();
+      return;
+    }
+    try {
+      sendRealtimeTextInput(learnerText);
+      refs.voiceTextInput.value = "";
+      setVoiceStatus("Text an die Realtime-Sitzung gesendet.");
+    } catch (error) {
+      setVoiceStatus("Realtime-Text konnte nicht gesendet werden. Bitte Sitzung neu starten.", true);
+      console.error(error);
+    }
     return;
   }
 
@@ -3066,6 +3826,10 @@ async function handleVoiceTextSend() {
 }
 
 async function handleVoiceNextCase() {
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den naechsten Fall laden.", true);
+    return;
+  }
   const loaded = await ensureVoiceCaseLibraryLoaded();
   if (!loaded || state.voiceCaseLibrary.length === 0) {
     setVoiceStatus("Fallbibliothek konnte nicht geladen werden. Bitte spaeter erneut versuchen.", true);
@@ -4003,6 +4767,10 @@ function resetVoiceConversation(options = {}) {
   const keepCaseText = Boolean(options.keepCaseText);
   const preserveStatus = Boolean(options.preserveStatus);
 
+  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    stopVoiceRealtimeSession({ preserveStatus: true, silent: true });
+  }
+
   state.voiceHistory = [];
   state.voiceDoctorConversationHistory = [];
   setVoiceBusy(false);
@@ -4083,26 +4851,27 @@ function applyPromptEditorBusyState(isBusy) {
 
 function setVoiceBusy(isBusy) {
   state.voiceBusy = Boolean(isBusy);
+  const realtimeLocked = state.voiceRealtimeActive || state.voiceRealtimeConnecting;
   if (refs.voiceCaseSelect) {
-    refs.voiceCaseSelect.disabled = state.voiceBusy;
+    refs.voiceCaseSelect.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceModelSelect) {
-    refs.voiceModelSelect.disabled = state.voiceBusy;
+    refs.voiceModelSelect.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceNextCaseBtn) {
-    refs.voiceNextCaseBtn.disabled = state.voiceBusy;
+    refs.voiceNextCaseBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceDiagnoseBtn) {
-    refs.voiceDiagnoseBtn.disabled = state.voiceBusy;
+    refs.voiceDiagnoseBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceDoctorConversationBtn) {
-    refs.voiceDoctorConversationBtn.disabled = state.voiceBusy;
+    refs.voiceDoctorConversationBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceDoctorConversationEvalBtn) {
-    refs.voiceDoctorConversationEvalBtn.disabled = state.voiceBusy;
+    refs.voiceDoctorConversationEvalBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voicePatientConversationBtn) {
-    refs.voicePatientConversationBtn.disabled = state.voiceBusy;
+    refs.voicePatientConversationBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceTextSendBtn) {
     refs.voiceTextSendBtn.disabled = state.voiceBusy;
@@ -4110,35 +4879,49 @@ function setVoiceBusy(isBusy) {
   if (refs.voiceTextInput) {
     refs.voiceTextInput.disabled = state.voiceBusy;
   }
+  if (refs.voiceCaseInput) {
+    const customModeActive = getActiveVoiceCaseSelection() === VOICE_CASE_CUSTOM;
+    refs.voiceCaseInput.disabled = !customModeActive || state.voiceBusy || realtimeLocked;
+  }
+  if (refs.voiceRealtimeToggleBtn) {
+    refs.voiceRealtimeToggleBtn.disabled = state.voiceBusy || state.voiceRecording;
+  }
+  if (refs.voiceRealtimeMuteBtn) {
+    refs.voiceRealtimeMuteBtn.disabled = state.voiceBusy || !state.voiceRealtimeActive;
+  }
+  if (refs.voiceApiSpendResetBtn) {
+    refs.voiceApiSpendResetBtn.disabled = state.voiceBusy;
+  }
   if (refs.voiceCreateCaseBtn) {
-    refs.voiceCreateCaseBtn.disabled = state.voiceBusy;
+    refs.voiceCreateCaseBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceCaseInfoToggleBtn) {
-    refs.voiceCaseInfoToggleBtn.disabled = state.voiceBusy;
+    refs.voiceCaseInfoToggleBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceDoctorLetterToggleBtn) {
-    refs.voiceDoctorLetterToggleBtn.disabled = state.voiceBusy;
+    refs.voiceDoctorLetterToggleBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceDoctorLetterSubmitBtn) {
-    refs.voiceDoctorLetterSubmitBtn.disabled = state.voiceBusy;
+    refs.voiceDoctorLetterSubmitBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceDoctorLetterInput) {
-    refs.voiceDoctorLetterInput.disabled = state.voiceBusy;
+    refs.voiceDoctorLetterInput.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceSamplePatientBtn) {
-    refs.voiceSamplePatientBtn.disabled = state.voiceBusy;
+    refs.voiceSamplePatientBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceSampleLetterBtn) {
-    refs.voiceSampleLetterBtn.disabled = state.voiceBusy;
+    refs.voiceSampleLetterBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.voiceSampleDoctorBtn) {
-    refs.voiceSampleDoctorBtn.disabled = state.voiceBusy;
+    refs.voiceSampleDoctorBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   if (refs.openLearningBtn) {
-    refs.openLearningBtn.disabled = state.voiceBusy;
+    refs.openLearningBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   applyPromptEditorBusyState(state.voiceBusy || state.promptProposalBusy);
-  refs.voiceRecordBtn.disabled = state.voiceBusy || !isVoiceCaptureSupported();
+  refs.voiceRecordBtn.disabled = state.voiceBusy || realtimeLocked || !isVoiceCaptureSupported();
+  updateVoiceRealtimeUi();
 }
 
 function setVoiceStatus(message, isError = false) {

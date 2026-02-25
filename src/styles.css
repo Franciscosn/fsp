@@ -567,6 +567,69 @@ body.auth-only .edge-deco {
   min-width: 0;
 }
 
+.voice-realtime-controls {
+  border: 1px solid rgba(248, 73, 102, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 9px;
+  display: grid;
+  gap: 7px;
+}
+
+.voice-realtime-toggle-btn.active {
+  border-color: rgba(47, 93, 147, 0.46);
+  background: linear-gradient(135deg, rgba(230, 242, 255, 0.95), rgba(255, 255, 255, 0.96));
+  color: #2f5878;
+}
+
+.voice-realtime-mute-btn {
+  justify-self: start;
+}
+
+.voice-realtime-state {
+  margin: 0;
+  color: #6c3e4b;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.voice-api-spend-tracker {
+  border: 1px dashed rgba(248, 73, 102, 0.28);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px;
+  display: grid;
+  gap: 5px;
+}
+
+.voice-api-spend-title {
+  margin: 0;
+  color: #7a4352;
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.voice-api-spend-summary {
+  margin: 0;
+  color: #5d2736;
+  font-size: 0.98rem;
+  font-weight: 900;
+}
+
+.voice-api-spend-tokens {
+  margin: 0;
+  color: #6c3e4b;
+  font-size: 0.79rem;
+  line-height: 1.35;
+}
+
+.voice-api-spend-reset-btn {
+  justify-self: start;
+}
+
 .voice-text-input {
   width: 100%;
   border-radius: 12px;
@@ -655,6 +718,10 @@ body.auth-only .edge-deco {
 }
 
 .voice-reply-audio {
+  width: 100%;
+}
+
+.voice-realtime-audio {
   width: 100%;
 }
 
@@ -2902,6 +2969,11 @@ body.learning-reader .learning-back-avatar {
 
   .voice-text-compact {
     gap: 6px;
+  }
+
+  .voice-realtime-controls {
+    gap: 6px;
+    padding: 8px;
   }
 
   .voice-text-input {
