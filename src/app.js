@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "17";
-const BUILD_UPDATED_AT = "2026-02-25 22:55 CET";
+const APP_VERSION = "19";
+const BUILD_UPDATED_AT = "2026-02-25 22:59 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3486,6 +3486,28 @@ function extractSdpFromJsonCandidate(candidate) {
   return "";
 }
 
+function sanitizeSdpAscii(value) {
+  return String(value || "")
+    .replace(/\u0000/g, "")
+    .replace(/[^\x09\x0A\x0D\x20-\x7E]/g, "")
+    .trim();
+}
+
+function rebuildFlattenedSdp(value) {
+  let text = String(value || "");
+  if (!text) return "";
+  if (/\r|\n/.test(text)) return text;
+  if (!text.startsWith("v=0")) return text;
+
+  // Some gateways collapse SDP into one line. Re-insert line breaks at likely field starts.
+  const aFieldCount = (text.match(/\sa=/g) || []).length;
+  if (aFieldCount < 4) return text;
+
+  text = text.replace(/\s+(?=(?:v=0|o=|s=|t=|i=|u=|e=|p=|c=|b=|r=|z=|k=|a=))/g, "\r\n");
+  text = text.replace(/\s+(?=m=(?:audio|video|application|text|message)\b)/g, "\r\n");
+  return text;
+}
+
 function normalizeSdpForWebRtc(rawValue) {
   let text = String(rawValue || "").trim();
   if (!text) return "";
@@ -3519,7 +3541,8 @@ function normalizeSdpForWebRtc(rawValue) {
     text = text.slice(startIndex);
   }
 
-  text = text.replace(/\u0000/g, "").replace(/\r?\n/g, "\r\n").trim();
+  text = rebuildFlattenedSdp(text);
+  text = sanitizeSdpAscii(text).replace(/\r\n|\n|\r/g, "\r\n").trim();
   return text;
 }
 
@@ -3555,6 +3578,12 @@ function buildSdpCandidateList(rawValue) {
     .filter((line) => line.length > 0)
     .join("\r\n");
   pushUniqueSdpCandidate(list, "line-based", lineBased);
+
+  const asciiSanitized = sanitizeSdpAscii(rawText).replace(/\r\n|\n|\r/g, "\r\n");
+  pushUniqueSdpCandidate(list, "ascii-sanitized", asciiSanitized);
+
+  const rebuiltFlat = normalizeSdpForWebRtc(rebuildFlattenedSdp(rawText));
+  pushUniqueSdpCandidate(list, "rebuilt-flat", rebuiltFlat);
 
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
 }
