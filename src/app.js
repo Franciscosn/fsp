@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "24";
-const BUILD_UPDATED_AT = "2026-02-26 00:18 CET";
+const APP_VERSION = "25";
+const BUILD_UPDATED_AT = "2026-02-26 00:33 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3575,6 +3575,49 @@ function keepOnlyUdpCandidates(value) {
   return joinSdpLines(filtered);
 }
 
+function collectInlineIceCandidates(value) {
+  const lines = splitSdpLines(value);
+  const result = [];
+  let currentMid = "";
+  let currentMLineIndex = -1;
+
+  for (const line of lines) {
+    const text = String(line || "").trim();
+    if (!text) continue;
+    if (text.startsWith("m=")) {
+      currentMLineIndex += 1;
+      currentMid = "";
+      continue;
+    }
+    if (text.startsWith("a=mid:")) {
+      currentMid = text.slice("a=mid:".length).trim();
+      continue;
+    }
+    if (!text.startsWith("a=candidate:")) continue;
+
+    result.push({
+      candidate: text.slice("a=".length),
+      sdpMid: currentMid || undefined,
+      sdpMLineIndex: currentMLineIndex >= 0 ? currentMLineIndex : undefined
+    });
+  }
+
+  return result;
+}
+
+function stripInlineIceCandidates(value) {
+  const lines = splitSdpLines(value);
+  if (!lines.length) return "";
+  return joinSdpLines(
+    lines.filter((line) => {
+      const text = String(line || "").trim();
+      if (text.startsWith("a=candidate:")) return false;
+      if (text === "a=end-of-candidates") return false;
+      return true;
+    })
+  );
+}
+
 function stripApplicationMediaSection(value) {
   const lines = filterValidSdpLines(segmentSdpLines(splitSdpLines(value)));
   if (!lines.length) return "";
@@ -3875,6 +3918,23 @@ function buildSdpCandidateList(rawValue) {
   const audioOnly = stripApplicationMediaSection(udpOnlyCandidates || candidateSanitized || normalized);
   pushUniqueSdpCandidate(list, "audio-only", audioOnly);
 
+  const strippedInlineCandidates = stripInlineIceCandidates(
+    udpOnlyCandidates || candidateSanitized || normalized
+  );
+  const trickleCandidates = collectInlineIceCandidates(udpOnlyCandidates || candidateSanitized || normalized);
+  if (strippedInlineCandidates && trickleCandidates.length) {
+    const already = list.find(
+      (entry) => String(entry?.value || "").trim() === String(strippedInlineCandidates).trim()
+    );
+    if (!already) {
+      list.push({
+        label: "stripped-inline-candidates",
+        value: strippedInlineCandidates,
+        trickleCandidates
+      });
+    }
+  }
+
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
 }
 
@@ -3888,6 +3948,23 @@ async function setRemoteDescriptionWithSdpCandidates(peerConnection, rawSdp, con
         type: "answer",
         sdp: candidate.value
       });
+      if (Array.isArray(candidate?.trickleCandidates) && candidate.trickleCandidates.length) {
+        let addedCount = 0;
+        for (const ice of candidate.trickleCandidates) {
+          try {
+            await peerConnection.addIceCandidate(ice);
+            addedCount += 1;
+          } catch (iceError) {
+            console.warn("addIceCandidate fehlgeschlagen", iceError);
+          }
+        }
+        try {
+          await peerConnection.addIceCandidate(null);
+        } catch {
+          // ignore
+        }
+        return `${candidate.label}+trickle(${addedCount})`;
+      }
       return candidate.label;
     } catch (error) {
       lastError = error;
