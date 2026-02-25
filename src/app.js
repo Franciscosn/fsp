@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "27";
-const BUILD_UPDATED_AT = "2026-02-26 00:56 CET";
+const APP_VERSION = "28";
+const BUILD_UPDATED_AT = "2026-02-26 01:11 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -4029,12 +4029,44 @@ function buildSdpCandidateList(rawValue) {
   );
   pushUniqueSdpCandidate(list, "session-ice", sessionIcePromoted);
 
+  const audioOnlyInlineCandidates = collectInlineIceCandidates(
+    audioOnly || udpOnlyCandidates || candidateSanitized || normalized
+  );
+  const audioOnlyNoInline = normalizeSdpForWebRtc(
+    stripInlineIceCandidates(audioOnly || strippedInlineCandidates || udpOnlyCandidates || candidateSanitized || normalized)
+  );
+  pushUniqueSdpCandidate(list, "audio-only-no-inline", audioOnlyNoInline);
+
+  const audioOnlyNoInlineSctp = normalizeSdpForWebRtc(
+    stripSctpOptionalLines(audioOnlyNoInline || audioOnly || sctpOptionalStripped || normalized)
+  );
+  pushUniqueSdpCandidate(list, "audio-only-no-inline-sctp", audioOnlyNoInlineSctp);
+
+  if (audioOnlyNoInlineSctp && audioOnlyInlineCandidates.length) {
+    const existingAudioNoInlineSctp = list.find(
+      (entry) => String(entry?.value || "").trim() === String(audioOnlyNoInlineSctp).trim()
+    );
+    if (existingAudioNoInlineSctp) {
+      existingAudioNoInlineSctp.trickleCandidates = audioOnlyInlineCandidates;
+    } else {
+      list.push({
+        label: "audio-only-no-inline-sctp-trickle",
+        value: audioOnlyNoInlineSctp,
+        trickleCandidates: audioOnlyInlineCandidates
+      });
+    }
+  }
+
+  const audioOnlySessionIce = promoteMediaIceToSession(audioOnlyNoInlineSctp || audioOnlyNoInline || audioOnly);
+  pushUniqueSdpCandidate(list, "audio-only-session-ice", audioOnlySessionIce);
+
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
 }
 
 async function setRemoteDescriptionWithSdpCandidates(peerConnection, rawSdp, contextLabel) {
   const candidates = buildSdpCandidateList(rawSdp);
   let lastError = null;
+  const failureSummaries = [];
 
   for (const candidate of candidates) {
     try {
@@ -4062,6 +4094,10 @@ async function setRemoteDescriptionWithSdpCandidates(peerConnection, rawSdp, con
       return candidate.label;
     } catch (error) {
       lastError = error;
+      const short = String(error?.message || "Unbekannter Fehler")
+        .replace(/\s+/g, " ")
+        .slice(0, 180);
+      failureSummaries.push(`${candidate.label}: ${short}`);
       console.warn(`SDP parse fehlgeschlagen (${candidate.label})`, error);
     }
   }
@@ -4076,8 +4112,9 @@ async function setRemoteDescriptionWithSdpCandidates(peerConnection, rawSdp, con
     .replace(/\n/g, "\\n");
   const message = String(lastError?.message || "setRemoteDescription fehlgeschlagen.");
   const tried = candidates.map((candidate) => candidate.label).join(", ");
+  const failureDigest = failureSummaries.slice(-8).join(" || ");
   throw new Error(
-    `${contextLabel}: ${message}. SDP-Kandidaten: ${tried}. Antwortbeginn: ${rawPreview}. Antwortende: ${rawTail}`
+    `${contextLabel}: ${message}. SDP-Kandidaten: ${tried}. Fehler je Kandidat: ${failureDigest}. Antwortbeginn: ${rawPreview}. Antwortende: ${rawTail}`
   );
 }
 
