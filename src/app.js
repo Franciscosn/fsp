@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "35";
-const BUILD_UPDATED_AT = "2026-02-26 03:28 CET";
+const APP_VERSION = "36";
+const BUILD_UPDATED_AT = "2026-02-26 04:02 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -49,6 +49,8 @@ const REALTIME_USE_DATA_CHANNEL = false;
 const REALTIME_USE_UNIFIED_CONNECT = false;
 const MAX_REALTIME_SDP_CANDIDATE_ATTEMPTS = 36;
 const REALTIME_TRANSPORT_MODE = "websocket";
+const REALTIME_AUDIO_CHUNK_BASE64_SIZE = 24_000;
+const REALTIME_OUTPUT_SAMPLE_RATE = 24_000;
 const OPENAI_REALTIME_PRICING_USD_PER_1M = Object.freeze({
   "gpt-realtime": Object.freeze({
     textInput: 4,
@@ -1334,6 +1336,8 @@ let realtimeLocalStream = null;
 let realtimeWebSocket = null;
 let realtimePendingUserText = "";
 let realtimeUsageSeenResponseIds = new Set();
+let realtimeAudioContext = null;
+let realtimeAudioNextPlayTime = 0;
 let xpMilestoneHideTimer = null;
 
 const CATEGORY_MAP = {
@@ -3277,7 +3281,7 @@ function buildVoiceReadyStatus() {
     return `Realtime wird verbunden (${getRealtimeModeLabel()}) ...`;
   }
   if (state.voiceRealtimeActive) {
-    return `Realtime aktiv (${getRealtimeModeLabel()}). Sende Text oder nutze den Aufnahme-Button zum Sprechen.`;
+    return `Realtime aktiv (${getRealtimeModeLabel()}). Nutze den Aufnahme-Button fuers direkte Audio-Gespraech oder sende Text.`;
   }
   if (isDiagnosisMode()) {
     return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
@@ -4778,17 +4782,35 @@ async function startVoiceRealtimeSession() {
       updateVoiceRecordButton();
       setVoiceBusy(state.voiceBusy);
       trackRealtimeSessionStart(state.voiceRealtimeModel);
+      try {
+        sendRealtimeDataEvent({
+          type: "session.update",
+          session: {
+            modalities: ["text", "audio"],
+            audio: {
+              input: {
+                turn_detection: null
+              },
+              output: {
+                voice: OPENAI_REALTIME_DEFAULT_VOICE
+              }
+            }
+          }
+        });
+      } catch (error) {
+        console.warn("Realtime session.update konnte nicht gesetzt werden", error);
+      }
 
       if (isDoctorConversationMode()) {
         try {
-          sendRealtimeDataEvent({ type: "response.create" });
+          sendRealtimeDataEvent(buildRealtimeResponseCreateEvent());
         } catch (error) {
           console.warn("Realtime-Startantwort konnte nicht angefordert werden", error);
         }
       }
 
       setVoiceStatus(
-        `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Du kannst sprechen (Aufnahme-Button) oder Text senden.`
+        `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Audio laeuft Ende-zu-Ende.`
       );
       return;
     }
@@ -4870,6 +4892,7 @@ function stopVoiceRealtimeSession(options = {}) {
     refs.voiceRealtimeAudio.srcObject = null;
     refs.voiceRealtimeAudio.classList.add("hidden");
   }
+  resetRealtimeAudioPlayback();
 
   updateVoiceRealtimeUi();
   updateVoiceRecordButton();
@@ -4914,7 +4937,43 @@ function sendRealtimeTextInput(text) {
       content: [{ type: "input_text", text: userText }]
     }
   });
-  sendRealtimeDataEvent({ type: "response.create" });
+  sendRealtimeDataEvent(buildRealtimeResponseCreateEvent());
+}
+
+function buildRealtimeResponseCreateEvent() {
+  return {
+    type: "response.create",
+    response: {
+      modalities: ["text", "audio"]
+    }
+  };
+}
+
+function sendRealtimeAudioInput(audioBase64) {
+  const cleanAudio = stripDataUrlAudio(String(audioBase64 || ""))
+    .replace(/\s+/g, "")
+    .trim();
+  if (!cleanAudio) {
+    throw new Error("Leerer Audio-Input.");
+  }
+  realtimePendingUserText = "(Sprachbeitrag)";
+  refs.voiceUserTranscript.textContent = "🎤 Sprachbeitrag gesendet";
+  refs.voiceLastTurn.classList.remove("hidden");
+  refs.voiceCoachHint.textContent = "";
+  refs.voiceCoachHint.classList.add("hidden");
+
+  for (let offset = 0; offset < cleanAudio.length; offset += REALTIME_AUDIO_CHUNK_BASE64_SIZE) {
+    const chunk = cleanAudio.slice(offset, offset + REALTIME_AUDIO_CHUNK_BASE64_SIZE);
+    if (!chunk) continue;
+    sendRealtimeDataEvent({
+      type: "input_audio_buffer.append",
+      audio: chunk
+    });
+  }
+  sendRealtimeDataEvent({
+    type: "input_audio_buffer.commit"
+  });
+  sendRealtimeDataEvent(buildRealtimeResponseCreateEvent());
 }
 
 function handleRealtimeEventMessage(rawData) {
@@ -4940,6 +4999,11 @@ function handleRealtimeEventMessage(rawData) {
     refs.voiceLastTurn.classList.remove("hidden");
   }
 
+  const assistantAudioDelta = extractRealtimeAssistantAudioDelta(eventPayload);
+  if (assistantAudioDelta) {
+    void enqueueRealtimeAssistantAudio(assistantAudioDelta);
+  }
+
   const assistantText = extractRealtimeAssistantText(eventPayload);
   if (assistantText) {
     refs.voiceAssistantReply.textContent = assistantText;
@@ -4947,7 +5011,6 @@ function handleRealtimeEventMessage(rawData) {
     refs.voiceCoachHint.textContent = "";
     refs.voiceCoachHint.classList.add("hidden");
     appendRealtimeConversationTurn(realtimePendingUserText, assistantText);
-    void speakWithLocalGermanVoice(assistantText);
     realtimePendingUserText = "";
     setVoiceStatus("Realtime-Antwort erhalten. Du kannst direkt fortfahren.");
   }
@@ -4980,6 +5043,14 @@ function extractRealtimeAssistantText(eventPayload) {
   }
   if (eventType === "response.done") {
     return extractRealtimeTextFromResponseDone(eventPayload?.response);
+  }
+  return "";
+}
+
+function extractRealtimeAssistantAudioDelta(eventPayload) {
+  const eventType = String(eventPayload?.type || "");
+  if (eventType === "response.audio.delta" || eventType === "response.output_audio.delta") {
+    return typeof eventPayload?.delta === "string" ? eventPayload.delta.trim() : "";
   }
   return "";
 }
@@ -5563,20 +5634,12 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
     setVoiceBusy(true);
     const audioBase64 = await blobToBase64(blob);
     if (state.voiceRealtimeActive) {
-      setVoiceStatus("Transkribiere Realtime-Aufnahme ...");
-      const transcript = await runVoiceRealtimeTranscription({
-        audioBase64,
-        mimeType: mimeType || blob.type || "audio/webm"
-      });
-      if (!transcript) {
-        setVoiceStatus("Keine Sprache erkannt. Bitte deutlicher und etwas laenger sprechen.", true);
-        return;
-      }
-      sendRealtimeTextInput(transcript);
+      setVoiceStatus("Sende Realtime-Audio direkt an die KI ...");
+      sendRealtimeAudioInput(audioBase64);
       if (refs.voiceTextInput) {
         refs.voiceTextInput.value = "";
       }
-      setVoiceStatus("Realtime-Sprachbeitrag gesendet.");
+      setVoiceStatus("Realtime-Sprachbeitrag gesendet. Warte auf Antwort ...");
       return;
     }
     setVoiceStatus(
@@ -5651,29 +5714,6 @@ async function runVoiceDoctorConversationEvaluation() {
     throw new Error(payload.error || "API Fehler");
   }
   return payload.evaluation;
-}
-
-async function runVoiceRealtimeTranscription(turnInput) {
-  const audioBase64 = typeof turnInput?.audioBase64 === "string" ? turnInput.audioBase64 : "";
-  const mimeType = typeof turnInput?.mimeType === "string" ? turnInput.mimeType : "";
-  if (!audioBase64) {
-    return "";
-  }
-  const response = await fetch("/api/voice-transcribe", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      audioBase64,
-      mimeType
-    })
-  });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok) {
-    throw new Error(String(payload?.error || "Transkription fehlgeschlagen."));
-  }
-  return String(payload?.transcript || "")
-    .trim()
-    .slice(0, MAX_VOICE_QUESTION_LENGTH);
 }
 
 function renderDoctorLetterEvaluationReport(report) {
@@ -6327,6 +6367,95 @@ function blobToBase64(blob) {
     };
     reader.readAsDataURL(blob);
   });
+}
+
+function stripDataUrlAudio(value) {
+  if (!String(value || "").startsWith("data:")) {
+    return value;
+  }
+  const commaIndex = String(value).indexOf(",");
+  if (commaIndex < 0) {
+    return value;
+  }
+  return String(value).slice(commaIndex + 1);
+}
+
+async function enqueueRealtimeAssistantAudio(base64Delta) {
+  const clean = String(base64Delta || "").replace(/\s+/g, "").trim();
+  if (!clean) return;
+  const bytes = decodeBase64ToBytes(clean);
+  if (!bytes || bytes.length < 2) return;
+  const sampleCount = Math.floor(bytes.length / 2);
+  if (sampleCount <= 0) return;
+  const context = await ensureRealtimeAudioContext();
+  if (!context) return;
+
+  const audioBuffer = context.createBuffer(1, sampleCount, REALTIME_OUTPUT_SAMPLE_RATE);
+  const channel = audioBuffer.getChannelData(0);
+  for (let i = 0; i < sampleCount; i += 1) {
+    const lo = bytes[i * 2];
+    const hi = bytes[i * 2 + 1];
+    let sample = (hi << 8) | lo;
+    if (sample >= 0x8000) {
+      sample -= 0x10000;
+    }
+    channel[i] = sample / 0x8000;
+  }
+
+  const now = context.currentTime + 0.02;
+  if (!Number.isFinite(realtimeAudioNextPlayTime) || realtimeAudioNextPlayTime < now - 0.4) {
+    realtimeAudioNextPlayTime = now;
+  }
+  const startAt = Math.max(now, realtimeAudioNextPlayTime);
+  const source = context.createBufferSource();
+  source.buffer = audioBuffer;
+  source.connect(context.destination);
+  source.start(startAt);
+  realtimeAudioNextPlayTime = startAt + audioBuffer.duration;
+}
+
+async function ensureRealtimeAudioContext() {
+  const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextCtor) return null;
+  if (!realtimeAudioContext || realtimeAudioContext.state === "closed") {
+    realtimeAudioContext = new AudioContextCtor({ sampleRate: REALTIME_OUTPUT_SAMPLE_RATE });
+    realtimeAudioNextPlayTime = 0;
+  }
+  if (realtimeAudioContext.state === "suspended") {
+    try {
+      await realtimeAudioContext.resume();
+    } catch {
+      // ignore and keep trying playback
+    }
+  }
+  return realtimeAudioContext;
+}
+
+function decodeBase64ToBytes(value) {
+  try {
+    const binary = atob(String(value || ""));
+    const out = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i += 1) {
+      out[i] = binary.charCodeAt(i);
+    }
+    return out;
+  } catch {
+    return null;
+  }
+}
+
+function resetRealtimeAudioPlayback() {
+  realtimeAudioNextPlayTime = 0;
+  const context = realtimeAudioContext;
+  realtimeAudioContext = null;
+  if (!context) return;
+  try {
+    if (context.state !== "closed") {
+      void context.close();
+    }
+  } catch {
+    // ignore
+  }
 }
 
 function buildReplyAudioSrc(audioBase64) {
