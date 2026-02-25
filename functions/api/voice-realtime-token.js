@@ -1,4 +1,3 @@
-const MAX_SDP_LENGTH = 500_000;
 const MAX_CASE_LENGTH = 8_000;
 const MAX_PROMPT_LENGTH = 60_000;
 const MAX_INSTRUCTIONS_LENGTH = 32_000;
@@ -43,99 +42,82 @@ export async function onRequestPost(context) {
     const realtimeVoice = normalizeRealtimeVoice(payload.realtimeVoice, envVoice);
     const instructions = buildSessionInstructions(payload.mode, payload.promptText, payload.caseText);
 
-    const formData = new FormData();
-    formData.set("sdp", payload.sdp);
-    formData.set(
-      "session",
-      JSON.stringify({
-        type: "realtime",
-        model: realtimeModel,
-        instructions,
-        audio: {
-          input: {
-            turn_detection: {
-              type: "server_vad"
-            }
-          },
-          output: {
-            voice: realtimeVoice
-          }
-        }
-      })
-    );
-
     const response = await fetchWithTimeout(
-      "https://api.openai.com/v1/realtime/calls",
+      "https://api.openai.com/v1/realtime/client_secrets",
       {
         method: "POST",
         headers: {
           authorization: `Bearer ${apiKey}`,
-          accept: "application/sdp"
+          "content-type": "application/json"
         },
-        body: formData
+        body: JSON.stringify({
+          session: {
+            type: "realtime",
+            model: realtimeModel,
+            instructions,
+            audio: {
+              input: {
+                turn_detection: {
+                  type: "server_vad"
+                }
+              },
+              output: {
+                voice: realtimeVoice
+              }
+            }
+          }
+        })
       },
       OPENAI_REQUEST_TIMEOUT_MS
     );
 
     const rawBody = await response.text();
+    let parsed = null;
+    try {
+      parsed = JSON.parse(rawBody);
+    } catch {
+      parsed = null;
+    }
+
     if (!response.ok) {
-      const modelError = tryReadOpenAiError(rawBody);
+      const modelError = safeParagraph(parsed?.error?.message || "", 500);
       return json(
         {
-          error: modelError || "OpenAI Realtime API Anfrage fehlgeschlagen.",
+          error: modelError || "OpenAI Ephemeral-Key Anfrage fehlgeschlagen.",
           details: safeParagraph(rawBody, 1_800)
         },
         502
       );
     }
 
-    const answerSdp = safeSdp(rawBody);
-    if (!answerSdp) {
+    const clientSecret = safeLine(parsed?.value || parsed?.client_secret?.value || "", 8_000);
+    if (!clientSecret) {
       return json(
         {
-          error: "OpenAI Realtime API lieferte keine gueltige SDP-Antwort."
+          error: "OpenAI lieferte keinen gueltigen Ephemeral-Key."
         },
         502
       );
     }
 
+    const expiresAt = safeLine(
+      String(parsed?.expires_at || parsed?.client_secret?.expires_at || ""),
+      120
+    );
     return json({
-      sdp: answerSdp,
+      value: clientSecret,
+      expiresAt,
       realtimeModel,
       realtimeVoice
     });
   } catch (error) {
-    console.error("voice-realtime-connect error", error);
+    console.error("voice-realtime-token error", error);
     return json(
       {
-        error: "Realtime-Verbindung fehlgeschlagen."
+        error: "Ephemeral-Key Anfrage fehlgeschlagen."
       },
       500
     );
-  }
-}
-
-async function fetchWithTimeout(url, options, timeoutMs) {
-  const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-  const timeoutId = setTimeout(() => {
-    if (!controller) return;
-    controller.abort();
-  }, timeoutMs);
-
-  try {
-    return await fetch(url, {
-      ...options,
-      signal: controller ? controller.signal : undefined
-    });
-  } catch (error) {
-    if (error?.name === "AbortError") {
-      const timeoutError = new Error(`OpenAI Realtime Timeout nach ${Math.round(timeoutMs / 1000)}s.`);
-      timeoutError.code = "OPENAI_TIMEOUT";
-      throw timeoutError;
-    }
-    throw error;
-  } finally {
-    clearTimeout(timeoutId);
   }
 }
 
@@ -152,16 +134,12 @@ async function readPayload(request) {
     return { ok: false, error: "JSON konnte nicht gelesen werden." };
   }
 
-  const sdp = safeSdp(body?.sdp);
   const caseText = safeParagraph(body?.caseText, MAX_CASE_LENGTH);
   const promptText = safeParagraph(body?.promptText, MAX_PROMPT_LENGTH);
   const mode = normalizeMode(body?.mode);
   const realtimeModel = safeLine(body?.realtimeModel, 80);
   const realtimeVoice = safeLine(body?.realtimeVoice, 40);
 
-  if (!sdp) {
-    return { ok: false, error: "Keine gueltige SDP im Request." };
-  }
   if (!caseText) {
     return { ok: false, error: "Falltext fehlt." };
   }
@@ -171,7 +149,6 @@ async function readPayload(request) {
 
   return {
     ok: true,
-    sdp,
     caseText,
     promptText,
     mode,
@@ -214,6 +191,30 @@ function buildSessionInstructions(mode, promptText, caseText) {
     .slice(0, MAX_INSTRUCTIONS_LENGTH);
 }
 
+async function fetchWithTimeout(url, options, timeoutMs) {
+  const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+  const timeoutId = setTimeout(() => {
+    if (!controller) return;
+    controller.abort();
+  }, timeoutMs);
+
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller ? controller.signal : undefined
+    });
+  } catch (error) {
+    if (error?.name === "AbortError") {
+      const timeoutError = new Error(`OpenAI Realtime Timeout nach ${Math.round(timeoutMs / 1000)}s.`);
+      timeoutError.code = "OPENAI_TIMEOUT";
+      throw timeoutError;
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 function safeLine(value, maxLength) {
   if (typeof value !== "string") return "";
   return value
@@ -228,21 +229,6 @@ function safeParagraph(value, maxLength) {
     .replace(/\r\n/g, "\n")
     .trim()
     .slice(0, maxLength);
-}
-
-function safeSdp(value) {
-  if (typeof value !== "string") return "";
-  return value.trim().slice(0, MAX_SDP_LENGTH);
-}
-
-function tryReadOpenAiError(rawBody) {
-  if (!rawBody) return "";
-  try {
-    const parsed = JSON.parse(rawBody);
-    return safeParagraph(parsed?.error?.message || "", 500);
-  } catch {
-    return "";
-  }
 }
 
 function json(body, status = 200) {

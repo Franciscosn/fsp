@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "14";
-const BUILD_UPDATED_AT = "2026-02-25 20:10 CET";
+const APP_VERSION = "15";
+const BUILD_UPDATED_AT = "2026-02-25 22:05 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -44,6 +44,7 @@ const VOICE_MODE_DOCTOR_CONVERSATION = "doctor_conversation";
 const OPENAI_REALTIME_MODEL_FAST = "gpt-realtime-mini";
 const OPENAI_REALTIME_MODEL_STRONG = "gpt-realtime";
 const OPENAI_REALTIME_DEFAULT_VOICE = "sage";
+const REALTIME_CONNECT_TIMEOUT_MS = 20_000;
 const OPENAI_REALTIME_PRICING_USD_PER_1M = Object.freeze({
   "gpt-realtime": Object.freeze({
     textInput: 4,
@@ -3421,6 +3422,128 @@ function updateVoiceRealtimeUi() {
   muteBtn.disabled = state.voiceBusy || !active;
 }
 
+async function fetchWithTimeout(url, options = {}, timeoutMs = REALTIME_CONNECT_TIMEOUT_MS) {
+  const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+  const timeoutId = window.setTimeout(() => {
+    if (!controller) return;
+    controller.abort();
+  }, timeoutMs);
+
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller ? controller.signal : undefined
+    });
+  } catch (error) {
+    if (error?.name === "AbortError") {
+      const timeoutError = new Error(`Realtime-Timeout nach ${Math.round(timeoutMs / 1000)}s.`);
+      timeoutError.code = "REALTIME_TIMEOUT";
+      throw timeoutError;
+    }
+    throw error;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+function buildRealtimeConnectPayload(offerSdp) {
+  return {
+    sdp: String(offerSdp || ""),
+    mode: state.voiceMode,
+    caseText: getActiveVoiceCaseText(),
+    promptText: getPromptForKey(getRealtimePromptKey()),
+    realtimeModel: selectOpenAiRealtimeModel(),
+    realtimeVoice: OPENAI_REALTIME_DEFAULT_VOICE
+  };
+}
+
+async function connectRealtimeViaUnified(peerConnection, payload) {
+  const response = await fetchWithTimeout(
+    "/api/voice-realtime-connect",
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload)
+    },
+    REALTIME_CONNECT_TIMEOUT_MS
+  );
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok || typeof body?.sdp !== "string" || !body.sdp.trim()) {
+    const message = String(body?.error || "Unified-Handshake fehlgeschlagen.");
+    const detail = String(body?.details || "");
+    const err = new Error(detail ? `${message} ${detail}` : message);
+    err.code = "REALTIME_UNIFIED_FAILED";
+    throw err;
+  }
+
+  await peerConnection.setRemoteDescription({
+    type: "answer",
+    sdp: body.sdp
+  });
+
+  return {
+    realtimeModel:
+      body?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
+        ? OPENAI_REALTIME_MODEL_STRONG
+        : OPENAI_REALTIME_MODEL_FAST,
+    pathLabel: "Unified"
+  };
+}
+
+async function connectRealtimeViaEphemeral(peerConnection, payload) {
+  const tokenResponse = await fetchWithTimeout(
+    "/api/voice-realtime-token",
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload)
+    },
+    REALTIME_CONNECT_TIMEOUT_MS
+  );
+  const tokenBody = await tokenResponse.json().catch(() => ({}));
+  const clientSecret = String(tokenBody?.value || "").trim();
+  if (!tokenResponse.ok || !clientSecret) {
+    const message = String(tokenBody?.error || "Ephemeral-Token fehlgeschlagen.");
+    const detail = String(tokenBody?.details || "");
+    const err = new Error(detail ? `${message} ${detail}` : message);
+    err.code = "REALTIME_EPHEMERAL_TOKEN_FAILED";
+    throw err;
+  }
+
+  const sdpResponse = await fetchWithTimeout(
+    "https://api.openai.com/v1/realtime/calls",
+    {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${clientSecret}`,
+        "content-type": "application/sdp",
+        accept: "application/sdp"
+      },
+      body: String(payload.sdp || "")
+    },
+    REALTIME_CONNECT_TIMEOUT_MS
+  );
+  const answerSdp = String(await sdpResponse.text()).trim();
+  if (!sdpResponse.ok || !answerSdp) {
+    const err = new Error(`Ephemeral-SDP fehlgeschlagen (HTTP ${sdpResponse.status}).`);
+    err.code = "REALTIME_EPHEMERAL_SDP_FAILED";
+    throw err;
+  }
+
+  await peerConnection.setRemoteDescription({
+    type: "answer",
+    sdp: answerSdp
+  });
+
+  return {
+    realtimeModel:
+      tokenBody?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
+        ? OPENAI_REALTIME_MODEL_STRONG
+        : OPENAI_REALTIME_MODEL_FAST,
+    pathLabel: "Ephemeral"
+  };
+}
+
 async function startVoiceRealtimeSession() {
   state.voiceRealtimeConnecting = true;
   state.voiceRealtimeActive = false;
@@ -3497,45 +3620,28 @@ async function startVoiceRealtimeSession() {
       offerToReceiveAudio: true
     });
     await peerConnection.setLocalDescription(offer);
-
-    const response = await fetch("/api/voice-realtime-connect", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        sdp: String(offer?.sdp || ""),
-        mode: state.voiceMode,
-        caseText: getActiveVoiceCaseText(),
-        promptText: getPromptForKey(getRealtimePromptKey()),
-        realtimeModel: selectOpenAiRealtimeModel(),
-        realtimeVoice: OPENAI_REALTIME_DEFAULT_VOICE
-      })
-    });
-
-    const payload = await response.json().catch(() => ({}));
+    const connectPayload = buildRealtimeConnectPayload(offer?.sdp || "");
+    let connectResult = null;
+    try {
+      connectResult = await connectRealtimeViaUnified(peerConnection, connectPayload);
+    } catch (unifiedError) {
+      console.warn("Realtime Unified fehlgeschlagen, versuche Ephemeral-Fallback", unifiedError);
+      setVoiceStatus("Realtime Unified fehlgeschlagen, starte Ephemeral-Fallback ...");
+      connectResult = await connectRealtimeViaEphemeral(peerConnection, connectPayload);
+    }
     if (peerConnection !== realtimePeerConnection) {
       return;
     }
-    if (!response.ok || typeof payload?.sdp !== "string" || !payload.sdp.trim()) {
-      throw new Error(payload?.error || "Realtime-SDP konnte nicht aufgebaut werden.");
-    }
-
-    await peerConnection.setRemoteDescription({
-      type: "answer",
-      sdp: payload.sdp
-    });
 
     state.voiceRealtimeConnecting = false;
     state.voiceRealtimeActive = true;
     state.voiceRealtimeMuted = false;
-    state.voiceRealtimeModel =
-      payload?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
-        ? OPENAI_REALTIME_MODEL_STRONG
-        : OPENAI_REALTIME_MODEL_FAST;
+    state.voiceRealtimeModel = connectResult.realtimeModel;
     updateVoiceRealtimeUi();
     setVoiceBusy(state.voiceBusy);
     trackRealtimeSessionStart(state.voiceRealtimeModel);
     setVoiceStatus(
-      `Realtime verbunden (${payload?.realtimeModel || selectOpenAiRealtimeModel()}). Du kannst direkt starten.`
+      `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Du kannst direkt starten.`
     );
   } catch (error) {
     if (peerConnection !== realtimePeerConnection && !state.voiceRealtimeConnecting && !state.voiceRealtimeActive) {
@@ -3544,7 +3650,7 @@ async function startVoiceRealtimeSession() {
     console.error(error);
     stopVoiceRealtimeSession({ preserveStatus: true, silent: true });
     setVoiceStatus(
-      "Realtime-Verbindung fehlgeschlagen. Pruefe OPENAI_API_KEY in Cloudflare und versuche es erneut.",
+      `Realtime-Verbindung fehlgeschlagen: ${String(error?.message || "Unbekannter Fehler")}`,
       true
     );
   }
