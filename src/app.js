@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "34";
-const BUILD_UPDATED_AT = "2026-02-26 03:11 CET";
+const APP_VERSION = "35";
+const BUILD_UPDATED_AT = "2026-02-26 03:28 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3277,7 +3277,7 @@ function buildVoiceReadyStatus() {
     return `Realtime wird verbunden (${getRealtimeModeLabel()}) ...`;
   }
   if (state.voiceRealtimeActive) {
-    return `Realtime aktiv (${getRealtimeModeLabel()}). Sende Text direkt in denselben Fall.`;
+    return `Realtime aktiv (${getRealtimeModeLabel()}). Sende Text oder nutze den Aufnahme-Button zum Sprechen.`;
   }
   if (isDiagnosisMode()) {
     return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
@@ -3336,8 +3336,8 @@ function updateVoiceModeUi() {
 
 async function handleVoiceRecordToggle() {
   if (state.voiceBusy) return;
-  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
-    setVoiceStatus("Realtime ist aktiv. Beende Realtime oder nutze dort direkt Sprache.", true);
+  if (state.voiceRealtimeConnecting) {
+    setVoiceStatus("Realtime verbindet gerade. Bitte kurz warten.", true);
     return;
   }
   if (state.voiceRecording) {
@@ -4775,6 +4775,7 @@ async function startVoiceRealtimeSession() {
       state.voiceRealtimeMuted = false;
       state.voiceRealtimeModel = connectResult.realtimeModel;
       updateVoiceRealtimeUi();
+      updateVoiceRecordButton();
       setVoiceBusy(state.voiceBusy);
       trackRealtimeSessionStart(state.voiceRealtimeModel);
 
@@ -4787,7 +4788,7 @@ async function startVoiceRealtimeSession() {
       }
 
       setVoiceStatus(
-        `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Du kannst per Text direkt interagieren.`
+        `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Du kannst sprechen (Aufnahme-Button) oder Text senden.`
       );
       return;
     }
@@ -4871,6 +4872,7 @@ function stopVoiceRealtimeSession(options = {}) {
   }
 
   updateVoiceRealtimeUi();
+  updateVoiceRecordButton();
   setVoiceBusy(state.voiceBusy);
 
   if (silent) return;
@@ -5473,6 +5475,10 @@ async function startVoiceRecording() {
     setVoiceStatus(
       isDiagnosisMode()
         ? "Diagnose-Aufnahme laeuft ... tippe erneut, um zu stoppen und zu bewerten."
+        : state.voiceRealtimeActive
+          ? isDoctorConversationMode()
+            ? "Realtime-Aufnahme laeuft ... tippe erneut, um an den Prueferarzt zu senden."
+            : "Realtime-Aufnahme laeuft ... tippe erneut, um an die Patientensimulation zu senden."
         : isDoctorConversationMode()
           ? "Bericht-Aufnahme laeuft ... tippe erneut, um zu stoppen und Rueckfrage zu erhalten."
         : "Aufnahme laeuft ... tippe erneut, um zu stoppen und an die KI zu senden."
@@ -5513,6 +5519,8 @@ function stopVoiceRecording(sendToAi, reason) {
     setVoiceStatus(
       isDiagnosisMode()
         ? "Verarbeite Diagnose-Audio ..."
+        : state.voiceRealtimeActive
+          ? "Transkribiere Realtime-Audio und sende an die KI ..."
         : isDoctorConversationMode()
           ? "Verarbeite Bericht-Audio ..."
           : "Verarbeite Aufnahme ..."
@@ -5553,6 +5561,24 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
 
   try {
     setVoiceBusy(true);
+    const audioBase64 = await blobToBase64(blob);
+    if (state.voiceRealtimeActive) {
+      setVoiceStatus("Transkribiere Realtime-Aufnahme ...");
+      const transcript = await runVoiceRealtimeTranscription({
+        audioBase64,
+        mimeType: mimeType || blob.type || "audio/webm"
+      });
+      if (!transcript) {
+        setVoiceStatus("Keine Sprache erkannt. Bitte deutlicher und etwas laenger sprechen.", true);
+        return;
+      }
+      sendRealtimeTextInput(transcript);
+      if (refs.voiceTextInput) {
+        refs.voiceTextInput.value = "";
+      }
+      setVoiceStatus("Realtime-Sprachbeitrag gesendet.");
+      return;
+    }
     setVoiceStatus(
       isDiagnosisMode()
         ? "Transkribiere Diagnose und erstelle Bewertung ..."
@@ -5560,7 +5586,6 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
           ? "Transkribiere Bericht und simuliere pruefende Rueckfrage ..."
         : "Transkribiere und simuliere Patientenantwort ..."
     );
-    const audioBase64 = await blobToBase64(blob);
     if (isDiagnosisMode()) {
       await runVoiceEvaluation({ audioBase64 });
     } else if (isDoctorConversationMode()) {
@@ -5574,7 +5599,9 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
     }
   } catch (error) {
     setVoiceStatus(
-      isDiagnosisMode()
+      state.voiceRealtimeActive
+        ? "Realtime-Sprachbeitrag fehlgeschlagen. Bitte erneut versuchen."
+        : isDiagnosisMode()
         ? "Anamnese-Bewertung fehlgeschlagen. Bitte erneut versuchen."
         : isDoctorConversationMode()
           ? "Arzt-Arzt-Gespraech fehlgeschlagen. Bitte erneut versuchen."
@@ -5624,6 +5651,29 @@ async function runVoiceDoctorConversationEvaluation() {
     throw new Error(payload.error || "API Fehler");
   }
   return payload.evaluation;
+}
+
+async function runVoiceRealtimeTranscription(turnInput) {
+  const audioBase64 = typeof turnInput?.audioBase64 === "string" ? turnInput.audioBase64 : "";
+  const mimeType = typeof turnInput?.mimeType === "string" ? turnInput.mimeType : "";
+  if (!audioBase64) {
+    return "";
+  }
+  const response = await fetch("/api/voice-transcribe", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      audioBase64,
+      mimeType
+    })
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(String(payload?.error || "Transkription fehlgeschlagen."));
+  }
+  return String(payload?.transcript || "")
+    .trim()
+    .slice(0, MAX_VOICE_QUESTION_LENGTH);
 }
 
 function renderDoctorLetterEvaluationReport(report) {
@@ -6198,7 +6248,7 @@ function setVoiceBusy(isBusy) {
     refs.openLearningBtn.disabled = state.voiceBusy || realtimeLocked;
   }
   applyPromptEditorBusyState(state.voiceBusy || state.promptProposalBusy);
-  refs.voiceRecordBtn.disabled = state.voiceBusy || realtimeLocked || !isVoiceCaptureSupported();
+  refs.voiceRecordBtn.disabled = state.voiceBusy || state.voiceRealtimeConnecting || !isVoiceCaptureSupported();
   updateVoiceRealtimeUi();
 }
 
@@ -6208,7 +6258,9 @@ function setVoiceStatus(message, isError = false) {
 }
 
 function updateVoiceRecordButton() {
-  if (isDiagnosisMode()) {
+  if (state.voiceRealtimeActive) {
+    refs.voiceRecordBtn.textContent = state.voiceRecording ? "⏹ Realtime stoppen" : "🎤 Realtime sprechen";
+  } else if (isDiagnosisMode()) {
     refs.voiceRecordBtn.textContent = state.voiceRecording
       ? "⏹ Diagnose stoppen"
       : "🎤 Diagnose sprechen";
