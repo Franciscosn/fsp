@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "32";
-const BUILD_UPDATED_AT = "2026-02-26 02:14 CET";
+const APP_VERSION = "33";
+const BUILD_UPDATED_AT = "2026-02-26 02:29 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -48,6 +48,7 @@ const REALTIME_CONNECT_TIMEOUT_MS = 20_000;
 const REALTIME_USE_DATA_CHANNEL = false;
 const REALTIME_USE_UNIFIED_CONNECT = false;
 const MAX_REALTIME_SDP_CANDIDATE_ATTEMPTS = 36;
+const REALTIME_TRANSPORT_MODE = "websocket";
 const OPENAI_REALTIME_PRICING_USD_PER_1M = Object.freeze({
   "gpt-realtime": Object.freeze({
     textInput: 4,
@@ -1330,6 +1331,7 @@ let shouldSendVoiceAfterStop = false;
 let realtimePeerConnection = null;
 let realtimeDataChannel = null;
 let realtimeLocalStream = null;
+let realtimeWebSocket = null;
 let realtimePendingUserText = "";
 let realtimeUsageSeenResponseIds = new Set();
 let xpMilestoneHideTimer = null;
@@ -3236,6 +3238,9 @@ function isDoctorConversationMode() {
 }
 
 function isVoiceRealtimeSupported() {
+  if (REALTIME_TRANSPORT_MODE === "websocket") {
+    return Boolean(window.WebSocket && window.fetch);
+  }
   return Boolean(window.RTCPeerConnection && navigator.mediaDevices?.getUserMedia);
 }
 
@@ -3272,7 +3277,7 @@ function buildVoiceReadyStatus() {
     return `Realtime wird verbunden (${getRealtimeModeLabel()}) ...`;
   }
   if (state.voiceRealtimeActive) {
-    return `Realtime aktiv (${getRealtimeModeLabel()}). Sprich direkt oder sende Text in denselben Fall.`;
+    return `Realtime aktiv (${getRealtimeModeLabel()}). Sende Text direkt in denselben Fall.`;
   }
   if (isDiagnosisMode()) {
     return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
@@ -3358,7 +3363,9 @@ async function handleVoiceRealtimeToggle() {
   }
   if (!isVoiceRealtimeSupported()) {
     setVoiceStatus(
-      "Realtime wird auf diesem Geraet/Browser nicht unterstuetzt (WebRTC + Mikrofon erforderlich).",
+      REALTIME_TRANSPORT_MODE === "websocket"
+        ? "Realtime wird auf diesem Geraet/Browser nicht unterstuetzt (WebSocket erforderlich)."
+        : "Realtime wird auf diesem Geraet/Browser nicht unterstuetzt (WebRTC + Mikrofon erforderlich).",
       true
     );
     return;
@@ -3399,12 +3406,15 @@ function updateVoiceRealtimeUi() {
   toggleBtn.classList.toggle("active", active || connecting);
   toggleBtn.setAttribute("aria-pressed", active ? "true" : "false");
 
-  muteBtn.classList.toggle("hidden", !active);
+  muteBtn.classList.toggle("hidden", !active || !realtimeLocalStream);
   muteBtn.textContent = muted ? "Mikro einschalten" : "Mikro stummschalten";
   muteBtn.setAttribute("aria-pressed", muted ? "true" : "false");
 
   if (!supported) {
-    stateLabel.textContent = "Realtime nicht verfuegbar (Browser/Geraet ohne WebRTC-Audio).";
+    stateLabel.textContent =
+      REALTIME_TRANSPORT_MODE === "websocket"
+        ? "Realtime nicht verfuegbar (Browser ohne WebSocket-Unterstuetzung)."
+        : "Realtime nicht verfuegbar (Browser/Geraet ohne WebRTC-Audio).";
   } else if (!allowedMode) {
     stateLabel.textContent = "Realtime: nur im Arzt-Patient- oder Arzt-Arzt-Modus.";
   } else if (connecting) {
@@ -4612,8 +4622,118 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
   };
 }
 
+function openRealtimeWebSocketWithTimeout(url, protocols, timeoutMs) {
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    let timeoutId = null;
+    let socket = null;
+
+    const finish = (handler, value) => {
+      if (settled) return;
+      settled = true;
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+      if (socket) {
+        socket.removeEventListener("open", onOpen);
+        socket.removeEventListener("error", onError);
+        socket.removeEventListener("close", onClose);
+      }
+      handler(value);
+    };
+
+    const onOpen = () => finish(resolve, socket);
+    const onError = () => finish(reject, new Error("Realtime WebSocket-Handshake fehlgeschlagen."));
+    const onClose = (event) => {
+      const code = Number(event?.code || 0);
+      const reason = String(event?.reason || "").trim();
+      finish(
+        reject,
+        new Error(
+          `Realtime WebSocket wurde beim Verbindungsaufbau geschlossen (Code ${code}${
+            reason ? `, ${reason}` : ""
+          }).`
+        )
+      );
+    };
+
+    try {
+      socket = new WebSocket(url, protocols);
+    } catch (error) {
+      reject(error);
+      return;
+    }
+
+    socket.addEventListener("open", onOpen);
+    socket.addEventListener("error", onError);
+    socket.addEventListener("close", onClose);
+
+    timeoutId = window.setTimeout(() => {
+      try {
+        socket.close(1000, "connect-timeout");
+      } catch {
+        // ignore
+      }
+      finish(reject, new Error(`Realtime WebSocket-Timeout nach ${Math.round(timeoutMs / 1000)}s.`));
+    }, timeoutMs);
+  });
+}
+
+async function connectRealtimeViaWebSocket(payload) {
+  const tokenResponse = await fetchWithTimeout(
+    "/api/voice-realtime-token",
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload)
+    },
+    REALTIME_CONNECT_TIMEOUT_MS
+  );
+  const tokenBody = await tokenResponse.json().catch(() => ({}));
+  const clientSecret = String(tokenBody?.value || "").trim();
+  if (!tokenResponse.ok || !clientSecret) {
+    const message = String(tokenBody?.error || "Ephemeral-Token fehlgeschlagen.");
+    const detail = String(tokenBody?.details || "");
+    throw new Error(detail ? `${message} ${detail}` : message);
+  }
+
+  const realtimeModel =
+    tokenBody?.realtimeModel === OPENAI_REALTIME_MODEL_STRONG
+      ? OPENAI_REALTIME_MODEL_STRONG
+      : OPENAI_REALTIME_MODEL_FAST;
+  const wsUrl = `wss://api.openai.com/v1/realtime?model=${encodeURIComponent(realtimeModel)}`;
+  const wsProtocolVariants = [
+    ["realtime", `openai-insecure-api-key.${clientSecret}`, "openai-beta.realtime-v1"],
+    ["realtime", `openai-insecure-api-key.${clientSecret}`]
+  ];
+  let socket = null;
+  let lastWsError = null;
+  for (const protocols of wsProtocolVariants) {
+    try {
+      socket = await openRealtimeWebSocketWithTimeout(wsUrl, protocols, REALTIME_CONNECT_TIMEOUT_MS);
+      break;
+    } catch (error) {
+      lastWsError = error;
+      console.warn("Realtime WebSocket-Protokollvariante fehlgeschlagen", { protocols, error });
+    }
+  }
+  if (!socket) {
+    throw new Error(
+      `Realtime WebSocket konnte nicht aufgebaut werden: ${String(
+        lastWsError?.message || "Unbekannter Fehler"
+      )}`
+    );
+  }
+
+  return {
+    socket,
+    realtimeModel,
+    pathLabel: "WebSocket-ephemeral"
+  };
+}
+
 async function startVoiceRealtimeSession() {
-  let activePeerConnection = null;
   state.voiceRealtimeConnecting = true;
   state.voiceRealtimeActive = false;
   state.voiceRealtimeMuted = false;
@@ -4625,138 +4745,58 @@ async function startVoiceRealtimeSession() {
   setVoiceStatus("Realtime wird aufgebaut ...");
 
   try {
-    const localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    realtimeLocalStream = localStream;
+    if (REALTIME_TRANSPORT_MODE === "websocket") {
+      const connectPayload = buildRealtimeConnectPayload("");
+      setVoiceStatus("Realtime verbindet (WebSocket) ...");
+      const connectResult = await connectRealtimeViaWebSocket(connectPayload);
+      const socket = connectResult.socket;
+      realtimeWebSocket = socket;
+      realtimePeerConnection = null;
+      realtimeLocalStream = null;
+      realtimeDataChannel = null;
 
-    const peerConnection = new RTCPeerConnection();
-    activePeerConnection = peerConnection;
-    realtimePeerConnection = peerConnection;
-
-    for (const track of localStream.getTracks()) {
-      peerConnection.addTrack(track, localStream);
-    }
-
-    peerConnection.ontrack = (event) => {
-      const audioEl = refs.voiceRealtimeAudio;
-      if (!audioEl) return;
-      const stream = event?.streams?.[0] || null;
-      if (!stream) return;
-      audioEl.srcObject = stream;
-      audioEl.classList.remove("hidden");
-      void audioEl.play().catch(() => {});
-    };
-
-    peerConnection.onconnectionstatechange = () => {
-      if (peerConnection !== realtimePeerConnection) return;
-      const stateValue = peerConnection.connectionState;
-      if (stateValue === "connected") {
-        state.voiceRealtimeConnecting = false;
-        state.voiceRealtimeActive = true;
-        updateVoiceRealtimeUi();
-        setVoiceBusy(state.voiceBusy);
-        return;
-      }
-      if ((stateValue === "failed" || stateValue === "disconnected") && state.voiceRealtimeActive) {
-        stopVoiceRealtimeSession({ preserveStatus: true, reason: "connection-lost", silent: true });
-        setVoiceStatus("Realtime-Verbindung wurde getrennt. Du kannst erneut starten.", true);
-      }
-    };
-
-    realtimeDataChannel = null;
-    if (REALTIME_USE_DATA_CHANNEL) {
-      const events = peerConnection.createDataChannel("oai-events");
-      realtimeDataChannel = events;
-      events.onmessage = (event) => {
+      socket.onmessage = (event) => {
         handleRealtimeEventMessage(event?.data);
       };
-      events.onerror = () => {
-        setVoiceStatus("Realtime-Datenkanal: Verbindungsproblem erkannt.", true);
+      socket.onerror = () => {
+        if (socket !== realtimeWebSocket) return;
+        setVoiceStatus("Realtime WebSocket: Verbindungsproblem erkannt.", true);
       };
-      events.onopen = () => {
-        if (events !== realtimeDataChannel) return;
-        if (isDoctorConversationMode()) {
-          try {
-            sendRealtimeDataEvent({ type: "response.create" });
-          } catch (error) {
-            console.warn("Realtime-Startantwort konnte nicht angefordert werden", error);
-          }
-        }
+      socket.onclose = (event) => {
+        if (socket !== realtimeWebSocket) return;
+        const closeCode = Number(event?.code || 0);
+        const closeReason = String(event?.reason || "").trim();
+        stopVoiceRealtimeSession({ preserveStatus: true, reason: "connection-lost", silent: true });
         setVoiceStatus(
-          isDoctorConversationMode()
-            ? "Realtime aktiv. Die pruefende KI startet das Arzt-Arzt-Gespraech."
-            : "Realtime aktiv. Sprich direkt mit der Patientensimulation."
+          `Realtime WebSocket getrennt (Code ${closeCode}${closeReason ? `, ${closeReason}` : ""}).`,
+          true
         );
       };
-    }
 
-    const offer = await peerConnection.createOffer({
-      offerToReceiveAudio: true
-    });
-    await peerConnection.setLocalDescription(offer);
-    const connectPayload = buildRealtimeConnectPayload(offer?.sdp || "");
-    let connectResult = null;
-    if (REALTIME_USE_UNIFIED_CONNECT) {
-      let unifiedErrorMessage = "";
-      try {
-        connectResult = await connectRealtimeViaUnified(peerConnection, connectPayload);
-      } catch (unifiedError) {
-        unifiedErrorMessage = String(unifiedError?.message || "").trim();
-        console.warn("Realtime Unified fehlgeschlagen, versuche Ephemeral-Fallback", unifiedError);
-        setVoiceStatus("Realtime Unified fehlgeschlagen, starte Ephemeral-Fallback ...");
+      state.voiceRealtimeConnecting = false;
+      state.voiceRealtimeActive = true;
+      state.voiceRealtimeMuted = false;
+      state.voiceRealtimeModel = connectResult.realtimeModel;
+      updateVoiceRealtimeUi();
+      setVoiceBusy(state.voiceBusy);
+      trackRealtimeSessionStart(state.voiceRealtimeModel);
+
+      if (isDoctorConversationMode()) {
         try {
-          connectResult = await connectRealtimeViaEphemeral(peerConnection, connectPayload);
-        } catch (ephemeralError) {
-          const epMsg = String(ephemeralError?.message || "Ephemeral-Fallback fehlgeschlagen.");
-          if (unifiedErrorMessage) {
-            throw new Error(`${epMsg} | Unified zuvor: ${unifiedErrorMessage}`);
-          }
-          throw ephemeralError;
+          sendRealtimeDataEvent({ type: "response.create" });
+        } catch (error) {
+          console.warn("Realtime-Startantwort konnte nicht angefordert werden", error);
         }
       }
-    } else {
-      try {
-        setVoiceStatus("Realtime verbindet (Ephemeral-Handshake) ...");
-        connectResult = await connectRealtimeViaEphemeral(peerConnection, connectPayload);
-      } catch (ephemeralError) {
-        console.warn("Realtime Ephemeral fehlgeschlagen, versuche Unified-Fallback", ephemeralError);
-        setVoiceStatus("Realtime Ephemeral fehlgeschlagen, versuche Unified-Fallback ...");
-        try {
-          connectResult = await connectRealtimeViaUnified(peerConnection, connectPayload);
-        } catch (unifiedError) {
-          throw new Error(
-            `${String(ephemeralError?.message || "Ephemeral fehlgeschlagen.")} | Unified fallback: ${String(
-              unifiedError?.message || "Unified fehlgeschlagen."
-            )}`
-          );
-        }
-      }
-    }
-    if (peerConnection !== realtimePeerConnection) {
+
+      setVoiceStatus(
+        `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Du kannst per Text direkt interagieren.`
+      );
       return;
     }
 
-    state.voiceRealtimeConnecting = false;
-    state.voiceRealtimeActive = true;
-    state.voiceRealtimeMuted = false;
-    state.voiceRealtimeModel = connectResult.realtimeModel;
-    updateVoiceRealtimeUi();
-    setVoiceBusy(state.voiceBusy);
-    trackRealtimeSessionStart(state.voiceRealtimeModel);
-    const compatibilityHint = REALTIME_USE_DATA_CHANNEL
-      ? ""
-      : " Kompatibilitaetsmodus aktiv (Audio-only).";
-    setVoiceStatus(
-      `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Du kannst direkt starten.${compatibilityHint}`
-    );
+    throw new Error("Realtime-Transport nicht unterstuetzt.");
   } catch (error) {
-    if (
-      activePeerConnection &&
-      activePeerConnection !== realtimePeerConnection &&
-      !state.voiceRealtimeConnecting &&
-      !state.voiceRealtimeActive
-    ) {
-      return;
-    }
     console.error(error);
     stopVoiceRealtimeSession({ preserveStatus: true, silent: true });
     setVoiceStatus(
@@ -4786,6 +4826,22 @@ function stopVoiceRealtimeSession(options = {}) {
       dataChannel.onmessage = null;
       dataChannel.onerror = null;
       dataChannel.close();
+    } catch {
+      // ignore
+    }
+  }
+
+  const realtimeSocket = realtimeWebSocket;
+  realtimeWebSocket = null;
+  if (realtimeSocket) {
+    try {
+      realtimeSocket.onopen = null;
+      realtimeSocket.onmessage = null;
+      realtimeSocket.onerror = null;
+      realtimeSocket.onclose = null;
+      if (realtimeSocket.readyState === WebSocket.OPEN || realtimeSocket.readyState === WebSocket.CONNECTING) {
+        realtimeSocket.close(1000, "client-stop");
+      }
     } catch {
       // ignore
     }
@@ -4830,16 +4886,18 @@ function stopVoiceRealtimeSession(options = {}) {
 }
 
 function sendRealtimeDataEvent(eventBody) {
-  if (!realtimeDataChannel || realtimeDataChannel.readyState !== "open") {
-    throw new Error("Realtime-Datenkanal ist nicht offen.");
+  if (realtimeDataChannel && realtimeDataChannel.readyState === "open") {
+    realtimeDataChannel.send(JSON.stringify(eventBody));
+    return;
   }
-  realtimeDataChannel.send(JSON.stringify(eventBody));
+  if (realtimeWebSocket && realtimeWebSocket.readyState === WebSocket.OPEN) {
+    realtimeWebSocket.send(JSON.stringify(eventBody));
+    return;
+  }
+  throw new Error("Kein offener Realtime-Kanal verfuegbar.");
 }
 
 function sendRealtimeTextInput(text) {
-  if (!REALTIME_USE_DATA_CHANNEL) {
-    throw new Error("Realtime-Text ist im Audio-only-Kompatibilitaetsmodus deaktiviert.");
-  }
   const userText = String(text || "")
     .trim()
     .slice(0, MAX_VOICE_QUESTION_LENGTH);
@@ -4890,6 +4948,7 @@ function handleRealtimeEventMessage(rawData) {
     refs.voiceCoachHint.textContent = "";
     refs.voiceCoachHint.classList.add("hidden");
     appendRealtimeConversationTurn(realtimePendingUserText, assistantText);
+    void speakWithLocalGermanVoice(assistantText);
     realtimePendingUserText = "";
     setVoiceStatus("Realtime-Antwort erhalten. Du kannst direkt fortfahren.");
   }
@@ -4911,8 +4970,8 @@ function extractRealtimeAssistantText(eventPayload) {
   if (eventType === "response.audio_transcript.done") {
     return normalizeRealtimeSnippet(eventPayload?.transcript);
   }
-  if (eventType === "response.output_text.done") {
-    return normalizeRealtimeSnippet(eventPayload?.text);
+  if (eventType === "response.output_text.done" || eventType === "response.text.done") {
+    return normalizeRealtimeSnippet(eventPayload?.text || eventPayload?.transcript || "");
   }
   if (
     eventType === "conversation.item.created" &&
