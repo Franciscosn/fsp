@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "30";
-const BUILD_UPDATED_AT = "2026-02-26 01:45 CET";
+const APP_VERSION = "31";
+const BUILD_UPDATED_AT = "2026-02-26 02:05 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3596,9 +3596,14 @@ function collectInlineIceCandidates(value) {
       continue;
     }
     if (!text.startsWith("a=candidate:")) continue;
+    const sanitizedLine = sanitizeCandidateLine(text);
+    const body = sanitizedLine.slice("a=candidate:".length).trim();
+    const tokens = body.split(/\s+/).filter(Boolean);
+    const transport = String(tokens[2] || "").toLowerCase();
+    if (transport && transport !== "udp") continue;
 
     result.push({
-      candidate: text.slice("a=".length),
+      candidate: sanitizedLine.slice("a=".length),
       sdpMid: currentMid || undefined,
       sdpMLineIndex: currentMLineIndex >= 0 ? currentMLineIndex : undefined
     });
@@ -3814,8 +3819,7 @@ function buildMinimalAudioAnswerSdp(value) {
     ...findLinesByRegex(audioSection, /^a=maxptime:/),
     ...findLinesByRegex(audioSection, /^a=extmap:/),
     ...findLinesByRegex(audioSection, /^a=ssrc:/),
-    ...findLinesByRegex(audioSection, /^a=ssrc-group:/),
-    ...findLinesByRegex(audioSection, /^a=msid:/)
+    ...findLinesByRegex(audioSection, /^a=ssrc-group:/)
   ];
 
   const minimalLines = [
@@ -3831,6 +3835,50 @@ function buildMinimalAudioAnswerSdp(value) {
   ];
 
   return joinSdpLines(minimalLines);
+}
+
+function buildMinimalAudioStaticSdp(value) {
+  const normalized = normalizeSdpForWebRtc(value);
+  if (!normalized) return "";
+
+  const { sessionLines, mediaSections } = splitSdpIntoSections(normalized);
+  const audioSection = mediaSections.find((section) => String(section?.[0] || "").startsWith("m=audio "));
+  if (!audioSection) return "";
+
+  const audioCLine =
+    findFirstLineByPrefix(audioSection, "c=") || findFirstLineByPrefix(sessionLines, "c=") || "c=IN IP4 0.0.0.0";
+  const setupLine =
+    findFirstLineByPrefix(audioSection, "a=setup:") ||
+    findFirstLineByPrefix(sessionLines, "a=setup:") ||
+    "a=setup:active";
+  const iceUfrag =
+    findFirstLineByPrefix(audioSection, "a=ice-ufrag:") ||
+    findFirstLineByPrefix(sessionLines, "a=ice-ufrag:");
+  const icePwd =
+    findFirstLineByPrefix(audioSection, "a=ice-pwd:") || findFirstLineByPrefix(sessionLines, "a=ice-pwd:");
+  const rtcpMux = findFirstLineByPrefix(audioSection, "a=rtcp-mux") || "a=rtcp-mux";
+  const fingerprint =
+    findFirstLineByPrefix(sessionLines, "a=fingerprint:") ||
+    findFirstLineByPrefix(audioSection, "a=fingerprint:");
+
+  if (!iceUfrag || !icePwd || !fingerprint) return "";
+
+  const staticMLine = "m=audio 9 UDP/TLS/RTP/SAVPF 0 8";
+  const lines = [
+    findFirstLineByPrefix(sessionLines, "v=") || "v=0",
+    findFirstLineByPrefix(sessionLines, "o=") || "o=- 0 0 IN IP4 0.0.0.0",
+    findFirstLineByPrefix(sessionLines, "s=") || "s=-",
+    findFirstLineByPrefix(sessionLines, "t=") || "t=0 0",
+    fingerprint,
+    staticMLine,
+    audioCLine,
+    "a=mid:0",
+    setupLine,
+    iceUfrag,
+    icePwd,
+    rtcpMux
+  ];
+  return joinSdpLines(lines);
 }
 
 function getAudioSectionTrickleCandidates(value) {
@@ -4196,6 +4244,25 @@ function buildSdpCandidateList(rawValue) {
       list.push({
         label: "minimal-audio-trickle",
         value: minimalAudioSdp,
+        trickleCandidates: minimalAudioCandidates
+      });
+    }
+  }
+
+  const minimalAudioStaticSdp = buildMinimalAudioStaticSdp(
+    audioOnlyNoInlineSctp || audioOnlyNoInline || audioOnly || normalized
+  );
+  pushUniqueSdpCandidate(list, "minimal-audio-static", minimalAudioStaticSdp);
+  if (minimalAudioStaticSdp && minimalAudioCandidates.length) {
+    const existingStaticMinimal = list.find(
+      (entry) => String(entry?.value || "").trim() === String(minimalAudioStaticSdp).trim()
+    );
+    if (existingStaticMinimal) {
+      existingStaticMinimal.trickleCandidates = minimalAudioCandidates;
+    } else {
+      list.push({
+        label: "minimal-audio-static-trickle",
+        value: minimalAudioStaticSdp,
         trickleCandidates: minimalAudioCandidates
       });
     }
