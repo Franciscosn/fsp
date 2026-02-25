@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "23";
-const BUILD_UPDATED_AT = "2026-02-26 00:04 CET";
+const APP_VERSION = "24";
+const BUILD_UPDATED_AT = "2026-02-26 00:18 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3543,6 +3543,38 @@ function sanitizeSdpCandidateLines(value) {
   );
 }
 
+function keepOnlyUdpCandidates(value) {
+  const lines = splitSdpLines(value);
+  if (!lines.length) return "";
+  const filtered = [];
+  let removedTcpCount = 0;
+
+  for (const line of lines) {
+    const text = String(line || "").trim();
+    if (!text.startsWith("a=candidate:")) {
+      filtered.push(text);
+      continue;
+    }
+
+    const body = text.slice("a=candidate:".length).trim();
+    const tokens = body.split(/\s+/).filter(Boolean);
+    const transport = String(tokens[2] || "").toLowerCase();
+    if (transport && transport !== "udp") {
+      removedTcpCount += 1;
+      continue;
+    }
+    filtered.push(text);
+  }
+
+  if (!filtered.length) return "";
+  // Keep at least one candidate set; if everything got removed, return original.
+  const hasAnyCandidate = filtered.some((line) => String(line || "").startsWith("a=candidate:"));
+  if (!hasAnyCandidate && removedTcpCount > 0) {
+    return joinSdpLines(lines);
+  }
+  return joinSdpLines(filtered);
+}
+
 function stripApplicationMediaSection(value) {
   const lines = filterValidSdpLines(segmentSdpLines(splitSdpLines(value)));
   if (!lines.length) return "";
@@ -3828,6 +3860,9 @@ function buildSdpCandidateList(rawValue) {
   );
   pushUniqueSdpCandidate(list, "candidate-sanitized", candidateSanitized);
 
+  const udpOnlyCandidates = normalizeSdpForWebRtc(keepOnlyUdpCandidates(candidateSanitized || normalized));
+  pushUniqueSdpCandidate(list, "udp-candidates-only", udpOnlyCandidates);
+
   const lfVariant = normalizeSdpLineBreaks(extractedText || rawText, "lf", false);
   pushUniqueSdpCandidate(list, "lf-only", lfVariant);
 
@@ -3837,7 +3872,7 @@ function buildSdpCandidateList(rawValue) {
   const crlfFinal = normalizeSdpLineBreaks(extractedText || rawText, "crlf", true);
   pushUniqueSdpCandidate(list, "crlf-final-break", crlfFinal);
 
-  const audioOnly = stripApplicationMediaSection(candidateSanitized || normalized);
+  const audioOnly = stripApplicationMediaSection(udpOnlyCandidates || candidateSanitized || normalized);
   pushUniqueSdpCandidate(list, "audio-only", audioOnly);
 
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
@@ -3896,12 +3931,20 @@ async function connectRealtimeViaUnified(peerConnection, payload) {
     },
     REALTIME_CONNECT_TIMEOUT_MS
   );
-  const body = await response.json().catch(() => ({}));
+  const rawBodyText = await response.text();
+  const body = parseJsonSafe(rawBodyText) || {};
   const rawSdp = body?.sdp || body?.answer_sdp || body?.answer || "";
   if (!response.ok || !String(rawSdp || "").trim()) {
     const message = String(body?.error || "Unified-Handshake fehlgeschlagen.");
-    const detail = String(body?.details || "");
-    const err = new Error(detail ? `${message} ${detail}` : message);
+    const detail = String(body?.details || "").trim();
+    const statusDetail = `HTTP ${response.status}`;
+    const responseSnippet = String(rawBodyText || "")
+      .replace(/\s+/g, " ")
+      .slice(0, 220);
+    const combinedDetailParts = [detail, statusDetail, responseSnippet].filter(Boolean);
+    const err = new Error(
+      combinedDetailParts.length ? `${message} ${combinedDetailParts.join(" | ")}` : message
+    );
     err.code = "REALTIME_UNIFIED_FAILED";
     throw err;
   }
