@@ -185,7 +185,8 @@ function buildSessionInstructions(mode, promptText, caseText) {
     caseText,
     "",
     modeHint,
-    "Bleibe strikt beim Fall und antworte ausschliesslich auf Deutsch."
+    "Bleibe strikt beim Fall und antworte ausschliesslich auf Deutsch.",
+    "Ausgaberegel Realtime: Antworte nur als natuerlicher Gespraechstext (1-3 Saetze), niemals als JSON, niemals mit Feldnamen."
   ]
     .join("\n")
     .slice(0, MAX_INSTRUCTIONS_LENGTH);

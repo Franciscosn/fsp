@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "37";
-const BUILD_UPDATED_AT = "2026-02-26 04:14 CET";
+const APP_VERSION = "38";
+const BUILD_UPDATED_AT = "2026-02-26 04:31 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -4782,25 +4782,6 @@ async function startVoiceRealtimeSession() {
       updateVoiceRecordButton();
       setVoiceBusy(state.voiceBusy);
       trackRealtimeSessionStart(state.voiceRealtimeModel);
-      try {
-        sendRealtimeDataEvent({
-          type: "session.update",
-          session: {
-            modalities: ["text", "audio"],
-            audio: {
-              input: {
-                turn_detection: null
-              },
-              output: {
-                voice: OPENAI_REALTIME_DEFAULT_VOICE
-              }
-            }
-          }
-        });
-      } catch (error) {
-        console.warn("Realtime session.update konnte nicht gesetzt werden", error);
-      }
-
       if (isDoctorConversationMode()) {
         try {
           sendRealtimeDataEvent(buildRealtimeResponseCreateEvent());
@@ -5001,7 +4982,7 @@ function handleRealtimeEventMessage(rawData) {
     void enqueueRealtimeAssistantAudio(assistantAudioDelta);
   }
 
-  const assistantText = extractRealtimeAssistantText(eventPayload);
+  const assistantText = normalizeRealtimeAssistantDialogText(extractRealtimeAssistantText(eventPayload));
   if (assistantText) {
     refs.voiceAssistantReply.textContent = assistantText;
     refs.voiceLastTurn.classList.remove("hidden");
@@ -5050,6 +5031,46 @@ function extractRealtimeAssistantAudioDelta(eventPayload) {
     return typeof eventPayload?.delta === "string" ? eventPayload.delta.trim() : "";
   }
   return "";
+}
+
+function normalizeRealtimeAssistantDialogText(value) {
+  const normalized = normalizeRealtimeSnippet(value);
+  if (!normalized) return "";
+  const parsed = parseRealtimeAssistantJson(normalized);
+  if (!parsed || typeof parsed !== "object") {
+    return normalized;
+  }
+  const preferredKeys = [
+    "patient_reply",
+    "examiner_reply",
+    "assistant_reply",
+    "reply",
+    "message",
+    "text"
+  ];
+  for (const key of preferredKeys) {
+    const candidate = normalizeRealtimeSnippet(parsed?.[key]);
+    if (candidate) {
+      return candidate;
+    }
+  }
+  return normalized;
+}
+
+function parseRealtimeAssistantJson(value) {
+  const direct = parseJsonSafe(String(value || ""));
+  if (direct && typeof direct === "object") {
+    return direct;
+  }
+  const codeBlockMatch = String(value || "").match(/```(?:json)?\s*([\s\S]*?)```/i);
+  if (!codeBlockMatch?.[1]) {
+    return null;
+  }
+  const parsedCodeBlock = parseJsonSafe(String(codeBlockMatch[1] || "").trim());
+  if (parsedCodeBlock && typeof parsedCodeBlock === "object") {
+    return parsedCodeBlock;
+  }
+  return null;
 }
 
 function extractRealtimeTextFromResponseDone(responsePayload) {
