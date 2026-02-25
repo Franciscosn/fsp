@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "36";
-const BUILD_UPDATED_AT = "2026-02-26 04:02 CET";
+const APP_VERSION = "37";
+const BUILD_UPDATED_AT = "2026-02-26 04:14 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3281,7 +3281,7 @@ function buildVoiceReadyStatus() {
     return `Realtime wird verbunden (${getRealtimeModeLabel()}) ...`;
   }
   if (state.voiceRealtimeActive) {
-    return `Realtime aktiv (${getRealtimeModeLabel()}). Nutze den Aufnahme-Button fuers direkte Audio-Gespraech oder sende Text.`;
+    return `Realtime aktiv (${getRealtimeModeLabel()}). Nutze den Button "🎤 Realtime sprechen" oder sende Text.`;
   }
   if (isDiagnosisMode()) {
     return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
@@ -4942,10 +4942,7 @@ function sendRealtimeTextInput(text) {
 
 function buildRealtimeResponseCreateEvent() {
   return {
-    type: "response.create",
-    response: {
-      modalities: ["text", "audio"]
-    }
+    type: "response.create"
   };
 }
 
