@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "29";
-const BUILD_UPDATED_AT = "2026-02-26 01:27 CET";
+const APP_VERSION = "30";
+const BUILD_UPDATED_AT = "2026-02-26 01:45 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -45,6 +45,8 @@ const OPENAI_REALTIME_MODEL_FAST = "gpt-realtime-mini";
 const OPENAI_REALTIME_MODEL_STRONG = "gpt-realtime";
 const OPENAI_REALTIME_DEFAULT_VOICE = "sage";
 const REALTIME_CONNECT_TIMEOUT_MS = 20_000;
+const REALTIME_USE_DATA_CHANNEL = false;
+const REALTIME_USE_UNIFIED_CONNECT = false;
 const OPENAI_REALTIME_PRICING_USD_PER_1M = Object.freeze({
   "gpt-realtime": Object.freeze({
     textInput: 4,
@@ -4448,29 +4450,32 @@ async function startVoiceRealtimeSession() {
       }
     };
 
-    const events = peerConnection.createDataChannel("oai-events");
-    realtimeDataChannel = events;
-    events.onmessage = (event) => {
-      handleRealtimeEventMessage(event?.data);
-    };
-    events.onerror = () => {
-      setVoiceStatus("Realtime-Datenkanal: Verbindungsproblem erkannt.", true);
-    };
-    events.onopen = () => {
-      if (events !== realtimeDataChannel) return;
-      if (isDoctorConversationMode()) {
-        try {
-          sendRealtimeDataEvent({ type: "response.create" });
-        } catch (error) {
-          console.warn("Realtime-Startantwort konnte nicht angefordert werden", error);
+    realtimeDataChannel = null;
+    if (REALTIME_USE_DATA_CHANNEL) {
+      const events = peerConnection.createDataChannel("oai-events");
+      realtimeDataChannel = events;
+      events.onmessage = (event) => {
+        handleRealtimeEventMessage(event?.data);
+      };
+      events.onerror = () => {
+        setVoiceStatus("Realtime-Datenkanal: Verbindungsproblem erkannt.", true);
+      };
+      events.onopen = () => {
+        if (events !== realtimeDataChannel) return;
+        if (isDoctorConversationMode()) {
+          try {
+            sendRealtimeDataEvent({ type: "response.create" });
+          } catch (error) {
+            console.warn("Realtime-Startantwort konnte nicht angefordert werden", error);
+          }
         }
-      }
-      setVoiceStatus(
-        isDoctorConversationMode()
-          ? "Realtime aktiv. Die pruefende KI startet das Arzt-Arzt-Gespraech."
-          : "Realtime aktiv. Sprich direkt mit der Patientensimulation."
-      );
-    };
+        setVoiceStatus(
+          isDoctorConversationMode()
+            ? "Realtime aktiv. Die pruefende KI startet das Arzt-Arzt-Gespraech."
+            : "Realtime aktiv. Sprich direkt mit der Patientensimulation."
+        );
+      };
+    }
 
     const offer = await peerConnection.createOffer({
       offerToReceiveAudio: true
@@ -4478,21 +4483,40 @@ async function startVoiceRealtimeSession() {
     await peerConnection.setLocalDescription(offer);
     const connectPayload = buildRealtimeConnectPayload(offer?.sdp || "");
     let connectResult = null;
-    let unifiedErrorMessage = "";
-    try {
-      connectResult = await connectRealtimeViaUnified(peerConnection, connectPayload);
-    } catch (unifiedError) {
-      unifiedErrorMessage = String(unifiedError?.message || "").trim();
-      console.warn("Realtime Unified fehlgeschlagen, versuche Ephemeral-Fallback", unifiedError);
-      setVoiceStatus("Realtime Unified fehlgeschlagen, starte Ephemeral-Fallback ...");
+    if (REALTIME_USE_UNIFIED_CONNECT) {
+      let unifiedErrorMessage = "";
       try {
+        connectResult = await connectRealtimeViaUnified(peerConnection, connectPayload);
+      } catch (unifiedError) {
+        unifiedErrorMessage = String(unifiedError?.message || "").trim();
+        console.warn("Realtime Unified fehlgeschlagen, versuche Ephemeral-Fallback", unifiedError);
+        setVoiceStatus("Realtime Unified fehlgeschlagen, starte Ephemeral-Fallback ...");
+        try {
+          connectResult = await connectRealtimeViaEphemeral(peerConnection, connectPayload);
+        } catch (ephemeralError) {
+          const epMsg = String(ephemeralError?.message || "Ephemeral-Fallback fehlgeschlagen.");
+          if (unifiedErrorMessage) {
+            throw new Error(`${epMsg} | Unified zuvor: ${unifiedErrorMessage}`);
+          }
+          throw ephemeralError;
+        }
+      }
+    } else {
+      try {
+        setVoiceStatus("Realtime verbindet (Ephemeral-Handshake) ...");
         connectResult = await connectRealtimeViaEphemeral(peerConnection, connectPayload);
       } catch (ephemeralError) {
-        const epMsg = String(ephemeralError?.message || "Ephemeral-Fallback fehlgeschlagen.");
-        if (unifiedErrorMessage) {
-          throw new Error(`${epMsg} | Unified zuvor: ${unifiedErrorMessage}`);
+        console.warn("Realtime Ephemeral fehlgeschlagen, versuche Unified-Fallback", ephemeralError);
+        setVoiceStatus("Realtime Ephemeral fehlgeschlagen, versuche Unified-Fallback ...");
+        try {
+          connectResult = await connectRealtimeViaUnified(peerConnection, connectPayload);
+        } catch (unifiedError) {
+          throw new Error(
+            `${String(ephemeralError?.message || "Ephemeral fehlgeschlagen.")} | Unified fallback: ${String(
+              unifiedError?.message || "Unified fehlgeschlagen."
+            )}`
+          );
         }
-        throw ephemeralError;
       }
     }
     if (peerConnection !== realtimePeerConnection) {
@@ -4506,8 +4530,11 @@ async function startVoiceRealtimeSession() {
     updateVoiceRealtimeUi();
     setVoiceBusy(state.voiceBusy);
     trackRealtimeSessionStart(state.voiceRealtimeModel);
+    const compatibilityHint = REALTIME_USE_DATA_CHANNEL
+      ? ""
+      : " Kompatibilitaetsmodus aktiv (Audio-only).";
     setVoiceStatus(
-      `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Du kannst direkt starten.`
+      `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Du kannst direkt starten.${compatibilityHint}`
     );
   } catch (error) {
     if (
@@ -4598,6 +4625,9 @@ function sendRealtimeDataEvent(eventBody) {
 }
 
 function sendRealtimeTextInput(text) {
+  if (!REALTIME_USE_DATA_CHANNEL) {
+    throw new Error("Realtime-Text ist im Audio-only-Kompatibilitaetsmodus deaktiviert.");
+  }
   const userText = String(text || "")
     .trim()
     .slice(0, MAX_VOICE_QUESTION_LENGTH);
@@ -4743,7 +4773,10 @@ async function handleVoiceTextSend() {
       refs.voiceTextInput.value = "";
       setVoiceStatus("Text an die Realtime-Sitzung gesendet.");
     } catch (error) {
-      setVoiceStatus("Realtime-Text konnte nicht gesendet werden. Bitte Sitzung neu starten.", true);
+      setVoiceStatus(
+        `Realtime-Text konnte nicht gesendet werden: ${String(error?.message || "Unbekannter Fehler")}`,
+        true
+      );
       console.error(error);
     }
     return;
