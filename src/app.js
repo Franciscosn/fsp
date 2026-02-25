@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "21";
-const BUILD_UPDATED_AT = "2026-02-25 23:33 CET";
+const APP_VERSION = "22";
+const BUILD_UPDATED_AT = "2026-02-25 23:49 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3493,6 +3493,57 @@ function sanitizeSdpAscii(value) {
     .trim();
 }
 
+function normalizeSdpLineBreaks(value, mode = "crlf", ensureFinalBreak = false) {
+  const normalized = sanitizeSdpAscii(value)
+    .replace(/\r\n|\n|\r/g, "\n")
+    .split("\n")
+    .map((line) => String(line || "").trimEnd())
+    .join("\n")
+    .trim();
+  if (!normalized) return "";
+  const body = mode === "lf" ? normalized : normalized.replace(/\n/g, "\r\n");
+  if (!ensureFinalBreak) return body;
+  return mode === "lf" ? `${body}\n` : `${body}\r\n`;
+}
+
+function extractSdpFromResponseText(rawText) {
+  let text = String(rawText || "").trim();
+  if (!text) return "";
+
+  const parsed = parseJsonSafe(text);
+  if (parsed) {
+    if (typeof parsed === "string") {
+      text = parsed.trim();
+    } else if (typeof parsed === "object") {
+      const extracted = extractSdpFromJsonCandidate(parsed);
+      if (extracted) {
+        text = extracted;
+      }
+    }
+  }
+
+  if (text.includes("\\r\\n") || text.includes("\\n")) {
+    text = text.replace(/\\r\\n/g, "\n").replace(/\\n/g, "\n");
+  }
+
+  const sdpStart = text.indexOf("v=0");
+  if (sdpStart >= 0) {
+    text = text.slice(sdpStart);
+  }
+
+  // Remove multipart boundary or trailing JSON payload if present.
+  const boundaryIndex = text.search(/\r?\n--[^\r\n]+/);
+  if (boundaryIndex > 0) {
+    text = text.slice(0, boundaryIndex);
+  }
+  const trailingJsonIndex = text.search(/\r?\n\{"/);
+  if (trailingJsonIndex > 0) {
+    text = text.slice(0, trailingJsonIndex);
+  }
+
+  return text.trim();
+}
+
 function splitSdpLines(value) {
   return String(value || "")
     .split(/\r\n|\n|\r/)
@@ -3601,16 +3652,8 @@ function rebuildFlattenedSdp(value) {
 }
 
 function normalizeSdpForWebRtc(rawValue) {
-  let text = String(rawValue || "").trim();
+  let text = extractSdpFromResponseText(rawValue);
   if (!text) return "";
-
-  if (text.startsWith("{")) {
-    const parsed = parseJsonSafe(text);
-    const extracted = extractSdpFromJsonCandidate(parsed);
-    if (extracted) {
-      text = extracted;
-    }
-  }
 
   if (
     (text.startsWith("\"") && text.endsWith("\"")) ||
@@ -3653,11 +3696,12 @@ function looksLikeSdpAnswer(value) {
 
 function buildSdpCandidateList(rawValue) {
   const rawText = String(rawValue || "");
+  const extractedText = extractSdpFromResponseText(rawText);
   const list = [];
 
-  pushUniqueSdpCandidate(list, "raw", rawText);
+  pushUniqueSdpCandidate(list, "raw", extractedText || rawText);
 
-  const parsedFromRaw = parseJsonSafe(rawText);
+  const parsedFromRaw = parseJsonSafe(extractedText || rawText);
   if (parsedFromRaw && typeof parsedFromRaw === "object") {
     const extracted = extractSdpFromJsonCandidate(parsedFromRaw);
     pushUniqueSdpCandidate(list, "json-extracted", extracted);
@@ -3668,10 +3712,10 @@ function buildSdpCandidateList(rawValue) {
     pushUniqueSdpCandidate(list, "unescaped", unescaped);
   }
 
-  const normalized = normalizeSdpForWebRtc(rawText);
+  const normalized = normalizeSdpForWebRtc(extractedText || rawText);
   pushUniqueSdpCandidate(list, "normalized", normalized);
 
-  const lineBased = rawText
+  const lineBased = (extractedText || rawText)
     .replace(/\u0000/g, "")
     .split(/\r\n|\n|\r/)
     .map((line) => String(line || "").trimEnd())
@@ -3679,22 +3723,33 @@ function buildSdpCandidateList(rawValue) {
     .join("\r\n");
   pushUniqueSdpCandidate(list, "line-based", lineBased);
 
-  const asciiSanitized = sanitizeSdpAscii(rawText).replace(/\r\n|\n|\r/g, "\r\n");
+  const asciiSanitized = sanitizeSdpAscii(extractedText || rawText).replace(/\r\n|\n|\r/g, "\r\n");
   pushUniqueSdpCandidate(list, "ascii-sanitized", asciiSanitized);
 
-  const rebuiltFlat = normalizeSdpForWebRtc(rebuildFlattenedSdp(rawText));
+  const rebuiltFlat = normalizeSdpForWebRtc(rebuildFlattenedSdp(extractedText || rawText));
   pushUniqueSdpCandidate(list, "rebuilt-flat", rebuiltFlat);
 
   const segmentedStrict = joinSdpLines(
-    filterValidSdpLines(segmentSdpLines(splitSdpLines(sanitizeSdpAscii(rawText))))
+    filterValidSdpLines(segmentSdpLines(splitSdpLines(sanitizeSdpAscii(extractedText || rawText))))
   );
   pushUniqueSdpCandidate(list, "segmented-strict", segmentedStrict);
 
-  const mediaIceNormalized = moveSessionIceToMediaSections(normalizeSdpForWebRtc(rawText));
+  const mediaIceNormalized = moveSessionIceToMediaSections(
+    normalizeSdpForWebRtc(extractedText || rawText)
+  );
   pushUniqueSdpCandidate(list, "media-ice-normalized", mediaIceNormalized);
 
-  const optionalStripped = stripOptionalSdpLines(normalizeSdpForWebRtc(rawText));
+  const optionalStripped = stripOptionalSdpLines(normalizeSdpForWebRtc(extractedText || rawText));
   pushUniqueSdpCandidate(list, "optional-stripped", optionalStripped);
+
+  const lfVariant = normalizeSdpLineBreaks(extractedText || rawText, "lf", false);
+  pushUniqueSdpCandidate(list, "lf-only", lfVariant);
+
+  const lfFinal = normalizeSdpLineBreaks(extractedText || rawText, "lf", true);
+  pushUniqueSdpCandidate(list, "lf-final-break", lfFinal);
+
+  const crlfFinal = normalizeSdpLineBreaks(extractedText || rawText, "crlf", true);
+  pushUniqueSdpCandidate(list, "crlf-final-break", crlfFinal);
 
   return list.filter((entry) => String(entry?.value || "").includes("v=0"));
 }
@@ -3720,9 +3775,15 @@ async function setRemoteDescriptionWithSdpCandidates(peerConnection, rawSdp, con
     .slice(0, 420)
     .replace(/\r/g, "\\r")
     .replace(/\n/g, "\\n");
+  const rawTail = String(rawSdp || "")
+    .slice(-280)
+    .replace(/\r/g, "\\r")
+    .replace(/\n/g, "\\n");
   const message = String(lastError?.message || "setRemoteDescription fehlgeschlagen.");
   const tried = candidates.map((candidate) => candidate.label).join(", ");
-  throw new Error(`${contextLabel}: ${message}. SDP-Kandidaten: ${tried}. Antwortbeginn: ${rawPreview}`);
+  throw new Error(
+    `${contextLabel}: ${message}. SDP-Kandidaten: ${tried}. Antwortbeginn: ${rawPreview}. Antwortende: ${rawTail}`
+  );
 }
 
 function buildRealtimeConnectPayload(offerSdp) {
@@ -3828,19 +3889,13 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
       REALTIME_CONNECT_TIMEOUT_MS
     );
     const rawAnswer = await sdpResponse.text();
-    let answerSdp = String(rawAnswer || "").trim();
-    if (answerSdp.startsWith("{")) {
-      const parsed = parseJsonSafe(answerSdp);
-      const extracted = extractSdpFromJsonCandidate(parsed);
-      if (extracted) {
-        answerSdp = extracted;
-      }
-    }
+    const responseContentType = String(sdpResponse.headers.get("content-type") || "").toLowerCase();
+    const answerSdp = extractSdpFromResponseText(rawAnswer);
     if (!sdpResponse.ok || !answerSdp) {
       const err = new Error(
-        `Ephemeral-SDP (calls) fehlgeschlagen (HTTP ${sdpResponse.status}). ${String(
+        `Ephemeral-SDP (calls) fehlgeschlagen (HTTP ${sdpResponse.status}, content-type: ${responseContentType}). ${String(
           rawAnswer || ""
-        ).slice(0, 220)}`
+        ).slice(0, 280)}`
       );
       err.code = "REALTIME_EPHEMERAL_SDP_FAILED";
       throw err;

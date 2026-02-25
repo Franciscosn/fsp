@@ -108,7 +108,8 @@ export async function onRequestPost(context) {
     console.error("voice-realtime-connect error", error);
     return json(
       {
-        error: "Realtime-Verbindung fehlgeschlagen."
+        error: "Realtime-Verbindung fehlgeschlagen.",
+        details: safeParagraph(String(error?.message || ""), 500)
       },
       500
     );
