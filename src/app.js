@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "26";
-const BUILD_UPDATED_AT = "2026-02-26 00:43 CET";
+const APP_VERSION = "27";
+const BUILD_UPDATED_AT = "2026-02-26 00:56 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3618,6 +3618,18 @@ function stripInlineIceCandidates(value) {
   );
 }
 
+function stripSctpOptionalLines(value) {
+  const lines = splitSdpLines(value);
+  if (!lines.length) return "";
+  return joinSdpLines(
+    lines.filter((line) => {
+      const text = String(line || "").trim();
+      if (text.startsWith("a=max-message-size:")) return false;
+      return true;
+    })
+  );
+}
+
 function stripApplicationMediaSection(value) {
   const lines = filterValidSdpLines(segmentSdpLines(splitSdpLines(value)));
   if (!lines.length) return "";
@@ -3988,6 +4000,25 @@ function buildSdpCandidateList(rawValue) {
       list.push({
         label: "stripped-inline-candidates",
         value: strippedInlineCandidates,
+        trickleCandidates
+      });
+    }
+  }
+
+  const sctpOptionalStripped = normalizeSdpForWebRtc(
+    stripSctpOptionalLines(strippedInlineCandidates || udpOnlyCandidates || candidateSanitized || normalized)
+  );
+  pushUniqueSdpCandidate(list, "sctp-optional-stripped", sctpOptionalStripped);
+  if (sctpOptionalStripped && trickleCandidates.length) {
+    const alreadySctp = list.find(
+      (entry) => String(entry?.value || "").trim() === String(sctpOptionalStripped).trim()
+    );
+    if (alreadySctp) {
+      alreadySctp.trickleCandidates = trickleCandidates;
+    } else {
+      list.push({
+        label: "sctp-optional-stripped-trickle",
+        value: sctpOptionalStripped,
         trickleCandidates
       });
     }
