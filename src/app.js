@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "38";
-const BUILD_UPDATED_AT = "2026-02-26 04:31 CET";
+const APP_VERSION = "39";
+const BUILD_UPDATED_AT = "2026-02-26 04:52 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -5037,24 +5037,20 @@ function normalizeRealtimeAssistantDialogText(value) {
   const normalized = normalizeRealtimeSnippet(value);
   if (!normalized) return "";
   const parsed = parseRealtimeAssistantJson(normalized);
+  const doctorMode = isDoctorConversationMode();
   if (!parsed || typeof parsed !== "object") {
-    return normalized;
+    return doctorMode ? normalized : sanitizePatientRealtimeReply(normalized);
   }
-  const preferredKeys = [
-    "patient_reply",
-    "examiner_reply",
-    "assistant_reply",
-    "reply",
-    "message",
-    "text"
-  ];
+  const preferredKeys = doctorMode
+    ? ["examiner_reply", "assistant_reply", "reply", "message", "text", "patient_reply"]
+    : ["patient_reply", "assistant_reply", "reply", "message", "text"];
   for (const key of preferredKeys) {
     const candidate = normalizeRealtimeSnippet(parsed?.[key]);
     if (candidate) {
-      return candidate;
+      return doctorMode ? candidate : sanitizePatientRealtimeReply(candidate);
     }
   }
-  return normalized;
+  return doctorMode ? normalized : sanitizePatientRealtimeReply(normalized);
 }
 
 function parseRealtimeAssistantJson(value) {
@@ -5071,6 +5067,25 @@ function parseRealtimeAssistantJson(value) {
     return parsedCodeBlock;
   }
   return null;
+}
+
+function sanitizePatientRealtimeReply(value) {
+  const normalized = normalizeRealtimeSnippet(value);
+  if (!normalized) return "";
+  let cleaned = normalized.replace(/^(patient|patient_reply|antwort)\s*:\s*/i, "").trim();
+  if (!cleaned) return "";
+  if (!cleaned.includes("?")) {
+    return cleaned;
+  }
+  const nonQuestionSentences = cleaned
+    .split(/(?<=[.!?])\s+/)
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .filter((entry) => !entry.endsWith("?"));
+  if (nonQuestionSentences.length) {
+    return normalizeRealtimeSnippet(nonQuestionSentences.join(" "));
+  }
+  return "Ich kann das nicht ganz genau sagen, aber es ist in letzter Zeit mehrfach vorgekommen.";
 }
 
 function extractRealtimeTextFromResponseDone(responsePayload) {
