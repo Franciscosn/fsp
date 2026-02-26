@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "41";
-const BUILD_UPDATED_AT = "2026-02-26 05:23 CET";
+const APP_VERSION = "42";
+const BUILD_UPDATED_AT = "2026-02-26 06:12 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -1338,6 +1338,9 @@ let realtimePendingUserText = "";
 let realtimeUsageSeenResponseIds = new Set();
 let realtimeAudioContext = null;
 let realtimeAudioNextPlayTime = 0;
+let realtimePushToTalkSpaceDown = false;
+let realtimePushToTalkActive = false;
+let realtimePushToTalkStartInFlight = false;
 let xpMilestoneHideTimer = null;
 
 const CATEGORY_MAP = {
@@ -1847,8 +1850,12 @@ function wireEvents() {
     if (event.key === "Escape") {
       closeVoiceInfoModal();
       closeStatsOverlay();
+      return;
     }
+    void handleRealtimePushToTalkKeyDown(event);
   });
+  window.addEventListener("keyup", handleRealtimePushToTalkKeyUp);
+  window.addEventListener("blur", handleRealtimePushToTalkWindowBlur);
   window.addEventListener("beforeunload", () => {
     stopVoiceRealtimeSession({ preserveStatus: true, silent: true });
   });
@@ -3277,7 +3284,7 @@ function buildVoiceReadyStatus() {
     return `Realtime wird verbunden (${getRealtimeModeLabel()}) ...`;
   }
   if (state.voiceRealtimeActive) {
-    return `Realtime aktiv (${getRealtimeModeLabel()}). Nutze den Button "🎤 Realtime sprechen" oder sende Text.`;
+    return `Realtime aktiv (${getRealtimeModeLabel()}). Halte die Leertaste zum Sprechen, loslassen fuer sofortige Antwort.`;
   }
   if (isDiagnosisMode()) {
     return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
@@ -3332,6 +3339,100 @@ function updateVoiceModeUi() {
   }
   updateVoiceRealtimeUi();
   updateVoiceRecordButton();
+}
+
+function isSpaceKeyboardEvent(event) {
+  if (!event) return false;
+  return event.code === "Space" || event.key === " ";
+}
+
+function isInteractiveKeyboardTarget(target) {
+  if (!(target instanceof Element)) return false;
+  if (target.isContentEditable) return true;
+  return Boolean(target.closest("input, textarea, select, button, [contenteditable='true']"));
+}
+
+function canUseRealtimePushToTalk(event) {
+  if (!state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    return false;
+  }
+  if (!isRealtimeModeAllowed() || state.voiceBusy) {
+    return false;
+  }
+  if (event?.altKey || event?.ctrlKey || event?.metaKey) {
+    return false;
+  }
+  if (isInteractiveKeyboardTarget(event?.target)) {
+    return false;
+  }
+  return true;
+}
+
+function resetRealtimePushToTalkState() {
+  realtimePushToTalkSpaceDown = false;
+  realtimePushToTalkActive = false;
+  realtimePushToTalkStartInFlight = false;
+}
+
+async function handleRealtimePushToTalkKeyDown(event) {
+  if (!isSpaceKeyboardEvent(event)) return;
+  if (!canUseRealtimePushToTalk(event)) return;
+  event.preventDefault();
+  if (event.repeat) return;
+  if (realtimePushToTalkSpaceDown || state.voiceRecording || realtimePushToTalkStartInFlight) {
+    return;
+  }
+
+  realtimePushToTalkSpaceDown = true;
+  realtimePushToTalkActive = true;
+  realtimePushToTalkStartInFlight = true;
+
+  await startVoiceRecording();
+  realtimePushToTalkStartInFlight = false;
+
+  if (!state.voiceRecording) {
+    realtimePushToTalkActive = false;
+    return;
+  }
+
+  if (!realtimePushToTalkSpaceDown) {
+    stopVoiceRecording(true, "ptt-release");
+    realtimePushToTalkActive = false;
+  }
+}
+
+function handleRealtimePushToTalkKeyUp(event) {
+  if (!isSpaceKeyboardEvent(event)) return;
+  if (!realtimePushToTalkSpaceDown && !realtimePushToTalkActive && !realtimePushToTalkStartInFlight) {
+    return;
+  }
+  event.preventDefault();
+  realtimePushToTalkSpaceDown = false;
+
+  if (!state.voiceRealtimeActive || !realtimePushToTalkActive) {
+    if (!realtimePushToTalkStartInFlight) {
+      realtimePushToTalkActive = false;
+    }
+    return;
+  }
+
+  if (state.voiceRecording) {
+    stopVoiceRecording(true, "ptt-release");
+  }
+  realtimePushToTalkActive = false;
+}
+
+function handleRealtimePushToTalkWindowBlur() {
+  if (!realtimePushToTalkSpaceDown && !realtimePushToTalkActive && !realtimePushToTalkStartInFlight) {
+    return;
+  }
+  realtimePushToTalkSpaceDown = false;
+  if (state.voiceRecording && realtimePushToTalkActive) {
+    stopVoiceRecording(true, "ptt-release");
+  }
+  if (!realtimePushToTalkStartInFlight) {
+    realtimePushToTalkActive = false;
+  }
 }
 
 async function handleVoiceRecordToggle() {
@@ -3420,7 +3521,7 @@ function updateVoiceRealtimeUi() {
   } else if (connecting) {
     stateLabel.textContent = `Realtime verbindet (${getRealtimeModeLabel()}) ...`;
   } else if (active) {
-    stateLabel.textContent = `Realtime aktiv (${getRealtimeModeLabel()}).`;
+    stateLabel.textContent = `Realtime aktiv (${getRealtimeModeLabel()}) | Leertaste halten = sprechen`;
   } else {
     stateLabel.textContent = "Realtime aus.";
   }
@@ -4563,9 +4664,7 @@ async function connectRealtimeViaEphemeral(peerConnection, payload) {
         : OPENAI_REALTIME_MODEL_FAST,
     audio: {
       input: {
-        turn_detection: {
-          type: "server_vad"
-        }
+        turn_detection: null
       },
       output: {
         voice: OPENAI_REALTIME_DEFAULT_VOICE
@@ -4813,6 +4912,7 @@ function stopVoiceRealtimeSession(options = {}) {
   state.voiceRealtimeModel = selectOpenAiRealtimeModel();
   realtimePendingUserText = "";
   realtimeUsageSeenResponseIds = new Set();
+  resetRealtimePushToTalkState();
 
   const dataChannel = realtimeDataChannel;
   realtimeDataChannel = null;
@@ -5581,7 +5681,7 @@ async function startVoiceRecording() {
       isDiagnosisMode()
         ? "Diagnose-Aufnahme laeuft ... tippe erneut, um zu stoppen und zu bewerten."
         : state.voiceRealtimeActive
-          ? "Realtime-Aufnahme laeuft ... tippe erneut, um an die Patientensimulation zu senden."
+          ? "Realtime-Aufnahme laeuft ... Leertaste halten, loslassen fuer Antwort (oder erneut tippen)."
         : isDoctorConversationMode()
           ? "Bericht-Aufnahme laeuft ... tippe erneut, um zu stoppen und Rueckfrage zu erhalten."
         : "Aufnahme laeuft ... tippe erneut, um zu stoppen und an die KI zu senden."
@@ -5609,6 +5709,12 @@ async function startVoiceRecording() {
 function stopVoiceRecording(sendToAi, reason) {
   shouldSendVoiceAfterStop = Boolean(sendToAi);
   state.voiceRecording = false;
+  if (reason === "ptt-release" || reason === "auto-stop") {
+    realtimePushToTalkActive = false;
+  }
+  if (!realtimePushToTalkStartInFlight) {
+    realtimePushToTalkSpaceDown = false;
+  }
   updateVoiceRecordButton();
 
   if (voiceAutoStopTimer) {
@@ -6367,7 +6473,9 @@ function setVoiceStatus(message, isError = false) {
 
 function updateVoiceRecordButton() {
   if (state.voiceRealtimeActive) {
-    refs.voiceRecordBtn.textContent = state.voiceRecording ? "⏹ Realtime stoppen" : "🎤 Realtime sprechen";
+    refs.voiceRecordBtn.textContent = state.voiceRecording
+      ? "⏹ Realtime stoppen"
+      : "🎤 Realtime sprechen (Leertaste halten)";
   } else if (isDiagnosisMode()) {
     refs.voiceRecordBtn.textContent = state.voiceRecording
       ? "⏹ Diagnose stoppen"

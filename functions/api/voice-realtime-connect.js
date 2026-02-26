@@ -53,9 +53,7 @@ export async function onRequestPost(context) {
         instructions,
         audio: {
           input: {
-            turn_detection: {
-              type: "server_vad"
-            }
+            turn_detection: null
           },
           output: {
             voice: realtimeVoice
