@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "40";
-const BUILD_UPDATED_AT = "2026-02-26 05:06 CET";
+const APP_VERSION = "41";
+const BUILD_UPDATED_AT = "2026-02-26 05:23 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -4992,7 +4992,13 @@ function handleRealtimeEventMessage(rawData) {
 function extractRealtimeUserText(eventPayload) {
   const eventType = String(eventPayload?.type || "");
   if (eventType.includes("input_audio_transcription")) {
-    return normalizeRealtimeSnippet(eventPayload?.transcript);
+    return normalizeRealtimeSnippet(
+      eventPayload?.transcript ||
+        eventPayload?.text ||
+        eventPayload?.item?.transcript ||
+        eventPayload?.item?.text ||
+        extractRealtimeContentText(eventPayload?.item?.content)
+    );
   }
   if (eventType === "conversation.item.created" && String(eventPayload?.item?.role || "") === "user") {
     return extractRealtimeContentText(eventPayload?.item?.content);
@@ -5660,8 +5666,21 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
     setVoiceBusy(true);
     const audioBase64 = await blobToBase64(blob);
     if (state.voiceRealtimeActive) {
+      setVoiceStatus("Realtime-Audio wird fuer die Spracherkennung aufbereitet ...");
+      const realtimePcmBase64 = await convertRecordingToRealtimePcm16Base64(blob);
+      const mimeTypeForTranscription = String(mimeType || blob.type || "audio/webm");
+      void runVoiceRealtimeTranscription({ audioBase64, mimeType: mimeTypeForTranscription })
+        .then((transcript) => {
+          const recognized = normalizeRealtimeSnippet(transcript);
+          if (!recognized) return;
+          refs.voiceUserTranscript.textContent = recognized;
+          refs.voiceLastTurn.classList.remove("hidden");
+        })
+        .catch((error) => {
+          console.warn("Realtime-Transkriptanzeige fehlgeschlagen", error);
+        });
       setVoiceStatus("Sende Realtime-Audio direkt an die KI ...");
-      sendRealtimeAudioInput(audioBase64);
+      sendRealtimeAudioInput(realtimePcmBase64);
       if (refs.voiceTextInput) {
         refs.voiceTextInput.value = "";
       }
@@ -5740,6 +5759,29 @@ async function runVoiceDoctorConversationEvaluation() {
     throw new Error(payload.error || "API Fehler");
   }
   return payload.evaluation;
+}
+
+async function runVoiceRealtimeTranscription(turnInput) {
+  const audioBase64 = typeof turnInput?.audioBase64 === "string" ? turnInput.audioBase64 : "";
+  const mimeType = typeof turnInput?.mimeType === "string" ? turnInput.mimeType : "";
+  if (!audioBase64) {
+    return "";
+  }
+  const response = await fetch("/api/voice-transcribe", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      audioBase64,
+      mimeType
+    })
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(String(payload?.error || "Transkription fehlgeschlagen."));
+  }
+  return String(payload?.transcript || "")
+    .trim()
+    .slice(0, MAX_VOICE_QUESTION_LENGTH);
 }
 
 function renderDoctorLetterEvaluationReport(report) {
@@ -6393,6 +6435,99 @@ function blobToBase64(blob) {
     };
     reader.readAsDataURL(blob);
   });
+}
+
+async function convertRecordingToRealtimePcm16Base64(blob) {
+  const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextCtor) {
+    throw new Error("AudioContext nicht verfuegbar.");
+  }
+  const decodeContext = new AudioContextCtor();
+  try {
+    const encodedBuffer = await blob.arrayBuffer();
+    const decoded = await decodeContext.decodeAudioData(encodedBuffer.slice(0));
+    const mono = mixAudioBufferToMono(decoded);
+    const resampled = resampleFloat32Linear(mono, decoded.sampleRate, REALTIME_OUTPUT_SAMPLE_RATE);
+    const pcmBytes = float32ToPcm16Bytes(resampled);
+    return bytesToBase64(pcmBytes);
+  } finally {
+    try {
+      if (decodeContext.state !== "closed") {
+        await decodeContext.close();
+      }
+    } catch {
+      // ignore
+    }
+  }
+}
+
+function mixAudioBufferToMono(audioBuffer) {
+  const channels = Number(audioBuffer?.numberOfChannels || 0);
+  const length = Number(audioBuffer?.length || 0);
+  if (channels <= 0 || length <= 0) {
+    return new Float32Array(0);
+  }
+  if (channels === 1) {
+    return new Float32Array(audioBuffer.getChannelData(0));
+  }
+  const mono = new Float32Array(length);
+  for (let channelIndex = 0; channelIndex < channels; channelIndex += 1) {
+    const channelData = audioBuffer.getChannelData(channelIndex);
+    for (let i = 0; i < length; i += 1) {
+      mono[i] += channelData[i];
+    }
+  }
+  const factor = 1 / channels;
+  for (let i = 0; i < length; i += 1) {
+    mono[i] *= factor;
+  }
+  return mono;
+}
+
+function resampleFloat32Linear(samples, inputRate, outputRate) {
+  const safeInputRate = Number(inputRate || 0);
+  const safeOutputRate = Number(outputRate || 0);
+  if (!samples?.length || !safeInputRate || !safeOutputRate) {
+    return new Float32Array(0);
+  }
+  if (safeInputRate === safeOutputRate) {
+    return new Float32Array(samples);
+  }
+  const outputLength = Math.max(1, Math.round((samples.length * safeOutputRate) / safeInputRate));
+  const output = new Float32Array(outputLength);
+  const ratio = safeInputRate / safeOutputRate;
+  for (let i = 0; i < outputLength; i += 1) {
+    const position = i * ratio;
+    const leftIndex = Math.floor(position);
+    const rightIndex = Math.min(leftIndex + 1, samples.length - 1);
+    const frac = position - leftIndex;
+    const leftValue = samples[leftIndex] || 0;
+    const rightValue = samples[rightIndex] || 0;
+    output[i] = leftValue + (rightValue - leftValue) * frac;
+  }
+  return output;
+}
+
+function float32ToPcm16Bytes(samples) {
+  const bytes = new Uint8Array(samples.length * 2);
+  for (let i = 0; i < samples.length; i += 1) {
+    const clamped = Math.max(-1, Math.min(1, Number(samples[i] || 0)));
+    const int16 = clamped < 0 ? Math.round(clamped * 0x8000) : Math.round(clamped * 0x7fff);
+    const value = int16 < 0 ? int16 + 0x10000 : int16;
+    bytes[i * 2] = value & 0xff;
+    bytes[i * 2 + 1] = (value >> 8) & 0xff;
+  }
+  return bytes;
+}
+
+function bytesToBase64(bytes) {
+  const chunkSize = 0x8000;
+  let binary = "";
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    const chunk = bytes.subarray(i, i + chunkSize);
+    binary += String.fromCharCode(...chunk);
+  }
+  return btoa(binary);
 }
 
 function stripDataUrlAudio(value) {
