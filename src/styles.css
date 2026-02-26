@@ -557,9 +557,18 @@ body.auth-only .edge-deco {
   gap: 7px;
 }
 
+.voice-record-lane {
+  display: grid;
+  gap: 6px;
+}
+
 .voice-record-top {
   width: 100%;
   min-width: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
 }
 
 .voice-send-btn {
