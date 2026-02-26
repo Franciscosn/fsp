@@ -11,11 +11,12 @@ const STORAGE_VOICE_MODEL_KEY = "fsp_voice_model_v1";
 const STORAGE_PROMPT_CONFIG_KEY = "fsp_prompt_config_v1";
 const STORAGE_PROMPT_PROPOSAL_META_KEY = "fsp_prompt_proposal_meta_v1";
 const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
+const API_SPEND_TRACKER_VERSION = 2;
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "44";
-const BUILD_UPDATED_AT = "2026-02-26 07:36 CET";
+const APP_VERSION = "45";
+const BUILD_UPDATED_AT = "2026-02-26 08:02 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -2315,6 +2316,7 @@ function normalizePromptText(value, fallback) {
 
 function createApiSpendTrackerSnapshot() {
   return {
+    version: API_SPEND_TRACKER_VERSION,
     updatedAt: new Date().toISOString(),
     realtimeSessions: 0,
     realtimeTurnsTracked: 0,
@@ -2336,7 +2338,12 @@ function normalizeApiSpendNumber(value) {
 
 function resolveApiSpendTracker(rawValue) {
   const source = rawValue && typeof rawValue === "object" ? rawValue : {};
+  const sourceVersion = Math.floor(normalizeApiSpendNumber(source.version));
+  if (sourceVersion < API_SPEND_TRACKER_VERSION) {
+    return createApiSpendTrackerSnapshot();
+  }
   return {
+    version: API_SPEND_TRACKER_VERSION,
     updatedAt:
       typeof source.updatedAt === "string" && source.updatedAt.trim()
         ? source.updatedAt.trim()
@@ -2354,7 +2361,24 @@ function resolveApiSpendTracker(rawValue) {
 }
 
 function saveApiSpendTracker() {
+  state.apiSpendTracker = resolveApiSpendTracker(state.apiSpendTracker);
   saveToStorage(STORAGE_API_SPEND_TRACKER_KEY, state.apiSpendTracker);
+  scheduleRemoteSync();
+}
+
+function hasApiSpendTrackerData(trackerLike) {
+  const tracker = resolveApiSpendTracker(trackerLike);
+  return Boolean(
+    tracker.realtimeSessions ||
+      tracker.realtimeTurnsTracked ||
+      tracker.totalUsd ||
+      tracker.textInputTokens ||
+      tracker.textCachedInputTokens ||
+      tracker.textOutputTokens ||
+      tracker.audioInputTokens ||
+      tracker.audioCachedInputTokens ||
+      tracker.audioOutputTokens
+  );
 }
 
 function formatUsdAmount(value) {
@@ -2404,12 +2428,15 @@ function handleApiSpendTrackerReset() {
 }
 
 function getRealtimePricingForModel(model) {
-  const normalizedModel =
-    model === OPENAI_REALTIME_MODEL_STRONG ? OPENAI_REALTIME_MODEL_STRONG : OPENAI_REALTIME_MODEL_FAST;
+  const normalizedModel = normalizeRealtimeModelForPricing(model);
   return (
     OPENAI_REALTIME_PRICING_USD_PER_1M[normalizedModel] ||
     OPENAI_REALTIME_PRICING_USD_PER_1M[OPENAI_REALTIME_MODEL_FAST]
   );
+}
+
+function normalizeRealtimeModelForPricing(model) {
+  return model === OPENAI_REALTIME_MODEL_STRONG ? OPENAI_REALTIME_MODEL_STRONG : OPENAI_REALTIME_MODEL_FAST;
 }
 
 function normalizeRealtimeUsageTokens(rawUsage) {
@@ -2478,8 +2505,7 @@ function trackRealtimeSessionStart(model) {
   next.realtimeSessions += 1;
   next.updatedAt = new Date().toISOString();
   state.apiSpendTracker = next;
-  state.voiceRealtimeModel =
-    model === OPENAI_REALTIME_MODEL_STRONG ? OPENAI_REALTIME_MODEL_STRONG : OPENAI_REALTIME_MODEL_FAST;
+  state.voiceRealtimeModel = normalizeRealtimeModelForPricing(model);
   saveApiSpendTracker();
   renderApiSpendTracker();
 }
@@ -2504,6 +2530,9 @@ function trackRealtimeUsageFromEvent(eventPayload) {
 
   const usageTokens = normalizeRealtimeUsageTokens(usage);
   const next = resolveApiSpendTracker(state.apiSpendTracker);
+  const usageModel = normalizeRealtimeModelForPricing(
+    String(eventPayload?.response?.model || state.voiceRealtimeModel || "")
+  );
   next.realtimeTurnsTracked += 1;
   next.textInputTokens += usageTokens.textInputTokens;
   next.textCachedInputTokens += usageTokens.textCachedInputTokens;
@@ -2511,7 +2540,7 @@ function trackRealtimeUsageFromEvent(eventPayload) {
   next.audioInputTokens += usageTokens.audioInputTokens;
   next.audioCachedInputTokens += usageTokens.audioCachedInputTokens;
   next.audioOutputTokens += usageTokens.audioOutputTokens;
-  next.totalUsd += calculateRealtimeUsageCostUsd(state.voiceRealtimeModel, usageTokens);
+  next.totalUsd += calculateRealtimeUsageCostUsd(usageModel, usageTokens);
   next.updatedAt = new Date().toISOString();
 
   state.apiSpendTracker = next;
@@ -9341,7 +9370,8 @@ async function pullRemoteState() {
       Object.keys(state.progress).length ||
       Object.keys(state.dailyStats).length ||
       normalizeXpValue(state.xp) > 0 ||
-      state.dailyGoal !== DEFAULT_DAILY_GOAL
+      state.dailyGoal !== DEFAULT_DAILY_GOAL ||
+      hasApiSpendTrackerData(state.apiSpendTracker)
     ) {
       await pushRemoteState();
     }
@@ -9362,13 +9392,16 @@ async function pullRemoteState() {
         : {};
     state.xp = resolveStoredXp(payload, migratedProgress);
     state.dailyGoal = resolveStoredDailyGoal(payload);
+    state.apiSpendTracker = resolveApiSpendTracker(payload?.apiSpendTracker);
     saveToStorage(STORAGE_PROGRESS_KEY, state.progress);
     saveToStorage(STORAGE_DAILY_KEY, state.dailyStats);
     saveToStorage(STORAGE_XP_KEY, { total: state.xp });
     saveToStorage(STORAGE_DAILY_GOAL_KEY, { goal: state.dailyGoal });
+    saveToStorage(STORAGE_API_SPEND_TRACKER_KEY, state.apiSpendTracker);
     renderFolderFilters();
     rebuildQueue(false);
     renderStats();
+    renderApiSpendTracker();
     refs.authStatus.textContent = `Eingeloggt als ${state.user.email} (Cloud geladen)`;
   } catch (parseError) {
     refs.authStatus.textContent = "Cloud-Daten konnten nicht gelesen werden.";
@@ -9383,7 +9416,8 @@ async function pushRemoteState() {
     progress: state.progress,
     dailyStats: state.dailyStats,
     xp: normalizeXpValue(state.xp),
-    dailyGoal: normalizeDailyGoal(state.dailyGoal)
+    dailyGoal: normalizeDailyGoal(state.dailyGoal),
+    apiSpendTracker: resolveApiSpendTracker(state.apiSpendTracker)
   });
 
   if (remoteStateRowId) {
