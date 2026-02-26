@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "43";
-const BUILD_UPDATED_AT = "2026-02-26 07:04 CET";
+const APP_VERSION = "44";
+const BUILD_UPDATED_AT = "2026-02-26 07:36 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -1346,6 +1346,11 @@ let realtimeAudioNextPlayTime = 0;
 let realtimePushToTalkSpaceDown = false;
 let realtimePushToTalkActive = false;
 let realtimePushToTalkStartInFlight = false;
+let realtimeButtonPushToTalkHeld = false;
+let realtimeButtonPushToTalkActive = false;
+let realtimeButtonPushToTalkStartInFlight = false;
+let suppressVoiceRecordClickOnce = false;
+let suppressVoiceRecordClickTimer = null;
 let xpMilestoneHideTimer = null;
 
 const CATEGORY_MAP = {
@@ -1774,6 +1779,28 @@ function wireEvents() {
   refs.dailyGoalPanel?.addEventListener("click", handleDailyGoalEdit);
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
+  if ("PointerEvent" in window) {
+    refs.voiceRecordBtn.addEventListener("pointerdown", (event) => {
+      void handleRealtimeButtonPushToTalkPointerDown(event);
+    });
+    refs.voiceRecordBtn.addEventListener("pointerup", handleRealtimeButtonPushToTalkPointerUp);
+    refs.voiceRecordBtn.addEventListener("pointercancel", handleRealtimeButtonPushToTalkPointerCancel);
+    refs.voiceRecordBtn.addEventListener("pointerleave", handleRealtimeButtonPushToTalkPointerLeave);
+  } else {
+    refs.voiceRecordBtn.addEventListener(
+      "touchstart",
+      (event) => {
+        void handleRealtimeButtonPushToTalkTouchStart(event);
+      },
+      { passive: false }
+    );
+    refs.voiceRecordBtn.addEventListener("touchend", handleRealtimeButtonPushToTalkTouchEnd, {
+      passive: false
+    });
+    refs.voiceRecordBtn.addEventListener("touchcancel", handleRealtimeButtonPushToTalkTouchEnd, {
+      passive: false
+    });
+  }
   refs.voiceRealtimeToggleBtn?.addEventListener("click", () => {
     void handleVoiceRealtimeToggle();
   });
@@ -3379,6 +3406,14 @@ function resetRealtimePushToTalkState() {
   realtimePushToTalkSpaceDown = false;
   realtimePushToTalkActive = false;
   realtimePushToTalkStartInFlight = false;
+  realtimeButtonPushToTalkHeld = false;
+  realtimeButtonPushToTalkActive = false;
+  realtimeButtonPushToTalkStartInFlight = false;
+  suppressVoiceRecordClickOnce = false;
+  if (suppressVoiceRecordClickTimer) {
+    window.clearTimeout(suppressVoiceRecordClickTimer);
+    suppressVoiceRecordClickTimer = null;
+  }
 }
 
 async function handleRealtimePushToTalkKeyDown(event) {
@@ -3430,19 +3465,165 @@ function handleRealtimePushToTalkKeyUp(event) {
 }
 
 function handleRealtimePushToTalkWindowBlur() {
-  if (!realtimePushToTalkSpaceDown && !realtimePushToTalkActive && !realtimePushToTalkStartInFlight) {
+  const keyboardActive =
+    realtimePushToTalkSpaceDown || realtimePushToTalkActive || realtimePushToTalkStartInFlight;
+  const buttonActive =
+    realtimeButtonPushToTalkHeld || realtimeButtonPushToTalkActive || realtimeButtonPushToTalkStartInFlight;
+  if (!keyboardActive && !buttonActive) {
     return;
   }
   realtimePushToTalkSpaceDown = false;
+  realtimeButtonPushToTalkHeld = false;
   if (state.voiceRecording && realtimePushToTalkActive) {
+    stopVoiceRecording(true, "ptt-release");
+  }
+  if (state.voiceRecording && realtimeButtonPushToTalkActive) {
     stopVoiceRecording(true, "ptt-release");
   }
   if (!realtimePushToTalkStartInFlight) {
     realtimePushToTalkActive = false;
   }
+  if (!realtimeButtonPushToTalkStartInFlight) {
+    realtimeButtonPushToTalkActive = false;
+  }
+}
+
+function isLikelyTouchDevice() {
+  return (
+    Number(navigator.maxTouchPoints || 0) > 0 ||
+    (typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches)
+  );
+}
+
+function canUseRealtimeButtonPushToTalk() {
+  if (!state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
+    return false;
+  }
+  if (!isRealtimeModeAllowed() || state.voiceBusy) {
+    return false;
+  }
+  return true;
+}
+
+function armVoiceRecordClickSuppression() {
+  suppressVoiceRecordClickOnce = true;
+  if (suppressVoiceRecordClickTimer) {
+    window.clearTimeout(suppressVoiceRecordClickTimer);
+  }
+  suppressVoiceRecordClickTimer = window.setTimeout(() => {
+    suppressVoiceRecordClickTimer = null;
+    suppressVoiceRecordClickOnce = false;
+  }, 700);
+}
+
+async function startRealtimeButtonPushToTalk() {
+  if (!canUseRealtimeButtonPushToTalk()) return;
+  if (state.voiceRecording || realtimeButtonPushToTalkStartInFlight) return;
+
+  armVoiceRecordClickSuppression();
+  realtimeButtonPushToTalkHeld = true;
+  realtimeButtonPushToTalkActive = true;
+  realtimeButtonPushToTalkStartInFlight = true;
+
+  await startVoiceRecording();
+  realtimeButtonPushToTalkStartInFlight = false;
+
+  if (!state.voiceRecording) {
+    realtimeButtonPushToTalkActive = false;
+    return;
+  }
+
+  if (!realtimeButtonPushToTalkHeld) {
+    stopVoiceRecording(true, "ptt-release");
+    realtimeButtonPushToTalkActive = false;
+  }
+}
+
+function stopRealtimeButtonPushToTalk() {
+  realtimeButtonPushToTalkHeld = false;
+  if (!realtimeButtonPushToTalkActive) return;
+  if (state.voiceRecording) {
+    stopVoiceRecording(true, "ptt-release");
+  }
+  if (!realtimeButtonPushToTalkStartInFlight) {
+    realtimeButtonPushToTalkActive = false;
+  }
+}
+
+async function handleRealtimeButtonPushToTalkPointerDown(event) {
+  const pointerType = String(event?.pointerType || "").toLowerCase();
+  if (pointerType === "mouse") return;
+  if (!canUseRealtimeButtonPushToTalk()) return;
+  if (event?.cancelable) {
+    event.preventDefault();
+  }
+  const currentTarget = event?.currentTarget;
+  if (currentTarget && typeof currentTarget.setPointerCapture === "function") {
+    try {
+      currentTarget.setPointerCapture(event.pointerId);
+    } catch {
+      // ignore
+    }
+  }
+  await startRealtimeButtonPushToTalk();
+}
+
+function handleRealtimeButtonPushToTalkPointerUp(event) {
+  const pointerType = String(event?.pointerType || "").toLowerCase();
+  if (pointerType === "mouse") return;
+  if (event?.cancelable) {
+    event.preventDefault();
+  }
+  stopRealtimeButtonPushToTalk();
+}
+
+function handleRealtimeButtonPushToTalkPointerCancel(event) {
+  const pointerType = String(event?.pointerType || "").toLowerCase();
+  if (pointerType === "mouse") return;
+  if (event?.cancelable) {
+    event.preventDefault();
+  }
+  stopRealtimeButtonPushToTalk();
+}
+
+function handleRealtimeButtonPushToTalkPointerLeave(event) {
+  const pointerType = String(event?.pointerType || "").toLowerCase();
+  if (pointerType === "mouse") return;
+  if (!realtimeButtonPushToTalkHeld) return;
+  if (event?.cancelable) {
+    event.preventDefault();
+  }
+  stopRealtimeButtonPushToTalk();
+}
+
+async function handleRealtimeButtonPushToTalkTouchStart(event) {
+  if (!canUseRealtimeButtonPushToTalk()) return;
+  if (event?.cancelable) {
+    event.preventDefault();
+  }
+  await startRealtimeButtonPushToTalk();
+}
+
+function handleRealtimeButtonPushToTalkTouchEnd(event) {
+  if (event?.cancelable) {
+    event.preventDefault();
+  }
+  stopRealtimeButtonPushToTalk();
 }
 
 async function handleVoiceRecordToggle() {
+  if (suppressVoiceRecordClickOnce) {
+    suppressVoiceRecordClickOnce = false;
+    if (suppressVoiceRecordClickTimer) {
+      window.clearTimeout(suppressVoiceRecordClickTimer);
+      suppressVoiceRecordClickTimer = null;
+    }
+    return;
+  }
+  if (state.voiceRealtimeActive && isLikelyTouchDevice()) {
+    setVoiceStatus("Realtime: Taste gedrueckt halten zum Sprechen, loslassen fuer Antwort.");
+    return;
+  }
   if (state.voiceBusy) return;
   if (state.voiceRealtimeConnecting) {
     setVoiceStatus("Realtime verbindet gerade. Bitte kurz warten.", true);
@@ -5763,9 +5944,13 @@ function stopVoiceRecording(sendToAi, reason) {
   state.voiceRecording = false;
   if (reason === "ptt-release" || reason === "auto-stop") {
     realtimePushToTalkActive = false;
+    realtimeButtonPushToTalkActive = false;
   }
   if (!realtimePushToTalkStartInFlight) {
     realtimePushToTalkSpaceDown = false;
+  }
+  if (!realtimeButtonPushToTalkStartInFlight) {
+    realtimeButtonPushToTalkHeld = false;
   }
   updateVoiceRecordButton();
 

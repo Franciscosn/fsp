@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=43" />
+    <link rel="stylesheet" href="src/styles.css?v=44" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -129,9 +129,6 @@
           </button>
         </div>
         <div class="voice-text-compact">
-          <button id="voiceRecordBtn" class="primary-btn voice-record-top" type="button">
-            🎤 Aufnahme starten
-          </button>
           <textarea
             id="voiceTextInput"
             class="voice-text-input"
@@ -139,6 +136,9 @@
             maxlength="500"
             placeholder="Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'."
           ></textarea>
+          <button id="voiceRecordBtn" class="primary-btn voice-record-top" type="button">
+            🎤 Aufnahme starten
+          </button>
           <button id="voiceTextSendBtn" class="soft-btn voice-send-btn" type="button">Text senden</button>
           <div class="voice-realtime-controls">
             <button id="voiceRealtimeToggleBtn" class="soft-btn voice-realtime-toggle-btn" type="button">
@@ -660,6 +660,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=43"></script>
+    <script type="module" src="src/app.js?v=44"></script>
   </body>
 </html>
