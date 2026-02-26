@@ -7,9 +7,6 @@ Kommunikationsstil:
 - antwortet knapp, benoetigt bei laengeren Antworten kurze Pausen zum Atmen
 - bei guter Struktur des Arztes gibt er Informationen zuverlaessig und chronologisch
 
-Spontaner Eroeffnungssatz (bei offener Frage "Was fuehrt Sie her?"):
-- "Ich bekomme seit zwei Tagen immer schlechter Luft, heute sogar in Ruhe."
-
 Zeitlicher Verlauf:
 - Beginn vor 2 Tagen mit mehr Luftnot bei Belastung
 - seit gestern zusaetzlich vermehrter Husten mit gelblich-zaehem Auswurf
@@ -89,9 +86,6 @@ Kommunikationsstil:
 - antwortet meist praezise, benoetigt bei Zeitangaben gezielte Rueckfragen
 - bei komplexen Fragen bittet sie um Wiederholung
 
-Spontaner Eroeffnungssatz (bei offener Frage):
-- "Seit heute Morgen rede ich irgendwie verwaschen und die rechte Hand ist schwaecher."
-
 Zeitlicher Verlauf:
 - Symptombeginn heute um ca. 07:20 Uhr waehrend des Fruehstuecks
 - zuerst Sprachstoerung und Unsicherheit beim Greifen mit rechter Hand
@@ -163,9 +157,6 @@ Kommunikationsstil:
 - beantwortet Fragen direkt und ohne Ausschweifen
 - bei Schwindelbeschreibung emotional verunsichert
 
-Spontaner Eroeffnungssatz:
-- "Seit gestern habe ich schwarzen, teerigen Stuhl und fuehle mich sehr schwach."
-
 Zeitlicher Verlauf:
 - gestern erster schwarzer Stuhlgang
 - heute erneut schwarzer Stuhl plus Schwindel beim Aufstehen
@@ -233,9 +224,6 @@ Kommunikationsstil:
 - kooperativ, aber deutlich schmerz- und fieberbeeintraechtigt
 - kann Symptome gut beschreiben, braucht bei komplexen Fragen Struktur
 
-Spontaner Eroeffnungssatz:
-- "Seit zwei Tagen brennt das Wasserlassen und seit heute habe ich hohes Fieber mit Flankenschmerz rechts."
-
 Zeitlicher Verlauf:
 - vor 2 Tagen Beginn mit Dysurie und Pollakisurie
 - seit heute Morgen Fieberanstieg bis 39,2 C
@@ -300,9 +288,6 @@ Persona: 24 Jahre, Student, wirkt schmerzgeplagt, liegt ungern flach.
 Kommunikationsstil:
 - freundlich, aber wegen Schmerz gereizt und kurz angebunden
 - beantwortet Fragen praezise, wenn sie klar gestellt sind
-
-Spontaner Eroeffnungssatz:
-- "Ich habe seit gestern Bauchschmerzen, inzwischen vor allem rechts unten und deutlich staerker."
 
 Zeitlicher Verlauf:
 - Beginn gestern Nachmittag periumbilikal, dumpf
@@ -371,9 +356,6 @@ Kommunikationsstil:
 - benoetigt bei komplexen Fragen klare Struktur
 - wirkt durchgehend antriebsgemindert
 
-Spontaner Eroeffnungssatz:
-- "Ich bin seit Monaten extrem muede, friere staendig und nehme zu."
-
 Zeitlicher Verlauf:
 - schleichender Beginn ueber mehrere Monate
 - anfangs nur Muedigkeit, dann zunehmende Kuehlintoleranz und Gewichtszunahme
@@ -440,9 +422,6 @@ Kommunikationsstil:
 - berichtet detailliert, springt teils zwischen Symptomen
 - benoetigt strukturierende Rueckfragen
 
-Spontaner Eroeffnungssatz:
-- "Seit Wochen habe ich Herzklopfen, innere Unruhe und nehme trotz gutem Appetit ab."
-
 Zeitlicher Verlauf:
 - Beginn vor ca. 2 Monaten mit Nervositaet und Schlafstoerungen
 - danach Zunahme von Palpitationen, Schwitzen und Tremor
@@ -504,9 +483,6 @@ Kommunikationsstil:
 - freundlich, aber rasch erschoepft
 - braucht kurze, klare Fragen und gelegentlich Wiederholungen
 - klagt v. a. ueber Schwaeche und Schwindel beim Aufstehen
-
-Spontaner Eroeffnungssatz:
-- "Ich habe die letzten Tage kaum trinken koennen und bin beim Aufstehen ganz wackelig."
 
 Zeitlicher Verlauf:
 - seit 3 Tagen deutlich reduzierte Trinkmenge wegen Uebelkeit
@@ -570,9 +546,6 @@ Kommunikationsstil:
 - kooperativ, wegen Juckreiz unruhig
 - kann Verlauf gut schildern, braucht bei Triggerfragen gezielte Nachfragen
 
-Spontaner Eroeffnungssatz:
-- "Seit gestern habe ich ploetzlich ueberall juckende Quaddeln."
-
 Zeitlicher Verlauf:
 - Beginn gestern Abend mit Quaddeln an Armen und Rumpf
 - im Verlauf Ausbreitung auf weitere Koerperregionen
@@ -631,9 +604,6 @@ Kommunikationsstil:
 - zurueckhaltend, antwortet knapp
 - oeffnet sich bei empathischer Gespraechsfuehrung zunehmend
 - benoetigt bei sensiblen Themen behutsame, klare Fragen
-
-Spontaner Eroeffnungssatz:
-- "Ich fuehle mich seit Wochen wie leer und bekomme meinen Alltag kaum noch hin."
 
 Zeitlicher Verlauf:
 - schleichender Beginn vor etwa 8 Wochen
@@ -699,9 +669,6 @@ Kommunikationsstil:
 - anfangs schnell und nervoes, bei strukturierter Fuehrung klarer
 - beschreibt Attacken emotional, mit deutlicher Angst vor koerperlicher Erkrankung
 - bleibt kooperativ und antwortet bei gezielten Fragen detailreich
-
-Spontaner Eroeffnungssatz:
-- "Ich bekomme ploetzlich Herzrasen und Luftnot, dann denke ich jedes Mal, ich sterbe."
 
 Zeitlicher Verlauf:
 - erste Attacke vor etwa 6 Wochen
@@ -771,9 +738,6 @@ Kommunikationsstil:
 - bei Fragen zur Arbeit emotional angespannt
 - beantwortet Nachfragen zur Synkope praezise
 
-Spontaner Eroeffnungssatz:
-- "Ich war in den letzten Wochen zweimal ploetzlich weg, einmal ohne Vorwarnung."
-
 Zeitlicher Verlauf:
 - erste Synkope vor 3 Wochen im Stehen in der Kueche, kurzer Bewusstseinsverlust
 - zweite Episode vor 4 Tagen beim Aussteigen aus dem Auto, diesmal mit kurzem Herzstolpern vorher
@@ -834,9 +798,6 @@ Kommunikationsstil:
 - spricht in kurzen Saetzen wegen Dyspnoe
 - beantwortet Fragen kooperativ, benoetigt bei laengeren Antworten Pausen
 - zeigt nachvollziehbare Angst vor schwerer akuter Erkrankung
-
-Spontaner Eroeffnungssatz:
-- "Ich habe seit heute ploetzlich Luftnot und einen stechenden Schmerz rechts beim Einatmen."
 
 Zeitlicher Verlauf:
 - akuter Beginn heute gegen Mittag
@@ -939,9 +900,6 @@ Kommunikationsstil:
 - schmerzbedingt kurz angebunden, aber kooperativ
 - beschreibt den Wellencharakter der Schmerzen bei gezielter Nachfrage deutlich
 - erwartet schnelle Schmerzreduktion
-
-Spontaner Eroeffnungssatz:
-- "Ich habe seit heute frueh links in der Flanke starke Schmerzen, die in die Leiste ziehen."
 
 Zeitlicher Verlauf:
 - Beginn vor etwa 4 Stunden mit ploetzlichem Flankenschmerz links
