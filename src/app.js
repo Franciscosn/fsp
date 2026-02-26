@@ -14,8 +14,8 @@ const STORAGE_API_SPEND_TRACKER_KEY = "fsp_api_spend_tracker_v1";
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "39";
-const BUILD_UPDATED_AT = "2026-02-26 04:52 CET";
+const APP_VERSION = "40";
+const BUILD_UPDATED_AT = "2026-02-26 05:06 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -3249,15 +3249,11 @@ function isVoiceRealtimeSupported() {
 }
 
 function isRealtimeModeAllowed() {
-  return !isDiagnosisMode();
-}
-
-function getRealtimePromptKey() {
-  return isDoctorConversationMode() ? "voiceDoctorTurn" : "voiceTurn";
+  return state.voiceMode === VOICE_MODE_QUESTION;
 }
 
 function getRealtimeModeLabel() {
-  return isDoctorConversationMode() ? "Arzt-Arzt" : "Arzt-Patient";
+  return "Arzt-Patient";
 }
 
 function selectOpenAiRealtimeModel() {
@@ -3362,7 +3358,7 @@ async function handleVoiceRealtimeToggle() {
     return;
   }
   if (!isRealtimeModeAllowed()) {
-    setVoiceStatus("Realtime ist nur im Arzt-Patient- oder Arzt-Arzt-Gespraech verfuegbar.", true);
+    setVoiceStatus("Realtime ist aktuell nur im Arzt-Patient-Gespraech verfuegbar.", true);
     return;
   }
   if (!isVoiceRealtimeSupported()) {
@@ -3420,7 +3416,7 @@ function updateVoiceRealtimeUi() {
         ? "Realtime nicht verfuegbar (Browser ohne WebSocket-Unterstuetzung)."
         : "Realtime nicht verfuegbar (Browser/Geraet ohne WebRTC-Audio).";
   } else if (!allowedMode) {
-    stateLabel.textContent = "Realtime: nur im Arzt-Patient- oder Arzt-Arzt-Modus.";
+    stateLabel.textContent = "Realtime: aktuell nur im Arzt-Patient-Modus verfuegbar.";
   } else if (connecting) {
     stateLabel.textContent = `Realtime verbindet (${getRealtimeModeLabel()}) ...`;
   } else if (active) {
@@ -4488,9 +4484,8 @@ async function setRemoteDescriptionWithSdpCandidates(peerConnection, rawSdp, con
 function buildRealtimeConnectPayload(offerSdp) {
   return {
     sdp: String(offerSdp || ""),
-    mode: state.voiceMode,
+    mode: VOICE_MODE_QUESTION,
     caseText: getActiveVoiceCaseText(),
-    promptText: getPromptForKey(getRealtimePromptKey()),
     realtimeModel: selectOpenAiRealtimeModel(),
     realtimeVoice: OPENAI_REALTIME_DEFAULT_VOICE
   };
@@ -5580,9 +5575,7 @@ async function startVoiceRecording() {
       isDiagnosisMode()
         ? "Diagnose-Aufnahme laeuft ... tippe erneut, um zu stoppen und zu bewerten."
         : state.voiceRealtimeActive
-          ? isDoctorConversationMode()
-            ? "Realtime-Aufnahme laeuft ... tippe erneut, um an den Prueferarzt zu senden."
-            : "Realtime-Aufnahme laeuft ... tippe erneut, um an die Patientensimulation zu senden."
+          ? "Realtime-Aufnahme laeuft ... tippe erneut, um an die Patientensimulation zu senden."
         : isDoctorConversationMode()
           ? "Bericht-Aufnahme laeuft ... tippe erneut, um zu stoppen und Rueckfrage zu erhalten."
         : "Aufnahme laeuft ... tippe erneut, um zu stoppen und an die KI zu senden."

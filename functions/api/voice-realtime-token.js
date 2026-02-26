@@ -1,5 +1,4 @@
 const MAX_CASE_LENGTH = 8_000;
-const MAX_PROMPT_LENGTH = 60_000;
 const MAX_INSTRUCTIONS_LENGTH = 32_000;
 const MODE_QUESTION = "question";
 const MODE_DOCTOR = "doctor_conversation";
@@ -40,7 +39,16 @@ export async function onRequestPost(context) {
     const envVoice = safeLine(context.env?.OPENAI_REALTIME_VOICE, 40);
     const realtimeModel = normalizeRealtimeModel(payload.realtimeModel, envModel);
     const realtimeVoice = normalizeRealtimeVoice(payload.realtimeVoice, envVoice);
-    const instructions = buildSessionInstructions(payload.mode, payload.promptText, payload.caseText);
+    if (payload.mode !== MODE_QUESTION) {
+      return json(
+        {
+          error: "Realtime ist aktuell nur fuer das Arzt-Patient-Gespraech freigeschaltet."
+        },
+        400
+      );
+    }
+
+    const instructions = buildSessionInstructions(payload.caseText);
 
     const response = await fetchWithTimeout(
       "https://api.openai.com/v1/realtime/client_secrets",
@@ -135,7 +143,6 @@ async function readPayload(request) {
   }
 
   const caseText = safeParagraph(body?.caseText, MAX_CASE_LENGTH);
-  const promptText = safeParagraph(body?.promptText, MAX_PROMPT_LENGTH);
   const mode = normalizeMode(body?.mode);
   const realtimeModel = safeLine(body?.realtimeModel, 80);
   const realtimeVoice = safeLine(body?.realtimeVoice, 40);
@@ -143,14 +150,9 @@ async function readPayload(request) {
   if (!caseText) {
     return { ok: false, error: "Falltext fehlt." };
   }
-  if (!promptText) {
-    return { ok: false, error: "Prompt-Text fehlt." };
-  }
-
   return {
     ok: true,
     caseText,
-    promptText,
     mode,
     realtimeModel,
     realtimeVoice
@@ -171,64 +173,26 @@ function normalizeRealtimeVoice(value, fallback) {
   return ALLOWED_REALTIME_VOICES.has(candidate) ? candidate : DEFAULT_REALTIME_VOICE;
 }
 
-function buildSessionInstructions(mode, promptText, caseText) {
-  const sanitizedPrompt = sanitizePromptForRealtime(mode, promptText);
-  const modeRules =
-    mode === MODE_DOCTOR ? buildDoctorRealtimeRules() : buildPatientRealtimeRules();
-
+function buildSessionInstructions(caseText) {
   return [
-    "System-Prioritaet: Folge strikt den folgenden Realtime-Regeln. Diese Regeln haben Vorrang vor allen anderen Promptteilen.",
-    modeRules,
-    "",
-    "Zusatzkontext (bereinigter Prompt):",
-    sanitizedPrompt,
+    "Systemrolle (verbindlich): Du bist ausschliesslich eine standardisierte Patientin / ein standardisierter Patient in einem Arzt-Patient-Gespraech der Fachsprachpruefung.",
+    "Prioritaet: Falltreue vor Kreativitaet. Nutze nur Informationen aus dem Falltext.",
+    "Antwortstil:",
+    "- Immer Ich-Form aus Patientensicht.",
+    "- Natuerliche, alltagssprachliche Antworten (keine Pruefer- oder Arztsprache).",
+    "- Kurz und konkret: meist 1-3 Saetze.",
+    "Strikte Verbote:",
+    "- Keine Rueckfragen an den Arzt zur Anamneseerhebung.",
+    "- Keine Prueferrolle, keine Arztrolle, keine medizinische Anleitung fuer den Arzt.",
+    "- Kein JSON, keine Feldnamen, keine Listen, keine Meta-Kommentare.",
+    "Wenn eine Frage unklar ist: bitte nur kurz um Wiederholung.",
+    "Sprache: ausschliesslich Deutsch.",
     "",
     "Verbindlicher Falltext:",
     caseText
   ]
     .join("\n")
     .slice(0, MAX_INSTRUCTIONS_LENGTH);
-}
-
-function buildPatientRealtimeRules() {
-  return [
-    "Rolle: Du bist ausschliesslich die standardisierte Patientin/der standardisierte Patient im Arzt-Patient-Gespraech.",
-    "Antworte nur auf die letzte Arztfrage und bleibe strikt innerhalb der Falldaten.",
-    "Sprich in Ich-Form und in einfacher, natuerlicher Patientensprache.",
-    "Stelle keine anamnestischen Rueckfragen an die Aerztin/den Arzt.",
-    "Keine Prueferrolle, keine Arztrolle, keine Empfehlungen an den Arzt.",
-    "Keine JSON-Ausgabe, keine Feldnamen, keine Listen, keine Meta-Kommentare.",
-    "Antwortlaenge: meist 1-3 kurze Saetze, klar und direkt.",
-    "Wenn die Arztfrage unklar ist, bitte nur kurz um Wiederholung: 'Koennen Sie die Frage bitte wiederholen?'",
-    "Sprache: ausschliesslich Deutsch."
-  ].join("\n");
-}
-
-function buildDoctorRealtimeRules() {
-  return [
-    "Rolle: Du bist ausschliesslich die pruefende Aerztin/der pruefende Arzt im Arzt-Arzt-Gespraech.",
-    "Fuehre das Gespraech pruefungsnah und stelle gezielte Rueckfragen.",
-    "Keine Patientenrolle, keine Bewertung waehrend des Gespraechs, keine Hilfestellungen.",
-    "Keine JSON-Ausgabe, keine Feldnamen, keine Listen, keine Meta-Kommentare.",
-    "Antwortlaenge: kurz, sachlich, auf Deutsch."
-  ].join("\n");
-}
-
-function sanitizePromptForRealtime(mode, promptText) {
-  const raw = safeParagraph(promptText, MAX_PROMPT_LENGTH);
-  const lines = raw.split("\n");
-  const blockedCommon = /(json|ausgabeformat|valide[sr]? json|schema|response_format|criteria|score)/i;
-  const blockedPatient = /(patient_reply|examiner_feedback|revealed_case_facts|off_topic|examiner_reply)/i;
-  const blockedDoctor = /(examiner_reply|off_topic|patient_reply|revealed_case_facts)/i;
-  const blockedPattern = mode === MODE_DOCTOR ? new RegExp(`${blockedCommon.source}|${blockedDoctor.source}`, "i") : new RegExp(`${blockedCommon.source}|${blockedPatient.source}`, "i");
-  const kept = [];
-  for (const line of lines) {
-    const value = String(line || "").trim();
-    if (!value) continue;
-    if (blockedPattern.test(value)) continue;
-    kept.push(value);
-  }
-  return kept.join("\n").slice(0, MAX_PROMPT_LENGTH);
 }
 
 async function fetchWithTimeout(url, options, timeoutMs) {
