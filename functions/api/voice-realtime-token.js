@@ -49,6 +49,22 @@ export async function onRequestPost(context) {
     }
 
     const instructions = buildSessionInstructions(payload.caseText);
+    const sessionConfig = {
+      type: "realtime",
+      model: realtimeModel,
+      instructions,
+      audio: {
+        input: {
+          turn_detection: null
+        }
+      },
+      output_modalities: payload.textOnly ? ["text"] : ["audio", "text"]
+    };
+    if (!payload.textOnly) {
+      sessionConfig.audio.output = {
+        voice: realtimeVoice
+      };
+    }
 
     const response = await fetchWithTimeout(
       "https://api.openai.com/v1/realtime/client_secrets",
@@ -59,19 +75,7 @@ export async function onRequestPost(context) {
           "content-type": "application/json"
         },
         body: JSON.stringify({
-          session: {
-            type: "realtime",
-            model: realtimeModel,
-            instructions,
-            audio: {
-              input: {
-                turn_detection: null
-              },
-              output: {
-                voice: realtimeVoice
-              }
-            }
-          }
+          session: sessionConfig
         })
       },
       OPENAI_REQUEST_TIMEOUT_MS
@@ -142,6 +146,7 @@ async function readPayload(request) {
 
   const caseText = safeParagraph(body?.caseText, MAX_CASE_LENGTH);
   const mode = normalizeMode(body?.mode);
+  const textOnly = Boolean(body?.textOnly);
   const realtimeModel = safeLine(body?.realtimeModel, 80);
   const realtimeVoice = safeLine(body?.realtimeVoice, 40);
 
@@ -152,6 +157,7 @@ async function readPayload(request) {
     ok: true,
     caseText,
     mode,
+    textOnly,
     realtimeModel,
     realtimeVoice
   };

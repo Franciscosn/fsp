@@ -42,25 +42,26 @@ export async function onRequestPost(context) {
     const realtimeModel = normalizeRealtimeModel(payload.realtimeModel, envModel);
     const realtimeVoice = normalizeRealtimeVoice(payload.realtimeVoice, envVoice);
     const instructions = buildSessionInstructions(payload.mode, payload.promptText, payload.caseText);
+    const sessionConfig = {
+      type: "realtime",
+      model: realtimeModel,
+      instructions,
+      audio: {
+        input: {
+          turn_detection: null
+        }
+      },
+      output_modalities: payload.textOnly ? ["text"] : ["audio", "text"]
+    };
+    if (!payload.textOnly) {
+      sessionConfig.audio.output = {
+        voice: realtimeVoice
+      };
+    }
 
     const formData = new FormData();
     formData.set("sdp", payload.sdp);
-    formData.set(
-      "session",
-      JSON.stringify({
-        type: "realtime",
-        model: realtimeModel,
-        instructions,
-        audio: {
-          input: {
-            turn_detection: null
-          },
-          output: {
-            voice: realtimeVoice
-          }
-        }
-      })
-    );
+    formData.set("session", JSON.stringify(sessionConfig));
 
     const response = await fetchWithTimeout(
       "https://api.openai.com/v1/realtime/calls",
@@ -155,6 +156,7 @@ async function readPayload(request) {
   const caseText = safeParagraph(body?.caseText, MAX_CASE_LENGTH);
   const promptText = safeParagraph(body?.promptText, MAX_PROMPT_LENGTH);
   const mode = normalizeMode(body?.mode);
+  const textOnly = Boolean(body?.textOnly);
   const realtimeModel = safeLine(body?.realtimeModel, 80);
   const realtimeVoice = safeLine(body?.realtimeVoice, 40);
 
@@ -174,6 +176,7 @@ async function readPayload(request) {
     caseText,
     promptText,
     mode,
+    textOnly,
     realtimeModel,
     realtimeVoice
   };
