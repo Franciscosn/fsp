@@ -19,6 +19,7 @@ Dieses Repository enthält eine **statische Lern-App für die medizinische Fachs
 - `functions/api/voice-evaluate.js` – Endpoint zur Diagnosenbewertung (STT + LLM-Evaluation + optional TTS).
 - `supabase/voice_exam_results.sql` – optionale SQL-Struktur zum Speichern von Voice-Prüfungsergebnissen.
 - `supabase/prompt_feedback.sql` – SQL-Struktur für Prompt-Vorschläge + globale Prompt-Profile (Testphase).
+- `supabase/user_usage_admin.sql` – SQL-Struktur für tägliche Nutzungsmetriken + Admin-Dashboard.
 - `_headers` – Cache-Header für statische Auslieferung.
 
 ## Wie die App grob funktioniert
