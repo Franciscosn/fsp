@@ -15,8 +15,8 @@ const API_SPEND_TRACKER_VERSION = 2;
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "53";
-const BUILD_UPDATED_AT = "2026-03-01 19:48 CET";
+const APP_VERSION = "54";
+const BUILD_UPDATED_AT = "2026-03-01 20:02 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -39,6 +39,7 @@ const PERSONAL_STATS_DAYS = 14;
 const ADMIN_STATS_DAYS = 30;
 const MAX_DISPLAY_LEVEL = 10;
 const LEVELUP_PHASE_SWITCH_MS = 1400;
+const DEV_UI_MODE = new URLSearchParams(window.location.search).get("dev") === "1";
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
 const VOICE_CASE_SAMPLE_PATH = "data/voice_case_samples_de.json";
@@ -1597,6 +1598,9 @@ const refs = {
   dailyGoalPanel: document.getElementById("dailyGoalPanel"),
   dailyGoalText: document.getElementById("dailyGoalText"),
   dailyGoalFill: document.getElementById("dailyGoalFill"),
+  levelTestTools: document.getElementById("levelTestTools"),
+  levelTestSelect: document.getElementById("levelTestSelect"),
+  levelTestApplyBtn: document.getElementById("levelTestApplyBtn"),
   buildBadge: document.getElementById("buildBadge"),
   voicePanel: document.getElementById("voicePanel"),
   voiceInfoBtn: document.getElementById("voiceInfoBtn"),
@@ -1847,6 +1851,7 @@ function wireEvents() {
   refs.logoutBtn.addEventListener("click", handleLogout);
   refs.quickPracticeBtn.addEventListener("click", startQuickPractice);
   refs.dailyGoalPanel?.addEventListener("click", handleDailyGoalEdit);
+  refs.levelTestApplyBtn?.addEventListener("click", handleLevelTestApply);
   refs.levelAvatar.addEventListener("error", handleLevelAvatarError);
   refs.voiceRecordBtn.addEventListener("click", handleVoiceRecordToggle);
   if ("PointerEvent" in window) {
@@ -1972,6 +1977,7 @@ function wireEvents() {
 
 async function init() {
   renderBuildBadge();
+  initLevelDevTools();
   initAuthUi();
   initAuthPortrait();
   initVoiceUi();
@@ -2011,7 +2017,13 @@ function renderBuildBadge() {
   const currentUrl = new URL(window.location.href);
   const hasVersionHint = currentUrl.searchParams.get("v") || "";
   const hint = hasVersionHint ? ` | URL-v=${hasVersionHint}` : "";
-  refs.buildBadge.textContent = `Version ${APP_VERSION} | Stand ${BUILD_UPDATED_AT}${hint}`;
+  const devHint = DEV_UI_MODE ? " | DEV" : "";
+  refs.buildBadge.textContent = `Version ${APP_VERSION} | Stand ${BUILD_UPDATED_AT}${hint}${devHint}`;
+}
+
+function initLevelDevTools() {
+  if (!refs.levelTestTools) return;
+  refs.levelTestTools.classList.toggle("hidden", !DEV_UI_MODE);
 }
 
 function initAuthUi() {
@@ -7461,6 +7473,18 @@ function setDailyGoal(nextGoal) {
   saveToStorage(STORAGE_DAILY_GOAL_KEY, { goal: normalized });
   scheduleRemoteSync();
   renderStats();
+}
+
+function handleLevelTestApply() {
+  if (!DEV_UI_MODE || !refs.levelTestSelect) return;
+  const targetLevel = Math.max(1, Math.min(MAX_DISPLAY_LEVEL, Number(refs.levelTestSelect.value) || 1));
+  const targetXp = Math.max(0, getLevelThreshold(targetLevel) - 1);
+  state.xp = targetXp;
+  saveToStorage(STORAGE_XP_KEY, { total: targetXp });
+  scheduleRemoteSync();
+  scheduleUsageMetricsSync(true);
+  renderStats();
+  showXpMilestone(`DEV: XP auf ${targetXp} gesetzt (1 Punkt bis Level ${targetLevel})`);
 }
 
 function startQuickPractice() {

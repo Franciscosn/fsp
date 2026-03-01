@@ -1965,6 +1965,40 @@ body.auth-only .edge-deco {
   letter-spacing: 0.02em;
 }
 
+.level-test-tools {
+  display: grid;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.level-test-label {
+  color: #7f3a4e;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.level-test-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.level-test-select {
+  border: 1px solid rgba(248, 73, 102, 0.28);
+  border-radius: 10px;
+  background: #fff;
+  color: #5d2736;
+  font: inherit;
+  padding: 6px 8px;
+}
+
+.level-test-btn {
+  padding: 7px 10px;
+}
+
 .level-copy {
   display: grid;
   gap: 8px;

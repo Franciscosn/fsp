@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=53" />
+    <link rel="stylesheet" href="src/styles.css?v=54" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -95,6 +95,24 @@
             <span class="daily-goal-track"><span id="dailyGoalFill" class="daily-goal-fill"></span></span>
             <span class="daily-goal-hint">Klicken, um Tagesziel zu aendern</span>
           </button>
+          <div id="levelTestTools" class="level-test-tools hidden">
+            <label class="level-test-label" for="levelTestSelect">Dev: Level testen</label>
+            <div class="level-test-row">
+              <select id="levelTestSelect" class="level-test-select">
+                <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+                <option value="6">Level 6</option>
+                <option value="7">Level 7</option>
+                <option value="8">Level 8</option>
+                <option value="9">Level 9</option>
+                <option value="10">Level 10</option>
+              </select>
+              <button id="levelTestApplyBtn" class="soft-btn level-test-btn" type="button">Setzen</button>
+            </div>
+          </div>
         </div>
         <div class="level-copy hidden" aria-hidden="true">
           <p id="levelBadge" class="level-badge">XP 0</p>
@@ -744,6 +762,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=53"></script>
+    <script type="module" src="src/app.js?v=54"></script>
   </body>
 </html>
