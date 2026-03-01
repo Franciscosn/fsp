@@ -15,8 +15,8 @@ const API_SPEND_TRACKER_VERSION = 2;
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "49";
-const BUILD_UPDATED_AT = "2026-03-01 18:15 CET";
+const APP_VERSION = "50";
+const BUILD_UPDATED_AT = "2026-03-01 19:05 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -1867,7 +1867,6 @@ function wireEvents() {
   refs.voiceRealtimeMuteBtn?.addEventListener("click", handleVoiceRealtimeMuteToggle);
   refs.voiceApiSpendResetBtn?.addEventListener("click", handleApiSpendTrackerReset);
   refs.voicePatientConversationBtn?.addEventListener("click", handleVoicePatientConversationActivate);
-  refs.voiceDiagnoseBtn?.addEventListener("click", handleVoiceDiagnoseToggle);
   refs.voiceDoctorConversationBtn?.addEventListener("click", handleVoiceDoctorConversationToggle);
   refs.voiceDoctorConversationEvalBtn?.addEventListener("click", () => {
     void handleVoiceDoctorConversationEvaluate();
@@ -2149,19 +2148,6 @@ function handleVoiceCreateCase() {
   applyVoiceCaseSelection(VOICE_CASE_CUSTOM, { preserveStatus: true, resetConversation: true });
   applyVoiceMode(VOICE_MODE_QUESTION, { preserveStatus: true });
   setVoiceStatus("Eigener Fall aktiv. Du kannst direkt fragen oder aufnehmen.");
-}
-
-function handleVoiceDiagnoseToggle() {
-  if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Modus wechseln.", true);
-    return;
-  }
-  if (state.voiceRecording) {
-    setVoiceStatus("Bitte erst die laufende Aufnahme stoppen, dann den Modus wechseln.", true);
-    return;
-  }
-  const nextMode = isDiagnosisMode() ? VOICE_MODE_QUESTION : VOICE_MODE_DIAGNOSIS;
-  applyVoiceMode(nextMode, { preserveStatus: false });
 }
 
 function handleVoicePatientConversationActivate() {
@@ -3365,13 +3351,12 @@ function applyVoiceModelSelection(model, options = {}) {
 }
 
 function normalizeVoiceMode(mode) {
-  if (mode === VOICE_MODE_DIAGNOSIS) return VOICE_MODE_DIAGNOSIS;
   if (mode === VOICE_MODE_DOCTOR_CONVERSATION) return VOICE_MODE_DOCTOR_CONVERSATION;
   return VOICE_MODE_QUESTION;
 }
 
 function isDiagnosisMode() {
-  return state.voiceMode === VOICE_MODE_DIAGNOSIS;
+  return false;
 }
 
 function isDoctorConversationMode() {
@@ -3432,22 +3417,12 @@ function updateVoiceModeUi() {
   const doctorConversationMode = isDoctorConversationMode();
   const patientConversationMode = !diagnosisMode && !doctorConversationMode;
   if (refs.voiceTextInput) {
-    refs.voiceTextInput.placeholder = diagnosisMode
-      ? "Formuliere hier deine Verdachtsdiagnose (z. B. 'Akute Appendizitis')."
-      : doctorConversationMode
-        ? "Stelle den Fall strukturiert vor oder beantworte die Rueckfrage der pruefenden Aerztin/des pruefenden Arztes."
-        : "Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'.";
+    refs.voiceTextInput.placeholder = doctorConversationMode
+      ? "Stelle den Fall strukturiert vor oder beantworte die Rueckfrage der pruefenden Aerztin/des pruefenden Arztes."
+      : "Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'.";
   }
   if (refs.voiceTextSendBtn) {
-    refs.voiceTextSendBtn.textContent = diagnosisMode
-      ? "Diagnose abschicken"
-      : doctorConversationMode
-        ? "Bericht senden"
-        : "Text senden";
-  }
-  if (refs.voiceDiagnoseBtn) {
-    refs.voiceDiagnoseBtn.classList.toggle("active", diagnosisMode);
-    refs.voiceDiagnoseBtn.setAttribute("aria-pressed", diagnosisMode ? "true" : "false");
+    refs.voiceTextSendBtn.textContent = doctorConversationMode ? "Bericht senden" : "Text senden";
   }
   if (refs.voiceDoctorConversationBtn) {
     refs.voiceDoctorConversationBtn.classList.toggle("active", doctorConversationMode);
@@ -6740,9 +6715,6 @@ function setVoiceBusy(isBusy) {
   if (refs.voiceNextCaseBtn) {
     refs.voiceNextCaseBtn.disabled = state.voiceBusy || realtimeLocked;
   }
-  if (refs.voiceDiagnoseBtn) {
-    refs.voiceDiagnoseBtn.disabled = state.voiceBusy || realtimeLocked;
-  }
   if (refs.voiceDoctorConversationBtn) {
     refs.voiceDoctorConversationBtn.disabled = state.voiceBusy || realtimeLocked;
   }
@@ -7488,7 +7460,7 @@ function startQuickPractice() {
 
 function handleOpenLearningPanel() {
   state.learningRootId = "anamnese";
-  state.learningView = LEARNING_VIEW_ROOT;
+  state.learningView = LEARNING_VIEW_SUBCATEGORIES;
   renderLearningFlow();
   refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -7813,6 +7785,7 @@ function renderLearningFlow() {
     return;
   }
 
+  renderLearningSubcategoryList(bundle);
   renderLearningReadingMode(bundle);
   showLearningView(LEARNING_VIEW_READING);
 }
@@ -7820,7 +7793,8 @@ function renderLearningFlow() {
 function showLearningView(viewId) {
   if (refs.learningRootView) refs.learningRootView.classList.toggle("hidden", viewId !== LEARNING_VIEW_ROOT);
   if (refs.learningSubcategoryView) {
-    refs.learningSubcategoryView.classList.toggle("hidden", viewId !== LEARNING_VIEW_SUBCATEGORIES);
+    const showSubcategory = viewId === LEARNING_VIEW_SUBCATEGORIES || viewId === LEARNING_VIEW_READING;
+    refs.learningSubcategoryView.classList.toggle("hidden", !showSubcategory);
   }
   if (refs.learningBodyView) refs.learningBodyView.classList.toggle("hidden", viewId !== LEARNING_VIEW_BODY);
   if (refs.learningReadingView) refs.learningReadingView.classList.toggle("hidden", viewId !== LEARNING_VIEW_READING);
@@ -7864,6 +7838,7 @@ function renderLearningRootList() {
 
 function renderLearningSubcategoryList(bundle) {
   const categories = Array.isArray(bundle?.categories) ? bundle.categories : [];
+  const activeCategoryId = getLearningActiveCategoryIdForRoot(state.learningRootId);
   if (refs.learningSubcategoryTitle) {
     const selectedRoot = LEARNING_ROOT_ITEMS.find((entry) => entry.id === state.learningRootId);
     refs.learningSubcategoryTitle.textContent = selectedRoot?.label || "Unterkategorien";
@@ -7874,6 +7849,9 @@ function renderLearningSubcategoryList(bundle) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "learning-subcategory-btn";
+    if (activeCategoryId && category.id === activeCategoryId) {
+      button.classList.add("active");
+    }
     const title = document.createElement("span");
     title.className = "learning-subcategory-title";
     title.textContent = category.title;
@@ -9475,8 +9453,10 @@ function renderWeekChart() {
 function openStatsOverlay() {
   if (!state.user) return;
   renderPersonalUsageStats();
-  renderAdminStatsPanel();
-  void refreshAdminMetrics();
+  void refreshAdminStatus().then(() => {
+    renderAdminStatsPanel();
+    void refreshAdminMetrics();
+  });
   refs.statsOverlay.classList.remove("hidden");
   refs.statsOverlay.setAttribute("aria-hidden", "false");
 }
@@ -9524,7 +9504,10 @@ function renderPersonalUsageStats() {
 function renderAdminStatsPanel() {
   if (!refs.adminStatsPanel || !refs.adminStatsStatus) return;
   refs.adminStatsPanel.classList.toggle("hidden", !state.isAdmin);
-  if (!state.isAdmin) return;
+  if (!state.isAdmin) {
+    refs.adminStatsStatus.textContent = "Admin-Ansicht: Kein Zugriff fuer diesen Account.";
+    return;
+  }
   if (state.adminMetricsRows.length) {
     renderAdminStatsRows();
   } else {
@@ -9590,25 +9573,90 @@ async function refreshAdminMetrics() {
   const fromDay = addDays(todayKey(), -(ADMIN_STATS_DAYS - 1));
   refs.adminStatsStatus.textContent = "Lade Admin-Daten ...";
   try {
-    const { data, error } = await supabase
-      .from(SUPABASE_USER_DAILY_METRICS_TABLE)
-      .select("user_id,user_email,day,active_seconds,attempts,correct,wrong,xp_total,level,updated_at")
-      .gte("day", fromDay)
-      .order("day", { ascending: false })
-      .order("updated_at", { ascending: false })
-      .limit(2000);
+    const { data, error } = await runSupabaseWithTimeout(
+      supabase
+        .from(SUPABASE_USER_DAILY_METRICS_TABLE)
+        .select("user_id,user_email,day,active_seconds,attempts,correct,wrong,xp_total,level,updated_at")
+        .gte("day", fromDay)
+        .order("day", { ascending: false })
+        .order("updated_at", { ascending: false })
+        .limit(3000),
+      "Admin-Metriken laden"
+    );
 
-    if (error) {
-      refs.adminStatsStatus.textContent =
-        "Admin-Daten konnten nicht geladen werden. Bitte SQL-Setup und RLS pruefen.";
+    if (!error && Array.isArray(data) && data.length > 0) {
+      state.adminMetricsRows = data;
+      renderAdminStatsRows();
       return;
     }
 
-    state.adminMetricsRows = Array.isArray(data) ? data : [];
+    const fallbackRows = await refreshAdminMetricsFromProgressFallback(fromDay);
+    state.adminMetricsRows = fallbackRows;
     renderAdminStatsRows();
   } catch (_error) {
-    refs.adminStatsStatus.textContent = "Admin-Daten konnten nicht geladen werden.";
+    refs.adminStatsStatus.textContent =
+      "Admin-Daten konnten nicht geladen werden. Bitte SQL-Setup und RLS pruefen.";
   }
+}
+
+async function refreshAdminMetricsFromProgressFallback(fromDay) {
+  if (!supabase || !state.user) return [];
+
+  const { data, error } = await runSupabaseWithTimeout(
+    supabase
+      .from("progress")
+      .select("user_id,card_id,status,updated_at")
+      .eq("card_id", APP_STATE_CARD_ID)
+      .order("updated_at", { ascending: false })
+      .limit(5000),
+    "Admin-Fallback progress laden"
+  );
+  if (error || !Array.isArray(data) || data.length === 0) {
+    return [];
+  }
+
+  const rows = [];
+  for (const item of data) {
+    const userId = String(item?.user_id || "");
+    if (!userId) continue;
+    let payload = null;
+    try {
+      payload = JSON.parse(String(item?.status || "{}"));
+    } catch {
+      payload = null;
+    }
+    if (!payload || typeof payload !== "object") continue;
+
+    const xpTotal = normalizeXpValue(payload.xp);
+    const level = deriveLevelFromXp(xpTotal);
+    const dailyStats = normalizeDailyStatsMap(payload.dailyStats);
+    for (const [dayKey, dayValue] of Object.entries(dailyStats)) {
+      if (dayKey < fromDay) continue;
+      const day = normalizeDayStatsEntry(dayValue);
+      const hasData =
+        day.attempts > 0 || day.correct > 0 || day.wrong > 0 || (day.activeSeconds || 0) > 0;
+      if (!hasData) continue;
+      rows.push({
+        user_id: userId,
+        user_email: "",
+        day: dayKey,
+        active_seconds: day.activeSeconds || 0,
+        attempts: day.attempts || 0,
+        correct: day.correct || 0,
+        wrong: day.wrong || 0,
+        xp_total: xpTotal,
+        level,
+        updated_at: item?.updated_at || ""
+      });
+    }
+  }
+
+  rows.sort((a, b) => {
+    const dayCompare = String(b.day || "").localeCompare(String(a.day || ""));
+    if (dayCompare !== 0) return dayCompare;
+    return String(b.updated_at || "").localeCompare(String(a.updated_at || ""));
+  });
+  return rows.slice(0, 3000);
 }
 
 function deriveLevelFromXp(xpValue) {

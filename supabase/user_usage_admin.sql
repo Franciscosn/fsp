@@ -68,5 +68,20 @@ to authenticated
 using (auth.uid() = user_id)
 with check (auth.uid() = user_id);
 
+-- Optional fallback for admin dashboard from existing progress table.
+-- This enables admin read access to all app-state rows.
+drop policy if exists "progress_select_admin" on public.progress;
+create policy "progress_select_admin"
+on public.progress
+for select
+to authenticated
+using (
+  exists (
+    select 1
+    from public.app_admins as admins
+    where admins.user_id = auth.uid()
+  )
+);
+
 -- Helper: make yourself admin (replace with your auth.users.id)
 -- insert into public.app_admins (user_id, note) values ('YOUR-USER-UUID', 'owner');

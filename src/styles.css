@@ -1279,6 +1279,11 @@ body.auth-only .edge-deco {
   transform: translateY(-1px);
 }
 
+.learning-subcategory-btn.active {
+  border-color: rgba(44, 84, 128, 0.48);
+  box-shadow: 0 8px 18px rgba(42, 95, 144, 0.14);
+}
+
 .learning-root-btn {
   border-color: rgba(57, 88, 122, 0.33);
   background: linear-gradient(135deg, rgba(233, 244, 255, 0.9), rgba(255, 255, 255, 0.95));
@@ -2431,7 +2436,8 @@ h3 {
 
 .stats-fab {
   position: fixed;
-  right: 16px;
+  left: 16px;
+  right: auto;
   bottom: 14px;
   z-index: 11;
   border: 0;
@@ -2679,8 +2685,7 @@ body.learning-reader .stats-fab {
   display: none !important;
 }
 
-body.learning-reader #learningRootView,
-body.learning-reader #learningSubcategoryView {
+body.learning-reader #learningRootView {
   display: none !important;
 }
 
@@ -3230,8 +3235,8 @@ body.learning-reader .learning-back-avatar {
   }
 
   .stats-fab {
-    right: 10px;
-    left: auto;
+    left: 10px;
+    right: auto;
     bottom: 10px;
     width: 54px;
     height: 54px;
