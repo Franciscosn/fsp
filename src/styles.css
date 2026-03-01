@@ -2585,8 +2585,6 @@ body.learning-reader .learning-head,
 body.learning-reader #learningReadingTitle,
 body.learning-reader .learning-meta,
 body.learning-reader .learning-status,
-body.learning-reader .learning-question-head,
-body.learning-reader .learning-question-groups,
 body.learning-reader .learning-sources {
   display: none !important;
 }
@@ -2871,8 +2869,6 @@ body.learning-reader .learning-back-avatar {
   .learning-panel.is-reader-view #learningReadingTitle,
   .learning-panel.is-reader-view .learning-meta,
   .learning-panel.is-reader-view .learning-status,
-  .learning-panel.is-reader-view .learning-question-head,
-  .learning-panel.is-reader-view .learning-question-groups,
   .learning-panel.is-reader-view .learning-sources {
     display: none;
   }
