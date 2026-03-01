@@ -2685,10 +2685,6 @@ body.learning-reader .stats-fab {
   display: none !important;
 }
 
-body.learning-reader #learningRootView {
-  display: none !important;
-}
-
 body.learning-reader #learningReadingView {
   display: grid !important;
   border: 0;

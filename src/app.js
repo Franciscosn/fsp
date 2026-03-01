@@ -15,8 +15,8 @@ const API_SPEND_TRACKER_VERSION = 2;
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "50";
-const BUILD_UPDATED_AT = "2026-03-01 19:05 CET";
+const APP_VERSION = "51";
+const BUILD_UPDATED_AT = "2026-03-01 19:18 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -7791,7 +7791,7 @@ function renderLearningFlow() {
 }
 
 function showLearningView(viewId) {
-  if (refs.learningRootView) refs.learningRootView.classList.toggle("hidden", viewId !== LEARNING_VIEW_ROOT);
+  if (refs.learningRootView) refs.learningRootView.classList.remove("hidden");
   if (refs.learningSubcategoryView) {
     const showSubcategory = viewId === LEARNING_VIEW_SUBCATEGORIES || viewId === LEARNING_VIEW_READING;
     refs.learningSubcategoryView.classList.toggle("hidden", !showSubcategory);
