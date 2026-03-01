@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=47" />
+    <link rel="stylesheet" href="src/styles.css?v=49" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -523,6 +523,10 @@
             <h5>Fragen nach Untergebieten</h5>
           </div>
           <div id="learningReadingQuestionGroups" class="learning-question-groups"></div>
+          <div id="learningReadingExamSentences" class="learning-exam-sentences"></div>
+          <div id="learningReadingMiniScenario" class="learning-mini-scenarios"></div>
+          <div id="learningReadingLinkedTerms" class="learning-linked-terms"></div>
+          <p id="learningReadingCuration" class="learning-curation-note"></p>
           <div id="learningReadingSources" class="learning-sources"></div>
         </article>
       </section>
@@ -659,9 +663,62 @@
             <div id="weekChart" class="chart"></div>
           </article>
         </div>
+
+        <div class="stats-grid stats-grid-extended">
+          <article class="panel">
+            <h3>Meine Nutzung</h3>
+            <div class="today-stats">
+              <p><span>Heute online:</span> <strong id="myUsageTodayTime">0 min</strong></p>
+              <p><span>Aktuelles Level:</span> <strong id="myUsageCurrentLevel">1</strong></p>
+              <p><span>Gesamt XP:</span> <strong id="myUsageTotalXp">0</strong></p>
+            </div>
+            <p class="muted compact">Letzte 14 Tage</p>
+            <div class="stats-table-wrap">
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th>Tag</th>
+                    <th>Zeit</th>
+                    <th>XP</th>
+                    <th>Geuebt</th>
+                    <th>Quote</th>
+                  </tr>
+                </thead>
+                <tbody id="myUsageTableBody"></tbody>
+              </table>
+            </div>
+            <p id="myUsageEmpty" class="muted compact hidden">Noch keine Nutzungsdaten vorhanden.</p>
+          </article>
+
+          <article id="adminStatsPanel" class="panel hidden">
+            <div class="stats-headline-row">
+              <h3>Admin Dashboard</h3>
+              <button id="adminStatsRefreshBtn" class="soft-btn" type="button">Aktualisieren</button>
+            </div>
+            <p id="adminStatsStatus" class="muted compact">
+              Nur fuer Admin-Nutzer sichtbar. Bitte SQL-Setup in Supabase ausfuehren.
+            </p>
+            <div class="stats-table-wrap">
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Tag</th>
+                    <th>Zeit</th>
+                    <th>XP</th>
+                    <th>Level</th>
+                    <th>Geuebt</th>
+                  </tr>
+                </thead>
+                <tbody id="adminStatsTableBody"></tbody>
+              </table>
+            </div>
+            <p id="adminStatsEmpty" class="muted compact hidden">Noch keine Admin-Daten vorhanden.</p>
+          </article>
+        </div>
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=47"></script>
+    <script type="module" src="src/app.js?v=49"></script>
   </body>
 </html>

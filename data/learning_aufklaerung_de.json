@@ -1,0 +1,494 @@
+{
+  "title": "Lernbereich",
+  "subtitle": "Aufklaerungsgespraeche fuer die FSP Berlin",
+  "scope_note": "Dieses Modul trainiert patientengerechte Erklaerungen diagnostischer und invasiver Verfahren. Schwerpunkt ist sprachliche Klarheit, Risiko-Nutzen-Kommunikation und sichere Einwilligungssprache auf B2/C1-Niveau.",
+  "references": [
+    {
+      "label": "Fachsprachkurs PDF: EKG, Sonographie, CT/MRT, Gastroskopie, Lumbalpunktion, PDA",
+      "url": "data/fachsprachkurs.pdf"
+    },
+    {
+      "label": "AEKB Berlin: Kommunikationsanforderungen in der FSP",
+      "url": "https://www.aekb.de"
+    }
+  ],
+  "categories": [
+    {
+      "id": "ekg_monitoring",
+      "title": "EKG und Basis-Monitoring erklaeren",
+      "focus": "Kurze, klare Erklaerung von Zweck, Ablauf und Grenzen eines EKG",
+      "summary": "Viele Kandidatinnen und Kandidaten nennen beim EKG nur den Namen der Untersuchung. In der Pruefung wird aber bewertet, ob die Patientin oder der Patient versteht, was genau passiert und warum diese Untersuchung jetzt sinnvoll ist.",
+      "learning_text": [
+        "Ein gutes Aufklaerungsgespraech zum EKG beginnt mit dem Anlass und endet mit einer klaren Erwartungssteuerung. Ein pruefungsnaher Einstieg ist: Wir schreiben jetzt ein EKG, um Ihren Herzrhythmus und moegliche Durchblutungsstoerungen zu beurteilen. Damit weiss die Patientin sofort Ziel und medizinischen Kontext.",
+        "Im zweiten Schritt folgt die konkrete Ablauferklaerung in Patientensprache. Wichtig sind Elektroden auf Brust und Extremitaeten, kurze Dauer, keine Schmerzen und keine Strahlenbelastung. Sprachlich problematisch ist unscharfes Vokabular wie Wir gucken mal kurz. Besser ist ein strukturierter Ablauf in zwei bis drei kurzen Saetzen.",
+        "Der dritte Schritt ist die Abgrenzung von Aussage und Grenze der Untersuchung. Ein EKG kann richtungsweisend sein, ersetzt aber nicht jede weitere Diagnostik. Diese Differenzierung wirkt professionell und vermeidet falsche Sicherheit. In Berlin wird positiv gewertet, wenn Kandidaten plausibel erklaeren, warum bei unauffaelligem EKG je nach Klinik trotzdem weitere Schritte folgen.",
+        "Abschliessend sollte die Kandidatin aktiv auf Fragen eingehen und den naechsten Schritt nennen. Beispiel: Danach besprechen wir das Ergebnis gemeinsam und entscheiden, ob wir zusaetzlich Blutwerte oder weitere Diagnostik brauchen. Das verbindet medizinische Logik mit patientenzentrierter Kommunikation."
+      ],
+      "question_groups": [
+        {
+          "title": "Indikation und Zielsetzung",
+          "questions": [
+            "Warum ist das EKG in der aktuellen Situation notwendig?",
+            "Welche konkrete klinische Frage soll zuerst beantwortet werden?",
+            "Wird ein Ruhe-EKG ausreichen oder ist spaeter ein Langzeit-/Belastungs-EKG denkbar?",
+            "Welche Symptome des Patienten leiten die Diagnostik?",
+            "Welche Differentialdiagnosen sollen initial ausgeschlossen werden?"
+          ]
+        },
+        {
+          "title": "Ablauf patientengerecht erklaeren",
+          "questions": [
+            "Wie erklaeren Sie Elektroden und Messprinzip ohne Fachjargon?",
+            "Wie lange dauert die Untersuchung und was muss der Patient beachten?",
+            "Wie erklaeren Sie, dass das EKG schmerzfrei ist?",
+            "Wie gehen Sie mit Angst oder Scham beim Entkleiden um?",
+            "Welche Formulierung nutzen Sie, um Ruhe waehrend der Ableitung zu begruenden?"
+          ]
+        },
+        {
+          "title": "Ergebnis und naechste Schritte",
+          "questions": [
+            "Wie kommunizieren Sie einen unauffaelligen Befund ohne falsche Entwarnung?",
+            "Wie erklaeren Sie einen auffaelligen Rhythmusbefund patientengerecht?",
+            "Wie formulieren Sie den Plan fuer weitere Diagnostik?",
+            "Welche Warnzeichen nennen Sie fuer eine sofortige Wiedervorstellung?",
+            "Wie sichern Sie Verstaendnis am Ende aktiv ab?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Wir schreiben jetzt ein EKG, um Herzrhythmus und moegliche Belastungszeichen des Herzens zu beurteilen.",
+        "Die Untersuchung ist schmerzfrei und dauert nur wenige Minuten.",
+        "Ein EKG liefert wichtige Hinweise, aber je nach Befund brauchen wir eventuell weitere Untersuchungen.",
+        "Danach erklaere ich Ihnen das Ergebnis sofort und wir legen die naechsten Schritte gemeinsam fest."
+      ],
+      "linked_term_ids": [
+        "online_kurs_elektrokardiogramm",
+        "online_kurs_elektrokardiographie",
+        "online_kurs_belastungs_ekg",
+        "online_kurs_rr_apparat",
+        "online_kurs_arrhythmie",
+        "online_kurs_tachykardie",
+        "online_kurs_bradykardie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Thoraxschmerz in der Notaufnahme",
+        "situation": "Ein 59-jaehriger Patient berichtet ueber drueckenden Brustschmerz seit 45 Minuten und wirkt deutlich besorgt.",
+        "task_patient": "Erklaeren Sie in maximal vier Saetzen, warum sofort ein EKG geschrieben wird.",
+        "task_doctor": "Formulieren Sie eine strukturierte 30-Sekunden-Uebergabe mit EKG-Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Aufklaerung zum EKG in zwei praezisen Arztbrief-Saetzen."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: EKG-Dialogbeispiele",
+        "Berlin FSP: patientenverstaendliche Diagnostikerklaerung"
+      ]
+    },
+    {
+      "id": "sonographie",
+      "title": "Sonographie verstaendlich erklaeren",
+      "focus": "Nutzen, Ablauf und Grenzen des Ultraschalls in einfacher Sprache",
+      "summary": "Bei der Sonographie wird in der Pruefung oft erwartet, dass Sie technische Begriffe korrekt, aber patientennah erklaeren. Ziel ist eine beruhigende und gleichzeitig fachlich korrekte Kommunikation.",
+      "learning_text": [
+        "Eine starke Sonographie-Erklaerung benennt zuerst den Nutzen fuer die aktuelle Beschwerde. Beispiel: Mit dem Ultraschall koennen wir Ihre Organe und Gefaesse ohne Strahlenbelastung anschauen. Diese Priorisierung hilft dem Patienten, den Sinn der Untersuchung sofort zu verstehen.",
+        "Im Ablauf sollten Gel, Schallkopf, eventuell Druckgefuehl und die typische Untersuchungsdauer erwaehnt werden. Unnötig detailreiche Physikerklaerungen kosten Zeit und bringen in der FSP keinen Mehrwert. Entscheidend ist sprachliche Sicherheit und Struktur.",
+        "Wichtig ist ausserdem die Erwartungssteuerung: Sonographie ist oft eine sehr gute erste Bildgebung, aber nicht in jeder Situation ausreichend. Kandidaten sollten transparent sagen, wann bei unklaren Befunden zusaetzlich CT oder MRT erforderlich sein kann.",
+        "Bei angespannten Patienten wirkt eine kurze Sicherheitsschleife professionell: Wenn etwas unangenehm ist, sagen Sie mir bitte sofort Bescheid. Diese Formulierung verbindet Empathie mit klarer Rollensicherheit."
+      ],
+      "question_groups": [
+        {
+          "title": "Indikation",
+          "questions": [
+            "Welche klinische Frage wollen Sie mit der Sonographie beantworten?",
+            "Welche Region soll untersucht werden und warum?",
+            "Ist die Sonographie Erstdiagnostik oder Verlaufskontrolle?",
+            "Welche Befunde waeren richtungsweisend?",
+            "Welche Alternativen gibt es bei unzureichender Aussagekraft?"
+          ]
+        },
+        {
+          "title": "Ablauf",
+          "questions": [
+            "Wie erklaeren Sie Gel und Schallkopf in alltagstauglicher Sprache?",
+            "Wie gehen Sie auf moegliches Druckgefuehl ein?",
+            "Wie lange dauert die Untersuchung realistisch?",
+            "Welche Vorbereitung ist eventuell noetig (nuechtern, Blasenfuellung)?",
+            "Wie holen Sie aktiv Einverstaendnis vor Untersuchungsbeginn ein?"
+          ]
+        },
+        {
+          "title": "Befundkommunikation",
+          "questions": [
+            "Wie kommunizieren Sie unauffaellige Sonographiebefunde?",
+            "Wie erklaeren Sie einen unklaren oder grenzwertigen Befund?",
+            "Wie ueberleiten Sie patientengerecht auf weiterfuehrende Bildgebung?",
+            "Welche Warnzeichen nennen Sie bis zur weiteren Abklaerung?",
+            "Wie sichern Sie, dass der Patient den Plan verstanden hat?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Mit dem Ultraschall koennen wir die betroffene Region schnell und ohne Strahlenbelastung beurteilen.",
+        "Dafuer benutze ich ein Gel und einen Schallkopf, das kann kurz etwas kuehl sein.",
+        "Falls der Befund nicht eindeutig ist, planen wir im naechsten Schritt eine genauere Bildgebung.",
+        "Ich erklaere Ihnen das Ergebnis direkt nach der Untersuchung in Ruhe."
+      ],
+      "linked_term_ids": [
+        "online_kurs_doppler_sonographie",
+        "online_kurs_echokardiographie",
+        "online_kurs_angiographie",
+        "online_kurs_angioplastie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Oberbauchschmerz",
+        "situation": "Eine 43-jaehrige Patientin stellt sich mit akutem rechten Oberbauchschmerz und Uebelkeit vor.",
+        "task_patient": "Erklaeren Sie den geplanten Oberbauch-Ultraschall in drei bis vier klaren Saetzen.",
+        "task_doctor": "Uebergeben Sie knapp, warum Sonographie zuerst erfolgt und wann CT folgen sollte.",
+        "task_letter": "Dokumentieren Sie die Aufklaerung und das Einverstaendnis in einem kurzen Absatz."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Sonographie-Aufklaerung",
+        "Pruefungspraxis FSP: patientenfreundliche Ablauferklaerung"
+      ]
+    },
+    {
+      "id": "ct_mrt_roentgen",
+      "title": "CT, MRT und Roentgen erklaeren",
+      "focus": "Vergleich von Bildgebung, Strahlenaspekten und patientengerechter Nutzenkommunikation",
+      "summary": "Dieser Bereich ist in der FSP besonders wichtig, weil hier medizinische Praezision und Laienverstaendlichkeit kollidieren. Gute Kandidaten unterscheiden Zweck, Belastung und Dringlichkeit klar.",
+      "learning_text": [
+        "In der Pruefung sollten CT, MRT und Roentgen nicht als austauschbar dargestellt werden. Das CT ist schnell und in Notfallsituationen oft erste Wahl, das MRT bietet hohe Weichteilaufloesung ohne ionisierende Strahlung, braucht aber mehr Zeit. Diese Kernunterscheidung sollte sprachlich sicher abrufbar sein.",
+        "Zur Strahlenkommunikation gilt: ehrlich, ruhig, ohne Dramatisierung. Ein geeigneter Satz ist: Beim CT wird Roentgenstrahlung verwendet, wir setzen die Untersuchung aber nur ein, wenn der diagnostische Nutzen klar ueberwiegt. So wirkt die Aufklaerung medizinisch korrekt und vertrauensbildend.",
+        "Bei MRT-bezogenen Aengsten sind Klaustrophobie, Geraeuschpegel und Liegedauer relevant. Gute Kommunikation kombiniert Vorbereitung und Handlungsoptionen, zum Beispiel Notklingel, Pausenmoeglichkeit oder beruhigende Begleitung. Kandidaten punkten, wenn sie konkrete Entlastungsstrategien anbieten.",
+        "Zum Abschluss gehoert eine klare Antwort auf die Frage Was passiert danach. Wer den Befundpfad und die naechsten Entscheidungen transparent ankoppelt, zeigt klinische und sprachliche Handlungsfaehigkeit zugleich."
+      ],
+      "question_groups": [
+        {
+          "title": "Verfahrenswahl",
+          "questions": [
+            "Welche klinische Frage spricht fuer CT statt MRT?",
+            "Wann ist das MRT diagnostisch ueberlegen?",
+            "Welche Rolle spielt Zeitkritik in der Notfallentscheidung?",
+            "Wie begruenden Sie Roentgen als Erstuntersuchung?",
+            "Welche Kontraindikationen muessen vorab geklaert werden?"
+          ]
+        },
+        {
+          "title": "Aufklaerung",
+          "questions": [
+            "Wie erklaeren Sie Strahlenexposition ohne Angstverstaerkung?",
+            "Welche Punkte sprechen Sie bei Kontrastmittelgabe an?",
+            "Wie gehen Sie auf Klaustrophobie beim MRT ein?",
+            "Welche Vorbereitungshinweise geben Sie vor der Untersuchung?",
+            "Wie formulieren Sie die Einwilligung klar und kurz?"
+          ]
+        },
+        {
+          "title": "Nach der Untersuchung",
+          "questions": [
+            "Wie teilen Sie mit, wann Befunde vorliegen?",
+            "Wie erklaeren Sie einen unklaren Befund und den weiteren Plan?",
+            "Welche Nebenwirkungen nach Kontrastmittel sollten genannt werden?",
+            "Wie dokumentieren Sie Aufklaerung und Einwilligung kurz im Arztbrief?",
+            "Wie integrieren Sie Bildgebungsergebnisse in die Arzt-Arzt-Uebergabe?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Das CT ist in Ihrer Situation die schnellste Untersuchung, um gefaehrliche Ursachen rasch auszuschliessen.",
+        "Beim MRT arbeiten wir ohne Roentgenstrahlung, die Untersuchung dauert aber laenger.",
+        "Wir waehlen die Untersuchung so, dass Nutzen und Belastung in Ihrem Fall gut ausbalanciert sind.",
+        "Sobald der Befund vorliegt, bespreche ich mit Ihnen die naechsten Schritte transparent."
+      ],
+      "linked_term_ids": [
+        "online_kurs_kraniale_computertomographie_cct",
+        "online_kurs_myelographie",
+        "online_kurs_radikulographie",
+        "online_kurs_transkraniale_doppler_sonographie",
+        "online_kurs_ophthalmoskopie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Akuter neurologischer Ausfall",
+        "situation": "Ein 68-jaehriger Patient entwickelt ploetzlich Dysarthrie und Halbseitenschwaeche.",
+        "task_patient": "Erklaeren Sie die dringliche CT-Indikation in patientenverstaendlicher Sprache.",
+        "task_doctor": "Uebergeben Sie den Bildgebungsplan in 20-30 Sekunden an den Oberarzt.",
+        "task_letter": "Dokumentieren Sie Aufklaerung, Einwilligung und Dringlichkeit sprachlich sauber."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: CT/MRT-Vergleich und Dialog",
+        "Berlin FSP: Aufklaerung zu Bildgebung"
+      ]
+    },
+    {
+      "id": "endoskopie_gastroskopie",
+      "title": "Endoskopie und Gastroskopie aufklaeren",
+      "focus": "Indikation, Sedierung, Risiken und Befundkommunikation bei endoskopischen Verfahren",
+      "summary": "Im Fachsprachkurs wurden Gastroskopie-Gespraeche mehrfach geuebt. Entscheidend ist, dass Kandidaten Zweck, Ablauf, Unannehmlichkeiten und Risiken strukturiert und ohne Ausweichen kommunizieren.",
+      "learning_text": [
+        "Die Endoskopie-Aufklaerung sollte mit dem diagnostischen Ziel starten, etwa Blutungsquelle finden, Entzuendung beurteilen oder Gewebeprobe gewinnen. Der Nutzen muss konkret am Fall orientiert sein. Allgemeine Floskeln ohne Fallbezug wirken in der Pruefung unsicher.",
+        "Danach folgt der Ablauf: Nuechternheit, lokale Betaeubung und gegebenenfalls Sedierung, Einfuehrung des Endoskops, Beobachtungsphase nach dem Eingriff. Diese Sequenz sollte in klarer Reihenfolge und mit alltagssprachlichen Begriffen erklaert werden.",
+        "Risikokommunikation ist Pflicht: Blutung, Perforation, Aspiration, Kreislaufreaktionen, Nachwirkungen der Sedierung. In der FSP geht es nicht um juristische Vollstaendigkeit, sondern um sprachlich saubere, ehrliche und angemessen gewichtete Aufklaerung.",
+        "Zum Schluss gehoeren Nachsorge und Sicherheitsnetz in einfacher Sprache dazu, zum Beispiel Verkehrsfaehigkeit nach Sedierung, Warnzeichen und Zeitpunkt der Befundbesprechung."
+      ],
+      "question_groups": [
+        {
+          "title": "Vorbereitung",
+          "questions": [
+            "Warum ist Nuechternheit vor Gastroskopie wichtig?",
+            "Wie erklaeren Sie den Unterschied zwischen mit und ohne Sedierung?",
+            "Welche Medikamente muessen vorab aktiv erfragt werden?",
+            "Wie sprechen Sie Antikoagulation patientengerecht an?",
+            "Wie stellen Sie sicher, dass der Patient das Vorgehen verstanden hat?"
+          ]
+        },
+        {
+          "title": "Ablauf und Risiken",
+          "questions": [
+            "Wie erklaeren Sie Endoskop, Kamera und Luftinsufflation laiengerecht?",
+            "Welche typischen Beschwerden waehrend der Untersuchung nennen Sie?",
+            "Welche Risiken muessen zwingend angesprochen werden?",
+            "Wie formulieren Sie seltene Komplikationen ohne Angstmache?",
+            "Welche Rolle haben Biopsien in der Erklaerung?"
+          ]
+        },
+        {
+          "title": "Nachsorge",
+          "questions": [
+            "Welche Verhaltensregeln gelten nach Sedierung?",
+            "Welche Warnzeichen erfordern sofortige Wiedervorstellung?",
+            "Wie kommunizieren Sie den Zeitpunkt der Befundmitteilung?",
+            "Wie dokumentieren Sie das Aufklaerungsgespraech knapp und korrekt?",
+            "Wie uebergeben Sie den Fall strukturiert im Arzt-Arzt-Gespraech?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Wir empfehlen eine Gastroskopie, um die Ursache Ihrer Beschwerden direkt zu sehen und bei Bedarf Gewebeproben zu entnehmen.",
+        "Die Untersuchung erfolgt nuechtern; auf Wunsch ist eine Sedierung moeglich.",
+        "Seltene Risiken wie Blutung oder Verletzung bespreche ich mit Ihnen offen, damit Sie informiert entscheiden koennen.",
+        "Nach der Untersuchung erhalten Sie klare Verhaltenshinweise und wir besprechen den weiteren Plan."
+      ],
+      "linked_term_ids": [
+        "online_kurs_duodenum",
+        "online_kurs_colon",
+        "online_kurs_angiographie",
+        "online_kurs_angioskopie",
+        "online_kurs_venenpunktion"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Melena und Anaemie",
+        "situation": "Eine 57-jaehrige Patientin berichtet ueber Teerstuhl, Schwindel und Leistungsabfall.",
+        "task_patient": "Erklaeren Sie die Gastroskopie-Indikation und das Procedere in klarer Patientensprache.",
+        "task_doctor": "Stellen Sie den Aufklaerungsstand und das Risikoprofil strukturiert dem Oberarzt vor.",
+        "task_letter": "Erstellen Sie drei kurze Arztbrief-Saetze zur Aufklaerung inklusive Einwilligung."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Gastroskopie-Aufklaerung",
+        "Berlin FSP: Nutzen-Risiko-Kommunikation"
+      ]
+    },
+    {
+      "id": "lumbalpunktion",
+      "title": "Lumbalpunktion und Liquordiagnostik erklaeren",
+      "focus": "Indikation, Ablauf, Sicherheit und Komplikationen in klarer Sprache",
+      "summary": "Die Lumbalpunktion ist sprachlich anspruchsvoll, weil viele Patienten Sorge vor Schmerzen oder neurologischen Schaeden haben. Pruefungsrelevant ist eine ruhige, strukturierte und sachlich praezise Erklaerung.",
+      "learning_text": [
+        "Starten Sie mit der diagnostischen Leitfrage: Wir benoetigen Nervenwasser, um Entzuendung, Infektion oder andere Ursachen Ihrer Beschwerden besser einordnen zu koennen. Das schafft inhaltliche Orientierung.",
+        "Im Ablauf sollten Lagerung, sterile Bedingungen, lokale Betaeubung, kurze Punktion und anschliessende Beobachtung genannt werden. Die Kandidatin muss dabei einfach formulieren, aber fachlich korrekt bleiben.",
+        "Risikoseitig sind postpunktioneller Kopfschmerz, lokale Schmerzen, selten Blutung oder Infektion zu nennen. Entscheidend ist die sprachliche Balance zwischen Transparenz und Beruhigung. Pauschale Aussagen wie Das ist ganz harmlos sind in der FSP eher negativ.",
+        "Zum Ende gehoeren klare Hinweise zu Nachbeobachtung, Warnzeichen und Befundbesprechung. Damit wird aus einer rein technischen Erklaerung ein vollstaendiges Aufklaerungsgespraech."
+      ],
+      "question_groups": [
+        {
+          "title": "Indikation",
+          "questions": [
+            "Welche klinische Frage macht die Lumbalpunktion notwendig?",
+            "Welche Differentialdiagnosen sollen dadurch abgegrenzt werden?",
+            "Welche Vorbefunde beeinflussen die Dringlichkeit?",
+            "Welche Kontraindikationen muessen vorab geprueft werden?",
+            "Wie erklaeren Sie den Nutzen des Liquors in Patientensprache?"
+          ]
+        },
+        {
+          "title": "Ablauf und Komfort",
+          "questions": [
+            "Wie erklaeren Sie Lagerung und sterile Vorbereitung?",
+            "Wie beschreiben Sie lokale Betaeubung und Punktion realistisch?",
+            "Welche Formulierungen reduzieren Angst ohne zu verharmlosen?",
+            "Wie sichern Sie aktive Rueckfragen des Patienten?",
+            "Wie erklaeren Sie die Beobachtungsphase nach der Punktion?"
+          ]
+        },
+        {
+          "title": "Risiko und Nachsorge",
+          "questions": [
+            "Welche haeufige Nebenwirkung muss angesprochen werden?",
+            "Welche seltenen Komplikationen nennen Sie verpflichtend?",
+            "Welche Warnzeichen fuer eine schnelle Wiedervorstellung gibt es?",
+            "Wie dokumentieren Sie Einwilligung und Risikoaufklaerung sprachlich sauber?",
+            "Wie uebergeben Sie die LP-Entscheidung im Arzt-Arzt-Format?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Mit der Lumbalpunktion gewinnen wir Nervenwasser, um die Ursache Ihrer Beschwerden genauer einzugrenzen.",
+        "Wir arbeiten steril und mit lokaler Betaeubung, damit die Untersuchung fuer Sie moeglichst schonend ist.",
+        "Hauefig kann es danach zu voruebergehendem Kopfschmerz kommen; seltene Komplikationen erklaere ich Ihnen offen.",
+        "Nach der Untersuchung beobachten wir Sie und besprechen den Befundplan Schritt fuer Schritt."
+      ],
+      "linked_term_ids": [
+        "online_kurs_lumbalpunktion",
+        "online_kurs_meningitis",
+        "online_kurs_kraniale_computertomographie_cct",
+        "online_kurs_elektroenzephalographie_eeg",
+        "online_kurs_elektroneurographie_eng"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Fieber, Nackensteife, Kopfschmerz",
+        "situation": "Ein 31-jaehriger Patient zeigt klinische Zeichen eines Meningitisverdachts.",
+        "task_patient": "Erklaeren Sie LP-Indikation und Risiken in klarer, nicht dramatisierender Sprache.",
+        "task_doctor": "Uebergeben Sie kurz die rationale Reihenfolge aus CT/LP/Antibiotikatherapie.",
+        "task_letter": "Dokumentieren Sie die Aufklaerung zur LP inklusive Warnzeichen nach dem Eingriff."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Lumbalpunktion-Dialog",
+        "Neurologische Akutkommunikation in der FSP"
+      ]
+    },
+    {
+      "id": "pda_regionalanaesthesie",
+      "title": "PDA und Regionalanaesthesie aufklaeren",
+      "focus": "Schmerzerleichterung, Ablauf, Risiken und Entscheidungshoheit der Patientin",
+      "summary": "Im PDF war die PDA-Aufklaerung als Dialog enthalten. Dieses Thema trainiert, wie man bei Unsicherheit der Patientin professionell, empathisch und gleichzeitig strukturiert informiert.",
+      "learning_text": [
+        "Bei der PDA-Aufklaerung ist das kommunikative Grundprinzip: Entscheidungshilfe statt Ueberreden. Die Kandidatin erklaert Nutzen, Grenzen und Alternativen, bleibt aber neutral und respektiert die Entscheidung der Patientin.",
+        "Sprachlich sollte der Ablauf in drei Teilen kommen: Vorbereitung, Anlage, Wirkungskontrolle. Medizinische Detailtiefe darf vorhanden sein, muss aber in patientenfreundlicher Form bleiben. Zu technische Sprache ohne Erklaerung fuehrt in der FSP oft zu Punktverlust.",
+        "Wesentliche Risiken sind Blutdruckabfall, Kopfschmerz, unvollstaendige Wirkung, selten neurologische Komplikationen. Die Formulierung sollte klar sein: seltene Komplikationen werden genannt, aber nicht dramatisiert.",
+        "Ein starker Abschluss ist die aktive Verstaendnissicherung: Was ist fuer Sie aktuell noch unklar, bevor Sie entscheiden? Das zeigt Professionalitaet und macht das Gespraech pruefungsnah."
+      ],
+      "question_groups": [
+        {
+          "title": "Beratung und Entscheidung",
+          "questions": [
+            "Wie erklaeren Sie den Hauptnutzen einer PDA in einfacher Sprache?",
+            "Welche Alternativen sollten fair genannt werden?",
+            "Wie reagieren Sie auf Angst vor der Nadel?",
+            "Wie sichern Sie freiwillige Einwilligung statt Druck?",
+            "Wie formulieren Sie die Entscheidungshoheit der Patientin?"
+          ]
+        },
+        {
+          "title": "Ablauf und Wirkung",
+          "questions": [
+            "Wie beschreiben Sie den Ablauf von Lagerung bis Wirkungseintritt?",
+            "Wie erklaeren Sie die Wirkung auf Schmerzen und Motorik?",
+            "Welche realistischen Erwartungen setzen Sie?",
+            "Wie gehen Sie mit unvollstaendiger Wirkung um?",
+            "Wie erklaeren Sie notwendige Ueberwachung?"
+          ]
+        },
+        {
+          "title": "Risiken und Nachbetreuung",
+          "questions": [
+            "Welche haeufigeren Nebenwirkungen nennen Sie verpflichtend?",
+            "Wie benennen Sie seltene Risiken praezise und ruhig?",
+            "Welche Warnzeichen nach Anlage muessen genannt werden?",
+            "Wie dokumentieren Sie das Aufklaerungsgespraech sprachlich sauber?",
+            "Wie uebergeben Sie die Entscheidung im Arzt-Arzt-Gespraech?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Eine PDA kann die Schmerzen deutlich lindern, waehrend Sie in der Regel wach bleiben.",
+        "Ich erklaere Ihnen den Ablauf, die Vorteile und moegliche Nebenwirkungen, damit Sie informiert entscheiden koennen.",
+        "Wie bei jedem Verfahren gibt es Risiken; ich nenne Ihnen die wichtigsten offen und verstaendlich.",
+        "Sie entscheiden selbst, ob Sie die PDA moechten. Wir unterstuetzen Sie bei jeder Option."
+      ],
+      "linked_term_ids": [
+        "online_kurs_myelographie",
+        "online_kurs_lumbalpunktion",
+        "online_kurs_radikulographie",
+        "online_kurs_meningitis",
+        "online_kurs_hypotonie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Geburtsaufklaerung",
+        "situation": "Eine Erstgebaerende fragt in der Kreißsaalaufnahme gezielt nach einer PDA.",
+        "task_patient": "Fuehren Sie ein kurzes, strukturiertes PDA-Aufklaerungsgespraech mit Verstaendnissicherung.",
+        "task_doctor": "Berichten Sie dem Oberarzt die Entscheidungslage und den Aufklaerungsstand.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in zwei bis drei Saetzen."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: PDA-Dialog",
+        "FSP Berlin: patientenzentrierte Entscheidungskommunikation"
+      ]
+    },
+    {
+      "id": "kontrastmittel_sicherheit",
+      "title": "Kontrastmittel, Risiken und Einwilligung",
+      "focus": "Sichere Aufklaerung zu Allergie, Nierenfunktion und Beobachtung nach Gabe",
+      "summary": "Kontrastmittelaufklaerung wird oft zu allgemein gefuehrt. In der FSP zaehlt, dass Sie konkrete Risikofragen stellen, Nutzen begruenden und den Ueberwachungsplan verstaendlich machen.",
+      "learning_text": [
+        "Die Aufklaerung zu Kontrastmitteln beginnt mit der Indikation: Das Kontrastmittel verbessert die Aussagekraft der Untersuchung. Ohne diese Begruendung wirkt das Gespraech formal, aber nicht patientenzentriert.",
+        "Danach werden Risikofaktoren aktiv erfragt: fruehere Reaktionen, bekannte Allergien, Nierenfunktion, Schilddruesenerkrankungen und relevante Medikamente. Sprachlich sollte klar sein, dass diese Fragen Sicherheitszwecken dienen.",
+        "Bei der Risikokommunikation geht es um Proportion: meist gut vertraeglich, dennoch moegliche Nebenwirkungen wie Uebelkeit, Waermegefuehl oder selten allergische Reaktionen. Gute Kandidaten nennen zudem, was das Team bei Reaktionen sofort unternimmt.",
+        "Ein professioneller Abschluss enthaelt Beobachtungszeit, Trinkempfehlung und klare Warnzeichen fuer zu Hause. Dadurch wird die Aufklaerung vollstaendig und alltagstauglich."
+      ],
+      "question_groups": [
+        {
+          "title": "Risikoprofil",
+          "questions": [
+            "Welche Vorreaktionen auf Kontrastmittel muessen aktiv erfragt werden?",
+            "Wie sprechen Sie Nierenfunktion patientengerecht an?",
+            "Welche Begleiterkrankungen sind besonders relevant?",
+            "Wie fragen Sie nach relevanter Medikation strukturiert?",
+            "Wie erklaeren Sie dem Patienten den Sinn dieser Sicherheitsfragen?"
+          ]
+        },
+        {
+          "title": "Aufklaerung und Einwilligung",
+          "questions": [
+            "Wie begruenden Sie den diagnostischen Nutzen konkret am Fall?",
+            "Wie benennen Sie haeufige und seltene Nebenwirkungen verstaendlich?",
+            "Wie erklaeren Sie das Vorgehen bei einer Reaktion?",
+            "Wie sichern Sie informierte Einwilligung sprachlich korrekt?",
+            "Wie reagieren Sie auf patientenseitige Ablehnung?"
+          ]
+        },
+        {
+          "title": "Nachsorge",
+          "questions": [
+            "Welche Beobachtung direkt nach Kontrastmittelgabe ist sinnvoll?",
+            "Welche Hinweise fuer zu Hause geben Sie mit?",
+            "Welche Warnzeichen benoetigen eine sofortige Wiedervorstellung?",
+            "Wie dokumentieren Sie Aufklaerung und Einwilligung im Arztbrief?",
+            "Wie uebergeben Sie Kontrastmittelrisiken im Arzt-Arzt-Gespraech?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Das Kontrastmittel hilft uns, die Untersuchung deutlich genauer auszuwerten.",
+        "Vor der Gabe frage ich Sie gezielt nach Allergien, Nierenfunktion und frueheren Reaktionen, damit die Untersuchung sicher ist.",
+        "Meist wird das Kontrastmittel gut vertragen; selten kann es zu allergischen Reaktionen kommen.",
+        "Nach der Untersuchung beobachten wir Sie kurz und geben Ihnen klare Hinweise fuer zuhause mit."
+      ],
+      "linked_term_ids": [
+        "online_kurs_angiographie",
+        "online_kurs_koronarangiographie",
+        "online_kurs_kraniale_computertomographie_cct",
+        "online_kurs_hyperthyreose",
+        "online_kurs_hypothyreose"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: CT-Angiographie geplant",
+        "situation": "Bei Verdacht auf Lungenembolie ist eine CT-Angiographie vorgesehen.",
+        "task_patient": "Erklaeren Sie Kontrastmittelgabe, Nutzen und Sicherheitsabfrage in patientenfreundlicher Sprache.",
+        "task_doctor": "Uebergeben Sie kurz Risikoprofil und geplantes Monitoring.",
+        "task_letter": "Dokumentieren Sie Aufklaerung und Einwilligung inklusive Nachsorgehinweisen."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Diagnostikerklaerungen",
+        "FSP Berlin: klare Risiko-Nutzen-Kommunikation"
+      ]
+    }
+  ]
+}

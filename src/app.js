@@ -15,8 +15,8 @@ const API_SPEND_TRACKER_VERSION = 2;
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "46";
-const BUILD_UPDATED_AT = "2026-02-26 08:18 CET";
+const APP_VERSION = "49";
+const BUILD_UPDATED_AT = "2026-03-01 18:15 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -32,10 +32,22 @@ const PROMPT_PRESET_QUERY_LIMIT = 200;
 const PROMPT_FEEDBACK_TARGET_ALL = "__all__";
 const SUPABASE_PROMPT_FEEDBACK_TABLE = "prompt_feedback_submissions";
 const SUPABASE_PROMPT_PROFILES_TABLE = "prompt_profiles";
+const SUPABASE_USER_DAILY_METRICS_TABLE = "user_daily_metrics";
+const SUPABASE_ADMINS_TABLE = "app_admins";
+const USAGE_TICK_MS = 15_000;
+const PERSONAL_STATS_DAYS = 14;
+const ADMIN_STATS_DAYS = 30;
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
 const VOICE_CASE_SAMPLE_PATH = "data/voice_case_samples_de.json";
-const LEARNING_ANAMNESE_PATH = "data/learning_anamnese_de.json";
+const LEARNING_BUNDLE_PATH_BY_ROOT = Object.freeze({
+  anamnese: "data/learning_anamnese_de.json",
+  aufklaerung: "data/learning_aufklaerung_de.json",
+  klinische_untersuchung: "data/learning_klinische_untersuchung_de.json",
+  systemmodule: "data/learning_systemmodule_de.json",
+  red_flags: "data/learning_red_flags_de.json"
+});
+const LEARNING_CURATION_PATH = "data/fachsprachkurs_curation_de.json";
 const VOICE_CASE_DEFAULT = "default";
 const VOICE_CASE_CUSTOM = "custom";
 const VOICE_CASE_LIBRARY_PREFIX = "lib:";
@@ -81,6 +93,30 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
     id: "anamnese",
     label: "Anamnese",
     cta: "Symptomkataloge oeffnen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "aufklaerung",
+    label: "Aufklaerungsgespraeche",
+    cta: "Diagnostik verstaendlich erklaeren",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "klinische_untersuchung",
+    label: "Klinische Untersuchung",
+    cta: "Statussprache und Befunde trainieren",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "systemmodule",
+    label: "Systemmodule",
+    cta: "Organsysteme strukturiert lernen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "red_flags",
+    label: "Red Flags",
+    cta: "Warnzeichen priorisiert erkennen",
     view: LEARNING_VIEW_SUBCATEGORIES
   }
 ]);
@@ -1353,6 +1389,10 @@ let realtimeButtonPushToTalkStartInFlight = false;
 let suppressVoiceRecordClickOnce = false;
 let suppressVoiceRecordClickTimer = null;
 let xpMilestoneHideTimer = null;
+let usageTickTimer = null;
+let usageLastTickAt = 0;
+let usageMetricsSyncTimer = null;
+let usageSyncInFlight = false;
 
 const CATEGORY_MAP = {
   berlin_abkuerzungen: "Berlin Zusatzfragen: Abkuerzungen",
@@ -1467,7 +1507,7 @@ const FOLDER_SHORT_LABELS = {
 };
 
 const initialProgress = migrateStoredProgress(loadFromStorage(STORAGE_PROGRESS_KEY, {}));
-const initialDailyStats = loadFromStorage(STORAGE_DAILY_KEY, {});
+const initialDailyStats = normalizeDailyStatsMap(loadFromStorage(STORAGE_DAILY_KEY, {}));
 const initialDailyGoal = resolveStoredDailyGoal(
   loadFromStorage(STORAGE_DAILY_GOAL_KEY, { goal: DEFAULT_DAILY_GOAL })
 );
@@ -1498,6 +1538,8 @@ const state = {
   xp: initialXp,
   sessionXp: 0,
   user: null,
+  isAdmin: false,
+  adminMetricsRows: [],
   voiceHistory: [],
   voiceDoctorConversationHistory: [],
   voiceBusy: false,
@@ -1525,8 +1567,11 @@ const state = {
   voiceCaseSelection: VOICE_CASE_DEFAULT,
   learningView: LEARNING_VIEW_ROOT,
   learningRootId: "anamnese",
-  learningAnamnese: null,
-  learningActiveCategoryId: "",
+  learningBundlesByRoot: {},
+  learningActiveCategoryIdByRoot: {},
+  learningCuration: createDefaultLearningCuration(),
+  learningOnlineKursTermMap: {},
+  learningOnlineKursCurationStats: { total: 0, included: 0, excluded: 0 },
   learningBodyActiveRegionId: BODY_ATLAS_DEFAULT_REGION_ID,
   learningBodyDetailOpen: false
 };
@@ -1686,6 +1731,10 @@ const refs = {
   learningReadingStatus: document.getElementById("learningReadingStatus"),
   learningReadingText: document.getElementById("learningReadingText"),
   learningReadingQuestionGroups: document.getElementById("learningReadingQuestionGroups"),
+  learningReadingExamSentences: document.getElementById("learningReadingExamSentences"),
+  learningReadingMiniScenario: document.getElementById("learningReadingMiniScenario"),
+  learningReadingLinkedTerms: document.getElementById("learningReadingLinkedTerms"),
+  learningReadingCuration: document.getElementById("learningReadingCuration"),
   learningReadingSources: document.getElementById("learningReadingSources"),
   categoryFilters: document.getElementById("categoryFilters"),
   folderFilters: document.getElementById("folderFilters"),
@@ -1719,7 +1768,17 @@ const refs = {
   weekChart: document.getElementById("weekChart"),
   kpiGoal: document.getElementById("kpiGoal"),
   kpiStreak: document.getElementById("kpiStreak"),
-  kpiAccuracy: document.getElementById("kpiAccuracy")
+  kpiAccuracy: document.getElementById("kpiAccuracy"),
+  myUsageTodayTime: document.getElementById("myUsageTodayTime"),
+  myUsageCurrentLevel: document.getElementById("myUsageCurrentLevel"),
+  myUsageTotalXp: document.getElementById("myUsageTotalXp"),
+  myUsageTableBody: document.getElementById("myUsageTableBody"),
+  myUsageEmpty: document.getElementById("myUsageEmpty"),
+  adminStatsPanel: document.getElementById("adminStatsPanel"),
+  adminStatsStatus: document.getElementById("adminStatsStatus"),
+  adminStatsRefreshBtn: document.getElementById("adminStatsRefreshBtn"),
+  adminStatsTableBody: document.getElementById("adminStatsTableBody"),
+  adminStatsEmpty: document.getElementById("adminStatsEmpty")
 };
 
 const PROMPT_EDITOR_REF_KEY_BY_PROMPT_KEY = Object.freeze({
@@ -1878,6 +1937,12 @@ function wireEvents() {
   });
   refs.closeStatsBtn.addEventListener("click", closeStatsOverlay);
   refs.statsBackdrop.addEventListener("click", closeStatsOverlay);
+  refs.adminStatsRefreshBtn?.addEventListener("click", () => {
+    void refreshAdminMetrics();
+  });
+
+  document.addEventListener("visibilitychange", handleUsageVisibilityChange);
+  window.addEventListener("beforeunload", flushUsageTracking);
 
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
@@ -1899,7 +1964,7 @@ async function init() {
   initAuthUi();
   initAuthPortrait();
   initVoiceUi();
-  await loadLearningAnamneseContent();
+  await loadLearningBundlesContent();
   try {
     const url = new URL(`../data/cards.json?v=${APP_VERSION}`, import.meta.url);
     const response = await fetch(url, { cache: "no-store" });
@@ -1909,12 +1974,16 @@ async function init() {
 
     const deck = await response.json();
     state.cards = flattenCards(deck);
+    const curationResult = applyLearningCurationToDeckTerms(deck);
+    state.learningOnlineKursTermMap = curationResult.termMap;
+    state.learningOnlineKursCurationStats = curationResult.stats;
     state.categories = buildCategories(state.cards);
 
     renderCategoryFilters();
     renderFolderFilters();
     rebuildQueue(false);
     renderStats();
+    renderLearningFlow();
     await initSupabaseSession();
   } catch (error) {
     refs.emptyState.classList.remove("hidden");
@@ -7243,9 +7312,12 @@ async function applySession(session) {
   state.user = user;
   state.promptProfilesLoaded = false;
   if (!user) {
+    stopUsageTracking();
     state.sessionXp = 0;
     state.promptProposalBusy = false;
     state.promptPresetOptionsByKey = createEmptyPromptPresetOptions();
+    state.isAdmin = false;
+    state.adminMetricsRows = [];
     renderPromptPresetSelects();
     renderSessionXpDisplay();
     resetVoiceConversation({ keepCaseText: true, preserveStatus: false });
@@ -7258,6 +7330,10 @@ async function applySession(session) {
   await loadGlobalPromptProfiles();
   await loadPromptPresetOptions({ silent: true });
   await pullRemoteState();
+  await refreshAdminStatus();
+  renderAdminStatsPanel();
+  startUsageTracking();
+  scheduleUsageMetricsSync(true);
 }
 
 async function loadGlobalPromptProfiles() {
@@ -7441,36 +7517,116 @@ function handleLearningBodyRegionBackClick() {
   renderLearningFlow();
 }
 
-async function loadLearningAnamneseContent() {
+function createDefaultLearningCuration() {
+  return {
+    version: 1,
+    title: "Lernkuration",
+    description: "",
+    excludeTermIds: [],
+    excludeTokens: [],
+    notes: [],
+    reasonsByTermId: {}
+  };
+}
+
+async function loadLearningBundlesContent() {
   if (!refs.learningPanel) {
     return;
   }
 
   renderLearningLoading("Lerninhalte werden geladen ...");
   try {
-    const url = new URL(`../${LEARNING_ANAMNESE_PATH}?v=${APP_VERSION}`, import.meta.url);
-    const response = await fetch(url, { cache: "no-store" });
-    if (!response.ok) {
-      throw new Error("learning-fetch-failed");
+    const targets = LEARNING_ROOT_ITEMS.filter((entry) => Boolean(LEARNING_BUNDLE_PATH_BY_ROOT[entry.id]));
+    const loaded = await Promise.all(targets.map((entry) => fetchLearningBundleForRoot(entry.id)));
+    const bundlesByRoot = {};
+    for (const item of loaded) {
+      bundlesByRoot[item.rootId] = item.bundle;
     }
-    const payload = await response.json();
-    const normalized = normalizeLearningAnamnesePayload(payload);
-    state.learningAnamnese = normalized;
-    const firstCategoryId = normalized.categories[0]?.id || "";
-    const hasActiveCategory = normalized.categories.some(
-      (entry) => entry.id === state.learningActiveCategoryId
-    );
-    state.learningActiveCategoryId = hasActiveCategory ? state.learningActiveCategoryId : firstCategoryId;
+    state.learningBundlesByRoot = bundlesByRoot;
+    await loadLearningCurationConfig();
+    ensureLearningRootSelection();
     renderLearningFlow();
   } catch (error) {
-    console.error("Lernbereich konnte nicht geladen werden", error);
-    state.learningAnamnese = null;
-    state.learningActiveCategoryId = "";
+    console.error("Lernbereiche konnten nicht geladen werden", error);
+    state.learningBundlesByRoot = {};
     renderLearningLoading("Lerninhalte konnten nicht geladen werden.");
   }
 }
 
-function normalizeLearningAnamnesePayload(rawValue) {
+async function fetchLearningBundleForRoot(rootId) {
+  const path = LEARNING_BUNDLE_PATH_BY_ROOT[rootId];
+  if (!path) {
+    return { rootId, bundle: null };
+  }
+  try {
+    const url = new URL(`../${path}?v=${APP_VERSION}`, import.meta.url);
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(`learning-fetch-failed-${rootId}`);
+    }
+    const payload = await response.json();
+    const fallbackLabel =
+      LEARNING_ROOT_ITEMS.find((entry) => entry.id === rootId)?.label || "Lernbereich";
+    const bundle = normalizeLearningBundlePayload(payload, fallbackLabel);
+    return { rootId, bundle };
+  } catch (error) {
+    console.error(`Lernbereich ${rootId} konnte nicht geladen werden`, error);
+    return { rootId, bundle: null };
+  }
+}
+
+async function loadLearningCurationConfig() {
+  try {
+    const url = new URL(`../${LEARNING_CURATION_PATH}?v=${APP_VERSION}`, import.meta.url);
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("learning-curation-fetch-failed");
+    }
+    const payload = await response.json();
+    state.learningCuration = normalizeLearningCurationPayload(payload);
+  } catch (error) {
+    console.warn("Lernkuration konnte nicht geladen werden, Fallback aktiv", error);
+    state.learningCuration = createDefaultLearningCuration();
+  }
+}
+
+function normalizeLearningCurationPayload(rawValue) {
+  const source = rawValue && typeof rawValue === "object" ? rawValue : {};
+  const excludeTermIds = Array.isArray(source.exclude_term_ids)
+    ? source.exclude_term_ids
+        .map((item) => safeLine(item, 160))
+        .filter((item) => Boolean(item))
+    : [];
+  const excludeTokens = Array.isArray(source.exclude_tokens)
+    ? source.exclude_tokens
+        .map((item) => safeLine(item, 120).toLowerCase())
+        .filter((item) => Boolean(item))
+    : [];
+  const notes = Array.isArray(source.notes)
+    ? source.notes.map((item) => safeParagraph(item, 500)).filter((item) => Boolean(item))
+    : [];
+  const reasonsByTermId = {};
+  if (source.reasons_by_term_id && typeof source.reasons_by_term_id === "object") {
+    for (const [termId, reasonValue] of Object.entries(source.reasons_by_term_id)) {
+      const key = safeLine(termId, 160);
+      if (!key) continue;
+      const reason = safeParagraph(reasonValue, 260);
+      if (!reason) continue;
+      reasonsByTermId[key] = reason;
+    }
+  }
+  return {
+    version: Number(source.version) || 1,
+    title: safeLine(source.title || "Lernkuration", 180),
+    description: safeParagraph(source.description || "", 800),
+    excludeTermIds,
+    excludeTokens,
+    notes,
+    reasonsByTermId
+  };
+}
+
+function normalizeLearningBundlePayload(rawValue, fallbackLabel) {
   const source = rawValue && typeof rawValue === "object" ? rawValue : {};
   const categoriesRaw = Array.isArray(source.categories) ? source.categories : [];
   const categories = categoriesRaw
@@ -7478,7 +7634,7 @@ function normalizeLearningAnamnesePayload(rawValue) {
     .filter((item) => Boolean(item));
   return {
     title: safeLine(source.title || "Lernbereich", 120),
-    subtitle: safeLine(source.subtitle || "Anamnese", 180),
+    subtitle: safeLine(source.subtitle || fallbackLabel || "Lernbereich", 180),
     scopeNote: safeParagraph(source.scope_note || "", 500),
     categories,
     references: normalizeLearningReferenceList(source.references)
@@ -7518,6 +7674,15 @@ function normalizeLearningCategory(rawValue) {
   const sourceTags = Array.isArray(rawValue.source_tags)
     ? rawValue.source_tags.map((item) => safeLine(item, 220)).filter((item) => Boolean(item))
     : [];
+  const examSentences = Array.isArray(rawValue.exam_sentences)
+    ? rawValue.exam_sentences
+        .map((item) => safeParagraph(item, 360))
+        .filter((item) => Boolean(item))
+    : [];
+  const linkedTermIds = Array.isArray(rawValue.linked_term_ids)
+    ? rawValue.linked_term_ids.map((item) => safeLine(item, 160)).filter((item) => Boolean(item))
+    : [];
+  const miniScenario = normalizeLearningMiniScenario(rawValue.mini_scenario);
 
   return {
     id,
@@ -7527,7 +7692,29 @@ function normalizeLearningCategory(rawValue) {
     learningText,
     questionGroups,
     questionCount,
-    sourceTags
+    sourceTags,
+    examSentences,
+    linkedTermIds,
+    miniScenario
+  };
+}
+
+function normalizeLearningMiniScenario(rawValue) {
+  if (!rawValue || typeof rawValue !== "object") return null;
+  const title = safeLine(rawValue.title || "", 180);
+  const situation = safeParagraph(rawValue.situation || "", 900);
+  const taskPatient = safeParagraph(rawValue.task_patient || "", 500);
+  const taskDoctor = safeParagraph(rawValue.task_doctor || "", 500);
+  const taskLetter = safeParagraph(rawValue.task_letter || "", 500);
+  if (!title && !situation && !taskPatient && !taskDoctor && !taskLetter) {
+    return null;
+  }
+  return {
+    title: title || "Pruefungs-Mini-Szenario",
+    situation,
+    taskPatient,
+    taskDoctor,
+    taskLetter
   };
 }
 
@@ -7562,13 +7749,52 @@ function renderLearningLoading(message) {
   if (refs.learningReadingMeta) refs.learningReadingMeta.textContent = "";
   if (refs.learningReadingText) refs.learningReadingText.innerHTML = "";
   if (refs.learningReadingQuestionGroups) refs.learningReadingQuestionGroups.innerHTML = "";
+  if (refs.learningReadingExamSentences) refs.learningReadingExamSentences.innerHTML = "";
+  if (refs.learningReadingMiniScenario) refs.learningReadingMiniScenario.innerHTML = "";
+  if (refs.learningReadingLinkedTerms) refs.learningReadingLinkedTerms.innerHTML = "";
+  if (refs.learningReadingCuration) refs.learningReadingCuration.textContent = "";
   if (refs.learningReadingSources) refs.learningReadingSources.innerHTML = "";
   if (refs.learningReadingStatus) refs.learningReadingStatus.textContent = safeLine(message, 220);
 }
 
+function getLearningBundleForRoot(rootId) {
+  const key = safeLine(rootId || "", 80);
+  if (!key) return null;
+  return state.learningBundlesByRoot[key] || null;
+}
+
+function ensureLearningRootSelection() {
+  const requested = safeLine(state.learningRootId || "", 80);
+  const requestedBundle = getLearningBundleForRoot(requested);
+  if (requestedBundle && requestedBundle.categories.length > 0) {
+    return;
+  }
+  for (const entry of LEARNING_ROOT_ITEMS) {
+    const bundle = getLearningBundleForRoot(entry.id);
+    if (bundle && bundle.categories.length > 0) {
+      state.learningRootId = entry.id;
+      return;
+    }
+  }
+  state.learningRootId = LEARNING_ROOT_ITEMS[0]?.id || "anamnese";
+}
+
+function getLearningActiveCategoryIdForRoot(rootId) {
+  const key = safeLine(rootId || "", 80);
+  if (!key) return "";
+  return safeLine(state.learningActiveCategoryIdByRoot[key] || "", 80);
+}
+
+function setLearningActiveCategoryIdForRoot(rootId, categoryId) {
+  const key = safeLine(rootId || "", 80);
+  if (!key) return;
+  state.learningActiveCategoryIdByRoot[key] = safeLine(categoryId || "", 80);
+}
+
 function renderLearningFlow() {
-  const bundle = state.learningAnamnese;
-  const hasAnamnese = Boolean(bundle && Array.isArray(bundle.categories) && bundle.categories.length > 0);
+  ensureLearningRootSelection();
+  const bundle = getLearningBundleForRoot(state.learningRootId);
+  const hasBundle = Boolean(bundle && Array.isArray(bundle.categories) && bundle.categories.length > 0);
 
   renderLearningRootList();
   if (state.learningView === LEARNING_VIEW_ROOT) {
@@ -7576,18 +7802,18 @@ function renderLearningFlow() {
     return;
   }
 
-  if (!hasAnamnese) {
-    renderLearningLoading("Noch keine Lerninhalte vorhanden.");
+  if (!hasBundle) {
+    renderLearningLoading("Dieser Lernbereich ist noch nicht verfuellbar geladen.");
     return;
   }
 
   if (state.learningView === LEARNING_VIEW_SUBCATEGORIES) {
-    renderLearningSubcategoryList(bundle.categories);
+    renderLearningSubcategoryList(bundle);
     showLearningView(LEARNING_VIEW_SUBCATEGORIES);
     return;
   }
 
-  renderLearningReadingMode(bundle.categories);
+  renderLearningReadingMode(bundle);
   showLearningView(LEARNING_VIEW_READING);
 }
 
@@ -7608,15 +7834,23 @@ function renderLearningRootList() {
   if (!refs.learningRootList) return;
   refs.learningRootList.innerHTML = "";
   for (const rootEntry of LEARNING_ROOT_ITEMS) {
+    const bundle = getLearningBundleForRoot(rootEntry.id);
+    const categoryCount = bundle && Array.isArray(bundle.categories) ? bundle.categories.length : 0;
     const button = document.createElement("button");
     button.type = "button";
     button.className = "learning-root-btn";
+    if (state.learningRootId === rootEntry.id) {
+      button.classList.add("active");
+    }
     const title = document.createElement("span");
     title.className = "learning-root-title";
     title.textContent = rootEntry.label;
     const count = document.createElement("span");
     count.className = "learning-root-count";
-    count.textContent = rootEntry.cta || "Themen oeffnen";
+    count.textContent =
+      categoryCount > 0
+        ? `${rootEntry.cta || "Themen oeffnen"} (${categoryCount} Themen)`
+        : `${rootEntry.cta || "Themen oeffnen"} (kommt gleich)`;
     button.appendChild(title);
     button.appendChild(count);
     button.addEventListener("click", () => {
@@ -7628,7 +7862,8 @@ function renderLearningRootList() {
   }
 }
 
-function renderLearningSubcategoryList(categories) {
+function renderLearningSubcategoryList(bundle) {
+  const categories = Array.isArray(bundle?.categories) ? bundle.categories : [];
   if (refs.learningSubcategoryTitle) {
     const selectedRoot = LEARNING_ROOT_ITEMS.find((entry) => entry.id === state.learningRootId);
     refs.learningSubcategoryTitle.textContent = selectedRoot?.label || "Unterkategorien";
@@ -7648,7 +7883,7 @@ function renderLearningSubcategoryList(categories) {
     button.appendChild(title);
     button.appendChild(count);
     button.addEventListener("click", () => {
-      state.learningActiveCategoryId = category.id;
+      setLearningActiveCategoryIdForRoot(state.learningRootId, category.id);
       state.learningView = LEARNING_VIEW_READING;
       renderLearningFlow();
     });
@@ -8357,20 +8592,28 @@ function stopLearningBodyModelLoop() {
   // Kein 3D-Loop mehr noetig im 2D-Atlas.
 }
 
-function renderLearningReadingMode(categories) {
-  const activeCategory =
-    categories.find((entry) => entry.id === state.learningActiveCategoryId) || categories[0] || null;
+function renderLearningReadingMode(bundle) {
+  const categories = Array.isArray(bundle?.categories) ? bundle.categories : [];
+  const activeCategoryId = getLearningActiveCategoryIdForRoot(state.learningRootId);
+  const activeCategory = categories.find((entry) => entry.id === activeCategoryId) || categories[0] || null;
   if (!activeCategory) {
     renderLearningLoading("Kategorie konnte nicht geladen werden.");
     return;
   }
-  if (activeCategory.id !== state.learningActiveCategoryId) {
-    state.learningActiveCategoryId = activeCategory.id;
+  if (activeCategory.id !== activeCategoryId) {
+    setLearningActiveCategoryIdForRoot(state.learningRootId, activeCategory.id);
   }
+  const linkedTermsInfo = getLearningLinkedTermsForCategory(activeCategory);
+  const linkedTerms = linkedTermsInfo.linked;
+  const missingLinkedTermIds = linkedTermsInfo.missing;
 
   if (refs.learningReadingTitle) refs.learningReadingTitle.textContent = activeCategory.title;
   if (refs.learningReadingMeta) {
-    refs.learningReadingMeta.textContent = [activeCategory.focus, `${activeCategory.questionCount} Fragen`]
+    refs.learningReadingMeta.textContent = [
+      activeCategory.focus,
+      `${activeCategory.questionCount} Fragen`,
+      linkedTerms.length > 0 ? `${linkedTerms.length} verknuepfte Online-Kurs-Begriffe` : ""
+    ]
       .filter((item) => Boolean(item))
       .join(" | ");
   }
@@ -8413,9 +8656,117 @@ function renderLearningReadingMode(categories) {
     }
   }
 
+  if (refs.learningReadingExamSentences) {
+    refs.learningReadingExamSentences.innerHTML = "";
+    if (activeCategory.examSentences.length > 0) {
+      const head = document.createElement("div");
+      head.className = "learning-question-head";
+      const heading = document.createElement("h5");
+      heading.textContent = "Pruefungssaetze (sicher formulieren)";
+      head.appendChild(heading);
+      refs.learningReadingExamSentences.appendChild(head);
+
+      const list = document.createElement("ul");
+      list.className = "learning-exam-list";
+      for (const sentence of activeCategory.examSentences) {
+        const li = document.createElement("li");
+        li.textContent = sentence;
+        list.appendChild(li);
+      }
+      refs.learningReadingExamSentences.appendChild(list);
+    }
+  }
+
+  if (refs.learningReadingMiniScenario) {
+    refs.learningReadingMiniScenario.innerHTML = "";
+    if (activeCategory.miniScenario) {
+      const card = document.createElement("article");
+      card.className = "learning-mini-card";
+      const heading = document.createElement("h6");
+      heading.textContent = activeCategory.miniScenario.title;
+      card.appendChild(heading);
+
+      if (activeCategory.miniScenario.situation) {
+        const situation = document.createElement("p");
+        situation.textContent = activeCategory.miniScenario.situation;
+        card.appendChild(situation);
+      }
+
+      const tasks = [
+        {
+          label: "Arzt-Patient",
+          value: activeCategory.miniScenario.taskPatient
+        },
+        {
+          label: "Arzt-Arzt",
+          value: activeCategory.miniScenario.taskDoctor
+        },
+        {
+          label: "Arztbrief",
+          value: activeCategory.miniScenario.taskLetter
+        }
+      ].filter((entry) => Boolean(entry.value));
+
+      if (tasks.length > 0) {
+        const list = document.createElement("ul");
+        list.className = "learning-mini-tasks";
+        for (const task of tasks) {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${task.label}:</strong> ${task.value}`;
+          list.appendChild(li);
+        }
+        card.appendChild(list);
+      }
+
+      refs.learningReadingMiniScenario.appendChild(card);
+    }
+  }
+
+  if (refs.learningReadingLinkedTerms) {
+    refs.learningReadingLinkedTerms.innerHTML = "";
+    if (linkedTerms.length > 0) {
+      const heading = document.createElement("p");
+      heading.className = "learning-sources-title";
+      heading.textContent = "Verknuepfte Fachbegriffe (Online-Kurs)";
+      refs.learningReadingLinkedTerms.appendChild(heading);
+
+      const list = document.createElement("ul");
+      list.className = "learning-linked-terms-list";
+      for (const term of linkedTerms.slice(0, 24)) {
+        const li = document.createElement("li");
+        const fach = safeLine(term.fachbegriff || "", 180) || term.termId;
+        const patient = safeLine(term.patientensprache || "", 180) || "-";
+        li.innerHTML = `<strong>${fach}</strong> -> ${patient}`;
+        list.appendChild(li);
+      }
+      refs.learningReadingLinkedTerms.appendChild(list);
+    }
+  }
+
+  if (refs.learningReadingCuration) {
+    const stats = state.learningOnlineKursCurationStats || { total: 0, included: 0, excluded: 0 };
+    const curationTitle =
+      safeLine(state.learningCuration?.title || "", 120) || "Lernkuration (PDF -> Website)";
+    const missingText =
+      missingLinkedTermIds.length > 0
+        ? ` | ${missingLinkedTermIds.length} verlinkte Begriffe sind durch Kuration ausgeblendet oder fehlen.`
+        : "";
+    refs.learningReadingCuration.textContent = `${curationTitle}: ${stats.included} von ${stats.total} Online-Kurs-Begriffen freigegeben, ${stats.excluded} ausgefiltert.${missingText}`;
+  }
+
   if (refs.learningReadingSources) {
     refs.learningReadingSources.innerHTML = "";
-    if (activeCategory.sourceTags.length > 0) {
+    const sourceItems = [...activeCategory.sourceTags];
+    if (Array.isArray(bundle?.references)) {
+      for (const reference of bundle.references) {
+        if (!reference || typeof reference !== "object") continue;
+        const label = safeLine(reference.label || "", 200);
+        if (!label) continue;
+        const url = safeLine(reference.url || "", 500);
+        sourceItems.push(url ? `${label} (${url})` : label);
+      }
+    }
+    if (sourceItems.length > 0) {
       const heading = document.createElement("p");
       heading.className = "learning-sources-title";
       heading.textContent = "Leitlinienbasis";
@@ -8423,7 +8774,7 @@ function renderLearningReadingMode(categories) {
 
       const list = document.createElement("ul");
       list.className = "learning-sources-list";
-      for (const sourceTag of activeCategory.sourceTags) {
+      for (const sourceTag of sourceItems) {
         const li = document.createElement("li");
         li.textContent = sourceTag;
         list.appendChild(li);
@@ -8431,6 +8782,68 @@ function renderLearningReadingMode(categories) {
       refs.learningReadingSources.appendChild(list);
     }
   }
+}
+
+function getLearningLinkedTermsForCategory(category) {
+  const ids = Array.isArray(category?.linkedTermIds) ? category.linkedTermIds : [];
+  const map = state.learningOnlineKursTermMap || {};
+  const linked = [];
+  const missing = [];
+  const seen = new Set();
+  for (const rawId of ids) {
+    const termId = safeLine(rawId || "", 160);
+    if (!termId || seen.has(termId)) continue;
+    seen.add(termId);
+    const entry = map[termId];
+    if (entry) {
+      linked.push(entry);
+    } else {
+      missing.push(termId);
+    }
+  }
+  return { linked, missing };
+}
+
+function applyLearningCurationToDeckTerms(deck) {
+  const terms = Array.isArray(deck?.terms) ? deck.terms : [];
+  const curation = state.learningCuration || createDefaultLearningCuration();
+  const excludedIdSet = new Set(
+    Array.isArray(curation.excludeTermIds) ? curation.excludeTermIds.filter((item) => Boolean(item)) : []
+  );
+  const excludedTokens = Array.isArray(curation.excludeTokens)
+    ? curation.excludeTokens.filter((item) => Boolean(item))
+    : [];
+
+  const termMap = {};
+  let total = 0;
+  let included = 0;
+  let excluded = 0;
+
+  for (const term of terms) {
+    const termId = safeLine(term?.termId || "", 160);
+    if (!termId || !termId.startsWith("online_kurs_")) continue;
+    total += 1;
+    const fachbegriff = safeLine(term?.fachbegriff || "", 220);
+    const patientensprache = safeLine(term?.patientensprache || "", 220);
+    const haystack = `${termId} ${fachbegriff} ${patientensprache}`.toLowerCase();
+    const blockedById = excludedIdSet.has(termId);
+    const blockedByToken = excludedTokens.some((token) => haystack.includes(token));
+    if (blockedById || blockedByToken) {
+      excluded += 1;
+      continue;
+    }
+    termMap[termId] = {
+      termId,
+      fachbegriff: fachbegriff || termId,
+      patientensprache: patientensprache || "-"
+    };
+    included += 1;
+  }
+
+  return {
+    termMap,
+    stats: { total, included, excluded }
+  };
 }
 
 function flattenCards(deck) {
@@ -8910,11 +9323,14 @@ function saveAttempt(cardId, isCorrect) {
   saveToStorage(STORAGE_PROGRESS_KEY, state.progress);
   saveToStorage(STORAGE_DAILY_KEY, state.dailyStats);
   scheduleRemoteSync();
+  scheduleUsageMetricsSync(false);
 }
 
 function ensureDayStats(dayKey) {
   if (!state.dailyStats[dayKey]) {
-    state.dailyStats[dayKey] = { attempts: 0, correct: 0, wrong: 0 };
+    state.dailyStats[dayKey] = createDefaultDayStats();
+  } else {
+    state.dailyStats[dayKey] = normalizeDayStatsEntry(state.dailyStats[dayKey]);
   }
   return state.dailyStats[dayKey];
 }
@@ -8970,6 +9386,7 @@ function renderStats() {
   renderSessionXpDisplay();
   renderWeekChart();
   renderXpDisplay();
+  renderPersonalUsageStats();
 }
 
 function renderDailyGoalDisplay(todayXp, dailyGoal) {
@@ -9057,6 +9474,9 @@ function renderWeekChart() {
 
 function openStatsOverlay() {
   if (!state.user) return;
+  renderPersonalUsageStats();
+  renderAdminStatsPanel();
+  void refreshAdminMetrics();
   refs.statsOverlay.classList.remove("hidden");
   refs.statsOverlay.setAttribute("aria-hidden", "false");
 }
@@ -9064,6 +9484,151 @@ function openStatsOverlay() {
 function closeStatsOverlay() {
   refs.statsOverlay.classList.add("hidden");
   refs.statsOverlay.setAttribute("aria-hidden", "true");
+}
+
+function renderPersonalUsageStats() {
+  if (!refs.myUsageTodayTime || !refs.myUsageCurrentLevel || !refs.myUsageTotalXp) return;
+
+  const today = ensureDayStats(todayKey());
+  refs.myUsageTodayTime.textContent = formatMinutes(today.activeSeconds || 0);
+  refs.myUsageCurrentLevel.textContent = String(deriveLevelFromXp(state.xp));
+  refs.myUsageTotalXp.textContent = String(normalizeXpValue(state.xp));
+
+  if (!refs.myUsageTableBody || !refs.myUsageEmpty) return;
+  refs.myUsageTableBody.innerHTML = "";
+  const days = getLastDays(PERSONAL_STATS_DAYS).reverse();
+  let populatedRows = 0;
+
+  for (const dayKey of days) {
+    const day = normalizeDayStatsEntry(state.dailyStats[dayKey]);
+    const hasData =
+      day.attempts > 0 || day.correct > 0 || day.wrong > 0 || (day.activeSeconds || 0) > 0;
+    if (!hasData) continue;
+
+    populatedRows += 1;
+    const accuracy = day.attempts > 0 ? Math.round((day.correct / day.attempts) * 100) : 0;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${dayKey}</td>
+      <td>${formatMinutes(day.activeSeconds || 0)}</td>
+      <td>${Math.max(0, Number(day.correct) || 0)}</td>
+      <td>${Math.max(0, Number(day.attempts) || 0)}</td>
+      <td>${accuracy}%</td>
+    `;
+    refs.myUsageTableBody.appendChild(tr);
+  }
+
+  refs.myUsageEmpty.classList.toggle("hidden", populatedRows > 0);
+}
+
+function renderAdminStatsPanel() {
+  if (!refs.adminStatsPanel || !refs.adminStatsStatus) return;
+  refs.adminStatsPanel.classList.toggle("hidden", !state.isAdmin);
+  if (!state.isAdmin) return;
+  if (state.adminMetricsRows.length) {
+    renderAdminStatsRows();
+  } else {
+    refs.adminStatsStatus.textContent = "Noch keine Daten geladen.";
+  }
+}
+
+function renderAdminStatsRows() {
+  if (!refs.adminStatsTableBody || !refs.adminStatsEmpty || !refs.adminStatsStatus) return;
+  refs.adminStatsTableBody.innerHTML = "";
+  const rows = Array.isArray(state.adminMetricsRows) ? state.adminMetricsRows : [];
+  if (!rows.length) {
+    refs.adminStatsEmpty.classList.remove("hidden");
+    refs.adminStatsStatus.textContent = `Keine Eintraege in den letzten ${ADMIN_STATS_DAYS} Tagen.`;
+    return;
+  }
+
+  refs.adminStatsEmpty.classList.add("hidden");
+  refs.adminStatsStatus.textContent = `Eintraege: ${rows.length} (letzte ${ADMIN_STATS_DAYS} Tage)`;
+  for (const row of rows) {
+    const tr = document.createElement("tr");
+    const attempts = Math.max(0, Number(row.attempts) || 0);
+    const correct = Math.max(0, Number(row.correct) || 0);
+    const userLabel = String(row.user_email || row.user_id || "unbekannt");
+    tr.innerHTML = `
+      <td>${escapeHtml(userLabel)}</td>
+      <td>${escapeHtml(String(row.day || "-"))}</td>
+      <td>${formatMinutes(Number(row.active_seconds) || 0)}</td>
+      <td>${correct}</td>
+      <td>${Math.max(1, Number(row.level) || 1)}</td>
+      <td>${attempts}</td>
+    `;
+    refs.adminStatsTableBody.appendChild(tr);
+  }
+}
+
+async function refreshAdminStatus() {
+  if (!supabase || !state.user) {
+    state.isAdmin = false;
+    return;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from(SUPABASE_ADMINS_TABLE)
+      .select("user_id")
+      .eq("user_id", state.user.id)
+      .maybeSingle();
+    if (error) {
+      state.isAdmin = false;
+      return;
+    }
+    state.isAdmin = Boolean(data?.user_id);
+  } catch (_error) {
+    state.isAdmin = false;
+  }
+}
+
+async function refreshAdminMetrics() {
+  if (!state.isAdmin || !supabase || !state.user) return;
+  if (!refs.adminStatsStatus) return;
+
+  const fromDay = addDays(todayKey(), -(ADMIN_STATS_DAYS - 1));
+  refs.adminStatsStatus.textContent = "Lade Admin-Daten ...";
+  try {
+    const { data, error } = await supabase
+      .from(SUPABASE_USER_DAILY_METRICS_TABLE)
+      .select("user_id,user_email,day,active_seconds,attempts,correct,wrong,xp_total,level,updated_at")
+      .gte("day", fromDay)
+      .order("day", { ascending: false })
+      .order("updated_at", { ascending: false })
+      .limit(2000);
+
+    if (error) {
+      refs.adminStatsStatus.textContent =
+        "Admin-Daten konnten nicht geladen werden. Bitte SQL-Setup und RLS pruefen.";
+      return;
+    }
+
+    state.adminMetricsRows = Array.isArray(data) ? data : [];
+    renderAdminStatsRows();
+  } catch (_error) {
+    refs.adminStatsStatus.textContent = "Admin-Daten konnten nicht geladen werden.";
+  }
+}
+
+function deriveLevelFromXp(xpValue) {
+  const xp = normalizeXpValue(xpValue);
+  return Math.max(1, Math.min(10, Math.floor(xp / 10) + 1));
+}
+
+function formatMinutes(secondsValue) {
+  const totalSeconds = Math.max(0, Math.floor(Number(secondsValue) || 0));
+  const minutes = Math.round(totalSeconds / 60);
+  return `${minutes} min`;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
 }
 
 function computeStreak() {
@@ -9248,6 +9813,35 @@ function normalizeDailyGoal(value) {
   return Math.max(1, Math.min(MAX_DAILY_GOAL, Math.round(numeric)));
 }
 
+function createDefaultDayStats() {
+  return {
+    attempts: 0,
+    correct: 0,
+    wrong: 0,
+    activeSeconds: 0
+  };
+}
+
+function normalizeDayStatsEntry(entry) {
+  if (!entry || typeof entry !== "object") return createDefaultDayStats();
+  return {
+    attempts: Math.max(0, Math.floor(Number(entry.attempts) || 0)),
+    correct: Math.max(0, Math.floor(Number(entry.correct) || 0)),
+    wrong: Math.max(0, Math.floor(Number(entry.wrong) || 0)),
+    activeSeconds: Math.max(0, Math.floor(Number(entry.activeSeconds) || 0))
+  };
+}
+
+function normalizeDailyStatsMap(rawStats) {
+  if (!rawStats || typeof rawStats !== "object") return {};
+  const normalized = {};
+  for (const [dayKey, value] of Object.entries(rawStats)) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(dayKey)) continue;
+    normalized[dayKey] = normalizeDayStatsEntry(value);
+  }
+  return normalized;
+}
+
 function createDefaultProgressEntry() {
   return {
     attempts: 0,
@@ -9347,6 +9941,106 @@ function scheduleRemoteSync() {
   }, 800);
 }
 
+function startUsageTracking() {
+  stopUsageTracking();
+  usageLastTickAt = Date.now();
+  usageTickTimer = window.setInterval(() => {
+    tickUsageTracking(false);
+  }, USAGE_TICK_MS);
+}
+
+function stopUsageTracking() {
+  if (usageTickTimer) {
+    window.clearInterval(usageTickTimer);
+    usageTickTimer = null;
+  }
+  usageLastTickAt = 0;
+}
+
+function handleUsageVisibilityChange() {
+  if (!state.user) return;
+  if (document.hidden) {
+    tickUsageTracking(true);
+    return;
+  }
+  usageLastTickAt = Date.now();
+}
+
+function flushUsageTracking() {
+  tickUsageTracking(true);
+  scheduleUsageMetricsSync(true);
+}
+
+function tickUsageTracking(forceTick) {
+  if (!state.user) return;
+  const now = Date.now();
+  if (!usageLastTickAt) {
+    usageLastTickAt = now;
+    return;
+  }
+  const deltaMs = now - usageLastTickAt;
+  usageLastTickAt = now;
+  if (deltaMs <= 0) return;
+  if (!forceTick && document.hidden) return;
+
+  const deltaSeconds = Math.max(0, Math.floor(deltaMs / 1000));
+  if (deltaSeconds <= 0) return;
+
+  const day = ensureDayStats(todayKey());
+  day.activeSeconds = Math.max(0, Number(day.activeSeconds) || 0) + deltaSeconds;
+  saveToStorage(STORAGE_DAILY_KEY, state.dailyStats);
+  scheduleRemoteSync();
+  scheduleUsageMetricsSync(false);
+  if (!refs.statsOverlay?.classList.contains("hidden")) {
+    renderPersonalUsageStats();
+  }
+}
+
+function scheduleUsageMetricsSync(immediate) {
+  if (!supabase || !state.user) return;
+  if (usageMetricsSyncTimer) {
+    window.clearTimeout(usageMetricsSyncTimer);
+    usageMetricsSyncTimer = null;
+  }
+  usageMetricsSyncTimer = window.setTimeout(
+    () => {
+      void pushUsageMetricSnapshot();
+    },
+    immediate ? 50 : 2500
+  );
+}
+
+async function pushUsageMetricSnapshot() {
+  if (!supabase || !state.user || usageSyncInFlight) return;
+  usageSyncInFlight = true;
+  try {
+    const dayKey = todayKey();
+    const day = normalizeDayStatsEntry(state.dailyStats[dayKey]);
+    const payload = {
+      user_id: state.user.id,
+      user_email: String(state.user.email || "").slice(0, 180),
+      day: dayKey,
+      active_seconds: Math.max(0, Number(day.activeSeconds) || 0),
+      attempts: Math.max(0, Number(day.attempts) || 0),
+      correct: Math.max(0, Number(day.correct) || 0),
+      wrong: Math.max(0, Number(day.wrong) || 0),
+      xp_total: normalizeXpValue(state.xp),
+      level: deriveLevelFromXp(state.xp),
+      updated_at: new Date().toISOString()
+    };
+    await runSupabaseWithTimeout(
+      supabase
+        .from(SUPABASE_USER_DAILY_METRICS_TABLE)
+        .upsert(payload, { onConflict: "user_id,day" }),
+      SUPABASE_REQUEST_TIMEOUT_MS
+    );
+  } catch (_error) {
+    // Silently ignore telemetry sync errors to keep learning flow unaffected.
+  } finally {
+    usageSyncInFlight = false;
+  }
+}
+
 async function pullRemoteState() {
   if (!supabase || !state.user) return;
 
@@ -9386,10 +10080,7 @@ async function pullRemoteState() {
       payload && typeof payload.progress === "object" && payload.progress ? payload.progress : {}
     );
     state.progress = migratedProgress;
-    state.dailyStats =
-      payload && typeof payload.dailyStats === "object" && payload.dailyStats
-        ? payload.dailyStats
-        : {};
+    state.dailyStats = normalizeDailyStatsMap(payload?.dailyStats);
     state.xp = resolveStoredXp(payload, migratedProgress);
     state.dailyGoal = resolveStoredDailyGoal(payload);
     state.apiSpendTracker = resolveApiSpendTracker(payload?.apiSpendTracker);

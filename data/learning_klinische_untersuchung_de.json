@@ -1,0 +1,415 @@
+{
+  "title": "Lernbereich",
+  "subtitle": "Klinische Untersuchung fuer die FSP Berlin",
+  "scope_note": "Dieses Modul fokussiert Untersuchungssprache, strukturierte Befunddokumentation und sichere Uebergabe im Arzt-Arzt-Format. Grundlage sind typische neurologische und internistische Pruefungsteile aus dem Fachsprachkurs.",
+  "references": [
+    {
+      "label": "Fachsprachkurs PDF: Neurologischer Status, Anweisungen und Dokumentation",
+      "url": "data/fachsprachkurs.pdf"
+    }
+  ],
+  "categories": [
+    {
+      "id": "allgemeiner_status_vitalparameter",
+      "title": "Allgemeiner Status und Vitalparameter",
+      "focus": "Erstuntersuchung sprachlich klar, priorisiert und reproduzierbar durchfuehren",
+      "summary": "Der Allgemeinstatus ist die Basis jeder strukturierten Vorstellung. In der FSP wird bewertet, ob Kandidaten nicht nur Werte nennen, sondern klinisch relevante Befunde einordnen und verstaendlich ueberleiten.",
+      "learning_text": [
+        "Beginnen Sie mit dem Gesamteindruck in einem klaren Satz, zum Beispiel: Der Patient ist wach, orientiert und kreislaufstabil, wirkt aber schmerzgeplagt. Diese Einstufung gibt sofort Prioritaet und Kontext.",
+        "Danach folgen Vitalparameter mit Einheit und kurzer Bedeutung: RR, Puls, Atemfrequenz, Temperatur, SpO2. Nur Zahlen vorzulesen reicht nicht. Pruefungsstark ist die semantische Einordnung, etwa tachykard, fieberhaft oder hypoxisch.",
+        "Wichtig ist die Reihenfolge zwischen Beobachtung und Interpretation. Erst beschreiben, dann bewerten. Diese Trennung verhindert sprachliche Unklarheit und zeigt klinische Disziplin. Im Arzt-Arzt-Gespraech wirkt das sofort professioneller.",
+        "Abschliessend sollte der naechste Schritt genannt werden: Monitoring ausweiten, Diagnostik priorisieren oder engmaschige Reevaluation. Genau diese Bruecke von Befund zu Handlung ist in Berlin zentral."
+      ],
+      "question_groups": [
+        {
+          "title": "Ersteindruck",
+          "questions": [
+            "Wie beschreiben Sie Allgemeinzustand und Bewusstseinslage in einem Satz?",
+            "Welche Beobachtungen sind im Erstkontakt besonders relevant?",
+            "Wie trennen Sie objektive Beobachtung von Interpretation?",
+            "Welche Red-Flag-Eindruecke muessen sofort kommuniziert werden?",
+            "Wie formulieren Sie eine priorisierte klinische Ersteinschaetzung?"
+          ]
+        },
+        {
+          "title": "Vitalparameter strukturiert nennen",
+          "questions": [
+            "Wie geben Sie RR, Puls, AF, Temperatur und SpO2 korrekt mit Einheit an?",
+            "Wie benennen Sie pathologische Werte semantisch praezise?",
+            "Wie kommunizieren Sie Verlaufsveraenderungen in der Uebergabe?",
+            "Wann reicht eine Einzelmessung nicht aus?",
+            "Wie formulieren Sie Monitoring-Bedarf patientengerecht?"
+          ]
+        },
+        {
+          "title": "Von Befund zu Plan",
+          "questions": [
+            "Welche Befunde sind fuer das weitere Vorgehen entscheidend?",
+            "Wie begruenden Sie den naechsten Diagnostikschritt sprachlich sauber?",
+            "Wie erklaeren Sie Priorisierung bei mehreren Auffaelligkeiten?",
+            "Wie dokumentieren Sie den Allgemeinstatus knapp im Arztbrief?",
+            "Wie uebergeben Sie den Status im Arzt-Arzt-Gespraech ohne Abschweifen?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Im Erstkontakt ist der Patient wach und orientiert, wirkt jedoch klinisch reduziert.",
+        "Die Vitalparameter zeigen eine Tachykardie bei sonst stabilen Kreislaufverhaeltnissen.",
+        "Aufgrund des Befundbildes priorisieren wir jetzt die weitere Akutdiagnostik.",
+        "Ich reevaluieren den klinischen Zustand engmaschig und passe das Vorgehen entsprechend an."
+      ],
+      "linked_term_ids": [
+        "online_kurs_rr_apparat",
+        "online_kurs_tachykardie",
+        "online_kurs_bradykardie",
+        "online_kurs_hypertonie",
+        "online_kurs_hypotonie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Schwindel und Kreislaufinstabilitaet",
+        "situation": "Ein 74-jaehriger Patient klagt ueber Schwindel und Schwankungsgefuehl beim Aufstehen.",
+        "task_patient": "Erklaeren Sie kurz, welche Untersuchungen Sie jetzt sofort machen und warum.",
+        "task_doctor": "Uebergeben Sie den Erststatus inklusive Vitalparameter priorisiert.",
+        "task_letter": "Dokumentieren Sie den initialen Allgemeinstatus in vier praezisen Saetzen."
+      },
+      "source_tags": [
+        "FSP Berlin: Erstkontakt und klinische Priorisierung"
+      ]
+    },
+    {
+      "id": "neurologischer_ueberblick",
+      "title": "Neurologischer Ueberblick im Akutfall",
+      "focus": "Schneller orientierender Neurostatus mit klarer Befundsprache",
+      "summary": "Der orientierende Neurostatus trennt stabile von zeitkritischen Situationen. In der FSP ist die sprachliche Struktur wichtiger als die Tiefe einer fachneurologischen Komplettuntersuchung.",
+      "learning_text": [
+        "Ein akuter neurologischer Check startet mit Bewusstsein, Sprache und grober Motorik. Kandidaten sollten erkennbar priorisieren: Gibt es fokal-neurologische Defizite, neue Sprachstoerung oder Vigilanzminderung?",
+        "Die Befundsprache muss konkret sein. Statt neurologisch auffaellig sagen Sie beispielsweise: rechtsbetonte Fazialisparese, Dysarthrie, Armhalteversuch rechts absinkend. Diese Praezision ist pruefungsrelevant.",
+        "Wichtig ist die Verknuepfung zur Akutstrategie. Wenn Defizite vorliegen, muss das zeitkritische Vorgehen sprachlich eindeutig sein: sofortige Bildgebung, Stroke-Protokoll, enges Monitoring. Vagheit fuehrt zu Punktverlust.",
+        "Im Arzt-Arzt-Gespraech gilt: zuerst Leitsymptom, dann Kernbefunde, dann Plan. Diese Reihenfolge verhindert Informationschaos und wirkt klinisch reif."
+      ],
+      "question_groups": [
+        {
+          "title": "Orientierungsbefunde",
+          "questions": [
+            "Wie pruefen Sie rasch Bewusstsein und Orientierung?",
+            "Welche Sprachbeobachtungen sind akut entscheidend?",
+            "Wie testen Sie grob Seitendifferenzen der Motorik?",
+            "Wie formulieren Sie einen unauffaelligen orientierenden Neurostatus?",
+            "Welche Zeichen verlangen sofortige Eskalation?"
+          ]
+        },
+        {
+          "title": "Fokalzeichen benoeten Praezision",
+          "questions": [
+            "Wie beschreiben Sie Fazialisparese sprachlich korrekt?",
+            "Wie unterscheiden Sie Dysarthrie und Aphasie in der Darstellung?",
+            "Wie dokumentieren Sie sensomotorische Seitendifferenzen?",
+            "Wie erklaeren Sie dem Patienten den Sinn der schnellen Neuropruefung?",
+            "Welche Fehler bei unklaren Formulierungen sollten vermieden werden?"
+          ]
+        },
+        {
+          "title": "Akutplan und Uebergabe",
+          "questions": [
+            "Wie koppeln Sie Befund und Zeitkritik in einem Satz?",
+            "Wie formulieren Sie die Indikation fuer sofortige Bildgebung?",
+            "Wie priorisieren Sie Diagnostik versus Therapieeinleitung sprachlich?",
+            "Welche Informationen gehoeren in die 30-Sekunden-Uebergabe?",
+            "Wie dokumentieren Sie den Neurostatus im Arztbrief knapp und korrekt?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Es zeigen sich neue fokal-neurologische Ausfaelle, deshalb behandeln wir die Situation als zeitkritisch.",
+        "Ich sehe eine rechtsbetonte Fazialisparese mit begleitender Dysarthrie.",
+        "Wir veranlassen jetzt umgehend die zerebrale Bildgebung und informieren das Stroke-Team.",
+        "Die Kernbefunde und das weitere Vorgehen uebergebe ich strukturiert an den Oberarzt."
+      ],
+      "linked_term_ids": [
+        "online_kurs_apoplexie",
+        "online_kurs_transitorisch_ischaemische_attacke",
+        "online_kurs_fazialisparese",
+        "online_kurs_aphasie",
+        "online_kurs_diplopie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Verdacht auf Schlaganfall",
+        "situation": "Eine 68-jaehrige Patientin entwickelt ploetzlich Sprachstoerung und Armschwaeche rechts.",
+        "task_patient": "Erklaeren Sie knapp, warum jetzt sofort weitere Notfalldiagnostik noetig ist.",
+        "task_doctor": "Geben Sie eine 30-Sekunden-Neuro-Uebergabe mit Prioritaeten.",
+        "task_letter": "Dokumentieren Sie den orientierenden Neurostatus im Notfallformat."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: neurologischer Status und Patientenvorstellung"
+      ]
+    },
+    {
+      "id": "hirnnerven",
+      "title": "Hirnnerven untersuchen und anleiten",
+      "focus": "Pruefungsnahe Anweisungen, Beobachtung und Dokumentationssprache",
+      "summary": "In Berlin werden haeufig klare Untersuchungsanweisungen bewertet. Ziel ist, dass der Patient versteht, was er tun soll, und dass die Kandidatin die Beobachtung fachsprachlich korrekt dokumentiert.",
+      "learning_text": [
+        "Bei der Hirnnervenpruefung ist eine kurze, deutliche Instruktion zentral: Folgen Sie meinem Finger nur mit den Augen oder Sagen Sie bitte Ah. Verwirrende Mehrfachanweisungen kosten Zeit und mindern die Untersuchungsqualitaet.",
+        "Die Dokumentation sollte standardisiert sein: Hirnnerven I bis XII orientierend unauffaellig oder konkrete Auffaelligkeiten mit Seite und Qualitaet. Eine unspezifische Aussage wie Hirnnerven ok reicht in der Pruefung nicht aus.",
+        "Wichtig ist die sprachliche Verbindung von Befund und Relevanz. Bei Auffaelligkeiten muss die Kandidatin kurz einordnen, was das fuer den weiteren Plan bedeutet. Genau hier zeigt sich klinisch-sprachliche Handlungssicherheit.",
+        "Bei verunsicherten Patienten hilft eine metakommunikative Entlastung: Ich erklaere jeden Schritt vorher, das dauert nur kurz. Dadurch bleibt das Gespraech ruhig und professionell."
+      ],
+      "question_groups": [
+        {
+          "title": "Anleitung",
+          "questions": [
+            "Welche kurzen Instruktionen nutzen Sie fuer Augenbewegungen?",
+            "Wie leiten Sie Mimiktests verstaendlich an?",
+            "Wie pruefen Sie Schlucken und Gaumensegel patientenfreundlich?",
+            "Wie formulieren Sie Hoertests ohne Technikjargon?",
+            "Wie reagieren Sie, wenn der Patient die Anweisung nicht versteht?"
+          ]
+        },
+        {
+          "title": "Befundsprache",
+          "questions": [
+            "Wie dokumentieren Sie unauffaellige Hirnnerven orientierend korrekt?",
+            "Wie benennen Sie eine einseitige Fazialisparese eindeutig?",
+            "Wie dokumentieren Sie Blickparese oder Nystagmus kurz und praezise?",
+            "Wie trennen Sie Beobachtung und Interpretation?",
+            "Welche Abkuerzungen sollten in der FSP besser ausgeschrieben werden?"
+          ]
+        },
+        {
+          "title": "Weiteres Vorgehen",
+          "questions": [
+            "Welche Auffaelligkeiten machen eine rasche Bildgebung noetig?",
+            "Wie uebergeben Sie einen pathologischen Hirnnervenbefund strukturiert?",
+            "Wie erklaeren Sie dem Patienten den naechsten Schritt?",
+            "Wie sichern Sie Verstaendnis nach der Untersuchung?",
+            "Wie fassen Sie Kernbefunde in einem Satz zusammen?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Bitte folgen Sie meinem Finger nur mit den Augen, ohne den Kopf zu bewegen.",
+        "Die orientierende Hirnnervenpruefung war weitgehend unauffaellig.",
+        "Es zeigt sich eine rechtsseitige periphere Fazialisparese.",
+        "Aufgrund des Befundes erweitern wir jetzt die Diagnostik zeitnah."
+      ],
+      "linked_term_ids": [
+        "online_kurs_ophthalmoskopie",
+        "online_kurs_otoskopie",
+        "online_kurs_audiometrie",
+        "online_kurs_nystagmus",
+        "online_kurs_fazialisparese"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Schwindel mit Doppelbildern",
+        "situation": "Ein Patient berichtet ueber akut aufgetretenen Schwindel und intermittierende Doppelbilder.",
+        "task_patient": "Fuehren Sie die Hirnnerveninstruktionen in klarer Alltagssprache durch.",
+        "task_doctor": "Uebergeben Sie die zentralen Hirnnervenbefunde in maximal vier Saetzen.",
+        "task_letter": "Dokumentieren Sie die Hirnnervenuntersuchung strukturiert im Befundteil."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Hirnnerven-Anweisungen"
+      ]
+    },
+    {
+      "id": "motorik_reflexe_sensibilitaet",
+      "title": "Motorik, Reflexe und Sensibilitaet",
+      "focus": "Systematische Untersuchung und semantisch saubere Befundformulierung",
+      "summary": "Dieser Teil entscheidet oft ueber die Qualitaet der neurologischen Vorstellung. Gefordert ist keine Facharzt-Tiefe, aber eine stabile Struktur aus Test, Befund und klinischer Bedeutung.",
+      "learning_text": [
+        "Die motorische Untersuchung sollte reproduzierbar sein: Kraftvergleich rechts/links, proximale und distale Gruppen, klar benannte Auffaelligkeiten. Formulierungen wie bisschen schwach sind zu ungenau und pruefungskritisch.",
+        "Bei Reflexen werden Seitengleichheit und pathologische Reflexe entscheidend. Auch hier gilt: erst beschreiben, dann interpretieren. Eine klare Dokumentation waere: Eigenreflexe seitengleich mittellebhaft, kein pathologischer Babinski.",
+        "Sensibilitaet sollte nach Modalitaeten geordnet werden: Beruehrung, Schmerz, Temperatur, Vibration, Lagesinn. Die Kandidatin zeigt klinische Reife, wenn sie Unterschiede exakt lokalisiert und nicht pauschal verallgemeinert.",
+        "In der Uebergabe muss die Relevanz herausgearbeitet werden: Gibt es progressive Defizite, radikulaeres Muster oder zentrale Zeichen? Diese Priorisierung ist wichtiger als das reine Aufzaehlen aller Tests."
+      ],
+      "question_groups": [
+        {
+          "title": "Motorik",
+          "questions": [
+            "Wie strukturieren Sie den Kraftvergleich beidseits?",
+            "Wie dokumentieren Sie Kraftminderung sprachlich praezise?",
+            "Wie pruefen Sie distal-proximale Unterschiede sinnvoll?",
+            "Welche Begriffe sind fuer den Alltag ungeeignet und sollten vermieden werden?",
+            "Wie koppeln Sie Motorikbefunde an den weiteren Plan?"
+          ]
+        },
+        {
+          "title": "Reflexe",
+          "questions": [
+            "Welche Reflexe nennen Sie in der orientierenden Untersuchung?",
+            "Wie dokumentieren Sie Seitengleichheit korrekt?",
+            "Wie formulieren Sie einen pathologischen Reflexbefund?",
+            "Wie erklaeren Sie dem Patienten den Zweck der Reflexpruefung?",
+            "Wie uebergeben Sie auffaellige Reflexe kurz und klinisch relevant?"
+          ]
+        },
+        {
+          "title": "Sensibilitaet",
+          "questions": [
+            "Wie ordnen Sie Sensibilitaetstests nach Modalitaeten?",
+            "Wie dokumentieren Sie ein dermatombezogenes Defizit?",
+            "Wie differenzieren Sie zentrale vs periphere Muster sprachlich?",
+            "Welche Red Flags bei progressiver Sensibilitaetsstoerung nennen Sie?",
+            "Wie fassen Sie Motorik, Reflexe und Sensibilitaet in einem Satz zusammen?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Die Muskelkraft ist linksseitig regelrecht, rechts distal vermindert.",
+        "Die Eigenreflexe sind seitengleich ausloesbar, ein pathologischer Reflex zeigt sich nicht.",
+        "Sensible Defizite sind dermatomnah abgrenzbar im Bereich L5 rechts.",
+        "Der Befund spricht fuer eine weitere differenzierte neurologische Abklaerung."
+      ],
+      "linked_term_ids": [
+        "online_kurs_polyneuropathie",
+        "online_kurs_radikulographie",
+        "online_kurs_myelopathie",
+        "online_kurs_ischiassyndrom",
+        "online_kurs_tremor"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Radikulaerer Beinschmerz",
+        "situation": "Ein 52-jaehriger Patient berichtet ueber ausstrahlenden Ruecken-Beinschmerz mit Kribbeln.",
+        "task_patient": "Leiten Sie Motorik-, Reflex- und Sensibilitaetstests verstaendlich an.",
+        "task_doctor": "Uebergeben Sie die Befundtriade mit klinischer Priorisierung.",
+        "task_letter": "Dokumentieren Sie den orientierenden Neurostatus strukturiert und knapp."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Motorik/Reflexe/Sensibilitaet"
+      ]
+    },
+    {
+      "id": "koordination_gang",
+      "title": "Koordination und Gangbild",
+      "focus": "Finger-Nase, Romberg, Gangbeurteilung und funktionelle Einordnung",
+      "summary": "Koordinationsbefunde werden in der FSP oft abgefragt, weil sie klinische Relevanz und sprachliche Praezision verbinden. Ziel ist eine kurze, klare und reproduzierbare Darstellung.",
+      "learning_text": [
+        "Koordinationstests sollten mit eindeutiger Anleitung beginnen: Bitte beruehren Sie mit dem Finger abwechselnd Ihre Nase und meinen Finger. Eine klare Instruktion ist Voraussetzung fuer valide Befunde.",
+        "Bei der Befundsprache ist das Muster zentral: dysmetrisch, ataktisch, standunsicher, breitbasiges Gangbild. Solche Begriffe muessen korrekt verwendet und kurz eingeordnet werden.",
+        "Im klinischen Alltag ist die funktionelle Bedeutung entscheidend: Sturzrisiko, Hilfsmittelbedarf, akute Gefaehrdung. Wer diese Bruecke sprachlich sauber zieht, zeigt fuer Berlin relevante Handlungskompetenz.",
+        "Auch bei unauffaelligen Befunden sollte aktiv zusammengefasst werden, damit in der Uebergabe keine Luecken entstehen."
+      ],
+      "question_groups": [
+        {
+          "title": "Anleitung",
+          "questions": [
+            "Wie erklaeren Sie den Finger-Nase-Versuch einfach und eindeutig?",
+            "Wie leiten Sie den Romberg-Test sicher an?",
+            "Welche Sicherheitsaspekte beachten Sie beim Gehtest?",
+            "Wie reagieren Sie auf Verstaendnisprobleme waehrend der Tests?",
+            "Wie vermeiden Sie suggestive oder unklare Instruktionen?"
+          ]
+        },
+        {
+          "title": "Befundbeschreibung",
+          "questions": [
+            "Wie dokumentieren Sie eine Ataxie sprachlich praezise?",
+            "Wie beschreiben Sie ein unauffaelliges Gangbild standardisiert?",
+            "Welche Begriffe eignen sich fuer zentrale Koordinationsstoerungen?",
+            "Wie ordnen Sie Schwindelbeschwerden mit Gangunsicherheit ein?",
+            "Wie formulieren Sie die klinische Relevanz fuer das weitere Vorgehen?"
+          ]
+        },
+        {
+          "title": "Plan",
+          "questions": [
+            "Wann ist eine dringliche neurologische Abklaerung erforderlich?",
+            "Wie kommunizieren Sie Sturzrisiko patientengerecht?",
+            "Welche weiteren Untersuchungen sind bei Auffaelligkeiten sinnvoll?",
+            "Wie uebergeben Sie Koordinationsbefunde ohne Informationsverlust?",
+            "Wie dokumentieren Sie den Verlauf bei Reevaluation?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Im Finger-Nase-Versuch zeigt sich eine leichte rechtsseitige Dysmetrie.",
+        "Der Romberg-Test ist unsicher mit Tendenz nach rechts.",
+        "Das Gangbild ist breitbasig und klinisch sturzgefaehrdet.",
+        "Wir priorisieren daher zeitnah weitere neurologische Diagnostik und Sicherungsmassnahmen."
+      ],
+      "linked_term_ids": [
+        "online_kurs_vertigo",
+        "online_kurs_nystagmus",
+        "online_kurs_parkinson_krankheit",
+        "online_kurs_meniere_krankheit",
+        "online_kurs_tremor"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Akuter Schwindel",
+        "situation": "Eine 63-jaehrige Patientin berichtet ueber ploetzlichen Drehschwindel mit Standunsicherheit.",
+        "task_patient": "Leiten Sie Koordinationstests patientengerecht und sicher an.",
+        "task_doctor": "Uebergeben Sie Koordinations- und Gangbefunde in kurzer Struktur.",
+        "task_letter": "Dokumentieren Sie den funktionellen Befund mit Sturzrisikoeinschaetzung."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Koordination und Gang"
+      ]
+    },
+    {
+      "id": "psychischer_status",
+      "title": "Psychischer Status in der klinischen Kommunikation",
+      "focus": "Stimmung, Antrieb, Denken und Sicherheitsaspekte sprachlich korrekt erfassen",
+      "summary": "Der psychische Status verlangt eine neutrale, nicht wertende Sprache. In der FSP wird erwartet, dass Kandidaten Beobachtungen strukturiert beschreiben und sensible Themen professionell ansprechen.",
+      "learning_text": [
+        "Der psychische Status wird entlang von Orientierung, Kontaktfaehigkeit, Stimmung, Antrieb, Denken und Wahrnehmung erhoben. Struktur ist hier entscheidend, weil unsystematische Fragen schnell unpraezise werden.",
+        "Besonders wichtig ist eine nicht wertende Sprache. Statt wirkt komisch verwenden Sie klinisch praezise Formulierungen wie psychomotorisch verlangsamt, affektiv gedrueckt oder inhaltlich auf Schuldthemen eingeengt.",
+        "Sicherheitsaspekte muessen klar adressiert werden: Suizidgedanken, Selbstgefaehrdung, akute Fremdgefaehrdung. In Berlin wird positiv bewertet, wenn diese Fragen ruhig, direkt und professionell gestellt werden.",
+        "Am Ende folgt eine klare Handlungsentscheidung mit nachvollziehbarer Begruendung. Auch hier gilt: kurze Synthesis statt unsortierter Detailflut."
+      ],
+      "question_groups": [
+        {
+          "title": "Statuserhebung",
+          "questions": [
+            "Wie strukturieren Sie den psychischen Status in alltagstauglicher Reihenfolge?",
+            "Welche Beobachtungen gehoeren zu Stimmung und Antrieb?",
+            "Wie erfassen Sie Denkprozess und Denkinhalt sprachlich sauber?",
+            "Wie gehen Sie auf Wahrnehmungsstoerungen neutral ein?",
+            "Wie formulieren Sie einen orientierenden unauffaelligen Status?"
+          ]
+        },
+        {
+          "title": "Sicherheitsfragen",
+          "questions": [
+            "Wie sprechen Sie Suizidgedanken direkt und respektvoll an?",
+            "Welche Fragen pruefen akute Eigen- oder Fremdgefaehrdung?",
+            "Wie dokumentieren Sie Sicherheitsaspekte ohne Wertung?",
+            "Wie erklaeren Sie eine notwendige Schutzmassnahme patientengerecht?",
+            "Wann ist eine sofortige psychiatrische Mitbeurteilung noetig?"
+          ]
+        },
+        {
+          "title": "Uebergabe und Dokumentation",
+          "questions": [
+            "Wie fassen Sie psychischen Status und Risiko in drei Saetzen zusammen?",
+            "Welche Begriffe sind im Arzt-Arzt-Gespraech besonders praezise?",
+            "Wie vermeiden Sie stigmatisierende Sprache?",
+            "Welche Inhalte sind fuer den Arztbrief unverzichtbar?",
+            "Wie verbinden Sie somatische und psychische Befunde in einer koharenten Darstellung?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Der Patient ist allseits orientiert, im Kontakt verlangsamt und affektiv gedrueckt.",
+        "Auf direkte Nachfrage verneint er aktuell suizidale Handlungsabsichten.",
+        "Es besteht dennoch ein relevanter psychosozialer Belastungsfaktor mit weiterem Abklaerungsbedarf.",
+        "Wir planen daher eine zeitnahe psychiatrische Mitbeurteilung bei engmaschiger klinischer Beobachtung."
+      ],
+      "linked_term_ids": [
+        "online_kurs_demenz",
+        "online_kurs_alzheimer_krankheit",
+        "online_kurs_tinnitus_aurium",
+        "online_kurs_epilepsie",
+        "online_kurs_vertigo"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: depressive Symptomatik",
+        "situation": "Ein 39-jaehriger Patient berichtet ueber Antriebsmangel, Schlafstoerung und Hoffnungslosigkeit.",
+        "task_patient": "Fuehren Sie eine kurze, nicht wertende Sicherheitsabfrage inklusive Verstaendnissicherung durch.",
+        "task_doctor": "Uebergeben Sie psychischen Status und Risikoeinschaetzung strukturiert.",
+        "task_letter": "Dokumentieren Sie Kernstatus und Sicherheitsaspekte in klarer Fachsprache."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Psychischer Status und Pruefungsfragen"
+      ]
+    }
+  ]
+}

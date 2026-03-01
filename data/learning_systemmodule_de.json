@@ -1,0 +1,495 @@
+{
+  "title": "Lernbereich",
+  "subtitle": "Systemmodule fuer die FSP Berlin",
+  "scope_note": "Dieser Bereich ueberfuehrt die aus dem Fachsprachkurs extrahierten Systemthemen in strukturierte Lernmodule mit Anamnese-, Befund- und Uebergabesprache. Ziel ist klinisch sinnvolle Priorisierung statt isolierter Vokabellisten.",
+  "references": [
+    {
+      "label": "Fachsprachkurs PDF: Organbezogene Wortlisten, Fragen und Fallanlaesse",
+      "url": "data/fachsprachkurs.pdf"
+    }
+  ],
+  "categories": [
+    {
+      "id": "kardiologie_modul",
+      "title": "Kardiologie kompakt",
+      "focus": "Leitsymptome, Risikoprofil und Priorisierung im Herz-Kreislauf-Kontext",
+      "summary": "Das kardiologische Modul trainiert die Verbindung zwischen Symptombeschreibung, Risikoanamnese und klarer Handlungsableitung. Genau diese Verbindung wird im Berliner Arzt-Arzt-Gespraech stark bewertet.",
+      "learning_text": [
+        "Kardiologische Gespraeche sollten immer mit Prioritaet starten: Ist die Situation akut instabil oder aktuell kompensiert? Diese Weichenstellung bestimmt, wie detailliert anamnestisch exploriert wird.",
+        "Leitsymptome sind Thoraxschmerz, Dyspnoe, Palpitationen, Synkope und Leistungsknick. In der FSP wird nicht erwartet, dass alle Leitlinien zitiert werden, aber dass sprachlich klar zwischen dringend und weniger dringend unterschieden wird.",
+        "Risikoprofil und Vorgeschichte muessen geordnet erhoben werden: Hypertonie, Diabetes, Nikotin, Vorereignisse, Interventionen und Medikation. Hier entstehen haeufig Luecken, die spaeter den Arztbrief und die Fallvorstellung schwaechen.",
+        "Der Abschluss gelingt mit einer transparenten Planformulierung: initiale Diagnostik, Monitoring, Therapieansatz und Sicherheitsnetz."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptome",
+          "questions": [
+            "Welche Symptome priorisieren Sie im kardiologischen Erstkontakt?",
+            "Wie unterscheiden Sie belastungsabhaengige von Ruhebeschwerden?",
+            "Welche Begleitsymptome signalisieren Zeitkritik?",
+            "Wie fragen Sie nach Synkope und Praesynkope strukturiert?",
+            "Wie sichern Sie den zeitlichen Verlauf klar ab?"
+          ]
+        },
+        {
+          "title": "Risikoprofil und Vorerkrankung",
+          "questions": [
+            "Welche kardiovaskulaeren Risikofaktoren sind unverzichtbar?",
+            "Wie erheben Sie Interventionen wie Stent oder Bypass sprachlich sauber?",
+            "Wie dokumentieren Sie bestehende Rhythmusstoerungen?",
+            "Wie integrieren Sie Medikation und Adhaerenz in die Anamnese?",
+            "Wie kommunizieren Sie Relevanz an den Patienten?"
+          ]
+        },
+        {
+          "title": "Plan",
+          "questions": [
+            "Wie formulieren Sie den initialen Diagnostikpfad knapp?",
+            "Welche Kriterien sprechen fuer stationaeres Vorgehen?",
+            "Wie erklaeren Sie Warnzeichen fuer zuhause?",
+            "Wie uebergeben Sie den Fall in einem logischen Arzt-Arzt-Schema?",
+            "Wie fassen Sie den Plan patientengerecht zusammen?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Die Symptomkonstellation ist kardiologisch relevant und erfordert eine zeitnahe Abklaerung.",
+        "Im Vordergrund stehen derzeit Thoraxschmerz, Belastungsdyspnoe und episodische Palpitationen.",
+        "Aufgrund des Risikoprofils priorisieren wir EKG, Labor und engmaschiges Monitoring.",
+        "Das weitere Vorgehen erklaere ich dem Patienten transparent inklusive Warnzeichen."
+      ],
+      "linked_term_ids": [
+        "online_kurs_angina_pectoris",
+        "online_kurs_arrhythmie",
+        "online_kurs_tachykardie",
+        "online_kurs_bradykardie",
+        "online_kurs_hypertonie",
+        "online_kurs_kardiomyopathie",
+        "online_kurs_koronarangiographie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Palpitationen und Synkope",
+        "situation": "Ein 61-jaehriger Patient berichtet ueber Herzstolpern und eine kurze Synkope am Vortag.",
+        "task_patient": "Fuehren Sie eine strukturierte kardiologische Kurzaufklaerung zum geplanten Vorgehen durch.",
+        "task_doctor": "Uebergeben Sie Symptome, Risiken und Plan in 30 Sekunden.",
+        "task_letter": "Dokumentieren Sie die kardiologische Ersteinschaetzung knapp und korrekt."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Herz-Kreislauf-Fragenblock"
+      ]
+    },
+    {
+      "id": "pneumologie_modul",
+      "title": "Pneumologie und Atemwege",
+      "focus": "Husten, Dyspnoe und respiratorische Alarmzeichen sprachlich sicher fuehren",
+      "summary": "Das respiratorische Modul erweitert die bestehende Husten/Dyspnoe-Anamnese um systematische Aufklaerungssprache zu Untersuchungen und Dringlichkeit.",
+      "learning_text": [
+        "Respiratorische Beschwerden brauchen fruehe Schaetzung der Atemarbeit und Sauerstofflage. In der FSP wird erwartet, dass Luftnot nicht nur erfragt, sondern sprachlich priorisiert wird.",
+        "Die Kernstruktur bleibt: Beginn, Verlauf, Trigger, Hustenqualitaet, Auswurf, Belastbarkeit, Begleitsymptome. Entscheidend ist, dass keine relevante red flag uebersehen wird.",
+        "Bei unklaren Verlaeufen sollte die Kandidatin den Diagnostikpfad transparent machen: klinische Untersuchung, Pulsoxymetrie, ggf. Bildgebung und Labor. Diese Transparenz schafft Vertrauen und zeigt Struktur.",
+        "Abschliessend sollten Sicherheitszeichen fuer eine sofortige Wiedervorstellung klar und konkret genannt werden."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptome und Verlauf",
+          "questions": [
+            "Wie unterscheiden Sie akute von chronischer Dyspnoe sprachlich?",
+            "Wie erfragen Sie Hustenqualitaet und Auswurf strukturiert?",
+            "Welche Trigger sind fuer Atemnot wichtig?",
+            "Wie dokumentieren Sie Belastbarkeit alltagsnah?",
+            "Wie fragen Sie nach Infektzeichen und Expositionen?"
+          ]
+        },
+        {
+          "title": "Alarmzeichen",
+          "questions": [
+            "Welche Zeichen sprechen fuer akute respiratorische Gefaehrdung?",
+            "Wie erklaeren Sie dem Patienten die Dringlichkeit ohne Panik?",
+            "Wie priorisieren Sie Differentialdiagnosen sprachlich?",
+            "Welche Rolle spielt die Sauerstoffsaettigung in Ihrer Darstellung?",
+            "Wann ist sofortige stationaere Einweisung noetig?"
+          ]
+        },
+        {
+          "title": "Plan und Kommunikation",
+          "questions": [
+            "Wie formulieren Sie den diagnostischen Plan fuer den Patienten?",
+            "Wie uebergeben Sie den respiratorischen Fall an Kolleginnen?",
+            "Wie dokumentieren Sie Red Flags im Arztbrief?",
+            "Welche Rueckkehrkriterien fuer zuhause nennen Sie?",
+            "Wie sichern Sie das Verstaendnis am Ende aktiv ab?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Wir muessen Ihre Atembeschwerden jetzt zuegig einordnen, um gefaehrliche Ursachen auszuschliessen.",
+        "Entscheidend sind fuer mich Verlauf, Ausloeser und Begleitsymptome wie Fieber oder Brustschmerz.",
+        "Bei Warnzeichen erfolgt die weitere Diagnostik unmittelbar und engmaschig.",
+        "Ich erklaere Ihnen jetzt Schritt fuer Schritt, was als naechstes passiert."
+      ],
+      "linked_term_ids": [
+        "online_kurs_respirationstrakt",
+        "online_kurs_rhinitis",
+        "online_kurs_trachea",
+        "online_kurs_bronchien",
+        "online_kurs_alveoli",
+        "online_kurs_thorax",
+        "online_kurs_pulmo"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Akute Atemnot",
+        "situation": "Ein 58-jaehriger Patient kommt mit progredienter Luftnot und Husten in die Notaufnahme.",
+        "task_patient": "Erklaeren Sie den initialen Abklaerungsplan in kurzer, beruhigender Sprache.",
+        "task_doctor": "Uebergeben Sie den respiratorischen Fall mit Alarmzeichen priorisiert.",
+        "task_letter": "Dokumentieren Sie die Dringlichkeit und den Sicherheitsplan."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: respiratorisches System und Fragen"
+      ]
+    },
+    {
+      "id": "gastroenterologie_modul",
+      "title": "Gastroenterologie und Verdauung",
+      "focus": "Abdominale Leitsymptome, Blutungszeichen und differenzierte Priorisierung",
+      "summary": "Das GI-Modul trainiert die sprachliche Trennung zwischen stabilen Beschwerden und potenziell bedrohlichen Verlaeufen wie GI-Blutung oder Peritonitis.",
+      "learning_text": [
+        "Bei gastrointestinalen Beschwerden ist die zeitliche Struktur zentral: Beginn, Trigger, Dynamik, Begleitsymptome und Funktionseinschraenkung. Kandidaten sollten sich nicht in unsystematischen Detailfragen verlieren.",
+        "Blutungszeichen muessen aktiv und klar erhoben werden, inklusive Stuhlfarbe, Erbrechen von Blut und Kreislaufsymptome. In der FSP wird positiv bewertet, wenn diese Fragen frueh kommen und korrekt eingeordnet werden.",
+        "Ein starker Punkt ist die saubere Ueberleitung von Anamnese zur Diagnostik: Labor, Sonographie, ggf. Endoskopie. Wer den Zweck jedes Schrittes verstaendlich erklaert, zeigt klinisch-sprachliche Kompetenz.",
+        "Bei unauffaelligen Verlaeufen gehoeren trotzdem Sicherheitsnetze dazu, um Risikoentwicklungen nicht zu verpassen."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptome",
+          "questions": [
+            "Wie strukturieren Sie Oberbauch- versus Unterbauchbeschwerden?",
+            "Welche Fragen sind bei Uebelkeit/Erbrechen priorisiert?",
+            "Wie erheben Sie Stuhlveraenderungen praezise?",
+            "Wie fragen Sie nach Nahrungsbezug und Triggern?",
+            "Welche Rolle spielen Medikamente wie NSAR in der Anamnese?"
+          ]
+        },
+        {
+          "title": "Alarmzeichen",
+          "questions": [
+            "Welche Zeichen sprechen fuer akute GI-Blutung?",
+            "Wie erkennen Sie Hinweise auf Peritonitis sprachlich und klinisch?",
+            "Welche Kreislaufzeichen muessen dokumentiert werden?",
+            "Wie erklaeren Sie Dringlichkeit patientengerecht?",
+            "Wann ist sofortige stationaere Abklaerung noetig?"
+          ]
+        },
+        {
+          "title": "Plan",
+          "questions": [
+            "Wie begruenden Sie Sonographie und Labor im Erstschritt?",
+            "Wann kommunizieren Sie Endoskopie als naechsten Schritt?",
+            "Wie uebergeben Sie den GI-Fall strukturiert?",
+            "Wie dokumentieren Sie Warnzeichen im Arztbrief?",
+            "Welche Rueckkehrkriterien geben Sie fuer zuhause mit?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Wir muessen Ihre Beschwerden so einordnen, dass wir eine Blutung oder Entzuendung sicher ausschliessen.",
+        "Entscheidend sind dabei Schmerzverlauf, Stuhlveraenderungen und Kreislaufzeichen.",
+        "Als ersten Schritt planen wir Labor und Sonographie, danach gegebenenfalls eine endoskopische Abklaerung.",
+        "Ich nenne Ihnen klar, bei welchen Warnzeichen Sie sofort wiederkommen muessen."
+      ],
+      "linked_term_ids": [
+        "online_kurs_gaster",
+        "online_kurs_verdauungstrakt",
+        "online_kurs_peristaltik",
+        "online_kurs_duodenum",
+        "online_kurs_colon",
+        "online_kurs_appendix_vermiformis"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Teerstuhl und Schwaeche",
+        "situation": "Eine 57-jaehrige Patientin berichtet ueber schwarzen Stuhl und Schwindel seit zwei Tagen.",
+        "task_patient": "Erklaeren Sie das akute Vorgehen inklusive geplanter Diagnostik in einfacher Sprache.",
+        "task_doctor": "Uebergeben Sie den GI-Notfall fokussiert mit Prioritaeten.",
+        "task_letter": "Dokumentieren Sie Blutungsverdacht, Plan und Sicherheitsnetz."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Gastro- und Gastroskopieabschnitte"
+      ]
+    },
+    {
+      "id": "urogenital_modul",
+      "title": "Urogenitales System",
+      "focus": "Miktionsanamnese, Infektzeichen und urologische Dringlichkeiten",
+      "summary": "Dieses Modul vertieft den urogenitalen Fragenkatalog aus dem PDF und trainiert sprachlich sensible Themen wie Sexual- und Intimanamnese auf professionellem Niveau.",
+      "learning_text": [
+        "Die urogenitale Anamnese braucht klare, respektvolle Formulierungen. Kandidaten sollten aktiv erklaeren, warum intime Fragen medizinisch notwendig sind. Das verbessert Informationsgewinn und Beziehungsgestaltung.",
+        "Kernsymptome sind Dysurie, Pollakisurie, Nykturie, Haematurie, Flankenschmerz und Fieber. Entscheidend ist die strukturierte Kombination dieser Symptome zur Risikostratifizierung.",
+        "Dringliche Konstellationen wie Pyelonephritis mit Sepsiszeichen, akuter Harnverhalt oder relevante Makrohaematurie muessen frueh erkannt und sprachlich klar als dringlich gekennzeichnet werden.",
+        "In der Uebergabe sollten Befunde nicht unsortiert aufgelistet werden. Ziel ist ein geordneter Pfad von Symptomen ueber Risikoprofil zum weiteren Vorgehen."
+      ],
+      "question_groups": [
+        {
+          "title": "Miktions- und Leitsymptome",
+          "questions": [
+            "Wie erheben Sie Dysurie, Pollakisurie und Nykturie strukturiert?",
+            "Wie fragen Sie nach Harnmenge und Harnfarbe patientengerecht?",
+            "Wie integrieren Sie Flankenschmerz und Fieber in die Dringlichkeit?",
+            "Wie sprechen Sie Inkontinenz nicht wertend an?",
+            "Welche Fragen zur Trinkmenge und Medikation sind zentral?"
+          ]
+        },
+        {
+          "title": "Risikofaktoren",
+          "questions": [
+            "Welche Vorgeschichte ist fuer UTI-Rezidive wichtig?",
+            "Wie erfassen Sie Katheter- und OP-Anamnese?",
+            "Wie fragen Sie nach Steinleiden und Prostatahinweisen?",
+            "Wann sind gynaekologische Zusatzfragen noetig?",
+            "Wie stellen Sie sensible Fragen mit professioneller Distanz?"
+          ]
+        },
+        {
+          "title": "Akutplan",
+          "questions": [
+            "Wie benennen Sie urogenitale Red Flags in einfacher Sprache?",
+            "Welche Erstdiagnostik begruenden Sie im Gespraech?",
+            "Wie erklaeren Sie stationaere Aufnahme bei Sepsisverdacht?",
+            "Wie uebergeben Sie den Fall im Arzt-Arzt-Gespraech?",
+            "Wie dokumentieren Sie das Vorgehen kompakt im Arztbrief?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Ihre Beschwerden sprechen fuer eine moegliche Harnwegs- oder Nierenbeteiligung, deshalb gehen wir strukturiert vor.",
+        "Wichtig sind fuer mich Schmerzlokalisation, Wasserlassen, Fieber und die bisherige Vorgeschichte.",
+        "Bei Warnzeichen wie Flankenschmerz mit Fieber handeln wir sofort und stationaer.",
+        "Ich erklaere Ihnen den weiteren Diagnostik- und Therapieplan Schritt fuer Schritt."
+      ],
+      "linked_term_ids": [
+        "online_kurs_harntrakt",
+        "online_kurs_zystitis",
+        "online_kurs_pyelonephritis",
+        "online_kurs_urolithiasis",
+        "online_kurs_harnretention",
+        "online_kurs_dysurie",
+        "online_kurs_pollakisurie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Fieber und Flankenschmerz",
+        "situation": "Eine 34-jaehrige Patientin stellt sich mit Dysurie, Flankenschmerz und Schuettelfrost vor.",
+        "task_patient": "Erklaeren Sie die Dringlichkeit und den naechsten Diagnostikschritt verstaendlich.",
+        "task_doctor": "Uebergeben Sie die Schluesselbefunde und den Sepsisbezug fokussiert.",
+        "task_letter": "Dokumentieren Sie urogenitale Anamnese, Alarmzeichen und Plan im Arztbrief."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Urogenitalsystem und Anamnesefragen"
+      ]
+    },
+    {
+      "id": "neurologie_modul",
+      "title": "Neurologie und neurovaskulaere Notfaelle",
+      "focus": "Kernsymptome, fokal-neurologische Defizite und zeitkritische Kommunikation",
+      "summary": "Dieses Modul buendelt neurologische Inhalte aus dem Fachsprachkurs fuer den klinischen Alltagssprech in Anamnese, Untersuchung und Uebergabe.",
+      "learning_text": [
+        "Neurologische Beschwerden verlangen fruehe Einordnung nach Zeitkritik: abrupt versus schleichend, fokal versus diffus, progredient versus fluktuierend. Diese Achsen helfen bei klarer Sprache und schneller Priorisierung.",
+        "Haeufige Leitsymptome sind Kopfschmerz, Sprachstoerung, Sensibilitaetsausfall, Kraftverlust, Schwindel, Krampfanfall und Bewusstseinsveraenderung. Die Kunst ist, Red Flags frueh zu trennen von weniger dringlichen Mustern.",
+        "In Berlin wird kein Spezialwissen im Detail verlangt, aber ein logischer Befundpfad. Kandidaten muessen erklaeren koennen, warum jetzt Bildgebung, Monitoring oder neurologische Mitbeurteilung noetig sind.",
+        "Eine starke Uebergabe verbindet Zeitachse, Kernbefunde und Plan in wenigen Saetzen."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptome",
+          "questions": [
+            "Wie erheben Sie den Beginn neurologischer Symptome zeitlich exakt?",
+            "Wie fragen Sie nach sprachlichen und motorischen Ausfaellen?",
+            "Welche Begleitsymptome sind bei Kopfschmerz wichtig?",
+            "Wie differenzieren Sie Schwindelqualitaeten in der Anamnese?",
+            "Welche Fragen helfen bei Verdacht auf Krampfanfall?"
+          ]
+        },
+        {
+          "title": "Dringlichkeit",
+          "questions": [
+            "Welche neurologischen Red Flags muessen sofort kommuniziert werden?",
+            "Wie begruenden Sie CCT/MRT im Akutfall sprachlich korrekt?",
+            "Wie erklaeren Sie die Zeitkritik bei Stroke-Verdacht?",
+            "Wie trennen Sie unscharfe von belastbaren Befunden?",
+            "Wie formulieren Sie Priorisierung gegenueber Kolleginnen?"
+          ]
+        },
+        {
+          "title": "Dokumentation und Uebergabe",
+          "questions": [
+            "Wie strukturieren Sie neurologische Kernbefunde fuer den Arztbrief?",
+            "Wie fassen Sie den Verlauf in zwei Saetzen zusammen?",
+            "Welche Formulierungen sind fuer die Arzt-Arzt-Uebergabe besonders geeignet?",
+            "Wie dokumentieren Sie Sicherheitsaufklaerung bei Entlassung?",
+            "Wie sichern Sie Verstaendnis beim Patienten ab?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Die Symptomatik ist neurologisch zeitkritisch und verlangt sofortige weitere Abklaerung.",
+        "Im Vordergrund stehen eine neu aufgetretene Sprachstoerung und rechtsseitige Kraftminderung.",
+        "Wir veranlassen umgehend die Bildgebung und setzen ein enges neurologisches Monitoring auf.",
+        "Die Kernbefunde uebergebe ich strukturiert inklusive Zeitachse und Plan."
+      ],
+      "linked_term_ids": [
+        "online_kurs_apoplexie",
+        "online_kurs_epilepsie",
+        "online_kurs_aphasie",
+        "online_kurs_hemianopsie",
+        "online_kurs_vertigo",
+        "online_kurs_lumbalpunktion",
+        "online_kurs_kraniale_computertomographie_cct"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Neurologische Defizite",
+        "situation": "Ein 68-jaehriger Patient zeigt ploetzliche Dysarthrie und Unsicherheit beim Stehen.",
+        "task_patient": "Erklaeren Sie in einfacher Sprache, warum sofortige Diagnostik noetig ist.",
+        "task_doctor": "Uebergeben Sie Verlauf, Defizite und Plan in klarer Reihenfolge.",
+        "task_letter": "Dokumentieren Sie die zeitkritische neurologische Einschatzung kurz und praezise."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: neurologische Begriffe und Fallvorstellung"
+      ]
+    },
+    {
+      "id": "endokrinologie_modul",
+      "title": "Endokrinologie, Diabetes und Schilddruese",
+      "focus": "Symptomcluster, Hormonbezug und patientenverstaendliche Langzeitplanung",
+      "summary": "Endokrine Themen sind haeufig nicht akut dramatisch, aber sprachlich anspruchsvoll. Die FSP bewertet hier vor allem semantische Praezision und nachvollziehbare Therapieerklaerung.",
+      "learning_text": [
+        "Bei endokrinen Beschwerden ist das Symptomcluster entscheidend: Gewicht, Temperaturwahrnehmung, Herzfrequenz, Stuhlverhalten, Durst/Miktion, Leistungsfaehigkeit. Eine gute Kandidatin ordnet diese Zeichen logisch statt isoliert.",
+        "Bei Diabetes stehen Hyper- und Hypoglykaemie-Situationen sowie Adhaerenz im Fokus. In der Kommunikation sollte klar werden, welche Warnzeichen sofortiges Handeln erfordern und welche Aspekte in die Verlaufstherapie gehoeren.",
+        "Schilddruesenthemen verlangen klare Begriffe in Patienten- und Fachsprache. Kandidaten muessen zwischen Unterfunktion, Ueberfunktion und medikamentoeser Einstellung sprachlich sicher differenzieren.",
+        "Zum Ende gehoert eine realistische, alltagstaugliche Planung mit Kontrollen, Medikation und Sicherheitsaufklaerung."
+      ],
+      "question_groups": [
+        {
+          "title": "Symptomcluster",
+          "questions": [
+            "Wie differenzieren Sie Hyper- und Hypothyreose in der Anamnese?",
+            "Welche Fragen sind bei vermutetem Diabetes essenziell?",
+            "Wie erfassen Sie Verlauf und Therapieadhaerenz?",
+            "Wie sprechen Sie Gewichtsveraenderungen klinisch sinnvoll an?",
+            "Welche vegetativen Symptome sind besonders richtungsweisend?"
+          ]
+        },
+        {
+          "title": "Sicherheit",
+          "questions": [
+            "Welche Warnzeichen bei Hypoglykaemie muessen aktiv abgefragt werden?",
+            "Wie erklaeren Sie Hyperglykaemie-Risiken patientengerecht?",
+            "Wann ist stationaeres Vorgehen noetig?",
+            "Wie formulieren Sie Medikamentenfehler ohne Vorwurf?",
+            "Wie koppeln Sie Laborplanung an die Symptomatik?"
+          ]
+        },
+        {
+          "title": "Langzeitplan",
+          "questions": [
+            "Wie erklaeren Sie Kontrollintervalle in einfacher Sprache?",
+            "Wie kommunizieren Sie Zielwerte ohne Ueberforderung?",
+            "Welche Rolle haben Lebensstilfaktoren in Ihrer Formulierung?",
+            "Wie uebergeben Sie endokrine Kernpunkte im Arzt-Arzt-Gespraech?",
+            "Wie dokumentieren Sie den Therapieplan knapp im Arztbrief?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Ihre Beschwerden passen zu einer moeglichen Hormonregulationsstoerung, die wir gezielt abklaeren.",
+        "Wir pruefen jetzt Blutzucker und Schilddruesenwerte, um die Ursache sicher einzugrenzen.",
+        "Wichtig ist, Warnzeichen frueh zu erkennen und die Therapie konsequent anzupassen.",
+        "Ich bespreche mit Ihnen einen klaren Verlaufplan mit Kontrollen und naechsten Schritten."
+      ],
+      "linked_term_ids": [
+        "online_kurs_diabetes_mellitus",
+        "online_kurs_diabetes_insipidus",
+        "online_kurs_hypothyreose",
+        "online_kurs_hyperthyreose",
+        "online_kurs_struma",
+        "online_kurs_thyreoiditis",
+        "online_kurs_oraler_glukosetoleranztest_ogtt"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Entgleister Diabetes",
+        "situation": "Ein 49-jaehriger Patient berichtet ueber Polydipsie, Polyurie und Erschoepfung seit Tagen.",
+        "task_patient": "Erklaeren Sie den sofortigen Abklaerungs- und Sicherheitsplan in klarer Sprache.",
+        "task_doctor": "Uebergeben Sie Symptomcluster, Risiken und naechste Schritte strukturiert.",
+        "task_letter": "Dokumentieren Sie endokrine Verdachtsdiagnose und Therapieplan kurz."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Endokrinologie und Diabetesblock"
+      ]
+    },
+    {
+      "id": "muskuloskelett_modul",
+      "title": "Muskuloskelettales System",
+      "focus": "Beschwerdeanalyse, funktionelle Untersuchung und prozedurale Sprache",
+      "summary": "Im Fachsprachkurs sind zahlreiche muskuloskelettale Verfahren und Begriffe enthalten. Dieses Modul macht daraus ein klinisch verwertbares Schema fuer Gespraech, Untersuchung und Uebergabe.",
+      "learning_text": [
+        "Muskuloskelettale Gespraeche beginnen mit Schmerzmechanismus, Funktionseinschraenkung und Belastungsbezug. Die FSP bewertet, ob Kandidaten Relevantes priorisieren statt nur Begriffe aufzuzahlen.",
+        "Wichtig ist die funktionelle Sprache: Was kann der Patient aktuell nicht mehr? Diese Frage liefert alltagsnahe Schweregradeinschaetzung und verbessert die spaetere Dokumentation.",
+        "Bei trauma- oder infektverdaechtigen Verlaeufen muessen Red Flags klar benannt werden: zunehmende Schwellung, Fehlstellung, Fieber, neurovaskulaere Ausfaelle. Dringlichkeit muss sprachlich eindeutig sein.",
+        "Prozedurale Begriffe wie Arthroskopie oder Osteosynthese sollten in Patientensprache uebersetzt werden koennen, damit Aufklaerung und Arztbrief konsistent bleiben."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptome und Funktion",
+          "questions": [
+            "Wie erheben Sie Schmerzmechanismus und Belastungsbezug systematisch?",
+            "Wie erfassen Sie alltagsrelevante Funktionseinschraenkung?",
+            "Wie unterscheiden Sie akute von chronischen Verlaeufen?",
+            "Welche Begleitsymptome sind fuer Entzuendung oder Trauma wichtig?",
+            "Wie dokumentieren Sie den klinischen Schweregrad praezise?"
+          ]
+        },
+        {
+          "title": "Untersuchung und Red Flags",
+          "questions": [
+            "Wie strukturieren Sie Inspektion, Palpation und Funktionstest sprachlich?",
+            "Welche Zeichen sprechen fuer neurovaskulaere Gefaehrdung?",
+            "Wann muss bei Gelenkbeschwerden dringlich eskaliert werden?",
+            "Wie kommunizieren Sie den Bedarf an Bildgebung?",
+            "Welche Warnzeichen benennen Sie dem Patienten klar?"
+          ]
+        },
+        {
+          "title": "Prozedurale Sprache",
+          "questions": [
+            "Wie erklaeren Sie Arthroskopie in patientennaher Sprache?",
+            "Wie unterscheiden Sie konservative von operativer Therapie im Gespraech?",
+            "Wie uebergeben Sie den muskuloskelettalen Fall an Kollegen?",
+            "Wie dokumentieren Sie Eingriffe im Arztbrief korrekt?",
+            "Wie formulieren Sie Nachsorge und Belastungsaufbau verstaendlich?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Die Beschwerden sprechen fuer ein muskuloskelettales Problem mit relevanter Funktionseinschraenkung.",
+        "Wir untersuchen jetzt gezielt Beweglichkeit, Stabilitaet und neurovaskulaeren Status.",
+        "Bei Warnzeichen wie Fehlstellung oder Durchblutungsstoerung handeln wir sofort.",
+        "Danach besprechen wir konservative und gegebenenfalls operative Optionen verstaendlich."
+      ],
+      "linked_term_ids": [
+        "online_kurs_arthroskopie",
+        "online_kurs_arthrozentese",
+        "online_kurs_osteosynthese",
+        "online_kurs_arthroplastik",
+        "online_kurs_spondylodese",
+        "online_kurs_meniskektomie",
+        "online_kurs_orthese"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Knietrauma",
+        "situation": "Ein 29-jaehriger Patient kommt nach Sportunfall mit schmerzhaft geschwollenem Knie.",
+        "task_patient": "Erklaeren Sie Untersuchung, Red Flags und den ersten Behandlungsplan in klarer Sprache.",
+        "task_doctor": "Uebergeben Sie den muskuloskelettalen Befund priorisiert.",
+        "task_letter": "Dokumentieren Sie Traumaanamnese, Status und Plan strukturiert."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: muskuloskelettale Methoden und Verfahren"
+      ]
+    }
+  ]
+}

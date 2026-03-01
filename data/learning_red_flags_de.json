@@ -1,0 +1,418 @@
+{
+  "title": "Lernbereich",
+  "subtitle": "Red Flags und Sicherheitskommunikation",
+  "scope_note": "Dieses Modul priorisiert Warnzeichen aus den haeufigsten FSP-Themen. Ziel ist, Alarmkonstellationen frueh zu erkennen, sprachlich klar zu benennen und in ein nachvollziehbares Handlungs- und Sicherheitsnetz zu ueberfuehren.",
+  "references": [
+    {
+      "label": "Fachsprachkurs PDF: Red-Flags-Abschnitte (u.a. Kopfschmerz, Neurologie, Systemfragen)",
+      "url": "data/fachsprachkurs.pdf"
+    }
+  ],
+  "categories": [
+    {
+      "id": "thorax_akut",
+      "title": "Thorax und Atemwege: sofortige Alarmzeichen",
+      "focus": "ACS, Lungenembolie, Pneumothorax und akute respiratorische Insuffizienz",
+      "summary": "Thorakale Beschwerden sind in der FSP klassische Hochrisikothemen. Bewertet wird, ob Kandidaten Alarmzeichen frueh priorisieren statt unsortiert Differentialdiagnosen aufzuzahlen.",
+      "learning_text": [
+        "Bei Thoraxsymptomen gilt: zuerst Gefaehrdung, dann Feindifferenzierung. Warnzeichen sind starke Ruhedyspnoe, persistierender Druckschmerz, Zyanose, Synkope, Kaltschweissigkeit, Kreislaufinstabilitaet und rasche Verschlechterung.",
+        "Sprachlich wichtig ist die klare Priorisierung gegenueber Patient und Team. Formulierungen wie Das muessen wir sofort abklaeren, weil wir gefaehrliche Ursachen ausschliessen muessen zeigen klinische und kommunikative Sicherheit.",
+        "In der Uebergabe sollten Red Flags explizit genannt und mit einem konkreten Plan verknuepft werden: Monitoring, EKG, Labor, Bildgebung, stationaere Eskalation. Ohne Plan bleibt die Red-Flag-Erwaehnung unvollstaendig.",
+        "Fuer den Patienten braucht es ein klares Sicherheitsnetz bei Entlassung oder Ambulantisierung, einschliesslich exakter Wiedervorstellungskriterien."
+      ],
+      "question_groups": [
+        {
+          "title": "Erkennen",
+          "questions": [
+            "Welche Symptome machen Thoraxbeschwerden akut bedrohlich?",
+            "Wie fragen Sie Synkope und Praesynkope in diesem Kontext?",
+            "Welche Begleitzeichen deuten auf respiratorische Insuffizienz?",
+            "Welche Risikofaktoren fuer LE/ACS erheben Sie zuerst?",
+            "Wie dokumentieren Sie Zeitkritik sprachlich praezise?"
+          ]
+        },
+        {
+          "title": "Kommunizieren",
+          "questions": [
+            "Wie erklaeren Sie dem Patienten die Dringlichkeit ohne Panik?",
+            "Welche Formulierung nutzen Sie fuer sofortige Diagnostik?",
+            "Wie priorisieren Sie relevante Befunde in der Arzt-Arzt-Uebergabe?",
+            "Wie sichern Sie Teamverstaendnis durch klare Struktur?",
+            "Wie vermeiden Sie unscharfe Alarmformulierungen?"
+          ]
+        },
+        {
+          "title": "Sicherheitsnetz",
+          "questions": [
+            "Welche Warnzeichen fuer zuhause muessen genannt werden?",
+            "Wie formulieren Sie klare Rueckkehrkriterien?",
+            "Welche Dokumentation gehoert in den Arztbrief?",
+            "Wie koppeln Sie Warnzeichen an konkrete Handlungsanweisungen?",
+            "Wie pruefen Sie, ob der Patient die Warnzeichen verstanden hat?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Aufgrund der Konstellation behandeln wir die Situation als akut potenziell bedrohlich.",
+        "Wir leiten jetzt sofort Monitoring und Notfalldiagnostik ein.",
+        "Ich erklaere Ihnen klar, welche Warnzeichen eine unmittelbare Wiedervorstellung erfordern.",
+        "Die Prioritaeten uebergebe ich strukturiert an das aufnehmende Team."
+      ],
+      "linked_term_ids": [
+        "online_kurs_angina_pectoris",
+        "online_kurs_arrhythmie",
+        "online_kurs_embolie",
+        "online_kurs_tachykardie",
+        "online_kurs_bradykardie",
+        "online_kurs_pulmo"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Thoraxschmerz mit Dyspnoe",
+        "situation": "Ein 63-jaehriger Patient klagt ueber drueckenden Thoraxschmerz und zunehmende Luftnot.",
+        "task_patient": "Erklaeren Sie sofortige Abklaerung und Sicherheitsgrunde in klarer Sprache.",
+        "task_doctor": "Uebergeben Sie Red Flags und Akutplan in 20-30 Sekunden.",
+        "task_letter": "Dokumentieren Sie Alarmzeichen und notfallmaessiges Vorgehen knapp."
+      },
+      "source_tags": [
+        "FSP-nahe Red-Flag-Kommunikation bei Thoraxsymptomen"
+      ]
+    },
+    {
+      "id": "neurologie_akut",
+      "title": "Neurologische Red Flags",
+      "focus": "Schlaganfallzeichen, Meningitisverdacht, Krampfanfall und Bewusstseinsstoerung",
+      "summary": "Neurologische Warnzeichen muessen in der FSP schnell erkannt und in eine zeitkritische Kommunikation uebersetzt werden. Unklares Ausweichen wird hier stark negativ bewertet.",
+      "learning_text": [
+        "Neurologische Alarmzeichen sind ploetzlicher fokaler Ausfall, Sprachstoerung, Bewusstseinsveraenderung, Thunderclap-Kopfschmerz, Krampfanfall mit prolongierter Verwirrtheit sowie Meningismuszeichen mit Fieber.",
+        "Wesentlich ist die Zeitachse: letzter unauffaelliger Zeitpunkt, Beginn, Progression. Diese Angaben sind fuer den Akutpfad zentral und muessen sprachlich exakt erhoben werden.",
+        "In der Uebergabe sollte die Kandidatin nicht spekulieren, sondern priorisieren: Was ist gesichert, was ist unklar, was passiert sofort. Das zeigt klinisch-logische Sicherheit.",
+        "Patientenkommunikation muss trotz Zeitdruck klar bleiben: Wir handeln jetzt schnell, um bleibende Schaeden moeglichst zu verhindern."
+      ],
+      "question_groups": [
+        {
+          "title": "Zeitkritische Zeichen",
+          "questions": [
+            "Welche fokal-neurologischen Defizite sind sofort alarmierend?",
+            "Wie erfassen Sie den symptomfreien Referenzzeitpunkt?",
+            "Welche Kopfschmerzmerkmale gelten als Red Flag?",
+            "Welche Zeichen sprechen fuer Meningitis/Enzephalitis?",
+            "Wie dokumentieren Sie Bewusstseinsveraenderung praezise?"
+          ]
+        },
+        {
+          "title": "Akutkommunikation",
+          "questions": [
+            "Wie formulieren Sie die Zeitkritik gegenueber dem Patienten?",
+            "Wie uebergeben Sie den Neurologiefall kurz und strukturiert?",
+            "Wie priorisieren Sie Bildgebung und Monitoring sprachlich?",
+            "Welche Informationen braucht das aufnehmende Team zuerst?",
+            "Wie vermeiden Sie semantische Unklarheit bei Defizitbeschreibung?"
+          ]
+        },
+        {
+          "title": "Sicherheitsplan",
+          "questions": [
+            "Welche Warnzeichen bei Entlassung muessen explizit genannt werden?",
+            "Wie formulieren Sie den Notfallrueckkehrplan?",
+            "Welche Dokumentation ist im Arztbrief zwingend?",
+            "Wie sichern Sie Verstaendnis bei Patienten und Angehoerigen?",
+            "Wie koppeln Sie Red Flags an konkrete Sofortmassnahmen?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Es liegen neurologische Warnzeichen vor, daher behandeln wir den Fall als zeitkritisch.",
+        "Der genaue Beginn der Symptome ist fuer das weitere Vorgehen entscheidend.",
+        "Wir veranlassen jetzt sofort die notwendige Akutdiagnostik.",
+        "Ich erklaere Ihnen die naechsten Schritte klar und ohne Zeitverzug."
+      ],
+      "linked_term_ids": [
+        "online_kurs_apoplexie",
+        "online_kurs_transitorisch_ischaemische_attacke",
+        "online_kurs_aphasie",
+        "online_kurs_fazialisparese",
+        "online_kurs_meningitis",
+        "online_kurs_epilepsie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: ploetzliche Sprachstoerung",
+        "situation": "Eine 70-jaehrige Patientin entwickelt abrupt verwaschene Sprache und Armabsinken rechts.",
+        "task_patient": "Kommunizieren Sie die Zeitkritik in einfacher Sprache.",
+        "task_doctor": "Uebergeben Sie Zeitachse, Defizit und Plan in Stichpunktstruktur.",
+        "task_letter": "Dokumentieren Sie neurologische Red Flags und Sofortmassnahmen."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Neurologische Pruefungsfragen"
+      ]
+    },
+    {
+      "id": "bauch_gi_blutung",
+      "title": "Abdomen und GI-Blutung",
+      "focus": "Peritonismus, Blutungszeichen und septische Warnkonstellationen",
+      "summary": "Bauchschmerzthemen sind pruefungsrelevant, weil klinische Priorisierung und Verstaendlichkeitskommunikation parallel gefordert werden.",
+      "learning_text": [
+        "Red Flags im Abdomen sind peritonealer Schmerz, Abwehrspannung, anhaltendes Erbrechen, relevante Haematemesis/Melaena, Fieber mit reduziertem Allgemeinzustand und Kreislaufzeichen.",
+        "In der FSP ist die sprachliche Reihenfolge entscheidend: erst Warnzeichen erheben, dann Differenzialdiagnosen ordnen, dann Plan erklaeren. Unstrukturiertes Aufzaehlen wirkt unsicher.",
+        "Die Kandidatin sollte Dringlichkeit nicht dramatisieren, aber klar benennen. Ein sachlicher Satz mit Handlungskonsequenz wirkt stark: Wir muessen jetzt rasch abklaeren, ob eine Blutung oder akute Entzuendung vorliegt.",
+        "Sicherheitskommunikation umfasst auch Entlassungsfaelle: genaue Warnzeichen, klare Rueckkehrkriterien und dokumentierter Verstaendnisabgleich."
+      ],
+      "question_groups": [
+        {
+          "title": "Warnzeichen erheben",
+          "questions": [
+            "Welche Merkmale sprechen fuer Peritonismus?",
+            "Wie fragen Sie nach GI-Blutungszeichen praezise?",
+            "Welche Kreislaufsymptome sind alarmierend?",
+            "Wie erfassen Sie Fieber und systemische Verschlechterung?",
+            "Wie dokumentieren Sie Dringlichkeit semantisch korrekt?"
+          ]
+        },
+        {
+          "title": "Priorisieren",
+          "questions": [
+            "Wie formulieren Sie den initialen Diagnostikpfad bei Red Flags?",
+            "Wann kommunizieren Sie stationaere Aufnahme klar?",
+            "Wie erklaeren Sie Endoskopie oder Bildgebung patientengerecht?",
+            "Wie uebergeben Sie den GI-Red-Flag-Fall an Kolleginnen?",
+            "Welche Begriffe vermeiden Sie wegen Unklarheit?"
+          ]
+        },
+        {
+          "title": "Sicherheitsnetz",
+          "questions": [
+            "Welche Warnzeichen fuer zuhause sind unverzichtbar?",
+            "Wie sichern Sie Verstaendnis bei komplexem Plan?",
+            "Wie dokumentieren Sie die Aufklaerung im Arztbrief?",
+            "Welche Nachkontrollintervalle nennen Sie konkret?",
+            "Wie verknuepfen Sie Alarmzeichen mit Handlungsanweisung?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Die aktuelle Konstellation enthaelt Warnzeichen fuer eine akute abdominale Ursache.",
+        "Wir klaeren jetzt zuegig ab, ob eine Blutung oder ein entzundlicher Notfall vorliegt.",
+        "Bei Verschlechterung wie zunehmendem Schmerz, Schwindel oder Blutbeimengungen muessen Sie sofort wiederkommen.",
+        "Ich dokumentiere die Warnzeichen und den Notfallplan fuer die weitere Behandlung."
+      ],
+      "linked_term_ids": [
+        "online_kurs_gaster",
+        "online_kurs_duodenum",
+        "online_kurs_colon",
+        "online_kurs_appendix_vermiformis",
+        "online_kurs_peristaltik"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Teerstuhl und Hypotonie",
+        "situation": "Ein 62-jaehriger Patient stellt sich mit schwarzem Stuhl und orthostatischem Schwindel vor.",
+        "task_patient": "Erklaeren Sie die Dringlichkeit und das unmittelbare Vorgehen in klarer Sprache.",
+        "task_doctor": "Uebergeben Sie GI-Red-Flags und Akutplan strukturiert.",
+        "task_letter": "Dokumentieren Sie Blutungsverdacht, Kreislauflage und Sicherheitsnetz."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: GI-Symptome und Gastroskopiebezug"
+      ]
+    },
+    {
+      "id": "urogenital_sepsis",
+      "title": "Urogenitale Red Flags und Sepsisrisiko",
+      "focus": "Flankenschmerz plus Fieber, Harnverhalt, Makrohaematurie",
+      "summary": "Urogenitale Warnzeichen sind in Berlin regelmaessig Thema, weil hier alltagsnahe Kliniksprache und Dringlichkeitskommunikation gut pruefbar sind.",
+      "learning_text": [
+        "Alarmkonstellationen im Urogenitalbereich sind Fieber mit Flankenschmerz, Schuettelfrost, reduzierter Allgemeinzustand, akuter Harnverhalt, makroskopische Blutung und Zeichen der systemischen Beteiligung.",
+        "In der FSP wird erwartet, dass diese Konstellationen nicht nur abgefragt, sondern klar priorisiert werden. Entscheidend ist die sprachliche Ueberfuehrung in ein konkretes Vorgehen.",
+        "Gute Kommunikation bleibt dabei respektvoll und nicht wertend, auch bei intimen Fragen. Das steigert die Qualitaet der Information und die therapeutische Kooperation.",
+        "Zum Abschluss gehoeren klare Notfallhinweise und nachvollziehbare Nachsorgeplanung."
+      ],
+      "question_groups": [
+        {
+          "title": "Alarmkonstellationen",
+          "questions": [
+            "Welche Symptomkombination spricht fuer aufsteigende Infektion?",
+            "Wie fragen Sie nach Sepsiszeichen strukturiert?",
+            "Wann ist Harnverhalt ein Notfall?",
+            "Welche Merkmale einer Haematurie sind besonders alarmierend?",
+            "Wie dokumentieren Sie den klinischen Schweregrad?"
+          ]
+        },
+        {
+          "title": "Dringlichkeitskommunikation",
+          "questions": [
+            "Wie erklaeren Sie stationaeres Vorgehen bei Urosepsisverdacht?",
+            "Wie benennen Sie noetige Sofortdiagnostik patientengerecht?",
+            "Welche Formulierung nutzen Sie fuer zeitnahe Therapieeinleitung?",
+            "Wie uebergeben Sie den Fall im Arzt-Arzt-Gespraech?",
+            "Wie sichern Sie Verstaendnis trotz Stresssituation?"
+          ]
+        },
+        {
+          "title": "Nachsorge und Warnzeichen",
+          "questions": [
+            "Welche Warnzeichen nach Entlassung nennen Sie konkret?",
+            "Wie koppeln Sie Trink- und Medikationsempfehlungen an Verlauf?",
+            "Wie dokumentieren Sie Sicherheitsaufklaerung im Arztbrief?",
+            "Welche Kontrollen sollten zeitnah erfolgen?",
+            "Wie formulieren Sie den Rueckkehrplan eindeutig?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Die Kombination aus Flankenschmerz und Fieber ist ein Warnzeichen fuer eine schwere urogenitale Infektion.",
+        "Wir beginnen jetzt unverzueglich mit der notwendigen Diagnostik und Therapie.",
+        "Bei fehlender Besserung oder neuen Warnzeichen muessen Sie sofort wiederkommen.",
+        "Die Sicherheits- und Nachsorgepunkte dokumentiere ich klar im weiteren Verlauf."
+      ],
+      "linked_term_ids": [
+        "online_kurs_pyelonephritis",
+        "online_kurs_harnretention",
+        "online_kurs_haematurie",
+        "online_kurs_dysurie",
+        "online_kurs_pollakisurie",
+        "online_kurs_nierenversagen"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Urosepsisverdacht",
+        "situation": "Eine 45-jaehrige Patientin berichtet ueber Dysurie, Flankenschmerz, Fieber und Schuettelfrost.",
+        "task_patient": "Erklaeren Sie die Dringlichkeit der stationaeren Abklaerung in klarer Sprache.",
+        "task_doctor": "Uebergeben Sie Red Flags und Therapiestart fokussiert.",
+        "task_letter": "Dokumentieren Sie Sepsisverdacht und Sicherheitsaufklaerung."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: urogenitale Anamnese und Warnzeichen"
+      ]
+    },
+    {
+      "id": "endokrin_metabolisch",
+      "title": "Endokrine und metabolische Red Flags",
+      "focus": "Hypo-/Hyperglykaemie, Thyreotoxikosezeichen und Exsikkose",
+      "summary": "Metabolische Entgleisungen werden in der FSP oft unterschaetzt. Geprueft wird, ob Kandidaten Warnzeichen frueh erkennen und klar kommunizieren.",
+      "learning_text": [
+        "Zu den zentralen metabolischen Warnzeichen gehoeren Bewusstseinsveraenderung bei Blutzuckerentgleisung, deutliche Dehydratation, progrediente Schwache und vegetative Entgleisung.",
+        "In der Kommunikation muss klar sein, dass solche Befunde akut relevant sein koennen, auch wenn das Beschwerdebild initial unspezifisch wirkt. Genau diese klinische Priorisierung ist pruefungsrelevant.",
+        "Bei endokrinen Konstellationen sollte die Kandidatin diagnostische und therapeutische Sofortschritte in einfacher Sprache benennen, inklusive Monitoring und Verlaufskontrolle.",
+        "Sicherheitsnetz und Verstaendnissicherung sind besonders wichtig, da viele Patienten chronische Vorerkrankungen und Selbstmanagementaufgaben haben."
+      ],
+      "question_groups": [
+        {
+          "title": "Erkennen",
+          "questions": [
+            "Welche Zeichen sprechen fuer klinisch relevante Hypoglykaemie?",
+            "Welche Hinweise deuten auf Hyperglykaemieentgleisung?",
+            "Wie erfassen Sie Exsikkosezeichen strukturiert?",
+            "Welche Symptome machen endokrine Ursachen wahrscheinlicher?",
+            "Wie dokumentieren Sie den Schweregrad sprachlich praezise?"
+          ]
+        },
+        {
+          "title": "Akutstrategie",
+          "questions": [
+            "Wie erklaeren Sie sofortige Blutzucker- und Laborkontrolle patientengerecht?",
+            "Wie kommunizieren Sie initiale Therapie ohne Ueberforderung?",
+            "Wann ist stationaere Ueberwachung erforderlich?",
+            "Wie uebergeben Sie den Fall kurz und klinisch logisch?",
+            "Welche Fehler in der Risikoformulierungen sollten vermieden werden?"
+          ]
+        },
+        {
+          "title": "Langzeit-Sicherheit",
+          "questions": [
+            "Welche Warnzeichen fuer zuhause nennen Sie konkret?",
+            "Wie koppeln Sie Medikation und Selbstmonitoring sprachlich?",
+            "Wie sichern Sie Verstaendnis zu Notfallmassnahmen?",
+            "Wie dokumentieren Sie Sicherheitsaufklaerung im Arztbrief?",
+            "Welche Nachkontrollen kommunizieren Sie verbindlich?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Die aktuelle Symptomatik kann auf eine metabolische Entgleisung hinweisen und muss sofort kontrolliert werden.",
+        "Wir messen jetzt unverzueglich die relevanten Werte und beginnen die erste Stabilisierung.",
+        "Ich erklaere Ihnen klar, welche Warnzeichen zuhause ein sofortiges Handeln erfordern.",
+        "Der weitere Plan umfasst engmaschige Kontrollen und nachvollziehbare Therapieschritte."
+      ],
+      "linked_term_ids": [
+        "online_kurs_diabetes_mellitus",
+        "online_kurs_diabetes_insipidus",
+        "online_kurs_hypothyreose",
+        "online_kurs_hyperthyreose",
+        "online_kurs_thyreotoxikose",
+        "online_kurs_insulinom"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: ausgepraegte Polydipsie",
+        "situation": "Ein 56-jaehriger Patient berichtet ueber starken Durst, Polyurie und Schwache.",
+        "task_patient": "Erklaeren Sie den akuten Sicherheits- und Diagnostikplan in einfacher Sprache.",
+        "task_doctor": "Uebergeben Sie metabolische Red Flags und Initialtherapie strukturiert.",
+        "task_letter": "Dokumentieren Sie Entgleisungsverdacht, Massnahmen und Warnhinweise."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Endokrinologie- und Diabetesabschnitte"
+      ]
+    },
+    {
+      "id": "psychiatrie_sicherheit",
+      "title": "Psychiatrische Sicherheitsaspekte",
+      "focus": "Suizidalitaet, akute Eigen-/Fremdgefaehrdung und klare Schutzkommunikation",
+      "summary": "Auch ohne tiefe Psychiatrieexpertise muessen Kandidaten in Berlin Sicherheitsfragen klar stellen und transparent handeln koennen.",
+      "learning_text": [
+        "Psychiatrische Red Flags sind akute Suizidgedanken mit Handlungsdruck, konkrete Fremdgefaehrdung, schwere Realitaetsverkennung und fehlende Selbststeuerungsfaehigkeit.",
+        "Die Fragen muessen direkt, respektvoll und ohne Umwege gestellt werden. Vermeidungsverhalten wirkt unsicher und fuehrt oft zu inhaltlichen Luecken.",
+        "Bei relevanter Gefaehrdung muss der Plan klar sein: Schutzmassnahmen, engmaschige Beobachtung, fachpsychiatrische Mitbeurteilung. Diese Schritte muessen sprachlich nachvollziehbar kommuniziert werden.",
+        "Dokumentation sollte wertfrei und praezise bleiben, mit klarer Trennung von Patientenangaben, Beobachtung und Risikoeinschaetzung."
+      ],
+      "question_groups": [
+        {
+          "title": "Direkte Sicherheitsabfrage",
+          "questions": [
+            "Wie stellen Sie die Frage nach Suizidgedanken direkt und respektvoll?",
+            "Welche Zusatzfragen klaeren akute Handlungsgefahr?",
+            "Wie erfassen Sie Fremdgefaehrdung strukturiert?",
+            "Wie formulieren Sie die Risikoeinschaetzung ohne Wertung?",
+            "Wie sichern Sie bei Unsicherheit sofortige Unterstuetzung?"
+          ]
+        },
+        {
+          "title": "Kommunikation in der Krise",
+          "questions": [
+            "Wie erklaeren Sie notwendige Schutzmassnahmen patientengerecht?",
+            "Welche Formulierungen vermeiden Eskalation?",
+            "Wie uebergeben Sie den Fall an Kolleginnen mit Fokus auf Sicherheit?",
+            "Wie koppeln Sie Empathie mit klarer Rollenfuehrung?",
+            "Wie sichern Sie Teamkommunikation bei hoher Dynamik?"
+          ]
+        },
+        {
+          "title": "Dokumentation",
+          "questions": [
+            "Welche Sicherheitsaspekte muessen schriftlich zwingend festgehalten werden?",
+            "Wie trennen Sie Zitat des Patienten und eigene Einschatzung?",
+            "Wie dokumentieren Sie vereinbarte Schutz- und Nachsorgeschritte?",
+            "Wie formulieren Sie Rueckkehrkriterien bei Entlassung?",
+            "Wie pruefen Sie, ob der Patient den Plan verstanden hat?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Ich frage Sie direkt: Haben Sie aktuell Gedanken, sich etwas anzutun?",
+        "Bei bestehender Gefaehrdung sorgen wir sofort fuer Schutz und engmaschige Betreuung.",
+        "Wir handeln in dieser Situation klar strukturiert und binden sofort das zustaendige Fachteam ein.",
+        "Ich dokumentiere die Sicherheitsabfrage und den weiteren Schutzplan transparent."
+      ],
+      "linked_term_ids": [
+        "online_kurs_demenz",
+        "online_kurs_alzheimer_krankheit",
+        "online_kurs_epilepsie",
+        "online_kurs_vertigo"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: depressive Krise",
+        "situation": "Ein 38-jaehriger Patient aeussert Hoffnungslosigkeit und deutlichen Rueckzug.",
+        "task_patient": "Fuehren Sie eine kurze direkte Sicherheitsabfrage mit anschliessender Erklaerung des Schutzplans durch.",
+        "task_doctor": "Uebergeben Sie Risikoeinschaetzung und Massnahmen strukturiert.",
+        "task_letter": "Dokumentieren Sie Sicherheitsabfrage, Risiko und vereinbartes Vorgehen."
+      },
+      "source_tags": [
+        "Fachsprachkurs PDF: Depression, Sucht und Sicherheitsfragen"
+      ]
+    }
+  ]
+}
