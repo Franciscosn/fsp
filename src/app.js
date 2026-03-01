@@ -15,8 +15,8 @@ const API_SPEND_TRACKER_VERSION = 2;
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "51";
-const BUILD_UPDATED_AT = "2026-03-01 19:18 CET";
+const APP_VERSION = "52";
+const BUILD_UPDATED_AT = "2026-03-01 19:30 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -37,6 +37,7 @@ const SUPABASE_ADMINS_TABLE = "app_admins";
 const USAGE_TICK_MS = 15_000;
 const PERSONAL_STATS_DAYS = 14;
 const ADMIN_STATS_DAYS = 30;
+const MAX_DISPLAY_LEVEL = 10;
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
 const VOICE_CASE_SAMPLE_PATH = "data/voice_case_samples_de.json";
@@ -1589,6 +1590,7 @@ const refs = {
   quickPracticeBtn: document.getElementById("quickPracticeBtn"),
   sessionText: document.getElementById("sessionText"),
   topXpText: document.getElementById("topXpText"),
+  currentLevelText: document.getElementById("currentLevelText"),
   xpMilestone: document.getElementById("xpMilestone"),
   dailyGoalPanel: document.getElementById("dailyGoalPanel"),
   dailyGoalText: document.getElementById("dailyGoalText"),
@@ -9389,27 +9391,38 @@ function renderSessionXpDisplay() {
 
 function renderXpDisplay() {
   const xp = normalizeXpValue(state.xp);
-  const blockProgress = xp % 10;
-  const percent = Math.round((blockProgress / 10) * 100);
+  const level = deriveLevelFromXp(xp);
+  const currentThreshold = getLevelThreshold(level);
+  const nextThreshold = getLevelThreshold(level + 1);
+  const levelSpan = Math.max(1, nextThreshold - currentThreshold);
+  const intoLevel = Math.max(0, xp - currentThreshold);
+  const percent = Math.max(0, Math.min(100, Math.round((intoLevel / levelSpan) * 100)));
 
   refs.levelBadge.textContent = `XP ${xp}`;
   refs.levelTitle.textContent = "Trainingspunkte";
-  refs.levelProgressText.textContent = `${blockProgress} / 10 bis +10 XP`;
+  refs.levelProgressText.textContent =
+    level >= MAX_DISPLAY_LEVEL
+      ? "Max Level erreicht"
+      : `${Math.max(0, nextThreshold - xp)} XP bis Level ${level + 1}`;
   refs.levelFill.style.width = `${percent}%`;
   if (refs.topXpText) {
     refs.topXpText.textContent = `Gesamt XP ${xp}`;
   }
+  if (refs.currentLevelText) {
+    refs.currentLevelText.textContent = `Level ${level}`;
+  }
 
   const track = refs.levelFill.parentElement;
   if (track) {
-    track.setAttribute("aria-label", "XP Fortschritt bis +10");
+    track.setAttribute("aria-label", `Fortschritt in Level ${level}`);
     track.setAttribute("aria-valuemin", "0");
-    track.setAttribute("aria-valuemax", "10");
-    track.setAttribute("aria-valuenow", String(blockProgress));
+    track.setAttribute("aria-valuemax", String(levelSpan));
+    track.setAttribute("aria-valuenow", String(Math.min(intoLevel, levelSpan)));
   }
 
-  if (!refs.levelAvatar.dataset.sources) {
-    applyLevelAvatarSources(buildLevelAssetCandidates(1));
+  const currentAvatarLevel = Number(refs.levelAvatar.dataset.level || "-1");
+  if (!refs.levelAvatar.dataset.sources || currentAvatarLevel !== level) {
+    applyLevelAvatarSources(buildLevelAssetCandidates(level));
   }
 }
 
@@ -9537,7 +9550,7 @@ function renderAdminStatsRows() {
       <td>${escapeHtml(String(row.day || "-"))}</td>
       <td>${formatMinutes(Number(row.active_seconds) || 0)}</td>
       <td>${correct}</td>
-      <td>${Math.max(1, Number(row.level) || 1)}</td>
+      <td>${Math.max(0, Number(row.level) || 0)}</td>
       <td>${attempts}</td>
     `;
     refs.adminStatsTableBody.appendChild(tr);
@@ -9661,7 +9674,17 @@ async function refreshAdminMetricsFromProgressFallback(fromDay) {
 
 function deriveLevelFromXp(xpValue) {
   const xp = normalizeXpValue(xpValue);
-  return Math.max(1, Math.min(10, Math.floor(xp / 10) + 1));
+  let level = 0;
+  while (level < MAX_DISPLAY_LEVEL && xp >= getLevelThreshold(level + 1)) {
+    level += 1;
+  }
+  return level;
+}
+
+function getLevelThreshold(level) {
+  const normalizedLevel = Math.max(0, Math.min(MAX_DISPLAY_LEVEL + 1, Math.floor(Number(level) || 0)));
+  if (normalizedLevel <= 0) return 0;
+  return 5 * normalizedLevel * (normalizedLevel + 1) + 5;
 }
 
 function formatMinutes(secondsValue) {
@@ -9753,6 +9776,7 @@ function applyLevelAvatarSources(sources) {
   if (!Array.isArray(sources) || sources.length === 0) return;
   refs.levelAvatar.dataset.sources = JSON.stringify(sources);
   refs.levelAvatar.dataset.sourceIndex = "0";
+  refs.levelAvatar.dataset.level = String(deriveLevelFromXp(state.xp));
   refs.levelAvatar.src = sources[0];
 }
 

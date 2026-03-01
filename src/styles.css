@@ -1957,6 +1957,14 @@ body.auth-only .edge-deco {
   justify-items: start;
 }
 
+.level-current-text {
+  margin: 0;
+  color: #8f3650;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
 .level-copy {
   display: grid;
   gap: 8px;
