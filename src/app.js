@@ -15,8 +15,8 @@ const API_SPEND_TRACKER_VERSION = 2;
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "52";
-const BUILD_UPDATED_AT = "2026-03-01 19:30 CET";
+const APP_VERSION = "53";
+const BUILD_UPDATED_AT = "2026-03-01 19:48 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
 const MAX_VOICE_QUESTION_LENGTH = 500;
@@ -38,6 +38,7 @@ const USAGE_TICK_MS = 15_000;
 const PERSONAL_STATS_DAYS = 14;
 const ADMIN_STATS_DAYS = 30;
 const MAX_DISPLAY_LEVEL = 10;
+const LEVELUP_PHASE_SWITCH_MS = 1400;
 const VOICE_CASE_LIBRARY_PATH = "data/patientengespraeche_ai_cases_de.txt";
 const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de.json";
 const VOICE_CASE_SAMPLE_PATH = "data/voice_case_samples_de.json";
@@ -1390,6 +1391,7 @@ let realtimeButtonPushToTalkStartInFlight = false;
 let suppressVoiceRecordClickOnce = false;
 let suppressVoiceRecordClickTimer = null;
 let xpMilestoneHideTimer = null;
+let levelUpPhaseTimer = null;
 let usageTickTimer = null;
 let usageLastTickAt = 0;
 let usageMetricsSyncTimer = null;
@@ -1780,7 +1782,13 @@ const refs = {
   adminStatsStatus: document.getElementById("adminStatsStatus"),
   adminStatsRefreshBtn: document.getElementById("adminStatsRefreshBtn"),
   adminStatsTableBody: document.getElementById("adminStatsTableBody"),
-  adminStatsEmpty: document.getElementById("adminStatsEmpty")
+  adminStatsEmpty: document.getElementById("adminStatsEmpty"),
+  levelUpOverlay: document.getElementById("levelUpOverlay"),
+  levelUpStage: document.getElementById("levelUpStage"),
+  levelUpItemImage: document.getElementById("levelUpItemImage"),
+  levelUpExplosion: document.getElementById("levelUpExplosion"),
+  levelUpLevelImage: document.getElementById("levelUpLevelImage"),
+  levelUpContinueBtn: document.getElementById("levelUpContinueBtn")
 };
 
 const PROMPT_EDITOR_REF_KEY_BY_PROMPT_KEY = Object.freeze({
@@ -1941,12 +1949,14 @@ function wireEvents() {
   refs.adminStatsRefreshBtn?.addEventListener("click", () => {
     void refreshAdminMetrics();
   });
+  refs.levelUpContinueBtn?.addEventListener("click", closeLevelUpCelebration);
 
   document.addEventListener("visibilitychange", handleUsageVisibilityChange);
   window.addEventListener("beforeunload", flushUsageTracking);
 
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
+      closeLevelUpCelebration();
       closeVoiceInfoModal();
       closeStatsOverlay();
       return;
@@ -7298,6 +7308,7 @@ async function applySession(session) {
     remoteStateRowId = null;
     exitImmersiveMode();
     closeStatsOverlay();
+    closeLevelUpCelebration();
   }
   updateAuthUi();
   if (!user) return;
@@ -9320,14 +9331,19 @@ function awardXp(amount) {
   if (gain <= 0) return;
 
   const previousXp = normalizeXpValue(state.xp);
+  const previousLevel = deriveLevelFromXp(previousXp);
   const nextXp = previousXp + gain;
   state.xp = nextXp;
   saveToStorage(STORAGE_XP_KEY, { total: nextXp });
+  const nextLevel = deriveLevelFromXp(nextXp);
 
   const previousStep = Math.floor(previousXp / 10);
   const currentStep = Math.floor(nextXp / 10);
   if (currentStep > previousStep) {
     showXpMilestone(`+${(currentStep - previousStep) * 10} XP`);
+  }
+  if (nextLevel > previousLevel) {
+    showLevelUpCelebration(nextLevel);
   }
 }
 
@@ -9346,6 +9362,77 @@ function showXpMilestone(text) {
     refs.xpMilestone.classList.remove("show");
     refs.xpMilestone.classList.add("hidden");
   }, 1500);
+}
+
+function showLevelUpCelebration(level) {
+  if (!refs.levelUpOverlay || !refs.levelUpStage || !refs.levelUpItemImage || !refs.levelUpLevelImage) {
+    return;
+  }
+  const normalizedLevel = Math.max(1, Math.floor(Number(level) || 1));
+  closeLevelUpCelebration({ preserveHidden: true });
+
+  applyDynamicImageSources(refs.levelUpItemImage, buildLevelItemAssetCandidates(normalizedLevel));
+  applyDynamicImageSources(refs.levelUpLevelImage, buildLevelAssetCandidates(normalizedLevel));
+
+  refs.levelUpStage.classList.remove("phase-level");
+  refs.levelUpExplosion?.classList.remove("boom");
+  void refs.levelUpStage.offsetWidth;
+  refs.levelUpOverlay.classList.remove("hidden");
+  refs.levelUpOverlay.setAttribute("aria-hidden", "false");
+  document.body.classList.add("levelup-open");
+
+  levelUpPhaseTimer = window.setTimeout(() => {
+    refs.levelUpStage?.classList.add("phase-level");
+    if (refs.levelUpExplosion) {
+      refs.levelUpExplosion.classList.remove("boom");
+      void refs.levelUpExplosion.offsetWidth;
+      refs.levelUpExplosion.classList.add("boom");
+    }
+  }, LEVELUP_PHASE_SWITCH_MS);
+}
+
+function closeLevelUpCelebration(options = {}) {
+  const preserveHidden = Boolean(options.preserveHidden);
+  if (levelUpPhaseTimer) {
+    window.clearTimeout(levelUpPhaseTimer);
+    levelUpPhaseTimer = null;
+  }
+  if (!refs.levelUpOverlay || !refs.levelUpStage) {
+    document.body.classList.remove("levelup-open");
+    return;
+  }
+  refs.levelUpStage.classList.remove("phase-level");
+  refs.levelUpExplosion?.classList.remove("boom");
+  if (!preserveHidden) {
+    refs.levelUpOverlay.classList.add("hidden");
+    refs.levelUpOverlay.setAttribute("aria-hidden", "true");
+  }
+  document.body.classList.remove("levelup-open");
+}
+
+function applyDynamicImageSources(imageEl, candidates) {
+  if (!imageEl) return;
+  const list = Array.isArray(candidates) ? candidates.filter((entry) => Boolean(entry)) : [];
+  if (!list.length) return;
+  imageEl.dataset.candidates = JSON.stringify(list);
+  imageEl.dataset.candidateIndex = "0";
+  imageEl.onerror = () => {
+    let localCandidates = [];
+    try {
+      localCandidates = JSON.parse(imageEl.dataset.candidates || "[]");
+    } catch {
+      localCandidates = [];
+    }
+    const currentIndex = Number(imageEl.dataset.candidateIndex || "0");
+    const nextIndex = currentIndex + 1;
+    if (nextIndex >= localCandidates.length) {
+      imageEl.onerror = null;
+      return;
+    }
+    imageEl.dataset.candidateIndex = String(nextIndex);
+    imageEl.src = localCandidates[nextIndex];
+  };
+  imageEl.src = list[0];
 }
 
 function renderStats() {
@@ -9799,7 +9886,7 @@ function handleLevelAvatarError() {
 
 function buildLevelAssetCandidates(level) {
   const candidates = [];
-  const levelIndex = Math.max(0, Math.min(9, level - 1));
+  const levelIndex = Math.max(0, Math.min(9, Math.floor(Number(level) || 0)));
 
   // Prefer exact level file (level-0.png ... level-9.png),
   // then gracefully fall back to lower unlocked assets if some files are still missing.
@@ -9812,6 +9899,17 @@ function buildLevelAssetCandidates(level) {
   }
   candidates.push("assets/kat-photo-placeholder.svg");
   return candidates;
+}
+
+function buildLevelItemAssetCandidates(level) {
+  const normalized = Math.max(1, Math.min(MAX_DISPLAY_LEVEL, Math.floor(Number(level) || 1)));
+  return [
+    `assets/levels/item-${normalized}.png`,
+    `assets/levels/item-${normalized}.jpg`,
+    `assets/levels/item-${normalized}.jpeg`,
+    `assets/levels/item-${normalized}.webp`,
+    "assets/kat-photo-placeholder.svg"
+  ];
 }
 
 function getRemainingNewSlotsToday() {

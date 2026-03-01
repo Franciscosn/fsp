@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=52" />
+    <link rel="stylesheet" href="src/styles.css?v=53" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -717,6 +717,33 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=52"></script>
+    <section id="levelUpOverlay" class="levelup-overlay hidden" aria-hidden="true">
+      <div class="levelup-backdrop"></div>
+      <article class="levelup-card">
+        <p class="levelup-title">Gratuliere. Wieder ein Level weitergekommen. Good job bosslady</p>
+        <div id="levelUpStage" class="levelup-stage phase-item">
+          <p class="levelup-caption">Neues Item freigeschaltet</p>
+          <img
+            id="levelUpItemImage"
+            class="levelup-item-image"
+            src="assets/levels/item-1.png"
+            alt="Neues freigeschaltetes Item"
+          />
+          <div id="levelUpExplosion" class="levelup-explosion" aria-hidden="true"></div>
+          <p class="levelup-caption levelup-caption-final">Neues Level Outfit</p>
+          <img
+            id="levelUpLevelImage"
+            class="levelup-level-image"
+            src="assets/levels/level-1.png"
+            alt="Neues Levelbild"
+          />
+        </div>
+        <button id="levelUpContinueBtn" class="primary-btn levelup-continue-btn" type="button">
+          Weiterlernen
+        </button>
+      </article>
+    </section>
+
+    <script type="module" src="src/app.js?v=53"></script>
   </body>
 </html>
