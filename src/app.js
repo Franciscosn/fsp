@@ -48,7 +48,9 @@ const LEARNING_BUNDLE_PATH_BY_ROOT = Object.freeze({
   aufklaerung: "data/learning_aufklaerung_de.json",
   klinische_untersuchung: "data/learning_klinische_untersuchung_de.json",
   systemmodule: "data/learning_systemmodule_de.json",
-  red_flags: "data/learning_red_flags_de.json"
+  red_flags: "data/learning_red_flags_de.json",
+  abkuerzungen: "data/learning_abkuerzungen_de.json",
+  berlin_fsp: "data/learning_berlin_fsp_de.json"
 });
 const LEARNING_CURATION_PATH = "data/fachsprachkurs_curation_de.json";
 const VOICE_CASE_DEFAULT = "default";
@@ -120,6 +122,18 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
     id: "red_flags",
     label: "Red Flags",
     cta: "Warnzeichen priorisiert erkennen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "abkuerzungen",
+    label: "Abkuerzungen",
+    cta: "Stationssprache sicher entschluesseln",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "berlin_fsp",
+    label: "Berlin/FSP-Fokus",
+    cta: "Pruefungsschwerpunkte priorisieren",
     view: LEARNING_VIEW_SUBCATEGORIES
   }
 ]);

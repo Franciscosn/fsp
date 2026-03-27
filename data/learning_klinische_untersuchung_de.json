@@ -410,6 +410,207 @@
       "source_tags": [
         "Fachsprachkurs PDF: Psychischer Status und Pruefungsfragen"
       ]
+    },
+    {
+      "id": "herz_kreislauf_untersuchung",
+      "title": "Herz-Kreislauf-Untersuchung strukturiert anleiten",
+      "focus": "Inspektion, Auskultation, Pulsstatus und Oedemzeichen sprachlich sicher fuehren",
+      "summary": "Im internistischen Alltag ist die kardiovaskulaere Untersuchung ein Basismodul mit grossem Hebel. Fuer die FSP ist vor allem wichtig, dass Anweisungen, Befundsprache und klinische Einordnung sauber zusammenpassen.",
+      "learning_text": [
+        "Eine gute Herz-Kreislauf-Untersuchung beginnt mit Lagerung, Blickdiagnostik und einem klaren Ablauf. Wenn der Patient weiss, was als Naechstes passiert, wirkt die Untersuchung sofort sicherer und ruhiger.",
+        "Sprachlich wichtig sind aktive Anleitungen: Bitte atmen Sie normal weiter, ich hoere jetzt Ihr Herz an. Solche kurzen Saetze sind deutlich besser als stumme Handgriffe oder technische Selbstgespraeche.",
+        "In der Befundsprache sollten Sie zwischen erhobenen Zeichen und Interpretation trennen: Herztoene rhythmisch, keine deutlichen Nebengeraeusche, keine Halsvenenstauung, beidseits keine Unterschenkeloedeme. Erst danach folgt die klinische Wertung.",
+        "Besonders stark ist die Verbindung zum Plan: unauffaellige Auskultation schliesst relevante Herzerkrankungen nicht aus, auffaellige Befunde begruenden aber klar die weitere Diagnostik."
+      ],
+      "question_groups": [
+        {
+          "title": "Anleitung",
+          "questions": [
+            "Wie positionieren Sie den Patienten fuer die Herzuntersuchung?",
+            "Welche kurzen Anweisungssaetze klingen natuerlich und professionell?",
+            "Wie erklaeren Sie Auskultation und Pulspruefung patientengerecht?",
+            "Wie gehen Sie auf Scham oder Unsicherheit beim Entkleiden ein?",
+            "Wie halten Sie den Ablauf ruhig und nachvollziehbar?"
+          ]
+        },
+        {
+          "title": "Befundsprache",
+          "questions": [
+            "Wie formulieren Sie einen unauffaelligen kardialen Auskultationsbefund?",
+            "Wie beschreiben Sie einen arrhythmischen oder tachykarden Eindruck korrekt?",
+            "Wie dokumentieren Sie Oedeme, Halsvenenstauung oder periphere Pulse?",
+            "Wie unterscheiden Sie Beobachtung von Verdachtsdiagnose?",
+            "Wie klingt ein kompakter Herzstatus im Arzt-Arzt-Gespraech?"
+          ]
+        },
+        {
+          "title": "Plan und Relevanz",
+          "questions": [
+            "Wie ueberleiten Sie von Untersuchung zu EKG oder Echo?",
+            "Welche Befunde machen eine engere Ueberwachung plausibel?",
+            "Wie erklaeren Sie dem Patienten, dass trotz unauffaelliger Untersuchung weitere Diagnostik noetig sein kann?",
+            "Wie dokumentieren Sie Herzstatus und Plan in wenigen Saetzen?",
+            "Wie priorisieren Sie auffaellige Befunde in der Uebergabe?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Ich hoere jetzt Herz und Lunge ab und taste danach die Pulse an den Beinen.",
+        "Die Herztoene sind rhythmisch, auskultatorisch zeigen sich aktuell keine deutlichen Nebengeraeusche.",
+        "Klinisch finden sich keine ausgepraegten Oedeme oder Zeichen einer akuten kardialen Dekompensation.",
+        "Trotzdem planen wir die weitere kardiale Diagnostik entsprechend Ihrer Beschwerden."
+      ],
+      "linked_term_ids": [
+        "online_kurs_herzinsuffizienz",
+        "online_kurs_arrhythmie",
+        "online_kurs_oedem",
+        "online_kurs_echokardiographie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Luftnot und Oedeme",
+        "situation": "Ein 76-jaehriger Patient berichtet ueber Atemnot bei Belastung und geschwollene Beine.",
+        "task_patient": "Leiten Sie die kardiovaskulaere Untersuchung kurz und beruhigend an.",
+        "task_doctor": "Uebergeben Sie Herzstatus, Oedemstatus und den naechsten Diagnostikschritt.",
+        "task_letter": "Dokumentieren Sie den Herz-Kreislauf-Status in vier Saetzen."
+      },
+      "source_tags": [
+        "Info: BASICS Anamnese und Untersuchung",
+        "Internistische Standarduntersuchung"
+      ]
+    },
+    {
+      "id": "lungen_thorax_untersuchung",
+      "title": "Lungen- und Thoraxuntersuchung sicher fuehren",
+      "focus": "Inspektion, Palpation, Perkussion und Auskultation mit klarer Befundsprache verbinden",
+      "summary": "Bei Husten, Dyspnoe und Thoraxschmerz braucht man in der FSP eine stabile Untersuchungssprache. Hier zeigt sich schnell, ob Kandidaten medizinisch logisch und sprachlich geordnet vorgehen.",
+      "learning_text": [
+        "Die Thoraxuntersuchung sollte in fester Reihenfolge trainiert werden: Blickdiagnostik, Atemarbeit, Perkussion, Auskultation. Schon diese Reihenfolge wirkt klinisch kompetent und verhindert Suchbewegungen.",
+        "Patientenanweisungen muessen kurz und konkret sein: Bitte atmen Sie tief durch den Mund ein und aus. Ich hoere jetzt die Lunge an mehreren Stellen ab. Solche Standardsaetze lohnen sich fuer Berlin besonders.",
+        "In der Befundsprache helfen klare Kontraste: vesikulaeres Atemgeraeusch, seitengleich belueftet, keine Rasselgeraesche versus abgeschwaechtes Atemgeraeusch basal rechts oder exspiratorisches Giemen. Unscharfe Sammelwoerter wie klingt komisch kosten Praezision.",
+        "Wichtig ist immer die Konsequenz: auffaellige Thoraxbefunde muessen sprachlich sauber zu Roentgen, Blutgas, Sonographie oder weiterer Akutdiagnostik ueberleiten."
+      ],
+      "question_groups": [
+        {
+          "title": "Anleitung und Ablauf",
+          "questions": [
+            "Wie erklaeren Sie die Thoraxuntersuchung vor Beginn?",
+            "Welche Anweisung hilft bei tiefer Atmung waehrend der Auskultation?",
+            "Wie gehen Sie mit Schmerzen beim tiefen Einatmen um?",
+            "Wie strukturieren Sie den Ablauf so, dass der Patient folgen kann?",
+            "Wie sichern Sie Privatsphaere und gleichzeitig Untersuchungseffizienz?"
+          ]
+        },
+        {
+          "title": "Befundsprache",
+          "questions": [
+            "Wie formulieren Sie einen unauffaelligen pulmonalen Befund?",
+            "Wie beschreiben Sie Giemen, Rasseln oder abgeschwaechtes Atemgeraeusch korrekt?",
+            "Wie uebergeben Sie Seitendifferenzen praezise?",
+            "Wie verbinden Sie Untersuchung und klinischen Verdacht in einem Satz?",
+            "Wie dokumentieren Sie den Thoraxstatus knapp im Brief?"
+          ]
+        },
+        {
+          "title": "Weiteres Vorgehen",
+          "questions": [
+            "Wann begruendet die Untersuchung ein Thoraxroentgen?",
+            "Wie koppeln Sie Lungenstatus und Sauerstoffbedarf sprachlich?",
+            "Wie erklaeren Sie dem Patienten die naechste Diagnostik nach auffaelligem Befund?",
+            "Welche Warnzeichen muessen bei Dyspnoe sofort priorisiert werden?",
+            "Wie klingt eine 30-Sekunden-Uebergabe bei Verdacht auf Pneumonie oder COPD-Exazerbation?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Bitte atmen Sie jetzt mehrmals tief durch den Mund ein und aus, ich hoere die Lunge an verschiedenen Stellen ab.",
+        "Auskultatorisch zeigt sich rechts basal ein abgeschwaechtes Atemgeraeusch mit feinen Rasselgeraeschen.",
+        "Der Befund passt klinisch zu einer pulmonalen Ursache der Dyspnoe und begruendet weitere Diagnostik.",
+        "Als naechsten Schritt planen wir Bildgebung und bei Bedarf eine Blutgasanalyse."
+      ],
+      "linked_term_ids": [
+        "online_kurs_pneumonie",
+        "online_kurs_copd",
+        "online_kurs_asthma_bronchiale",
+        "online_kurs_dyspnoe"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Husten und Luftnot",
+        "situation": "Eine Patientin hat seit drei Tagen Husten, Fieber und zunehmende Dyspnoe.",
+        "task_patient": "Leiten Sie die Thoraxuntersuchung mit klaren, kurzen Saetzen an.",
+        "task_doctor": "Uebergeben Sie Lungenbefund, Oxygenierung und Verdachtsdiagnose strukturiert.",
+        "task_letter": "Dokumentieren Sie den pulmonalen Status in drei bis vier Saetzen."
+      },
+      "source_tags": [
+        "Info: BASICS Anamnese und Untersuchung",
+        "Thoraxstatus im klinischen Alltag"
+      ]
+    },
+    {
+      "id": "abdomenstatus_basis",
+      "title": "Abdomenstatus patientengerecht und fachsprachlich erheben",
+      "focus": "Inspektion, Auskultation, Palpation und Peritonismuszeichen sprachlich sicher verbinden",
+      "summary": "Das Abdomen ist einer der haeufigsten Berlin-Bereiche. Wer den Status sauber anleiten und darstellen kann, gewinnt sofort Sicherheit bei vielen Fallgruppen wie Appendizitis, Cholezystitis, Pankreatitis oder Ileus.",
+      "learning_text": [
+        "Eine gute Abdomenuntersuchung braucht zuerst Ruhe und Erklaerung. Sagen Sie dem Patienten, dass Sie den Bauch ansehen, abhoeren und vorsichtig abtasten werden. So vermeiden Sie unerwartete Schmerzen und schaffen Kooperation.",
+        "Sprachlich hilfreich ist die feste Reihenfolge: Inspektion, Darmgeraesche, vorsichtige Palpation, Druckschmerzlokalisation, Abwehrspannung und Loslassschmerz. Diese Struktur ist in der Uebergabe genauso nuetzlich wie am Bett.",
+        "Bei der Befundsprache muessen Lokalisation und Qualitaet sitzen: Druckschmerz im rechten Unterbauch, kein diffuser Peritonismus, weiche Bauchdecke, Darmgeraeusche vorhanden. Solche Schemata sind fuer Berlin extrem wertvoll.",
+        "Der Status ist nur dann stark, wenn er zum Plan fuehrt: Labor, Sonographie, CT, chirurgische Vorstellung oder engmaschige Reevaluation. Genau diese Verknuepfung sollten Sie immer mittrainieren."
+      ],
+      "question_groups": [
+        {
+          "title": "Untersuchung anleiten",
+          "questions": [
+            "Wie erklaeren Sie dem Patienten den Ablauf der Bauchuntersuchung?",
+            "Wie gehen Sie mit Schmerzangst vor der Palpation um?",
+            "Welche Lagerung oder Entspannungshilfe ist sinnvoll?",
+            "Wie kuendigen Sie Druck oder moegliche Schmerzhaftigkeit respektvoll an?",
+            "Wie holen Sie waehrend der Untersuchung Rueckmeldung ein?"
+          ]
+        },
+        {
+          "title": "Befundsprache",
+          "questions": [
+            "Wie beschreiben Sie Lokalisation und Qualitaet eines Druckschmerzes?",
+            "Wie formulieren Sie Abwehrspannung oder Peritonismus korrekt?",
+            "Wie dokumentieren Sie Darmgeraeusche, Meteorismus oder tastbare Resistenzen?",
+            "Wie klingt ein unauffaelliger Abdomenstatus?",
+            "Wie koppeln Sie Befund und Verdachtsdiagnose in einem sauberen Satz?"
+          ]
+        },
+        {
+          "title": "Plan und Priorisierung",
+          "questions": [
+            "Wann fuehrt der Status zu Sonographie, Labor oder chirurgischer Ruecksprache?",
+            "Wie erklaeren Sie dem Patienten weitere Diagnostik nach dem Status?",
+            "Welche Red Flags bei Bauchschmerz muessen sofort kommuniziert werden?",
+            "Wie uebergeben Sie ein akutes Abdomen in 30 Sekunden?",
+            "Wie dokumentieren Sie den Status knapp und juristisch brauchbar?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Ich schaue mir jetzt Ihren Bauch an, hoere ihn ab und taste ihn danach vorsichtig ab.",
+        "Es besteht ein lokalisierter Druckschmerz im rechten Unterbauch bei sonst weicher Bauchdecke.",
+        "Aktuell zeigen sich keine eindeutigen Zeichen eines diffusen Peritonismus.",
+        "Aufgrund des Befundes planen wir jetzt die weitere Abklaerung mit Labor und Bildgebung."
+      ],
+      "linked_term_ids": [
+        "online_kurs_appendizitis",
+        "online_kurs_cholezystitis",
+        "online_kurs_pankreatitis",
+        "online_kurs_ileus"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: akuter Bauchschmerz",
+        "situation": "Ein Patient klagt ueber seit gestern zunehmende Schmerzen im rechten Unterbauch.",
+        "task_patient": "Leiten Sie die Bauchuntersuchung klar und beruhigend an.",
+        "task_doctor": "Uebergeben Sie den Abdomenstatus und den naechsten Diagnostikschritt knapp.",
+        "task_letter": "Dokumentieren Sie den Abdomenstatus in vier praezisen Saetzen."
+      },
+      "source_tags": [
+        "Info: BASICS Anamnese und Untersuchung",
+        "Abdomenstatus fuer haeufige Berlin-Faelle"
+      ]
     }
   ]
 }

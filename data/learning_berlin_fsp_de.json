@@ -1,0 +1,275 @@
+{
+  "title": "Lernbereich",
+  "subtitle": "Berlin/FSP-Fokus fuer priorisiertes Lernen",
+  "scope_note": "Dieses Modul verdichtet die in deinen Berlin-Listen und FSP-Skripten erkennbaren Schwerpunkte. Es soll nicht Lehrbuch ersetzen, sondern dir helfen, die richtige Reihenfolge und das richtige Gewicht fuer die Vorbereitung zu setzen.",
+  "references": [
+    {
+      "label": "Info: Berlin liste nur wichtigsten Themen 44",
+      "url": "info/Berlin liste nur wichtigsten Themen 44.pdf"
+    },
+    {
+      "label": "Info: Berlin liste 71 Themen",
+      "url": "info/Berlin liste_240813_165306.pdf"
+    },
+    {
+      "label": "Info: FSP KURZ Und KNAPP Berlin",
+      "url": "info/FSP KURZ Und KNAPP Berlin Final Version.pdf"
+    }
+  ],
+  "categories": [
+    {
+      "id": "berlin_top_faelle",
+      "title": "Top-Faelle fuer Berlin zuerst lernen",
+      "focus": "Hochfrequente Fallgruppen erkennen und das Lernen priorisieren",
+      "summary": "Die Berlin-Listen zeigen relativ stabil dieselben Cluster: kardiopulmonale Akutsituationen, Bauchschmerzfaelle, Urogenitales, Orthopaedie/Trauma, neurologische Beschwerden und einige immunologische Notfaelle. Daraus laesst sich eine sehr brauchbare Lernreihenfolge ableiten.",
+      "learning_text": [
+        "Wenn Sie wenig Zeit haben, lernen Sie nicht alphabetisch, sondern nach Wahrscheinlichkeit und sprachlichem Nutzen. Ganz vorne stehen Thoraxschmerz, Dyspnoe, Pneumonie, Asthma/COPD, Herzinsuffizienz, Appendizitis, Cholezystitis, Pankreatitis, Harnwegsinfekt/Pyelonephritis, TVT/Embolie-Verdacht und die grossen neurologischen Akutfalle.",
+        "Die Berlin-Listen sind nicht perfekt geschrieben, aber als Priorisierungshilfe sehr nuetzlich. Man erkennt, welche Themen immer wieder auftauchen und welche eher Randthemen sind.",
+        "Fuer die Lernseite bedeutet das: zentrale Faelle muessen zuerst auffindbar sein, oefter verlinkt werden und in mehreren Formaten trainierbar sein - Anamnese, Aufklaerung, Arzt-Arzt und Fallaufloesung.",
+        "Didaktisch ist das wichtig, weil dieselben Faelle oft gleich mehrere Sprachkompetenzen gleichzeitig trainieren: Symptomfragen, Red Flags, Diagnostik, Patientenerklaerung und Uebergabe."
+      ],
+      "question_groups": [
+        {
+          "title": "Prioritaet setzen",
+          "questions": [
+            "Welche Fallgruppen sollten in den ersten zwei Lernwochen unbedingt sitzen?",
+            "Welche Themen trainieren mehrere Pruefungsteile gleichzeitig?",
+            "Welche Faelle sind haeufig genug, um Wiederholungsanker zu werden?",
+            "Welche seltenen Themen koennen bewusst spaeter folgen?",
+            "Wie vermeiden Sie das Verzetteln in exotischen Diagnosen?"
+          ]
+        },
+        {
+          "title": "Cluster denken",
+          "questions": [
+            "Welche Leitsymptome decken besonders viele Berlin-Faelle ab?",
+            "Welche organbezogenen Cluster sind sprachlich am ergiebigsten?",
+            "Wie kombinieren Sie Red Flags mit typischen Anamnese-Fragen?",
+            "Welche Faelle ueben gleichzeitig Arzt-Patient und Arzt-Arzt?",
+            "Wie nutzen Sie Fallcluster fuer spaced repetition?"
+          ]
+        },
+        {
+          "title": "Konkrete Lernsteuerung",
+          "questions": [
+            "Welche zehn Faelle wuerden Sie sofort auf Karteikarten und Voice-Faelle abbilden?",
+            "Welche Themen sollten zunaechst nur gelesen, welche aktiv gesprochen werden?",
+            "Wie priorisieren Sie, wenn die Pruefung nah ist?",
+            "Wie entscheiden Sie, wann ein Fall von Basis auf Vertiefung springt?",
+            "Welche Themen brauchen frueh eine starke Fallaufloesung?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Fuer Berlin priorisiere ich zuerst die haeufigen Akut- und Leitsymptomfaelle.",
+        "Ich lerne nicht nur Diagnosen, sondern typische Fragewege und sichere Uebergaben.",
+        "Faelle mit Thoraxschmerz, Dyspnoe, Bauchschmerz und neurologischen Ausfaellen haben die groesste Hebelwirkung.",
+        "Selteneres Material kommt erst nach einem stabilen Kernkatalog."
+      ],
+      "linked_term_ids": [
+        "online_kurs_angina_pectoris",
+        "online_kurs_appendizitis",
+        "online_kurs_pneumonie",
+        "online_kurs_harnwegsinfekt",
+        "online_kurs_apoplexie"
+      ],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Zwei Wochen bis zur Pruefung",
+        "situation": "Sie haben noch zwei Wochen Zeit und muessen den Stoff fuer Berlin fokussieren.",
+        "task_patient": "Erklaeren Sie einem Lernpartner, welche vier Fallcluster zuerst kommen und warum.",
+        "task_doctor": "Fassen Sie in 30 Sekunden zusammen, welche Faelle Sie fuer Arzt-Arzt und Anamnese priorisieren.",
+        "task_letter": "Schreiben Sie einen kompakten Lernplan in vier Saetzen."
+      },
+      "source_tags": [
+        "Info: Berlin liste 44/71",
+        "Info: FSP KURZ Und KNAPP Berlin"
+      ]
+    },
+    {
+      "id": "berlin_pruefungsarchitektur",
+      "title": "Anamnese, Brief und Fallvorstellung als Einheit",
+      "focus": "Die drei grossen Berlin-Leistungen zusammen denken statt getrennt pauken",
+      "summary": "Die Materialien aus dem Berlin-Kontext betonen immer wieder denselben Punkt: Erfolgreich ist nicht, wer nur viel Medizin weiss, sondern wer Anamnese, Arztbrief und muendliche Vorstellung als zusammenhaengende Sprachleistung trainiert.",
+      "learning_text": [
+        "Der wichtigste Transfergedanke lautet: Die gute Anamnese liefert das Rohmaterial fuer den guten Brief und die gute Fallvorstellung. Deshalb sollte jedes Lernthema auf der Website moeglichst in mehreren Formaten vorkommen.",
+        "Wer nur Fragen auswendig lernt, aber keine saubere Zusammenfassung bilden kann, verliert spaeter Punkte im Arzt-Arzt-Teil. Umgekehrt hilft ein guter Brief enorm, die medizinische Logik sprachlich zu ordnen.",
+        "Die Lernseite sollte deshalb pro Kernthema drei Bewegungen trainieren: Fragen stellen, Befunde/Plan erklaeren und den Fall kurz geordnet vorstellen.",
+        "Genau darin liegt der Mehrwert deiner Plattform: nicht bloss Wissen, sondern Sprachuebergaenge zwischen Pruefungsteilen."
+      ],
+      "question_groups": [
+        {
+          "title": "Anamnese als Ausgangspunkt",
+          "questions": [
+            "Welche Fragen liefern spaeter Material fuer Brief und Uebergabe?",
+            "Wie erkennen Sie schon in der Anamnese, welche Informationen dokumentationspflichtig sind?",
+            "Welche Fragen muessen fuer Berlin sicher und automatisiert sitzen?",
+            "Wie vermeiden Sie starres Abspulen ohne klinische Priorisierung?",
+            "Wie sichern Sie nach jeder Anamnese den roten Faden?"
+          ]
+        },
+        {
+          "title": "Vom Gespraech zur Struktur",
+          "questions": [
+            "Wie verdichten Sie viele Antworten auf drei Kernprobleme?",
+            "Wie priorisieren Sie Leitsymptom, Red Flags und Plan?",
+            "Welche Inhalte gehoeren in die 30-Sekunden-Vorstellung?",
+            "Wie unterscheiden sich Patientensprache, Briefsprache und Uebergabesprache?",
+            "Wie trainieren Sie den Uebergang zwischen ihnen bewusst?"
+          ]
+        },
+        {
+          "title": "Pruefungslogik",
+          "questions": [
+            "Welche Teilkompetenz wird in Berlin besonders sichtbar bewertet?",
+            "Wie bauen Sie Lernroutinen, die alle drei Formate abdecken?",
+            "Warum reicht isoliertes Vokabellernen nicht aus?",
+            "Wie kann die Lernseite Fallaufloesung, Voice-Fall und Karten zusammenziehen?",
+            "Wie testen Sie, ob ein Thema pruefungsreif ist?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Eine gute Anamnese ist die Grundlage fuer einen guten Arztbrief und eine gute Fallvorstellung.",
+        "Ich trainiere jedes Thema deshalb nicht nur fragend, sondern auch zusammenfassend und uebergebend.",
+        "In Berlin wird sprachliche Struktur besonders sichtbar, wenn man vom Patientengespraech in die Fachsprache wechselt.",
+        "Die Lernseite sollte diesen Formatwechsel pro Thema bewusst abbilden."
+      ],
+      "linked_term_ids": [],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Fall nachbesprechen",
+        "situation": "Nach einem Arzt-Patient-Gespraech sollen Sie denselben Fall muendlich vorstellen und kurz dokumentieren.",
+        "task_patient": "Erklaeren Sie einem Lernpartner, warum die Anamnese nicht isoliert geuebt werden sollte.",
+        "task_doctor": "Formulieren Sie eine 30-Sekunden-Struktur fuer Fallvorstellung nach der Anamnese.",
+        "task_letter": "Schreiben Sie drei Saetze, die denselben Fall fuer den Brief verdichten."
+      },
+      "source_tags": [
+        "Info: FSP KURZ Und KNAPP Berlin",
+        "Berlin-Pruefungslogik"
+      ]
+    },
+    {
+      "id": "berlin_sprachliche_bewertung",
+      "title": "Was sprachlich wirklich Punkte bringt",
+      "focus": "Struktur, Verstaendlichkeit, Vollstaendigkeit und Ruhe als Bewertungstreiber verstehen",
+      "summary": "Die Berlin-orientierten Materialien legen stark nahe, dass die Pruefung weniger ein Spezialwissenstest als eine klinische Sprachpruefung ist. Wer ruhig, vollstaendig und verstaendlich arbeitet, hat einen klaren Vorteil.",
+      "learning_text": [
+        "Sprachlich stark wirkt vor allem eine Kombination aus Struktur, Vollstaendigkeit und adaptierter Sprache. Gute Kandidaten wirken nie wie auswendig gelernt, sondern wie ruhig strukturierte junge Kolleginnen und Kollegen.",
+        "Typische Punktverluste entstehen nicht nur durch Grammatikfehler, sondern durch ausgelassene Kernfragen, unscharfe Uebergaben, vorschnelle Diagnosen und mangelnde Patientenerklaerung.",
+        "Die Lernseite sollte deshalb mehr als Vokabeln trainieren: zum Beispiel Formulierungen fuer Verstaendnissicherung, Ueberleitungen, Priorisierung und Unsicherheit ohne Panik.",
+        "Didaktisch lohnt sich ein Fokus auf wenige, wiederkehrende Sprachbewegungen: begruenden, strukturieren, zusammenfassen, absichern."
+      ],
+      "question_groups": [
+        {
+          "title": "Sprachliche Staerken",
+          "questions": [
+            "Wie klingt eine ruhige, strukturierte Pruefungssprache?",
+            "Welche Formulierungen helfen bei Verstaendnissicherung?",
+            "Wie zeigen Sie Sicherheit, ohne ueberheblich zu wirken?",
+            "Wie sprechen Sie ueber Unsicherheit professionell und ehrlich?",
+            "Wie verbinden Sie Empathie und klinische Rolle?"
+          ]
+        },
+        {
+          "title": "Typische Fehlerquellen",
+          "questions": [
+            "Welche Auslassungen kosten in Berlin besonders haeufig Punkte?",
+            "Wie vermeiden Sie starres Fragenabspulen?",
+            "Wie verhindern Sie zu technische Patientenerklaerungen?",
+            "Wie klingen zu vage Arzt-Arzt-Uebergaben?",
+            "Wie gehen Sie mit Blackout-Momenten sprachlich kontrolliert um?"
+          ]
+        },
+        {
+          "title": "Training auf der Lernseite",
+          "questions": [
+            "Welche Formulierungen sollten als wiederkehrende Pruefungssaetze auftauchen?",
+            "Wo braucht die Lernseite mehr Verstaendnissicherungs-Saetze?",
+            "Wie koennen Fallaufloesungen gezielt auf fehlende Fragen hinweisen?",
+            "Welche Root-Module sollten mehr Arzt-Arzt-Sprache enthalten?",
+            "Wie machen wir den Unterschied zwischen passivem Lesen und aktivem Sprechen sichtbar?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Ich fasse die wichtigsten Punkte kurz zusammen, damit wir nichts Relevantes uebersehen.",
+        "Wenn ich Sie richtig verstanden habe, stehen im Moment vor allem diese Beschwerden im Vordergrund.",
+        "Ich kann den Verdacht im Moment noch nicht sicher bestaetigen, aber ich erklaere Ihnen den naechsten Schritt.",
+        "In der Uebergabe priorisiere ich Leitsymptom, Kernbefunde und Plan."
+      ],
+      "linked_term_ids": [],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Unsicherheit professionell formulieren",
+        "situation": "Sie haben den Fall gut erhoben, die Diagnose ist aber noch nicht sicher.",
+        "task_patient": "Erklaeren Sie dem Patienten ruhig, was Sie schon wissen und was noch geklaert werden muss.",
+        "task_doctor": "Formulieren Sie eine knappe Uebergabe mit Unsicherheit und Plan, ohne unentschlossen zu wirken.",
+        "task_letter": "Dokumentieren Sie den Verdacht und die geplante Abklaerung klar und knapp."
+      },
+      "source_tags": [
+        "Info: FSP KURZ Und KNAPP Berlin",
+        "Berlin-Fokus auf klinische Sprachleistung"
+      ]
+    },
+    {
+      "id": "berlin_lernreihenfolge",
+      "title": "Sinnvolle Lernreihenfolge fuer die Website",
+      "focus": "Wie wir die Inhalte auf der Plattform von hochrelevant nach vertiefend staffeln sollten",
+      "summary": "Die Informationslage aus den PDFs spricht fuer eine klare Reihenfolge: zuerst Leitsymptome und Top-Faelle, dann Aufklaerung und Untersuchungslogik, danach Systemvertiefung und seltenere Themen.",
+      "learning_text": [
+        "Stufe eins sind Leitsymptome und Akutcluster: Thoraxschmerz, Dyspnoe, Bauchschmerz, neurologische Ausfaelle, Fieber/Infekt, Urogenitales. Diese Themen muessen schnell, sichtbar und mehrfach trainierbar sein.",
+        "Stufe zwei sind formatuebergreifende Skills: Diagnostik erklaeren, Untersuchung anleiten, Arzt-Arzt-Uebergabe, Verstaendnissicherung. Hier entsteht der eigentliche FSP-Transfer.",
+        "Stufe drei ist die organbezogene Vertiefung, also Systemmodule, Red Flags und Spezialvokabular. Diese Ebene macht aus einer sicheren Basis eine wirklich flexible klinische Sprache.",
+        "Fuer die Website bedeutet das: hohe Relevanz bekommt mehr Wiederholung, mehr Verlinkung und mehr Formate. Niedrigere Relevanz bleibt verfuegbar, aber nicht im Vordergrund."
+      ],
+      "question_groups": [
+        {
+          "title": "Stufe eins",
+          "questions": [
+            "Welche Themen muessen auf der Startseite oder mit wenigen Klicks erreichbar sein?",
+            "Welche Leitsymptome sollten die meisten Fallkarten steuern?",
+            "Welche Anamnese- und Red-Flag-Module gehoeren direkt zusammen?",
+            "Welche Themen brauchen unbedingt Voice-Cases?",
+            "Wie halten wir die erste Lernschicht kompakt genug?"
+          ]
+        },
+        {
+          "title": "Stufe zwei",
+          "questions": [
+            "Welche Aufklaerungen sind fuer Berlin am wichtigsten?",
+            "Welche Untersuchungen sollten patientengerecht und fachsprachlich trainiert werden?",
+            "Wie koppeln wir Untersuchung, Aufklaerung und Uebergabe thematisch?",
+            "Welche Formulierungen muessen mehrfach auftauchen, bis sie sitzen?",
+            "Wie koennen wir die Lernseite hier messbar dichter machen?"
+          ]
+        },
+        {
+          "title": "Stufe drei",
+          "questions": [
+            "Welche Vertiefungsthemen kommen nach sicherem Kernkatalog?",
+            "Welche Spezialthemen koennen spaeter folgen, ohne dass die Basis leidet?",
+            "Wie verknuepfen wir Glossar, Faelle und Systemmodule sinnvoll?",
+            "Welche Inhalte bleiben eher Nachschlagewissen statt aktiver Drill?",
+            "Wie koennen wir kuenftig neue PDFs ohne Strukturverlust integrieren?"
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Zuerst sichern wir die haeufigen Leitsymptomfaelle, danach die formatuebergreifenden Sprachbewegungen.",
+        "Aufklaerung und Untersuchung gehoeren frueh in den Lernplan, weil sie viele Pruefungsteile verbinden.",
+        "Vertiefung ist wichtig, aber sie darf den Kernkatalog nicht ueberdecken.",
+        "Die Website sollte diese Reihenfolge sichtbar und didaktisch klar machen."
+      ],
+      "linked_term_ids": [],
+      "mini_scenario": {
+        "title": "Mini-Szenario: Lernplan fuer vier Wochen",
+        "situation": "Sie wollen die Website so nutzen, dass die Vorbereitung auf Berlin moeglichst effizient wird.",
+        "task_patient": "Erklaeren Sie einem Lernpartner in einfacher Sprache, warum Sie erst die grossen Themencluster sichern.",
+        "task_doctor": "Fassen Sie in 30 Sekunden eine sinnvolle vierwoechige Lernreihenfolge zusammen.",
+        "task_letter": "Notieren Sie einen Lernplan in vier kompakten Fachsaetzen."
+      },
+      "source_tags": [
+        "Info: Berlin liste 44/71",
+        "Info: FSP KURZ Und KNAPP Berlin"
+      ]
+    }
+  ]
+}
