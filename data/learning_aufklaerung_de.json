@@ -26,33 +26,21 @@
       ],
       "question_groups": [
         {
-          "title": "Indikation und Zielsetzung",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Warum ist das EKG in der aktuellen Situation notwendig?",
-            "Welche konkrete klinische Frage soll zuerst beantwortet werden?",
-            "Wird ein Ruhe-EKG ausreichen oder ist spaeter ein Langzeit-/Belastungs-EKG denkbar?",
-            "Welche Symptome des Patienten leiten die Diagnostik?",
-            "Welche Differentialdiagnosen sollen initial ausgeschlossen werden?"
+            "Ein EKG wird erklaert als kurze Untersuchung von Herzrhythmus und moeglichen Durchblutungszeichen.",
+            "Patienten sollten wissen, dass Elektroden auf Brust und Extremitaeten geklebt werden und die Untersuchung schmerzfrei ist.",
+            "Wichtig ist der Hinweis, dass ein EKG schnell viele Informationen liefert, aber nicht jede Herzerkrankung allein ausschliesst.",
+            "Die Erklaerung beginnt idealerweise mit dem konkreten Anlass der aktuellen Beschwerden und nicht nur mit dem Namen der Untersuchung."
           ]
         },
         {
-          "title": "Ablauf patientengerecht erklaeren",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Wie erklaeren Sie Elektroden und Messprinzip ohne Fachjargon?",
-            "Wie lange dauert die Untersuchung und was muss der Patient beachten?",
-            "Wie erklaeren Sie, dass das EKG schmerzfrei ist?",
-            "Wie gehen Sie mit Angst oder Scham beim Entkleiden um?",
-            "Welche Formulierung nutzen Sie, um Ruhe waehrend der Ableitung zu begruenden?"
-          ]
-        },
-        {
-          "title": "Ergebnis und naechste Schritte",
-          "questions": [
-            "Wie kommunizieren Sie einen unauffaelligen Befund ohne falsche Entwarnung?",
-            "Wie erklaeren Sie einen auffaelligen Rhythmusbefund patientengerecht?",
-            "Wie formulieren Sie den Plan fuer weitere Diagnostik?",
-            "Welche Warnzeichen nennen Sie fuer eine sofortige Wiedervorstellung?",
-            "Wie sichern Sie Verstaendnis am Ende aktiv ab?"
+            "Eine starke Formulierung lautet: Wir schreiben jetzt ein EKG, um Ihren Herzrhythmus und moegliche Belastungszeichen des Herzens zu beurteilen.",
+            "Danach folgen Ablauf, Dauer und der Hinweis, dass waehrend der Ableitung moeglichst ruhig gelegen werden sollte.",
+            "Im Anschluss wird angekuendigt, dass das Ergebnis sofort besprochen und bei Bedarf durch weitere Diagnostik ergaenzt wird.",
+            "Am Ende wirkt eine kurze Verstaendnissicherung professionell und patientennah."
           ]
         }
       ],
@@ -90,39 +78,27 @@
       "summary": "Bei der Sonographie wird in der Pruefung oft erwartet, dass Sie technische Begriffe korrekt, aber patientennah erklaeren. Ziel ist eine beruhigende und gleichzeitig fachlich korrekte Kommunikation.",
       "learning_text": [
         "Eine starke Sonographie-Erklaerung benennt zuerst den Nutzen fuer die aktuelle Beschwerde. Beispiel: Mit dem Ultraschall koennen wir Ihre Organe und Gefaesse ohne Strahlenbelastung anschauen. Diese Priorisierung hilft dem Patienten, den Sinn der Untersuchung sofort zu verstehen.",
-        "Im Ablauf sollten Gel, Schallkopf, eventuell Druckgefuehl und die typische Untersuchungsdauer erwaehnt werden. Unnötig detailreiche Physikerklaerungen kosten Zeit und bringen in der FSP keinen Mehrwert. Entscheidend ist sprachliche Sicherheit und Struktur.",
+        "Im Ablauf sollten Gel, Schallkopf, eventuell Druckgefuehl und die typische Untersuchungsdauer erwaehnt werden. Unnoetig detailreiche Physikerklaerungen kosten Zeit und bringen in der FSP keinen Mehrwert. Entscheidend ist sprachliche Sicherheit und Struktur.",
         "Wichtig ist ausserdem die Erwartungssteuerung: Sonographie ist oft eine sehr gute erste Bildgebung, aber nicht in jeder Situation ausreichend. Kandidaten sollten transparent sagen, wann bei unklaren Befunden zusaetzlich CT oder MRT erforderlich sein kann.",
         "Bei angespannten Patienten wirkt eine kurze Sicherheitsschleife professionell: Wenn etwas unangenehm ist, sagen Sie mir bitte sofort Bescheid. Diese Formulierung verbindet Empathie mit klarer Rollensicherheit."
       ],
       "question_groups": [
         {
-          "title": "Indikation",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Welche klinische Frage wollen Sie mit der Sonographie beantworten?",
-            "Welche Region soll untersucht werden und warum?",
-            "Ist die Sonographie Erstdiagnostik oder Verlaufskontrolle?",
-            "Welche Befunde waeren richtungsweisend?",
-            "Welche Alternativen gibt es bei unzureichender Aussagekraft?"
+            "Die Sonographie wird als strahlenfreie Untersuchung erklaert, mit der Organe, Gefaesse oder Fluessigkeit schnell beurteilt werden koennen.",
+            "Patienten sollten Gel, Schallkopf und moegliches leichtes Druckgefuehl kennen, damit der Ablauf vorhersehbar bleibt.",
+            "Je nach Fragestellung gehoeren Hinweise zu Nuechternheit oder Blasenfuellung in die Erklaerung.",
+            "Eine gute Sonographie-Aufklaerung benennt auch, dass bei unklaren Befunden manchmal weitere Bildgebung noetig wird."
           ]
         },
         {
-          "title": "Ablauf",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Wie erklaeren Sie Gel und Schallkopf in alltagstauglicher Sprache?",
-            "Wie gehen Sie auf moegliches Druckgefuehl ein?",
-            "Wie lange dauert die Untersuchung realistisch?",
-            "Welche Vorbereitung ist eventuell noetig (nuechtern, Blasenfuellung)?",
-            "Wie holen Sie aktiv Einverstaendnis vor Untersuchungsbeginn ein?"
-          ]
-        },
-        {
-          "title": "Befundkommunikation",
-          "questions": [
-            "Wie kommunizieren Sie unauffaellige Sonographiebefunde?",
-            "Wie erklaeren Sie einen unklaren oder grenzwertigen Befund?",
-            "Wie ueberleiten Sie patientengerecht auf weiterfuehrende Bildgebung?",
-            "Welche Warnzeichen nennen Sie bis zur weiteren Abklaerung?",
-            "Wie sichern Sie, dass der Patient den Plan verstanden hat?"
+            "Die Erklaerung startet mit dem Nutzen fuer die aktuelle Beschwerde und nicht mit technischer Physik.",
+            "Im Gespraech reichen kurze Saetze zu Gel, Dauer und fehlender Strahlenbelastung meist voellig aus.",
+            "Patienten sollten aktiv eingeladen werden, unangenehme Druckstellen sofort anzusprechen.",
+            "Sprachlich stark ist die Bruecke vom Untersuchungszweck zum naechsten Schritt nach dem Befund."
           ]
         }
       ],
@@ -163,33 +139,21 @@
       ],
       "question_groups": [
         {
-          "title": "Verfahrenswahl",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Welche klinische Frage spricht fuer CT statt MRT?",
-            "Wann ist das MRT diagnostisch ueberlegen?",
-            "Welche Rolle spielt Zeitkritik in der Notfallentscheidung?",
-            "Wie begruenden Sie Roentgen als Erstuntersuchung?",
-            "Welche Kontraindikationen muessen vorab geklaert werden?"
+            "Roentgen, CT und MRT muessen sauber voneinander unterschieden werden: einfaches Bild, schnelle Schnittbilddiagnostik mit Strahlung und detailreiche Weichteilbildgebung ohne Strahlung.",
+            "Die Wahl der Methode wird ueber Fragestellung, Dringlichkeit und Belastung fuer den Patienten erklaert.",
+            "Beim CT gehoeren Strahlenaspekt und moegliches Kontrastmittel offen in die Aufklaerung.",
+            "Beim MRT sind Enge, Geraeusche, laengere Dauer und moegliche Ausschlussgruende ein zentraler Teil der Vorbereitung."
           ]
         },
         {
-          "title": "Aufklaerung",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Wie erklaeren Sie Strahlenexposition ohne Angstverstaerkung?",
-            "Welche Punkte sprechen Sie bei Kontrastmittelgabe an?",
-            "Wie gehen Sie auf Klaustrophobie beim MRT ein?",
-            "Welche Vorbereitungshinweise geben Sie vor der Untersuchung?",
-            "Wie formulieren Sie die Einwilligung klar und kurz?"
-          ]
-        },
-        {
-          "title": "Nach der Untersuchung",
-          "questions": [
-            "Wie teilen Sie mit, wann Befunde vorliegen?",
-            "Wie erklaeren Sie einen unklaren Befund und den weiteren Plan?",
-            "Welche Nebenwirkungen nach Kontrastmittel sollten genannt werden?",
-            "Wie dokumentieren Sie Aufklaerung und Einwilligung kurz im Arztbrief?",
-            "Wie integrieren Sie Bildgebungsergebnisse in die Arzt-Arzt-Uebergabe?"
+            "Gute Kandidaten sagen nicht nur, welche Bildgebung geplant ist, sondern warum gerade diese Methode jetzt sinnvoll ist.",
+            "Strahlenbelastung wird ruhig und verhaeltnismaessig erklaert, ohne zu verharmlosen oder zu dramatisieren.",
+            "Patienten profitieren von klaren Hinweisen zu Lagerung, Kontrastmittel, Dauer und moeglichen Empfindungen waehrend der Untersuchung.",
+            "Am Ende sollte deutlich werden, wann der Befund besprochen wird und welche weiteren Schritte sich daraus ergeben koennen."
           ]
         }
       ],
@@ -231,33 +195,21 @@
       ],
       "question_groups": [
         {
-          "title": "Vorbereitung",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Warum ist Nuechternheit vor Gastroskopie wichtig?",
-            "Wie erklaeren Sie den Unterschied zwischen mit und ohne Sedierung?",
-            "Welche Medikamente muessen vorab aktiv erfragt werden?",
-            "Wie sprechen Sie Antikoagulation patientengerecht an?",
-            "Wie stellen Sie sicher, dass der Patient das Vorgehen verstanden hat?"
+            "Die Gastroskopie wird erklaert als Spiegelung von Speiseroehre, Magen und Zwolfingerdarm mit moeglicher Probenentnahme.",
+            "Nuechternheit, Rachenspray und moegliche Sedierung gehoeren frueh in die Aufklaerung.",
+            "Wuergereiz, Druckgefuehl und kurze Nachbeobachtung sollten offen benannt werden, weil genau davor viele Patienten Respekt haben.",
+            "Seltene Risiken wie Blutung, Aspiration oder Verletzung werden sachlich und ohne Ausweichen erklaert."
           ]
         },
         {
-          "title": "Ablauf und Risiken",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Wie erklaeren Sie Endoskop, Kamera und Luftinsufflation laiengerecht?",
-            "Welche typischen Beschwerden waehrend der Untersuchung nennen Sie?",
-            "Welche Risiken muessen zwingend angesprochen werden?",
-            "Wie formulieren Sie seltene Komplikationen ohne Angstmache?",
-            "Welche Rolle haben Biopsien in der Erklaerung?"
-          ]
-        },
-        {
-          "title": "Nachsorge",
-          "questions": [
-            "Welche Verhaltensregeln gelten nach Sedierung?",
-            "Welche Warnzeichen erfordern sofortige Wiedervorstellung?",
-            "Wie kommunizieren Sie den Zeitpunkt der Befundmitteilung?",
-            "Wie dokumentieren Sie das Aufklaerungsgespraech knapp und korrekt?",
-            "Wie uebergeben Sie den Fall strukturiert im Arzt-Arzt-Gespraech?"
+            "Die sprachlich starke Struktur lautet: Zweck, Ablauf, Unannehmlichkeiten, Risiken und Verhalten nach der Untersuchung.",
+            "Ein beruhigender Satz kann sein, dass die Untersuchung eng ueberwacht wird und bei Bedarf mit Beruhigungsmittel erfolgt.",
+            "Patienten sollten wissen, dass sie nach Sedierung nicht sofort aktiv am Strassenverkehr teilnehmen duerfen.",
+            "Eine gute Aufklaerung endet mit der Aussicht, dass Befund und weiteres Vorgehen anschliessend gemeinsam besprochen werden."
           ]
         }
       ],
@@ -299,33 +251,21 @@
       ],
       "question_groups": [
         {
-          "title": "Indikation",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Welche klinische Frage macht die Lumbalpunktion notwendig?",
-            "Welche Differentialdiagnosen sollen dadurch abgegrenzt werden?",
-            "Welche Vorbefunde beeinflussen die Dringlichkeit?",
-            "Welche Kontraindikationen muessen vorab geprueft werden?",
-            "Wie erklaeren Sie den Nutzen des Liquors in Patientensprache?"
+            "Die Lumbalpunktion wird erklaert als Entnahme von Nervenwasser im unteren Rueckenbereich und nicht als Eingriff am Rueckenmark.",
+            "Wichtig sind Indikation, Lagerung, kurzer Einstich und moegliches Druckgefuehl waehrend der Punktion.",
+            "Viele Patienten brauchen die klare Information, dass neurologische Schaeden nicht das typische Risiko dieser Untersuchung sind.",
+            "Kopfschmerzen danach, Blutung, Infektion und sehr selten andere Komplikationen gehoeren ruhig und korrekt in die Erklaerung."
           ]
         },
         {
-          "title": "Ablauf und Komfort",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Wie erklaeren Sie Lagerung und sterile Vorbereitung?",
-            "Wie beschreiben Sie lokale Betaeubung und Punktion realistisch?",
-            "Welche Formulierungen reduzieren Angst ohne zu verharmlosen?",
-            "Wie sichern Sie aktive Rueckfragen des Patienten?",
-            "Wie erklaeren Sie die Beobachtungsphase nach der Punktion?"
-          ]
-        },
-        {
-          "title": "Risiko und Nachsorge",
-          "questions": [
-            "Welche haeufige Nebenwirkung muss angesprochen werden?",
-            "Welche seltenen Komplikationen nennen Sie verpflichtend?",
-            "Welche Warnzeichen fuer eine schnelle Wiedervorstellung gibt es?",
-            "Wie dokumentieren Sie Einwilligung und Risikoaufklaerung sprachlich sauber?",
-            "Wie uebergeben Sie die LP-Entscheidung im Arzt-Arzt-Format?"
+            "Die Aufklaerung sollte Aengste aktiv aufnehmen und in einfache, sachliche Sprache uebersetzen.",
+            "Hilfreich ist eine Schritt-fuer-Schritt-Erklaerung mit dem Hinweis, dass die Stelle lokalisiert und unter sterilen Bedingungen punktiert wird.",
+            "Nach der Punktion sollten Beobachtung, moegliche Beschwerden und das weitere Verhalten angesprochen werden.",
+            "Sprachlich stark ist die Verbindung zwischen diagnostischem Nutzen und Sicherheitsrahmen der Untersuchung."
           ]
         }
       ],
@@ -367,33 +307,21 @@
       ],
       "question_groups": [
         {
-          "title": "Beratung und Entscheidung",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Wie erklaeren Sie den Hauptnutzen einer PDA in einfacher Sprache?",
-            "Welche Alternativen sollten fair genannt werden?",
-            "Wie reagieren Sie auf Angst vor der Nadel?",
-            "Wie sichern Sie freiwillige Einwilligung statt Druck?",
-            "Wie formulieren Sie die Entscheidungshoheit der Patientin?"
+            "Die PDA wird als Methode der regionalen Schmerzlinderung erklaert, bei der Medikamente ueber einen Katheter in Rueckennaehe gegeben werden.",
+            "Die Entscheidungshoheit der Patientin ist zentral und sollte ausdruecklich sprachlich gesichert werden.",
+            "Wichtig sind Lagerung, lokale Betaeubung, moeglicher Wirkungseintritt und das Ziel einer deutlich besseren Schmerzsteuerung.",
+            "Nebenwirkungen und Risiken wie Blutdruckabfall, unvollstaendige Wirkung, Kopfschmerzen oder sehr selten Infektion und Blutung werden offen angesprochen."
           ]
         },
         {
-          "title": "Ablauf und Wirkung",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Wie beschreiben Sie den Ablauf von Lagerung bis Wirkungseintritt?",
-            "Wie erklaeren Sie die Wirkung auf Schmerzen und Motorik?",
-            "Welche realistischen Erwartungen setzen Sie?",
-            "Wie gehen Sie mit unvollstaendiger Wirkung um?",
-            "Wie erklaeren Sie notwendige Ueberwachung?"
-          ]
-        },
-        {
-          "title": "Risiken und Nachbetreuung",
-          "questions": [
-            "Welche haeufigeren Nebenwirkungen nennen Sie verpflichtend?",
-            "Wie benennen Sie seltene Risiken praezise und ruhig?",
-            "Welche Warnzeichen nach Anlage muessen genannt werden?",
-            "Wie dokumentieren Sie das Aufklaerungsgespraech sprachlich sauber?",
-            "Wie uebergeben Sie die Entscheidung im Arzt-Arzt-Gespraech?"
+            "Das Gespraech wirkt stark, wenn Empathie und Struktur gleichzeitig spuerbar bleiben.",
+            "Die PDA sollte weder als Pflicht noch als risikofreier Komfort dargestellt werden, sondern als bewusst waehbare Option.",
+            "Eine gute Formulierung benennt, dass waehrend Wirkung und Kreislauf eng kontrolliert werden.",
+            "Am Ende hilft ein klares Angebot fuer Rueckfragen, damit die Patientin ihre Entscheidung in Ruhe treffen kann."
           ]
         }
       ],
@@ -412,7 +340,7 @@
       ],
       "mini_scenario": {
         "title": "Mini-Szenario: Geburtsaufklaerung",
-        "situation": "Eine Erstgebaerende fragt in der Kreißsaalaufnahme gezielt nach einer PDA.",
+        "situation": "Eine Erstgebaerende fragt in der Kreissaalaufnahme gezielt nach einer PDA.",
         "task_patient": "Fuehren Sie ein kurzes, strukturiertes PDA-Aufklaerungsgespraech mit Verstaendnissicherung.",
         "task_doctor": "Berichten Sie dem Oberarzt die Entscheidungslage und den Aufklaerungsstand.",
         "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in zwei bis drei Saetzen."
@@ -435,33 +363,21 @@
       ],
       "question_groups": [
         {
-          "title": "Risikoprofil",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Welche Vorreaktionen auf Kontrastmittel muessen aktiv erfragt werden?",
-            "Wie sprechen Sie Nierenfunktion patientengerecht an?",
-            "Welche Begleiterkrankungen sind besonders relevant?",
-            "Wie fragen Sie nach relevanter Medikation strukturiert?",
-            "Wie erklaeren Sie dem Patienten den Sinn dieser Sicherheitsfragen?"
+            "Kontrastmittel wird erklaert als Zusatzstoff, der bestimmte Strukturen in der Bildgebung besser sichtbar macht.",
+            "Risikofragen zu Allergien, frueheren Reaktionen und Nierenfunktion gehoeren vor jeder Gabe geordnet in die Aufklaerung.",
+            "Patienten sollten auf typische, meist harmlose Empfindungen wie Waermegefuehl oder metallischen Geschmack vorbereitet werden.",
+            "Seltene allergische Reaktionen und der Plan zur Ueberwachung nach Gabe muessen klar benannt sein."
           ]
         },
         {
-          "title": "Aufklaerung und Einwilligung",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Wie begruenden Sie den diagnostischen Nutzen konkret am Fall?",
-            "Wie benennen Sie haeufige und seltene Nebenwirkungen verstaendlich?",
-            "Wie erklaeren Sie das Vorgehen bei einer Reaktion?",
-            "Wie sichern Sie informierte Einwilligung sprachlich korrekt?",
-            "Wie reagieren Sie auf patientenseitige Ablehnung?"
-          ]
-        },
-        {
-          "title": "Nachsorge",
-          "questions": [
-            "Welche Beobachtung direkt nach Kontrastmittelgabe ist sinnvoll?",
-            "Welche Hinweise fuer zu Hause geben Sie mit?",
-            "Welche Warnzeichen benoetigen eine sofortige Wiedervorstellung?",
-            "Wie dokumentieren Sie Aufklaerung und Einwilligung im Arztbrief?",
-            "Wie uebergeben Sie Kontrastmittelrisiken im Arzt-Arzt-Gespraech?"
+            "Sprachlich stark ist eine konkrete Nutzenkommunikation: Das Kontrastmittel hilft uns, die entscheidende Frage auf dem Bild sicherer zu beantworten.",
+            "Risikofragen werden nicht pauschal, sondern nachvollziehbar und zielgerichtet gestellt.",
+            "Patienten sollten wissen, welche Symptome waehrend oder nach der Untersuchung sofort gemeldet werden muessen.",
+            "Die Aufklaerung endet idealerweise mit einem klaren Sicherheitsrahmen und dem Hinweis auf den weiteren Ablauf."
           ]
         }
       ],
@@ -503,33 +419,21 @@
       ],
       "question_groups": [
         {
-          "title": "Was der Patient zuerst verstehen muss",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Die TEE wird erklaert als Ultraschalluntersuchung ueber die Speiseroehre, mit der das Herz besonders nah und genau beurteilt werden kann.",
-            "Der Nutzen steht am Anfang: Klappen, Vorhoefe, Thromben oder Endokarditiszeichen lassen sich oft besser sehen als von aussen.",
-            "Patienten sollten frueh wissen, dass es nicht um eine offene Operation, sondern um eine endoskopieaehnliche Untersuchung geht.",
-            "Die Erklaerung bleibt ruhig und konkret, damit das Verfahren nicht groesser oder gefaehrlicher klingt, als es ist.",
-            "Ein guter Einstieg verbindet deshalb Ziel, Zugangsweg und den begrenzten, aber klaren Nutzen der Untersuchung."
+            "Die TEE wird als Ultraschalluntersuchung ueber die Speiseroehre erklaert, die besonders genaue Herzbilder ermoeglicht.",
+            "Der Nutzen liegt in der besseren Beurteilbarkeit von Klappen, Vorhoefen, Thromben oder Endokarditiszeichen.",
+            "Nuechternheit, Rachenspray, moegliche Sedierung und Nachbeobachtung gehoeren klar zur Vorbereitung.",
+            "Seltene Risiken wie Aspiration, Blutung oder Schleimhautverletzung werden sachlich und ohne Dramatisierung genannt."
           ]
         },
         {
-          "title": "Wie Ablauf und Vorbereitung erklaert werden",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Wichtig sind Hinweise zu Nuechternheit, Rachenspray, moeglicher Sedierung und kurzer Ueberwachung danach.",
-            "Der Schlauch wird als weiches Untersuchungsgeraet beschrieben, das vorsichtig ueber den Mund in die Speiseroehre eingefuehrt wird.",
-            "Wuergereiz und Druckgefuehl werden offen benannt, gleichzeitig aber als gut steuerbar und voruebergehend eingeordnet.",
-            "Patienten gewinnen Vertrauen, wenn sie wissen, dass waehrend der Untersuchung Ueberwachung und Begleitung stattfinden.",
-            "Am Ende sollte klar sein, wann wieder gegessen werden darf und worauf nach der Sedierung zu achten ist."
-          ]
-        },
-        {
-          "title": "Welche Risiken und Grenzen ruhig benannt werden",
-          "questions": [
-            "Seltene Risiken wie Verletzungen, Blutungen, Aspiration oder Kreislaufreaktionen werden sachlich und ohne Dramatisierung genannt.",
-            "Auch die Sedierung gehoert mit ihren typischen Nebenwirkungen in die Aufklaerung, wenn sie vorgesehen ist.",
-            "Wichtig ist die ehrliche Aussage, dass selbst eine genaue TEE nicht jede klinische Frage allein beantwortet.",
-            "Nach der Risikoerklaerung folgt idealerweise sofort der Sicherheitsrahmen mit Monitoring, Erfahrung und Nachbeobachtung.",
-            "So bleibt die Aufklaerung professionell, klar und fuer Patienten gut einordenbar."
+            "Die Erklaerung startet mit dem diagnostischen Mehrwert und fuehrt dann ruhig durch Vorbereitung und Ablauf.",
+            "Wuergereiz und Druckgefuehl werden benannt, aber gleichzeitig als gut steuerbar und ueberwacht eingeordnet.",
+            "Patienten sollten wissen, wann sie nach Sedierung wieder essen, trinken oder aktiv am Alltag teilnehmen duerfen.",
+            "Eine gute TEE-Aufklaerung verbindet Genauigkeit mit einem klaren, beruhigenden Sicherheitsrahmen."
           ]
         }
       ],
@@ -569,33 +473,21 @@
       ],
       "question_groups": [
         {
-          "title": "Worum es bei dieser Untersuchung geht",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Die Doppler- oder Duplexsonographie der Venen wird als Untersuchung zur Suche nach Gerinnseln oder Abflussstoerungen erklaert.",
-            "Patienten sollten verstehen, dass damit eine Thrombose abgeklaert oder ausgeschlossen werden kann.",
-            "Der Nutzen liegt in der schnellen, strahlenfreien und meist sofort verfuegbaren Diagnostik.",
-            "Die Erklaerung bleibt einfach: Schallkopf, Gel und Beurteilung des Blutflusses reichen als Bildsprache meist aus.",
-            "So entsteht ein klarer Zusammenhang zwischen Beschwerdebild und Untersuchung."
+            "Die Venen- oder Dopplersonographie wird erklaert als strahlenfreie Untersuchung zum Nachweis oder Ausschluss einer Thrombose.",
+            "Patienten sollten Schallkopf, Gel und moeglichen leichten Druck als normalen Teil des Ablaufs kennen.",
+            "Der diagnostische Wert liegt in der schnellen Einschaetzung von Blutfluss und Venenkompression.",
+            "Die Untersuchung ist einfach, aber klinisch wichtig, weil ihr Ergebnis das weitere Vorgehen direkt beeinflusst."
           ]
         },
         {
-          "title": "Wie Ablauf und Belastung beschrieben werden",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Der Ablauf umfasst Lagerung, Gel auf der Haut und das Abfahren der Vene mit dem Schallkopf.",
-            "Ein leichter Druck kann benoetigt werden, sollte aber als kurz und kontrollierbar beschrieben werden.",
-            "Die Untersuchung ist in der Regel schmerzarm und ohne Strahlenbelastung, was viele Patienten beruhigt.",
-            "Wichtig ist der Hinweis, dass die Untersuchung je nach Fragestellung an mehreren Abschnitten des Beins erfolgen kann.",
-            "Am Ende sollte klar sein, dass der Befund oft direkt in das weitere Vorgehen einfliesst."
-          ]
-        },
-        {
-          "title": "Wie Befund und naechster Schritt vorbereitet werden",
-          "questions": [
-            "Ein unauffaelliger Befund schliesst viele Probleme aus, muss aber je nach Klinik dennoch eingeordnet werden.",
-            "Bei Hinweis auf Thrombose folgt sprachlich sofort die Bruecke zu Therapie, Antikoagulation oder weiterer Ueberwachung.",
-            "Patienten profitieren von der klaren Aussage, dass die Untersuchung eine wichtige, aber nicht isolierte Entscheidungshilfe ist.",
-            "Warnzeichen und Dringlichkeit koennen in wenigen Saetzen gut mit dem Untersuchungsergebnis verbunden werden.",
-            "Damit wird aus einer einfachen Sonographie eine nachvollziehbare diagnostische Entscheidungskette."
+            "Sprachlich stark ist eine sehr knappe Verbindung von Beschwerdebild und Untersuchung, zum Beispiel bei Schwellung oder Schmerz im Bein.",
+            "Die Belastung wird ehrlich, aber beruhigend beschrieben: meist schmerzarm, kurz und ohne Strahlenbelastung.",
+            "Patienten sollten verstehen, dass ein auffaelliger Befund Konsequenzen fuer Therapie und Ueberwachung hat.",
+            "Auch bei unauffaelligem Befund wird kurz erklaert, wie der Gesamtplan weitergeht."
           ]
         }
       ],
@@ -635,33 +527,21 @@
       ],
       "question_groups": [
         {
-          "title": "Warum Blut abgenommen wird",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Blutabnahme wird patientengerecht ueber den Zweck erklaert, zum Beispiel Entzuendung, Blutarmut, Elektrolyte oder Organfunktion.",
-            "Auch eine einfache Blutabnahme gewinnt an Qualitaet, wenn klar gesagt wird, welche Frage damit beantwortet werden soll.",
-            "Das Verfahren wirkt professionell, wenn es nicht als Routinefloskel, sondern als sinnvoller Teil der Diagnostik erscheint.",
-            "Patienten verstehen die Massnahme besser, wenn Labor nicht abstrakt, sondern problembezogen begruendet wird.",
-            "So wird aus einer kleinen Massnahme ein medizinisch nachvollziehbarer Schritt."
+            "Die Blutabnahme wird ueber den diagnostischen Zweck erklaert und nicht als leerer Routinetermin dargestellt.",
+            "Ablauf, kurzer Stich, mehrere Roehrchen und kleiner Druckverband reichen fuer eine klare Basisaufklaerung voellig aus.",
+            "Kleine Risiken wie Schmerz, Bluterguss oder selten Kreislaufprobleme werden offen, aber knapp benannt.",
+            "Patienten sollten wissen, dass unterschiedliche Werte unterschiedlich schnell verfuegbar sind."
           ]
         },
         {
-          "title": "Wie Ablauf und Beschwerden erklaert werden",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Der Ablauf wird kurz beschrieben: Desinfektion, kurzer Nadelstich, Entnahme mehrerer Roehrchen und anschliessender Druckverband.",
-            "Schmerz und kleine Bluterguesse werden offen genannt, aber als haeufig harmlos eingeordnet.",
-            "Bei Angst vor Nadeln hilft eine ruhige Sprache mit Hinweis auf kurze Dauer und gute Durchfuehrbarkeit.",
-            "Wenn mehrere Werte benoetigt werden, kann kurz erklaert werden, warum mehrere Roehrchen noetig sind.",
-            "Die Erklaerung endet idealerweise mit dem Hinweis, wann Ergebnisse vorliegen und was dann passiert."
-          ]
-        },
-        {
-          "title": "Wie die Befundkommunikation vorbereitet wird",
-          "questions": [
-            "Laborwerte werden angekuendigt als Hilfsmittel, nicht als automatische Diagnose.",
-            "Unauffaellige Werte sollten ruhig kommuniziert werden, ohne falsche Entwarnung zu erzeugen.",
-            "Auffaellige Werte werden spaeter mit Bedeutung und naechstem Schritt besprochen, nicht nur genannt.",
-            "Patienten sollten wissen, dass manche Ergebnisse schnell und andere erst spaeter verfuegbar sind.",
-            "Diese Erwartungssteuerung macht selbst die einfache Blutabnahme sprachlich sauber und professionell."
+            "Eine gute Formulierung benennt direkt, welche medizinische Frage die Blutentnahme beantworten soll.",
+            "Gerade bei einfachen Massnahmen zeigt sich sprachliche Qualitaet in Klarheit, Ruhe und Patientenfreundlichkeit.",
+            "Auffaellige Ergebnisse werden spaeter mit Bedeutung und naechstem Schritt besprochen, nicht nur mitgeteilt.",
+            "Die kurze Erwartungssteuerung zu Befundzeit und weiterem Plan macht die Erklaerung professionell."
           ]
         }
       ],
@@ -701,33 +581,21 @@
       ],
       "question_groups": [
         {
-          "title": "Warum operiert wird",
+          "title": "Didaktischer Kern",
           "questions": [
-            "Die Operation wird erklaert als Entfernung des entzuendeten Blinddarmfortsatzes, um Komplikationen wie Perforation zu vermeiden.",
-            "Patienten sollten verstehen, dass nicht jeder Bauchschmerz operiert wird, hier aber der Verdacht klinisch ausreichend stark ist.",
-            "Die Indikation wirkt glaubwuerdig, wenn Symptome, Befunde und Risiko der Verzoegerung kurz verbunden werden.",
-            "Der Nutzen der Operation steht deshalb vor der technischen Beschreibung.",
-            "So bleibt die Aufklaerung medizinisch klar und fuer Laien gut nachvollziehbar."
+            "Die Appendektomie wird erklaert als Entfernung des entzuendeten Blinddarmfortsatzes zur Vermeidung von Perforation und Folgekomplikationen.",
+            "Patienten sollten verstehen, warum hier die Operation sinnvoller ist als weiteres Abwarten.",
+            "Die Grunderklaerung umfasst Vollnarkose, meist laparoskopisches Vorgehen und den groben stationaeren Ablauf.",
+            "Risiken wie Blutung, Infektion, Verletzung benachbarter Strukturen oder notwendige Erweiterung des Eingriffs werden ruhig benannt."
           ]
         },
         {
-          "title": "Wie Ablauf und Nachbehandlung erklaert werden",
+          "title": "So klingt es im Gespraech",
           "questions": [
-            "Der Eingriff wird in groben Schritten beschrieben, meist als laparoskopische Operation in Vollnarkose.",
-            "Wichtig sind Hinweise zu Schnitten, Ueberwachung nach der Narkose und frueher Mobilisation je nach Verlauf.",
-            "Auch Nahrungskarenz vor der OP und der voraussichtliche stationaere Verlauf gehoeren in eine klare Basisaufklaerung.",
-            "Drainagen oder eine offene Operation werden als moegliche, aber nicht automatische Erweiterungen erklaert.",
-            "Damit weiss der Patient, was ihn praktisch erwartet, ohne mit Details ueberfrachtet zu werden."
-          ]
-        },
-        {
-          "title": "Wie Risiken offen und ruhig benannt werden",
-          "questions": [
-            "Blutung, Infektion, Verletzung benachbarter Strukturen und Narkoserisiken gehoeren sachlich in die Aufklaerung.",
-            "Auch die Moeglichkeit, intraoperativ ein anderes Vorgehen zu brauchen, sollte kurz und ehrlich benannt werden.",
-            "Nach der Risikoerklaerung hilft der Hinweis, dass solche Komplikationen selten sind und ueberwacht werden.",
-            "Patienten sollten ausserdem wissen, bei welchen Beschwerden nach der OP sofort Hilfe gesucht werden muss.",
-            "So wirkt die operative Aufklaerung weder verharmlosend noch angstmachend, sondern professionell."
+            "Sprachlich stark ist die feste Reihenfolge: warum operiert wird, wie der Eingriff grob ablaeuft, welche Risiken bestehen und was danach passiert.",
+            "Die Aufklaerung sollte genug Klarheit geben, ohne in operative Details oder Angstsprache abzurutschen.",
+            "Patienten profitieren von Hinweisen zu Nahrungsverzicht, Nachbeobachtung, Mobilisation und Warnzeichen nach der OP.",
+            "Eine gute operative Aufklaerung endet mit Raum fuer Fragen und einer ruhigen Zusammenfassung des Plans."
           ]
         }
       ],

@@ -22,33 +22,21 @@
       ],
       "question_groups": [
         {
-          "title": "Erkennen",
+          "title": "Was hier sofort alarmiert",
           "questions": [
-            "Welche Symptome machen Thoraxbeschwerden akut bedrohlich?",
-            "Wie fragen Sie Synkope und Praesynkope in diesem Kontext?",
-            "Welche Begleitzeichen deuten auf respiratorische Insuffizienz?",
-            "Welche Risikofaktoren fuer LE/ACS erheben Sie zuerst?",
-            "Wie dokumentieren Sie Zeitkritik sprachlich praezise?"
+            "Alarmierend sind persistierender Druckschmerz, starke Ruhedyspnoe, Synkope, Zyanose, Kaltschweissigkeit und Kreislaufinstabilitaet.",
+            "Bei Thoraxbeschwerden gilt zuerst Gefaehrdung, dann Differenzierung.",
+            "Risikofaktoren fuer ACS, Lungenembolie oder Pneumothorax muessen frueh erhoben und klar gewichtet werden.",
+            "Zeitkritik sollte in Befund und Dokumentation sprachlich frueh sichtbar werden."
           ]
         },
         {
-          "title": "Kommunizieren",
+          "title": "Wie Dringlichkeit und Sicherheitsnetz klingen",
           "questions": [
-            "Wie erklaeren Sie dem Patienten die Dringlichkeit ohne Panik?",
-            "Welche Formulierung nutzen Sie fuer sofortige Diagnostik?",
-            "Wie priorisieren Sie relevante Befunde in der Arzt-Arzt-Uebergabe?",
-            "Wie sichern Sie Teamverstaendnis durch klare Struktur?",
-            "Wie vermeiden Sie unscharfe Alarmformulierungen?"
-          ]
-        },
-        {
-          "title": "Sicherheitsnetz",
-          "questions": [
-            "Welche Warnzeichen fuer zuhause muessen genannt werden?",
-            "Wie formulieren Sie klare Rueckkehrkriterien?",
-            "Welche Dokumentation gehoert in den Arztbrief?",
-            "Wie koppeln Sie Warnzeichen an konkrete Handlungsanweisungen?",
-            "Wie pruefen Sie, ob der Patient die Warnzeichen verstanden hat?"
+            "Patienten sollten hoeren, dass sofortige Abklaerung noetig ist, weil gefaehrliche Ursachen ausgeschlossen werden muessen.",
+            "In der Uebergabe gehoeren Red Flags immer zusammen mit Monitoring, EKG, Labor und weiterem Akutplan genannt.",
+            "Unscharfe Alarmwoerter ohne Konsequenz wirken schwach; stark wirkt die direkte Verbindung von Warnzeichen und Massnahme.",
+            "Bei Entlassung muessen exakte Wiedervorstellungskriterien und Warnzeichen klar ausgesprochen werden."
           ]
         }
       ],
@@ -90,33 +78,21 @@
       ],
       "question_groups": [
         {
-          "title": "Zeitkritische Zeichen",
+          "title": "Was hier sofort alarmiert",
           "questions": [
-            "Welche fokal-neurologischen Defizite sind sofort alarmierend?",
-            "Wie erfassen Sie den symptomfreien Referenzzeitpunkt?",
-            "Welche Kopfschmerzmerkmale gelten als Red Flag?",
-            "Welche Zeichen sprechen fuer Meningitis/Enzephalitis?",
-            "Wie dokumentieren Sie Bewusstseinsveraenderung praezise?"
+            "Ploetzliche fokale Defizite, Sprachstoerung, Vigilanzminderung, Thunderclap-Kopfschmerz und Krampfanfaelle mit Verwirrtheit sind neurologische Alarmzeichen.",
+            "Die Zeitachse mit letztem unauffaelligem Zeitpunkt und Symptombeginn ist ein Kernbestandteil der Notfalllogik.",
+            "Auch Fieber plus Meningismus oder Bewusstseinsveraenderung muessen sofort als zeitkritisch erkannt werden.",
+            "Neurologische Red Flags leben von klarer Beschreibung und nicht von spekulativer Fachsprache."
           ]
         },
         {
-          "title": "Akutkommunikation",
+          "title": "Wie Dringlichkeit und Sicherheitsnetz klingen",
           "questions": [
-            "Wie formulieren Sie die Zeitkritik gegenueber dem Patienten?",
-            "Wie uebergeben Sie den Neurologiefall kurz und strukturiert?",
-            "Wie priorisieren Sie Bildgebung und Monitoring sprachlich?",
-            "Welche Informationen braucht das aufnehmende Team zuerst?",
-            "Wie vermeiden Sie semantische Unklarheit bei Defizitbeschreibung?"
-          ]
-        },
-        {
-          "title": "Sicherheitsplan",
-          "questions": [
-            "Welche Warnzeichen bei Entlassung muessen explizit genannt werden?",
-            "Wie formulieren Sie den Notfallrueckkehrplan?",
-            "Welche Dokumentation ist im Arztbrief zwingend?",
-            "Wie sichern Sie Verstaendnis bei Patienten und Angehoerigen?",
-            "Wie koppeln Sie Red Flags an konkrete Sofortmassnahmen?"
+            "Patienten muessen verstehen, dass jetzt schnell gehandelt wird, um bleibende Schaeden moeglichst zu verhindern.",
+            "In der Uebergabe zaehlen Defizit, Zeitachse und Akutplan deutlich mehr als breite Differentialdiagnosen.",
+            "Die Formulierung sollte klar auf Bildgebung, Monitoring und sofortige weitere Abklaerung hin oeffnen.",
+            "Falls keine stationaere Situation vorliegt, braucht es sehr konkrete Warnzeichen und Rueckkehrregeln."
           ]
         }
       ],
@@ -158,33 +134,21 @@
       ],
       "question_groups": [
         {
-          "title": "Warnzeichen erheben",
+          "title": "Was hier sofort alarmiert",
           "questions": [
-            "Welche Merkmale sprechen fuer Peritonismus?",
-            "Wie fragen Sie nach GI-Blutungszeichen praezise?",
-            "Welche Kreislaufsymptome sind alarmierend?",
-            "Wie erfassen Sie Fieber und systemische Verschlechterung?",
-            "Wie dokumentieren Sie Dringlichkeit semantisch korrekt?"
+            "Peritonealer Schmerz, Abwehrspannung, Haematemesis, Melaena, anhaltendes Erbrechen und Kreislaufzeichen sind zentrale Alarmkonstellationen.",
+            "Auch Fieber mit reduziertem Allgemeinzustand oder orthostatischem Schwindel spricht fuer ein dringliches Vorgehen.",
+            "Bei abdominalen Red Flags muessen Warnzeichen vor der breiten Differenzialdiagnose erhoben werden.",
+            "Die sprachliche Priorisierung entscheidet mit darueber, wie sicher der Fall wirkt."
           ]
         },
         {
-          "title": "Priorisieren",
+          "title": "Wie Dringlichkeit und Sicherheitsnetz klingen",
           "questions": [
-            "Wie formulieren Sie den initialen Diagnostikpfad bei Red Flags?",
-            "Wann kommunizieren Sie stationaere Aufnahme klar?",
-            "Wie erklaeren Sie Endoskopie oder Bildgebung patientengerecht?",
-            "Wie uebergeben Sie den GI-Red-Flag-Fall an Kolleginnen?",
-            "Welche Begriffe vermeiden Sie wegen Unklarheit?"
-          ]
-        },
-        {
-          "title": "Sicherheitsnetz",
-          "questions": [
-            "Welche Warnzeichen fuer zuhause sind unverzichtbar?",
-            "Wie sichern Sie Verstaendnis bei komplexem Plan?",
-            "Wie dokumentieren Sie die Aufklaerung im Arztbrief?",
-            "Welche Nachkontrollintervalle nennen Sie konkret?",
-            "Wie verknuepfen Sie Alarmzeichen mit Handlungsanweisung?"
+            "Eine starke Formulierung erklaert ruhig, dass Blutung oder akute Entzuendung rasch ausgeschlossen werden muessen.",
+            "Endoskopie, Bildgebung, Labor oder stationaere Aufnahme sollten patientengerecht und nicht abstrakt angekuendigt werden.",
+            "Warnzeichen fuer zuhause muessen konkret an Schmerzen, Kreislauf und sichtbare Blutungszeichen gekoppelt sein.",
+            "In Brief und Uebergabe gehoeren Alarmzeichen und Handlungsplan immer eng zusammen."
           ]
         }
       ],
@@ -225,33 +189,21 @@
       ],
       "question_groups": [
         {
-          "title": "Alarmkonstellationen",
+          "title": "Was hier sofort alarmiert",
           "questions": [
-            "Welche Symptomkombination spricht fuer aufsteigende Infektion?",
-            "Wie fragen Sie nach Sepsiszeichen strukturiert?",
-            "Wann ist Harnverhalt ein Notfall?",
-            "Welche Merkmale einer Haematurie sind besonders alarmierend?",
-            "Wie dokumentieren Sie den klinischen Schweregrad?"
+            "Fieber mit Flankenschmerz, Schuettelfrost, reduzierter Allgemeinzustand, Harnverhalt und makroskopische Blutung sind urogenitale Warnzeichen.",
+            "Gerade die Kombination aus Infektzeichen und Systembeteiligung muss schnell an Sepsis oder komplizierten Verlauf denken lassen.",
+            "Intime Beschwerden bleiben nur dann klinisch verwertbar, wenn sie respektvoll, klar und ohne Ausweichen erhoben werden.",
+            "Der Schweregrad sollte frueh sprachlich sichtbar werden."
           ]
         },
         {
-          "title": "Dringlichkeitskommunikation",
+          "title": "Wie Dringlichkeit und Sicherheitsnetz klingen",
           "questions": [
-            "Wie erklaeren Sie stationaeres Vorgehen bei Urosepsisverdacht?",
-            "Wie benennen Sie noetige Sofortdiagnostik patientengerecht?",
-            "Welche Formulierung nutzen Sie fuer zeitnahe Therapieeinleitung?",
-            "Wie uebergeben Sie den Fall im Arzt-Arzt-Gespraech?",
-            "Wie sichern Sie Verstaendnis trotz Stresssituation?"
-          ]
-        },
-        {
-          "title": "Nachsorge und Warnzeichen",
-          "questions": [
-            "Welche Warnzeichen nach Entlassung nennen Sie konkret?",
-            "Wie koppeln Sie Trink- und Medikationsempfehlungen an Verlauf?",
-            "Wie dokumentieren Sie Sicherheitsaufklaerung im Arztbrief?",
-            "Welche Kontrollen sollten zeitnah erfolgen?",
-            "Wie formulieren Sie den Rueckkehrplan eindeutig?"
+            "Patienten sollten verstehen, warum Diagnostik und Therapie bei dieser Konstellation nicht aufgeschoben werden sollten.",
+            "In der Uebergabe gehoeren Infektzeichen, Harnsituation und Sepsisverdacht geordnet an den Anfang.",
+            "Auch hier wirken konkrete Rueckkehrkriterien deutlich staerker als allgemeine Sicherheitssaetze.",
+            "Der Arztbrief sollte Warnkonstellation, Akutplan und Nachsorge logisch zusammenfassen."
           ]
         }
       ],
@@ -293,33 +245,21 @@
       ],
       "question_groups": [
         {
-          "title": "Erkennen",
+          "title": "Was hier sofort alarmiert",
           "questions": [
-            "Welche Zeichen sprechen fuer klinisch relevante Hypoglykaemie?",
-            "Welche Hinweise deuten auf Hyperglykaemieentgleisung?",
-            "Wie erfassen Sie Exsikkosezeichen strukturiert?",
-            "Welche Symptome machen endokrine Ursachen wahrscheinlicher?",
-            "Wie dokumentieren Sie den Schweregrad sprachlich praezise?"
+            "Bewusstseinsveraenderung, Schweissigkeit, Zittern, Exsikkose, Polyurie, Erbrechen oder ausgepraegte Tachykardie sind typische metabolische Warnzeichen.",
+            "Hypo- und Hyperglykaemie muessen frueh erkannt und sprachlich klar voneinander abgegrenzt werden.",
+            "Auch Zeichen einer thyreotoxischen Entgleisung oder schweren Exsikkose gehoeren in diese Alarmlogik.",
+            "Metabolische Faelle wirken klinisch stark, wenn nicht nur Symptome, sondern auch Schweregrad sofort sichtbar werden."
           ]
         },
         {
-          "title": "Akutstrategie",
+          "title": "Wie Dringlichkeit und Sicherheitsnetz klingen",
           "questions": [
-            "Wie erklaeren Sie sofortige Blutzucker- und Laborkontrolle patientengerecht?",
-            "Wie kommunizieren Sie initiale Therapie ohne Ueberforderung?",
-            "Wann ist stationaere Ueberwachung erforderlich?",
-            "Wie uebergeben Sie den Fall kurz und klinisch logisch?",
-            "Welche Fehler in der Risikoformulierungen sollten vermieden werden?"
-          ]
-        },
-        {
-          "title": "Langzeit-Sicherheit",
-          "questions": [
-            "Welche Warnzeichen fuer zuhause nennen Sie konkret?",
-            "Wie koppeln Sie Medikation und Selbstmonitoring sprachlich?",
-            "Wie sichern Sie Verstaendnis zu Notfallmassnahmen?",
-            "Wie dokumentieren Sie Sicherheitsaufklaerung im Arztbrief?",
-            "Welche Nachkontrollen kommunizieren Sie verbindlich?"
+            "Patienten muessen verstehen, dass Verwirrtheit, starke Schwaeche oder Kreislaufprobleme hier akute Warnzeichen sind.",
+            "In der Uebergabe werden Blutzucker, Hydratationszustand, Bewusstseinslage und der erste Therapieplan klar priorisiert.",
+            "Sprachlich stark ist die Verbindung von Befund, sofortiger Stabilisierung und weiterer Abklaerung.",
+            "Bei ambulanter Weiterbetreuung sind exakte Warnzeichen und Verlaufskontrollen unverzichtbar."
           ]
         }
       ],
@@ -361,33 +301,21 @@
       ],
       "question_groups": [
         {
-          "title": "Direkte Sicherheitsabfrage",
+          "title": "Was hier sofort alarmiert",
           "questions": [
-            "Wie stellen Sie die Frage nach Suizidgedanken direkt und respektvoll?",
-            "Welche Zusatzfragen klaeren akute Handlungsgefahr?",
-            "Wie erfassen Sie Fremdgefaehrdung strukturiert?",
-            "Wie formulieren Sie die Risikoeinschaetzung ohne Wertung?",
-            "Wie sichern Sie bei Unsicherheit sofortige Unterstuetzung?"
+            "Suizidgedanken, konkrete Plaene, Eigen- oder Fremdgefaehrdung, schwere Agitation und Realitaetsverlust sind zentrale Alarmkonstellationen.",
+            "Sicherheitsfragen muessen direkt, klar und professionell gestellt werden und nicht verklausuliert.",
+            "Auch fehlende Impulskontrolle oder ausgepraegte Selbstvernachlaessigung gehoeren in die akute Risikoeinschaetzung.",
+            "Im psychiatrischen Kontext ist ruhige, neutrale Sprache selbst ein Teil der Deeskalation."
           ]
         },
         {
-          "title": "Kommunikation in der Krise",
+          "title": "Wie Dringlichkeit und Sicherheitsnetz klingen",
           "questions": [
-            "Wie erklaeren Sie notwendige Schutzmassnahmen patientengerecht?",
-            "Welche Formulierungen vermeiden Eskalation?",
-            "Wie uebergeben Sie den Fall an Kolleginnen mit Fokus auf Sicherheit?",
-            "Wie koppeln Sie Empathie mit klarer Rollenfuehrung?",
-            "Wie sichern Sie Teamkommunikation bei hoher Dynamik?"
-          ]
-        },
-        {
-          "title": "Dokumentation",
-          "questions": [
-            "Welche Sicherheitsaspekte muessen schriftlich zwingend festgehalten werden?",
-            "Wie trennen Sie Zitat des Patienten und eigene Einschatzung?",
-            "Wie dokumentieren Sie vereinbarte Schutz- und Nachsorgeschritte?",
-            "Wie formulieren Sie Rueckkehrkriterien bei Entlassung?",
-            "Wie pruefen Sie, ob der Patient den Plan verstanden hat?"
+            "Patienten und Angehoerige sollten verstehen, dass Sicherheit jetzt Vorrang vor Detaildiskussionen hat.",
+            "In der Uebergabe werden Risiko, aktueller Schutzbedarf und weitere Sicherungsmassnahmen zuerst genannt.",
+            "Konkrete Schutzschritte wie engmaschige Beobachtung, psychiatrische Vorstellung oder gesicherte Umgebung muessen sprachlich eindeutig sein.",
+            "Wenn eine Entlassung vertretbar ist, braucht es ein besonders klares und dokumentiertes Sicherheitsnetz."
           ]
         }
       ],

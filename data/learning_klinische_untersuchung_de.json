@@ -22,33 +22,21 @@
       ],
       "question_groups": [
         {
-          "title": "Ersteindruck",
+          "title": "Wie der Status aufgebaut ist",
           "questions": [
-            "Wie beschreiben Sie Allgemeinzustand und Bewusstseinslage in einem Satz?",
-            "Welche Beobachtungen sind im Erstkontakt besonders relevant?",
-            "Wie trennen Sie objektive Beobachtung von Interpretation?",
-            "Welche Red-Flag-Eindruecke muessen sofort kommuniziert werden?",
-            "Wie formulieren Sie eine priorisierte klinische Ersteinschaetzung?"
+            "Der Allgemeinstatus beginnt mit Gesamteindruck, Bewusstseinslage und einer ersten klinischen Priorisierung.",
+            "Danach folgen RR, Puls, Atemfrequenz, Temperatur und SpO2 mit Einheit und sinnvoller Reihenfolge.",
+            "Wichtig ist die Trennung zwischen Beobachtung und Interpretation, damit der Status sprachlich sauber bleibt.",
+            "Schon im Erststatus sollte erkennbar sein, ob Monitoring, Reevaluation oder Akutdiagnostik noetig werden."
           ]
         },
         {
-          "title": "Vitalparameter strukturiert nennen",
+          "title": "Wie Befund und Plan formuliert werden",
           "questions": [
-            "Wie geben Sie RR, Puls, AF, Temperatur und SpO2 korrekt mit Einheit an?",
-            "Wie benennen Sie pathologische Werte semantisch praezise?",
-            "Wie kommunizieren Sie Verlaufsveraenderungen in der Uebergabe?",
-            "Wann reicht eine Einzelmessung nicht aus?",
-            "Wie formulieren Sie Monitoring-Bedarf patientengerecht?"
-          ]
-        },
-        {
-          "title": "Von Befund zu Plan",
-          "questions": [
-            "Welche Befunde sind fuer das weitere Vorgehen entscheidend?",
-            "Wie begruenden Sie den naechsten Diagnostikschritt sprachlich sauber?",
-            "Wie erklaeren Sie Priorisierung bei mehreren Auffaelligkeiten?",
-            "Wie dokumentieren Sie den Allgemeinstatus knapp im Arztbrief?",
-            "Wie uebergeben Sie den Status im Arzt-Arzt-Gespraech ohne Abschweifen?"
+            "Ein guter Befundsatz nennt nicht nur Zahlen, sondern ordnet sie als tachykard, fieberhaft, hypoxisch oder kreislaufstabil ein.",
+            "Auffaellige Werte werden frueh benannt und direkt mit ihrer klinischen Bedeutung verbunden.",
+            "Die Uebergabe wirkt reif, wenn aus Status und Vitalzeichen sofort der naechste Schritt ableitbar wird.",
+            "Gerade in der FSP entsteht Sicherheit durch klare, kurze und reproduzierbare Standardsaetze."
           ]
         }
       ],
@@ -89,33 +77,21 @@
       ],
       "question_groups": [
         {
-          "title": "Orientierungsbefunde",
+          "title": "Wie der Neurostatus aufgebaut ist",
           "questions": [
-            "Wie pruefen Sie rasch Bewusstsein und Orientierung?",
-            "Welche Sprachbeobachtungen sind akut entscheidend?",
-            "Wie testen Sie grob Seitendifferenzen der Motorik?",
-            "Wie formulieren Sie einen unauffaelligen orientierenden Neurostatus?",
-            "Welche Zeichen verlangen sofortige Eskalation?"
+            "Der orientierende Neurostatus beginnt mit Bewusstsein, Sprache, Pupillen und grober Motorik.",
+            "Im Akutfall ist die Zeitachse fast so wichtig wie der Befund selbst und gehoert frueh in die Einschaetzung.",
+            "Der Untersuchungsumfang bleibt fokussiert auf Zeichen, die stabile von zeitkritischen Situationen trennen.",
+            "Wichtig ist eine feste Reihenfolge, damit unter Zeitdruck keine Kernpunkte verloren gehen."
           ]
         },
         {
-          "title": "Fokalzeichen benoeten Praezision",
+          "title": "Wie Befund und Plan formuliert werden",
           "questions": [
-            "Wie beschreiben Sie Fazialisparese sprachlich korrekt?",
-            "Wie unterscheiden Sie Dysarthrie und Aphasie in der Darstellung?",
-            "Wie dokumentieren Sie sensomotorische Seitendifferenzen?",
-            "Wie erklaeren Sie dem Patienten den Sinn der schnellen Neuropruefung?",
-            "Welche Fehler bei unklaren Formulierungen sollten vermieden werden?"
-          ]
-        },
-        {
-          "title": "Akutplan und Uebergabe",
-          "questions": [
-            "Wie koppeln Sie Befund und Zeitkritik in einem Satz?",
-            "Wie formulieren Sie die Indikation fuer sofortige Bildgebung?",
-            "Wie priorisieren Sie Diagnostik versus Therapieeinleitung sprachlich?",
-            "Welche Informationen gehoeren in die 30-Sekunden-Uebergabe?",
-            "Wie dokumentieren Sie den Neurostatus im Arztbrief knapp und korrekt?"
+            "Neurologische Auffaelligkeiten sollten konkret beschrieben werden, zum Beispiel Aphasie, Fazialisparese oder Armhalteversuch rechts absinkend.",
+            "Unscharfe Begriffe wie neurologisch auffaellig wirken schwach, weil sie keine klinische Richtung geben.",
+            "Bei fokalen Defiziten muss sprachlich sofort klar werden, dass Bildgebung, Monitoring und Akutpfad eingeleitet werden.",
+            "Die beste Uebergabe bleibt kurz, konkret und streng an Defizit, Zeitachse und Plan orientiert."
           ]
         }
       ],
@@ -156,33 +132,21 @@
       ],
       "question_groups": [
         {
-          "title": "Anleitung",
+          "title": "Wie die Untersuchung aufgebaut ist",
           "questions": [
-            "Welche kurzen Instruktionen nutzen Sie fuer Augenbewegungen?",
-            "Wie leiten Sie Mimiktests verstaendlich an?",
-            "Wie pruefen Sie Schlucken und Gaumensegel patientenfreundlich?",
-            "Wie formulieren Sie Hoertests ohne Technikjargon?",
-            "Wie reagieren Sie, wenn der Patient die Anweisung nicht versteht?"
+            "Bei den Hirnnerven steht eine klare Patientenanleitung im Vordergrund, damit jeder Schritt sicher mitgemacht werden kann.",
+            "Pupillen, Augenbewegungen, Gesichtsmotorik, Hoeren, Gaumensegel und Zungenmotorik werden geordnet abgearbeitet.",
+            "Die Sprache bleibt einfach, etwa bitte folgen Sie meinem Finger oder zeigen Sie die Zaehne.",
+            "Je klarer die Anleitung, desto leichter wird anschliessend auch die Beobachtung sprachlich praezise."
           ]
         },
         {
-          "title": "Befundsprache",
+          "title": "Wie Befund und Plan formuliert werden",
           "questions": [
-            "Wie dokumentieren Sie unauffaellige Hirnnerven orientierend korrekt?",
-            "Wie benennen Sie eine einseitige Fazialisparese eindeutig?",
-            "Wie dokumentieren Sie Blickparese oder Nystagmus kurz und praezise?",
-            "Wie trennen Sie Beobachtung und Interpretation?",
-            "Welche Abkuerzungen sollten in der FSP besser ausgeschrieben werden?"
-          ]
-        },
-        {
-          "title": "Weiteres Vorgehen",
-          "questions": [
-            "Welche Auffaelligkeiten machen eine rasche Bildgebung noetig?",
-            "Wie uebergeben Sie einen pathologischen Hirnnervenbefund strukturiert?",
-            "Wie erklaeren Sie dem Patienten den naechsten Schritt?",
-            "Wie sichern Sie Verstaendnis nach der Untersuchung?",
-            "Wie fassen Sie Kernbefunde in einem Satz zusammen?"
+            "Hirnnervenbefunde sollten seitengerecht und moeglichst konkret beschrieben werden.",
+            "Wichtig ist die Unterscheidung zwischen unauffaelligem Befund und echtem Ausfall mit klinischer Bedeutung.",
+            "Auch ein kleiner Defizitbefund wirkt nur dann stark, wenn er nicht isoliert, sondern im Gesamtbild eingeordnet wird.",
+            "In der FSP punktet, wer Untersuchung, Befund und Konsequenz sprachlich sauber zusammenhaelt."
           ]
         }
       ],
@@ -223,33 +187,21 @@
       ],
       "question_groups": [
         {
-          "title": "Motorik",
+          "title": "Wie die Untersuchung aufgebaut ist",
           "questions": [
-            "Wie strukturieren Sie den Kraftvergleich beidseits?",
-            "Wie dokumentieren Sie Kraftminderung sprachlich praezise?",
-            "Wie pruefen Sie distal-proximale Unterschiede sinnvoll?",
-            "Welche Begriffe sind fuer den Alltag ungeeignet und sollten vermieden werden?",
-            "Wie koppeln Sie Motorikbefunde an den weiteren Plan?"
+            "Motorik, Reflexe und Sensibilitaet werden seitenvergleichend und systematisch erhoben.",
+            "Kraftpruefung, Halteversuche, Reflexstatus und sensible Qualitaeten sollten in einer festen Reihenfolge erfolgen.",
+            "Wichtig ist eine ruhige Patientenanleitung, damit Mitarbeit und Untersuchungsqualitaet stabil bleiben.",
+            "Die Untersuchung braucht keine Facharzt-Tiefe, aber eine saubere Grundstruktur mit klarer Logik."
           ]
         },
         {
-          "title": "Reflexe",
+          "title": "Wie Befund und Plan formuliert werden",
           "questions": [
-            "Welche Reflexe nennen Sie in der orientierenden Untersuchung?",
-            "Wie dokumentieren Sie Seitengleichheit korrekt?",
-            "Wie formulieren Sie einen pathologischen Reflexbefund?",
-            "Wie erklaeren Sie dem Patienten den Zweck der Reflexpruefung?",
-            "Wie uebergeben Sie auffaellige Reflexe kurz und klinisch relevant?"
-          ]
-        },
-        {
-          "title": "Sensibilitaet",
-          "questions": [
-            "Wie ordnen Sie Sensibilitaetstests nach Modalitaeten?",
-            "Wie dokumentieren Sie ein dermatombezogenes Defizit?",
-            "Wie differenzieren Sie zentrale vs periphere Muster sprachlich?",
-            "Welche Red Flags bei progressiver Sensibilitaetsstoerung nennen Sie?",
-            "Wie fassen Sie Motorik, Reflexe und Sensibilitaet in einem Satz zusammen?"
+            "Seitendifferenzen und Reflexbefunde muessen moeglichst konkret und nicht pauschal beschrieben werden.",
+            "Sensible Stoerungen gewinnen erst durch Lokalisation und Qualitaet sprachliche Aussagekraft.",
+            "Der klinische Wert liegt in der Verbindung von Untersuchungsbefund, moeglicher Laesion und naechstem Schritt.",
+            "In der Uebergabe wirken kurze, praezise Standardsaetze deutlich staerker als lange unsichere Beschreibungen."
           ]
         }
       ],
@@ -290,33 +242,21 @@
       ],
       "question_groups": [
         {
-          "title": "Anleitung",
+          "title": "Wie die Untersuchung aufgebaut ist",
           "questions": [
-            "Wie erklaeren Sie den Finger-Nase-Versuch einfach und eindeutig?",
-            "Wie leiten Sie den Romberg-Test sicher an?",
-            "Welche Sicherheitsaspekte beachten Sie beim Gehtest?",
-            "Wie reagieren Sie auf Verstaendnisprobleme waehrend der Tests?",
-            "Wie vermeiden Sie suggestive oder unklare Instruktionen?"
+            "Koordination und Gangbild werden ueber Finger-Nase-Versuch, Knie-Hacke-Versuch, Romberg und verschiedene Gangformen geordnet erhoben.",
+            "Die Sicherheit des Patienten hat Vorrang, besonders wenn Unsicherheit oder Sturzgefahr besteht.",
+            "Eine klare Anleitung ist entscheidend, damit der Unterschied zwischen fehlender Mitarbeit und echtem Defizit sichtbar bleibt.",
+            "Auch wenn ein Test nicht durchfuehrbar ist, sollte dieser Umstand sprachlich sauber benannt werden."
           ]
         },
         {
-          "title": "Befundbeschreibung",
+          "title": "Wie Befund und Plan formuliert werden",
           "questions": [
-            "Wie dokumentieren Sie eine Ataxie sprachlich praezise?",
-            "Wie beschreiben Sie ein unauffaelliges Gangbild standardisiert?",
-            "Welche Begriffe eignen sich fuer zentrale Koordinationsstoerungen?",
-            "Wie ordnen Sie Schwindelbeschwerden mit Gangunsicherheit ein?",
-            "Wie formulieren Sie die klinische Relevanz fuer das weitere Vorgehen?"
-          ]
-        },
-        {
-          "title": "Plan",
-          "questions": [
-            "Wann ist eine dringliche neurologische Abklaerung erforderlich?",
-            "Wie kommunizieren Sie Sturzrisiko patientengerecht?",
-            "Welche weiteren Untersuchungen sind bei Auffaelligkeiten sinnvoll?",
-            "Wie uebergeben Sie Koordinationsbefunde ohne Informationsverlust?",
-            "Wie dokumentieren Sie den Verlauf bei Reevaluation?"
+            "Gang und Koordination sollten moeglichst konkret beschrieben werden, etwa breitbasig, ataktisch, unsicher oder mit Fallneigung.",
+            "Ein unauffaelliger Koordinationsbefund darf kurz, aber vollstaendig dokumentiert werden.",
+            "Wichtig ist die Einordnung, ob der Befund eher zerebellaer, sensibel, vestibulaer oder schmerzbedingt wirkt.",
+            "Die sprachliche Qualitaet entsteht durch kurze Beobachtungssaetze mit klarer funktioneller Bedeutung."
           ]
         }
       ],
@@ -357,33 +297,21 @@
       ],
       "question_groups": [
         {
-          "title": "Statuserhebung",
+          "title": "Wie der Status aufgebaut ist",
           "questions": [
-            "Wie strukturieren Sie den psychischen Status in alltagstauglicher Reihenfolge?",
-            "Welche Beobachtungen gehoeren zu Stimmung und Antrieb?",
-            "Wie erfassen Sie Denkprozess und Denkinhalt sprachlich sauber?",
-            "Wie gehen Sie auf Wahrnehmungsstoerungen neutral ein?",
-            "Wie formulieren Sie einen orientierenden unauffaelligen Status?"
+            "Der psychische Status beginnt mit Eindruck, Kontaktfaehigkeit, Orientierung, Stimmung und formaler Denkfuehrung.",
+            "Neutrale, nicht wertende Sprache ist hier wichtiger als ausgefallene Fachbegriffe.",
+            "Sensible Themen wie Suizidalitaet oder psychotische Symptome brauchen klare, direkte und gleichzeitig professionelle Formulierungen.",
+            "Auch hier hilft eine feste Reihenfolge, damit relevante Sicherheitsaspekte nicht uebersehen werden."
           ]
         },
         {
-          "title": "Sicherheitsfragen",
+          "title": "Wie Befund und Plan formuliert werden",
           "questions": [
-            "Wie sprechen Sie Suizidgedanken direkt und respektvoll an?",
-            "Welche Fragen pruefen akute Eigen- oder Fremdgefaehrdung?",
-            "Wie dokumentieren Sie Sicherheitsaspekte ohne Wertung?",
-            "Wie erklaeren Sie eine notwendige Schutzmassnahme patientengerecht?",
-            "Wann ist eine sofortige psychiatrische Mitbeurteilung noetig?"
-          ]
-        },
-        {
-          "title": "Uebergabe und Dokumentation",
-          "questions": [
-            "Wie fassen Sie psychischen Status und Risiko in drei Saetzen zusammen?",
-            "Welche Begriffe sind im Arzt-Arzt-Gespraech besonders praezise?",
-            "Wie vermeiden Sie stigmatisierende Sprache?",
-            "Welche Inhalte sind fuer den Arztbrief unverzichtbar?",
-            "Wie verbinden Sie somatische und psychische Befunde in einer koharenten Darstellung?"
+            "Beobachtungen sollten beschrieben und nicht etikettiert werden, zum Beispiel antriebsgemindert statt faul oder schwierig.",
+            "Stimmung, Affekt, Denken und Realitaetsbezug wirken nur dann stark, wenn sie knapp und konkret formuliert sind.",
+            "Bei Sicherheitsaspekten muss die Bruecke zu Schutz, Beobachtung und weiterem Vorgehen sprachlich eindeutig werden.",
+            "Gerade hier zeigt sich klinische Reife darin, ruhig, respektvoll und klar zu bleiben."
           ]
         }
       ],
@@ -424,33 +352,21 @@
       ],
       "question_groups": [
         {
-          "title": "Wie der Herz-Kreislauf-Status aufgebaut ist",
+          "title": "Wie die Untersuchung aufgebaut ist",
           "questions": [
-            "Eine saubere Untersuchung beginnt mit Inspektion, Vitalparametern und einem geordneten Uebergang zu Puls, Halsvenen und Auskultation.",
-            "Die Anweisungen an den Patienten muessen kurz, freundlich und eindeutig sein, damit die Untersuchung ruhig ablaeuft.",
-            "Wichtig ist die Reihenfolge: erst sehen und fuehlen, dann hoeren und schliesslich klinisch einordnen.",
-            "Auch der periphere Kreislauf mit Oedemen, Rekapillarisierung oder Hautkolorit gehoert in vielen Faellen dazu.",
-            "So entsteht ein internistischer Basisstatus, der in vielen Berlin-Faellen sofort anwendbar ist."
+            "Die kardiovaskulaere Untersuchung beginnt mit Inspektion, Vitalparametern und dem geordneten Uebergang zu Puls, Halsvenen und Auskultation.",
+            "Kurze, freundliche Anweisungen halten die Untersuchung ruhig und patientennah.",
+            "Wichtig bleibt die Reihenfolge von Sehen, Fuehlen, Hoeren und anschliessender Einordnung.",
+            "Auch periphere Zeichen wie Oedeme, Rekapillarisierung oder Hautkolorit gehoeren oft zum Gesamtbild."
           ]
         },
         {
-          "title": "Welche Befunde sprachlich tragen",
+          "title": "Wie Befund und Plan formuliert werden",
           "questions": [
-            "Pulsqualitaet, Rhythmus, Oedeme und Halsvenenstauung sollten nicht nur beobachtet, sondern in klaren Befundsaetzen beschrieben werden.",
-            "Herztoene und moegliche Nebengeraeusche werden knapp, aber korrekt benannt, ohne spekulative Ueberinterpretation.",
-            "Seitendifferenzen, kalte Extremitaeten oder Zeichen der Minderperfusion verdienen in der Uebergabe frueh Aufmerksamkeit.",
-            "Pathologische Befunde wirken sprachlich stark, wenn sie sofort klinisch einsortiert werden, zum Beispiel kardiale Dekompensation oder Hypovolaemie.",
-            "Unauffaellige Befunde duerfen ebenfalls klar formuliert werden, damit die Untersuchung vollstaendig wirkt."
-          ]
-        },
-        {
-          "title": "Wie Befund, Einordnung und Plan zusammengehen",
-          "questions": [
-            "In der FSP sollte nach dem Untersuchungsbefund direkt deutlich werden, was das fuer Diagnostik und Ueberwachung bedeutet.",
-            "Ein gestauter Halsvenenbefund oder deutliche Oedeme fuehren sprachlich sauber zu weiterer kardialer Abklaerung.",
-            "Tachykardie, Hypotonie oder neue Nebengeraeusche gewinnen erst durch die Verbindung zum klinischen Plan Gewicht.",
-            "Die muendliche Uebergabe bleibt stark, wenn sie Beobachtung, Wertung und naechsten Schritt in dieser Reihenfolge verknuepft.",
-            "Genau diese Bruecke macht aus Untersuchungssprache klinische Sprache."
+            "Pulsqualitaet, Rhythmus, Oedeme und Halsvenenstauung sollten in konkreten Befundsaetzen erscheinen.",
+            "Herztoene und Nebengeraeusche werden knapp, aber korrekt beschrieben und nicht ueberinterpretiert.",
+            "Pathologische Zeichen entfalten ihren Wert erst in der Verbindung mit klinischer Einordnung und Plan.",
+            "Die Uebergabe wirkt stark, wenn aus dem Untersuchungsbefund unmittelbar weiteres Monitoring oder Diagnostik folgt."
           ]
         }
       ],
@@ -491,33 +407,21 @@
       ],
       "question_groups": [
         {
-          "title": "Wie die Untersuchung geordnet beginnt",
+          "title": "Wie die Untersuchung aufgebaut ist",
           "questions": [
-            "Bei Atembeschwerden beginnt der Thoraxstatus mit Atemarbeit, Atemfrequenz und sichtbaren Belastungszeichen.",
-            "Inspektion, Perkussion und Auskultation folgen in einer ruhigen, fuer Patienten nachvollziehbaren Reihenfolge.",
-            "Klare Anweisungen wie bitte tief ein- und ausatmen gehoeren zur Untersuchungssprache unbedingt dazu.",
-            "Auch Husten, Zyanose, asymmetrische Thoraxbewegung oder Schonatmung werden frueh beobachtet.",
-            "So bekommt der Untersuchungsablauf eine logische Struktur statt einer Sammlung einzelner Handgriffe."
+            "Der Thoraxstatus beginnt mit Atemarbeit, Atemfrequenz und sichtbaren Belastungszeichen.",
+            "Inspektion, Perkussion und Auskultation folgen in einer fuer Patienten nachvollziehbaren Reihenfolge.",
+            "Klare Atemanweisungen gehoeren zur Untersuchungssprache unbedingt dazu.",
+            "Auch Husten, Zyanose, asymmetrische Thoraxbewegung oder Schonatmung muessen frueh beobachtet werden."
           ]
         },
         {
-          "title": "Welche Befunde du sicher benennen solltest",
+          "title": "Wie Befund und Plan formuliert werden",
           "questions": [
-            "Abgeschwaechtes Atemgeraeusch, Rasselgeraeusche, Giemen oder hypersonorer Klopfschall sind typische Befundbausteine.",
-            "Die Befundsprache bleibt stark, wenn Ort, Seite und klinische Bedeutung moeglichst konkret genannt werden.",
-            "Atemnot wird nicht nur beschrieben, sondern mit sichtbarer Belastung und objektivierbaren Zeichen verbunden.",
-            "Auch ein unauffaelliger Thoraxstatus sollte so formuliert werden, dass Auskultation und Atemmechanik mitgemeint sind.",
-            "Zwischen Beobachtung und Interpretation bleibt auch hier eine klare Trennlinie."
-          ]
-        },
-        {
-          "title": "Wie daraus klinische Konsequenz entsteht",
-          "questions": [
-            "Thoraxbefunde werden in der Uebergabe sofort mit Verdacht und weiterem Vorgehen gekoppelt.",
-            "Rasselgeraeusche, Hypoxie oder einseitig abgeschwaechtes Atemgeraeusch beeinflussen Diagnostik und Dringlichkeit direkt.",
-            "Patienten profitieren davon, wenn kurz erklaert wird, warum genau diese Untersuchung jetzt wichtig ist.",
-            "In der FSP ist der Plan nach dem Status oft fast so wichtig wie der Status selbst.",
-            "Deshalb sollte jede Thoraxuntersuchung sprachlich auf Diagnostik, Therapie oder Monitoring hin oeffnen."
+            "Rasselgeraeusche, Giemen, abgeschwaechtes Atemgeraeusch oder hypersonorer Klopfschall sollten moeglichst konkret benannt werden.",
+            "Atemnot wird sprachlich staerker, wenn subjektive Beschwerde und objektive Zeichen gemeinsam beschrieben werden.",
+            "Zwischen Beobachtung und Interpretation bleibt auch im Thoraxstatus eine klare Trennlinie.",
+            "In der FSP zeigt sich Reife daran, dass der Befund sofort in Diagnostik, Therapie oder Monitoring uebersetzt wird."
           ]
         }
       ],
@@ -558,33 +462,21 @@
       ],
       "question_groups": [
         {
-          "title": "Wie der Abdomenstatus aufgebaut ist",
+          "title": "Wie die Untersuchung aufgebaut ist",
           "questions": [
-            "Ein sauberer Bauchstatus beginnt mit Blickdiagnose, Allgemeineindruck und klaren Anweisungen zur Lagerung und Entspannung.",
-            "Inspektion, Auskultation, Palpation und gegebenenfalls Perkussion folgen in einer stabilen Reihenfolge.",
-            "Patienten muessen vor Beruehrung und schmerzhaften Schritten sprachlich vorbereitet werden.",
-            "Abwehrspannung, Druckschmerz und Lokalisation sind frueh zentrale Beobachtungen bei akuten Bauchfaellen.",
-            "Gerade in Berlin ist diese Grundstruktur wertvoll, weil sie auf viele haeufige Faelle passt."
+            "Der Bauchstatus beginnt mit Blickdiagnose, Lagerung und sprachlicher Vorbereitung des Patienten.",
+            "Inspektion, Auskultation, Palpation und gegebenenfalls Perkussion bilden eine stabile Grundreihenfolge.",
+            "Gerade bei Schmerzen muessen Beruehrung und schmerzhafte Schritte vorher angekuendigt werden.",
+            "Abwehrspannung, Druckschmerz und Lokalisation sind fruehe Leitbefunde in vielen haeufigen Berlin-Faellen."
           ]
         },
         {
-          "title": "Welche Befunde sprachlich zentral sind",
+          "title": "Wie Befund und Plan formuliert werden",
           "questions": [
-            "Druckschmerz, Loslassschmerz, Abwehrspannung, Meteorismus und Darmgeraeusche gehoeren zu den wichtigsten Befundwoertern.",
-            "Die Lokalisation des Schmerzes sollte immer praezise und reproduzierbar benannt werden.",
-            "Ein gespannter, weicher oder geblaehter Bauch klingt erst dann stark, wenn die klinische Bedeutung mitgedacht wird.",
-            "Auch Leber- oder Milzbefunde, tastbare Resistenzen oder fehlende Darmgeraeusche sollten knapp dokumentierbar sein.",
-            "Unauffaellige Befunde bleiben wichtig, weil sie Differentialdiagnosen mitsteuern."
-          ]
-        },
-        {
-          "title": "Wie du Befund und Verdacht verbindest",
-          "questions": [
-            "Ein rechter Unterbauchschmerz mit Abwehrspannung fuehrt sprachlich anders weiter als ein diffus geblaehter, weicher Bauch.",
-            "Der Abdomenstatus sollte deshalb direkt auf Verdachtsdiagnosen wie Appendizitis, Ileus oder Cholezystitis hin geordnet werden.",
-            "Auch hier zaehlt die Folge Beobachtung, Einordnung und Plan mehr als eine lange Liste einzelner Handgriffe.",
-            "In der Uebergabe darf deutlich werden, ob sofortige Chirurgiekonsultation, Bildgebung oder Labordiagnostik noetig ist.",
-            "So wird der Bauchstatus zu einem klinischen Entscheidungsinstrument und nicht nur zu einer Formalitaet."
+            "Druckschmerz, Loslassschmerz, Meteorismus und Darmgeraeusche gehoeren zu den zentralen Befundwoertern des Abdomenstatus.",
+            "Die Lokalisation sollte moeglichst exakt benannt werden, weil sie die Verdachtsdiagnose stark beeinflusst.",
+            "Ein Bauchbefund wird sprachlich stark, wenn er direkt auf Verdacht und Dringlichkeit hin eingeordnet wird.",
+            "In der Uebergabe sollten aus dem Status sofort Bildgebung, Labordiagnostik oder chirurgische Mitbeurteilung ableitbar werden."
           ]
         }
       ],

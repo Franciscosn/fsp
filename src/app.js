@@ -8625,6 +8625,10 @@ function getLearningMetaCountLabel(rootId) {
   return rootId === "anamnese" ? "Fragen" : "Lernpunkte";
 }
 
+function getLearningGroupSectionLabel(rootId) {
+  return rootId === "anamnese" ? "Fragewege" : "Kernwissen im Ueberblick";
+}
+
 function renderLearningReadingMode(bundle) {
   const categories = Array.isArray(bundle?.categories) ? bundle.categories : [];
   const activeCategoryId = getLearningActiveCategoryIdForRoot(state.learningRootId);
@@ -8672,24 +8676,33 @@ function renderLearningReadingMode(bundle) {
 
   if (refs.learningReadingQuestionGroups) {
     refs.learningReadingQuestionGroups.innerHTML = "";
-    for (const group of activeCategory.questionGroups) {
-      const block = document.createElement("article");
-      block.className = "learning-question-group";
-      const heading = document.createElement("h6");
-      heading.textContent = group.title;
-      block.appendChild(heading);
-      const useOrderedList =
-        Array.isArray(group.questions) &&
-        group.questions.length > 0 &&
-        group.questions.every((entry) => String(entry || "").trim().endsWith("?"));
-      const list = document.createElement(useOrderedList ? "ol" : "ul");
-      for (const question of group.questions) {
-        const li = document.createElement("li");
-        li.textContent = question;
-        list.appendChild(li);
+    if (activeCategory.questionGroups.length > 0) {
+      const head = document.createElement("div");
+      head.className = "learning-question-head";
+      const heading = document.createElement("h5");
+      heading.textContent = getLearningGroupSectionLabel(state.learningRootId);
+      head.appendChild(heading);
+      refs.learningReadingQuestionGroups.appendChild(head);
+
+      for (const group of activeCategory.questionGroups) {
+        const block = document.createElement("article");
+        block.className = "learning-question-group";
+        const groupHeading = document.createElement("h6");
+        groupHeading.textContent = group.title;
+        block.appendChild(groupHeading);
+        const useOrderedList =
+          Array.isArray(group.questions) &&
+          group.questions.length > 0 &&
+          group.questions.every((entry) => String(entry || "").trim().endsWith("?"));
+        const list = document.createElement(useOrderedList ? "ol" : "ul");
+        for (const question of group.questions) {
+          const li = document.createElement("li");
+          li.textContent = question;
+          list.appendChild(li);
+        }
+        block.appendChild(list);
+        refs.learningReadingQuestionGroups.appendChild(block);
       }
-      block.appendChild(list);
-      refs.learningReadingQuestionGroups.appendChild(block);
     }
   }
 

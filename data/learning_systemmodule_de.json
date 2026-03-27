@@ -22,33 +22,21 @@
       ],
       "question_groups": [
         {
-          "title": "Leitsymptome",
+          "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Welche Symptome priorisieren Sie im kardiologischen Erstkontakt?",
-            "Wie unterscheiden Sie belastungsabhaengige von Ruhebeschwerden?",
-            "Welche Begleitsymptome signalisieren Zeitkritik?",
-            "Wie fragen Sie nach Synkope und Praesynkope strukturiert?",
-            "Wie sichern Sie den zeitlichen Verlauf klar ab?"
+            "Im kardiologischen Kontext stehen Thoraxschmerz, Dyspnoe, Palpitationen, Synkope und Leistungsknick im Zentrum.",
+            "Risikoprofil, Vorerkrankungen, Interventionen und Medikation gehoeren frueh und geordnet in die Einschaetzung.",
+            "Die erste Weiche lautet immer: akut instabil oder aktuell kompensiert.",
+            "Gerade in diesem Modul entscheidet Priorisierung mehr als Detailwissen."
           ]
         },
         {
-          "title": "Risikoprofil und Vorerkrankung",
+          "title": "Was sprachlich tragen soll",
           "questions": [
-            "Welche kardiovaskulaeren Risikofaktoren sind unverzichtbar?",
-            "Wie erheben Sie Interventionen wie Stent oder Bypass sprachlich sauber?",
-            "Wie dokumentieren Sie bestehende Rhythmusstoerungen?",
-            "Wie integrieren Sie Medikation und Adhaerenz in die Anamnese?",
-            "Wie kommunizieren Sie Relevanz an den Patienten?"
-          ]
-        },
-        {
-          "title": "Plan",
-          "questions": [
-            "Wie formulieren Sie den initialen Diagnostikpfad knapp?",
-            "Welche Kriterien sprechen fuer stationaeres Vorgehen?",
-            "Wie erklaeren Sie Warnzeichen fuer zuhause?",
-            "Wie uebergeben Sie den Fall in einem logischen Arzt-Arzt-Schema?",
-            "Wie fassen Sie den Plan patientengerecht zusammen?"
+            "Kardiologische Sprache wirkt stark, wenn Symptom, Risiko und Plan in wenigen klaren Saetzen verbunden werden.",
+            "Vergangene Ereignisse wie Stent, Infarkt oder Rhythmusstoerung muessen muendlich abrufbar und sauber einordenbar sein.",
+            "Der diagnostische Pfad mit EKG, Labor, Monitoring oder Echo sollte transparent und patientengerecht erklaert werden.",
+            "Auch Warnzeichen fuer zuhause gehoeren zu einer vollstaendigen kardiologischen Kommunikation."
           ]
         }
       ],
@@ -91,33 +79,21 @@
       ],
       "question_groups": [
         {
-          "title": "Leitsymptome und Verlauf",
+          "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Wie unterscheiden Sie akute von chronischer Dyspnoe sprachlich?",
-            "Wie erfragen Sie Hustenqualitaet und Auswurf strukturiert?",
-            "Welche Trigger sind fuer Atemnot wichtig?",
-            "Wie dokumentieren Sie Belastbarkeit alltagsnah?",
-            "Wie fragen Sie nach Infektzeichen und Expositionen?"
+            "Bei respiratorischen Beschwerden stehen Atemarbeit, Sauerstofflage, Hustenqualitaet, Auswurf und Begleitsymptome im Vordergrund.",
+            "Beginn, Verlauf, Trigger und Belastbarkeit geben der Anamnese ihre Grundstruktur.",
+            "Infektzeichen, Brustschmerz oder ploetzliche Verschlechterung gehoeren frueh in die Red-Flag-Logik.",
+            "Die respiratorische Einschaetzung lebt von frueher Priorisierung und nicht von spaetem Nachfragen."
           ]
         },
         {
-          "title": "Alarmzeichen",
+          "title": "Was sprachlich tragen soll",
           "questions": [
-            "Welche Zeichen sprechen fuer akute respiratorische Gefaehrdung?",
-            "Wie erklaeren Sie dem Patienten die Dringlichkeit ohne Panik?",
-            "Wie priorisieren Sie Differentialdiagnosen sprachlich?",
-            "Welche Rolle spielt die Sauerstoffsaettigung in Ihrer Darstellung?",
-            "Wann ist sofortige stationaere Einweisung noetig?"
-          ]
-        },
-        {
-          "title": "Plan und Kommunikation",
-          "questions": [
-            "Wie formulieren Sie den diagnostischen Plan fuer den Patienten?",
-            "Wie uebergeben Sie den respiratorischen Fall an Kolleginnen?",
-            "Wie dokumentieren Sie Red Flags im Arztbrief?",
-            "Welche Rueckkehrkriterien fuer zuhause nennen Sie?",
-            "Wie sichern Sie das Verstaendnis am Ende aktiv ab?"
+            "Patienten sollten hoeren, warum Pulsoxymetrie, Untersuchung, Labor oder Bildgebung jetzt noetig sind.",
+            "Die Dringlichkeit wird ruhig, aber eindeutig kommuniziert.",
+            "In der Uebergabe zaehlen Atemnotgrad, Belastung, Warnzeichen und der erste Plan am meisten.",
+            "Eine gute respiratorische Kommunikation endet mit konkreten Rueckkehrkriterien."
           ]
         }
       ],
@@ -160,33 +136,21 @@
       ],
       "question_groups": [
         {
-          "title": "Leitsymptome",
+          "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Wie strukturieren Sie Oberbauch- versus Unterbauchbeschwerden?",
-            "Welche Fragen sind bei Uebelkeit/Erbrechen priorisiert?",
-            "Wie erheben Sie Stuhlveraenderungen praezise?",
-            "Wie fragen Sie nach Nahrungsbezug und Triggern?",
-            "Welche Rolle spielen Medikamente wie NSAR in der Anamnese?"
+            "Bei GI-Beschwerden sind Beginn, Lokalisation, Trigger, Erbrechen und Stuhlveraenderungen die Grundachse der Anamnese.",
+            "Blutungszeichen, Peritonismus und Kreislaufsymptome muessen frueh erkannt und priorisiert werden.",
+            "Auch Medikamente wie NSAR oder Antikoagulanzien koennen die klinische Richtung stark veraendern.",
+            "Das Modul lebt von der klaren Trennung zwischen stabilem Verlauf und akutem Warnmuster."
           ]
         },
         {
-          "title": "Alarmzeichen",
+          "title": "Was sprachlich tragen soll",
           "questions": [
-            "Welche Zeichen sprechen fuer akute GI-Blutung?",
-            "Wie erkennen Sie Hinweise auf Peritonitis sprachlich und klinisch?",
-            "Welche Kreislaufzeichen muessen dokumentiert werden?",
-            "Wie erklaeren Sie Dringlichkeit patientengerecht?",
-            "Wann ist sofortige stationaere Abklaerung noetig?"
-          ]
-        },
-        {
-          "title": "Plan",
-          "questions": [
-            "Wie begruenden Sie Sonographie und Labor im Erstschritt?",
-            "Wann kommunizieren Sie Endoskopie als naechsten Schritt?",
-            "Wie uebergeben Sie den GI-Fall strukturiert?",
-            "Wie dokumentieren Sie Warnzeichen im Arztbrief?",
-            "Welche Rueckkehrkriterien geben Sie fuer zuhause mit?"
+            "Labor, Sonographie und gegebenenfalls Endoskopie sollten ueber ihren Zweck und nicht ueber ihren Namen erklaert werden.",
+            "In der Uebergabe gehoeren Blutungszeichen, Bauchbefund und Plan in eine klare Reihenfolge.",
+            "Patienten profitieren von genauen Warnzeichen fuer Kreislauf, Schmerz und sichtbare Blutbeimengungen.",
+            "Eine gute GI-Kommunikation bleibt sachlich, geordnet und nicht dramatisch."
           ]
         }
       ],
@@ -228,33 +192,21 @@
       ],
       "question_groups": [
         {
-          "title": "Miktions- und Leitsymptome",
+          "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Wie erheben Sie Dysurie, Pollakisurie und Nykturie strukturiert?",
-            "Wie fragen Sie nach Harnmenge und Harnfarbe patientengerecht?",
-            "Wie integrieren Sie Flankenschmerz und Fieber in die Dringlichkeit?",
-            "Wie sprechen Sie Inkontinenz nicht wertend an?",
-            "Welche Fragen zur Trinkmenge und Medikation sind zentral?"
+            "Dysurie, Pollakisurie, Nykturie, Harnfarbe, Flankenschmerz, Fieber und Haematurie bilden den Kern des urogenitalen Moduls.",
+            "Trinkmenge, Medikation, Katheteranamnese und Vorerkrankungen liefern wichtige Zusatzrichtung.",
+            "Akuter Harnverhalt, Sepsisverdacht und ausgepraegte Blutung gehoeren in die erste Dringlichkeitsebene.",
+            "Intime Fragen wirken nur dann professionell, wenn ihr medizinischer Grund klar gemacht wird."
           ]
         },
         {
-          "title": "Risikofaktoren",
+          "title": "Was sprachlich tragen soll",
           "questions": [
-            "Welche Vorgeschichte ist fuer UTI-Rezidive wichtig?",
-            "Wie erfassen Sie Katheter- und OP-Anamnese?",
-            "Wie fragen Sie nach Steinleiden und Prostatahinweisen?",
-            "Wann sind gynaekologische Zusatzfragen noetig?",
-            "Wie stellen Sie sensible Fragen mit professioneller Distanz?"
-          ]
-        },
-        {
-          "title": "Akutplan",
-          "questions": [
-            "Wie benennen Sie urogenitale Red Flags in einfacher Sprache?",
-            "Welche Erstdiagnostik begruenden Sie im Gespraech?",
-            "Wie erklaeren Sie stationaere Aufnahme bei Sepsisverdacht?",
-            "Wie uebergeben Sie den Fall im Arzt-Arzt-Gespraech?",
-            "Wie dokumentieren Sie das Vorgehen kompakt im Arztbrief?"
+            "Die Sprache muss respektvoll bleiben und gleichzeitig klar genug sein, um peinliche Themen medizinisch verwertbar zu machen.",
+            "Urinstatus, Labor, Sonographie oder stationaeres Vorgehen sollten kurz und nachvollziehbar erklaert werden.",
+            "In der Uebergabe zaehlen Symptomkombination, Schweregrad und weiterer Plan mehr als Detailaufzaehlungen.",
+            "Auch hier sind eindeutige Rueckkehrkriterien Teil einer vollstaendigen Kommunikation."
           ]
         }
       ],
@@ -297,33 +249,21 @@
       ],
       "question_groups": [
         {
-          "title": "Leitsymptome",
+          "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Wie erheben Sie den Beginn neurologischer Symptome zeitlich exakt?",
-            "Wie fragen Sie nach sprachlichen und motorischen Ausfaellen?",
-            "Welche Begleitsymptome sind bei Kopfschmerz wichtig?",
-            "Wie differenzieren Sie Schwindelqualitaeten in der Anamnese?",
-            "Welche Fragen helfen bei Verdacht auf Krampfanfall?"
+            "Im neurologischen Modul tragen Zeitachse, fokale Defizite, Kopfschmerzcharakter und Bewusstseinslage die klinische Logik.",
+            "Auch Krampfanfall, Sprachstoerung und Antikoagulation koennen die Dringlichkeit sofort veraendern.",
+            "Die neurologische Basisstruktur muss schnell zwischen harmloserem Verlauf und neurovaskulaerem Notfall unterscheiden.",
+            "Fuer Berlin ist hier weniger Breite als klare Priorisierung entscheidend."
           ]
         },
         {
-          "title": "Dringlichkeit",
+          "title": "Was sprachlich tragen soll",
           "questions": [
-            "Welche neurologischen Red Flags muessen sofort kommuniziert werden?",
-            "Wie begruenden Sie CCT/MRT im Akutfall sprachlich korrekt?",
-            "Wie erklaeren Sie die Zeitkritik bei Stroke-Verdacht?",
-            "Wie trennen Sie unscharfe von belastbaren Befunden?",
-            "Wie formulieren Sie Priorisierung gegenueber Kolleginnen?"
-          ]
-        },
-        {
-          "title": "Dokumentation und Uebergabe",
-          "questions": [
-            "Wie strukturieren Sie neurologische Kernbefunde fuer den Arztbrief?",
-            "Wie fassen Sie den Verlauf in zwei Saetzen zusammen?",
-            "Welche Formulierungen sind fuer die Arzt-Arzt-Uebergabe besonders geeignet?",
-            "Wie dokumentieren Sie Sicherheitsaufklaerung bei Entlassung?",
-            "Wie sichern Sie Verstaendnis beim Patienten ab?"
+            "Defizite sollten moeglichst konkret benannt und nicht hinter Sammelbegriffen versteckt werden.",
+            "Patienten muessen verstehen, warum Bildgebung oder Stroke-Abklaerung jetzt Zeit gewinnt.",
+            "In der Uebergabe stehen letzter unauffaelliger Zeitpunkt, Kernbefund und Akutplan an erster Stelle.",
+            "Neurologische Sprache wirkt stark, wenn sie kurz, konkret und ohne Spekulation bleibt."
           ]
         }
       ],
@@ -366,33 +306,21 @@
       ],
       "question_groups": [
         {
-          "title": "Symptomcluster",
+          "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Wie differenzieren Sie Hyper- und Hypothyreose in der Anamnese?",
-            "Welche Fragen sind bei vermutetem Diabetes essenziell?",
-            "Wie erfassen Sie Verlauf und Therapieadhaerenz?",
-            "Wie sprechen Sie Gewichtsveraenderungen klinisch sinnvoll an?",
-            "Welche vegetativen Symptome sind besonders richtungsweisend?"
+            "Durst, Polyurie, Gewichtsveraenderung, Erschoepfung, Hypoglykaemiesymptome und Schilddruesenbeschwerden bilden die Basis dieses Moduls.",
+            "Medikation, Adhaerenz und Vorerkrankungen sind fuer endokrine Themen oft genauso wichtig wie das Leitsymptom selbst.",
+            "Akute Entgleisung und langfristige Stoffwechselsteuerung muessen sprachlich auseinandergehalten werden.",
+            "Gerade bei endokrinen Themen traegt semantische Praezision mehr als spektakulaere Notfallsprache."
           ]
         },
         {
-          "title": "Sicherheit",
+          "title": "Was sprachlich tragen soll",
           "questions": [
-            "Welche Warnzeichen bei Hypoglykaemie muessen aktiv abgefragt werden?",
-            "Wie erklaeren Sie Hyperglykaemie-Risiken patientengerecht?",
-            "Wann ist stationaeres Vorgehen noetig?",
-            "Wie formulieren Sie Medikamentenfehler ohne Vorwurf?",
-            "Wie koppeln Sie Laborplanung an die Symptomatik?"
-          ]
-        },
-        {
-          "title": "Langzeitplan",
-          "questions": [
-            "Wie erklaeren Sie Kontrollintervalle in einfacher Sprache?",
-            "Wie kommunizieren Sie Zielwerte ohne Ueberforderung?",
-            "Welche Rolle haben Lebensstilfaktoren in Ihrer Formulierung?",
-            "Wie uebergeben Sie endokrine Kernpunkte im Arzt-Arzt-Gespraech?",
-            "Wie dokumentieren Sie den Therapieplan knapp im Arztbrief?"
+            "Patienten sollten verstehen, welche Beschwerden akut sind und welche eher fuer die laengerfristige Einstellung relevant bleiben.",
+            "Labor, Verlaufskontrollen und Therapieanpassung muessen ruhig und nachvollziehbar erklaert werden.",
+            "In der Uebergabe ist die Verbindung aus Symptomcluster, Stoffwechsellage und Plan entscheidend.",
+            "Gute endokrinologische Sprache bleibt klar, konkret und ohne unnoetige Lehrbuchschwere."
           ]
         }
       ],
@@ -435,33 +363,21 @@
       ],
       "question_groups": [
         {
-          "title": "Leitsymptome und Funktion",
+          "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Wie erheben Sie Schmerzmechanismus und Belastungsbezug systematisch?",
-            "Wie erfassen Sie alltagsrelevante Funktionseinschraenkung?",
-            "Wie unterscheiden Sie akute von chronischen Verlaeufen?",
-            "Welche Begleitsymptome sind fuer Entzuendung oder Trauma wichtig?",
-            "Wie dokumentieren Sie den klinischen Schweregrad praezise?"
+            "Im muskuloskelettalen Bereich tragen Schmerzort, Ausloeser, Funktionseinschraenkung, Schwellung und neurovaskulaerer Status die Grundstruktur.",
+            "Traumamechanismus, Belastbarkeit und zeitlicher Verlauf liefern schnell Richtung fuer die weitere Einschaetzung.",
+            "Wichtig ist die klare Trennung zwischen lokalem Beschwerdebild und Warnzeichen fuer Fraktur, Infektion oder neurologische Beteiligung.",
+            "Dieses Modul wird klinisch stark, wenn Untersuchung und Alltagseinschraenkung zusammen gedacht werden."
           ]
         },
         {
-          "title": "Untersuchung und Red Flags",
+          "title": "Was sprachlich tragen soll",
           "questions": [
-            "Wie strukturieren Sie Inspektion, Palpation und Funktionstest sprachlich?",
-            "Welche Zeichen sprechen fuer neurovaskulaere Gefaehrdung?",
-            "Wann muss bei Gelenkbeschwerden dringlich eskaliert werden?",
-            "Wie kommunizieren Sie den Bedarf an Bildgebung?",
-            "Welche Warnzeichen benennen Sie dem Patienten klar?"
-          ]
-        },
-        {
-          "title": "Prozedurale Sprache",
-          "questions": [
-            "Wie erklaeren Sie Arthroskopie in patientennaher Sprache?",
-            "Wie unterscheiden Sie konservative von operativer Therapie im Gespraech?",
-            "Wie uebergeben Sie den muskuloskelettalen Fall an Kollegen?",
-            "Wie dokumentieren Sie Eingriffe im Arztbrief korrekt?",
-            "Wie formulieren Sie Nachsorge und Belastungsaufbau verstaendlich?"
+            "Patienten brauchen kurze, klare Anweisungen bei Bewegungspruefung und Schmerzprovokation.",
+            "Bildgebung, Schonung, Analgesie oder Immobilisation muessen ueber ihren Zweck und nicht nur ueber ihren Namen erklaert werden.",
+            "In der Uebergabe zaehlen Funktion, Schwellung, Untersuchung und Plan in einer logischen Reihenfolge.",
+            "Gute muskuloskelettale Sprache bleibt anschaulich, funktionell und nicht unnoetig kompliziert."
           ]
         }
       ],
