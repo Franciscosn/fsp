@@ -19,10 +19,9 @@
       "focus": "Kurze, klare Erklaerung von Zweck, Ablauf und Grenzen eines EKG",
       "summary": "Viele Kandidatinnen und Kandidaten nennen beim EKG nur den Namen der Untersuchung. In der Pruefung wird aber bewertet, ob die Patientin oder der Patient versteht, was genau passiert und warum diese Untersuchung jetzt sinnvoll ist.",
       "learning_text": [
-        "Ein gutes Aufklaerungsgespraech zum EKG beginnt mit dem Anlass und endet mit einer klaren Erwartungssteuerung. Ein pruefungsnaher Einstieg ist: Wir schreiben jetzt ein EKG, um Ihren Herzrhythmus und moegliche Durchblutungsstoerungen zu beurteilen. Damit weiss die Patientin sofort Ziel und medizinischen Kontext.",
-        "Im zweiten Schritt folgt die konkrete Ablauferklaerung in Patientensprache. Wichtig sind Elektroden auf Brust und Extremitaeten, kurze Dauer, keine Schmerzen und keine Strahlenbelastung. Sprachlich problematisch ist unscharfes Vokabular wie Wir gucken mal kurz. Besser ist ein strukturierter Ablauf in zwei bis drei kurzen Saetzen.",
-        "Der dritte Schritt ist die Abgrenzung von Aussage und Grenze der Untersuchung. Ein EKG kann richtungsweisend sein, ersetzt aber nicht jede weitere Diagnostik. Diese Differenzierung wirkt professionell und vermeidet falsche Sicherheit. In Berlin wird positiv gewertet, wenn Kandidaten plausibel erklaeren, warum bei unauffaelligem EKG je nach Klinik trotzdem weitere Schritte folgen.",
-        "Abschliessend sollte die Kandidatin aktiv auf Fragen eingehen und den naechsten Schritt nennen. Beispiel: Danach besprechen wir das Ergebnis gemeinsam und entscheiden, ob wir zusaetzlich Blutwerte oder weitere Diagnostik brauchen. Das verbindet medizinische Logik mit patientenzentrierter Kommunikation."
+        "Viele Kandidatinnen und Kandidaten nennen beim EKG nur den Namen der Untersuchung. In der Pruefung wird aber bewertet, ob die Patientin oder der Patient versteht, was genau passiert und warum diese Untersuchung jetzt sinnvoll ist. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Ein EKG wird erklaert als kurze Untersuchung von Herzrhythmus und moeglichen Durchblutungszeichen. Patienten sollten wissen, dass Elektroden auf Brust und Extremitaeten geklebt werden und die Untersuchung schmerzfrei ist. Wichtig ist der Hinweis, dass ein EKG schnell viele Informationen liefert, aber nicht jede Herzerkrankung allein ausschliesst.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Eine starke Formulierung lautet: Wir schreiben jetzt ein EKG, um Ihren Herzrhythmus und moegliche Belastungszeichen des Herzens zu beurteilen. Danach folgen Ablauf, Dauer und der Hinweis, dass waehrend der Ableitung moeglichst ruhig gelegen werden sollte. Im Anschluss wird angekuendigt, dass das Ergebnis sofort besprochen und bei Bedarf durch weitere Diagnostik ergaenzt wird."
       ],
       "question_groups": [
         {
@@ -60,11 +59,11 @@
         "online_kurs_bradykardie"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Thoraxschmerz in der Notaufnahme",
+        "title": "Transfer: EKG und Basis-Monitoring erklaeren",
         "situation": "Ein 59-jaehriger Patient berichtet ueber drueckenden Brustschmerz seit 45 Minuten und wirkt deutlich besorgt.",
-        "task_patient": "Erklaeren Sie in maximal vier Saetzen, warum sofort ein EKG geschrieben wird.",
-        "task_doctor": "Formulieren Sie eine strukturierte 30-Sekunden-Uebergabe mit EKG-Indikation und naechstem Schritt.",
-        "task_letter": "Dokumentieren Sie die Aufklaerung zum EKG in zwei praezisen Arztbrief-Saetzen."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: EKG-Dialogbeispiele",
@@ -77,10 +76,9 @@
       "focus": "Nutzen, Ablauf und Grenzen des Ultraschalls in einfacher Sprache",
       "summary": "Bei der Sonographie wird in der Pruefung oft erwartet, dass Sie technische Begriffe korrekt, aber patientennah erklaeren. Ziel ist eine beruhigende und gleichzeitig fachlich korrekte Kommunikation.",
       "learning_text": [
-        "Eine starke Sonographie-Erklaerung benennt zuerst den Nutzen fuer die aktuelle Beschwerde. Beispiel: Mit dem Ultraschall koennen wir Ihre Organe und Gefaesse ohne Strahlenbelastung anschauen. Diese Priorisierung hilft dem Patienten, den Sinn der Untersuchung sofort zu verstehen.",
-        "Im Ablauf sollten Gel, Schallkopf, eventuell Druckgefuehl und die typische Untersuchungsdauer erwaehnt werden. Unnoetig detailreiche Physikerklaerungen kosten Zeit und bringen in der FSP keinen Mehrwert. Entscheidend ist sprachliche Sicherheit und Struktur.",
-        "Wichtig ist ausserdem die Erwartungssteuerung: Sonographie ist oft eine sehr gute erste Bildgebung, aber nicht in jeder Situation ausreichend. Kandidaten sollten transparent sagen, wann bei unklaren Befunden zusaetzlich CT oder MRT erforderlich sein kann.",
-        "Bei angespannten Patienten wirkt eine kurze Sicherheitsschleife professionell: Wenn etwas unangenehm ist, sagen Sie mir bitte sofort Bescheid. Diese Formulierung verbindet Empathie mit klarer Rollensicherheit."
+        "Bei der Sonographie wird in der Pruefung oft erwartet, dass Sie technische Begriffe korrekt, aber patientennah erklaeren. Ziel ist eine beruhigende und gleichzeitig fachlich korrekte Kommunikation. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Die Sonographie wird als strahlenfreie Untersuchung erklaert, mit der Organe, Gefaesse oder Fluessigkeit schnell beurteilt werden koennen. Patienten sollten Gel, Schallkopf und moegliches leichtes Druckgefuehl kennen, damit der Ablauf vorhersehbar bleibt. Je nach Fragestellung gehoeren Hinweise zu Nuechternheit oder Blasenfuellung in die Erklaerung.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Die Erklaerung startet mit dem Nutzen fuer die aktuelle Beschwerde und nicht mit technischer Physik. Im Gespraech reichen kurze Saetze zu Gel, Dauer und fehlender Strahlenbelastung meist voellig aus. Patienten sollten aktiv eingeladen werden, unangenehme Druckstellen sofort anzusprechen."
       ],
       "question_groups": [
         {
@@ -115,11 +113,11 @@
         "online_kurs_angioplastie"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Oberbauchschmerz",
+        "title": "Transfer: Sonographie verstaendlich erklaeren",
         "situation": "Eine 43-jaehrige Patientin stellt sich mit akutem rechten Oberbauchschmerz und Uebelkeit vor.",
-        "task_patient": "Erklaeren Sie den geplanten Oberbauch-Ultraschall in drei bis vier klaren Saetzen.",
-        "task_doctor": "Uebergeben Sie knapp, warum Sonographie zuerst erfolgt und wann CT folgen sollte.",
-        "task_letter": "Dokumentieren Sie die Aufklaerung und das Einverstaendnis in einem kurzen Absatz."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Sonographie-Aufklaerung",
@@ -132,10 +130,9 @@
       "focus": "Vergleich von Bildgebung, Strahlenaspekten und patientengerechter Nutzenkommunikation",
       "summary": "Dieser Bereich ist in der FSP besonders wichtig, weil hier medizinische Praezision und Laienverstaendlichkeit kollidieren. Gute Kandidaten unterscheiden Zweck, Belastung und Dringlichkeit klar.",
       "learning_text": [
-        "In der Pruefung sollten CT, MRT und Roentgen nicht als austauschbar dargestellt werden. Das CT ist schnell und in Notfallsituationen oft erste Wahl, das MRT bietet hohe Weichteilaufloesung ohne ionisierende Strahlung, braucht aber mehr Zeit. Diese Kernunterscheidung sollte sprachlich sicher abrufbar sein.",
-        "Zur Strahlenkommunikation gilt: ehrlich, ruhig, ohne Dramatisierung. Ein geeigneter Satz ist: Beim CT wird Roentgenstrahlung verwendet, wir setzen die Untersuchung aber nur ein, wenn der diagnostische Nutzen klar ueberwiegt. So wirkt die Aufklaerung medizinisch korrekt und vertrauensbildend.",
-        "Bei MRT-bezogenen Aengsten sind Klaustrophobie, Geraeuschpegel und Liegedauer relevant. Gute Kommunikation kombiniert Vorbereitung und Handlungsoptionen, zum Beispiel Notklingel, Pausenmoeglichkeit oder beruhigende Begleitung. Kandidaten punkten, wenn sie konkrete Entlastungsstrategien anbieten.",
-        "Zum Abschluss gehoert eine klare Antwort auf die Frage Was passiert danach. Wer den Befundpfad und die naechsten Entscheidungen transparent ankoppelt, zeigt klinische und sprachliche Handlungsfaehigkeit zugleich."
+        "Dieser Bereich ist in der FSP besonders wichtig, weil hier medizinische Praezision und Laienverstaendlichkeit kollidieren. Gute Kandidaten unterscheiden Zweck, Belastung und Dringlichkeit klar. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Roentgen, CT und MRT muessen sauber voneinander unterschieden werden: einfaches Bild, schnelle Schnittbilddiagnostik mit Strahlung und detailreiche Weichteilbildgebung ohne Strahlung. Die Wahl der Methode wird ueber Fragestellung, Dringlichkeit und Belastung fuer den Patienten erklaert. Beim CT gehoeren Strahlenaspekt und moegliches Kontrastmittel offen in die Aufklaerung.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Gute Kandidaten sagen nicht nur, welche Bildgebung geplant ist, sondern warum gerade diese Methode jetzt sinnvoll ist. Strahlenbelastung wird ruhig und verhaeltnismaessig erklaert, ohne zu verharmlosen oder zu dramatisieren. Patienten profitieren von klaren Hinweisen zu Lagerung, Kontrastmittel, Dauer und moeglichen Empfindungen waehrend der Untersuchung."
       ],
       "question_groups": [
         {
@@ -171,11 +168,11 @@
         "online_kurs_ophthalmoskopie"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Akuter neurologischer Ausfall",
+        "title": "Transfer: CT, MRT und Roentgen erklaeren",
         "situation": "Ein 68-jaehriger Patient entwickelt ploetzlich Dysarthrie und Halbseitenschwaeche.",
-        "task_patient": "Erklaeren Sie die dringliche CT-Indikation in patientenverstaendlicher Sprache.",
-        "task_doctor": "Uebergeben Sie den Bildgebungsplan in 20-30 Sekunden an den Oberarzt.",
-        "task_letter": "Dokumentieren Sie Aufklaerung, Einwilligung und Dringlichkeit sprachlich sauber."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: CT/MRT-Vergleich und Dialog",
@@ -188,10 +185,9 @@
       "focus": "Indikation, Sedierung, Risiken und Befundkommunikation bei endoskopischen Verfahren",
       "summary": "Im Fachsprachkurs wurden Gastroskopie-Gespraeche mehrfach geuebt. Entscheidend ist, dass Kandidaten Zweck, Ablauf, Unannehmlichkeiten und Risiken strukturiert und ohne Ausweichen kommunizieren.",
       "learning_text": [
-        "Die Endoskopie-Aufklaerung sollte mit dem diagnostischen Ziel starten, etwa Blutungsquelle finden, Entzuendung beurteilen oder Gewebeprobe gewinnen. Der Nutzen muss konkret am Fall orientiert sein. Allgemeine Floskeln ohne Fallbezug wirken in der Pruefung unsicher.",
-        "Danach folgt der Ablauf: Nuechternheit, lokale Betaeubung und gegebenenfalls Sedierung, Einfuehrung des Endoskops, Beobachtungsphase nach dem Eingriff. Diese Sequenz sollte in klarer Reihenfolge und mit alltagssprachlichen Begriffen erklaert werden.",
-        "Risikokommunikation ist Pflicht: Blutung, Perforation, Aspiration, Kreislaufreaktionen, Nachwirkungen der Sedierung. In der FSP geht es nicht um juristische Vollstaendigkeit, sondern um sprachlich saubere, ehrliche und angemessen gewichtete Aufklaerung.",
-        "Zum Schluss gehoeren Nachsorge und Sicherheitsnetz in einfacher Sprache dazu, zum Beispiel Verkehrsfaehigkeit nach Sedierung, Warnzeichen und Zeitpunkt der Befundbesprechung."
+        "Im Fachsprachkurs wurden Gastroskopie-Gespraeche mehrfach geuebt. Entscheidend ist, dass Kandidaten Zweck, Ablauf, Unannehmlichkeiten und Risiken strukturiert und ohne Ausweichen kommunizieren. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Die Gastroskopie wird erklaert als Spiegelung von Speiseroehre, Magen und Zwolfingerdarm mit moeglicher Probenentnahme. Nuechternheit, Rachenspray und moegliche Sedierung gehoeren frueh in die Aufklaerung. Wuergereiz, Druckgefuehl und kurze Nachbeobachtung sollten offen benannt werden, weil genau davor viele Patienten Respekt haben.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Die sprachlich starke Struktur lautet: Zweck, Ablauf, Unannehmlichkeiten, Risiken und Verhalten nach der Untersuchung. Ein beruhigender Satz kann sein, dass die Untersuchung eng ueberwacht wird und bei Bedarf mit Beruhigungsmittel erfolgt. Patienten sollten wissen, dass sie nach Sedierung nicht sofort aktiv am Strassenverkehr teilnehmen duerfen."
       ],
       "question_groups": [
         {
@@ -227,11 +223,11 @@
         "online_kurs_venenpunktion"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Melena und Anaemie",
+        "title": "Transfer: Endoskopie und Gastroskopie aufklaeren",
         "situation": "Eine 57-jaehrige Patientin berichtet ueber Teerstuhl, Schwindel und Leistungsabfall.",
-        "task_patient": "Erklaeren Sie die Gastroskopie-Indikation und das Procedere in klarer Patientensprache.",
-        "task_doctor": "Stellen Sie den Aufklaerungsstand und das Risikoprofil strukturiert dem Oberarzt vor.",
-        "task_letter": "Erstellen Sie drei kurze Arztbrief-Saetze zur Aufklaerung inklusive Einwilligung."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Gastroskopie-Aufklaerung",
@@ -244,10 +240,9 @@
       "focus": "Indikation, Ablauf, Sicherheit und Komplikationen in klarer Sprache",
       "summary": "Die Lumbalpunktion ist sprachlich anspruchsvoll, weil viele Patienten Sorge vor Schmerzen oder neurologischen Schaeden haben. Pruefungsrelevant ist eine ruhige, strukturierte und sachlich praezise Erklaerung.",
       "learning_text": [
-        "Starten Sie mit der diagnostischen Leitfrage: Wir benoetigen Nervenwasser, um Entzuendung, Infektion oder andere Ursachen Ihrer Beschwerden besser einordnen zu koennen. Das schafft inhaltliche Orientierung.",
-        "Im Ablauf sollten Lagerung, sterile Bedingungen, lokale Betaeubung, kurze Punktion und anschliessende Beobachtung genannt werden. Die Kandidatin muss dabei einfach formulieren, aber fachlich korrekt bleiben.",
-        "Risikoseitig sind postpunktioneller Kopfschmerz, lokale Schmerzen, selten Blutung oder Infektion zu nennen. Entscheidend ist die sprachliche Balance zwischen Transparenz und Beruhigung. Pauschale Aussagen wie Das ist ganz harmlos sind in der FSP eher negativ.",
-        "Zum Ende gehoeren klare Hinweise zu Nachbeobachtung, Warnzeichen und Befundbesprechung. Damit wird aus einer rein technischen Erklaerung ein vollstaendiges Aufklaerungsgespraech."
+        "Die Lumbalpunktion ist sprachlich anspruchsvoll, weil viele Patienten Sorge vor Schmerzen oder neurologischen Schaeden haben. Pruefungsrelevant ist eine ruhige, strukturierte und sachlich praezise Erklaerung. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Die Lumbalpunktion wird erklaert als Entnahme von Nervenwasser im unteren Rueckenbereich und nicht als Eingriff am Rueckenmark. Wichtig sind Indikation, Lagerung, kurzer Einstich und moegliches Druckgefuehl waehrend der Punktion. Viele Patienten brauchen die klare Information, dass neurologische Schaeden nicht das typische Risiko dieser Untersuchung sind.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Die Aufklaerung sollte Aengste aktiv aufnehmen und in einfache, sachliche Sprache uebersetzen. Hilfreich ist eine Schritt-fuer-Schritt-Erklaerung mit dem Hinweis, dass die Stelle lokalisiert und unter sterilen Bedingungen punktiert wird. Nach der Punktion sollten Beobachtung, moegliche Beschwerden und das weitere Verhalten angesprochen werden."
       ],
       "question_groups": [
         {
@@ -283,11 +278,11 @@
         "online_kurs_elektroneurographie_eng"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Fieber, Nackensteife, Kopfschmerz",
+        "title": "Transfer: Lumbalpunktion und Liquordiagnostik erklaeren",
         "situation": "Ein 31-jaehriger Patient zeigt klinische Zeichen eines Meningitisverdachts.",
-        "task_patient": "Erklaeren Sie LP-Indikation und Risiken in klarer, nicht dramatisierender Sprache.",
-        "task_doctor": "Uebergeben Sie kurz die rationale Reihenfolge aus CT/LP/Antibiotikatherapie.",
-        "task_letter": "Dokumentieren Sie die Aufklaerung zur LP inklusive Warnzeichen nach dem Eingriff."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Lumbalpunktion-Dialog",
@@ -300,10 +295,9 @@
       "focus": "Schmerzerleichterung, Ablauf, Risiken und Entscheidungshoheit der Patientin",
       "summary": "Im PDF war die PDA-Aufklaerung als Dialog enthalten. Dieses Thema trainiert, wie man bei Unsicherheit der Patientin professionell, empathisch und gleichzeitig strukturiert informiert.",
       "learning_text": [
-        "Bei der PDA-Aufklaerung ist das kommunikative Grundprinzip: Entscheidungshilfe statt Ueberreden. Die Kandidatin erklaert Nutzen, Grenzen und Alternativen, bleibt aber neutral und respektiert die Entscheidung der Patientin.",
-        "Sprachlich sollte der Ablauf in drei Teilen kommen: Vorbereitung, Anlage, Wirkungskontrolle. Medizinische Detailtiefe darf vorhanden sein, muss aber in patientenfreundlicher Form bleiben. Zu technische Sprache ohne Erklaerung fuehrt in der FSP oft zu Punktverlust.",
-        "Wesentliche Risiken sind Blutdruckabfall, Kopfschmerz, unvollstaendige Wirkung, selten neurologische Komplikationen. Die Formulierung sollte klar sein: seltene Komplikationen werden genannt, aber nicht dramatisiert.",
-        "Ein starker Abschluss ist die aktive Verstaendnissicherung: Was ist fuer Sie aktuell noch unklar, bevor Sie entscheiden? Das zeigt Professionalitaet und macht das Gespraech pruefungsnah."
+        "Im PDF war die PDA-Aufklaerung als Dialog enthalten. Dieses Thema trainiert, wie man bei Unsicherheit der Patientin professionell, empathisch und gleichzeitig strukturiert informiert. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Die PDA wird als Methode der regionalen Schmerzlinderung erklaert, bei der Medikamente ueber einen Katheter in Rueckennaehe gegeben werden. Die Entscheidungshoheit der Patientin ist zentral und sollte ausdruecklich sprachlich gesichert werden. Wichtig sind Lagerung, lokale Betaeubung, moeglicher Wirkungseintritt und das Ziel einer deutlich besseren Schmerzsteuerung.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Das Gespraech wirkt stark, wenn Empathie und Struktur gleichzeitig spuerbar bleiben. Die PDA sollte weder als Pflicht noch als risikofreier Komfort dargestellt werden, sondern als bewusst waehbare Option. Eine gute Formulierung benennt, dass waehrend Wirkung und Kreislauf eng kontrolliert werden."
       ],
       "question_groups": [
         {
@@ -339,11 +333,11 @@
         "online_kurs_hypotonie"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Geburtsaufklaerung",
+        "title": "Transfer: PDA und Regionalanaesthesie aufklaeren",
         "situation": "Eine Erstgebaerende fragt in der Kreissaalaufnahme gezielt nach einer PDA.",
-        "task_patient": "Fuehren Sie ein kurzes, strukturiertes PDA-Aufklaerungsgespraech mit Verstaendnissicherung.",
-        "task_doctor": "Berichten Sie dem Oberarzt die Entscheidungslage und den Aufklaerungsstand.",
-        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in zwei bis drei Saetzen."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: PDA-Dialog",
@@ -356,10 +350,9 @@
       "focus": "Sichere Aufklaerung zu Allergie, Nierenfunktion und Beobachtung nach Gabe",
       "summary": "Kontrastmittelaufklaerung wird oft zu allgemein gefuehrt. In der FSP zaehlt, dass Sie konkrete Risikofragen stellen, Nutzen begruenden und den Ueberwachungsplan verstaendlich machen.",
       "learning_text": [
-        "Die Aufklaerung zu Kontrastmitteln beginnt mit der Indikation: Das Kontrastmittel verbessert die Aussagekraft der Untersuchung. Ohne diese Begruendung wirkt das Gespraech formal, aber nicht patientenzentriert.",
-        "Danach werden Risikofaktoren aktiv erfragt: fruehere Reaktionen, bekannte Allergien, Nierenfunktion, Schilddruesenerkrankungen und relevante Medikamente. Sprachlich sollte klar sein, dass diese Fragen Sicherheitszwecken dienen.",
-        "Bei der Risikokommunikation geht es um Proportion: meist gut vertraeglich, dennoch moegliche Nebenwirkungen wie Uebelkeit, Waermegefuehl oder selten allergische Reaktionen. Gute Kandidaten nennen zudem, was das Team bei Reaktionen sofort unternimmt.",
-        "Ein professioneller Abschluss enthaelt Beobachtungszeit, Trinkempfehlung und klare Warnzeichen fuer zu Hause. Dadurch wird die Aufklaerung vollstaendig und alltagstauglich."
+        "Kontrastmittelaufklaerung wird oft zu allgemein gefuehrt. In der FSP zaehlt, dass Sie konkrete Risikofragen stellen, Nutzen begruenden und den Ueberwachungsplan verstaendlich machen. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Kontrastmittel wird erklaert als Zusatzstoff, der bestimmte Strukturen in der Bildgebung besser sichtbar macht. Risikofragen zu Allergien, frueheren Reaktionen und Nierenfunktion gehoeren vor jeder Gabe geordnet in die Aufklaerung. Patienten sollten auf typische, meist harmlose Empfindungen wie Waermegefuehl oder metallischen Geschmack vorbereitet werden.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Sprachlich stark ist eine konkrete Nutzenkommunikation: Das Kontrastmittel hilft uns, die entscheidende Frage auf dem Bild sicherer zu beantworten. Risikofragen werden nicht pauschal, sondern nachvollziehbar und zielgerichtet gestellt. Patienten sollten wissen, welche Symptome waehrend oder nach der Untersuchung sofort gemeldet werden muessen."
       ],
       "question_groups": [
         {
@@ -395,11 +388,11 @@
         "online_kurs_hypothyreose"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: CT-Angiographie geplant",
+        "title": "Transfer: Kontrastmittel, Risiken und Einwilligung",
         "situation": "Bei Verdacht auf Lungenembolie ist eine CT-Angiographie vorgesehen.",
-        "task_patient": "Erklaeren Sie Kontrastmittelgabe, Nutzen und Sicherheitsabfrage in patientenfreundlicher Sprache.",
-        "task_doctor": "Uebergeben Sie kurz Risikoprofil und geplantes Monitoring.",
-        "task_letter": "Dokumentieren Sie Aufklaerung und Einwilligung inklusive Nachsorgehinweisen."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Diagnostikerklaerungen",
@@ -412,10 +405,9 @@
       "focus": "Transoesophageale Echokardiographie erklaeren, nuechtern vorbereiten und Risiken benennen",
       "summary": "Die TEE ist sprachlich anspruchsvoll, weil Nutzen, Vorbereitung, Sedierung und seltene Risiken zusammenkommen. In der FSP punktet hier eine ruhige, sehr klare Schritt-fuer-Schritt-Erklaerung.",
       "learning_text": [
-        "Ein guter Einstieg zur TEE benennt zuerst den diagnostischen Mehrwert: Wir koennen Ihr Herz ueber die Speiseroehre genauer beurteilen als von aussen durch den Brustkorb. Damit wird der Eingriff sofort medizinisch plausibel.",
-        "Danach folgt die Vorbereitung in logischer Reihenfolge: nuechtern bleiben, Rachenbetaeubung oder leichte Sedierung, dann vorsichtige Einfuehrung der Sonde. Diese Struktur nimmt Angst und verhindert eine technische Reizueberflutung.",
-        "Wichtig ist die Balance bei den Risiken. Die Untersuchung ist in der Regel gut durchfuehrbar, aber Sie sollten seltene Komplikationen wie Verletzung der Speiseroehre, Aspiration oder Rhythmusstoerungen ehrlich und knapp benennen.",
-        "Stark wirkt eine klare Abschlussformel: Wir ueberwachen Sie waehrend und nach der Untersuchung, und ich bespreche das Ergebnis anschliessend mit Ihnen. Das verbindet Sicherheit, Empathie und klinische Fuehrung."
+        "Die TEE ist sprachlich anspruchsvoll, weil Nutzen, Vorbereitung, Sedierung und seltene Risiken zusammenkommen. In der FSP punktet hier eine ruhige, sehr klare Schritt-fuer-Schritt-Erklaerung. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Die TEE wird als Ultraschalluntersuchung ueber die Speiseroehre erklaert, die besonders genaue Herzbilder ermoeglicht. Der Nutzen liegt in der besseren Beurteilbarkeit von Klappen, Vorhoefen, Thromben oder Endokarditiszeichen. Nuechternheit, Rachenspray, moegliche Sedierung und Nachbeobachtung gehoeren klar zur Vorbereitung.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Die Erklaerung startet mit dem diagnostischen Mehrwert und fuehrt dann ruhig durch Vorbereitung und Ablauf. Wuergereiz und Druckgefuehl werden benannt, aber gleichzeitig als gut steuerbar und ueberwacht eingeordnet. Patienten sollten wissen, wann sie nach Sedierung wieder essen, trinken oder aktiv am Alltag teilnehmen duerfen."
       ],
       "question_groups": [
         {
@@ -449,11 +441,11 @@
         "online_kurs_arteriosklerose"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Vorhofthrombus ausschliessen",
+        "title": "Transfer: TEE patientengerecht aufklaeren",
         "situation": "Vor geplanter Kardioversion soll ein Vorhofthrombus ausgeschlossen werden.",
-        "task_patient": "Erklaeren Sie Nutzen, Nuechternheit und Ablauf der TEE in maximal fuenf Saetzen.",
-        "task_doctor": "Uebergeben Sie Indikation, Sedierungsplan und Risiken knapp an den Oberarzt.",
-        "task_letter": "Dokumentieren Sie die TEE-Aufklaerung in drei praezisen Saetzen."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Info: Aufklaerungen komplett.docx",
@@ -466,10 +458,9 @@
       "focus": "Thrombose- und Gefaessdiagnostik verstaendlich, beruhigend und zielgerichtet erklaeren",
       "summary": "Diese Sonographie-Formen sind inhaltlich einfach, sprachlich aber sehr nuetzlich: Sie verbinden Diagnostik, Patientenerklaerung und Befundlogik in wenigen Saetzen.",
       "learning_text": [
-        "Die Patientenerklaerung sollte mit der klinischen Frage beginnen: Wir wollen sehen, ob das Blut in den Gefaessen normal fliesst oder ob ein Gefaess verengt oder verschlossen ist. Damit ist der Sinn sofort klar.",
-        "Bei der Kompressionssonographie sollten Sie erwaehnen, dass mit dem Schallkopf leicht auf die Vene gedrueckt wird. Ein kurzes Druckgefuehl ist moeglich, die Untersuchung ist aber normalerweise gut auszuhalten.",
-        "Bei der Dopplersonographie helfen einfache Bilder: Das Geraet zeigt uns nicht nur das Gefaess, sondern auch die Richtung und Geschwindigkeit des Blutflusses. Zu technische Farbcodierungsdetails sind selten noetig.",
-        "Sehr gut wirkt eine klare Ueberleitung vom Befund zur Handlung: Falls wir einen Thrombus sehen, muessen wir die Behandlung sofort anpassen. So verbinden Sie Untersuchung und klinische Konsequenz."
+        "Diese Sonographie-Formen sind inhaltlich einfach, sprachlich aber sehr nuetzlich: Sie verbinden Diagnostik, Patientenerklaerung und Befundlogik in wenigen Saetzen. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Die Venen- oder Dopplersonographie wird erklaert als strahlenfreie Untersuchung zum Nachweis oder Ausschluss einer Thrombose. Patienten sollten Schallkopf, Gel und moeglichen leichten Druck als normalen Teil des Ablaufs kennen. Der diagnostische Wert liegt in der schnellen Einschaetzung von Blutfluss und Venenkompression.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Sprachlich stark ist eine sehr knappe Verbindung von Beschwerdebild und Untersuchung, zum Beispiel bei Schwellung oder Schmerz im Bein. Die Belastung wird ehrlich, aber beruhigend beschrieben: meist schmerzarm, kurz und ohne Strahlenbelastung. Patienten sollten verstehen, dass ein auffaelliger Befund Konsequenzen fuer Therapie und Ueberwachung hat."
       ],
       "question_groups": [
         {
@@ -503,11 +494,11 @@
         "online_kurs_lungenembolie"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: geschwollenes Bein",
+        "title": "Transfer: Kompressions- und Dopplersonographie erklaeren",
         "situation": "Eine Patientin stellt sich mit einseitiger Beinschwellung und Schmerzen in der Wade vor.",
-        "task_patient": "Erklaeren Sie die geplante Ultraschalluntersuchung und ihren Zweck in einfacher Sprache.",
-        "task_doctor": "Uebergeben Sie klinischen Verdacht, Indikation und naechsten Schritt knapp.",
-        "task_letter": "Dokumentieren Sie die Aufklaerung zur Gefaesssonographie in zwei bis drei Saetzen."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Info: Aufklaerungen komplett.docx",
@@ -520,10 +511,9 @@
       "focus": "Einfache, alltagstaugliche Erklaerung einer Blutabnahme mit Nutzen, Ablauf und kleinen Risiken",
       "summary": "Gerade weil die Blutabnahme simpel wirkt, wird sie oft sprachlich schlampig erklaert. In der FSP kann man hier jedoch sehr gut zeigen, dass man auch kleine Schritte professionell und patientenfreundlich kommuniziert.",
       "learning_text": [
-        "Eine gute Blutabnahme-Erklaerung ist kurz, aber nicht laessig. Nennen Sie den Zweck zuerst: Wir wollen wichtige Blutwerte bestimmen, zum Beispiel Entzuendungszeichen, Blutarmut oder Organfunktionen.",
-        "Danach folgt der Ablauf: Stauschlauch, Desinfektion, kurze Punktion, Roehrchen, Druck auf die Stelle, Pflaster. Diese Reihenfolge ist leicht verstaendlich und klingt routiniert.",
-        "Risiken muessen nicht gross gemacht werden, sollten aber nicht fehlen: kurzer Schmerz, kleiner Bluterguss, selten Kreislaufreaktion. Wer das ruhig und knapp sagt, wirkt glaubwuerdig.",
-        "Besonders stark ist eine kleine Sicherheitsgeste: Wenn Ihnen schwindelig wird, sagen Sie bitte sofort Bescheid, dann lassen wir Sie dabei liegen. Genau solche Saetze machen klinische Sprache menschlich."
+        "Gerade weil die Blutabnahme simpel wirkt, wird sie oft sprachlich schlampig erklaert. In der FSP kann man hier jedoch sehr gut zeigen, dass man auch kleine Schritte professionell und patientenfreundlich kommuniziert. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Die Blutabnahme wird ueber den diagnostischen Zweck erklaert und nicht als leerer Routinetermin dargestellt. Ablauf, kurzer Stich, mehrere Roehrchen und kleiner Druckverband reichen fuer eine klare Basisaufklaerung voellig aus. Kleine Risiken wie Schmerz, Bluterguss oder selten Kreislaufprobleme werden offen, aber knapp benannt.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Eine gute Formulierung benennt direkt, welche medizinische Frage die Blutentnahme beantworten soll. Gerade bei einfachen Massnahmen zeigt sich sprachliche Qualitaet in Klarheit, Ruhe und Patientenfreundlichkeit. Auffaellige Ergebnisse werden spaeter mit Bedeutung und naechstem Schritt besprochen, nicht nur mitgeteilt."
       ],
       "question_groups": [
         {
@@ -557,11 +547,11 @@
         "online_kurs_niereninsuffizienz"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Kreislauflabiler Patient",
+        "title": "Transfer: Blutabnahme und Laboraufklaerung",
         "situation": "Ein Patient wirkt blass und schwaecht, Sie brauchen dringend Laborwerte.",
-        "task_patient": "Erklaeren Sie die Blutabnahme ruhig und in maximal vier Saetzen.",
-        "task_doctor": "Uebergeben Sie den Grund fuer die Blutabnahme und die wichtigsten Zielwerte kurz.",
-        "task_letter": "Dokumentieren Sie Blutabnahme und Aufklaerung knapp im Verlauf."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Info: Aufklaerungen komplett.docx",
@@ -574,10 +564,9 @@
       "focus": "Minimal-invasive Blinddarmoperation patientengerecht, klar und angstarm erklaeren",
       "summary": "Operative Aufklaerung ist in der FSP besonders stark, wenn Sie Struktur halten: warum operiert wird, wie die OP grob ablaeuft, welche Risiken bestehen und was danach passiert.",
       "learning_text": [
-        "Bei Verdacht auf Appendizitis sollte der Nutzen der Operation direkt benannt werden: Wir wollen den entzuendeten Wurmfortsatz entfernen, damit die Entzuendung nicht fortschreitet oder platzt. Diese medizinische Logik muss frueh kommen.",
-        "Danach beschreiben Sie den Ablauf vereinfacht: Vollnarkose, kleine Schnitte, Kamera und Instrumente, Entfernung des Wurmfortsatzes, anschliessende Ueberwachung. Zu viele technische Details bringen selten zusaetzlichen Nutzen.",
-        "Risiken sollten ehrlich, aber proportioniert genannt werden: Blutung, Infektion, Verletzung benachbarter Strukturen, Narkoserisiken und moeglicherweise ein offenes Vorgehen bei schwierigen Befunden. Eine ruhige Sprache ist hier entscheidend.",
-        "Der Abschluss umfasst Nachbehandlung, Schmerztherapie, kurze stationaere Beobachtung und Warnzeichen nach der OP. Gerade dieser Teil zeigt klinische Alltagstauglichkeit."
+        "Operative Aufklaerung ist in der FSP besonders stark, wenn Sie Struktur halten: warum operiert wird, wie die OP grob ablaeuft, welche Risiken bestehen und was danach passiert. Dieses Modul folgt einer ruhigen Reihenfolge aus Nutzen, Ablauf, Belastung und weiterem Plan.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Didaktischer Kern: Die Appendektomie wird erklaert als Entfernung des entzuendeten Blinddarmfortsatzes zur Vermeidung von Perforation und Folgekomplikationen. Patienten sollten verstehen, warum hier die Operation sinnvoller ist als weiteres Abwarten. Die Grunderklaerung umfasst Vollnarkose, meist laparoskopisches Vorgehen und den groben stationaeren Ablauf.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. So klingt es im Gespraech: Sprachlich stark ist die feste Reihenfolge: warum operiert wird, wie der Eingriff grob ablaeuft, welche Risiken bestehen und was danach passiert. Die Aufklaerung sollte genug Klarheit geben, ohne in operative Details oder Angstsprache abzurutschen. Patienten profitieren von Hinweisen zu Nahrungsverzicht, Nachbeobachtung, Mobilisation und Warnzeichen nach der OP."
       ],
       "question_groups": [
         {
@@ -611,11 +600,11 @@
         "online_kurs_peritonitis"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: akutes Abdomen",
+        "title": "Transfer: Appendektomie erklaeren",
         "situation": "Eine 24-jaehrige Patientin hat klinisch und laborchemisch einen starken Appendizitisverdacht.",
-        "task_patient": "Fuehren Sie ein kurzes Aufklaerungsgespraech zur laparoskopischen Appendektomie.",
-        "task_doctor": "Uebergeben Sie Verdacht, OP-Indikation und Risikoaufklaerung in 30 Sekunden.",
-        "task_letter": "Dokumentieren Sie die Operationsaufklaerung in drei bis vier Saetzen."
+        "task_patient": "Erklaeren Sie Zweck, Ablauf und Sicherheit in 3 bis 4 ruhigen, patientengerechten Saetzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche 30-Sekunden-Uebergabe mit Indikation und naechstem Schritt.",
+        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Info: Aufklaerungen komplett.docx",

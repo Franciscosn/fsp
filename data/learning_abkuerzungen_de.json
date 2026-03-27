@@ -23,10 +23,10 @@
       "focus": "AZ, EZ, RR, HF, AF, SpO2 und verwandte Kuerzel sicher verstehen und sauber aussprechen",
       "summary": "Gerade im Stationsalltag fuehren einfache Kuerzel oft zu Missverstaendnissen. In der FSP wirkt es sehr stark, wenn Sie Abkuerzungen nicht nur kennen, sondern in vollstaendige klinische Saetze uebersetzen koennen.",
       "learning_text": [
-        "Die wichtigsten Statusabkuerzungen gehoeren zur sprachlichen Grundausstattung: AZ fuer Allgemeinzustand, EZ fuer Ernaehrungszustand, RR fuer Blutdruck, HF fuer Herzfrequenz, AF fuer Atemfrequenz und SpO2 fuer periphere Sauerstoffsaettigung. Im Arzt-Arzt-Gespraech sollten Sie diese Kuerzel sicher erkennen, aber nicht inflationaer verwenden.",
-        "Pruefungsstark ist der Wechsel zwischen Kurzform und Vollsatz. Statt nur RR 160 zu sagen, formulieren Sie besser: Der Blutdruck liegt bei 160 zu 95 mmHg, also hypertensiv. Damit zeigen Sie klinische Einordnung und sprachliche Kontrolle.",
-        "Besonders fehleranfaellig sind Kuerzel mit Doppeldeutung oder aehnlichem Klang, zum Beispiel AF als Atemfrequenz und nicht Vorhofflimmern. Solche Stolpersteine gehoeren aktiv ins Training.",
-        "Fuer den Patientenkontakt gilt das Gegenteil: Dort sollten Sie Kuerzel fast immer aufloesen. Die Rueckuebersetzung in Alltagssprache ist ein eigener Teil der Kompetenz."
+        "Gerade im Stationsalltag fuehren einfache Kuerzel oft zu Missverstaendnissen. In der FSP wirkt es sehr stark, wenn Sie Abkuerzungen nicht nur kennen, sondern in vollstaendige klinische Saetze uebersetzen koennen. Hier werden Kuerzel nicht isoliert gelernt, sondern in Vollsaetze, Uebergaben und patientengerechte Rueckuebersetzungen eingeordnet.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was die wichtigsten Kuerzel bedeuten: AZ bedeutet Allgemeinzustand, EZ bedeutet Ernaehrungszustand; beide beschreiben den klinischen Gesamteindruck sehr knapp. RR, HF, AF und SpO2 gehoeren zum Basisstatus und sollten in jeder Akutsituation sicher erkannt und eingeordnet werden. AF steht in diesem Kontext fuer Atemfrequenz; solche Mehrdeutigkeiten sind typische Stolpersteine im Stationsalltag.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Wie daraus gute klinische Saetze werden: Starke Uebergaben nennen nicht nur Werte, sondern machen daraus einen vollstaendigen Befundsatz mit klinischer Einordnung. Ein stabiler Erststatus klingt zum Beispiel geordnet, wach, orientiert und kreislaufstabil statt nur unauffaellig. Beobachtung und Bewertung bleiben getrennt: zuerst der Messwert, dann die Einordnung als hypertensiv, tachykard oder hypoxisch.",
+        "Als dritter Schritt kommt die Anwendung im klinischen Alltag oder in der Lernsteuerung hinzu. Was in der FSP stark wirkt: In einer 30-Sekunden-Uebergabe werden die pathologischen oder entscheidenden Vitalzeichen zuerst genannt. Werte gewinnen erst dann sprachliche Qualitaet, wenn sie mit einer kurzen klinischen Bewertung verbunden werden. Wenn nach einem Kuerzel gefragt wird, sollte sofort die lange Form plus klinische Bedeutung folgen."
       ],
       "question_groups": [
         {
@@ -74,11 +74,11 @@
         "online_kurs_hypotonie"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Erstkontakt in der Notaufnahme",
+        "title": "Transfer: Vitalzeichen und Statusabkuerzungen",
         "situation": "Sie uebernehmen eine 72-jaehrige Patientin mit Schwaeche und Dyspnoe. Auf dem Monitor stehen mehrere verkuerzte Werte.",
-        "task_patient": "Erklaeren Sie in Alltagssprache, welche Werte Sie jetzt kontrollieren und warum.",
-        "task_doctor": "Formulieren Sie eine kurze Uebergabe mit AZ, RR, HF, AF und SpO2.",
-        "task_letter": "Dokumentieren Sie den Erststatus in drei klaren Saetzen."
+        "task_patient": "Uebersetzen Sie die Kernpunkte in einfache Alltagssprache.",
+        "task_doctor": "Formulieren Sie eine kurze fachsprachliche Uebergabe ohne Kuerzelchaos.",
+        "task_letter": "Dokumentieren Sie die Kerninformation knapp und korrekt in 2 bis 3 Saetzen."
       },
       "source_tags": [
         "Info: Abkuerzungen.docx",
@@ -91,10 +91,10 @@
       "focus": "o.B., V. a., DD, Z. n., bds., li./re. und aehnliche Kuerzel kontextgerecht einsetzen",
       "summary": "Diese Kuerzel tauchen in fast jedem Arztbrief auf. Wer sie sicher beherrscht, schreibt und praesentiert deutlich kompakter und klinisch reifer.",
       "learning_text": [
-        "Dokumentationskuerzel strukturieren den klinischen Alltag. Besonders haeufig sind o.B. fuer ohne Besonderheiten, V. a. fuer Verdacht auf, DD fuer Differentialdiagnose und Z. n. fuer Zustand nach. Diese Kuerzel sind hilfreich, solange sie inhaltlich sauber und nicht als Ersatz fuer Denken benutzt werden.",
-        "Wichtig ist die semantische Praezision. V. a. ist keine Diagnose, sondern eine vorlaeufige Hypothese. DD bedeutet nicht beliebige Liste, sondern klinisch sinnvolle Differenzialdiagnosen. Genau diese Differenzierung wird in der FSP positiv wahrgenommen.",
-        "Lateralisierungs- und Verlaufskuertzel wie bds., li., re. oder tgl. beschleunigen die Dokumentation, koennen aber in der muendlichen Vorstellung sperrig wirken. Dort ist oft der volle Ausdruck besser, wenn sonst Missverstaendnisse drohen.",
-        "Gegenueber Patienten sollten Sie diese Kuerzel konsequent aufloesen. Die Kunst liegt im Wechsel zwischen effizienter Fachsprache und verstaendlicher Alltagssprache."
+        "Diese Kuerzel tauchen in fast jedem Arztbrief auf. Wer sie sicher beherrscht, schreibt und praesentiert deutlich kompakter und klinisch reifer. Hier werden Kuerzel nicht isoliert gelernt, sondern in Vollsaetze, Uebergaben und patientengerechte Rueckuebersetzungen eingeordnet.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Wann diese Kuerzel sinnvoll sind: o.B. bedeutet ohne Besonderheiten und ist nur dann sinnvoll, wenn zuvor klar geworden ist, was ueberhaupt beurteilt wurde. V. a. markiert einen klinischen Verdacht und gerade keine gesicherte Diagnose; diese Zurueckhaltung ist fachlich wichtig. DD steht fuer sinnvolle Differentialdiagnosen und nicht fuer eine beliebige Liste unverbundener Ideen.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Wie sie in Brief und Uebergabe funktionieren: Eine gute muendliche Vorstellung uebersetzt Kuerzel automatisch in fliessende klinische Sprache. Seitendifferenzen wie bds., li. und re. bleiben nur dann hilfreich, wenn der Befund selbst klar benannt wird. DD gehoert sprachlich immer nah an das weitere Vorgehen, damit aus der Hypothese direkt ein Plan ableitbar wird.",
+        "Als dritter Schritt kommt die Anwendung im klinischen Alltag oder in der Lernsteuerung hinzu. Wie du sie patientengerecht rueckuebersetzt: V. a. laesst sich ruhig als begruendeter Verdacht erklaeren, ohne falsche Sicherheit oder unnoetige Panik zu erzeugen. Z. n. wird im Gespraech besser als hatte frueher schon einmal oder wurde bereits wegen ... behandelt uebersetzt. Differentialdiagnosen werden gegenueber Patienten als moegliche Ursachen und nicht als verwirrende Fachliste dargestellt."
       ],
       "question_groups": [
         {
@@ -141,11 +141,11 @@
         "online_kurs_differentialdiagnose"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Arztbrief-Korrektur",
+        "title": "Transfer: Allgemeine Dokumentationskuerzel",
         "situation": "Sie sehen einen knappen Aufnahmebefund mit vielen Kuerzeln und sollen daraus eine muendliche Vorstellung machen.",
-        "task_patient": "Erklaeren Sie dem Patienten einen vorlaeufigen Verdacht ohne Fachjargon.",
-        "task_doctor": "Formulieren Sie aus den Kuerzeln eine saubere 30-Sekunden-Fallvorstellung.",
-        "task_letter": "Schreiben Sie drei Arztbrief-Saetze mit V. a., DD und Z. n. korrekt aus."
+        "task_patient": "Uebersetzen Sie die Kernpunkte in einfache Alltagssprache.",
+        "task_doctor": "Formulieren Sie eine kurze fachsprachliche Uebergabe ohne Kuerzelchaos.",
+        "task_letter": "Dokumentieren Sie die Kerninformation knapp und korrekt in 2 bis 3 Saetzen."
       },
       "source_tags": [
         "Info: Abkuerzungen.docx",
@@ -158,10 +158,10 @@
       "focus": "EKG, Echo, Sono, CT, MRT, BGA, BB, CRP, INR und andere Hochfrequenzkuerzel sicher verwenden",
       "summary": "Viele FSP-Kandidaten kennen die Bedeutung der Kuerzel, verlieren aber Zeit bei der sprachlichen Einordnung. Hier geht es darum, Diagnostik und Labor nicht nur zu benennen, sondern klinisch sauber anzubinden.",
       "learning_text": [
-        "Typische Diagnostikkuerzel wie EKG, Echo, Sono, CT, MRT oder BGA muessen schnell und sicher abrufbar sein. In der Uebergabe sollten diese Kuerzel immer mit einer klinischen Frage verknuepft werden, nicht nur als Liste erscheinen.",
-        "Bei Laborwerten gilt das gleiche Prinzip: BB, CRP, Krea, INR, D-Dimere oder Troponin sind keine reine Vokabelaufgabe. Entscheidend ist, was mit dem jeweiligen Wert medizinisch geprueft oder ausgeschlossen werden soll.",
-        "Pruefungsnah ist die Kombination aus Kurzform und Funktion. Beispiel: Wir haben ein BB und CRP abgenommen, um nach Anaemie und Entzuendungszeichen zu suchen. Damit wird aus Abkuerzung direkt klinisches Denken.",
-        "Fuer Patienten sollten viele dieser Kuerzel aufgeloest und vereinfacht werden. Im Arzt-Arzt-Gespraech dagegen duerfen Sie sie gezielt und knapp benutzen."
+        "Viele FSP-Kandidaten kennen die Bedeutung der Kuerzel, verlieren aber Zeit bei der sprachlichen Einordnung. Hier geht es darum, Diagnostik und Labor nicht nur zu benennen, sondern klinisch sauber anzubinden. Hier werden Kuerzel nicht isoliert gelernt, sondern in Vollsaetze, Uebergaben und patientengerechte Rueckuebersetzungen eingeordnet.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Wofuer die haeufigsten Diagnostikkuerzel stehen: EKG, Echo, Sono, CT, MRT und BGA muessen sicher erkannt und mit ihrer diagnostischen Rolle verbunden werden. Jedes Diagnostikkuerzel gewinnt erst durch die klinische Frage Sinn, etwa Rhythmus, Entzuendung, Embolie oder Blutgase. Eine BGA wird zum Beispiel nicht abstrakt angeordnet, sondern zur raschen Einschaetzung von Sauerstoff, Kohlendioxid und Saeure-Basen-Lage.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Wie Laborwerte klinisch eingebunden werden: BB, CRP, Krea, INR, D-Dimere und Troponin sind keine isolierten Vokabeln, sondern Marker fuer bestimmte klinische Fragen. Ein gutes Sprachmuster verbindet den Wert sofort mit dem Grund, warum er erhoben wird. Basislabor und Zusatzlabor werden klar getrennt, damit die Diagnostik strukturiert und nicht beliebig wirkt.",
+        "Als dritter Schritt kommt die Anwendung im klinischen Alltag oder in der Lernsteuerung hinzu. Wie du das in der FSP formulierst: In der Fallvorstellung wird Diagnostik priorisiert und nicht einfach vollstaendig aufgezahlt. Gegenueber Patienten wird Blutabnahme oder Bildgebung ueber den Zweck und nicht ueber das Kuerzel erklaert. Typische Stationskuerzel duerfen in Arztbrief und Kurve knapp bleiben, muessen muendlich aber sauber eingebettet sein."
       ],
       "question_groups": [
         {
@@ -209,11 +209,11 @@
         "online_kurs_magnetresonanztomographie_mrt"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Infekt oder Sepsis?",
+        "title": "Transfer: Diagnostik- und Laborabkuerzungen",
         "situation": "Ein fieberhafter Patient ist tachykard und klinisch reduziert. Sie ordnen Basisdiagnostik und Labor an.",
-        "task_patient": "Erklaeren Sie kurz und verstaendlich, warum Sie Blut abnehmen und weitere Diagnostik planen.",
-        "task_doctor": "Formulieren Sie eine priorisierte Diagnostik-Uebergabe mit den wichtigsten Kuerzeln.",
-        "task_letter": "Dokumentieren Sie die angeforderte Diagnostik in drei kompakten Saetzen."
+        "task_patient": "Uebersetzen Sie die Kernpunkte in einfache Alltagssprache.",
+        "task_doctor": "Formulieren Sie eine kurze fachsprachliche Uebergabe ohne Kuerzelchaos.",
+        "task_letter": "Dokumentieren Sie die Kerninformation knapp und korrekt in 2 bis 3 Saetzen."
       },
       "source_tags": [
         "Info: Abkuerzungen.docx",
@@ -226,10 +226,10 @@
       "focus": "i.v., p.o., PVK, ZVK, DK, ITS, IMC, NMH und weitere Kuerzel sicher in Plan und Uebergabe nutzen",
       "summary": "Gerade im klinischen Alltag entscheidet diese Sprachschicht darueber, ob eine Uebergabe kompetent klingt. Wer Therapie- und Stationskuerzel sauber beherrscht, wirkt deutlich sicherer und organisierter.",
       "learning_text": [
-        "Therapiekurzformen wie i.v., s.c., i.m., p.o. oder p.r. muessen schnell abrufbar sein. Noch wichtiger ist die richtige Kombination aus Applikationsweg, Indikation und zeitlicher Planung.",
-        "Zugangs- und Devicekuerzel wie PVK, ZVK, DK oder PEG tauchen in fast jeder Klinik auf. In der FSP sollten Sie diese Kuerzel nicht nur lesen, sondern in Uebergabe und Arztbrief sinnvoll verwenden koennen.",
-        "Stationskuerzel wie ZNA, ITS oder IMC strukturieren das weitere Vorgehen. Klinisch reif klingt eine Uebergabe erst dann, wenn klar wird, wohin der Patient geht und warum.",
-        "Im Patientenkontakt muessen Sie dagegen viel konkreter sprechen: nicht Sie bekommen einen PVK, sondern Wir legen Ihnen einen venoesen Zugang am Arm, damit wir Medikamente und Fluessigkeit geben koennen."
+        "Gerade im klinischen Alltag entscheidet diese Sprachschicht darueber, ob eine Uebergabe kompetent klingt. Wer Therapie- und Stationskuerzel sauber beherrscht, wirkt deutlich sicherer und organisierter. Hier werden Kuerzel nicht isoliert gelernt, sondern in Vollsaetze, Uebergaben und patientengerechte Rueckuebersetzungen eingeordnet.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Applikationswege klar benennen: i.v., s.c., i.m. und p.o. muessen sicher aufgeloest und mit Indikation, Geschwindigkeit und klinischer Logik verbunden werden. Der gewaehlt Applikationsweg sollte immer begruendbar sein, zum Beispiel schnell wirksam, oral moeglich oder parenteral notwendig. Bedarfsmedikation und regelmaessige Gabe werden sprachlich klar getrennt, damit der Therapieplan verstaendlich bleibt.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Zugaenge und Devices verstaendlich erklaeren: PVK und ZVK sollten muendlich sofort als peripherer oder zentraler Venenkatheter eingeordnet werden koennen. Ein DK wird nicht nur benannt, sondern mit Zweck, Dauer und moeglichen Risiken sprachlich sauber erklaert. Neu angelegte Zugaenge gehoeren knapp und korrekt in die Dokumentation, inklusive Lage und Funktion.",
+        "Als dritter Schritt kommt die Anwendung im klinischen Alltag oder in der Lernsteuerung hinzu. Station, Ueberwachung und Verlauf darstellen: Begriffe wie ZNA, IMC und ITS strukturieren das Vorgehen nur dann gut, wenn der Grund fuer die Verlegung genannt wird. Eine gute Erklaerung macht deutlich, welches Ueberwachungsniveau der Patient braucht und warum. In 30 Sekunden lassen sich Station, Zugang und Therapie in einen sehr klaren Verlaufsplan bringen."
       ],
       "question_groups": [
         {
@@ -276,11 +276,11 @@
         "online_kurs_intensivstation"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Uebernahme auf IMC",
+        "title": "Transfer: Therapie-, Zugangs- und Stationskuerzel",
         "situation": "Ein Patient mit Pneumonie benoetigt Sauerstoff, i.v.-Antibiotika und engmaschiges Monitoring.",
-        "task_patient": "Erklaeren Sie knapp, warum ein venoeser Zugang und eine engere Ueberwachung noetig sind.",
-        "task_doctor": "Formulieren Sie eine 30-Sekunden-Uebergabe mit Zugang, Therapie und Zielstation.",
-        "task_letter": "Dokumentieren Sie Therapieeinleitung und Verlegungsplan in drei Saetzen."
+        "task_patient": "Uebersetzen Sie die Kernpunkte in einfache Alltagssprache.",
+        "task_doctor": "Formulieren Sie eine kurze fachsprachliche Uebergabe ohne Kuerzelchaos.",
+        "task_letter": "Dokumentieren Sie die Kerninformation knapp und korrekt in 2 bis 3 Saetzen."
       },
       "source_tags": [
         "Info: Abkuerzungen.docx",

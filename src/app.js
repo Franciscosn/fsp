@@ -7509,17 +7509,29 @@ function startQuickPractice() {
   enterImmersiveMode();
 }
 
+function scrollLearningPanelIntoView(behavior = "smooth", target = "panel") {
+  const element = target === "reading" ? refs.learningReadingView || refs.learningPanel : refs.learningPanel;
+  if (!element) return;
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const top = element.getBoundingClientRect().top + window.scrollY - 10;
+      window.scrollTo({ top: Math.max(0, top), behavior });
+    });
+  });
+}
+
 function handleOpenLearningPanel() {
   state.learningRootId = "anamnese";
   state.learningView = LEARNING_VIEW_SUBCATEGORIES;
   renderLearningFlow();
-  refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+  scrollLearningPanelIntoView("smooth");
 }
 
 function handleLearningBackClick() {
   if (state.learningView === LEARNING_VIEW_READING) {
     state.learningView = LEARNING_VIEW_SUBCATEGORIES;
     renderLearningFlow();
+    scrollLearningPanelIntoView("auto");
   }
 }
 
@@ -7882,6 +7894,7 @@ function renderLearningRootList() {
       state.learningRootId = rootEntry.id;
       state.learningView = rootEntry.view || LEARNING_VIEW_SUBCATEGORIES;
       renderLearningFlow();
+      scrollLearningPanelIntoView("auto");
     });
     refs.learningRootList.appendChild(button);
   }
@@ -7908,13 +7921,14 @@ function renderLearningSubcategoryList(bundle) {
     title.textContent = category.title;
     const count = document.createElement("span");
     count.className = "learning-subcategory-count";
-    count.textContent = `${category.questionCount} Fragen`;
+    count.textContent = `${category.questionCount} ${getLearningMetaCountLabel(state.learningRootId)}`;
     button.appendChild(title);
     button.appendChild(count);
     button.addEventListener("click", () => {
       setLearningActiveCategoryIdForRoot(state.learningRootId, category.id);
       state.learningView = LEARNING_VIEW_READING;
       renderLearningFlow();
+      scrollLearningPanelIntoView("auto", "reading");
     });
     refs.learningSubcategoryList.appendChild(button);
   }

@@ -15,10 +15,9 @@
       "focus": "ACS, Lungenembolie, Pneumothorax und akute respiratorische Insuffizienz",
       "summary": "Thorakale Beschwerden sind in der FSP klassische Hochrisikothemen. Bewertet wird, ob Kandidaten Alarmzeichen frueh priorisieren statt unsortiert Differentialdiagnosen aufzuzahlen.",
       "learning_text": [
-        "Bei Thoraxsymptomen gilt: zuerst Gefaehrdung, dann Feindifferenzierung. Warnzeichen sind starke Ruhedyspnoe, persistierender Druckschmerz, Zyanose, Synkope, Kaltschweissigkeit, Kreislaufinstabilitaet und rasche Verschlechterung.",
-        "Sprachlich wichtig ist die klare Priorisierung gegenueber Patient und Team. Formulierungen wie Das muessen wir sofort abklaeren, weil wir gefaehrliche Ursachen ausschliessen muessen zeigen klinische und kommunikative Sicherheit.",
-        "In der Uebergabe sollten Red Flags explizit genannt und mit einem konkreten Plan verknuepft werden: Monitoring, EKG, Labor, Bildgebung, stationaere Eskalation. Ohne Plan bleibt die Red-Flag-Erwaehnung unvollstaendig.",
-        "Fuer den Patienten braucht es ein klares Sicherheitsnetz bei Entlassung oder Ambulantisierung, einschliesslich exakter Wiedervorstellungskriterien."
+        "Thorakale Beschwerden sind in der FSP klassische Hochrisikothemen. Bewertet wird, ob Kandidaten Alarmzeichen frueh priorisieren statt unsortiert Differentialdiagnosen aufzuzahlen. Hier steht nicht Vollstaendigkeit, sondern fruehe Priorisierung von Gefahr, Dringlichkeit und Sicherheitsnetz im Vordergrund.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was hier sofort alarmiert: Alarmierend sind persistierender Druckschmerz, starke Ruhedyspnoe, Synkope, Zyanose, Kaltschweissigkeit und Kreislaufinstabilitaet. Bei Thoraxbeschwerden gilt zuerst Gefaehrdung, dann Differenzierung. Risikofaktoren fuer ACS, Lungenembolie oder Pneumothorax muessen frueh erhoben und klar gewichtet werden.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Wie Dringlichkeit und Sicherheitsnetz klingen: Patienten sollten hoeren, dass sofortige Abklaerung noetig ist, weil gefaehrliche Ursachen ausgeschlossen werden muessen. In der Uebergabe gehoeren Red Flags immer zusammen mit Monitoring, EKG, Labor und weiterem Akutplan genannt. Unscharfe Alarmwoerter ohne Konsequenz wirken schwach; stark wirkt die direkte Verbindung von Warnzeichen und Massnahme."
       ],
       "question_groups": [
         {
@@ -55,11 +54,11 @@
         "online_kurs_pulmo"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Thoraxschmerz mit Dyspnoe",
+        "title": "Transfer: Thorax und Atemwege: sofortige Alarmzeichen",
         "situation": "Ein 63-jaehriger Patient klagt ueber drueckenden Thoraxschmerz und zunehmende Luftnot.",
-        "task_patient": "Erklaeren Sie sofortige Abklaerung und Sicherheitsgrunde in klarer Sprache.",
-        "task_doctor": "Uebergeben Sie Red Flags und Akutplan in 20-30 Sekunden.",
-        "task_letter": "Dokumentieren Sie Alarmzeichen und notfallmaessiges Vorgehen knapp."
+        "task_patient": "Kommunizieren Sie Dringlichkeit und Sicherheitsgruende in 3 bis 4 klaren Saetzen.",
+        "task_doctor": "Uebergeben Sie Warnzeichen, Schweregrad und Akutplan in 30 Sekunden.",
+        "task_letter": "Dokumentieren Sie Alarmzeichen und Sicherheitsnetz in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "FSP-nahe Red-Flag-Kommunikation bei Thoraxsymptomen"
@@ -71,10 +70,9 @@
       "focus": "Schlaganfallzeichen, Meningitisverdacht, Krampfanfall und Bewusstseinsstoerung",
       "summary": "Neurologische Warnzeichen muessen in der FSP schnell erkannt und in eine zeitkritische Kommunikation uebersetzt werden. Unklares Ausweichen wird hier stark negativ bewertet.",
       "learning_text": [
-        "Neurologische Alarmzeichen sind ploetzlicher fokaler Ausfall, Sprachstoerung, Bewusstseinsveraenderung, Thunderclap-Kopfschmerz, Krampfanfall mit prolongierter Verwirrtheit sowie Meningismuszeichen mit Fieber.",
-        "Wesentlich ist die Zeitachse: letzter unauffaelliger Zeitpunkt, Beginn, Progression. Diese Angaben sind fuer den Akutpfad zentral und muessen sprachlich exakt erhoben werden.",
-        "In der Uebergabe sollte die Kandidatin nicht spekulieren, sondern priorisieren: Was ist gesichert, was ist unklar, was passiert sofort. Das zeigt klinisch-logische Sicherheit.",
-        "Patientenkommunikation muss trotz Zeitdruck klar bleiben: Wir handeln jetzt schnell, um bleibende Schaeden moeglichst zu verhindern."
+        "Neurologische Warnzeichen muessen in der FSP schnell erkannt und in eine zeitkritische Kommunikation uebersetzt werden. Unklares Ausweichen wird hier stark negativ bewertet. Hier steht nicht Vollstaendigkeit, sondern fruehe Priorisierung von Gefahr, Dringlichkeit und Sicherheitsnetz im Vordergrund.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was hier sofort alarmiert: Ploetzliche fokale Defizite, Sprachstoerung, Vigilanzminderung, Thunderclap-Kopfschmerz und Krampfanfaelle mit Verwirrtheit sind neurologische Alarmzeichen. Die Zeitachse mit letztem unauffaelligem Zeitpunkt und Symptombeginn ist ein Kernbestandteil der Notfalllogik. Auch Fieber plus Meningismus oder Bewusstseinsveraenderung muessen sofort als zeitkritisch erkannt werden.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Wie Dringlichkeit und Sicherheitsnetz klingen: Patienten muessen verstehen, dass jetzt schnell gehandelt wird, um bleibende Schaeden moeglichst zu verhindern. In der Uebergabe zaehlen Defizit, Zeitachse und Akutplan deutlich mehr als breite Differentialdiagnosen. Die Formulierung sollte klar auf Bildgebung, Monitoring und sofortige weitere Abklaerung hin oeffnen."
       ],
       "question_groups": [
         {
@@ -111,11 +109,11 @@
         "online_kurs_epilepsie"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: ploetzliche Sprachstoerung",
+        "title": "Transfer: Neurologische Red Flags",
         "situation": "Eine 70-jaehrige Patientin entwickelt abrupt verwaschene Sprache und Armabsinken rechts.",
-        "task_patient": "Kommunizieren Sie die Zeitkritik in einfacher Sprache.",
-        "task_doctor": "Uebergeben Sie Zeitachse, Defizit und Plan in Stichpunktstruktur.",
-        "task_letter": "Dokumentieren Sie neurologische Red Flags und Sofortmassnahmen."
+        "task_patient": "Kommunizieren Sie Dringlichkeit und Sicherheitsgruende in 3 bis 4 klaren Saetzen.",
+        "task_doctor": "Uebergeben Sie Warnzeichen, Schweregrad und Akutplan in 30 Sekunden.",
+        "task_letter": "Dokumentieren Sie Alarmzeichen und Sicherheitsnetz in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Neurologische Pruefungsfragen"
@@ -127,10 +125,9 @@
       "focus": "Peritonismus, Blutungszeichen und septische Warnkonstellationen",
       "summary": "Bauchschmerzthemen sind pruefungsrelevant, weil klinische Priorisierung und Verstaendlichkeitskommunikation parallel gefordert werden.",
       "learning_text": [
-        "Red Flags im Abdomen sind peritonealer Schmerz, Abwehrspannung, anhaltendes Erbrechen, relevante Haematemesis/Melaena, Fieber mit reduziertem Allgemeinzustand und Kreislaufzeichen.",
-        "In der FSP ist die sprachliche Reihenfolge entscheidend: erst Warnzeichen erheben, dann Differenzialdiagnosen ordnen, dann Plan erklaeren. Unstrukturiertes Aufzaehlen wirkt unsicher.",
-        "Die Kandidatin sollte Dringlichkeit nicht dramatisieren, aber klar benennen. Ein sachlicher Satz mit Handlungskonsequenz wirkt stark: Wir muessen jetzt rasch abklaeren, ob eine Blutung oder akute Entzuendung vorliegt.",
-        "Sicherheitskommunikation umfasst auch Entlassungsfaelle: genaue Warnzeichen, klare Rueckkehrkriterien und dokumentierter Verstaendnisabgleich."
+        "Bauchschmerzthemen sind pruefungsrelevant, weil klinische Priorisierung und Verstaendlichkeitskommunikation parallel gefordert werden. Hier steht nicht Vollstaendigkeit, sondern fruehe Priorisierung von Gefahr, Dringlichkeit und Sicherheitsnetz im Vordergrund.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was hier sofort alarmiert: Peritonealer Schmerz, Abwehrspannung, Haematemesis, Melaena, anhaltendes Erbrechen und Kreislaufzeichen sind zentrale Alarmkonstellationen. Auch Fieber mit reduziertem Allgemeinzustand oder orthostatischem Schwindel spricht fuer ein dringliches Vorgehen. Bei abdominalen Red Flags muessen Warnzeichen vor der breiten Differenzialdiagnose erhoben werden.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Wie Dringlichkeit und Sicherheitsnetz klingen: Eine starke Formulierung erklaert ruhig, dass Blutung oder akute Entzuendung rasch ausgeschlossen werden muessen. Endoskopie, Bildgebung, Labor oder stationaere Aufnahme sollten patientengerecht und nicht abstrakt angekuendigt werden. Warnzeichen fuer zuhause muessen konkret an Schmerzen, Kreislauf und sichtbare Blutungszeichen gekoppelt sein."
       ],
       "question_groups": [
         {
@@ -166,11 +163,11 @@
         "online_kurs_peristaltik"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Teerstuhl und Hypotonie",
+        "title": "Transfer: Abdomen und GI-Blutung",
         "situation": "Ein 62-jaehriger Patient stellt sich mit schwarzem Stuhl und orthostatischem Schwindel vor.",
-        "task_patient": "Erklaeren Sie die Dringlichkeit und das unmittelbare Vorgehen in klarer Sprache.",
-        "task_doctor": "Uebergeben Sie GI-Red-Flags und Akutplan strukturiert.",
-        "task_letter": "Dokumentieren Sie Blutungsverdacht, Kreislauflage und Sicherheitsnetz."
+        "task_patient": "Kommunizieren Sie Dringlichkeit und Sicherheitsgruende in 3 bis 4 klaren Saetzen.",
+        "task_doctor": "Uebergeben Sie Warnzeichen, Schweregrad und Akutplan in 30 Sekunden.",
+        "task_letter": "Dokumentieren Sie Alarmzeichen und Sicherheitsnetz in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: GI-Symptome und Gastroskopiebezug"
@@ -182,10 +179,9 @@
       "focus": "Flankenschmerz plus Fieber, Harnverhalt, Makrohaematurie",
       "summary": "Urogenitale Warnzeichen sind in Berlin regelmaessig Thema, weil hier alltagsnahe Kliniksprache und Dringlichkeitskommunikation gut pruefbar sind.",
       "learning_text": [
-        "Alarmkonstellationen im Urogenitalbereich sind Fieber mit Flankenschmerz, Schuettelfrost, reduzierter Allgemeinzustand, akuter Harnverhalt, makroskopische Blutung und Zeichen der systemischen Beteiligung.",
-        "In der FSP wird erwartet, dass diese Konstellationen nicht nur abgefragt, sondern klar priorisiert werden. Entscheidend ist die sprachliche Ueberfuehrung in ein konkretes Vorgehen.",
-        "Gute Kommunikation bleibt dabei respektvoll und nicht wertend, auch bei intimen Fragen. Das steigert die Qualitaet der Information und die therapeutische Kooperation.",
-        "Zum Abschluss gehoeren klare Notfallhinweise und nachvollziehbare Nachsorgeplanung."
+        "Urogenitale Warnzeichen sind in Berlin regelmaessig Thema, weil hier alltagsnahe Kliniksprache und Dringlichkeitskommunikation gut pruefbar sind. Hier steht nicht Vollstaendigkeit, sondern fruehe Priorisierung von Gefahr, Dringlichkeit und Sicherheitsnetz im Vordergrund.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was hier sofort alarmiert: Fieber mit Flankenschmerz, Schuettelfrost, reduzierter Allgemeinzustand, Harnverhalt und makroskopische Blutung sind urogenitale Warnzeichen. Gerade die Kombination aus Infektzeichen und Systembeteiligung muss schnell an Sepsis oder komplizierten Verlauf denken lassen. Intime Beschwerden bleiben nur dann klinisch verwertbar, wenn sie respektvoll, klar und ohne Ausweichen erhoben werden.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Wie Dringlichkeit und Sicherheitsnetz klingen: Patienten sollten verstehen, warum Diagnostik und Therapie bei dieser Konstellation nicht aufgeschoben werden sollten. In der Uebergabe gehoeren Infektzeichen, Harnsituation und Sepsisverdacht geordnet an den Anfang. Auch hier wirken konkrete Rueckkehrkriterien deutlich staerker als allgemeine Sicherheitssaetze."
       ],
       "question_groups": [
         {
@@ -222,11 +218,11 @@
         "online_kurs_nierenversagen"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: Urosepsisverdacht",
+        "title": "Transfer: Urogenitale Red Flags und Sepsisrisiko",
         "situation": "Eine 45-jaehrige Patientin berichtet ueber Dysurie, Flankenschmerz, Fieber und Schuettelfrost.",
-        "task_patient": "Erklaeren Sie die Dringlichkeit der stationaeren Abklaerung in klarer Sprache.",
-        "task_doctor": "Uebergeben Sie Red Flags und Therapiestart fokussiert.",
-        "task_letter": "Dokumentieren Sie Sepsisverdacht und Sicherheitsaufklaerung."
+        "task_patient": "Kommunizieren Sie Dringlichkeit und Sicherheitsgruende in 3 bis 4 klaren Saetzen.",
+        "task_doctor": "Uebergeben Sie Warnzeichen, Schweregrad und Akutplan in 30 Sekunden.",
+        "task_letter": "Dokumentieren Sie Alarmzeichen und Sicherheitsnetz in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: urogenitale Anamnese und Warnzeichen"
@@ -238,10 +234,9 @@
       "focus": "Hypo-/Hyperglykaemie, Thyreotoxikosezeichen und Exsikkose",
       "summary": "Metabolische Entgleisungen werden in der FSP oft unterschaetzt. Geprueft wird, ob Kandidaten Warnzeichen frueh erkennen und klar kommunizieren.",
       "learning_text": [
-        "Zu den zentralen metabolischen Warnzeichen gehoeren Bewusstseinsveraenderung bei Blutzuckerentgleisung, deutliche Dehydratation, progrediente Schwache und vegetative Entgleisung.",
-        "In der Kommunikation muss klar sein, dass solche Befunde akut relevant sein koennen, auch wenn das Beschwerdebild initial unspezifisch wirkt. Genau diese klinische Priorisierung ist pruefungsrelevant.",
-        "Bei endokrinen Konstellationen sollte die Kandidatin diagnostische und therapeutische Sofortschritte in einfacher Sprache benennen, inklusive Monitoring und Verlaufskontrolle.",
-        "Sicherheitsnetz und Verstaendnissicherung sind besonders wichtig, da viele Patienten chronische Vorerkrankungen und Selbstmanagementaufgaben haben."
+        "Metabolische Entgleisungen werden in der FSP oft unterschaetzt. Geprueft wird, ob Kandidaten Warnzeichen frueh erkennen und klar kommunizieren. Hier steht nicht Vollstaendigkeit, sondern fruehe Priorisierung von Gefahr, Dringlichkeit und Sicherheitsnetz im Vordergrund.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was hier sofort alarmiert: Bewusstseinsveraenderung, Schweissigkeit, Zittern, Exsikkose, Polyurie, Erbrechen oder ausgepraegte Tachykardie sind typische metabolische Warnzeichen. Hypo- und Hyperglykaemie muessen frueh erkannt und sprachlich klar voneinander abgegrenzt werden. Auch Zeichen einer thyreotoxischen Entgleisung oder schweren Exsikkose gehoeren in diese Alarmlogik.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Wie Dringlichkeit und Sicherheitsnetz klingen: Patienten muessen verstehen, dass Verwirrtheit, starke Schwaeche oder Kreislaufprobleme hier akute Warnzeichen sind. In der Uebergabe werden Blutzucker, Hydratationszustand, Bewusstseinslage und der erste Therapieplan klar priorisiert. Sprachlich stark ist die Verbindung von Befund, sofortiger Stabilisierung und weiterer Abklaerung."
       ],
       "question_groups": [
         {
@@ -278,11 +273,11 @@
         "online_kurs_insulinom"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: ausgepraegte Polydipsie",
+        "title": "Transfer: Endokrine und metabolische Red Flags",
         "situation": "Ein 56-jaehriger Patient berichtet ueber starken Durst, Polyurie und Schwache.",
-        "task_patient": "Erklaeren Sie den akuten Sicherheits- und Diagnostikplan in einfacher Sprache.",
-        "task_doctor": "Uebergeben Sie metabolische Red Flags und Initialtherapie strukturiert.",
-        "task_letter": "Dokumentieren Sie Entgleisungsverdacht, Massnahmen und Warnhinweise."
+        "task_patient": "Kommunizieren Sie Dringlichkeit und Sicherheitsgruende in 3 bis 4 klaren Saetzen.",
+        "task_doctor": "Uebergeben Sie Warnzeichen, Schweregrad und Akutplan in 30 Sekunden.",
+        "task_letter": "Dokumentieren Sie Alarmzeichen und Sicherheitsnetz in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Endokrinologie- und Diabetesabschnitte"
@@ -294,10 +289,9 @@
       "focus": "Suizidalitaet, akute Eigen-/Fremdgefaehrdung und klare Schutzkommunikation",
       "summary": "Auch ohne tiefe Psychiatrieexpertise muessen Kandidaten in Berlin Sicherheitsfragen klar stellen und transparent handeln koennen.",
       "learning_text": [
-        "Psychiatrische Red Flags sind akute Suizidgedanken mit Handlungsdruck, konkrete Fremdgefaehrdung, schwere Realitaetsverkennung und fehlende Selbststeuerungsfaehigkeit.",
-        "Die Fragen muessen direkt, respektvoll und ohne Umwege gestellt werden. Vermeidungsverhalten wirkt unsicher und fuehrt oft zu inhaltlichen Luecken.",
-        "Bei relevanter Gefaehrdung muss der Plan klar sein: Schutzmassnahmen, engmaschige Beobachtung, fachpsychiatrische Mitbeurteilung. Diese Schritte muessen sprachlich nachvollziehbar kommuniziert werden.",
-        "Dokumentation sollte wertfrei und praezise bleiben, mit klarer Trennung von Patientenangaben, Beobachtung und Risikoeinschaetzung."
+        "Auch ohne tiefe Psychiatrieexpertise muessen Kandidaten in Berlin Sicherheitsfragen klar stellen und transparent handeln koennen. Hier steht nicht Vollstaendigkeit, sondern fruehe Priorisierung von Gefahr, Dringlichkeit und Sicherheitsnetz im Vordergrund.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was hier sofort alarmiert: Suizidgedanken, konkrete Plaene, Eigen- oder Fremdgefaehrdung, schwere Agitation und Realitaetsverlust sind zentrale Alarmkonstellationen. Sicherheitsfragen muessen direkt, klar und professionell gestellt werden und nicht verklausuliert. Auch fehlende Impulskontrolle oder ausgepraegte Selbstvernachlaessigung gehoeren in die akute Risikoeinschaetzung.",
+        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Wie Dringlichkeit und Sicherheitsnetz klingen: Patienten und Angehoerige sollten verstehen, dass Sicherheit jetzt Vorrang vor Detaildiskussionen hat. In der Uebergabe werden Risiko, aktueller Schutzbedarf und weitere Sicherungsmassnahmen zuerst genannt. Konkrete Schutzschritte wie engmaschige Beobachtung, psychiatrische Vorstellung oder gesicherte Umgebung muessen sprachlich eindeutig sein."
       ],
       "question_groups": [
         {
@@ -332,11 +326,11 @@
         "online_kurs_vertigo"
       ],
       "mini_scenario": {
-        "title": "Mini-Szenario: depressive Krise",
+        "title": "Transfer: Psychiatrische Sicherheitsaspekte",
         "situation": "Ein 38-jaehriger Patient aeussert Hoffnungslosigkeit und deutlichen Rueckzug.",
-        "task_patient": "Fuehren Sie eine kurze direkte Sicherheitsabfrage mit anschliessender Erklaerung des Schutzplans durch.",
-        "task_doctor": "Uebergeben Sie Risikoeinschaetzung und Massnahmen strukturiert.",
-        "task_letter": "Dokumentieren Sie Sicherheitsabfrage, Risiko und vereinbartes Vorgehen."
+        "task_patient": "Kommunizieren Sie Dringlichkeit und Sicherheitsgruende in 3 bis 4 klaren Saetzen.",
+        "task_doctor": "Uebergeben Sie Warnzeichen, Schweregrad und Akutplan in 30 Sekunden.",
+        "task_letter": "Dokumentieren Sie Alarmzeichen und Sicherheitsnetz in 2 bis 3 praezisen Saetzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Depression, Sucht und Sicherheitsfragen"
