@@ -30,33 +30,33 @@
       ],
       "question_groups": [
         {
-          "title": "Prioritaet setzen",
+          "title": "Welche Fallcluster zuerst kommen",
           "questions": [
-            "Welche Fallgruppen sollten in den ersten zwei Lernwochen unbedingt sitzen?",
-            "Welche Themen trainieren mehrere Pruefungsteile gleichzeitig?",
-            "Welche Faelle sind haeufig genug, um Wiederholungsanker zu werden?",
-            "Welche seltenen Themen koennen bewusst spaeter folgen?",
-            "Wie vermeiden Sie das Verzetteln in exotischen Diagnosen?"
+            "Bei wenig Zeit sollten zuerst Thoraxschmerz, Dyspnoe, Bauchschmerz, neurologische Akutfalle und urogenitale Standardfaelle sitzen.",
+            "Diese Cluster decken besonders viele Berliner Pruefungssituationen und mehrere Sprachformate gleichzeitig ab.",
+            "Hauefige Leitsymptome sind wertvoller als exotische Einzelthemen, weil sie Wiederholungsanker schaffen.",
+            "Seltenere Diagnosen duerfen spaeter folgen, wenn der Kernkatalog sprachlich stabil geworden ist.",
+            "Gute Priorisierung bedeutet deshalb Fokus auf Wahrscheinlichkeit, sprachliche Hebelwirkung und klinische Alltagstauglichkeit."
           ]
         },
         {
-          "title": "Cluster denken",
+          "title": "Warum Clusterlernen fuer Berlin funktioniert",
           "questions": [
-            "Welche Leitsymptome decken besonders viele Berlin-Faelle ab?",
-            "Welche organbezogenen Cluster sind sprachlich am ergiebigsten?",
-            "Wie kombinieren Sie Red Flags mit typischen Anamnese-Fragen?",
-            "Welche Faelle ueben gleichzeitig Arzt-Patient und Arzt-Arzt?",
-            "Wie nutzen Sie Fallcluster fuer spaced repetition?"
+            "Leitsymptome wie Atemnot oder Bauchschmerz verbinden viele Diagnosen und trainieren damit mehr als ein einzelnes Krankheitsbild.",
+            "Organbezogene Cluster helfen, Red Flags, Differentialdiagnosen und typische Fragen gemeinsam zu lernen.",
+            "Ein starker Fall trainiert oft gleichzeitig Anamnese, Untersuchung, Aufklaerung und Arzt-Arzt-Uebergabe.",
+            "Gerade fuer spaced repetition sind Cluster gut, weil sich dieselben Sprachbewegungen in verwandten Faellen wiederholen.",
+            "So entsteht weniger Verzettelung und mehr klinische Orientierung."
           ]
         },
         {
-          "title": "Konkrete Lernsteuerung",
+          "title": "Wie die Lernseite diese Prioritaet abbilden sollte",
           "questions": [
-            "Welche zehn Faelle wuerden Sie sofort auf Karteikarten und Voice-Faelle abbilden?",
-            "Welche Themen sollten zunaechst nur gelesen, welche aktiv gesprochen werden?",
-            "Wie priorisieren Sie, wenn die Pruefung nah ist?",
-            "Wie entscheiden Sie, wann ein Fall von Basis auf Vertiefung springt?",
-            "Welche Themen brauchen frueh eine starke Fallaufloesung?"
+            "Die wichtigsten zehn bis zwolf Faelle sollten auf der Plattform besonders sichtbar und schnell erreichbar sein.",
+            "Hochfrequente Themen brauchen mehrere Formate: Karten, Lernmodul, Fallaufloesung und Voice-Fall.",
+            "Basisfaelle duerfen zuerst gelesen werden, muessen aber relativ frueh ins aktive Sprechen uebergehen.",
+            "Ein Thema ist dann bereit fuer Vertiefung, wenn Anamneseweg, Red Flags und Uebergabe schon fluessig funktionieren.",
+            "Fallaufloesungen sind besonders nuetzlich, wenn sie den Kernfall frueh mit typischen Fehlern und Standardsaetzen verbinden."
           ]
         }
       ],
@@ -98,33 +98,33 @@
       ],
       "question_groups": [
         {
-          "title": "Anamnese als Ausgangspunkt",
+          "title": "Was die Anamnese liefern muss",
           "questions": [
-            "Welche Fragen liefern spaeter Material fuer Brief und Uebergabe?",
-            "Wie erkennen Sie schon in der Anamnese, welche Informationen dokumentationspflichtig sind?",
-            "Welche Fragen muessen fuer Berlin sicher und automatisiert sitzen?",
-            "Wie vermeiden Sie starres Abspulen ohne klinische Priorisierung?",
-            "Wie sichern Sie nach jeder Anamnese den roten Faden?"
+            "Eine gute Anamnese liefert bereits das Rohmaterial fuer Brief, Uebergabe und weitere Planung.",
+            "Wichtige Informationen sollten schon im Gespraech so erhoben werden, dass sie spaeter dokumentierbar und praesentierbar sind.",
+            "Fuer Berlin muessen Kernfragen so sicher sitzen, dass sie ohne starres Abspulen klinisch priorisiert gestellt werden koennen.",
+            "Der rote Faden entsteht dadurch, dass Leitsymptom, Red Flags und Verlauf von Anfang an sichtbar bleiben.",
+            "Darum ist die Anamnese nicht nur ein Frageteil, sondern der strukturelle Ausgangspunkt des ganzen Falls."
           ]
         },
         {
-          "title": "Vom Gespraech zur Struktur",
+          "title": "Wie aus dem Gespraech Struktur wird",
           "questions": [
-            "Wie verdichten Sie viele Antworten auf drei Kernprobleme?",
-            "Wie priorisieren Sie Leitsymptom, Red Flags und Plan?",
-            "Welche Inhalte gehoeren in die 30-Sekunden-Vorstellung?",
-            "Wie unterscheiden sich Patientensprache, Briefsprache und Uebergabesprache?",
-            "Wie trainieren Sie den Uebergang zwischen ihnen bewusst?"
+            "Viele Einzelantworten muessen spaeter auf wenige Kernprobleme verdichtet werden koennen.",
+            "Leitsymptom, wichtigste Auffaelligkeiten und Plan bilden das Rueckgrat einer guten 30-Sekunden-Vorstellung.",
+            "Patientensprache, Briefsprache und Uebergabesprache haben unterschiedliche Dichte, aber denselben medizinischen Kern.",
+            "Der bewusste Wechsel zwischen diesen Registern ist eine eigene Sprachkompetenz und kein Nebenprodukt.",
+            "Wer das trainiert, wirkt in der Pruefung deutlich geordneter und reifer."
           ]
         },
         {
-          "title": "Pruefungslogik",
+          "title": "Was die Lernseite trainieren sollte",
           "questions": [
-            "Welche Teilkompetenz wird in Berlin besonders sichtbar bewertet?",
-            "Wie bauen Sie Lernroutinen, die alle drei Formate abdecken?",
-            "Warum reicht isoliertes Vokabellernen nicht aus?",
-            "Wie kann die Lernseite Fallaufloesung, Voice-Fall und Karten zusammenziehen?",
-            "Wie testen Sie, ob ein Thema pruefungsreif ist?"
+            "Jedes Kernthema sollte auf der Website nicht nur fragend, sondern auch erklaerend, zusammenfassend und uebergebend erscheinen.",
+            "Der eigentliche Mehrwert liegt im Uebergang vom Patientengespraech zur Fachsprache.",
+            "Isoliertes Vokabellernen reicht dafuer nicht aus, weil Struktur und Priorisierung mitgelernt werden muessen.",
+            "Fallaufloesung, Karten und Voice-Mode sollten deshalb denselben Fall aus verschiedenen Blickwinkeln oefnen.",
+            "Ein Thema ist pruefungsreif, wenn aus derselben Grundlage Anamnese, Brief und Vorstellung sicher gebaut werden koennen."
           ]
         }
       ],
@@ -160,33 +160,33 @@
       ],
       "question_groups": [
         {
-          "title": "Sprachliche Staerken",
+          "title": "Was sprachlich stark wirkt",
           "questions": [
-            "Wie klingt eine ruhige, strukturierte Pruefungssprache?",
-            "Welche Formulierungen helfen bei Verstaendnissicherung?",
-            "Wie zeigen Sie Sicherheit, ohne ueberheblich zu wirken?",
-            "Wie sprechen Sie ueber Unsicherheit professionell und ehrlich?",
-            "Wie verbinden Sie Empathie und klinische Rolle?"
+            "Ruhige Struktur, Vollstaendigkeit und angepasste Sprache wirken in Berlin oft staerker als spektakulaeres Spezialwissen.",
+            "Gute Kandidaten klingen nicht auswendig gelernt, sondern wie geordnete junge Kolleginnen und Kollegen.",
+            "Verstaendnissicherung, klare Ueberleitungen und transparente Priorisierung sind wiederkehrende Pluspunkte.",
+            "Professionelle Unsicherheit heisst, ehrlich zu bleiben und trotzdem klar den naechsten Schritt zu benennen.",
+            "Empathie wirkt am besten, wenn sie mit einer klaren klinischen Rolle verbunden bleibt."
           ]
         },
         {
-          "title": "Typische Fehlerquellen",
+          "title": "Was haeufig Punkte kostet",
           "questions": [
-            "Welche Auslassungen kosten in Berlin besonders haeufig Punkte?",
-            "Wie vermeiden Sie starres Fragenabspulen?",
-            "Wie verhindern Sie zu technische Patientenerklaerungen?",
-            "Wie klingen zu vage Arzt-Arzt-Uebergaben?",
-            "Wie gehen Sie mit Blackout-Momenten sprachlich kontrolliert um?"
+            "Punktverluste entstehen oft durch ausgelassene Kernfragen und nicht nur durch Grammatikfehler.",
+            "Starres Fragenabspulen ohne Priorisierung macht selbst korrekte Sprache klinisch schwach.",
+            "Zu technische Patientenerklaerungen zeigen fehlende Registerkontrolle und kosten schnell Vertrauen.",
+            "Vage Arzt-Arzt-Uebergaben wirken unsicher, weil Leitsymptom, Kernbefunde und Plan nicht klar getrennt werden.",
+            "Auch in Blackout-Momenten bleibt gute Sprache ruhig, knapp und auf den naechsten sinnvollen Schritt fokussiert."
           ]
         },
         {
-          "title": "Training auf der Lernseite",
+          "title": "Welche Sprachbausteine geuebt werden sollten",
           "questions": [
-            "Welche Formulierungen sollten als wiederkehrende Pruefungssaetze auftauchen?",
-            "Wo braucht die Lernseite mehr Verstaendnissicherungs-Saetze?",
-            "Wie koennen Fallaufloesungen gezielt auf fehlende Fragen hinweisen?",
-            "Welche Root-Module sollten mehr Arzt-Arzt-Sprache enthalten?",
-            "Wie machen wir den Unterschied zwischen passivem Lesen und aktivem Sprechen sichtbar?"
+            "Wiederkehrende Standardsaetze fuer Zusammenfassung, Absicherung und Priorisierung haben auf der Plattform hohen Wert.",
+            "Fallaufloesungen koennen besonders gut zeigen, welche Fragen fehlten und warum sie medizinisch wichtig gewesen waeren.",
+            "Einige Module brauchen bewusst mehr Arzt-Arzt-Sprache, damit der Registerwechsel frueh mittrainiert wird.",
+            "Aktives Sprechen unterscheidet sich stark vom blossen Lesen; diese Differenz sollte im Lernmodus sichtbar bleiben.",
+            "Das Ziel ist nicht perfekte Theorie, sondern sprachlich stabile klinische Handlungsfaehigkeit."
           ]
         }
       ],
@@ -222,33 +222,33 @@
       ],
       "question_groups": [
         {
-          "title": "Stufe eins",
+          "title": "Stufe eins: Kernkatalog",
           "questions": [
-            "Welche Themen muessen auf der Startseite oder mit wenigen Klicks erreichbar sein?",
-            "Welche Leitsymptome sollten die meisten Fallkarten steuern?",
-            "Welche Anamnese- und Red-Flag-Module gehoeren direkt zusammen?",
-            "Welche Themen brauchen unbedingt Voice-Cases?",
-            "Wie halten wir die erste Lernschicht kompakt genug?"
+            "Ganz vorne stehen Leitsymptome und Akutcluster, die mit wenigen Klicks erreichbar und oft wiederholbar sein muessen.",
+            "Thoraxschmerz, Dyspnoe, Bauchschmerz, neurologische Ausfaelle, Fieber und Urogenitales bilden dabei den sichtbaren Kern.",
+            "Anamnese- und Red-Flag-Module sollten hier eng zusammenliegen, weil sie klinisch zusammen gedacht werden.",
+            "Diese erste Lernschicht muss kompakt bleiben, damit sie nicht von Randthemen ueberlagert wird.",
+            "Voice-Cases sind in dieser Stufe besonders wertvoll, weil sie aktives Abrufen erzwingen."
           ]
         },
         {
-          "title": "Stufe zwei",
+          "title": "Stufe zwei: Transfermodule",
           "questions": [
-            "Welche Aufklaerungen sind fuer Berlin am wichtigsten?",
-            "Welche Untersuchungen sollten patientengerecht und fachsprachlich trainiert werden?",
-            "Wie koppeln wir Untersuchung, Aufklaerung und Uebergabe thematisch?",
-            "Welche Formulierungen muessen mehrfach auftauchen, bis sie sitzen?",
-            "Wie koennen wir die Lernseite hier messbar dichter machen?"
+            "Danach folgen Aufklaerung, Untersuchung und Arzt-Arzt-Uebergabe als formatuebergreifende Sprachskills.",
+            "Gerade diese Module verbinden medizinische Logik mit Registerwechsel und bringen deshalb viel fuer Berlin.",
+            "Wichtige Formulierungen sollten hier mehrfach und in verschiedenen Kontexten wieder auftauchen.",
+            "Die Themen lassen sich sinnvoll mit den Kernfaellen koppeln, statt als isolierte Kapitel zu erscheinen.",
+            "So wird die Lernseite dichter, ohne unuebersichtlich zu werden."
           ]
         },
         {
-          "title": "Stufe drei",
+          "title": "Stufe drei: Vertiefung",
           "questions": [
-            "Welche Vertiefungsthemen kommen nach sicherem Kernkatalog?",
-            "Welche Spezialthemen koennen spaeter folgen, ohne dass die Basis leidet?",
-            "Wie verknuepfen wir Glossar, Faelle und Systemmodule sinnvoll?",
-            "Welche Inhalte bleiben eher Nachschlagewissen statt aktiver Drill?",
-            "Wie koennen wir kuenftig neue PDFs ohne Strukturverlust integrieren?"
+            "Erst nach stabilem Kernkatalog kommen Systemvertiefung, Glossararbeit und seltenere Spezialthemen in den Vordergrund.",
+            "Diese Ebene macht die Sprache flexibler, darf aber die haeufigen Standardfaelle nicht verdraengen.",
+            "Ein Teil dieser Inhalte bleibt eher Nachschlagewissen als aktiver Drillstoff.",
+            "Glossar, Faelle und Systemmodule sollten hier enger verknuepft werden, damit Vertiefung nicht fragmentiert wirkt.",
+            "Neue PDFs lassen sich spaeter gut integrieren, wenn diese Prioritaetslogik bestehen bleibt."
           ]
         }
       ],

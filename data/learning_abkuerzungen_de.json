@@ -30,33 +30,33 @@
       ],
       "question_groups": [
         {
-          "title": "Erkennen und zuordnen",
+          "title": "Was die wichtigsten Kuerzel bedeuten",
           "questions": [
-            "Wofuer stehen AZ, EZ, RR, HF, AF und SpO2 genau?",
-            "Welche Kuerzel gehoeren zum Erststatus und welche eher zur Verlaufsdokumentation?",
-            "Wo liegen typische Verwechslungen im Stationsalltag?",
-            "Welche Abkuerzungen sollten gegenueber Patienten nie unverstaendlich stehen bleiben?",
-            "Wie wuerden Sie GCS und NRS in einem Satz korrekt einordnen?"
+            "AZ bedeutet Allgemeinzustand, EZ bedeutet Ernaehrungszustand; beide beschreiben den klinischen Gesamteindruck sehr knapp.",
+            "RR, HF, AF und SpO2 gehoeren zum Basisstatus und sollten in jeder Akutsituation sicher erkannt und eingeordnet werden.",
+            "AF steht in diesem Kontext fuer Atemfrequenz; solche Mehrdeutigkeiten sind typische Stolpersteine im Stationsalltag.",
+            "GCS und NRS ergaenzen den Status, weil sie Bewusstseinslage und Schmerzintensitaet standardisiert ausdruecken.",
+            "Gegenueber Patienten werden diese Kuerzel nicht stehen gelassen, sondern konsequent in Alltagssprache aufgeloest."
           ]
         },
         {
-          "title": "In klinische Sprache uebersetzen",
+          "title": "Wie daraus gute klinische Saetze werden",
           "questions": [
-            "Wie machen Sie aus RR, HF und AF einen vollstaendigen Uebergabesatz?",
-            "Wie formulieren Sie einen stabilen versus instabilen Erststatus?",
-            "Wie unterscheiden Sie Beobachtung und Bewertung sprachlich?",
-            "Wie sagen Sie patientengerecht, was SpO2 und NRS bedeuten?",
-            "Wie dokumentieren Sie einen reduzierten Allgemeinzustand knapp und korrekt?"
+            "Starke Uebergaben nennen nicht nur Werte, sondern machen daraus einen vollstaendigen Befundsatz mit klinischer Einordnung.",
+            "Ein stabiler Erststatus klingt zum Beispiel geordnet, wach, orientiert und kreislaufstabil statt nur unauffaellig.",
+            "Beobachtung und Bewertung bleiben getrennt: zuerst der Messwert, dann die Einordnung als hypertensiv, tachykard oder hypoxisch.",
+            "Auch patientengerecht kann man diese Werte erklaeren, etwa als Sauerstoffwert im Blut oder Schmerzskala von null bis zehn.",
+            "Ein reduzierter Allgemeinzustand wird knapp, aber konkret beschrieben und nicht nur als unscharfer Eindruck stehen gelassen."
           ]
         },
         {
-          "title": "Pruefungsnahe Anwendung",
+          "title": "Was in der FSP stark wirkt",
           "questions": [
-            "Welche Vitalzeichen wuerden Sie in einer 30-Sekunden-Uebergabe priorisieren?",
-            "Wie integrieren Sie pathologische Werte in eine klinische Kurzbewertung?",
-            "Wie reagieren Sie, wenn ein Pruefer gezielt nach der Bedeutung eines Kuerzels fragt?",
-            "Wie vermeiden Sie Kuerzelketten ohne klinische Aussage?",
-            "Wie verbinden Sie Statusabkuerzungen mit dem naechsten Handlungsschritt?"
+            "In einer 30-Sekunden-Uebergabe werden die pathologischen oder entscheidenden Vitalzeichen zuerst genannt.",
+            "Werte gewinnen erst dann sprachliche Qualitaet, wenn sie mit einer kurzen klinischen Bewertung verbunden werden.",
+            "Wenn nach einem Kuerzel gefragt wird, sollte sofort die lange Form plus klinische Bedeutung folgen.",
+            "Reine Kuerzelketten ohne Aussage wirken unsicher; besser sind kurze, vollstaendige Saetze mit Priorisierung.",
+            "Besonders stark ist die Bruecke vom Status zum Plan, zum Beispiel erweitertes Monitoring oder engmaschige Reevaluation."
           ]
         }
       ],
@@ -98,33 +98,33 @@
       ],
       "question_groups": [
         {
-          "title": "Bedeutung und Grenzen",
+          "title": "Wann diese Kuerzel sinnvoll sind",
           "questions": [
-            "Wann ist o.B. sprachlich sinnvoll und wann zu pauschal?",
-            "Wie unterscheiden Sie V. a. von gesicherter Diagnose?",
-            "Wie verwenden Sie DD ohne unstrukturierte Aufzaehlung?",
-            "Wofuer steht Z. n. und welche zeitlichen Angaben gehoeren oft dazu?",
-            "Welche Kuerzel sollten in sensiblen Situationen besser ausgeschrieben werden?"
+            "o.B. bedeutet ohne Besonderheiten und ist nur dann sinnvoll, wenn zuvor klar geworden ist, was ueberhaupt beurteilt wurde.",
+            "V. a. markiert einen klinischen Verdacht und gerade keine gesicherte Diagnose; diese Zurueckhaltung ist fachlich wichtig.",
+            "DD steht fuer sinnvolle Differentialdiagnosen und nicht fuer eine beliebige Liste unverbundener Ideen.",
+            "Z. n. beschreibt einen Zustand nach einem frueheren Ereignis und braucht oft eine zeitliche oder inhaltliche Einordnung.",
+            "In sensiblen Situationen ist Ausschreiben oft besser, weil kuerzelhafte Sprache schnell zu unklar oder zu hart wirkt."
           ]
         },
         {
-          "title": "Arztbrief und Uebergabe",
+          "title": "Wie sie in Brief und Uebergabe funktionieren",
           "questions": [
-            "Wie machen Sie aus einer Kuerzelsammlung eine gute muendliche Vorstellung?",
-            "Wie dokumentieren Sie Seitendifferenzen korrekt?",
-            "Wie verbinden Sie DD und weiteres Vorgehen in einem Satz?",
-            "Welche Fehler entstehen durch zu viele Kuerzel im Arztbrief?",
-            "Wie bleibt eine kurze Dokumentation trotzdem juristisch und medizinisch klar?"
+            "Eine gute muendliche Vorstellung uebersetzt Kuerzel automatisch in fliessende klinische Sprache.",
+            "Seitendifferenzen wie bds., li. und re. bleiben nur dann hilfreich, wenn der Befund selbst klar benannt wird.",
+            "DD gehoert sprachlich immer nah an das weitere Vorgehen, damit aus der Hypothese direkt ein Plan ableitbar wird.",
+            "Zu viele Kuerzel im Arztbrief machen einen Text schnell juristisch und medizinisch unscharf.",
+            "Kompakte Dokumentation wirkt dann professionell, wenn sie kurz bleibt und trotzdem Verantwortung, Verdacht und Verlauf eindeutig zeigt."
           ]
         },
         {
-          "title": "Patientengerechte Rueckuebersetzung",
+          "title": "Wie du sie patientengerecht rueckuebersetzt",
           "questions": [
-            "Wie erklaeren Sie V. a. patientengerecht, ohne falsche Sicherheit zu geben?",
-            "Wie uebersetzen Sie Z. n. im Gespraech mit Patienten oder Angehoerigen?",
-            "Wie sprechen Sie ueber Differentialdiagnosen in beruhigender, aber ehrlicher Form?",
-            "Wie erklaeren Sie bds., li. und re. ohne Fachsprache?",
-            "Wie formulieren Sie eine Verstaendnissicherung am Ende?"
+            "V. a. laesst sich ruhig als begruendeter Verdacht erklaeren, ohne falsche Sicherheit oder unnoetige Panik zu erzeugen.",
+            "Z. n. wird im Gespraech besser als hatte frueher schon einmal oder wurde bereits wegen ... behandelt uebersetzt.",
+            "Differentialdiagnosen werden gegenueber Patienten als moegliche Ursachen und nicht als verwirrende Fachliste dargestellt.",
+            "Lateralisierungen wie beidseits, links und rechts klingen ausgeschrieben fast immer klarer als die Kurzform.",
+            "Eine kurze Verstaendnissicherung am Ende zeigt, dass Fachsprache und Patientenkommunikation sauber getrennt werden koennen."
           ]
         }
       ],
@@ -165,33 +165,33 @@
       ],
       "question_groups": [
         {
-          "title": "Diagnostik verknuepfen",
+          "title": "Wofuer die haeufigsten Diagnostikkuerzel stehen",
           "questions": [
-            "Wofuer stehen EKG, Echo, Sono, CT, MRT und BGA jeweils?",
-            "Wie koppeln Sie ein Diagnostikkuerzel an eine klinische Verdachtsfrage?",
-            "Wie sagen Sie kurz, warum eine BGA in dieser Situation sinnvoll ist?",
-            "Wie vermeiden Sie eine reine Listenuebergabe ohne Priorisierung?",
-            "Wann sollten Sie im Patientengespraech lieber die lange Form verwenden?"
+            "EKG, Echo, Sono, CT, MRT und BGA muessen sicher erkannt und mit ihrer diagnostischen Rolle verbunden werden.",
+            "Jedes Diagnostikkuerzel gewinnt erst durch die klinische Frage Sinn, etwa Rhythmus, Entzuendung, Embolie oder Blutgase.",
+            "Eine BGA wird zum Beispiel nicht abstrakt angeordnet, sondern zur raschen Einschaetzung von Sauerstoff, Kohlendioxid und Saeure-Basen-Lage.",
+            "Auch Bildgebung sollte nicht als Liste erscheinen, sondern als gezielte Antwort auf einen konkreten Verdacht.",
+            "Im Patientengespraech ist die lange Form oft hilfreicher, weil sie Ziel und Nutzen der Untersuchung sofort erklaert."
           ]
         },
         {
-          "title": "Labor sicher einordnen",
+          "title": "Wie Laborwerte klinisch eingebunden werden",
           "questions": [
-            "Welche Informationen liefern BB, CRP, Krea und INR grob?",
-            "Wie erklaeren Sie Troponin oder D-Dimere ohne zu technisch zu werden?",
-            "Wie unterscheiden Sie diagnostische Basislabore von gezielten Zusatzwerten?",
-            "Wie praesentieren Sie auffaellige Laborwerte kurz und klinisch relevant?",
-            "Wie verbinden Sie Labor und naechsten Schritt in einem Satz?"
+            "BB, CRP, Krea, INR, D-Dimere und Troponin sind keine isolierten Vokabeln, sondern Marker fuer bestimmte klinische Fragen.",
+            "Ein gutes Sprachmuster verbindet den Wert sofort mit dem Grund, warum er erhoben wird.",
+            "Basislabor und Zusatzlabor werden klar getrennt, damit die Diagnostik strukturiert und nicht beliebig wirkt.",
+            "Auffaellige Laborwerte werden knapp benannt und direkt klinisch eingeordnet statt nur als Zahlenreihe vorgetragen.",
+            "Stark wirkt immer die Verbindung von Laborbefund und naechstem diagnostischen oder therapeutischen Schritt."
           ]
         },
         {
-          "title": "FSP-Anwendung",
+          "title": "Wie du das in der FSP formulierst",
           "questions": [
-            "Wie strukturieren Sie Diagnostik in der Fallvorstellung?",
-            "Wie erklaeren Sie dem Patienten, warum noch Blut abgenommen wird?",
-            "Welche Kuerzel tauchen typischerweise in Arztbrief und Kurve auf?",
-            "Wie reagieren Sie, wenn der Pruefer die lange Bedeutung einer Abkuerzung hoeren will?",
-            "Wie bleiben Sie knapp, ohne informationsarm zu werden?"
+            "In der Fallvorstellung wird Diagnostik priorisiert und nicht einfach vollstaendig aufgezahlt.",
+            "Gegenueber Patienten wird Blutabnahme oder Bildgebung ueber den Zweck und nicht ueber das Kuerzel erklaert.",
+            "Typische Stationskuerzel duerfen in Arztbrief und Kurve knapp bleiben, muessen muendlich aber sauber eingebettet sein.",
+            "Wenn ein Pruefer die Langform wissen will, sollte sie sofort und ohne Zoegern abrufbar sein.",
+            "Knappheit wirkt nur dann reif, wenn trotz Kuerzeln klar bleibt, was vermutet, untersucht und geplant wird."
           ]
         }
       ],
@@ -233,33 +233,33 @@
       ],
       "question_groups": [
         {
-          "title": "Therapie und Applikationswege",
+          "title": "Applikationswege klar benennen",
           "questions": [
-            "Wie loesen Sie i.v., s.c., i.m. und p.o. sprachlich sicher auf?",
-            "Wie begruenden Sie den gewaehlten Applikationsweg klinisch?",
-            "Wie nennen Sie Bedarfsmedikation und regelmaessige Gabe korrekt?",
-            "Wie integrieren Sie NMH oder NOAK in einen kurzen Therapieplan?",
-            "Wie vermeiden Sie unklare Mischformen aus Fachsprache und Alltagssprache?"
+            "i.v., s.c., i.m. und p.o. muessen sicher aufgeloest und mit Indikation, Geschwindigkeit und klinischer Logik verbunden werden.",
+            "Der gewaehlt Applikationsweg sollte immer begruendbar sein, zum Beispiel schnell wirksam, oral moeglich oder parenteral notwendig.",
+            "Bedarfsmedikation und regelmaessige Gabe werden sprachlich klar getrennt, damit der Therapieplan verstaendlich bleibt.",
+            "Antikoagulation mit NMH oder NOAK klingt nur dann sicher, wenn zugleich Indikation und Ueberwachung miterwaehnt werden.",
+            "Fachsprache und Alltagssprache werden nicht vermischt, sondern je nach Gegenueber bewusst umgeschaltet."
           ]
         },
         {
-          "title": "Zugaenge und Devices",
+          "title": "Zugaenge und Devices verstaendlich erklaeren",
           "questions": [
-            "Wie erklaeren Sie PVK und ZVK patientengerecht?",
-            "Wann ist ein DK sinnvoll und wie sprechen Sie ueber Risiken?",
-            "Wie dokumentieren Sie neu angelegte Zugaenge knapp und korrekt?",
-            "Wie uebergeben Sie einen problematischen Zugang oder Wechselbedarf?",
-            "Welche Begriffe sollten gegenueber Patienten immer ausgeschrieben werden?"
+            "PVK und ZVK sollten muendlich sofort als peripherer oder zentraler Venenkatheter eingeordnet werden koennen.",
+            "Ein DK wird nicht nur benannt, sondern mit Zweck, Dauer und moeglichen Risiken sprachlich sauber erklaert.",
+            "Neu angelegte Zugaenge gehoeren knapp und korrekt in die Dokumentation, inklusive Lage und Funktion.",
+            "Probleme mit einem Zugang werden in der Uebergabe direkt mit Handlungsbedarf verbunden.",
+            "Im Patientengespraech werden diese Begriffe fast immer ausgeschrieben und in einfachen Worten beschrieben."
           ]
         },
         {
-          "title": "Station und Verlauf",
+          "title": "Station, Ueberwachung und Verlauf darstellen",
           "questions": [
-            "Wie erklaeren Sie die Verlegung auf IMC oder ITS in einfacher Sprache?",
-            "Wie begruenden Sie die Ueberwachung in der ZNA oder auf IMC?",
-            "Wie klingt eine gute Uebergabe mit Station, Zugang und Therapie in 30 Sekunden?",
-            "Wie beschreiben Sie Prioritaet und Dringlichkeit, ohne hektisch zu wirken?",
-            "Wie dokumentieren Sie das weitere Vorgehen im Arztbrief knapp und klar?"
+            "Begriffe wie ZNA, IMC und ITS strukturieren das Vorgehen nur dann gut, wenn der Grund fuer die Verlegung genannt wird.",
+            "Eine gute Erklaerung macht deutlich, welches Ueberwachungsniveau der Patient braucht und warum.",
+            "In 30 Sekunden lassen sich Station, Zugang und Therapie in einen sehr klaren Verlaufsplan bringen.",
+            "Verlegungen klingen professionell, wenn Dringlichkeit, Monitoring und Ziel der Massnahme gemeinsam genannt werden.",
+            "Auch hier zaehlt in der FSP der Wechsel: intern knapp, gegenueber Patienten konkret und beruhigend."
           ]
         }
       ],

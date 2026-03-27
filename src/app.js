@@ -8621,6 +8621,10 @@ function stopLearningBodyModelLoop() {
   // Kein 3D-Loop mehr noetig im 2D-Atlas.
 }
 
+function getLearningMetaCountLabel(rootId) {
+  return rootId === "anamnese" ? "Fragen" : "Lernpunkte";
+}
+
 function renderLearningReadingMode(bundle) {
   const categories = Array.isArray(bundle?.categories) ? bundle.categories : [];
   const activeCategoryId = getLearningActiveCategoryIdForRoot(state.learningRootId);
@@ -8640,7 +8644,7 @@ function renderLearningReadingMode(bundle) {
   if (refs.learningReadingMeta) {
     refs.learningReadingMeta.textContent = [
       activeCategory.focus,
-      `${activeCategory.questionCount} Fragen`,
+      `${activeCategory.questionCount} ${getLearningMetaCountLabel(state.learningRootId)}`,
       linkedTerms.length > 0 ? `${linkedTerms.length} verknuepfte Online-Kurs-Begriffe` : ""
     ]
       .filter((item) => Boolean(item))
@@ -8674,7 +8678,11 @@ function renderLearningReadingMode(bundle) {
       const heading = document.createElement("h6");
       heading.textContent = group.title;
       block.appendChild(heading);
-      const list = document.createElement("ol");
+      const useOrderedList =
+        Array.isArray(group.questions) &&
+        group.questions.length > 0 &&
+        group.questions.every((entry) => String(entry || "").trim().endsWith("?"));
+      const list = document.createElement(useOrderedList ? "ol" : "ul");
       for (const question of group.questions) {
         const li = document.createElement("li");
         li.textContent = question;

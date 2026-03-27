@@ -503,33 +503,33 @@
       ],
       "question_groups": [
         {
-          "title": "Indikation und Nutzen",
+          "title": "Was der Patient zuerst verstehen muss",
           "questions": [
-            "Wann ist eine TEE aussagekraeftiger als eine transthorakale Echokardiographie?",
-            "Wie erklaeren Sie die Naehe zum Herzen ueber die Speiseroehre in Alltagssprache?",
-            "Welche Fragestellungen koennen mit einer TEE gezielt geklaert werden?",
-            "Wie begruenden Sie die Untersuchung ohne Fachwortkette?",
-            "Wie reagieren Sie auf die Frage, ob das wirklich noetig ist?"
+            "Die TEE wird erklaert als Ultraschalluntersuchung ueber die Speiseroehre, mit der das Herz besonders nah und genau beurteilt werden kann.",
+            "Der Nutzen steht am Anfang: Klappen, Vorhoefe, Thromben oder Endokarditiszeichen lassen sich oft besser sehen als von aussen.",
+            "Patienten sollten frueh wissen, dass es nicht um eine offene Operation, sondern um eine endoskopieaehnliche Untersuchung geht.",
+            "Die Erklaerung bleibt ruhig und konkret, damit das Verfahren nicht groesser oder gefaehrlicher klingt, als es ist.",
+            "Ein guter Einstieg verbindet deshalb Ziel, Zugangsweg und den begrenzten, aber klaren Nutzen der Untersuchung."
           ]
         },
         {
-          "title": "Vorbereitung und Ablauf",
+          "title": "Wie Ablauf und Vorbereitung erklaert werden",
           "questions": [
-            "Wie erklaeren Sie die Nuechternheit vor der Untersuchung?",
-            "Wie sprechen Sie ueber Rachenbetaeubung oder Sedierung verstaendlich?",
-            "Welche Schritte des Ablaufs sollten unbedingt genannt werden?",
-            "Wie beruhigen Sie Patienten mit Wuergereiz-Angst?",
-            "Wie sichern Sie Einverstaendnis vor Beginn?"
+            "Wichtig sind Hinweise zu Nuechternheit, Rachenspray, moeglicher Sedierung und kurzer Ueberwachung danach.",
+            "Der Schlauch wird als weiches Untersuchungsgeraet beschrieben, das vorsichtig ueber den Mund in die Speiseroehre eingefuehrt wird.",
+            "Wuergereiz und Druckgefuehl werden offen benannt, gleichzeitig aber als gut steuerbar und voruebergehend eingeordnet.",
+            "Patienten gewinnen Vertrauen, wenn sie wissen, dass waehrend der Untersuchung Ueberwachung und Begleitung stattfinden.",
+            "Am Ende sollte klar sein, wann wieder gegessen werden darf und worauf nach der Sedierung zu achten ist."
           ]
         },
         {
-          "title": "Risiken und Nachsorge",
+          "title": "Welche Risiken und Grenzen ruhig benannt werden",
           "questions": [
-            "Welche Risiken sind relevant, ohne das Gespraech zu dramatisieren?",
-            "Wie erklaeren Sie die Ueberwachung nach Sedierung?",
-            "Wann darf der Patient wieder trinken oder essen?",
-            "Welche Warnzeichen benoetigen nach der Untersuchung Aufmerksamkeit?",
-            "Wie dokumentieren Sie Aufklaerung und Einwilligung knapp und sauber?"
+            "Seltene Risiken wie Verletzungen, Blutungen, Aspiration oder Kreislaufreaktionen werden sachlich und ohne Dramatisierung genannt.",
+            "Auch die Sedierung gehoert mit ihren typischen Nebenwirkungen in die Aufklaerung, wenn sie vorgesehen ist.",
+            "Wichtig ist die ehrliche Aussage, dass selbst eine genaue TEE nicht jede klinische Frage allein beantwortet.",
+            "Nach der Risikoerklaerung folgt idealerweise sofort der Sicherheitsrahmen mit Monitoring, Erfahrung und Nachbeobachtung.",
+            "So bleibt die Aufklaerung professionell, klar und fuer Patienten gut einordenbar."
           ]
         }
       ],
@@ -569,33 +569,33 @@
       ],
       "question_groups": [
         {
-          "title": "Indikation",
+          "title": "Worum es bei dieser Untersuchung geht",
           "questions": [
-            "Wie erklaeren Sie den Verdacht auf Thrombose oder Gefaessverengung patientengerecht?",
-            "Welche Leitsymptome machen die Untersuchung plausibel?",
-            "Wie unterscheiden Sie Kompressions- von Dopplersonographie sprachlich einfach?",
-            "Welche Alternativen waeren nur bei unklaren Befunden noetig?",
-            "Wie benennen Sie die Dringlichkeit ohne Angst zu machen?"
+            "Die Doppler- oder Duplexsonographie der Venen wird als Untersuchung zur Suche nach Gerinnseln oder Abflussstoerungen erklaert.",
+            "Patienten sollten verstehen, dass damit eine Thrombose abgeklaert oder ausgeschlossen werden kann.",
+            "Der Nutzen liegt in der schnellen, strahlenfreien und meist sofort verfuegbaren Diagnostik.",
+            "Die Erklaerung bleibt einfach: Schallkopf, Gel und Beurteilung des Blutflusses reichen als Bildsprache meist aus.",
+            "So entsteht ein klarer Zusammenhang zwischen Beschwerdebild und Untersuchung."
           ]
         },
         {
-          "title": "Ablauf",
+          "title": "Wie Ablauf und Belastung beschrieben werden",
           "questions": [
-            "Wie erklaeren Sie Gel, Schallkopf und Druckgefuehl?",
-            "Wie lange dauert die Untersuchung realistischerweise?",
-            "Wie gehen Sie auf Schmerzangst im betroffenen Bein ein?",
-            "Welche Koerperlage oder Mitarbeit des Patienten ist wichtig?",
-            "Wie holen Sie aktiv das Einverstaendnis ein?"
+            "Der Ablauf umfasst Lagerung, Gel auf der Haut und das Abfahren der Vene mit dem Schallkopf.",
+            "Ein leichter Druck kann benoetigt werden, sollte aber als kurz und kontrollierbar beschrieben werden.",
+            "Die Untersuchung ist in der Regel schmerzarm und ohne Strahlenbelastung, was viele Patienten beruhigt.",
+            "Wichtig ist der Hinweis, dass die Untersuchung je nach Fragestellung an mehreren Abschnitten des Beins erfolgen kann.",
+            "Am Ende sollte klar sein, dass der Befund oft direkt in das weitere Vorgehen einfliesst."
           ]
         },
         {
-          "title": "Befund und Konsequenz",
+          "title": "Wie Befund und naechster Schritt vorbereitet werden",
           "questions": [
-            "Wie kommunizieren Sie einen unauffaelligen Befund ohne falsche Entwarnung?",
-            "Wie erklaeren Sie eine vermutete Thrombose verstaendlich?",
-            "Wie leiten Sie auf Antikoagulation oder weitere Diagnostik ueber?",
-            "Welche Warnzeichen nennen Sie fuer die Zeit bis zur endgueltigen Abklaerung?",
-            "Wie dokumentieren Sie die Aufklaerung knapp im Brief?"
+            "Ein unauffaelliger Befund schliesst viele Probleme aus, muss aber je nach Klinik dennoch eingeordnet werden.",
+            "Bei Hinweis auf Thrombose folgt sprachlich sofort die Bruecke zu Therapie, Antikoagulation oder weiterer Ueberwachung.",
+            "Patienten profitieren von der klaren Aussage, dass die Untersuchung eine wichtige, aber nicht isolierte Entscheidungshilfe ist.",
+            "Warnzeichen und Dringlichkeit koennen in wenigen Saetzen gut mit dem Untersuchungsergebnis verbunden werden.",
+            "Damit wird aus einer einfachen Sonographie eine nachvollziehbare diagnostische Entscheidungskette."
           ]
         }
       ],
@@ -635,33 +635,33 @@
       ],
       "question_groups": [
         {
-          "title": "Nutzen erklaeren",
+          "title": "Warum Blut abgenommen wird",
           "questions": [
-            "Wie erklaeren Sie den Zweck einer Blutabnahme ohne Laborliste?",
-            "Welche typischen Fragestellungen koennen Sie in Alltagssprache nennen?",
-            "Wie reagieren Sie auf die Frage, warum so viele Roehrchen noetig sind?",
-            "Wie erklaeren Sie, dass die Ergebnisse teilweise sofort, teilweise spaeter vorliegen?",
-            "Wie vermeiden Sie zu technische Laborbegriffe im Patientengespraech?"
+            "Blutabnahme wird patientengerecht ueber den Zweck erklaert, zum Beispiel Entzuendung, Blutarmut, Elektrolyte oder Organfunktion.",
+            "Auch eine einfache Blutabnahme gewinnt an Qualitaet, wenn klar gesagt wird, welche Frage damit beantwortet werden soll.",
+            "Das Verfahren wirkt professionell, wenn es nicht als Routinefloskel, sondern als sinnvoller Teil der Diagnostik erscheint.",
+            "Patienten verstehen die Massnahme besser, wenn Labor nicht abstrakt, sondern problembezogen begruendet wird.",
+            "So wird aus einer kleinen Massnahme ein medizinisch nachvollziehbarer Schritt."
           ]
         },
         {
-          "title": "Ablauf patientengerecht",
+          "title": "Wie Ablauf und Beschwerden erklaert werden",
           "questions": [
-            "Wie erklaeren Sie Stauschlauch und Desinfektion knapp und verstaendlich?",
-            "Wie sprechen Sie ueber den kurzen Einstich, ohne zu verharmlosen?",
-            "Wie reagieren Sie auf Angst vor Nadeln?",
-            "Wann ist liegende Blutabnahme sinnvoll?",
-            "Wie sichern Sie Mitarbeit und Ruhe vor dem Einstich?"
+            "Der Ablauf wird kurz beschrieben: Desinfektion, kurzer Nadelstich, Entnahme mehrerer Roehrchen und anschliessender Druckverband.",
+            "Schmerz und kleine Bluterguesse werden offen genannt, aber als haeufig harmlos eingeordnet.",
+            "Bei Angst vor Nadeln hilft eine ruhige Sprache mit Hinweis auf kurze Dauer und gute Durchfuehrbarkeit.",
+            "Wenn mehrere Werte benoetigt werden, kann kurz erklaert werden, warum mehrere Roehrchen noetig sind.",
+            "Die Erklaerung endet idealerweise mit dem Hinweis, wann Ergebnisse vorliegen und was dann passiert."
           ]
         },
         {
-          "title": "Risiken und Nachsorge",
+          "title": "Wie die Befundkommunikation vorbereitet wird",
           "questions": [
-            "Welche kleinen Risiken sollten Sie aktiv nennen?",
-            "Wie erklaeren Sie einen moeglichen Bluterguss oder Schwindel?",
-            "Was sagen Sie nach der Blutabnahme zur Einstichstelle?",
-            "Wie dokumentieren Sie Aufklaerung und Einwilligung knapp?",
-            "Wie ueberleiten Sie danach auf den weiteren Plan?"
+            "Laborwerte werden angekuendigt als Hilfsmittel, nicht als automatische Diagnose.",
+            "Unauffaellige Werte sollten ruhig kommuniziert werden, ohne falsche Entwarnung zu erzeugen.",
+            "Auffaellige Werte werden spaeter mit Bedeutung und naechstem Schritt besprochen, nicht nur genannt.",
+            "Patienten sollten wissen, dass manche Ergebnisse schnell und andere erst spaeter verfuegbar sind.",
+            "Diese Erwartungssteuerung macht selbst die einfache Blutabnahme sprachlich sauber und professionell."
           ]
         }
       ],
@@ -701,33 +701,33 @@
       ],
       "question_groups": [
         {
-          "title": "Indikation",
+          "title": "Warum operiert wird",
           "questions": [
-            "Wie erklaeren Sie dem Patienten die vermutete Appendizitis in einfacher Sprache?",
-            "Warum ist die Operation in dieser Situation sinnvoll oder dringend?",
-            "Wie sprechen Sie ueber Alternativen und Grenzen konservativen Abwartens?",
-            "Wie reagieren Sie auf die Frage, ob man nicht erst Medikamente versuchen kann?",
-            "Wie formulieren Sie Dringlichkeit ohne Panik?"
+            "Die Operation wird erklaert als Entfernung des entzuendeten Blinddarmfortsatzes, um Komplikationen wie Perforation zu vermeiden.",
+            "Patienten sollten verstehen, dass nicht jeder Bauchschmerz operiert wird, hier aber der Verdacht klinisch ausreichend stark ist.",
+            "Die Indikation wirkt glaubwuerdig, wenn Symptome, Befunde und Risiko der Verzoegerung kurz verbunden werden.",
+            "Der Nutzen der Operation steht deshalb vor der technischen Beschreibung.",
+            "So bleibt die Aufklaerung medizinisch klar und fuer Laien gut nachvollziehbar."
           ]
         },
         {
-          "title": "Ablauf der Operation",
+          "title": "Wie Ablauf und Nachbehandlung erklaert werden",
           "questions": [
-            "Wie beschreiben Sie die laparoskopische OP ohne Techniklastigkeit?",
-            "Welche Rolle spielt die Vollnarkose in der Aufklaerung?",
-            "Wie erklaeren Sie kleine Schnitte, Kamera und Instrumente verstaendlich?",
-            "Wann erwaehnen Sie moeglichen Wechsel zum offenen Vorgehen?",
-            "Wie sichern Sie Verstaendnis am Ende des Ablaufs?"
+            "Der Eingriff wird in groben Schritten beschrieben, meist als laparoskopische Operation in Vollnarkose.",
+            "Wichtig sind Hinweise zu Schnitten, Ueberwachung nach der Narkose und frueher Mobilisation je nach Verlauf.",
+            "Auch Nahrungskarenz vor der OP und der voraussichtliche stationaere Verlauf gehoeren in eine klare Basisaufklaerung.",
+            "Drainagen oder eine offene Operation werden als moegliche, aber nicht automatische Erweiterungen erklaert.",
+            "Damit weiss der Patient, was ihn praktisch erwartet, ohne mit Details ueberfrachtet zu werden."
           ]
         },
         {
-          "title": "Risiken und Nachbehandlung",
+          "title": "Wie Risiken offen und ruhig benannt werden",
           "questions": [
-            "Welche Risiken sind fuer die Aufklaerung unverzichtbar?",
-            "Wie sprechen Sie ueber Wundinfektion oder Blutung ruhig und ehrlich?",
-            "Wie erklaeren Sie die ersten Tage nach der OP?",
-            "Welche Warnzeichen nennen Sie vor Entlassung?",
-            "Wie dokumentieren Sie die Einwilligung sauber?"
+            "Blutung, Infektion, Verletzung benachbarter Strukturen und Narkoserisiken gehoeren sachlich in die Aufklaerung.",
+            "Auch die Moeglichkeit, intraoperativ ein anderes Vorgehen zu brauchen, sollte kurz und ehrlich benannt werden.",
+            "Nach der Risikoerklaerung hilft der Hinweis, dass solche Komplikationen selten sind und ueberwacht werden.",
+            "Patienten sollten ausserdem wissen, bei welchen Beschwerden nach der OP sofort Hilfe gesucht werden muss.",
+            "So wirkt die operative Aufklaerung weder verharmlosend noch angstmachend, sondern professionell."
           ]
         }
       ],
