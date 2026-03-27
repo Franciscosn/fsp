@@ -45,6 +45,7 @@ const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de
 const VOICE_CASE_SAMPLE_PATH = "data/voice_case_samples_de.json";
 const LEARNING_BUNDLE_PATH_BY_ROOT = Object.freeze({
   anamnese: "data/learning_anamnese_de.json",
+  fachsprache_kommunikation: "data/learning_fachsprache_kommunikation_de.json",
   aufklaerung: "data/learning_aufklaerung_de.json",
   klinische_untersuchung: "data/learning_klinische_untersuchung_de.json",
   systemmodule: "data/learning_systemmodule_de.json",
@@ -101,9 +102,9 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
     view: LEARNING_VIEW_SUBCATEGORIES
   },
   {
-    id: "aufklaerung",
-    label: "Aufklaerungsgespraeche",
-    cta: "Diagnostik verstaendlich erklaeren",
+    id: "fachsprache_kommunikation",
+    label: "Fachsprache & Kommunikation",
+    cta: "Registerwechsel und Uebergaben festigen",
     view: LEARNING_VIEW_SUBCATEGORIES
   },
   {
@@ -113,15 +114,21 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
     view: LEARNING_VIEW_SUBCATEGORIES
   },
   {
-    id: "systemmodule",
-    label: "Systemmodule",
-    cta: "Organsysteme strukturiert lernen",
-    view: LEARNING_VIEW_SUBCATEGORIES
-  },
-  {
     id: "red_flags",
     label: "Red Flags",
     cta: "Warnzeichen priorisiert erkennen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "aufklaerung",
+    label: "Aufklaerungsgespraeche",
+    cta: "Diagnostik verstaendlich erklaeren",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "systemmodule",
+    label: "Systemmodule",
+    cta: "Organsysteme strukturiert lernen",
     view: LEARNING_VIEW_SUBCATEGORIES
   },
   {
