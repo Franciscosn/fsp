@@ -1,10 +1,10 @@
 {
   "title": "Lernbereich",
-  "subtitle": "Systemmodule fuer die FSP Berlin",
-  "scope_note": "Dieser Bereich ueberfuehrt die aus dem Fachsprachkurs extrahierten Systemthemen in strukturierte Lernmodule mit Anamnese-, Befund- und Uebergabesprache. Ziel ist klinisch sinnvolle Priorisierung statt isolierter Vokabellisten.",
+  "subtitle": "Systemmodule für die FSP Berlin",
+  "scope_note": "Dieser Bereich überführt die aus dem Fachsprachkurs extrahierten Systemthemen in strukturierte Lernmodule mit Anamnese-, Befund- und Übergabesprache. Ziel ist klinisch sinnvolle Priorisierung statt isolierter Vokabellisten.",
   "references": [
     {
-      "label": "Fachsprachkurs PDF: Organbezogene Wortlisten, Fragen und Fallanlaesse",
+      "label": "Fachsprachkurs PDF: Organbezogene Wortlisten, Fragen und Fallanlässe",
       "url": "data/fachsprachkurs.pdf"
     }
   ],
@@ -13,18 +13,18 @@
       "id": "kardiologie_modul",
       "title": "Kardiologie kompakt",
       "focus": "Leitsymptome, Risikoprofil und Priorisierung im Herz-Kreislauf-Kontext",
-      "summary": "Das kardiologische Modul trainiert die Verbindung zwischen Symptombeschreibung, Risikoanamnese und klarer Handlungsableitung. Genau diese Verbindung wird im Berliner Arzt-Arzt-Gespraech stark bewertet.",
+      "summary": "Das kardiologische Modul trainiert die Verbindung zwischen Symptombeschreibung, Risikoanamnese und klarer Handlungsableitung. Genau diese Verbindung wird im Berliner Arzt-Arzt-Gespräch stark bewertet.",
       "learning_text": [
-        "Das kardiologische Modul trainiert die Verbindung zwischen Symptombeschreibung, Risikoanamnese und klarer Handlungsableitung. Genau diese Verbindung wird im Berliner Arzt-Arzt-Gespraech stark bewertet. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Im kardiologischen Kontext stehen Thoraxschmerz, Dyspnoe, Palpitationen, Synkope und Leistungsknick im Zentrum. Risikoprofil, Vorerkrankungen, Interventionen und Medikation gehoeren frueh und geordnet in die Einschaetzung. Die erste Weiche lautet immer: akut instabil oder aktuell kompensiert.",
-        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Kardiologische Sprache wirkt stark, wenn Symptom, Risiko und Plan in wenigen klaren Saetzen verbunden werden. Vergangene Ereignisse wie Stent, Infarkt oder Rhythmusstoerung muessen muendlich abrufbar und sauber einordenbar sein. Der diagnostische Pfad mit EKG, Labor, Monitoring oder Echo sollte transparent und patientengerecht erklaert werden."
+        "Das kardiologische Modul trainiert die Verbindung zwischen Symptombeschreibung, Risikoanamnese und klarer Handlungsableitung. Genau diese Verbindung wird im Berliner Arzt-Arzt-Gespräch stark bewertet. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Im kardiologischen Kontext stehen Thoraxschmerz, Dyspnoe, Palpitationen, Synkope und Leistungsknick im Zentrum. Risikoprofil, Vorerkrankungen, Interventionen und Medikation gehören früh und geordnet in die Einschätzung. Die erste Weiche lautet immer: akut instabil oder aktuell kompensiert.",
+        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Kardiologische Sprache wirkt stark, wenn Symptom, Risiko und Plan in wenigen klaren Sätzen verbunden werden. Vergangene Ereignisse wie Stent, Infarkt oder Rhythmusstörung müssen mündlich abrufbar und sauber einordenbar sein. Der diagnostische Pfad mit EKG, Labor, Monitoring oder Echo sollte transparent und patientengerecht erklärt werden."
       ],
       "question_groups": [
         {
           "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
             "Im kardiologischen Kontext stehen Thoraxschmerz, Dyspnoe, Palpitationen, Synkope und Leistungsknick im Zentrum.",
-            "Risikoprofil, Vorerkrankungen, Interventionen und Medikation gehoeren frueh und geordnet in die Einschaetzung.",
+            "Risikoprofil, Vorerkrankungen, Interventionen und Medikation gehören früh und geordnet in die Einschätzung.",
             "Die erste Weiche lautet immer: akut instabil oder aktuell kompensiert.",
             "Gerade in diesem Modul entscheidet Priorisierung mehr als Detailwissen."
           ]
@@ -32,18 +32,18 @@
         {
           "title": "Was sprachlich tragen soll",
           "questions": [
-            "Kardiologische Sprache wirkt stark, wenn Symptom, Risiko und Plan in wenigen klaren Saetzen verbunden werden.",
-            "Vergangene Ereignisse wie Stent, Infarkt oder Rhythmusstoerung muessen muendlich abrufbar und sauber einordenbar sein.",
-            "Der diagnostische Pfad mit EKG, Labor, Monitoring oder Echo sollte transparent und patientengerecht erklaert werden.",
-            "Auch Warnzeichen fuer zuhause gehoeren zu einer vollstaendigen kardiologischen Kommunikation."
+            "Kardiologische Sprache wirkt stark, wenn Symptom, Risiko und Plan in wenigen klaren Sätzen verbunden werden.",
+            "Vergangene Ereignisse wie Stent, Infarkt oder Rhythmusstörung müssen mündlich abrufbar und sauber einordenbar sein.",
+            "Der diagnostische Pfad mit EKG, Labor, Monitoring oder Echo sollte transparent und patientengerecht erklärt werden.",
+            "Auch Warnzeichen für zuhause gehören zu einer vollständigen kardiologischen Kommunikation."
           ]
         }
       ],
       "exam_sentences": [
-        "Die Symptomkonstellation ist kardiologisch relevant und erfordert eine zeitnahe Abklaerung.",
+        "Die Symptomkonstellation ist kardiologisch relevant und erfordert eine zeitnahe Abklärung.",
         "Im Vordergrund stehen derzeit Thoraxschmerz, Belastungsdyspnoe und episodische Palpitationen.",
         "Aufgrund des Risikoprofils priorisieren wir EKG, Labor und engmaschiges Monitoring.",
-        "Das weitere Vorgehen erklaere ich dem Patienten transparent inklusive Warnzeichen."
+        "Das weitere Vorgehen erkläre ich dem Patienten transparent inklusive Warnzeichen."
       ],
       "linked_term_ids": [
         "online_kurs_angina_pectoris",
@@ -56,10 +56,10 @@
       ],
       "mini_scenario": {
         "title": "Transfer: Kardiologie kompakt",
-        "situation": "Ein 61-jaehriger Patient berichtet ueber Herzstolpern und eine kurze Synkope am Vortag.",
-        "task_patient": "Erklaeren Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Saetzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzuebergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 praezisen Saetzen."
+        "situation": "Ein 61-jähriger Patient berichtet über Herzstolpern und eine kurze Synkope am Vortag.",
+        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
+        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Herz-Kreislauf-Fragenblock"
@@ -68,38 +68,38 @@
     {
       "id": "pneumologie_modul",
       "title": "Pneumologie und Atemwege",
-      "focus": "Husten, Dyspnoe und respiratorische Alarmzeichen sprachlich sicher fuehren",
-      "summary": "Das respiratorische Modul erweitert die bestehende Husten/Dyspnoe-Anamnese um systematische Aufklaerungssprache zu Untersuchungen und Dringlichkeit.",
+      "focus": "Husten, Dyspnoe und respiratorische Alarmzeichen sprachlich sicher führen",
+      "summary": "Das respiratorische Modul erweitert die bestehende Husten/Dyspnoe-Anamnese um systematische Aufklärungssprache zu Untersuchungen und Dringlichkeit.",
       "learning_text": [
-        "Das respiratorische Modul erweitert die bestehende Husten/Dyspnoe-Anamnese um systematische Aufklaerungssprache zu Untersuchungen und Dringlichkeit. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Bei respiratorischen Beschwerden stehen Atemarbeit, Sauerstofflage, Hustenqualitaet, Auswurf und Begleitsymptome im Vordergrund. Beginn, Verlauf, Trigger und Belastbarkeit geben der Anamnese ihre Grundstruktur. Infektzeichen, Brustschmerz oder ploetzliche Verschlechterung gehoeren frueh in die Red-Flag-Logik.",
-        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Patienten sollten hoeren, warum Pulsoxymetrie, Untersuchung, Labor oder Bildgebung jetzt noetig sind. Die Dringlichkeit wird ruhig, aber eindeutig kommuniziert. In der Uebergabe zaehlen Atemnotgrad, Belastung, Warnzeichen und der erste Plan am meisten."
+        "Das respiratorische Modul erweitert die bestehende Husten/Dyspnoe-Anamnese um systematische Aufklärungssprache zu Untersuchungen und Dringlichkeit. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Bei respiratorischen Beschwerden stehen Atemarbeit, Sauerstofflage, Hustenqualität, Auswurf und Begleitsymptome im Vordergrund. Beginn, Verlauf, Trigger und Belastbarkeit geben der Anamnese ihre Grundstruktur. Infektzeichen, Brustschmerz oder plötzliche Verschlechterung gehören früh in die Red-Flag-Logik.",
+        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Patienten sollten hören, warum Pulsoxymetrie, Untersuchung, Labor oder Bildgebung jetzt nötig sind. Die Dringlichkeit wird ruhig, aber eindeutig kommuniziert. In der Übergabe zählen Atemnotgrad, Belastung, Warnzeichen und der erste Plan am meisten."
       ],
       "question_groups": [
         {
           "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Bei respiratorischen Beschwerden stehen Atemarbeit, Sauerstofflage, Hustenqualitaet, Auswurf und Begleitsymptome im Vordergrund.",
+            "Bei respiratorischen Beschwerden stehen Atemarbeit, Sauerstofflage, Hustenqualität, Auswurf und Begleitsymptome im Vordergrund.",
             "Beginn, Verlauf, Trigger und Belastbarkeit geben der Anamnese ihre Grundstruktur.",
-            "Infektzeichen, Brustschmerz oder ploetzliche Verschlechterung gehoeren frueh in die Red-Flag-Logik.",
-            "Die respiratorische Einschaetzung lebt von frueher Priorisierung und nicht von spaetem Nachfragen."
+            "Infektzeichen, Brustschmerz oder plötzliche Verschlechterung gehören früh in die Red-Flag-Logik.",
+            "Die respiratorische Einschätzung lebt von früher Priorisierung und nicht von spaetem Nachfragen."
           ]
         },
         {
           "title": "Was sprachlich tragen soll",
           "questions": [
-            "Patienten sollten hoeren, warum Pulsoxymetrie, Untersuchung, Labor oder Bildgebung jetzt noetig sind.",
+            "Patienten sollten hören, warum Pulsoxymetrie, Untersuchung, Labor oder Bildgebung jetzt nötig sind.",
             "Die Dringlichkeit wird ruhig, aber eindeutig kommuniziert.",
-            "In der Uebergabe zaehlen Atemnotgrad, Belastung, Warnzeichen und der erste Plan am meisten.",
-            "Eine gute respiratorische Kommunikation endet mit konkreten Rueckkehrkriterien."
+            "In der Übergabe zählen Atemnotgrad, Belastung, Warnzeichen und der erste Plan am meisten.",
+            "Eine gute respiratorische Kommunikation endet mit konkreten Rückkehrkriterien."
           ]
         }
       ],
       "exam_sentences": [
-        "Wir muessen Ihre Atembeschwerden jetzt zuegig einordnen, um gefaehrliche Ursachen auszuschliessen.",
-        "Entscheidend sind fuer mich Verlauf, Ausloeser und Begleitsymptome wie Fieber oder Brustschmerz.",
+        "Wir müssen Ihre Atembeschwerden jetzt zügig einordnen, um gefährliche Ursachen auszuschliessen.",
+        "Entscheidend sind für mich Verlauf, Auslöser und Begleitsymptome wie Fieber oder Brustschmerz.",
         "Bei Warnzeichen erfolgt die weitere Diagnostik unmittelbar und engmaschig.",
-        "Ich erklaere Ihnen jetzt Schritt fuer Schritt, was als naechstes passiert."
+        "Ich erkläre Ihnen jetzt Schritt für Schritt, was als nächstes passiert."
       ],
       "linked_term_ids": [
         "online_kurs_respirationstrakt",
@@ -112,10 +112,10 @@
       ],
       "mini_scenario": {
         "title": "Transfer: Pneumologie und Atemwege",
-        "situation": "Ein 58-jaehriger Patient kommt mit progredienter Luftnot und Husten in die Notaufnahme.",
-        "task_patient": "Erklaeren Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Saetzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzuebergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 praezisen Saetzen."
+        "situation": "Ein 58-jähriger Patient kommt mit progredienter Luftnot und Husten in die Notaufnahme.",
+        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
+        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: respiratorisches System und Fragen"
@@ -125,37 +125,37 @@
       "id": "gastroenterologie_modul",
       "title": "Gastroenterologie und Verdauung",
       "focus": "Abdominale Leitsymptome, Blutungszeichen und differenzierte Priorisierung",
-      "summary": "Das GI-Modul trainiert die sprachliche Trennung zwischen stabilen Beschwerden und potenziell bedrohlichen Verlaeufen wie GI-Blutung oder Peritonitis.",
+      "summary": "Das GI-Modul trainiert die sprachliche Trennung zwischen stabilen Beschwerden und potenziell bedrohlichen Verläufen wie GI-Blutung oder Peritonitis.",
       "learning_text": [
-        "Das GI-Modul trainiert die sprachliche Trennung zwischen stabilen Beschwerden und potenziell bedrohlichen Verlaeufen wie GI-Blutung oder Peritonitis. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Bei GI-Beschwerden sind Beginn, Lokalisation, Trigger, Erbrechen und Stuhlveraenderungen die Grundachse der Anamnese. Blutungszeichen, Peritonismus und Kreislaufsymptome muessen frueh erkannt und priorisiert werden. Auch Medikamente wie NSAR oder Antikoagulanzien koennen die klinische Richtung stark veraendern.",
-        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Labor, Sonographie und gegebenenfalls Endoskopie sollten ueber ihren Zweck und nicht ueber ihren Namen erklaert werden. In der Uebergabe gehoeren Blutungszeichen, Bauchbefund und Plan in eine klare Reihenfolge. Patienten profitieren von genauen Warnzeichen fuer Kreislauf, Schmerz und sichtbare Blutbeimengungen."
+        "Das GI-Modul trainiert die sprachliche Trennung zwischen stabilen Beschwerden und potenziell bedrohlichen Verläufen wie GI-Blutung oder Peritonitis. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Bei GI-Beschwerden sind Beginn, Lokalisation, Trigger, Erbrechen und Stuhlveränderungen die Grundachse der Anamnese. Blutungszeichen, Peritonismus und Kreislaufsymptome müssen früh erkannt und priorisiert werden. Auch Medikamente wie NSAR oder Antikoagulanzien können die klinische Richtung stark verändern.",
+        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Labor, Sonographie und gegebenenfalls Endoskopie sollten über ihren Zweck und nicht über ihren Namen erklärt werden. In der Übergabe gehören Blutungszeichen, Bauchbefund und Plan in eine klare Reihenfolge. Patienten profitieren von genauen Warnzeichen für Kreislauf, Schmerz und sichtbare Blutbeimengungen."
       ],
       "question_groups": [
         {
           "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Bei GI-Beschwerden sind Beginn, Lokalisation, Trigger, Erbrechen und Stuhlveraenderungen die Grundachse der Anamnese.",
-            "Blutungszeichen, Peritonismus und Kreislaufsymptome muessen frueh erkannt und priorisiert werden.",
-            "Auch Medikamente wie NSAR oder Antikoagulanzien koennen die klinische Richtung stark veraendern.",
+            "Bei GI-Beschwerden sind Beginn, Lokalisation, Trigger, Erbrechen und Stuhlveränderungen die Grundachse der Anamnese.",
+            "Blutungszeichen, Peritonismus und Kreislaufsymptome müssen früh erkannt und priorisiert werden.",
+            "Auch Medikamente wie NSAR oder Antikoagulanzien können die klinische Richtung stark verändern.",
             "Das Modul lebt von der klaren Trennung zwischen stabilem Verlauf und akutem Warnmuster."
           ]
         },
         {
           "title": "Was sprachlich tragen soll",
           "questions": [
-            "Labor, Sonographie und gegebenenfalls Endoskopie sollten ueber ihren Zweck und nicht ueber ihren Namen erklaert werden.",
-            "In der Uebergabe gehoeren Blutungszeichen, Bauchbefund und Plan in eine klare Reihenfolge.",
-            "Patienten profitieren von genauen Warnzeichen fuer Kreislauf, Schmerz und sichtbare Blutbeimengungen.",
+            "Labor, Sonographie und gegebenenfalls Endoskopie sollten über ihren Zweck und nicht über ihren Namen erklärt werden.",
+            "In der Übergabe gehören Blutungszeichen, Bauchbefund und Plan in eine klare Reihenfolge.",
+            "Patienten profitieren von genauen Warnzeichen für Kreislauf, Schmerz und sichtbare Blutbeimengungen.",
             "Eine gute GI-Kommunikation bleibt sachlich, geordnet und nicht dramatisch."
           ]
         }
       ],
       "exam_sentences": [
-        "Wir muessen Ihre Beschwerden so einordnen, dass wir eine Blutung oder Entzuendung sicher ausschliessen.",
-        "Entscheidend sind dabei Schmerzverlauf, Stuhlveraenderungen und Kreislaufzeichen.",
-        "Als ersten Schritt planen wir Labor und Sonographie, danach gegebenenfalls eine endoskopische Abklaerung.",
-        "Ich nenne Ihnen klar, bei welchen Warnzeichen Sie sofort wiederkommen muessen."
+        "Wir müssen Ihre Beschwerden so einordnen, dass wir eine Blutung oder Entzündung sicher ausschliessen.",
+        "Entscheidend sind dabei Schmerzverlauf, Stuhlveränderungen und Kreislaufzeichen.",
+        "Als ersten Schritt planen wir Labor und Sonographie, danach gegebenenfalls eine endoskopische Abklärung.",
+        "Ich nenne Ihnen klar, bei welchen Warnzeichen Sie sofort wiederkommen müssen."
       ],
       "linked_term_ids": [
         "online_kurs_gaster",
@@ -167,10 +167,10 @@
       ],
       "mini_scenario": {
         "title": "Transfer: Gastroenterologie und Verdauung",
-        "situation": "Eine 57-jaehrige Patientin berichtet ueber schwarzen Stuhl und Schwindel seit zwei Tagen.",
-        "task_patient": "Erklaeren Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Saetzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzuebergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 praezisen Saetzen."
+        "situation": "Eine 57-jährige Patientin berichtet über schwarzen Stuhl und Schwindel seit zwei Tagen.",
+        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
+        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Gastro- und Gastroskopieabschnitte"
@@ -183,16 +183,16 @@
       "summary": "Dieses Modul vertieft den urogenitalen Fragenkatalog aus dem PDF und trainiert sprachlich sensible Themen wie Sexual- und Intimanamnese auf professionellem Niveau.",
       "learning_text": [
         "Dieses Modul vertieft den urogenitalen Fragenkatalog aus dem PDF und trainiert sprachlich sensible Themen wie Sexual- und Intimanamnese auf professionellem Niveau. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Dysurie, Pollakisurie, Nykturie, Harnfarbe, Flankenschmerz, Fieber und Haematurie bilden den Kern des urogenitalen Moduls. Trinkmenge, Medikation, Katheteranamnese und Vorerkrankungen liefern wichtige Zusatzrichtung. Akuter Harnverhalt, Sepsisverdacht und ausgepraegte Blutung gehoeren in die erste Dringlichkeitsebene.",
-        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Die Sprache muss respektvoll bleiben und gleichzeitig klar genug sein, um peinliche Themen medizinisch verwertbar zu machen. Urinstatus, Labor, Sonographie oder stationaeres Vorgehen sollten kurz und nachvollziehbar erklaert werden. In der Uebergabe zaehlen Symptomkombination, Schweregrad und weiterer Plan mehr als Detailaufzaehlungen."
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Dysurie, Pollakisurie, Nykturie, Harnfarbe, Flankenschmerz, Fieber und Hämaturie bilden den Kern des urogenitalen Moduls. Trinkmenge, Medikation, Katheteranamnese und Vorerkrankungen liefern wichtige Zusatzrichtung. Akuter Harnverhalt, Sepsisverdacht und ausgeprägte Blutung gehören in die erste Dringlichkeitsebene.",
+        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Die Sprache muss respektvoll bleiben und gleichzeitig klar genug sein, um peinliche Themen medizinisch verwertbar zu machen. Urinstatus, Labor, Sonographie oder stationäres Vorgehen sollten kurz und nachvollziehbar erklärt werden. In der Übergabe zählen Symptomkombination, Schweregrad und weiterer Plan mehr als Detailaufzählungen."
       ],
       "question_groups": [
         {
           "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Dysurie, Pollakisurie, Nykturie, Harnfarbe, Flankenschmerz, Fieber und Haematurie bilden den Kern des urogenitalen Moduls.",
+            "Dysurie, Pollakisurie, Nykturie, Harnfarbe, Flankenschmerz, Fieber und Hämaturie bilden den Kern des urogenitalen Moduls.",
             "Trinkmenge, Medikation, Katheteranamnese und Vorerkrankungen liefern wichtige Zusatzrichtung.",
-            "Akuter Harnverhalt, Sepsisverdacht und ausgepraegte Blutung gehoeren in die erste Dringlichkeitsebene.",
+            "Akuter Harnverhalt, Sepsisverdacht und ausgeprägte Blutung gehören in die erste Dringlichkeitsebene.",
             "Intime Fragen wirken nur dann professionell, wenn ihr medizinischer Grund klar gemacht wird."
           ]
         },
@@ -200,17 +200,17 @@
           "title": "Was sprachlich tragen soll",
           "questions": [
             "Die Sprache muss respektvoll bleiben und gleichzeitig klar genug sein, um peinliche Themen medizinisch verwertbar zu machen.",
-            "Urinstatus, Labor, Sonographie oder stationaeres Vorgehen sollten kurz und nachvollziehbar erklaert werden.",
-            "In der Uebergabe zaehlen Symptomkombination, Schweregrad und weiterer Plan mehr als Detailaufzaehlungen.",
-            "Auch hier sind eindeutige Rueckkehrkriterien Teil einer vollstaendigen Kommunikation."
+            "Urinstatus, Labor, Sonographie oder stationäres Vorgehen sollten kurz und nachvollziehbar erklärt werden.",
+            "In der Übergabe zählen Symptomkombination, Schweregrad und weiterer Plan mehr als Detailaufzählungen.",
+            "Auch hier sind eindeutige Rückkehrkriterien Teil einer vollständigen Kommunikation."
           ]
         }
       ],
       "exam_sentences": [
-        "Ihre Beschwerden sprechen fuer eine moegliche Harnwegs- oder Nierenbeteiligung, deshalb gehen wir strukturiert vor.",
-        "Wichtig sind fuer mich Schmerzlokalisation, Wasserlassen, Fieber und die bisherige Vorgeschichte.",
-        "Bei Warnzeichen wie Flankenschmerz mit Fieber handeln wir sofort und stationaer.",
-        "Ich erklaere Ihnen den weiteren Diagnostik- und Therapieplan Schritt fuer Schritt."
+        "Ihre Beschwerden sprechen für eine mögliche Harnwegs- oder Nierenbeteiligung, deshalb gehen wir strukturiert vor.",
+        "Wichtig sind für mich Schmerzlokalisation, Wasserlassen, Fieber und die bisherige Vorgeschichte.",
+        "Bei Warnzeichen wie Flankenschmerz mit Fieber handeln wir sofort und stationär.",
+        "Ich erkläre Ihnen den weiteren Diagnostik- und Therapieplan Schritt für Schritt."
       ],
       "linked_term_ids": [
         "online_kurs_harntrakt",
@@ -223,10 +223,10 @@
       ],
       "mini_scenario": {
         "title": "Transfer: Urogenitales System",
-        "situation": "Eine 34-jaehrige Patientin stellt sich mit Dysurie, Flankenschmerz und Schuettelfrost vor.",
-        "task_patient": "Erklaeren Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Saetzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzuebergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 praezisen Saetzen."
+        "situation": "Eine 34-jährige Patientin stellt sich mit Dysurie, Flankenschmerz und Schüttelfrost vor.",
+        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
+        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Urogenitalsystem und Anamnesefragen"
@@ -234,39 +234,39 @@
     },
     {
       "id": "neurologie_modul",
-      "title": "Neurologie und neurovaskulaere Notfaelle",
+      "title": "Neurologie und neurovaskuläre Notfälle",
       "focus": "Kernsymptome, fokal-neurologische Defizite und zeitkritische Kommunikation",
-      "summary": "Dieses Modul buendelt neurologische Inhalte aus dem Fachsprachkurs fuer den klinischen Alltagssprech in Anamnese, Untersuchung und Uebergabe.",
+      "summary": "Dieses Modul buendelt neurologische Inhalte aus dem Fachsprachkurs für den klinischen Alltagssprech in Anamnese, Untersuchung und Übergabe.",
       "learning_text": [
-        "Dieses Modul buendelt neurologische Inhalte aus dem Fachsprachkurs fuer den klinischen Alltagssprech in Anamnese, Untersuchung und Uebergabe. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Im neurologischen Modul tragen Zeitachse, fokale Defizite, Kopfschmerzcharakter und Bewusstseinslage die klinische Logik. Auch Krampfanfall, Sprachstoerung und Antikoagulation koennen die Dringlichkeit sofort veraendern. Die neurologische Basisstruktur muss schnell zwischen harmloserem Verlauf und neurovaskulaerem Notfall unterscheiden.",
-        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Defizite sollten moeglichst konkret benannt und nicht hinter Sammelbegriffen versteckt werden. Patienten muessen verstehen, warum Bildgebung oder Stroke-Abklaerung jetzt Zeit gewinnt. In der Uebergabe stehen letzter unauffaelliger Zeitpunkt, Kernbefund und Akutplan an erster Stelle."
+        "Dieses Modul buendelt neurologische Inhalte aus dem Fachsprachkurs für den klinischen Alltagssprech in Anamnese, Untersuchung und Übergabe. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Im neurologischen Modul tragen Zeitachse, fokale Defizite, Kopfschmerzcharakter und Bewusstseinslage die klinische Logik. Auch Krampfanfall, Sprachstörung und Antikoagulation können die Dringlichkeit sofort verändern. Die neurologische Basisstruktur muss schnell zwischen harmloserem Verlauf und neurovaskulärem Notfall unterscheiden.",
+        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Defizite sollten möglichst konkret benannt und nicht hinter Sammelbegriffen versteckt werden. Patienten müssen verstehen, warum Bildgebung oder Stroke-Abklärung jetzt Zeit gewinnt. In der Übergabe stehen letzter unauffälliger Zeitpunkt, Kernbefund und Akutplan an erster Stelle."
       ],
       "question_groups": [
         {
           "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
             "Im neurologischen Modul tragen Zeitachse, fokale Defizite, Kopfschmerzcharakter und Bewusstseinslage die klinische Logik.",
-            "Auch Krampfanfall, Sprachstoerung und Antikoagulation koennen die Dringlichkeit sofort veraendern.",
-            "Die neurologische Basisstruktur muss schnell zwischen harmloserem Verlauf und neurovaskulaerem Notfall unterscheiden.",
-            "Fuer Berlin ist hier weniger Breite als klare Priorisierung entscheidend."
+            "Auch Krampfanfall, Sprachstörung und Antikoagulation können die Dringlichkeit sofort verändern.",
+            "Die neurologische Basisstruktur muss schnell zwischen harmloserem Verlauf und neurovaskulärem Notfall unterscheiden.",
+            "Für Berlin ist hier weniger Breite als klare Priorisierung entscheidend."
           ]
         },
         {
           "title": "Was sprachlich tragen soll",
           "questions": [
-            "Defizite sollten moeglichst konkret benannt und nicht hinter Sammelbegriffen versteckt werden.",
-            "Patienten muessen verstehen, warum Bildgebung oder Stroke-Abklaerung jetzt Zeit gewinnt.",
-            "In der Uebergabe stehen letzter unauffaelliger Zeitpunkt, Kernbefund und Akutplan an erster Stelle.",
+            "Defizite sollten möglichst konkret benannt und nicht hinter Sammelbegriffen versteckt werden.",
+            "Patienten müssen verstehen, warum Bildgebung oder Stroke-Abklärung jetzt Zeit gewinnt.",
+            "In der Übergabe stehen letzter unauffälliger Zeitpunkt, Kernbefund und Akutplan an erster Stelle.",
             "Neurologische Sprache wirkt stark, wenn sie kurz, konkret und ohne Spekulation bleibt."
           ]
         }
       ],
       "exam_sentences": [
-        "Die Symptomatik ist neurologisch zeitkritisch und verlangt sofortige weitere Abklaerung.",
-        "Im Vordergrund stehen eine neu aufgetretene Sprachstoerung und rechtsseitige Kraftminderung.",
+        "Die Symptomatik ist neurologisch zeitkritisch und verlangt sofortige weitere Abklärung.",
+        "Im Vordergrund stehen eine neu aufgetretene Sprachstörung und rechtsseitige Kraftminderung.",
         "Wir veranlassen umgehend die Bildgebung und setzen ein enges neurologisches Monitoring auf.",
-        "Die Kernbefunde uebergebe ich strukturiert inklusive Zeitachse und Plan."
+        "Die Kernbefunde übergebe ich strukturiert inklusive Zeitachse und Plan."
       ],
       "linked_term_ids": [
         "online_kurs_apoplexie",
@@ -278,11 +278,11 @@
         "online_kurs_kraniale_computertomographie_cct"
       ],
       "mini_scenario": {
-        "title": "Transfer: Neurologie und neurovaskulaere Notfaelle",
-        "situation": "Ein 68-jaehriger Patient zeigt ploetzliche Dysarthrie und Unsicherheit beim Stehen.",
-        "task_patient": "Erklaeren Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Saetzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzuebergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 praezisen Saetzen."
+        "title": "Transfer: Neurologie und neurovaskuläre Notfälle",
+        "situation": "Ein 68-jähriger Patient zeigt plötzliche Dysarthrie und Unsicherheit beim Stehen.",
+        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
+        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: neurologische Begriffe und Fallvorstellung"
@@ -290,39 +290,39 @@
     },
     {
       "id": "endokrinologie_modul",
-      "title": "Endokrinologie, Diabetes und Schilddruese",
-      "focus": "Symptomcluster, Hormonbezug und patientenverstaendliche Langzeitplanung",
-      "summary": "Endokrine Themen sind haeufig nicht akut dramatisch, aber sprachlich anspruchsvoll. Die FSP bewertet hier vor allem semantische Praezision und nachvollziehbare Therapieerklaerung.",
+      "title": "Endokrinologie, Diabetes und Schilddrüse",
+      "focus": "Symptomcluster, Hormonbezug und patientenverständliche Langzeitplanung",
+      "summary": "Endokrine Themen sind häufig nicht akut dramatisch, aber sprachlich anspruchsvoll. Die FSP bewertet hier vor allem semantische Präzision und nachvollziehbare Therapieerklärung.",
       "learning_text": [
-        "Endokrine Themen sind haeufig nicht akut dramatisch, aber sprachlich anspruchsvoll. Die FSP bewertet hier vor allem semantische Praezision und nachvollziehbare Therapieerklaerung. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Durst, Polyurie, Gewichtsveraenderung, Erschoepfung, Hypoglykaemiesymptome und Schilddruesenbeschwerden bilden die Basis dieses Moduls. Medikation, Adhaerenz und Vorerkrankungen sind fuer endokrine Themen oft genauso wichtig wie das Leitsymptom selbst. Akute Entgleisung und langfristige Stoffwechselsteuerung muessen sprachlich auseinandergehalten werden.",
-        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Patienten sollten verstehen, welche Beschwerden akut sind und welche eher fuer die laengerfristige Einstellung relevant bleiben. Labor, Verlaufskontrollen und Therapieanpassung muessen ruhig und nachvollziehbar erklaert werden. In der Uebergabe ist die Verbindung aus Symptomcluster, Stoffwechsellage und Plan entscheidend."
+        "Endokrine Themen sind häufig nicht akut dramatisch, aber sprachlich anspruchsvoll. Die FSP bewertet hier vor allem semantische Präzision und nachvollziehbare Therapieerklärung. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Durst, Polyurie, Gewichtsveränderung, Erschoepfung, Hypoglykämiesymptome und Schilddrüsenbeschwerden bilden die Basis dieses Moduls. Medikation, Adhaerenz und Vorerkrankungen sind für endokrine Themen oft genauso wichtig wie das Leitsymptom selbst. Akute Entgleisung und langfristige Stoffwechselsteuerung müssen sprachlich auseinandergehalten werden.",
+        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Patienten sollten verstehen, welche Beschwerden akut sind und welche eher für die längerfristige Einstellung relevant bleiben. Labor, Verlaufskontrollen und Therapieanpassung müssen ruhig und nachvollziehbar erklärt werden. In der Übergabe ist die Verbindung aus Symptomcluster, Stoffwechsellage und Plan entscheidend."
       ],
       "question_groups": [
         {
           "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Durst, Polyurie, Gewichtsveraenderung, Erschoepfung, Hypoglykaemiesymptome und Schilddruesenbeschwerden bilden die Basis dieses Moduls.",
-            "Medikation, Adhaerenz und Vorerkrankungen sind fuer endokrine Themen oft genauso wichtig wie das Leitsymptom selbst.",
-            "Akute Entgleisung und langfristige Stoffwechselsteuerung muessen sprachlich auseinandergehalten werden.",
-            "Gerade bei endokrinen Themen traegt semantische Praezision mehr als spektakulaere Notfallsprache."
+            "Durst, Polyurie, Gewichtsveränderung, Erschoepfung, Hypoglykämiesymptome und Schilddrüsenbeschwerden bilden die Basis dieses Moduls.",
+            "Medikation, Adhaerenz und Vorerkrankungen sind für endokrine Themen oft genauso wichtig wie das Leitsymptom selbst.",
+            "Akute Entgleisung und langfristige Stoffwechselsteuerung müssen sprachlich auseinandergehalten werden.",
+            "Gerade bei endokrinen Themen traegt semantische Präzision mehr als spektakuläre Notfallsprache."
           ]
         },
         {
           "title": "Was sprachlich tragen soll",
           "questions": [
-            "Patienten sollten verstehen, welche Beschwerden akut sind und welche eher fuer die laengerfristige Einstellung relevant bleiben.",
-            "Labor, Verlaufskontrollen und Therapieanpassung muessen ruhig und nachvollziehbar erklaert werden.",
-            "In der Uebergabe ist die Verbindung aus Symptomcluster, Stoffwechsellage und Plan entscheidend.",
-            "Gute endokrinologische Sprache bleibt klar, konkret und ohne unnoetige Lehrbuchschwere."
+            "Patienten sollten verstehen, welche Beschwerden akut sind und welche eher für die längerfristige Einstellung relevant bleiben.",
+            "Labor, Verlaufskontrollen und Therapieanpassung müssen ruhig und nachvollziehbar erklärt werden.",
+            "In der Übergabe ist die Verbindung aus Symptomcluster, Stoffwechsellage und Plan entscheidend.",
+            "Gute endokrinologische Sprache bleibt klar, konkret und ohne unnötige Lehrbuchschwere."
           ]
         }
       ],
       "exam_sentences": [
-        "Ihre Beschwerden passen zu einer moeglichen Hormonregulationsstoerung, die wir gezielt abklaeren.",
-        "Wir pruefen jetzt Blutzucker und Schilddruesenwerte, um die Ursache sicher einzugrenzen.",
-        "Wichtig ist, Warnzeichen frueh zu erkennen und die Therapie konsequent anzupassen.",
-        "Ich bespreche mit Ihnen einen klaren Verlaufplan mit Kontrollen und naechsten Schritten."
+        "Ihre Beschwerden passen zu einer möglichen Hormonregulationsstörung, die wir gezielt abklären.",
+        "Wir prüfen jetzt Blutzucker und Schilddrüsenwerte, um die Ursache sicher einzugrenzen.",
+        "Wichtig ist, Warnzeichen früh zu erkennen und die Therapie konsequent anzupassen.",
+        "Ich bespreche mit Ihnen einen klaren Verlaufplan mit Kontrollen und nächsten Schritten."
       ],
       "linked_term_ids": [
         "online_kurs_diabetes_mellitus",
@@ -334,11 +334,11 @@
         "online_kurs_oraler_glukosetoleranztest_ogtt"
       ],
       "mini_scenario": {
-        "title": "Transfer: Endokrinologie, Diabetes und Schilddruese",
-        "situation": "Ein 49-jaehriger Patient berichtet ueber Polydipsie, Polyurie und Erschoepfung seit Tagen.",
-        "task_patient": "Erklaeren Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Saetzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzuebergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 praezisen Saetzen."
+        "title": "Transfer: Endokrinologie, Diabetes und Schilddrüse",
+        "situation": "Ein 49-jähriger Patient berichtet über Polydipsie, Polyurie und Erschoepfung seit Tagen.",
+        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
+        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: Endokrinologie und Diabetesblock"
@@ -348,37 +348,37 @@
       "id": "muskuloskelett_modul",
       "title": "Muskuloskelettales System",
       "focus": "Beschwerdeanalyse, funktionelle Untersuchung und prozedurale Sprache",
-      "summary": "Im Fachsprachkurs sind zahlreiche muskuloskelettale Verfahren und Begriffe enthalten. Dieses Modul macht daraus ein klinisch verwertbares Schema fuer Gespraech, Untersuchung und Uebergabe.",
+      "summary": "Im Fachsprachkurs sind zahlreiche muskuloskelettale Verfahren und Begriffe enthalten. Dieses Modul macht daraus ein klinisch verwertbares Schema für Gespräch, Untersuchung und Übergabe.",
       "learning_text": [
-        "Im Fachsprachkurs sind zahlreiche muskuloskelettale Verfahren und Begriffe enthalten. Dieses Modul macht daraus ein klinisch verwertbares Schema fuer Gespraech, Untersuchung und Uebergabe. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Im muskuloskelettalen Bereich tragen Schmerzort, Ausloeser, Funktionseinschraenkung, Schwellung und neurovaskulaerer Status die Grundstruktur. Traumamechanismus, Belastbarkeit und zeitlicher Verlauf liefern schnell Richtung fuer die weitere Einschaetzung. Wichtig ist die klare Trennung zwischen lokalem Beschwerdebild und Warnzeichen fuer Fraktur, Infektion oder neurologische Beteiligung.",
-        "Danach folgt der pruefungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Patienten brauchen kurze, klare Anweisungen bei Bewegungspruefung und Schmerzprovokation. Bildgebung, Schonung, Analgesie oder Immobilisation muessen ueber ihren Zweck und nicht nur ueber ihren Namen erklaert werden. In der Uebergabe zaehlen Funktion, Schwellung, Untersuchung und Plan in einer logischen Reihenfolge."
+        "Im Fachsprachkurs sind zahlreiche muskuloskelettale Verfahren und Begriffe enthalten. Dieses Modul macht daraus ein klinisch verwertbares Schema für Gespräch, Untersuchung und Übergabe. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
+        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Im muskuloskelettalen Bereich tragen Schmerzort, Auslöser, Funktionseinschränkung, Schwellung und neurovaskulärer Status die Grundstruktur. Traumamechanismus, Belastbarkeit und zeitlicher Verlauf liefern schnell Richtung für die weitere Einschätzung. Wichtig ist die klare Trennung zwischen lokalem Beschwerdebild und Warnzeichen für Fraktur, Infektion oder neurologische Beteiligung.",
+        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Patienten brauchen kurze, klare Anweisungen bei Bewegungsprüfung und Schmerzprovokation. Bildgebung, Schonung, Analgesie oder Immobilisation müssen über ihren Zweck und nicht nur über ihren Namen erklärt werden. In der Übergabe zählen Funktion, Schwellung, Untersuchung und Plan in einer logischen Reihenfolge."
       ],
       "question_groups": [
         {
           "title": "Was fachlich zuerst geordnet werden muss",
           "questions": [
-            "Im muskuloskelettalen Bereich tragen Schmerzort, Ausloeser, Funktionseinschraenkung, Schwellung und neurovaskulaerer Status die Grundstruktur.",
-            "Traumamechanismus, Belastbarkeit und zeitlicher Verlauf liefern schnell Richtung fuer die weitere Einschaetzung.",
-            "Wichtig ist die klare Trennung zwischen lokalem Beschwerdebild und Warnzeichen fuer Fraktur, Infektion oder neurologische Beteiligung.",
-            "Dieses Modul wird klinisch stark, wenn Untersuchung und Alltagseinschraenkung zusammen gedacht werden."
+            "Im muskuloskelettalen Bereich tragen Schmerzort, Auslöser, Funktionseinschränkung, Schwellung und neurovaskulärer Status die Grundstruktur.",
+            "Traumamechanismus, Belastbarkeit und zeitlicher Verlauf liefern schnell Richtung für die weitere Einschätzung.",
+            "Wichtig ist die klare Trennung zwischen lokalem Beschwerdebild und Warnzeichen für Fraktur, Infektion oder neurologische Beteiligung.",
+            "Dieses Modul wird klinisch stark, wenn Untersuchung und Alltagseinschränkung zusammen gedacht werden."
           ]
         },
         {
           "title": "Was sprachlich tragen soll",
           "questions": [
-            "Patienten brauchen kurze, klare Anweisungen bei Bewegungspruefung und Schmerzprovokation.",
-            "Bildgebung, Schonung, Analgesie oder Immobilisation muessen ueber ihren Zweck und nicht nur ueber ihren Namen erklaert werden.",
-            "In der Uebergabe zaehlen Funktion, Schwellung, Untersuchung und Plan in einer logischen Reihenfolge.",
-            "Gute muskuloskelettale Sprache bleibt anschaulich, funktionell und nicht unnoetig kompliziert."
+            "Patienten brauchen kurze, klare Anweisungen bei Bewegungsprüfung und Schmerzprovokation.",
+            "Bildgebung, Schonung, Analgesie oder Immobilisation müssen über ihren Zweck und nicht nur über ihren Namen erklärt werden.",
+            "In der Übergabe zählen Funktion, Schwellung, Untersuchung und Plan in einer logischen Reihenfolge.",
+            "Gute muskuloskelettale Sprache bleibt anschaulich, funktionell und nicht unnötig kompliziert."
           ]
         }
       ],
       "exam_sentences": [
-        "Die Beschwerden sprechen fuer ein muskuloskelettales Problem mit relevanter Funktionseinschraenkung.",
-        "Wir untersuchen jetzt gezielt Beweglichkeit, Stabilitaet und neurovaskulaeren Status.",
-        "Bei Warnzeichen wie Fehlstellung oder Durchblutungsstoerung handeln wir sofort.",
-        "Danach besprechen wir konservative und gegebenenfalls operative Optionen verstaendlich."
+        "Die Beschwerden sprechen für ein muskuloskelettales Problem mit relevanter Funktionseinschränkung.",
+        "Wir untersuchen jetzt gezielt Beweglichkeit, Stabilität und neurovaskulären Status.",
+        "Bei Warnzeichen wie Fehlstellung oder Durchblutungsstörung handeln wir sofort.",
+        "Danach besprechen wir konservative und gegebenenfalls operative Optionen verständlich."
       ],
       "linked_term_ids": [
         "online_kurs_arthroskopie",
@@ -391,10 +391,10 @@
       ],
       "mini_scenario": {
         "title": "Transfer: Muskuloskelettales System",
-        "situation": "Ein 29-jaehriger Patient kommt nach Sportunfall mit schmerzhaft geschwollenem Knie.",
-        "task_patient": "Erklaeren Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Saetzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzuebergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 praezisen Saetzen."
+        "situation": "Ein 29-jähriger Patient kommt nach Sportunfall mit schmerzhaft geschwollenem Knie.",
+        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
+        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
+        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
       },
       "source_tags": [
         "Fachsprachkurs PDF: muskuloskelettale Methoden und Verfahren"

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "title": "PDF-Kuration Fachsprachkurs",
-  "description": "Kurationsregeln fuer die Einbindung von Online-Kurs-Begriffen in den neuen Lernbereich. Ziel ist, unscharfe Wortstamm-Eintraege und nicht pruefungsnahe Artefakte aus den inhaltlichen Modulen herauszufiltern.",
+  "description": "Kurationsregeln für die Einbindung von Online-Kurs-Begriffen in den neuen Lernbereich. Ziel ist, unscharfe Wortstamm-Eintraege und nicht prüfungsnahe Artefakte aus den inhaltlichen Modulen herauszufiltern.",
   "exclude_term_ids": [
     "online_kurs_ven_o",
     "online_kurs_angi_o",
@@ -60,13 +60,13 @@
     "forschungsgruppe"
   ],
   "reasons_by_term_id": {
-    "online_kurs_implantation": "Sehr allgemeiner Verfahrensbegriff ohne pruefungsnahe Kontextbindung im aktuellen Lernmodul.",
-    "online_kurs_ven_o": "Reiner Wortstamm, nicht als eigenstaendige klinische Lerneinheit geeignet.",
-    "online_kurs_mikr_o": "Reiner Wortstamm mit geringer direkter Relevanz fuer die FSP-Kommunikation."
+    "online_kurs_implantation": "Sehr allgemeiner Verfahrensbegriff ohne prüfungsnahe Kontextbindung im aktuellen Lernmodul.",
+    "online_kurs_ven_o": "Reiner Wortstamm, nicht als eigenständige klinische Lerneinheit geeignet.",
+    "online_kurs_mikr_o": "Reiner Wortstamm mit geringer direkter Relevanz für die FSP-Kommunikation."
   },
   "notes": [
-    "Die Kuration betrifft nur die modulare Lernanzeige. Der bestehende Karteikartenpool bleibt unveraendert.",
-    "Pruefungsnahe Vollbegriffe (z. B. Lumbalpunktion, Hyperthyreose, Arrhythmie) bleiben bewusst erhalten.",
-    "Wortstaemme koennen spaeter in einem separaten Morphologie-Modul sinnvoll gebuendelt werden."
+    "Die Kuration betrifft nur die modulare Lernanzeige. Der bestehende Karteikartenpool bleibt unverändert.",
+    "Prüfungsnahe Vollbegriffe (z. B. Lumbalpunktion, Hyperthyreose, Arrhythmie) bleiben bewusst erhalten.",
+    "Wortstämme können spaeter in einem separaten Morphologie-Modul sinnvoll gebuendelt werden."
   ]
 }
