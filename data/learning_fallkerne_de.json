@@ -1,0 +1,643 @@
+{
+  "title": "Lernbereich",
+  "subtitle": "Fallkerne für Berlin und die FSP",
+  "scope_note": "Dieses Modul bündelt hochfrequente Fallkerne aus den Berliner Listen. Jede Lektion verknüpft Leitsymptom, Red Flags, Basisuntersuchung, Differenzialdiagnosen und eine tragfähige sprachliche Kurzlinie.",
+  "references": [
+    {
+      "label": "Info: Berlin liste nur wichtigsten Themen 44",
+      "url": "info/Berlin liste nur wichtigsten Themen 44.pdf"
+    },
+    {
+      "label": "Info: FSP KURZ UND KNAPP Berlin",
+      "url": "info/FSP KURZ Und KNAPP Berlin Final Version.pdf"
+    },
+    {
+      "label": "Info: Deutsch für Ärzte",
+      "url": "info/Deutsch für Ärzte.pdf"
+    }
+  ],
+  "categories": [
+    {
+      "id": "akuter_thoraxschmerz",
+      "title": "Fallkern: Akuter Thoraxschmerz",
+      "focus": "ACS, Angina pectoris und gefährliche Alternativen sprachlich geordnet denken",
+      "summary": "Thoraxschmerz ist einer der ergiebigsten Berliner Kernfälle, weil Anamnese, Untersuchung und Priorisierung hier sofort hörbar werden.",
+      "learning_text": [
+        "Fallkern: Akuter Thoraxschmerz gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die rasche Unterscheidung zwischen akut gefährlichen und weniger dringlichen Ursachen von Thoraxschmerz. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Schmerzcharakter, Ausstrahlung, Belastungsbezug, vegetative Begleitsymptome, Dyspnoe, Vorerkrankungen und kardiovaskuläre Risikofaktoren. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: anhaltender Druckschmerz, Kaltschweißigkeit, Übelkeit, Dyspnoe, Synkope, hämodynamische Instabilität oder neue neurologische Symptome. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: Vitalparameter, Herz-Lungen-Status, EKG, Troponin, Sauerstoffsättigung und fallbezogene Bildgebung. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei akutem Thoraxschmerz priorisiere ich zunächst ein akutes Koronarsyndrom und sichere parallel andere gefährliche Ursachen wie Lungenembolie oder Aortensyndrom ab. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie Lungenembolie, Aortendissektion, Pneumothorax, Perikarditis oder Refluxerkrankung."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: Brustschmerz mit Druck, Enge oder Ausstrahlung in Arm, Rücken, Kiefer oder Oberbauch",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Schmerzcharakter, Ausstrahlung, Belastungsbezug, vegetative Begleitsymptome, Dyspnoe, Vorerkrankungen und kardiovaskuläre Risikofaktoren",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: Vitalparameter, Herz-Lungen-Status, EKG, Troponin, Sauerstoffsättigung und fallbezogene Bildgebung",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei akutem Thoraxschmerz priorisiere ich zunächst ein akutes Koronarsyndrom und sichere parallel andere gefährliche Ursachen wie Lungenembolie oder Aortensyndrom ab",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel Lungenembolie, Aortendissektion, Pneumothorax, Perikarditis oder Refluxerkrankung.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Bei akutem Thoraxschmerz priorisiere ich zunächst ein akutes Koronarsyndrom.",
+        "Wichtig sind Schmerzcharakter, Ausstrahlung, Belastungsbezug und vegetative Begleitsymptome.",
+        "Basisdiagnostisch würde ich Vitalparameter, EKG und Troponin veranlassen.",
+        "Parallel müssen andere gefährliche Ursachen wie Lungenembolie oder Aortendissektion mitgedacht werden.",
+        "Die weitere Priorisierung richtet sich nach Klinik, EKG und Laborverlauf."
+      ],
+      "linked_term_ids": [
+        "online_kurs_angina_pectoris",
+        "online_kurs_myokardinfarkt"
+      ],
+      "source_tags": [
+        "Berlin-Liste: Myokardinfarkt, Angina pectoris",
+        "FSP KURZ UND KNAPP Berlin: Thoraxschmerz"
+      ]
+    },
+    {
+      "id": "akute_dyspnoe",
+      "title": "Fallkern: Akute Dyspnoe",
+      "focus": "Atemnot so strukturieren, dass Pneumonie, COPD, Asthma, Lungenembolie und Herzinsuffizienz systematisch mitlaufen",
+      "summary": "Dyspnoe ist ideal für Berlin, weil hier Dringlichkeit, Statussprache und Differenzialdiagnostik eng zusammenliegen.",
+      "learning_text": [
+        "Fallkern: Akute Dyspnoe gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die Unterscheidung zwischen pulmonalen, kardialen, thromboembolischen und metabolischen Ursachen der Atemnot. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Beginn, Verlauf, Belastungsbezug, Husten, Sputum, Fieber, Thoraxschmerz, Rauchen, Asthma/COPD, Ödeme, Orthopnoe und Vorerkrankungen. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: Atemarbeit, Zyanose, Sättigungsabfall, thorakaler Schmerz, Kreislaufinstabilität, Bewusstseinsstörung oder stummes Thoraxgeräusch. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: Atemfrequenz, Sauerstoffsättigung, Auskultation, Herzstatus, Beinstatus, BGA, EKG, Thoraxröntgen und fallbezogenes Labor. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei akuter Dyspnoe muss ich vor allem zwischen infektiöser, obstruktiver, kardialer und thromboembolischer Ursache differenzieren. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie Pneumonie, COPD-Exazerbation, Asthma, Herzinsuffizienz, Lungenembolie oder Pneumothorax."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: Atemnot in Ruhe oder unter Belastung, oft kombiniert mit Husten, Fieber, Giemen oder Ödemen",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Beginn, Verlauf, Belastungsbezug, Husten, Sputum, Fieber, Thoraxschmerz, Rauchen, Asthma/COPD, Ödeme, Orthopnoe und Vorerkrankungen",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: Atemfrequenz, Sauerstoffsättigung, Auskultation, Herzstatus, Beinstatus, BGA, EKG, Thoraxröntgen und fallbezogenes Labor",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei akuter Dyspnoe muss ich vor allem zwischen infektiöser, obstruktiver, kardialer und thromboembolischer Ursache differenzieren",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel Pneumonie, COPD-Exazerbation, Asthma, Herzinsuffizienz, Lungenembolie oder Pneumothorax.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Bei akuter Dyspnoe priorisiere ich zunächst die klinische Stabilität und mögliche Red Flags.",
+        "Anamnestisch sind Beginn, Belastungsbezug, Husten, Fieber, Thoraxschmerz und Vorerkrankungen entscheidend.",
+        "Untersuchungsseitig brauche ich einen klaren Herz-Lungen-Status mit Sauerstoffsättigung.",
+        "Je nach Konstellation denke ich an Pneumonie, COPD-Exazerbation, Herzinsuffizienz oder Lungenembolie.",
+        "Der weitere Plan richtet sich nach Stabilität, Status und Basisdiagnostik."
+      ],
+      "linked_term_ids": [
+        "online_kurs_dyspnoe",
+        "online_kurs_pneumonie",
+        "online_kurs_copd"
+      ],
+      "source_tags": [
+        "Berlin-Liste: Pneumonie, Asthma, COPD",
+        "FSP KURZ UND KNAPP Berlin: Dyspnoe-Fälle"
+      ]
+    },
+    {
+      "id": "appendizitis",
+      "title": "Fallkern: Akuter rechter Unterbauch",
+      "focus": "Appendizitis sicher vom unspezifischen Bauchschmerz abheben",
+      "summary": "Appendizitis ist ein klassischer Berliner Kernfall mit klarer Anamnese, klarer Untersuchung und gut formulierbaren Differenzialdiagnosen.",
+      "learning_text": [
+        "Fallkern: Akuter rechter Unterbauch gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die Abgrenzung eines operativ relevanten akuten Abdomens von weniger dringlichen Bauchursachen. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Schmerzbeginn, Wanderung, Verstärkung bei Bewegung, Übelkeit, Erbrechen, Fieber, Stuhlverhalten, Miktion und gynäkologische Faktoren. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: progredienter Schmerz, Fieber, Loslassschmerz, Abwehrspannung, Kreislaufbeeinträchtigung oder generalisierter Bauchschmerz. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: Vitalparameter, Abdomenstatus, Druckschmerzlokalisation, Loslassschmerz, Labor mit Entzündungswerten und Sonographie. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei rechtsbetontem Unterbauchschmerz mit Übelkeit und lokaler Druckdolenz steht für mich eine Appendizitis im Vordergrund. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie Gastroenteritis, Harnwegsinfekt, Nephrolithiasis, gynäkologische Ursachen oder Divertikulitis."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: periumbilikal beginnender oder direkt rechtsseitiger Unterbauchschmerz mit Übelkeit, Appetitmangel oder Fieber",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Schmerzbeginn, Wanderung, Verstärkung bei Bewegung, Übelkeit, Erbrechen, Fieber, Stuhlverhalten, Miktion und gynäkologische Faktoren",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: Vitalparameter, Abdomenstatus, Druckschmerzlokalisation, Loslassschmerz, Labor mit Entzündungswerten und Sonographie",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei rechtsbetontem Unterbauchschmerz mit Übelkeit und lokaler Druckdolenz steht für mich eine Appendizitis im Vordergrund",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel Gastroenteritis, Harnwegsinfekt, Nephrolithiasis, gynäkologische Ursachen oder Divertikulitis.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Bei einem akuten rechten Unterbauchschmerz denke ich zunächst an eine Appendizitis.",
+        "Wichtig sind Schmerzbeginn, Wanderung, Übelkeit, Fieber und Verstärkung bei Bewegung.",
+        "Im Status achte ich auf Druckschmerz, Loslassschmerz und Zeichen eines akuten Abdomens.",
+        "Labor und Sonographie helfen, den Verdacht weiter zu stützen.",
+        "Differenzialdiagnostisch müssen urogenitale und gynäkologische Ursachen mitbedacht werden."
+      ],
+      "linked_term_ids": [
+        "online_kurs_appendizitis",
+        "online_kurs_appendektomie"
+      ],
+      "source_tags": [
+        "Berlin-Liste: Appendizitis",
+        "FSP KURZ UND KNAPP Berlin: akutes Abdomen"
+      ]
+    },
+    {
+      "id": "cholezystitis",
+      "title": "Fallkern: Kolikartiger rechter Oberbauchschmerz",
+      "focus": "biliären Schmerz, Cholezystitis und Gallenkolik sprachlich sauber abbilden",
+      "summary": "Rechter Oberbauchschmerz verbindet Anamnese, Sonographie und typische Fachsprache besonders gut.",
+      "learning_text": [
+        "Fallkern: Kolikartiger rechter Oberbauchschmerz gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die Unterscheidung zwischen biliärer Kolik, Cholezystitis und anderen Ursachen des Oberbauchschmerzes. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Lokalisation, Ausstrahlung in Rücken oder Schulter, Nahrungsbezug, Übelkeit, Fieber, Ikterus, Stuhl- und Urinveränderung. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: anhaltender Schmerz, Fieber, Ikterus, Kreislaufinstabilität, Peritonismus oder Zeichen einer Cholangitis. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: Oberbauchstatus, Murphy-Zeichen, Entzündungsparameter, Leberwerte und Abdomensonographie. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei rechtsseitigem Oberbauchschmerz mit Übelkeit und positivem Murphy-Zeichen denke ich primär an eine Cholezystitis beziehungsweise biliäre Genese. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie Pankreatitis, Ulkuskrankheit, Hepatitis, Pneumonie oder atypisches ACS."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: rechter Oberbauchschmerz, oft nach fettreichem Essen, teils mit Übelkeit, Erbrechen oder Fieber",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Lokalisation, Ausstrahlung in Rücken oder Schulter, Nahrungsbezug, Übelkeit, Fieber, Ikterus, Stuhl- und Urinveränderung",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: Oberbauchstatus, Murphy-Zeichen, Entzündungsparameter, Leberwerte und Abdomensonographie",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei rechtsseitigem Oberbauchschmerz mit Übelkeit und positivem Murphy-Zeichen denke ich primär an eine Cholezystitis beziehungsweise biliäre Genese",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel Pankreatitis, Ulkuskrankheit, Hepatitis, Pneumonie oder atypisches ACS.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Kolikartiger rechter Oberbauchschmerz spricht häufig für eine biliäre Ursache.",
+        "Wichtig sind Nahrungsbezug, Fieber, Ikterus und Ausstrahlung in Rücken oder Schulter.",
+        "Im Status achte ich besonders auf den Oberbauch und das Murphy-Zeichen.",
+        "Labor mit Leberwerten und Entzündungsparametern sowie die Sonographie sind hier besonders hilfreich.",
+        "Differenzialdiagnostisch müssen Pankreatitis und andere Oberbauchursachen mitlaufen."
+      ],
+      "linked_term_ids": [
+        "online_kurs_cholezystitis"
+      ],
+      "source_tags": [
+        "Berlin-Liste: Cholelithiasis/Cholezystitis",
+        "FSP KURZ UND KNAPP Berlin: Oberbauchfälle"
+      ]
+    },
+    {
+      "id": "pankreatitis",
+      "title": "Fallkern: Gürtelförmiger Oberbauchschmerz",
+      "focus": "Pankreatitis und andere Oberbauchfälle differenziert ansprechen",
+      "summary": "Die Pankreatitis ist ein guter Kernfall, weil Symptom, Labor und typische Fehlerquellen gut zusammenpassen.",
+      "learning_text": [
+        "Fallkern: Gürtelförmiger Oberbauchschmerz gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die Abgrenzung einer akuten Pankreatitis von anderen Ursachen des Oberbauchschmerzes. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Schmerzcharakter, Alkoholanamnese, Gallensteinvorgeschichte, Erbrechen, Fieber, Nahrungsbezug und frühere Episoden. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: starke Schmerzintensität, persistierendes Erbrechen, Fieber, Kreislaufinstabilität oder Zeichen einer Organbeteiligung. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: Allgemeinzustand, Oberbauchstatus, Labor mit Lipase und Leberwerten, Sonographie und fallbezogene Schnittbildgebung. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei starkem epigastrischem, rückenausstrahlendem Schmerz mit Übelkeit denke ich an eine akute Pankreatitis. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie Cholezystitis, Ulkuskrankheit, ACS, Gastroenteritis oder Mesenterialischämie."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: starker epigastrischer Schmerz, oft gürtelförmig in den Rücken ausstrahlend, mit Übelkeit und Erbrechen",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Schmerzcharakter, Alkoholanamnese, Gallensteinvorgeschichte, Erbrechen, Fieber, Nahrungsbezug und frühere Episoden",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: Allgemeinzustand, Oberbauchstatus, Labor mit Lipase und Leberwerten, Sonographie und fallbezogene Schnittbildgebung",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei starkem epigastrischem, rückenausstrahlendem Schmerz mit Übelkeit denke ich an eine akute Pankreatitis",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel Cholezystitis, Ulkuskrankheit, ACS, Gastroenteritis oder Mesenterialischämie.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Starker gürtelförmiger Oberbauchschmerz mit Übelkeit lässt an eine akute Pankreatitis denken.",
+        "Wichtig sind Alkohol- und Gallensteinanamnese sowie frühere Episoden.",
+        "Laborseitig hat die Lipase einen hohen Stellenwert.",
+        "Sonographie und gegebenenfalls CT helfen bei der Ursachen- und Schwereeinschätzung.",
+        "Differenzialdiagnostisch müssen andere Oberbauch- und Thoraxursachen mitbedacht werden."
+      ],
+      "linked_term_ids": [
+        "online_kurs_pankreatitis"
+      ],
+      "source_tags": [
+        "Berlin-Liste: Pankreatitis",
+        "FSP KURZ UND KNAPP Berlin: Oberbauchfälle"
+      ]
+    },
+    {
+      "id": "gastroenteritis",
+      "title": "Fallkern: Akute Diarrhö und Erbrechen",
+      "focus": "banale und bedrohliche Magen-Darm-Verläufe sprachlich trennen",
+      "summary": "Akute gastrointestinale Infektfälle sind häufig und eignen sich gut, um Verlauf, Exsikkose und Red Flags zu üben.",
+      "learning_text": [
+        "Fallkern: Akute Diarrhö und Erbrechen gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die Einordnung zwischen unkomplizierter Gastroenteritis und gefährlicherem Verlauf mit Exsikkose oder Blutungszeichen. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Beginn, Frequenz der Stühle, Blut- oder Schleimbeimengung, Fieber, Auslandsreise, verdorbene Nahrung, Kontaktpersonen und Trinkmenge. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: blutige Stühle, schwere Exsikkose, Kreislaufinstabilität, hohes Fieber, immunsupprimierter Status oder persistierendes Erbrechen. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: Hydratationszustand, Abdomenstatus, Vitalparameter, Elektrolyte und je nach Verlauf Stuhl- oder Blutdiagnostik. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei akuter Diarrhö muss ich vor allem zwischen unkompliziertem infektiösem Verlauf und gefährlicherem Flüssigkeits- oder Blutungsverlust unterscheiden. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie CED-Schub, Lebensmittelintoxikation, Pankreatitis, Appendizitis oder infektiöse Kolitis."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: akut einsetzende Diarrhö mit Übelkeit, Erbrechen, Bauchschmerzen oder Fieber",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Beginn, Frequenz der Stühle, Blut- oder Schleimbeimengung, Fieber, Auslandsreise, verdorbene Nahrung, Kontaktpersonen und Trinkmenge",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: Hydratationszustand, Abdomenstatus, Vitalparameter, Elektrolyte und je nach Verlauf Stuhl- oder Blutdiagnostik",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei akuter Diarrhö muss ich vor allem zwischen unkompliziertem infektiösem Verlauf und gefährlicherem Flüssigkeits- oder Blutungsverlust unterscheiden",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel CED-Schub, Lebensmittelintoxikation, Pankreatitis, Appendizitis oder infektiöse Kolitis.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Bei akuter Diarrhö frage ich gezielt nach Frequenz, Blutbeimengung, Erbrechen und Trinkmenge.",
+        "Exsikkosezeichen und Kreislaufsituation sind für die Priorisierung entscheidend.",
+        "Anamnestisch helfen auch Reise-, Nahrungs- und Kontaktanamnese weiter.",
+        "Je nach Verlauf denke ich an eine infektiöse Gastroenteritis, aber auch an einen CED-Schub oder andere Ursachen.",
+        "Der weitere Plan richtet sich vor allem nach Schweregrad und Hydratationszustand."
+      ],
+      "linked_term_ids": [
+        "online_kurs_gastroenteritis"
+      ],
+      "source_tags": [
+        "Berlin-Liste: Gastroenteritis",
+        "FSP KURZ UND KNAPP Berlin: Durchfallfälle"
+      ]
+    },
+    {
+      "id": "harnwegsinfekt_pyelonephritis",
+      "title": "Fallkern: Dysurie, Fieber und Flankenschmerz",
+      "focus": "Harnwegsinfekt und Pyelonephritis in einer klaren klinischen Linie sprechen",
+      "summary": "Dieser Kernfall verbindet häufige Alltagsbeschwerden mit klarer Status- und Laborsprache.",
+      "learning_text": [
+        "Fallkern: Dysurie, Fieber und Flankenschmerz gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die Trennung zwischen unkompliziertem unteren Harnwegsinfekt und aufsteigender Infektion mit Nierenbeteiligung. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Dysurie, Pollakisurie, Nykturie, Fieber, Flankenschmerz, Hämaturie, frühere Harnwegsinfekte und Risikofaktoren. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: hohes Fieber, Schüttelfrost, Nierenlagerklopfschmerz, Kreislaufbeeinträchtigung, Schwangerschaft oder Harnabflussstörung. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: Vitalparameter, Unterbauch, Nierenlager, U-Status, Urinkultur, Entzündungswerte und Sonographie. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei Dysurie mit Fieber und Flankenschmerz denke ich primär an eine Pyelonephritis beziehungsweise einen komplizierten Harnwegsinfekt. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie Nephrolithiasis, Prostatitis, gynäkologische Infektion oder Appendizitis rechts."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: Brennen beim Wasserlassen, Pollakisurie, Fieber oder Flankenschmerz",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Dysurie, Pollakisurie, Nykturie, Fieber, Flankenschmerz, Hämaturie, frühere Harnwegsinfekte und Risikofaktoren",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: Vitalparameter, Unterbauch, Nierenlager, U-Status, Urinkultur, Entzündungswerte und Sonographie",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei Dysurie mit Fieber und Flankenschmerz denke ich primär an eine Pyelonephritis beziehungsweise einen komplizierten Harnwegsinfekt",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel Nephrolithiasis, Prostatitis, gynäkologische Infektion oder Appendizitis rechts.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Dysurie und Pollakisurie sprechen zunächst für einen Harnwegsinfekt.",
+        "Fieber und Flankenschmerz lenken den Verdacht eher auf eine Pyelonephritis.",
+        "Im Status achte ich besonders auf das Nierenlager und die Kreislaufsituation.",
+        "U-Status, Urinkultur und Sonographie gehören hier zur sinnvollen Basisdiagnostik.",
+        "Differenzialdiagnostisch müssen Steinleiden und andere Unterbauchursachen mitlaufen."
+      ],
+      "linked_term_ids": [
+        "online_kurs_harnwegsinfekt"
+      ],
+      "source_tags": [
+        "Berlin-Liste: Harnwegsinfektion",
+        "FSP KURZ UND KNAPP Berlin: Urogenitalfälle"
+      ]
+    },
+    {
+      "id": "nephrolithiasis",
+      "title": "Fallkern: Kolikartiger Flankenschmerz",
+      "focus": "Nierenkolik sprachlich klar von Infekt und unspezifischem Rückenschmerz unterscheiden",
+      "summary": "Die Nierenkolik ist ein klassischer Berliner Standardfall mit charakteristischer Schmerzsprache.",
+      "learning_text": [
+        "Fallkern: Kolikartiger Flankenschmerz gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die Unterscheidung einer Urolithiasis von infektiösen, orthopädischen oder abdominalen Ursachen. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Schmerzbeginn, Kolikcharakter, Ausstrahlung in Leiste oder Genitalregion, Hämaturie, Dysurie, Fieber und frühere Steinereignisse. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: Fieber, Harnverhalt, anhaltendes Erbrechen, Kreislaufinstabilität oder anurische Situation. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: Vitalparameter, Nierenlager, Abdomen, U-Status, Kreatinin und Bildgebung wie Sonographie oder CT. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei plötzlich einsetzendem kolikartigem Flankenschmerz mit möglicher Hämaturie denke ich an eine Nephrolithiasis. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie Pyelonephritis, Muskel-Skelett-Schmerz, Aortenpathologie oder andere Unterbauchursachen."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: plötzlich einsetzender, wellenförmiger Flankenschmerz mit Bewegungsunruhe, Übelkeit oder Hämaturie",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Schmerzbeginn, Kolikcharakter, Ausstrahlung in Leiste oder Genitalregion, Hämaturie, Dysurie, Fieber und frühere Steinereignisse",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: Vitalparameter, Nierenlager, Abdomen, U-Status, Kreatinin und Bildgebung wie Sonographie oder CT",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei plötzlich einsetzendem kolikartigem Flankenschmerz mit möglicher Hämaturie denke ich an eine Nephrolithiasis",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel Pyelonephritis, Muskel-Skelett-Schmerz, Aortenpathologie oder andere Unterbauchursachen.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Plötzlicher wellenförmiger Flankenschmerz ist sehr typisch für eine Nierenkolik.",
+        "Wichtig sind Ausstrahlung, Hämaturie, Dysurie und eine mögliche Fieberanamnese.",
+        "Fieber wäre ein Warnzeichen gegen einen unkomplizierten Steinverlauf.",
+        "Sonographie und CT helfen, einen Stein oder einen Harnstau nachzuweisen.",
+        "Der Fall muss auch hinsichtlich Obstruktion und Infektion priorisiert werden."
+      ],
+      "linked_term_ids": [
+        "online_kurs_nephrolithiasis"
+      ],
+      "source_tags": [
+        "Berlin-Liste: Nephrolithiasis",
+        "FSP KURZ UND KNAPP Berlin: Urogenitalfälle"
+      ]
+    },
+    {
+      "id": "diabetes_entgleisung",
+      "title": "Fallkern: Polyurie, Polydipsie und Stoffwechselentgleisung",
+      "focus": "Diabetes mellitus und akute Entgleisung symptom- und planorientiert darstellen",
+      "summary": "Diabetesfälle sind in Berlin wichtig, weil sie Allgemeinsymptome, Anamnese und Basislabor sehr gut verbinden.",
+      "learning_text": [
+        "Fallkern: Polyurie, Polydipsie und Stoffwechselentgleisung gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die Unterscheidung zwischen chronischem Diabeteshinweis und akuter Stoffwechselentgleisung. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Polyurie, Polydipsie, Gewichtsverlust, Sehstörung, Infekte, Medikamentenadhärenz, bekannte Diabetesdiagnose und Trinkmenge. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: Exsikkose, Bewusstseinsstörung, Erbrechen, Azetongeruch, Tachypnoe oder Kreislaufinstabilität. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: Allgemeinzustand, Hydratation, Vitalparameter, Blutzucker, Ketone, BGA, Elektrolyte und Nierenfunktion. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei Polyurie, Polydipsie und Gewichtsverlust denke ich an einen bislang unerkannten oder entgleisten Diabetes mellitus. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie Harnwegsinfekt, Hyperthyreose, psychogene Polydipsie oder andere Stoffwechselstörungen."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: vermehrter Durst, häufiges Wasserlassen, Müdigkeit, Gewichtsverlust oder Übelkeit",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Polyurie, Polydipsie, Gewichtsverlust, Sehstörung, Infekte, Medikamentenadhärenz, bekannte Diabetesdiagnose und Trinkmenge",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: Allgemeinzustand, Hydratation, Vitalparameter, Blutzucker, Ketone, BGA, Elektrolyte und Nierenfunktion",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei Polyurie, Polydipsie und Gewichtsverlust denke ich an einen bislang unerkannten oder entgleisten Diabetes mellitus",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel Harnwegsinfekt, Hyperthyreose, psychogene Polydipsie oder andere Stoffwechselstörungen.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Polyurie, Polydipsie und Gewichtsverlust sind klassische Hinweise auf einen Diabetes mellitus.",
+        "Bei Erbrechen, Exsikkose oder Bewusstseinsveränderung muss ich an eine akute Stoffwechselentgleisung denken.",
+        "Basisdiagnostisch brauche ich sofort einen Blutzucker und je nach Situation eine Blutgasanalyse.",
+        "Auch Elektrolyte, Ketone und Nierenwerte sind für die Einordnung wichtig.",
+        "Der weitere Plan richtet sich nach Stabilität und Schwere der Entgleisung."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Diabetes mellitus",
+        "Deutsch für Ärzte: Stoffwechselstandardfälle"
+      ]
+    },
+    {
+      "id": "depression",
+      "title": "Fallkern: Niedergeschlagenheit und Antriebsmangel",
+      "focus": "depressive Symptomatik sprachlich empathisch und trotzdem strukturiert erheben",
+      "summary": "Psychiatrische Standardfälle gehören in Berlin oft nicht zu den häufigsten, aber zu den sprachlich sensibelsten Prüfungsfeldern.",
+      "learning_text": [
+        "Fallkern: Niedergeschlagenheit und Antriebsmangel gehört zu den Fallkernen, die in Berlin immer wieder in ähnlicher Form auftauchen. Wer diesen Kernfall beherrscht, gewinnt gleichzeitig Sicherheit für mehrere benachbarte Differenzialdiagnosen.",
+        "Im Mittelpunkt steht meist die Unterscheidung zwischen depressiver Episode, somatischen Mitursachen und akuter Gefährdung. Entscheidend ist, dass das Leitsymptom früh klinisch eingeordnet und nicht nur beschrieben wird.",
+        "Die Anamnese muss hier vor allem klären: Dauer, Stimmung, Antrieb, Schlaf, Appetit, Konzentration, Suizidgedanken, Substanzkonsum und psychosoziale Belastung. Wenn diese Achsen sitzen, wird die weitere Gesprächsführung viel klarer.",
+        "Ebenso wichtig sind Warnzeichen. Besonders aufhorchen lassen: Suizidgedanken, Hoffnungslosigkeit, psychotische Symptome, schwere Selbstvernachlässigung oder akute Intoxikation. Diese Punkte müssen in der Prüfung hörbar priorisiert werden.",
+        "Die körperliche Untersuchung und Basisdiagnostik sollen die klinische Vermutung ordnen. Typisch sind hier: psychischer Befund, Fremd- und Eigengefährdung, somatische Basisabklärung und fallbezogene Laboruntersuchung. Nicht jede Maßnahme muss ausführlich begründet werden, aber die Grundlogik muss stimmen.",
+        "In der Fallvorstellung reicht meist eine knappe, saubere Linie: Bei gedrückter Stimmung und deutlichem Antriebsmangel denke ich an eine depressive Episode, muss aber Suizidalität und somatische Mitursachen aktiv prüfen. Gute Kandidatinnen und Kandidaten nennen außerdem wenige, aber plausible Differenzialdiagnosen wie Anpassungsstörung, Hypothyreose, Anämie, Substanzkonsum oder andere affektive Störungen."
+      ],
+      "question_groups": [
+        {
+          "title": "Leitsymptom und klinische Grundidee",
+          "questions": [
+            "Typisch ist folgende Ausgangslage: gedrückte Stimmung, Antriebsmangel, Schlafstörung, Interessenverlust oder innere Leere",
+            "Das Leitsymptom sollte sofort in einen klinischen Rahmen gesetzt werden und nicht als lose Beschwerde stehen bleiben.",
+            "Der Fall gewinnt an Qualität, wenn früh klar wird, welche Dringlichkeit wahrscheinlich ist und welche Ursachen zuerst bedacht werden müssen."
+          ]
+        },
+        {
+          "title": "Was die Anamnese klären muss",
+          "questions": [
+            "Besonders wichtig ist: Dauer, Stimmung, Antrieb, Schlaf, Appetit, Konzentration, Suizidgedanken, Substanzkonsum und psychosoziale Belastung",
+            "Gute Fragen suchen nicht beliebig, sondern trennen gefährliche von wahrscheinlichen Verläufen.",
+            "Vorerkrankungen, Medikation und auslösende Situationen sind nur dann hilfreich, wenn sie das klinische Bild wirklich schärfen."
+          ]
+        },
+        {
+          "title": "Untersuchung, Labor und Bildgebung",
+          "questions": [
+            "Wichtige erste Schritte sind: psychischer Befund, Fremd- und Eigengefährdung, somatische Basisabklärung und fallbezogene Laboruntersuchung",
+            "Die Diagnostik soll die Verdachtsdiagnose stützen, Red Flags absichern und wichtige Alternativen mitdenken.",
+            "In Berlin genügt meist eine überschaubare, logisch begründete Basisdiagnostik statt einer langen Wunschliste."
+          ]
+        },
+        {
+          "title": "Wie der Fall sprachlich trägt",
+          "questions": [
+            "Eine tragfähige Kurzlinie lautet: Bei gedrückter Stimmung und deutlichem Antriebsmangel denke ich an eine depressive Episode, muss aber Suizidalität und somatische Mitursachen aktiv prüfen",
+            "Differenzialdiagnosen sollten knapp, aber plausibel sein, zum Beispiel Anpassungsstörung, Hypothyreose, Anämie, Substanzkonsum oder andere affektive Störungen.",
+            "Der Fallkern sitzt erst dann, wenn Leitsymptom, Warnzeichen, Untersuchung und erster Plan in derselben Linie zusammenfinden."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Bei depressiver Symptomatik muss ich immer auch nach Suizidgedanken fragen.",
+        "Wichtig sind Dauer, Schweregrad, Schlaf, Appetit, Antrieb und psychosoziale Belastungen.",
+        "Der psychische Befund sollte beobachtend und nicht wertend formuliert werden.",
+        "Differenzialdiagnostisch müssen somatische und substanzbedingte Ursachen mitgedacht werden.",
+        "Auch hier gehört der erste Plan mit Sicherheitsaspekten klar in die Vorstellung."
+      ],
+      "linked_term_ids": [
+        "online_kurs_depression"
+      ],
+      "source_tags": [
+        "Berlin-Liste: Depression",
+        "Deutsch für Ärztinnen und Ärzte: psychiatrische Gesprächsführung"
+      ]
+    }
+  ]
+}

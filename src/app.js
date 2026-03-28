@@ -15,7 +15,7 @@ const API_SPEND_TRACKER_VERSION = 2;
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "54";
+const APP_VERSION = "55";
 const BUILD_UPDATED_AT = "2026-03-01 20:02 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
@@ -46,6 +46,8 @@ const VOICE_CASE_SAMPLE_PATH = "data/voice_case_samples_de.json";
 const LEARNING_BUNDLE_PATH_BY_ROOT = Object.freeze({
   anamnese: "data/learning_anamnese_de.json",
   fachsprache_kommunikation: "data/learning_fachsprache_kommunikation_de.json",
+  berlin_wortschatz: "data/learning_berlin_wortschatz_de.json",
+  fallkerne: "data/learning_fallkerne_de.json",
   aufklaerung: "data/learning_aufklaerung_de.json",
   klinische_untersuchung: "data/learning_klinische_untersuchung_de.json",
   systemmodule: "data/learning_systemmodule_de.json",
@@ -105,6 +107,18 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
     id: "fachsprache_kommunikation",
     label: "Fachsprache & Kommunikation",
     cta: "Registerwechsel und Übergaben festigen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "berlin_wortschatz",
+    label: "Berlin-Wortschatz",
+    cta: "Kernwortschatz für häufige Fälle festigen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "fallkerne",
+    label: "Fallkerne",
+    cta: "Hochfrequenzfälle als stabile Kerne lernen",
     view: LEARNING_VIEW_SUBCATEGORIES
   },
   {

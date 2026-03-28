@@ -1,11 +1,23 @@
 {
   "title": "Lernbereich",
   "subtitle": "Klinische Untersuchung für die FSP Berlin",
-  "scope_note": "Dieses Modul fokussiert Untersuchungssprache, strukturierte Befunddokumentation und sichere Übergabe im Arzt-Arzt-Format. Grundlage sind typische neurologische und internistische Prüfungsteile aus dem Fachsprachkurs.",
+  "scope_note": "Dieses Modul fokussiert Untersuchungssprache, strukturierte Befunddokumentation und fallbezogene Priorisierung. Ergänzt um HNO-, Gefäß-, Trauma- und Infektstatus aus den Berliner Kernfällen.",
   "references": [
     {
       "label": "Fachsprachkurs PDF: Neurologischer Status, Anweisungen und Dokumentation",
       "url": "data/fachsprachkurs.pdf"
+    },
+    {
+      "label": "Info: Kommunikation für ausländische Ärzte",
+      "url": "info/345404168-kommunikation-fur-auslandische-arzte-unbekannt.pdf"
+    },
+    {
+      "label": "Info: Deutsch für Ärztinnen und Ärzte",
+      "url": "info/Deutsch für Ärztinnen und  Ärzte.pdf"
+    },
+    {
+      "label": "Info: Berlin liste nur wichtigsten Themen 44",
+      "url": "info/Berlin liste nur wichtigsten Themen 44.pdf"
     }
   ],
   "categories": [
@@ -475,6 +487,306 @@
       "source_tags": [
         "Info: BASICS Anamnese und Untersuchung",
         "Abdomenstatus für häufige Berlin-Fälle"
+      ]
+    },
+    {
+      "id": "infektstatus_hydratation",
+      "title": "Infektstatus, Hydratation und Sepsiswarnzeichen",
+      "focus": "den akut kranken Patienten knapp auf Allgemeinzustand, Kreislauf und Flüssigkeitssituation einschätzen",
+      "summary": "Dieser Status ist besonders wichtig für Fieber-, Gastroenteritis-, HWI- und Pneumoniefälle.",
+      "learning_text": [
+        "Bei Infektfällen ist der Allgemeineindruck oft diagnostisch genauso wichtig wie das Labor. Deshalb sollte dieser Status sprachlich sehr klar sitzen.",
+        "Zuerst zählen Vigilanz, Hautkolorit, Atmung, Kreislaufeindruck, Schleimhäute, trockene Lippen, stehende Hautfalten, reduzierte Trinkfähigkeit oder allgemeine Erschöpfung.",
+        "Hinzu kommen Temperatur, Puls, Blutdruck, Atemfrequenz, Kapillarfüllung und je nach Fall die gezielte Suche nach Druckschmerz, Nierenlagerklopfschmerz oder fokalen Befunden.",
+        "Klinisch wichtig ist hier die Frage, ob eher ein lokaler Infekt mit stabilem Kreislauf oder eine potenziell schwere systemische Reaktion vorliegt.",
+        "Sprachlich stark sind Formulierungen wie reduziertem Allgemeinzustand entsprechend, exsikkiert wirkend, tachykard, febril, kreislaufstabil oder klinisch nicht toxisch imponierend.",
+        "Der Status sollte immer in eine Priorisierung münden: ambulant vertretbar, stationär nötig oder akut überwachungspflichtig."
+      ],
+      "question_groups": [
+        {
+          "title": "Was zuerst gesehen werden muss",
+          "questions": [
+            "Allgemeinzustand, Vigilanz, Atemarbeit und Hautkolorit stehen an erster Stelle.",
+            "Trockene Schleimhäute, stehende Hautfalten oder eingefallene Augen sprechen für Flüssigkeitsmangel.",
+            "Auch ein toxischer Gesamteindruck oder eine auffällige Unruhe sollte sofort benannt werden."
+          ]
+        },
+        {
+          "title": "Was gezielt untersucht werden sollte",
+          "questions": [
+            "Temperatur, Puls, Blutdruck, Atemfrequenz und Sauerstoffsättigung bilden die Basis.",
+            "Je nach Fall folgen Bauchstatus, Nierenlager, Lungenstatus oder fokale Inspektion einer möglichen Eintrittspforte.",
+            "Die Untersuchung bleibt kurz, aber klar priorisiert."
+          ]
+        },
+        {
+          "title": "Welche Befunde klinisch wichtig sind",
+          "questions": [
+            "Tachykardie, Hypotonie, Exsikkosezeichen oder Vigilanzminderung sind besonders wichtige Warnbefunde.",
+            "Klinisch relevant ist weniger jeder Einzelwert als die Gesamtkonstellation.",
+            "Gerade das macht den Infektstatus prüfungsrelevant."
+          ]
+        },
+        {
+          "title": "Wie daraus eine gute Übergabe wird",
+          "questions": [
+            "In der Übergabe sollte hörbar werden, ob der Patient kreislaufstabil und nicht toxisch imponiert oder bereits eine schwere systemische Reaktion zeigt.",
+            "Auch der Verdacht auf Exsikkose oder Sepsis sollte sprachlich klar benannt werden.",
+            "So wird aus Statussprache klinische Verantwortung."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Im Status zeigt sich ein reduzierter Allgemeinzustand mit febriler Temperatur und Tachykardie.",
+        "Klinisch imponiert der Patient leicht exsikkiert, aktuell aber noch kreislaufstabil.",
+        "Warnzeichen einer schweren systemischen Reaktion müssen bei diesem Bild aktiv mitbedacht werden.",
+        "Die Priorisierung richtet sich nach Allgemeinzustand, Hydratation und Kreislaufsituation.",
+        "Gerade bei Infektfällen trägt dieser orientierende Status sehr viel."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Kommunikation für ausländische Ärzte: Untersuchung und Dokumentation",
+        "Berlin-Fälle: Fieber, HWI, Pneumonie"
+      ]
+    },
+    {
+      "id": "hno_hals_lymphknoten",
+      "title": "HNO-, Hals- und Lymphknotenstatus",
+      "focus": "Rachen, Tonsillen, Hals und Lymphknoten geordnet und verständlich untersuchen",
+      "summary": "Dieser Status deckt häufige Berliner HNO- und Infektfälle wie Tonsillitis, Mononukleose oder zervikale Lymphadenitis ab.",
+      "learning_text": [
+        "HNO-Status wird in der FSP oft abgefragt, weil sich hier gute Untersuchungsanweisungen und saubere Befundsprache sehr direkt zeigen.",
+        "Wichtig sind Mundöffnung, Racheninspektion, Tonsillengröße, Rötung, Beläge, Uvula, Schleimhautbefund und sichtbare Halsasymmetrien.",
+        "Palpatorisch folgen Halslymphknoten, Druckschmerz, Konsistenz, Beweglichkeit, Schilddrüse und gegebenenfalls die Suche nach Trismus oder Kieferwinkelschmerz.",
+        "Klinisch entscheidend ist, ob eher ein banaler Racheninfekt, eine ausgeprägte bakterielle Tonsillitis, eine Mononukleose oder ein komplizierter Verlauf vorliegt.",
+        "Wichtige Wörter sind gerötet, geschwollen, eitrige Beläge, zervikal, druckdolent, verschieblich, nicht verschieblich, foetor ex ore oder kloßige Sprache.",
+        "Der Status sollte am Ende klar machen, ob eher ambulante Therapie, HNO-Mitbeurteilung oder weitere Diagnostik nötig ist."
+      ],
+      "question_groups": [
+        {
+          "title": "Was zuerst gesehen werden muss",
+          "questions": [
+            "Im Vordergrund stehen Racheninspektion, Tonsillenbefund und Schleimhautstatus.",
+            "Auch Mundöffnung, Uvula und asymmetrische Schwellungen sind wichtig.",
+            "Bereits hier lassen sich viele HNO-Fälle grob einordnen."
+          ]
+        },
+        {
+          "title": "Was gezielt untersucht werden sollte",
+          "questions": [
+            "Palpatorisch sollten zervikale Lymphknoten, Halsweichgewebe und gegebenenfalls die Schilddrüse beurteilt werden.",
+            "Druckschmerz und Größenangaben helfen bei der Befundsprache.",
+            "Die Untersuchung bleibt dabei für den Patienten gut verständlich anleitbar."
+          ]
+        },
+        {
+          "title": "Welche Befunde klinisch wichtig sind",
+          "questions": [
+            "Eitrige Beläge, druckdolente Halslymphknoten oder eine kloßige Sprache sind wichtige klinische Signale.",
+            "Auch Trismus oder deutliche Asymmetrien müssen ernst genommen werden.",
+            "Diese Befunde tragen die weitere Priorisierung stark."
+          ]
+        },
+        {
+          "title": "Wie daraus eine gute Übergabe wird",
+          "questions": [
+            "In der Übergabe sollte der HNO-Status kurz, aber präzise sein.",
+            "Tonsillen, Beläge, Lymphknoten und relevante Red Flags genügen oft schon.",
+            "So wird der Status in Berlin gut hörbar."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Im Rachen zeigen sich gerötete Tonsillen mit Belägen und druckdolente zervikale Lymphknoten.",
+        "Eine kloßige Sprache oder ein Trismus wären für mich wichtige Warnzeichen.",
+        "Der HNO-Status sollte kurz, aber klar strukturiert beschrieben werden.",
+        "Gerade Tonsillitis- und Mononukleosefälle profitieren von dieser Untersuchungssprache.",
+        "So wird aus einem einfachen Halsbefund ein tragfähiger klinischer Baustein."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Tonsillitis und Mononukleose",
+        "Kommunikation für ausländische Ärzte: körperliche Untersuchung"
+      ]
+    },
+    {
+      "id": "gefaessstatus_beine",
+      "title": "Gefäßstatus und Beinuntersuchung",
+      "focus": "Ödem, TVT-Verdacht und pAVK-relevante Befunde kurz und sicher beschreiben",
+      "summary": "Dieser Status ist besonders wertvoll für Ödeme, TVT, pAVK und kardiale Dekompensationsfälle.",
+      "learning_text": [
+        "Die Untersuchung der Beine ist in internistischen und gefäßmedizinischen FSP-Fällen ein echter Hebel, weil sie Symptome, Status und Differenzialdiagnose stark verdichtet.",
+        "Wichtig sind Seitendifferenz, Schwellung, Hautfarbe, livide oder gerötete Areale, sichtbare Varizen, Ulzera und trophische Hautveränderungen.",
+        "Palpatorisch folgen Temperatur, Druckdolenz, prätibiale Ödeme, Umfangsvergleich, periphere Pulse und gegebenenfalls die Beurteilung der Rekapillarisierungszeit.",
+        "Klinisch muss hörbar werden, ob eher eine venöse Problematik, arterielle Minderperfusion oder eine kardial bedingte Stauung im Vordergrund steht.",
+        "Typische Wörter sind eindrückbar, prätibial, überwärmt, druckdolent, livide, blass, pulslos, Seitendifferenz oder trophische Störung.",
+        "Die Untersuchung sollte in eine klare Aussage münden: TVT-Verdacht, pAVK-Verdacht, kardiale Ödemlage oder eher unspezifischer Befund."
+      ],
+      "question_groups": [
+        {
+          "title": "Was zuerst gesehen werden muss",
+          "questions": [
+            "Inspektion auf Schwellung, Seitendifferenz, Hautfarbe und trophische Störungen ist der erste Schritt.",
+            "Auch Ulzera, Varizen oder livide Verfärbungen sollten aktiv benannt werden.",
+            "Damit wird der Beinstatus klinisch sehr schnell aussagekräftig."
+          ]
+        },
+        {
+          "title": "Was gezielt untersucht werden sollte",
+          "questions": [
+            "Druckdolenz, Überwärmung, Eindrückbarkeit der Ödeme und Pulse gehören zur Kernuntersuchung.",
+            "Je nach Fragestellung kann auch der Umfangsvergleich wichtig sein.",
+            "Wesentlich ist eine klare, nicht überladene Reihenfolge."
+          ]
+        },
+        {
+          "title": "Welche Befunde klinisch wichtig sind",
+          "questions": [
+            "Einseitige Schwellung mit Druckschmerz und Überwärmung stützt venöse Verdachtsdiagnosen.",
+            "Blasse, kalte Extremität mit schwachen Pulsen lenkt den Blick eher auf arterielle Probleme.",
+            "Beidseitige prätibiale Ödeme passen eher zu systemischer Stauung."
+          ]
+        },
+        {
+          "title": "Wie daraus eine gute Übergabe wird",
+          "questions": [
+            "In der Übergabe reichen oft drei Befundanker: Schwellung, Temperatur/Farbe und Pulse.",
+            "Daraus sollte die klinische Richtung klar werden.",
+            "Genau das macht diesen Status so nützlich für Berlin."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Es zeigt sich eine einseitige Beinschwellung mit Druckdolenz und leichter Überwärmung.",
+        "Alternativ wären beidseitige eindrückbare Ödeme eher mit einer systemischen Stauung vereinbar.",
+        "Der Gefäßstatus lebt von Seitendifferenz, Farbe, Temperatur und Pulsen.",
+        "So lassen sich TVT, pAVK und kardiale Ursachen gut voneinander trennen.",
+        "Gerade diese Verdichtung ist in der FSP sehr ergiebig."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: TVT und pAVK",
+        "Abkürzungen.docx: Gefäß- und Kardiosprache"
+      ]
+    },
+    {
+      "id": "gelenk_trauma_status",
+      "title": "Gelenk-, Trauma- und Bewegungsstatus",
+      "focus": "schmerzhafte Extremitätenbefunde geordnet untersuchen und beschreiben",
+      "summary": "Dieser Status eignet sich besonders für Sprunggelenkdistorsion, Meniskus- und andere muskuloskelettale FSP-Fälle.",
+      "learning_text": [
+        "Trauma- und Gelenkstatus zeigen sehr gut, ob Untersuchungssprache praktisch und nicht nur theoretisch vorhanden ist.",
+        "Inspektiv stehen Fehlstellung, Schwellung, Hämatom, Rötung, Schonhaltung und Belastbarkeit im Vordergrund.",
+        "Palpatorisch folgen Druckschmerzpunkte, Überwärmung, Gelenkerguss, Stabilität, aktive und passive Beweglichkeit sowie neurovaskuläre Basisprüfung distal.",
+        "Klinisch wichtig ist die Frage, ob eher eine Distorsion, Fraktur, Bandverletzung, Gelenkerguss oder entzündliche Problematik vorliegt.",
+        "Hilfreiche Wörter sind druckdolent, eingeschränkte Beweglichkeit, Schwellung periartikulär, stabil/instabil, belastbar/nicht belastbar und neurovaskulär intakt.",
+        "Auch hier sollte der Status am Ende klar machen, ob primär Entlastung, Bildgebung oder chirurgisch-orthopädische Mitbeurteilung notwendig ist."
+      ],
+      "question_groups": [
+        {
+          "title": "Was zuerst gesehen werden muss",
+          "questions": [
+            "Zu Beginn zählen Achsstellung, Schwellung, Hämatom und Schonhaltung.",
+            "Schon die Belastbarkeit liefert oft wichtige Hinweise.",
+            "So bekommt der Gelenkstatus früh Richtung."
+          ]
+        },
+        {
+          "title": "Was gezielt untersucht werden sollte",
+          "questions": [
+            "Druckschmerz, Beweglichkeit, Stabilität und distale Durchblutung/Sensibilität sind die Kernpunkte.",
+            "Die Untersuchung sollte strukturiert, aber patientenschonend ablaufen.",
+            "Kurze Anweisungen sind hier besonders wichtig."
+          ]
+        },
+        {
+          "title": "Welche Befunde klinisch wichtig sind",
+          "questions": [
+            "Druckdolenz über dem Knochen spricht anders als diffuse Weichteilschmerzen.",
+            "Eingeschränkte Belastbarkeit und Instabilität sind wichtige Funktionsbefunde.",
+            "Auch die distale Neurovaskularität muss sprachlich hörbar sein."
+          ]
+        },
+        {
+          "title": "Wie daraus eine gute Übergabe wird",
+          "questions": [
+            "In der Übergabe reichen Lokalisation des Schmerzes, Funktion und neurovaskulärer Status als Grundgerüst.",
+            "Daraus lässt sich der Bedarf an Röntgen oder weiterer Bildgebung gut ableiten.",
+            "Genau diese Klarheit trägt die orthopädischen Standardfälle."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Es zeigt sich eine schmerzhafte Schwellung mit lokaler Druckdolenz und eingeschränkter Belastbarkeit.",
+        "Wichtig sind außerdem Beweglichkeit, Stabilität und der distale neurovaskuläre Status.",
+        "Der Gelenkstatus muss nicht lang, aber funktionell vollständig sein.",
+        "So lässt sich eine Distorsion von einer Fraktur oder Bandverletzung besser einordnen.",
+        "Gerade bei Sprunggelenks- und Kniebefunden ist diese Sprache sehr nützlich."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Sprunggelenkdistorsion und orthopädische Fälle",
+        "Aufklärungen komplett: Sprunggelenk-Röntgen"
+      ]
+    },
+    {
+      "id": "haut_schleimhaut_exsikkose",
+      "title": "Haut, Schleimhäute und Exsikkosezeichen",
+      "focus": "allgemeine Inspektionsbefunde geordnet beschreiben und klinisch einordnen",
+      "summary": "Dieser Status ergänzt viele internistische und infektiologische Fälle, in denen der erste Blick bereits wichtige Hinweise liefert.",
+      "learning_text": [
+        "Haut- und Schleimhautbefunde werden in der FSP oft nur nebenbei erwähnt, obwohl sie diagnostisch sehr ergiebig sein können.",
+        "Wichtig sind Kolorit, Blässe, Ikterus, livide Verfärbungen, Hautturgor, trockene Schleimhäute, Exanthem, Petechien oder lokale Entzündungszeichen.",
+        "Palpatorisch können Temperatur, Überwärmung, Eindrückbarkeit von Ödemen oder Schmerzhaftigkeit ergänzt werden.",
+        "Klinisch helfen diese Befunde bei Exsikkose, Anämie, Leberproblemen, Infekten, allergischen Reaktionen oder vaskulären Störungen.",
+        "Typische Wörter sind blass, ikterisch, livide, exsikkiert, trocken, marmoriert, petechial, überwärmt oder imponiert klinisch unauffällig.",
+        "Der Status ist besonders nützlich, wenn er nicht isoliert genannt, sondern direkt in die übrige Falllogik eingebaut wird."
+      ],
+      "question_groups": [
+        {
+          "title": "Was zuerst gesehen werden muss",
+          "questions": [
+            "Kolorit, Hautturgor, Schleimhäute und sichtbare Hautveränderungen bilden die Basis.",
+            "Schon hier fallen Exsikkose, Ikterus oder Blässe häufig auf.",
+            "Das macht den ersten Blick klinisch wertvoll."
+          ]
+        },
+        {
+          "title": "Was gezielt untersucht werden sollte",
+          "questions": [
+            "Ergänzend können Temperatur, Druckdolenz oder Eindrückbarkeit von Schwellungen beurteilt werden.",
+            "Auch Petechien, Hämatome oder Exantheme sollten bewusst benannt werden.",
+            "So entsteht eine kleine, aber starke Befundsprache."
+          ]
+        },
+        {
+          "title": "Welche Befunde klinisch wichtig sind",
+          "questions": [
+            "Trockene Schleimhäute und stehende Hautfalten stützen Exsikkose.",
+            "Ikterus, Blässe oder Petechien lenken den Blick sofort in bestimmte diagnostische Richtungen.",
+            "Gerade diese Querverbindungen machen den Status so nützlich."
+          ]
+        },
+        {
+          "title": "Wie daraus eine gute Übergabe wird",
+          "questions": [
+            "In der Übergabe genügt oft eine kurze Linie wie blass wirkend, leicht exsikkiert oder ohne Exanthem.",
+            "Wichtig ist, dass diese Befunde nicht lose stehen, sondern mit dem Fall verbunden werden.",
+            "Dann wirken sie in Berlin sehr professionell."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Der Patient imponiert klinisch leicht exsikkiert mit trockenen Schleimhäuten.",
+        "Alternativ können Blässe, Ikterus oder petechiale Hautveränderungen wichtige Zusatzhinweise liefern.",
+        "Gerade Haut- und Schleimhautbefunde verdichten viele internistische Fälle stark.",
+        "Wichtig ist ihre kurze, präzise Einordnung in die Gesamtkonstellation.",
+        "So wird aus Inspektion klinisch tragfähige Sprache."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Kommunikation für ausländische Ärzte: Dokumentation und Statussprache",
+        "Deutsch für Ärztinnen und Ärzte: klinischer Alltag"
       ]
     }
   ]

@@ -2,7 +2,7 @@
   "title": "Lernbereich",
   "subtitle": "Anamnese für die Fachsprachprüfung Berlin",
   "updated_at": "2026-02-21",
-  "scope_note": "Didaktischer Lerninhalt für die sprachliche und strukturierte Gesprächsführung in der FSP. Kein Ersatz für klinische Leitlinienarbeit am Patienten.",
+  "scope_note": "Didaktischer Lerninhalt für strukturierte, priorisierte Gesprächsführung in der FSP Berlin. Ergänzt um häufige Berlin-Cluster aus dem Info-Ordner und um schlüssige Red-Flag-Wege für Akut- und Standardsituationen.",
   "categories": [
     {
       "id": "husten",
@@ -723,6 +723,528 @@
         "AWMF Hinweise zu substanzbezogenem Screening und Versorgung",
         "Fachsprachkurs-PDF Suchtkapitel"
       ]
+    },
+    {
+      "id": "fieber_infektanamnese",
+      "title": "Fieber-, Schüttelfrost- und Infektanamnese",
+      "focus": "Allgemeinsymptome so strukturieren, dass Fokus, Schweregrad und Red Flags rasch erkennbar werden",
+      "summary": "Diese Kategorie trainiert die sprachliche Ordnung unspezifischer Infekt- und Entzündungssymptome.",
+      "learning_text": [
+        "Fieberfälle wirken oft zunächst unspezifisch. Gerade deshalb muss die Anamnese schnell zwischen banalem Infekt, fokaler Entzündung und potenziell schwerem Verlauf unterscheiden.",
+        "Wichtig sind Beginn, Höchsttemperatur, Schüttelfrost, Begleitsymptome, Reise- und Expositionsanamnese sowie Hinweise auf einen möglichen Fokus wie Husten, Dysurie, Bauchschmerz oder Hautveränderungen.",
+        "Ebenso relevant sind Immunsuppression, kürzliche Eingriffe, Katheter, Vorerkrankungen und der Verlauf unter bereits begonnener Medikation.",
+        "Red Flags sind Kreislaufinstabilität, Vigilanzminderung, Luftnot, stark reduzierter Allgemeinzustand, kaum Trinkmenge oder Hinweise auf Sepsis.",
+        "Die Kategorie hilft besonders dabei, Fieber nicht nur als Zahl, sondern als klinische Konstellation mit möglichem Fokus und Schweregrad zu denken.",
+        "Ein guter Fieberfall endet nicht mit dem Wort Infekt, sondern mit einer klaren Vorstellung davon, wie dringlich der Patient ist und wo man weiter sucht."
+      ],
+      "question_groups": [
+        {
+          "title": "Fieber und Verlauf klären",
+          "questions": [
+            "Seit wann haben Sie Fieber oder erhöhte Temperaturen?",
+            "Wie hoch war die höchste gemessene Temperatur?",
+            "Hatten Sie Schüttelfrost oder nächtliches Schwitzen?",
+            "Ist das Fieber plötzlich aufgetreten oder eher schleichend gekommen?"
+          ]
+        },
+        {
+          "title": "Fokus suchen",
+          "questions": [
+            "Haben Sie Husten, Halsschmerzen oder Atemnot bemerkt?",
+            "Gibt es Brennen beim Wasserlassen, häufigen Harndrang oder Flankenschmerzen?",
+            "Bestehen Bauchschmerzen, Durchfall, Erbrechen oder Hautveränderungen?",
+            "Gab es in letzter Zeit Wunden, Eingriffe oder Zahnprobleme?"
+          ]
+        },
+        {
+          "title": "Risikofaktoren und Kontext erheben",
+          "questions": [
+            "Nehmen Sie Medikamente, die das Immunsystem unterdrücken?",
+            "Hatten Sie zuletzt Krankenhausaufenthalte, Katheter oder Operationen?",
+            "Waren Sie kürzlich auf Reisen oder hatten Sie Kontakt zu erkrankten Personen?",
+            "Bestehen relevante Vorerkrankungen wie Diabetes, Tumorerkrankungen oder Nierenprobleme?"
+          ]
+        },
+        {
+          "title": "Warnzeichen und Schweregrad prüfen",
+          "questions": [
+            "Ist Ihnen schwindelig, sind Sie verwirrt oder fühlen Sie sich deutlich schwächer als sonst?",
+            "Können Sie ausreichend trinken und bei sich behalten?",
+            "Ist Ihnen Atemnot oder Herzrasen aufgefallen?",
+            "Haben Sie den Eindruck, dass sich Ihr Zustand rasch verschlechtert?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Fieber- und Infektkonstellationen",
+        "Deutsch für Ärzte: Allgemeinsymptome und Infektanamnese"
+      ]
+    },
+    {
+      "id": "bauchschmerz_akutes_abdomen",
+      "title": "Bauchschmerz und akutes Abdomen",
+      "focus": "Bauchschmerz systematisch nach Ort, Dynamik und Warnzeichen strukturieren",
+      "summary": "Diese Kategorie trainiert den Grundrahmen für diffuse und lokalisierte Bauchschmerzfälle.",
+      "learning_text": [
+        "Bauchschmerz gehört zu den ergiebigsten Leitsymptomen der FSP. Die Anamnese muss deshalb schnell Ordnung schaffen, bevor einzelne Diagnosen genannt werden.",
+        "Zuerst stehen Lokalisation, Beginn, Schmerzcharakter, Ausstrahlung und Dynamik. Danach folgen Übelkeit, Erbrechen, Stuhlverhalten, Fieber, Miktion und Nahrungsbezug.",
+        "Besonders wichtig sind Voroperationen, bekannte Gallen- oder Darmprobleme, Alkohol, Medikamente wie NSAR sowie gynäkologische und urologische Zusatzfragen, wenn sie zum Fall passen.",
+        "Warnzeichen sind zunehmender Schmerz, Abwehrspannung, Loslassschmerz, blutige Stühle, Kreislaufprobleme oder anhaltendes Erbrechen.",
+        "Ein sauber erhobener Bauchschmerzfall erlaubt später eine gezielte Differenzialdiagnose zwischen Appendizitis, Cholezystitis, Pankreatitis, Ileus, Ulkuskrankheit und vielen anderen Ursachen.",
+        "Je präziser die Anamnese hier ist, desto leichter lassen sich Untersuchung, Bildgebung und Priorisierung verbinden."
+      ],
+      "question_groups": [
+        {
+          "title": "Schmerz räumlich und qualitativ einordnen",
+          "questions": [
+            "Wo genau haben Sie die Schmerzen?",
+            "Sind die Schmerzen plötzlich oder schleichend begonnen?",
+            "Wie würden Sie den Schmerz beschreiben: stechend, drückend, kolikartig oder brennend?",
+            "Strahlen die Schmerzen irgendwohin aus?"
+          ]
+        },
+        {
+          "title": "Begleitsymptome erfassen",
+          "questions": [
+            "Haben Sie Übelkeit oder mussten Sie erbrechen?",
+            "Gab es Fieber oder Schüttelfrost?",
+            "Haben sich Stuhlgang oder Blähungen verändert?",
+            "Ist Ihnen Sodbrennen, Völlegefühl oder Appetitverlust aufgefallen?"
+          ]
+        },
+        {
+          "title": "Urogenitalen und gynäkologischen Kontext mitdenken",
+          "questions": [
+            "Haben Sie Brennen beim Wasserlassen oder Blut im Urin bemerkt?",
+            "Bestehen Flankenschmerzen oder häufiger Harndrang?",
+            "Gab es ähnliche Beschwerden schon einmal?",
+            "Gibt es bei Ihnen Besonderheiten, die wir gynäkologisch mitdenken müssen?"
+          ]
+        },
+        {
+          "title": "Red Flags prüfen",
+          "questions": [
+            "Werden die Schmerzen bei Bewegung oder Erschütterung stärker?",
+            "Ist der Bauch hart oder sehr druckempfindlich geworden?",
+            "Konnten Sie Flüssigkeit oder Nahrung gar nicht mehr bei sich behalten?",
+            "Haben Sie Kreislaufbeschwerden oder fühlen Sie sich deutlich schlechter als zu Beginn?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: akutes Abdomen",
+        "FSP KURZ UND KNAPP Berlin: Bauchschmerz"
+      ]
+    },
+    {
+      "id": "uebelkeit_erbrechen",
+      "title": "Übelkeit, Erbrechen und Exsikkoseanamnese",
+      "focus": "Erbrechen nicht isoliert, sondern als Volumen-, Blutungs- und Bauchproblem einordnen",
+      "summary": "Diese Kategorie trainiert die strukturierte Anamnese bei Übelkeit, Erbrechen und Flüssigkeitsverlust.",
+      "learning_text": [
+        "Übelkeit und Erbrechen kommen in vielen Berliner Fällen vor und müssen deshalb früh sprachlich sauber eingeordnet werden.",
+        "Wichtig sind Beginn, Häufigkeit, Zusammenhang mit Essen, mögliche Blutbeimengungen, galliges Erbrechen sowie Begleitsymptome wie Bauchschmerz, Fieber, Schwindel oder Kopfschmerz.",
+        "Zusätzlich sollte nach Trinkmenge, Diurese, Medikamenten, Alkohol, Schwangerschaftsmöglichkeit und ähnlichen Episoden gefragt werden.",
+        "Warnzeichen sind kaffeesatzartiges oder blutiges Erbrechen, starke Exsikkose, Bewusstseinsveränderung, abdominelle Abwehrspannung oder anhaltendes Nicht-bei-sich-Behalten von Flüssigkeit.",
+        "Die Anamnese hilft, zwischen Gastroenteritis, Ileus, Pankreatitis, Ulkusblutung, Stoffwechselentgleisung oder zentralnervösen Ursachen zu differenzieren.",
+        "Gerade hier muss hörbar werden, ob ein symptomatischer Verlauf vorliegt oder ein potenziell gefährlicher Hintergrund mitläuft."
+      ],
+      "question_groups": [
+        {
+          "title": "Erbrechen beschreiben",
+          "questions": [
+            "Seit wann besteht die Übelkeit beziehungsweise das Erbrechen?",
+            "Wie oft mussten Sie erbrechen?",
+            "War das Erbrechen nach dem Essen oder unabhängig davon?",
+            "Haben Sie Blut oder kaffeesatzartiges Material bemerkt?"
+          ]
+        },
+        {
+          "title": "Begleitsymptome einordnen",
+          "questions": [
+            "Bestehen Bauchschmerzen oder Bauchkrämpfe?",
+            "Haben Sie zusätzlich Durchfall, Fieber oder Schwindel?",
+            "Haben Sie Kopfschmerzen oder Sehstörungen bemerkt?",
+            "Gab es Sodbrennen, Völlegefühl oder Aufstoßen?"
+          ]
+        },
+        {
+          "title": "Flüssigkeit und Kreislauf prüfen",
+          "questions": [
+            "Können Sie überhaupt noch trinken?",
+            "Wie viel haben Sie heute ungefähr bei sich behalten?",
+            "Ist Ihnen beim Aufstehen schwindelig?",
+            "Haben Sie deutlich weniger Wasser gelassen als sonst?"
+          ]
+        },
+        {
+          "title": "Auslöser und Kontext erfassen",
+          "questions": [
+            "Gab es verdorbene Speisen, Reisen oder kranke Kontaktpersonen?",
+            "Nehmen Sie Medikamente, die den Magen reizen könnten?",
+            "Trinken Sie Alkohol oder haben Sie zuletzt mehr Alkohol konsumiert?",
+            "Gab es solche Beschwerden schon einmal?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Deutsch für Ärzte: Gastrointestinale Standardsymptome",
+        "Berlin-Liste: Magen-Darm-Fälle"
+      ]
+    },
+    {
+      "id": "diarrhoe_stuhlveraenderung",
+      "title": "Diarrhö, Blut im Stuhl und Stuhlveränderungen",
+      "focus": "Stuhlveränderungen strukturiert nach Frequenz, Farbe und Gefahrensignalen erheben",
+      "summary": "Diese Kategorie trainiert eine vollständige und differenzierte Stuhlanamnese.",
+      "learning_text": [
+        "Durchfall- und Stuhlveränderungen klingen im Alltag oft banal, tragen in der FSP aber viele wichtige Differenzialdiagnosen.",
+        "Zunächst werden Frequenz, Dauer, Konsistenz, Blut- oder Schleimbeimengungen und Bauchschmerz erhoben. Danach folgen Fieber, Gewichtsverlust, Reisen, Nahrungsbezug und Medikamentenanamnese.",
+        "Relevant sind auch chronische Verläufe, frühere CED-Diagnosen, Antibiotika, Krankenhausaufenthalte oder bekannte Unverträglichkeiten.",
+        "Warnzeichen sind blutige Diarrhö, nächtlicher Stuhldrang, Fieber, Exsikkose, Gewichtsverlust oder starke Bauchschmerzen.",
+        "Mit dieser Struktur lassen sich infektiöse Verläufe, CED, Malabsorption, gastrointestinale Blutung oder funktionelle Ursachen besser unterscheiden.",
+        "Wichtig ist, dass Stuhlsymptome nicht als peinliches Nebenthema behandelt werden, sondern als eigener diagnostischer Schlüssel."
+      ],
+      "question_groups": [
+        {
+          "title": "Stuhlfrequenz und Qualität erfassen",
+          "questions": [
+            "Wie oft haben Sie am Tag Stuhlgang?",
+            "Ist der Stuhl eher wässrig, breiig oder geformt?",
+            "Haben Sie Schleim oder Blut im Stuhl bemerkt?",
+            "Ist der Stuhl eher schwarz, hell oder normal gefärbt?"
+          ]
+        },
+        {
+          "title": "Begleitbeschwerden erheben",
+          "questions": [
+            "Haben Sie Bauchschmerzen oder Krämpfe?",
+            "Bestehen Fieber, Übelkeit oder Erbrechen?",
+            "Müssen Sie nachts wegen des Stuhlgangs aufstehen?",
+            "Haben Sie Gewicht verloren oder weniger Appetit?"
+          ]
+        },
+        {
+          "title": "Auslöser und Kontext prüfen",
+          "questions": [
+            "Gab es Reisen, Antibiotika oder verdorbene Nahrungsmittel?",
+            "Sind andere Personen in Ihrem Umfeld ähnlich erkrankt?",
+            "Bestehen bekannte Darmkrankheiten oder Unverträglichkeiten?",
+            "Haben Sie in letzter Zeit Krankenhausaufenthalte gehabt?"
+          ]
+        },
+        {
+          "title": "Schweregrad einschätzen",
+          "questions": [
+            "Konnten Sie ausreichend trinken?",
+            "Fühlen Sie sich kreislaufmäßig beeinträchtigt?",
+            "Haben Sie sehr starke Schmerzen oder einen geblähten Bauch?",
+            "Ist die Symptomatik eher akut oder schon länger progredient?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Gastroenteritis, CED, Reizdarm",
+        "FSP KURZ UND KNAPP Berlin: Diarrhöfälle"
+      ]
+    },
+    {
+      "id": "oberbauchschmerz_dyspepsie",
+      "title": "Oberbauchschmerz, Pyrosis und Dyspepsie",
+      "focus": "Reflux-, Ulkus- und Oberbauchbeschwerden sauber sprachlich unterscheiden",
+      "summary": "Diese Kategorie fokussiert den häufigen Bereich zwischen Reflux, Gastritis, Ulkus und biliären Oberbauchschmerzen.",
+      "learning_text": [
+        "Oberbauchbeschwerden sind ein klassischer Bereich, in dem Schmerzsprache, Nahrungsbezug und Blutungsfragen besonders wichtig werden.",
+        "Wichtig sind Lokalisation im Epigastrium oder rechten Oberbauch, Nahrungsbezug, Sodbrennen, Aufstoßen, Völlegefühl, Übelkeit und Erbrechen.",
+        "Außerdem sollte nach NSAR, Alkohol, Nikotin, Helicobacter-Vorgeschichte, schwarzem Stuhl und Gewichtsverlust gefragt werden.",
+        "Red Flags sind Hämatemesis, Meläna, progrediente Dysphagie, Gewichtsverlust, nächtliche Schmerzen oder Kreislaufprobleme.",
+        "Die Kategorie hilft, Reflux und Dyspepsie gegen Ulkus, obere GI-Blutung, Cholezystitis oder Pankreatitis abzugrenzen.",
+        "Gerade bei Oberbauchfällen entscheidet oft die sprachlich präzise Einordnung von Ort, Auslöser und Blutungszeichen."
+      ],
+      "question_groups": [
+        {
+          "title": "Schmerz und Nahrungsbezug klären",
+          "questions": [
+            "Wo genau sitzen die Beschwerden im Oberbauch?",
+            "Treten die Beschwerden vor oder nach dem Essen auf?",
+            "Wie würden Sie den Schmerz beschreiben?",
+            "Strahlen die Beschwerden in Rücken oder Schulter aus?"
+          ]
+        },
+        {
+          "title": "Reflux- und Dyspepsiesymptome erfassen",
+          "questions": [
+            "Haben Sie Sodbrennen oder saures Aufstoßen?",
+            "Gibt es Völlegefühl oder frühe Sättigung?",
+            "Ist Ihnen übel oder mussten Sie erbrechen?",
+            "Haben Sie Schluckbeschwerden bemerkt?"
+          ]
+        },
+        {
+          "title": "Blutung und Warnzeichen prüfen",
+          "questions": [
+            "Haben Sie schwarzem Stuhl oder Blut beim Erbrechen bemerkt?",
+            "Gab es Gewichtsverlust oder nächtliche Beschwerden?",
+            "Nehmen Sie Schmerzmittel wie Ibuprofen oder Diclofenac?",
+            "Trinken Sie regelmäßig Alkohol oder rauchen Sie?"
+          ]
+        },
+        {
+          "title": "Kontext und Vorbelastung erheben",
+          "questions": [
+            "Gab es ähnliche Beschwerden schon früher?",
+            "Wurde bei Ihnen schon einmal ein Magengeschwür oder Helicobacter festgestellt?",
+            "Bestehen Gallenprobleme oder Lebererkrankungen?",
+            "Nehmen Sie Medikamente gegen Sodbrennen oder Magenschutz ein?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Deutsch für Ärzte: obere GI-Beschwerden",
+        "FSP KURZ UND KNAPP Berlin: Reflux und Ulkus"
+      ]
+    },
+    {
+      "id": "flankenschmerz_kolik",
+      "title": "Flanken-, Leisten- und kolikartiger Schmerz",
+      "focus": "Nierenkolik, Harnstau und differenzialdiagnostische Alternativen sprachlich ordnen",
+      "summary": "Diese Kategorie trainiert die sprachliche Unterscheidung zwischen Nierenkolik, Infekt und unspezifischem Rückenschmerz.",
+      "learning_text": [
+        "Flankenschmerzfälle leben stark von der Schmerzqualität und von der Frage, ob eine Infektion mitläuft oder nicht.",
+        "Zentral sind Beginn, Kolikcharakter, Ausstrahlung in Leiste oder Genitalregion, Hämaturie, Dysurie, Fieber und Bewegungsunruhe.",
+        "Ebenso wichtig sind frühere Steinereignisse, Trinkgewohnheiten, Medikamente und bekannte Nierenerkrankungen.",
+        "Warnzeichen sind Fieber, Anurie, Harnverhalt, anhaltendes Erbrechen, ein Nierenstau oder schwere Kreislaufbeeinträchtigung.",
+        "Die Struktur hilft, Nephrolithiasis gegen Pyelonephritis, muskuloskelettalen Schmerz oder andere Abdominalursachen abzugrenzen.",
+        "Sprachlich stark ist hier besonders, wenn Kolikcharakter, Ausstrahlung und Infektzeichen sauber voneinander getrennt werden."
+      ],
+      "question_groups": [
+        {
+          "title": "Schmerzcharakter erfassen",
+          "questions": [
+            "Seit wann bestehen die Flankenschmerzen?",
+            "Sind die Schmerzen eher wellenförmig oder konstant?",
+            "Strahlen die Schmerzen in die Leiste oder den Unterbauch aus?",
+            "Müssen Sie wegen der Schmerzen ständig die Position wechseln?"
+          ]
+        },
+        {
+          "title": "Harnwegsbeschwerden mitprüfen",
+          "questions": [
+            "Haben Sie Brennen beim Wasserlassen?",
+            "Ist Ihnen Blut im Urin aufgefallen?",
+            "Müssen Sie häufiger Wasser lassen als sonst?",
+            "Kommt nur wenig Urin oder gar keiner?"
+          ]
+        },
+        {
+          "title": "Infektzeichen und Red Flags erheben",
+          "questions": [
+            "Hatten Sie Fieber oder Schüttelfrost?",
+            "Müssen Sie erbrechen oder können Sie kaum trinken?",
+            "Fühlen Sie sich kreislaufmäßig beeinträchtigt?",
+            "Gab es ähnliche Anfälle schon einmal?"
+          ]
+        },
+        {
+          "title": "Vorerkrankungen und Verlauf abfragen",
+          "questions": [
+            "Sind bei Ihnen schon einmal Nieren- oder Harnleitersteine festgestellt worden?",
+            "Bestehen bekannte Nierenerkrankungen?",
+            "Nehmen Sie regelmäßig Medikamente ein?",
+            "Wie viel trinken Sie normalerweise am Tag?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Nephrolithiasis",
+        "FSP KURZ UND KNAPP Berlin: Uro-Fälle"
+      ]
+    },
+    {
+      "id": "dysurie_haematurie",
+      "title": "Dysurie, Hämaturie und Harnwegsbeschwerden",
+      "focus": "untere Harnwegsbeschwerden präzise und schamfrei ansprechen",
+      "summary": "Diese Kategorie trainiert einen vollständigen und stigmaarmen Fragekatalog zu Miktion und Urinveränderungen.",
+      "learning_text": [
+        "Miktionsthemen werden von vielen Lernenden zu vorsichtig oder zu unstrukturiert angesprochen. Gerade deshalb lohnt sich eine klare Standardsprache.",
+        "Zuerst stehen Dysurie, Pollakisurie, Nykturie, Harnmenge, Hämaturie und Drang. Danach folgen Fieber, Flankenschmerz, Inkontinenz und Restharngefühl.",
+        "Auch Sexualanamnese, Schwangerschaft, Katheter, Prostata, frühere Infekte und Medikamente können relevant sein.",
+        "Warnzeichen sind Makrohämaturie, Fieber, Flankenschmerz, Harnverhalt, starke Schmerzen oder ein rascher Allgemeinzustandsabfall.",
+        "Die Kategorie hilft, Zystitis, Pyelonephritis, Steinleiden, Prostatahyperplasie oder urologische Blutungsursachen sauber zu trennen.",
+        "Gerade in der FSP zeigt sich hier, ob sensible Körperthemen professionell und ohne Scheu geführt werden können."
+      ],
+      "question_groups": [
+        {
+          "title": "Miktionssymptome klären",
+          "questions": [
+            "Haben Sie Brennen oder Schmerzen beim Wasserlassen?",
+            "Müssen Sie häufiger zur Toilette als sonst?",
+            "Lassen Sie jeweils nur kleine Mengen Wasser?",
+            "Müssen Sie nachts zum Wasserlassen aufstehen?"
+          ]
+        },
+        {
+          "title": "Urinveränderungen erfassen",
+          "questions": [
+            "Ist Ihnen Blut im Urin aufgefallen?",
+            "Hat sich Farbe oder Geruch des Urins verändert?",
+            "Haben Sie das Gefühl, die Blase nicht ganz entleeren zu können?",
+            "Gab es unfreiwilligen Urinverlust?"
+          ]
+        },
+        {
+          "title": "Infekt und obere Harnwege mitdenken",
+          "questions": [
+            "Bestehen Fieber oder Schüttelfrost?",
+            "Haben Sie Flankenschmerzen oder Druck im Unterbauch?",
+            "Ist Ihnen übel oder mussten Sie erbrechen?",
+            "Fühlen Sie sich insgesamt krank oder geschwächt?"
+          ]
+        },
+        {
+          "title": "Kontextfragen stellen",
+          "questions": [
+            "Gab es ähnliche Beschwerden früher schon einmal?",
+            "Bestehen Prostata-, Nieren- oder Blasenprobleme?",
+            "Hatten Sie zuletzt Katheter, Eingriffe oder neue Sexualkontakte?",
+            "Nehmen Sie Medikamente ein, die die Blutung oder Miktion beeinflussen könnten?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Harnwegsinfektion und Prostata",
+        "AWMF Harnwegsinfektionen Erwachsene"
+      ]
+    },
+    {
+      "id": "polyurie_polydipsie",
+      "title": "Polyurie, Polydipsie und Diabetesanamnese",
+      "focus": "Stoffwechselbeschwerden so erheben, dass chronischer Diabetes und akute Entgleisung erkennbar werden",
+      "summary": "Diese Kategorie trainiert einen sauberen sprachlichen Zugang zu Diabetesverdacht und Stoffwechselentgleisung.",
+      "learning_text": [
+        "Bei Stoffwechselbeschwerden ist die Anamnese besonders wertvoll, weil schon wenige Fragen eine starke Richtung vorgeben können.",
+        "Zentral sind vermehrter Durst, häufiges Wasserlassen, Gewichtsveränderung, Müdigkeit, Sehstörung, Infektneigung, Appetit und Medikamentenadhärenz.",
+        "Außerdem sollte nach bekannten Diabetesdiagnosen, Insulin oder Tabletten, Blutzuckerwerten und früheren Entgleisungen gefragt werden.",
+        "Warnzeichen sind Übelkeit, Erbrechen, Exsikkose, Tachypnoe, Bewusstseinsstörung oder süßlich-azetongeruchartiger Atem.",
+        "Die Struktur hilft, Diabetes gegen urologische Ursachen, Schilddrüsenerkrankungen oder psychosoziale Faktoren abzugrenzen.",
+        "Besonders wichtig ist hier, Alltagsbeschwerden früh als mögliches Stoffwechselmuster hörbar zu machen."
+      ],
+      "question_groups": [
+        {
+          "title": "Kernsymptome des Stoffwechsels erfassen",
+          "questions": [
+            "Haben Sie in letzter Zeit deutlich mehr Durst als sonst?",
+            "Müssen Sie häufiger Wasser lassen?",
+            "Haben Sie ungewollt Gewicht verloren oder zugenommen?",
+            "Fühlen Sie sich auffallend müde oder abgeschlagen?"
+          ]
+        },
+        {
+          "title": "Zusatzsymptome klären",
+          "questions": [
+            "Ist Ihnen verschwommenes Sehen aufgefallen?",
+            "Haben Sie häufiger Infekte oder schlecht heilende Wunden?",
+            "Haben Sie mehr Hunger oder eher Appetitverlust?",
+            "Gab es Übelkeit oder Erbrechen?"
+          ]
+        },
+        {
+          "title": "Bekannten Diabetes und Therapie erfragen",
+          "questions": [
+            "Ist bei Ihnen bereits ein Diabetes bekannt?",
+            "Nehmen Sie Tabletten oder Insulin?",
+            "Messen Sie Ihren Blutzucker regelmäßig?",
+            "Gab es schon einmal Unter- oder Überzuckerungen?"
+          ]
+        },
+        {
+          "title": "Warnzeichen der Entgleisung prüfen",
+          "questions": [
+            "Sind Sie sehr durstig, trocken oder benommen?",
+            "Atmen Sie schneller oder tiefer als sonst?",
+            "Hatten Sie in letzter Zeit deutlich erhöhte Blutzuckerwerte?",
+            "Fühlen Sie sich heute deutlich kränker als an den Vortagen?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Diabetes mellitus",
+        "Deutsch für Ärzte: Stoffwechselanamnese"
+      ]
+    },
+    {
+      "id": "gewichtsverlust_b_symptomatik",
+      "title": "Gewichtsverlust, Inappetenz und B-Symptomatik",
+      "focus": "chronische Warnsymptome so erheben, dass Dringlichkeit und Suchrichtung klar werden",
+      "summary": "Diese Kategorie trainiert die sprachliche Einordnung von unspezifischen, aber klinisch gewichtigen Allgemeinsymptomen.",
+      "learning_text": [
+        "Gewichtsverlust und Allgemeinsymptome wirken in der Anamnese leicht unscharf. Gerade deshalb brauchen sie einen klaren Frageweg.",
+        "Wichtig sind Ausmaß und Zeitraum des Gewichtsverlusts, Appetit, Fieber, Nachtschweiß, Fatigue, Husten, Stuhl- und Miktionsthemen sowie Schmerzen.",
+        "Zusätzlich relevant sind Nikotin, Alkohol, Tumoranamnese, chronische Entzündungen, Depression, Schilddrüse und soziale Faktoren wie Nahrungsaufnahme oder Isolation.",
+        "Warnzeichen sind deutlicher ungeklärter Gewichtsverlust, echte B-Symptomatik, Blutungszeichen, Dysphagie oder progrediente Leistungsminderung.",
+        "Die Kategorie hilft, maligne, infektiöse, endokrine, gastrointestinale oder psychiatrische Ursachen systematisch mitzudenken.",
+        "Wer diese Anamnese gut führt, kann aus sehr unspezifischen Symptomen eine klare diagnostische Suchrichtung entwickeln."
+      ],
+      "question_groups": [
+        {
+          "title": "Gewichtsverlust quantifizieren",
+          "questions": [
+            "Wie viel Gewicht haben Sie ungefähr verloren?",
+            "Über welchen Zeitraum ist das passiert?",
+            "War der Gewichtsverlust beabsichtigt oder ungewollt?",
+            "Wie ist Ihr Appetit im Vergleich zu früher?"
+          ]
+        },
+        {
+          "title": "B-Symptomatik und Allgemeinbefinden erfragen",
+          "questions": [
+            "Hatten Sie Fieber oder Nachtschweiß?",
+            "Fühlen Sie sich ungewöhnlich müde oder leistungsgemindert?",
+            "Haben Sie Husten, Luftnot oder andere Infektzeichen?",
+            "Gab es Schmerzen oder Schluckbeschwerden?"
+          ]
+        },
+        {
+          "title": "Systematisch nach Organhinweisen fragen",
+          "questions": [
+            "Haben sich Stuhlgang oder Wasserlassen verändert?",
+            "Ist Ihnen Blut im Stuhl, Urin oder Auswurf aufgefallen?",
+            "Bestehen Bauchbeschwerden, Übelkeit oder frühe Sättigung?",
+            "Haben Sie Herzrasen, Schwitzen oder Hinweise auf eine Schilddrüsenproblematik bemerkt?"
+          ]
+        },
+        {
+          "title": "Kontext und Risikofaktoren mitdenken",
+          "questions": [
+            "Rauchen Sie oder trinken Sie regelmäßig Alkohol?",
+            "Gab es früher Krebserkrankungen oder chronische Entzündungen?",
+            "Wie ist Ihre Stimmung und Ihre Nahrungsaufnahme im Alltag?",
+            "Haben Sie solche Beschwerden schon einmal erlebt?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Deutsch für Ärztinnen und Ärzte: Allgemeinsymptome",
+        "Berlin-Liste: onkologische und chronische Warnsymptome"
+      ]
     }
   ],
   "references": [
@@ -765,6 +1287,18 @@
     {
       "label": "DGN/DMKG Leitlinie Migrainetherapie (AWMF 030-057)",
       "url": "https://register.awmf.org/assets/guidelines/030-057l_S1_Therapie-der-Migraeneattacke-Prophylaxe-der-Migraene_2025-11.pdf"
+    },
+    {
+      "label": "Info: Berlin liste nur wichtigsten Themen 44",
+      "url": "info/Berlin liste nur wichtigsten Themen 44.pdf"
+    },
+    {
+      "label": "Info: FSP KURZ UND KNAPP Berlin",
+      "url": "info/FSP KURZ Und KNAPP Berlin Final Version.pdf"
+    },
+    {
+      "label": "Info: Deutsch für Ärzte",
+      "url": "info/Deutsch für Ärzte.pdf"
     }
   ]
 }

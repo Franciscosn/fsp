@@ -1,0 +1,501 @@
+{
+  "title": "Lernbereich",
+  "subtitle": "Berlin-Wortschatz Kern 300",
+  "scope_note": "Dieses Modul übersetzt die Fachbegriffsliste für Berlin in sprechbare Wortfelder. Ziel ist kein totes Glossar, sondern Wortschatz, der in Gespräch, Untersuchung und Übergabe wirklich getragen werden kann.",
+  "references": [
+    {
+      "label": "Info: Fachbegriffe für Berlin",
+      "url": "info/Fachbegriffe für Berlin.pdf"
+    },
+    {
+      "label": "Info: Deutsch für Ärztinnen und Ärzte",
+      "url": "info/Deutsch für Ärztinnen und  Ärzte.pdf"
+    },
+    {
+      "label": "Info: Deutsch für Ärzte",
+      "url": "info/Deutsch für Ärzte.pdf"
+    }
+  ],
+  "categories": [
+    {
+      "id": "thorax_atmung_kreislauf",
+      "title": "Thorax, Atmung und Kreislauf sprachlich bündeln",
+      "focus": "häufige Berlin-Wörter für Brustschmerz, Dyspnoe und Herz-Kreislauf-Fälle vernetzen",
+      "summary": "Im Berliner Alltag tragen Thorax- und Dyspnoe-Fälle einen großen Teil der Prüfungssprache. Genau hier lohnt sich verdichteter Kernwortschatz am meisten.",
+      "learning_text": [
+        "Dieser Wortschatz-Cluster verbindet Patientensprache und Fachsprache für Brustschmerz, Atemnot und Kreislaufprobleme. Er ist besonders ergiebig, weil dieselben Begriffe in Anamnese, Untersuchung, Aufklärung und Übergabe wiederkehren.",
+        "Patientennah beginnen oft Wörter wie Luftnot, Enge auf der Brust, Herzstolpern, Druckgefühl, Beklemmung, Schwindel oder dicke Beine. In der fachsprachlichen Verdichtung werden daraus Dyspnoe, Thoraxschmerz, Palpitationen, pektanginöse Beschwerden, Synkope oder periphere Ödeme.",
+        "Zur Untersuchungssprache gehören Begriffe wie Tachykardie, Bradykardie, Zyanose, Halsvenenstauung, feinblasige Rasselgeräusche, verlängertes Exspirium oder orthopnoische Lagerung. Sie helfen, Beschwerden und Befunde in dieselbe Linie zu bringen.",
+        "Für Berlin ist dabei wichtig, nicht nur einzelne Vokabeln zu kennen, sondern typische Bündel: Dyspnoe plus Ödeme plus Nykturie spricht anders als Dyspnoe plus Fieber plus Husten oder Dyspnoe plus pleuritischer Thoraxschmerz.",
+        "Auch Diagnostikbegriffe sollten in diesem Cluster früh sitzen: EKG, Echokardiographie, Thoraxröntgen, Blutgasanalyse, Troponin, BNP und Pulsoxymetrie gehören zu den am häufigsten wiederkehrenden Ankern.",
+        "Sobald diese Wörter als Netz statt als Einzelkarten gelernt werden, klingt die Sprache deutlich flüssiger und klinischer."
+      ],
+      "question_groups": [
+        {
+          "title": "Patientensprache, die sofort Alarm machen sollte",
+          "questions": [
+            "Luftnot, Atemnot, Druck auf der Brust, Herzrasen, Herzstolpern, Beklemmung, Engegefühl, Schwindel, Ohnmacht und dicke Beine gehören zu den wichtigsten alltagssprachlichen Auslösern dieses Clusters.",
+            "Gerade diese Wörter sollten in der Anamnese schnell in Dyspnoe, Thoraxschmerz, Palpitationen, Synkope oder periphere Ödeme übersetzt werden.",
+            "Die Übersetzung darf dabei nicht mechanisch, sondern symptomnah klingen."
+          ]
+        },
+        {
+          "title": "Fachsprache für die Übergabe",
+          "questions": [
+            "Wichtige Kernwörter sind Dyspnoe, orthopnoische Beschwerden, pektanginöse Symptomatik, Palpitationen, Synkope, Zyanose, Tachykardie und Bradykardie.",
+            "Ebenso häufig sind Wörter wie kardiale Dekompensation, Exazerbation, ACS, Arrhythmie oder pulmonale Stauung.",
+            "Diese Begriffe strukturieren den Fall und verdichten die Patientenerzählung."
+          ]
+        },
+        {
+          "title": "Untersuchung und Diagnostik",
+          "questions": [
+            "Auskultation, Rasselgeräusche, Giemen, verlängertes Exspirium, Halsvenenstauung und Ödeme verbinden Symptomatik und Status.",
+            "Auf diagnostischer Ebene sitzen Begriffe wie EKG, Echo, Troponin, BNP, BGA, Thoraxröntgen und Pulsoxymetrie besonders häufig.",
+            "So entsteht ein sprachlicher Standardbaukasten für internistische Akutfälle."
+          ]
+        },
+        {
+          "title": "Was an diesem Cluster hängen bleiben sollte",
+          "questions": [
+            "Thorax- und Dyspnoe-Fälle leben nicht von Einzelwörtern, sondern von typischen Kombinationen.",
+            "Wer diese Kombinationen spricht, wirkt schneller klinisch orientiert.",
+            "Gerade in Berlin ist das ein großer Gewinn."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Luftnot übersetze ich je nach Kontext in Dyspnoe, orthopnoische Beschwerden oder Belastungsdyspnoe.",
+        "Herzstolpern oder Herzrasen fasse ich fachsprachlich als Palpitationen oder Tachyarrhythmie zusammen.",
+        "Dicke Beine werden in der Übergabe meist zu peripheren Ödemen.",
+        "Thoraxschmerz braucht fast immer eine Einordnung nach Charakter, Dauer und Belastungsbezug.",
+        "Genau diese Begriffsnetze tragen viele Berliner Standardfälle."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Fachbegriffe für Berlin: Thorax- und Kreislaufwortschatz",
+        "Berlin-Liste: Herz- und Pneumologie-Fälle"
+      ]
+    },
+    {
+      "id": "abdomen_verdauung",
+      "title": "Abdomen und Verdauung in Wortfeldern lernen",
+      "focus": "Bauchschmerz-, Übelkeits- und Stuhlvokabular systematisch vernetzen",
+      "summary": "Bauchfälle sind in Berlin häufig und sprachlich ergiebig, weil Patientensprache und Fachsprache hier besonders eng ineinandergreifen.",
+      "learning_text": [
+        "Im Abdomen-Cluster begegnen immer wieder dieselben alltagssprachlichen Formulierungen: Bauchweh, Ziehen, Stechen, Völlegefühl, Übelkeit, Erbrechen, Durchfall, Verstopfung, Sodbrennen oder Blähungen. Für die Prüfung müssen diese Wörter rasch in klinisch präzisere Sprache überführt werden.",
+        "Fachsprachlich werden daraus Abdomenbeschwerden, Oberbauch- oder Unterbauchschmerz, epigastrische oder periumbilikale Schmerzen, Übelkeit, Emesis, Diarrhö, Obstipation, Meteorismus und Pyrosis.",
+        "Hinzu kommen Blutungs- und Warnzeichen wie Hämatemesis, Meläna, Hämatochezie, Ikterus, Abwehrspannung oder Peritonismus. Diese Wörter markieren, dass aus einem banalen Magen-Darm-Gespräch schnell ein akuter Fall werden kann.",
+        "Zu den typischen Diagnostikbegriffen gehören Abdomenstatus, Sonographie, Lipase, Leberwerte, Entzündungsparameter, Stuhlprobe und CT-Abdomen. Genau diese Wörter tauchen in Arzt-Arzt-Gesprächen immer wieder auf.",
+        "Didaktisch hilfreich ist, Bauchvokabular nach Orten zu ordnen: Oberbauch, rechter Unterbauch, diffuser Bauchschmerz, Stuhlveränderung und Refluxsprache. So werden Fälle wie Cholezystitis, Appendizitis, Gastroenteritis, Pankreatitis oder Ulkuskrankheit schneller unterscheidbar.",
+        "Das Ziel ist nicht, alles auf einmal zu sammeln, sondern pro Wortfeld eine sichere klinische Mini-Sprache aufzubauen."
+      ],
+      "question_groups": [
+        {
+          "title": "Alltagssprache des Bauch-Clusters",
+          "questions": [
+            "Häufige Ausgangswörter sind Bauchweh, Magenprobleme, Sodbrennen, Durchfall, Verstopfung, Erbrechen, aufgeblähter Bauch oder Gelbfärbung.",
+            "Diese Begriffe sollten in Oberbauchschmerz, Pyrosis, Diarrhö, Obstipation, Emesis, Meteorismus oder Ikterus überführt werden können.",
+            "So entsteht rasch klinische Präzision."
+          ]
+        },
+        {
+          "title": "Wichtige Fachbegriffe",
+          "questions": [
+            "Epigastrium, rechter Unterbauch, periumbilikal, Hämatemesis, Meläna, Hämatochezie, Peritonismus und Abwehrspannung sind besonders häufige Kernwörter.",
+            "Sie helfen, gefährliche Verläufe sprachlich früh sichtbar zu machen.",
+            "Gleichzeitig verdichten sie die spätere Fallvorstellung stark."
+          ]
+        },
+        {
+          "title": "Diagnostik- und Befundsprache",
+          "questions": [
+            "Typische Wörter sind Abdomensonographie, CT-Abdomen, Lipase, Leberwerte, U-Status, Stuhlprobe oder okkultes Blut.",
+            "Auch Begriffe wie druckschmerzhaft, gebläht, weich, gespannt oder peristaltisch verändert gehören in diesen Baukasten.",
+            "Dadurch wird der Bauchfall als klinische Einheit greifbar."
+          ]
+        },
+        {
+          "title": "Wie man den Cluster behält",
+          "questions": [
+            "Am besten bleibt dieses Wortfeld hängen, wenn es an wenige Kernfälle gekoppelt wird: Appendizitis, Cholezystitis, Pankreatitis, Gastroenteritis und Ulkuskrankheit.",
+            "Dann wiederholen sich die Begriffe mit klinischer Funktion.",
+            "Genau diese Wiederholung macht den Wortschatz stabil."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Sodbrennen formuliere ich fachsprachlich meist als Pyrosis oder Refluxbeschwerden.",
+        "Blutiges Erbrechen wird zu Hämatemesis, schwarzer Stuhl zu Meläna.",
+        "Ein hart gespannter Bauch mit Loslassschmerz weist sprachlich in Richtung Peritonismus.",
+        "Bauchschmerz sollte fast immer nach Lokalisation, Verlauf und Begleitsymptomen sortiert werden.",
+        "Gerade dieser Cluster trägt viele Berliner Fallkonstellationen."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Fachbegriffe für Berlin: Bauch- und Verdauungswortschatz",
+        "Berlin-Liste: Gastroenterologie und akutes Abdomen"
+      ]
+    },
+    {
+      "id": "niere_harn_miktion",
+      "title": "Miktion, Harnwege und Flankenschmerz sprachlich ordnen",
+      "focus": "urogenitale Standardsprache für Berlin-Fälle systematisch aufbauen",
+      "summary": "Urogenitale Fälle wirken sprachlich oft unspektakulär, sind in Berlin aber sehr häufig und deshalb besonders wichtig.",
+      "learning_text": [
+        "Alltagssprachlich beginnen diese Fälle mit Brennen beim Wasserlassen, häufigem Harndrang, wenig Urin, Blut im Urin, Flankenschmerz oder dem Gefühl, die Blase nicht richtig entleeren zu können. Genau diese Wörter müssen rasch in klinische Sprache übersetzt werden.",
+        "Die wichtigsten Fachwörter sind Dysurie, Pollakisurie, Nykturie, Hämaturie, Restharngefühl, Harnverhalt, Inkontinenz und kolikartiger Flankenschmerz. Je nach Fall kommen Fieber, Schüttelfrost und klopfschmerzhaftes Nierenlager hinzu.",
+        "Auch hier lohnt sich das Lernen in kleinen Gruppen: Infektwörter, Steinwörter, Prostatawörter und Blasenfunktionswörter klingen im Gespräch unterschiedlich und führen in verschiedene Differenzialdiagnosen.",
+        "Für die Arzt-Arzt-Sprache sitzen Begriffe wie Harnwegsinfekt, Zystitis, Pyelonephritis, Nephrolithiasis, benigne Prostatahyperplasie und postrenale Abflussstörung besonders häufig.",
+        "Wichtige Diagnostikbegriffe sind U-Status, Urinkultur, Sonographie der Harnwege, Restharnmessung, Kreatinin, GFR und CT-Abdomen beziehungsweise CT-Urographie.",
+        "Gerade in Berlin wirkt dieser Cluster stark, weil er relativ wenige Kernwörter hat, die sich in vielen Fällen wiederholen."
+      ],
+      "question_groups": [
+        {
+          "title": "Patientensprache des Urogenital-Clusters",
+          "questions": [
+            "Brennen beim Wasserlassen, ständiger Harndrang, wenig Urin, Blut im Urin, Harnverhalt und Flankenschmerz sind die wichtigsten Alltagseinstiege.",
+            "Sie sollten in Dysurie, Pollakisurie, Oligurie, Hämaturie, Restharn oder kolikartigen Flankenschmerz übersetzt werden können.",
+            "Dann wird auch die weitere Anamnese schneller zielgerichtet."
+          ]
+        },
+        {
+          "title": "Fachsprache für häufige Diagnosen",
+          "questions": [
+            "Zystitis, Pyelonephritis, Harnwegsinfekt, Nephrolithiasis, BPH, Harnverhalt und postrenale Obstruktion gehören zu den klassischen Kernwörtern.",
+            "Sie verbinden Beschwerdebild, Untersuchung und Diagnostik.",
+            "Gerade diese Kombination ist in Berliner Fällen sehr typisch."
+          ]
+        },
+        {
+          "title": "Diagnostik und Befundsprache",
+          "questions": [
+            "U-Status, Urinkultur, Leukozyturie, Nitritnachweis, Hämaturie, Kreatinin, Sonographie und Restharnmessung sind Standardanker.",
+            "Hinzu kommen Befunde wie druckschmerzhafter Unterbauch, Nierenlagerklopfschmerz oder Harnstau.",
+            "Damit wird aus dem Beschwerdegespräch eine klinische Linie."
+          ]
+        },
+        {
+          "title": "Warum dieser Cluster früh sitzen sollte",
+          "questions": [
+            "Die urogenitalen Fälle sind häufig, sprachlich kompakt und gut wiederholbar.",
+            "Wer diese Wörter sicher beherrscht, gewinnt schnell Struktur in einem ganzen Prüfungskapitel.",
+            "Das macht den Cluster didaktisch besonders wertvoll."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Brennen beim Wasserlassen fasse ich fachsprachlich als Dysurie zusammen.",
+        "Häufiger kleiner Harndrang wird in der Übergabe meist zu Pollakisurie.",
+        "Flankenschmerz plus Hämaturie lässt schnell an eine Nephrolithiasis denken.",
+        "Fieber und Nierenlagerklopfschmerz sprechen eher für eine Pyelonephritis.",
+        "Genau diese Wortbündel machen den urogenitalen Cluster stark."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Fachbegriffe für Berlin: Urologie und Nephrologie",
+        "Berlin-Liste: Harnwegsinfektion, Nephrolithiasis, Prostatahyperplasie"
+      ]
+    },
+    {
+      "id": "neurologie_bewusstsein",
+      "title": "Neurologie, Bewusstsein und Kopfsymptome bündeln",
+      "focus": "Begriffe für Kopfschmerz, Schwindel, Synkope und fokal-neurologische Defizite verbinden",
+      "summary": "Neurologische Wörter müssen in Berlin nicht hochspezialisiert klingen, aber sie müssen klar und alarmbewusst eingesetzt werden.",
+      "learning_text": [
+        "Typische alltagssprachliche Einstiege sind Kopfschmerzen, Schwindel, Kribbeln, Taubheitsgefühl, Schwäche, Sprachprobleme, Sehstörung oder Ohnmacht. Sie markieren oft schon, ob ein Fall eher benign, funktionell oder akut bedrohlich wirkt.",
+        "Fachsprachlich werden diese Wörter zu Cephalgie, Vertigo oder Schwindel, Parästhesien, Hypästhesien, Paresen, Aphasie, Dysarthrie, Sehstörung und Synkope. Auch Vigilanzminderung oder Desorientiertheit gehören in diesen Cluster.",
+        "Für Berlin reicht meist ein orientierender neurologischer Wortschatz, der die großen Gefahren sicher benennen kann: Schlaganfall, TIA, intrakranielle Blutung, Meningitis, epileptischer Anfall oder Migräne.",
+        "Zur Untersuchungssprache gehören Pupillenisokorie, Motorik, Sensibilität, Koordination, Ataxie, Meningismus, Fazialisparese oder Nackensteife. Diese Begriffe verbinden Symptom und Status.",
+        "Auch Diagnostikbegriffe wie CCT, MRT, Lumbalpunktion, EEG und NIHSS tauchen in diesem Bereich häufig auf. Sie sollten nicht auswendig klingen, sondern an die klinische Frage gebunden sein.",
+        "So wächst neurologischer Wortschatz nicht als Spezialliste, sondern als Alarm- und Strukturvokabular."
+      ],
+      "question_groups": [
+        {
+          "title": "Alltagssprache und erste Übersetzung",
+          "questions": [
+            "Kribbeln, Taubheit, Lähmungsgefühl, Sprachstörung, Ohnmacht und Schwindel sollten schnell in Parästhesie, Hypästhesie, Parese, Aphasie oder Synkope überführt werden.",
+            "Gerade diese ersten Übersetzungen geben dem Fall sofort Richtung.",
+            "Sie helfen auch dabei, echte Red Flags früh hörbar zu machen."
+          ]
+        },
+        {
+          "title": "Fachsprache für typische Neurologie-Fälle",
+          "questions": [
+            "Wichtige Kernwörter sind TIA, Apoplex, Migräne, epileptischer Anfall, Meningismus, Vigilanzminderung und fokal-neurologisches Defizit.",
+            "Diese Begriffe strukturieren sowohl Anamnese als auch spätere Fallvorstellung.",
+            "Dabei genügt meist ein klarer Grundwortschatz statt neurofachärztlicher Tiefe."
+          ]
+        },
+        {
+          "title": "Status- und Diagnostikbegriffe",
+          "questions": [
+            "Pupillenreaktion, Sensibilität, Motorik, Reflexstatus, Ataxie, Nackensteife, CCT und Lumbalpunktion gehören zu den häufigsten Ankern.",
+            "Sie machen sichtbar, wie Symptome objektiviert werden.",
+            "Damit wird der neurologische Fall sprachlich tragfähig."
+          ]
+        },
+        {
+          "title": "Was dieser Cluster leisten soll",
+          "questions": [
+            "Er soll nicht Neuroanatomie lehren, sondern sichere Alarm- und Strukturwörter bereitstellen.",
+            "Wer diese Wörter stabil beherrscht, kann Kopfschmerz-, Synkopen- und Schlaganfallfragen deutlich besser führen.",
+            "Genau das ist für Berlin entscheidend."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Kribbeln fasse ich je nach Kontext als Parästhesie zusammen.",
+        "Eine Ohnmacht wird in der Übergabe meist als Synkope bezeichnet.",
+        "Sprachstörung und Halbseitensymptomatik sind starke Schlaganfall-Alarmwörter.",
+        "Bei Kopfschmerzen helfen Begriffe wie plötzlich einsetzend, progredient oder migränetypisch beim Einordnen.",
+        "So bleibt auch Neurologie sprachlich überschaubar und klinisch relevant."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Fachbegriffe für Berlin: Neurologie und Bewusstsein",
+        "Berlin-Liste: Migräne, Kopfschmerz, Depression, Schlaganfall-nahe Situationen"
+      ]
+    },
+    {
+      "id": "allgemeinsymptome_entzuendung",
+      "title": "Allgemeinsymptome, Entzündung und Verlauf beschreiben",
+      "focus": "Fieber-, B-Symptom- und Infektwortschatz zu einem tragfähigen Rahmen verdichten",
+      "summary": "Viele Berliner Fälle beginnen nicht mit einer Diagnose, sondern mit Allgemeinsymptomen. Gerade deshalb ist dieser Wortschatz so zentral.",
+      "learning_text": [
+        "Zu den wichtigsten Alltagsausdrücken gehören Fieber, Frieren, Schüttelfrost, Abgeschlagenheit, Nachtschweiß, Gewichtsverlust, Müdigkeit, Appetitlosigkeit und Leistungsknick. Solche Wörter wirken unspezifisch, steuern aber oft die ganze weitere Diagnostik.",
+        "Fachsprachlich werden daraus febrile Temperaturen, Schüttelfrost, Reduktion des Allgemeinzustands, B-Symptomatik, Fatigue, Inappetenz und progredienter Leistungsabfall.",
+        "Besonders wichtig ist, dass Verlaufssprache in diesem Cluster sitzt: akut, seit drei Tagen, schleichend, progredient, rezidivierend, intermittierend oder persistierend. Ohne diese Wörter bleiben Allgemeinsymptome medizinisch zu weich.",
+        "Auch Entzündungswörter wie Leukozytose, CRP-Erhöhung, Prokalzitonin, Fokus, Sepsisverdacht oder febriler Infekt sind hochfrequent und verbinden die Beschwerde mit Labor und Status.",
+        "Für Berlin ist dieser Cluster deshalb so nützlich, weil er in Pneumonie-, HWI-, Gastroenteritis-, Onkologie- und Autoimmunfällen gleichermaßen auftaucht.",
+        "Wer Allgemeinsymptome sprachlich sauber ordnet, macht viele zunächst unscharfe Fälle viel schneller klinisch greifbar."
+      ],
+      "question_groups": [
+        {
+          "title": "Alltagssprache dieses Clusters",
+          "questions": [
+            "Fieber, Frieren, Schüttelfrost, Nachtschweiß, Appetitlosigkeit, Müdigkeit und Gewichtsverlust sind die wichtigsten Einstiegswörter.",
+            "Sie werden fachsprachlich zu febriler Symptomatik, Schüttelfrost, Inappetenz, Fatigue oder B-Symptomatik verdichtet.",
+            "Damit wird aus unspezifischer Erzählung ein klinischer Rahmen."
+          ]
+        },
+        {
+          "title": "Verlaufssprache, die oft fehlt",
+          "questions": [
+            "Akut, schleichend, progredient, rezidivierend, intermittierend und persistierend sind Schlüsselwörter für viele Fallvorstellungen.",
+            "Ohne sie bleibt die Beschwerde zeitlich unpräzise.",
+            "Gerade Berlin hört stark auf diese Form von Ordnung."
+          ]
+        },
+        {
+          "title": "Labor und Entzündungsbegriffe",
+          "questions": [
+            "CRP, Leukozytose, PCT, Fokus, Sepsisverdacht, Blutkulturen und Fokussuche gehören in diesen Wortschatzbaukasten.",
+            "Sie verbinden Allgemeinsymptome mit dem diagnostischen Plan.",
+            "Dadurch entsteht eine robuste klinische Sprache für Infektfälle."
+          ]
+        },
+        {
+          "title": "Warum dieser Cluster so häufig gebraucht wird",
+          "questions": [
+            "Allgemeinsymptome sind selten auf ein Fach beschränkt.",
+            "Gerade deshalb tauchen sie in sehr vielen Berliner Fällen wieder auf.",
+            "Ein sicherer Verlauf- und Entzündungswortschatz zahlt sich deshalb besonders stark aus."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Appetitlosigkeit fasse ich fachsprachlich als Inappetenz zusammen.",
+        "Nachtschweiß, Gewichtsverlust und Fieber bilden gemeinsam oft eine B-Symptomatik.",
+        "Wichtig ist fast immer auch die Verlaufssprache: akut, schleichend, progredient oder rezidivierend.",
+        "CRP, Leukozyten und Blutkulturen gehören zu den häufigsten diagnostischen Ankern.",
+        "Dieser Cluster verbindet viele unterschiedliche Fachgebiete."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Fachbegriffe für Berlin: Allgemeinsymptome und Entzündung",
+        "Deutsch für Ärztinnen und Ärzte: Verlaufssprache in der FSP"
+      ]
+    },
+    {
+      "id": "bildgebung_diagnostik",
+      "title": "Diagnostik, Bildgebung und Labor als Sprachcluster lernen",
+      "focus": "häufige Untersuchungswörter so ordnen, dass sie direkt im Plan einsetzbar sind",
+      "summary": "Viele Kandidatinnen und Kandidaten kennen die Diagnostik, aber nicht die Sprache, mit der man ihren Sinn knapp und geordnet formuliert.",
+      "learning_text": [
+        "In Berlin tauchen bestimmte Untersuchungswörter permanent auf: EKG, Sonographie, Röntgen, CT, MRT, Echokardiographie, Blutgasanalyse, Blutkulturen, Urinkultur, Gastroskopie oder Lumbalpunktion. Sie sollten als funktionierende Sprachgruppe gelernt werden.",
+        "Wichtig ist dabei nicht nur der Name, sondern die Funktion. Jede Untersuchung beantwortet eine klinische Frage: Rhythmus, Durchblutung, Entzündung, Blutung, Organstruktur, Gefäßdurchgängigkeit oder Stoffwechselstatus.",
+        "Auch Laborwörter bilden ein eigenes Kernfeld: Blutbild, CRP, Elektrolyte, Kreatinin, Leberwerte, Lipase, Troponin, HbA1c, TSH. Ohne dieses Feld bleiben viele Pläne erstaunlich unscharf.",
+        "Für die FSP genügt es nicht, Untersuchungen aufzulisten. Der diagnostische Plan wirkt erst dann gut, wenn aus der Sprache klar wird, warum gerade diese Schritte jetzt sinnvoll sind.",
+        "Gerade deshalb lohnt sich ein kleiner Diagnostik-Baukasten: Basislabor, gezielte Zusatzwerte, fallbezogene Bildgebung und eine kurze klinische Begründung.",
+        "So klingt der Plan wie ärztliches Denken und nicht wie eine auswendig gelernte Geräte-Liste."
+      ],
+      "question_groups": [
+        {
+          "title": "Häufige Bildgebungswörter",
+          "questions": [
+            "Röntgen, CT, MRT, Sonographie, Echokardiographie und Endoskopie gehören zu den häufigsten diagnostischen Kernwörtern.",
+            "Sie sollten immer mit einer klinischen Frage verbunden werden.",
+            "Dann werden sie im Gespräch sofort funktional."
+          ]
+        },
+        {
+          "title": "Labor als Sprachfeld",
+          "questions": [
+            "Blutbild, Entzündungsparameter, Elektrolyte, Nierenwerte, Leberwerte, Lipase, Troponin und HbA1c sind hochfrequente Standardanker.",
+            "Sie machen den Plan präziser und differenzialdiagnostisch plausibler.",
+            "Auch hier zählt die Ordnung mehr als die Länge der Liste."
+          ]
+        },
+        {
+          "title": "Wie ein guter Plan klingt",
+          "questions": [
+            "Ein guter diagnostischer Plan nennt Basisdiagnostik, gezielte Zusatzdiagnostik und den Grund für ihre Auswahl.",
+            "Er bleibt knapp, aber nachvollziehbar.",
+            "Genau diese Knappheit ist in Berlin stark."
+          ]
+        },
+        {
+          "title": "Worauf es sprachlich ankommt",
+          "questions": [
+            "Untersuchungen sollten nicht als Namenssammlung, sondern als Antwort auf klinische Fragen formuliert werden.",
+            "Dann wirkt auch technische Diagnostik patienten- und prüfungsgerecht.",
+            "So wird der Diagnostik-Wortschatz alltagstauglich."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Ein guter Diagnostikplan beantwortet immer eine konkrete klinische Frage.",
+        "Basislabor und fallbezogene Bildgebung bilden meist den Kern des weiteren Vorgehens.",
+        "Auch Laborwörter wie Troponin, Lipase oder Kreatinin sollten funktional und nicht isoliert gelernt werden.",
+        "Dann klingt der Plan kurz und plausibel.",
+        "Genau das trägt in der Berliner Prüfung stark."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Fachbegriffe für Berlin: Diagnostik und Verfahren",
+        "Aufklärungen komplett: Untersuchungen funktional erklären"
+      ]
+    },
+    {
+      "id": "therapie_station",
+      "title": "Therapie, Station und Verlauf als eigenes Sprachfeld aufbauen",
+      "focus": "Alltagswörter für Aufnahme, Überwachung und Basistherapie in sichere Fachsprache übersetzen",
+      "summary": "Viele Berliner Gespräche enden nicht bei der Verdachtsdiagnose, sondern erst dann, wenn das weitere Vorgehen sprachlich sauber benannt wird.",
+      "learning_text": [
+        "Zum Therapiewortschatz gehören weit mehr als Medikamentennamen. Wichtig sind auch Aufnahme, Überwachung, Monitoring, Bettruhe, Nüchternheit, intravenöse Flüssigkeit, Sauerstoffgabe, Analgesie, Antibiotikatherapie oder stationäre Beobachtung.",
+        "Auf Patientenseite klingen dieselben Dinge oft einfacher: Infusion, Übernachtung im Krankenhaus, Sauerstoff, Schmerzmittel, Beobachtung, Nahrungspause oder Tropf. In der FSP muss man beide Ebenen sicher verbinden können.",
+        "Hinzu kommt Stationssprache: Notaufnahme, IMC, Intensivstation, Normalstation, Isolation, Konsil, Verlaufskontrolle. Gerade diese Wörter machen das weitere Vorgehen ärztlich konkret.",
+        "Berlin bewertet sehr genau, ob der Plan zum Fall passt. Ein guter Plan ist nicht maximal, sondern angemessen. Deshalb lohnt es sich, Standardtherapien sprachlich zu bündeln, statt Einzeldetails ungeordnet zu sammeln.",
+        "Auch Verlaufswörter sind hier wichtig: engmaschig überwachen, erneut kontrollieren, symptomorientiert behandeln, stationär aufnehmen, ambulant weiterbehandeln, bei Verschlechterung sofort reagieren.",
+        "So entsteht ein kleines Sprachsystem für das, was nach Anamnese und Diagnostik kommt."
+      ],
+      "question_groups": [
+        {
+          "title": "Patientensprache und Fachsprache des Vorgehens",
+          "questions": [
+            "Infusion, Tropf, Beobachtung, Sauerstoff oder starke Schmerzmittel müssen sich problemlos in intravenöse Flüssigkeitstherapie, Überwachung, Sauerstoffgabe oder Analgesie übersetzen lassen.",
+            "Diese Übersetzung macht den Plan sowohl patientennah als auch fachsprachlich belastbar.",
+            "Gerade hier zeigt sich Registerwechsel besonders klar."
+          ]
+        },
+        {
+          "title": "Stationssprache, die oft gebraucht wird",
+          "questions": [
+            "Notaufnahme, IMC, Intensivstation, Normalstation, Isolation, Konsil und Wiedervorstellung sind hochfrequente Organisationswörter.",
+            "Sie machen das weitere Vorgehen konkret und realistisch.",
+            "Ohne diese Wörter bleibt der Plan oft erstaunlich leer."
+          ]
+        },
+        {
+          "title": "Therapiewörter mit hohem Hebel",
+          "questions": [
+            "Analgesie, Antibiose, Antikoagulation, Nahrungskarenz, Sauerstoffgabe, Volumentherapie und engmaschiges Monitoring tragen viele Standardfälle.",
+            "Sie sollten nicht als Medikamentenkatalog, sondern als klinische Strategie gelernt werden.",
+            "So bleibt die Sprache auch unter Stress verfügbar."
+          ]
+        },
+        {
+          "title": "Warum dieses Wortfeld wichtig ist",
+          "questions": [
+            "Viele Kandidatinnen und Kandidaten enden nach der Verdachtsdiagnose sprachlich abrupt.",
+            "Ein guter Therapiewortschatz schließt diese Lücke.",
+            "Dann klingt der ganze Fall von der Anamnese bis zum Plan aus einem Guss."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Der weitere Plan sollte so konkret klingen, dass Aufnahmeort, Überwachung und Basistherapie sofort erkennbar werden.",
+        "Infusion, Sauerstoff, Analgesie und engmaschige Kontrolle gehören zu den häufigsten Standardwörtern.",
+        "Auch Stationswörter wie Notaufnahme, IMC oder Intensivstation sollten sicher sitzen.",
+        "So endet die Fallvorstellung nicht mit der Diagnose, sondern mit einem tragfähigen Vorgehen.",
+        "Genau das wirkt klinisch vollständig."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Abkürzungen.docx: Stations- und Therapiesprache",
+        "Deutsch für Ärztinnen und Ärzte: sprachlicher Plan nach der Verdachtsdiagnose"
+      ]
+    },
+    {
+      "id": "befundsprache_verlauf",
+      "title": "Befundsprache und Verlaufswörter systematisch festigen",
+      "focus": "typische klinische Adjektive, Seitenangaben und Verlaufssignale sicher anwenden",
+      "summary": "Viele FSP-Probleme entstehen nicht durch fehlende Medizin, sondern durch zu arme Befundsprache.",
+      "learning_text": [
+        "Zu einer tragfähigen Befundsprache gehören Richtung, Seite, Intensität und Verlauf. Wörter wie linksbetont, beidseits, progredient, rezidivierend, plötzlich, schleichend, druckdolent oder klopfschmerzhaft tragen viele Fallvorstellungen.",
+        "Ebenso wichtig sind die klassischen klinischen Adjektive: gerötet, überwärmt, geschwollen, druckschmerzhaft, weich, gebläht, tachykard, fiebrig, exsikkiert oder ikterisch. Ohne sie bleibt der Fall unanschaulich.",
+        "Berlin belohnt besonders, wenn Beschwerden und Befunde in derselben sprachlichen Welt liegen. Dann kann aus 'dickes, schmerzhaftes Bein' in der Vorstellung rasch 'einseitig geschwollenes, druckdolentes Bein mit TVT-Verdacht' werden.",
+        "Auch Verlaufswörter gehören zu diesem Feld: seit gestern akut, über Wochen progredient, phasenweise, belastungsabhängig, nachts verstärkt oder nach dem Essen ausgelöst. Sie machen aus Stichworten eine klinische Geschichte.",
+        "Gute Befundsprache ist keine Dekoration, sondern Verdichtung. Mit wenigen präzisen Wörtern lässt sich ein Fall wesentlich klarer und erwachsener darstellen.",
+        "Deshalb lohnt es sich, genau diese Wörter nicht nebenbei, sondern als eigenes Kernfeld zu lernen."
+      ],
+      "question_groups": [
+        {
+          "title": "Seiten- und Verlaufswörter",
+          "questions": [
+            "linksseitig, rechtsbetont, beidseits, akut, schleichend, progredient, rezidivierend, intermittierend und belastungsabhängig gehören zu den wichtigsten Strukturwörtern.",
+            "Sie ordnen Beschwerden zeitlich und räumlich.",
+            "Ohne sie bleibt die Vorstellung oft zu grob."
+          ]
+        },
+        {
+          "title": "Typische klinische Adjektive",
+          "questions": [
+            "gerötet, überwärmt, geschwollen, druckschmerzhaft, weich, gebläht, exsikkiert, ikterisch oder tachypnoisch gehören zu den Grundfarben der Befundsprache.",
+            "Sie lassen sich in fast jedem Fachgebiet wiederverwenden.",
+            "Gerade deshalb sind sie so wertvoll."
+          ]
+        },
+        {
+          "title": "Warum dieses Feld so viel trägt",
+          "questions": [
+            "Mit präzisen Befundwörtern wird aus einer einfachen Beschwerdeliste eine klinische Darstellung.",
+            "Die Verdichtung passiert hier oft in nur einem oder zwei Adjektiven.",
+            "Das spart Zeit und steigert die Qualität der Übergabe."
+          ]
+        },
+        {
+          "title": "Wie man diese Wörter am besten lernt",
+          "questions": [
+            "Sie bleiben am besten hängen, wenn sie immer an echte Fälle gekoppelt werden.",
+            "Dann werden sie nicht abstrakt, sondern funktional wiedererkannt.",
+            "Genau so wächst flüssige Befundsprache."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Gute Befundsprache lebt von präzisen Verlaufssignalen und klaren klinischen Adjektiven.",
+        "Akut, progredient, druckschmerzhaft, gerötet oder exsikkiert tragen oft mehr als lange Umschreibungen.",
+        "Damit werden Beschwerden und Untersuchung sprachlich verbunden.",
+        "Gerade in Berlin macht das einen großen Unterschied.",
+        "So klingt die Fallvorstellung wesentlich geordneter."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Deutsch für Ärztinnen und Ärzte: Befundsprache und Verlauf",
+        "Kommunikation für ausländische Ärzte: Vokabeln und Leitsätze"
+      ]
+    }
+  ]
+}
