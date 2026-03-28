@@ -381,7 +381,7 @@ const BODY_ATLAS_EXTRA_TERMS_BY_GROUP = Object.freeze({
     { fach: "Septum nasi", patient: "Nasenscheidewand", info: "Trennt rechte und linke Nasenseite.", x: 162, y: 132 },
     { fach: "Concha nasalis", patient: "Nasenmuschel", info: "Erwaermt und befeuchtet Luft.", x: 145, y: 124 },
     { fach: "Epiglottis", patient: "Kehldeckel", info: "Schützt die Atemwege beim Schlucken.", x: 164, y: 186 },
-    { fach: "Larynx", patient: "Kehlkopf", info: "Enthaelt die Stimmbildung.", x: 170, y: 198 }
+    { fach: "Larynx", patient: "Kehlkopf", info: "Enthält die Stimmbildung.", x: 170, y: 198 }
   ],
   thorax: [
     { fach: "Clavicula", patient: "Schlüsselbein", info: "Verbindet Brustbein und Schulter.", x: 111, y: 72 },
@@ -414,15 +414,15 @@ const BODY_ATLAS_EXTRA_TERMS_BY_GROUP = Object.freeze({
   pelvis: [
     { fach: "Ren sinister", patient: "linke Niere", info: "Filtert Blut und bildet Urin.", x: 122, y: 76 },
     { fach: "Ren dexter", patient: "rechte Niere", info: "Filtert Blut und bildet Urin.", x: 206, y: 76 },
-    { fach: "Uterus", patient: "Gebaermutter", info: "Zentrales Organ des weiblichen Beckens.", x: 162, y: 136 },
+    { fach: "Uterus", patient: "Gebärmutter", info: "Zentrales Organ des weiblichen Beckens.", x: 162, y: 136 },
     { fach: "Prostata", patient: "Vorsteherdrüse", info: "Liegt unterhalb der Blase beim Mann.", x: 166, y: 186 },
-    { fach: "Pelvis ossea", patient: "Beckenknochen", info: "Traegt die Beckenorgane.", x: 238, y: 172 }
+    { fach: "Pelvis ossea", patient: "Beckenknochen", info: "Trägt die Beckenorgane.", x: 238, y: 172 }
   ],
   spine: [
     { fach: "Discus intervertebralis", patient: "Bandscheibe", info: "Puffer zwischen den Wirbeln.", x: 160, y: 150 },
     { fach: "Medulla spinalis", patient: "Rückenmark", info: "Nervenleitung vom Gehirn in den Körper.", x: 160, y: 130 },
     { fach: "Sacrum", patient: "Kreuzbein", info: "Teil des hinteren Beckens.", x: 160, y: 212 },
-    { fach: "Coccyx", patient: "Steissbein", info: "Unterstes Ende der Wirbelsäule.", x: 160, y: 236 },
+    { fach: "Coccyx", patient: "Steißbein", info: "Unterstes Ende der Wirbelsäule.", x: 160, y: 236 },
     { fach: "Foramen intervertebrale", patient: "Nervenaustrittsloch", info: "Austrittsstelle der Spinalnerven.", x: 188, y: 162 }
   ],
   upper_arm: [
@@ -834,7 +834,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 134,
         fach: "Canalis vertebralis",
         patient: "Wirbelkanal",
-        info: "Enthaelt das Rückenmark."
+        info: "Enthält das Rückenmark."
       },
       {
         x: 160,
@@ -1083,7 +1083,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 186,
         fach: "Tibia",
         patient: "Schienbein",
-        info: "Traegt einen grossen Teil der Last."
+        info: "Trägt einen großen Teil der Last."
       },
       {
         x: 188,
@@ -1127,7 +1127,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 186,
         fach: "Tibia",
         patient: "Schienbein",
-        info: "Traegt einen grossen Teil der Last."
+        info: "Trägt einen großen Teil der Last."
       },
       {
         x: 132,
@@ -1279,7 +1279,7 @@ const DEFAULT_PROMPT_CONFIG = Object.freeze({
     "Kriterien (in dieser Reihenfolge):",
     "1) Fallvorstellung flüssig und situationsangemessen",
     "2) Grammatik korrekt und gut verständlich",
-    "3) Fremdsprachliche Fachwoerter korrekt und angemessen",
+    "3) Fremdsprachliche Fachwörter korrekt und angemessen",
     "4) Klare Aussagen zu wesentlichen Befunden und Behandlungsschritten",
     "5) Rückfragen ohne sprachliche Probleme beantworten",
     "6) An einer Diskussion über den Fall teilnehmen können",
@@ -5658,7 +5658,7 @@ async function handleVoiceNextCase() {
   }
   const loaded = await ensureVoiceCaseLibraryLoaded();
   if (!loaded || state.voiceCaseLibrary.length === 0) {
-    setVoiceStatus("Fallbibliothek konnte nicht geladen werden. Bitte spaeter erneut versuchen.", true);
+    setVoiceStatus("Fallbibliothek konnte nicht geladen werden. Bitte später erneut versuchen.", true);
     return;
   }
 
@@ -7752,7 +7752,7 @@ function normalizeLearningMiniScenario(rawValue) {
     return null;
   }
   return {
-    title: title || "Klinischer Kontext",
+    title: title || "Beispielsituation",
     situation,
     taskPatient,
     taskDoctor,
@@ -7893,8 +7893,8 @@ function renderLearningRootList() {
     count.className = "learning-root-count";
     count.textContent =
       categoryCount > 0
-        ? `${rootEntry.cta || "Themen oeffnen"} (${categoryCount} Themen)`
-        : `${rootEntry.cta || "Themen oeffnen"} (kommt gleich)`;
+        ? `${rootEntry.cta || "Themen öffnen"} (${categoryCount} Themen)`
+        : `${rootEntry.cta || "Themen öffnen"} (kommt gleich)`;
     button.appendChild(title);
     button.appendChild(count);
     button.addEventListener("click", () => {
@@ -8646,8 +8646,12 @@ function getLearningMetaCountLabel(rootId) {
   return rootId === "anamnese" ? "Fragen" : "Lernpunkte";
 }
 
+function isQuestionDrivenLearningRoot(rootId) {
+  return rootId === "anamnese";
+}
+
 function getLearningGroupSectionLabel(rootId) {
-  return rootId === "anamnese" ? "Fragewege" : "Kernwissen im Überblick";
+  return isQuestionDrivenLearningRoot(rootId) ? "Fragewege" : "Vertiefung";
 }
 
 function renderLearningReadingMode(bundle) {
@@ -8711,17 +8715,27 @@ function renderLearningReadingMode(bundle) {
         const groupHeading = document.createElement("h6");
         groupHeading.textContent = group.title;
         block.appendChild(groupHeading);
-        const useOrderedList =
-          Array.isArray(group.questions) &&
-          group.questions.length > 0 &&
-          group.questions.every((entry) => String(entry || "").trim().endsWith("?"));
-        const list = document.createElement(useOrderedList ? "ol" : "ul");
-        for (const question of group.questions) {
-          const li = document.createElement("li");
-          li.textContent = question;
-          list.appendChild(li);
+
+        if (isQuestionDrivenLearningRoot(state.learningRootId)) {
+          const useOrderedList =
+            Array.isArray(group.questions) &&
+            group.questions.length > 0 &&
+            group.questions.every((entry) => String(entry || "").trim().endsWith("?"));
+          const list = document.createElement(useOrderedList ? "ol" : "ul");
+          for (const question of group.questions) {
+            const li = document.createElement("li");
+            li.textContent = question;
+            list.appendChild(li);
+          }
+          block.appendChild(list);
+        } else {
+          block.classList.add("is-prose");
+          for (const question of group.questions) {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = question;
+            block.appendChild(paragraph);
+          }
         }
-        block.appendChild(list);
         refs.learningReadingQuestionGroups.appendChild(block);
       }
     }
@@ -8733,7 +8747,7 @@ function renderLearningReadingMode(bundle) {
       const head = document.createElement("div");
       head.className = "learning-question-head";
       const heading = document.createElement("h5");
-      heading.textContent = "Prüfungssätze (sicher formulieren)";
+      heading.textContent = "Formulierungen, die sitzen sollten";
       head.appendChild(heading);
       refs.learningReadingExamSentences.appendChild(head);
 
@@ -8750,21 +8764,6 @@ function renderLearningReadingMode(bundle) {
 
   if (refs.learningReadingMiniScenario) {
     refs.learningReadingMiniScenario.innerHTML = "";
-    if (activeCategory.miniScenario) {
-      const card = document.createElement("article");
-      card.className = "learning-mini-card";
-      const heading = document.createElement("h6");
-      heading.textContent = activeCategory.miniScenario.title.replace(/^Transfer:\s*/i, "Klinischer Kontext: ");
-      card.appendChild(heading);
-
-      if (activeCategory.miniScenario.situation) {
-        const situation = document.createElement("p");
-        situation.textContent = activeCategory.miniScenario.situation;
-        card.appendChild(situation);
-      }
-
-      refs.learningReadingMiniScenario.appendChild(card);
-    }
   }
 
   if (refs.learningReadingLinkedTerms) {
@@ -8791,7 +8790,7 @@ function renderLearningReadingMode(bundle) {
   if (refs.learningReadingCuration) {
     const stats = state.learningOnlineKursCurationStats || { total: 0, included: 0, excluded: 0 };
     const curationTitle =
-      safeLine(state.learningCuration?.title || "", 120) || "Lernkuration (PDF -> Website)";
+      safeLine(state.learningCuration?.title || "", 120) || "Lernkuration aus dem Online-Kurs";
     const missingText =
       missingLinkedTermIds.length > 0
         ? ` | ${missingLinkedTermIds.length} verlinkte Begriffe sind durch Kuration ausgeblendet oder fehlen.`

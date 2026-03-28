@@ -15,27 +15,32 @@
       "focus": "Leitsymptome, Risikoprofil und Priorisierung im Herz-Kreislauf-Kontext",
       "summary": "Das kardiologische Modul trainiert die Verbindung zwischen Symptombeschreibung, Risikoanamnese und klarer Handlungsableitung. Genau diese Verbindung wird im Berliner Arzt-Arzt-Gespräch stark bewertet.",
       "learning_text": [
-        "Das kardiologische Modul trainiert die Verbindung zwischen Symptombeschreibung, Risikoanamnese und klarer Handlungsableitung. Genau diese Verbindung wird im Berliner Arzt-Arzt-Gespräch stark bewertet. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Im kardiologischen Kontext stehen Thoraxschmerz, Dyspnoe, Palpitationen, Synkope und Leistungsknick im Zentrum. Risikoprofil, Vorerkrankungen, Interventionen und Medikation gehören früh und geordnet in die Einschätzung. Die erste Weiche lautet immer: akut instabil oder aktuell kompensiert.",
-        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Kardiologische Sprache wirkt stark, wenn Symptom, Risiko und Plan in wenigen klaren Sätzen verbunden werden. Vergangene Ereignisse wie Stent, Infarkt oder Rhythmusstörung müssen mündlich abrufbar und sauber einordenbar sein. Der diagnostische Pfad mit EKG, Labor, Monitoring oder Echo sollte transparent und patientengerecht erklärt werden."
+        "Dieses Modul bündelt klinisches Grundwissen so, dass daraus ein klarer, wiederholbarer Fallkern entsteht.",
+        "Nicht lose Einzelinformationen bringen dich weiter, sondern eine feste Ordnung aus Leitsymptom, relevanten Risiken, klinischer Einordnung und erstem Plan. So bleibt das Thema auch in neuen Fällen sprachlich tragfähig.",
+        "Im kardiologischen Kontext stehen Thoraxschmerz, Dyspnoe, Palpitationen, Synkope und Leistungsknick im Zentrum. Risikoprofil, Vorerkrankungen, Interventionen und Medikation gehören früh und geordnet in die Einschätzung. Die erste Weiche lautet immer: akut instabil oder aktuell kompensiert. Gerade in diesem Modul entscheidet Priorisierung mehr als Detailwissen. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst.",
+        "Kardiologische Sprache wirkt stark, wenn Symptom, Risiko und Plan in wenigen klaren Sätzen verbunden werden. Vergangene Ereignisse wie Stent, Infarkt oder Rhythmusstörung müssen mündlich abrufbar und sauber einordenbar sein. Der diagnostische Pfad mit EKG, Labor, Monitoring oder Echo sollte transparent und patientengerecht erklärt werden. Auch Warnzeichen für zuhause gehören zu einer vollständigen kardiologischen Kommunikation. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden.",
+        "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können. So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
       ],
       "question_groups": [
         {
-          "title": "Was fachlich zuerst geordnet werden muss",
+          "title": "Wie du das Thema klinisch ordnest",
           "questions": [
-            "Im kardiologischen Kontext stehen Thoraxschmerz, Dyspnoe, Palpitationen, Synkope und Leistungsknick im Zentrum.",
-            "Risikoprofil, Vorerkrankungen, Interventionen und Medikation gehören früh und geordnet in die Einschätzung.",
-            "Die erste Weiche lautet immer: akut instabil oder aktuell kompensiert.",
-            "Gerade in diesem Modul entscheidet Priorisierung mehr als Detailwissen."
+            "Im kardiologischen Kontext stehen Thoraxschmerz, Dyspnoe, Palpitationen, Synkope und Leistungsknick im Zentrum. Risikoprofil, Vorerkrankungen, Interventionen und Medikation gehören früh und geordnet in die Einschätzung.",
+            "Die erste Weiche lautet immer: akut instabil oder aktuell kompensiert. Gerade in diesem Modul entscheidet Priorisierung mehr als Detailwissen. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst."
           ]
         },
         {
-          "title": "Was sprachlich tragen soll",
+          "title": "Welche Formulierungen die Struktur tragen",
           "questions": [
-            "Kardiologische Sprache wirkt stark, wenn Symptom, Risiko und Plan in wenigen klaren Sätzen verbunden werden.",
-            "Vergangene Ereignisse wie Stent, Infarkt oder Rhythmusstörung müssen mündlich abrufbar und sauber einordenbar sein.",
-            "Der diagnostische Pfad mit EKG, Labor, Monitoring oder Echo sollte transparent und patientengerecht erklärt werden.",
-            "Auch Warnzeichen für zuhause gehören zu einer vollständigen kardiologischen Kommunikation."
+            "Kardiologische Sprache wirkt stark, wenn Symptom, Risiko und Plan in wenigen klaren Sätzen verbunden werden. Vergangene Ereignisse wie Stent, Infarkt oder Rhythmusstörung müssen mündlich abrufbar und sauber einordenbar sein.",
+            "Der diagnostische Pfad mit EKG, Labor, Monitoring oder Echo sollte transparent und patientengerecht erklärt werden. Auch Warnzeichen für zuhause gehören zu einer vollständigen kardiologischen Kommunikation. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden."
+          ]
+        },
+        {
+          "title": "Wie daraus ein ganzer Fall wird",
+          "questions": [
+            "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können.",
+            "So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
           ]
         }
       ],
@@ -54,13 +59,6 @@
         "online_kurs_kardiomyopathie",
         "online_kurs_koronarangiographie"
       ],
-      "mini_scenario": {
-        "title": "Transfer: Kardiologie kompakt",
-        "situation": "Ein 61-jähriger Patient berichtet über Herzstolpern und eine kurze Synkope am Vortag.",
-        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
-      },
       "source_tags": [
         "Fachsprachkurs PDF: Herz-Kreislauf-Fragenblock"
       ]
@@ -71,27 +69,32 @@
       "focus": "Husten, Dyspnoe und respiratorische Alarmzeichen sprachlich sicher führen",
       "summary": "Das respiratorische Modul erweitert die bestehende Husten/Dyspnoe-Anamnese um systematische Aufklärungssprache zu Untersuchungen und Dringlichkeit.",
       "learning_text": [
-        "Das respiratorische Modul erweitert die bestehende Husten/Dyspnoe-Anamnese um systematische Aufklärungssprache zu Untersuchungen und Dringlichkeit. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Bei respiratorischen Beschwerden stehen Atemarbeit, Sauerstofflage, Hustenqualität, Auswurf und Begleitsymptome im Vordergrund. Beginn, Verlauf, Trigger und Belastbarkeit geben der Anamnese ihre Grundstruktur. Infektzeichen, Brustschmerz oder plötzliche Verschlechterung gehören früh in die Red-Flag-Logik.",
-        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Patienten sollten hören, warum Pulsoxymetrie, Untersuchung, Labor oder Bildgebung jetzt nötig sind. Die Dringlichkeit wird ruhig, aber eindeutig kommuniziert. In der Übergabe zählen Atemnotgrad, Belastung, Warnzeichen und der erste Plan am meisten."
+        "Dieses Modul bündelt klinisches Grundwissen so, dass daraus ein klarer, wiederholbarer Fallkern entsteht.",
+        "Nicht lose Einzelinformationen bringen dich weiter, sondern eine feste Ordnung aus Leitsymptom, relevanten Risiken, klinischer Einordnung und erstem Plan. So bleibt das Thema auch in neuen Fällen sprachlich tragfähig.",
+        "Bei respiratorischen Beschwerden stehen Atemarbeit, Sauerstofflage, Hustenqualität, Auswurf und Begleitsymptome im Vordergrund. Beginn, Verlauf, Trigger und Belastbarkeit geben der Anamnese ihre Grundstruktur. Infektzeichen, Brustschmerz oder plötzliche Verschlechterung gehören früh in die Red-Flag-Logik. Die respiratorische Einschätzung lebt von früher Priorisierung und nicht von spätem Nachfragen. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst.",
+        "Patienten sollten hören, warum Pulsoxymetrie, Untersuchung, Labor oder Bildgebung jetzt nötig sind. Die Dringlichkeit wird ruhig, aber eindeutig kommuniziert. In der Übergabe zählen Atemnotgrad, Belastung, Warnzeichen und der erste Plan am meisten. Eine gute respiratorische Kommunikation endet mit konkreten Rückkehrkriterien. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden.",
+        "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können. So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
       ],
       "question_groups": [
         {
-          "title": "Was fachlich zuerst geordnet werden muss",
+          "title": "Wie du das Thema klinisch ordnest",
           "questions": [
-            "Bei respiratorischen Beschwerden stehen Atemarbeit, Sauerstofflage, Hustenqualität, Auswurf und Begleitsymptome im Vordergrund.",
-            "Beginn, Verlauf, Trigger und Belastbarkeit geben der Anamnese ihre Grundstruktur.",
-            "Infektzeichen, Brustschmerz oder plötzliche Verschlechterung gehören früh in die Red-Flag-Logik.",
-            "Die respiratorische Einschätzung lebt von früher Priorisierung und nicht von spaetem Nachfragen."
+            "Bei respiratorischen Beschwerden stehen Atemarbeit, Sauerstofflage, Hustenqualität, Auswurf und Begleitsymptome im Vordergrund. Beginn, Verlauf, Trigger und Belastbarkeit geben der Anamnese ihre Grundstruktur.",
+            "Infektzeichen, Brustschmerz oder plötzliche Verschlechterung gehören früh in die Red-Flag-Logik. Die respiratorische Einschätzung lebt von früher Priorisierung und nicht von spätem Nachfragen. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst."
           ]
         },
         {
-          "title": "Was sprachlich tragen soll",
+          "title": "Welche Formulierungen die Struktur tragen",
           "questions": [
-            "Patienten sollten hören, warum Pulsoxymetrie, Untersuchung, Labor oder Bildgebung jetzt nötig sind.",
-            "Die Dringlichkeit wird ruhig, aber eindeutig kommuniziert.",
-            "In der Übergabe zählen Atemnotgrad, Belastung, Warnzeichen und der erste Plan am meisten.",
-            "Eine gute respiratorische Kommunikation endet mit konkreten Rückkehrkriterien."
+            "Patienten sollten hören, warum Pulsoxymetrie, Untersuchung, Labor oder Bildgebung jetzt nötig sind. Die Dringlichkeit wird ruhig, aber eindeutig kommuniziert.",
+            "In der Übergabe zählen Atemnotgrad, Belastung, Warnzeichen und der erste Plan am meisten. Eine gute respiratorische Kommunikation endet mit konkreten Rückkehrkriterien. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden."
+          ]
+        },
+        {
+          "title": "Wie daraus ein ganzer Fall wird",
+          "questions": [
+            "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können.",
+            "So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
           ]
         }
       ],
@@ -110,13 +113,6 @@
         "online_kurs_thorax",
         "online_kurs_pulmo"
       ],
-      "mini_scenario": {
-        "title": "Transfer: Pneumologie und Atemwege",
-        "situation": "Ein 58-jähriger Patient kommt mit progredienter Luftnot und Husten in die Notaufnahme.",
-        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
-      },
       "source_tags": [
         "Fachsprachkurs PDF: respiratorisches System und Fragen"
       ]
@@ -127,27 +123,32 @@
       "focus": "Abdominale Leitsymptome, Blutungszeichen und differenzierte Priorisierung",
       "summary": "Das GI-Modul trainiert die sprachliche Trennung zwischen stabilen Beschwerden und potenziell bedrohlichen Verläufen wie GI-Blutung oder Peritonitis.",
       "learning_text": [
-        "Das GI-Modul trainiert die sprachliche Trennung zwischen stabilen Beschwerden und potenziell bedrohlichen Verläufen wie GI-Blutung oder Peritonitis. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Bei GI-Beschwerden sind Beginn, Lokalisation, Trigger, Erbrechen und Stuhlveränderungen die Grundachse der Anamnese. Blutungszeichen, Peritonismus und Kreislaufsymptome müssen früh erkannt und priorisiert werden. Auch Medikamente wie NSAR oder Antikoagulanzien können die klinische Richtung stark verändern.",
-        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Labor, Sonographie und gegebenenfalls Endoskopie sollten über ihren Zweck und nicht über ihren Namen erklärt werden. In der Übergabe gehören Blutungszeichen, Bauchbefund und Plan in eine klare Reihenfolge. Patienten profitieren von genauen Warnzeichen für Kreislauf, Schmerz und sichtbare Blutbeimengungen."
+        "Dieses Modul bündelt klinisches Grundwissen so, dass daraus ein klarer, wiederholbarer Fallkern entsteht.",
+        "Nicht lose Einzelinformationen bringen dich weiter, sondern eine feste Ordnung aus Leitsymptom, relevanten Risiken, klinischer Einordnung und erstem Plan. So bleibt das Thema auch in neuen Fällen sprachlich tragfähig.",
+        "Bei GI-Beschwerden sind Beginn, Lokalisation, Trigger, Erbrechen und Stuhlveränderungen die Grundachse der Anamnese. Blutungszeichen, Peritonismus und Kreislaufsymptome müssen früh erkannt und priorisiert werden. Auch Medikamente wie NSAR oder Antikoagulanzien können die klinische Richtung stark verändern. Das Modul lebt von der klaren Trennung zwischen stabilem Verlauf und akutem Warnmuster. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst.",
+        "Labor, Sonographie und gegebenenfalls Endoskopie sollten über ihren Zweck und nicht über ihren Namen erklärt werden. In der Übergabe gehören Blutungszeichen, Bauchbefund und Plan in eine klare Reihenfolge. Patienten profitieren von genauen Warnzeichen für Kreislauf, Schmerz und sichtbare Blutbeimengungen. Eine gute GI-Kommunikation bleibt sachlich, geordnet und nicht dramatisch. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden.",
+        "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können. So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
       ],
       "question_groups": [
         {
-          "title": "Was fachlich zuerst geordnet werden muss",
+          "title": "Wie du das Thema klinisch ordnest",
           "questions": [
-            "Bei GI-Beschwerden sind Beginn, Lokalisation, Trigger, Erbrechen und Stuhlveränderungen die Grundachse der Anamnese.",
-            "Blutungszeichen, Peritonismus und Kreislaufsymptome müssen früh erkannt und priorisiert werden.",
-            "Auch Medikamente wie NSAR oder Antikoagulanzien können die klinische Richtung stark verändern.",
-            "Das Modul lebt von der klaren Trennung zwischen stabilem Verlauf und akutem Warnmuster."
+            "Bei GI-Beschwerden sind Beginn, Lokalisation, Trigger, Erbrechen und Stuhlveränderungen die Grundachse der Anamnese. Blutungszeichen, Peritonismus und Kreislaufsymptome müssen früh erkannt und priorisiert werden.",
+            "Auch Medikamente wie NSAR oder Antikoagulanzien können die klinische Richtung stark verändern. Das Modul lebt von der klaren Trennung zwischen stabilem Verlauf und akutem Warnmuster. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst."
           ]
         },
         {
-          "title": "Was sprachlich tragen soll",
+          "title": "Welche Formulierungen die Struktur tragen",
           "questions": [
-            "Labor, Sonographie und gegebenenfalls Endoskopie sollten über ihren Zweck und nicht über ihren Namen erklärt werden.",
-            "In der Übergabe gehören Blutungszeichen, Bauchbefund und Plan in eine klare Reihenfolge.",
-            "Patienten profitieren von genauen Warnzeichen für Kreislauf, Schmerz und sichtbare Blutbeimengungen.",
-            "Eine gute GI-Kommunikation bleibt sachlich, geordnet und nicht dramatisch."
+            "Labor, Sonographie und gegebenenfalls Endoskopie sollten über ihren Zweck und nicht über ihren Namen erklärt werden. In der Übergabe gehören Blutungszeichen, Bauchbefund und Plan in eine klare Reihenfolge.",
+            "Patienten profitieren von genauen Warnzeichen für Kreislauf, Schmerz und sichtbare Blutbeimengungen. Eine gute GI-Kommunikation bleibt sachlich, geordnet und nicht dramatisch. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden."
+          ]
+        },
+        {
+          "title": "Wie daraus ein ganzer Fall wird",
+          "questions": [
+            "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können.",
+            "So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
           ]
         }
       ],
@@ -165,13 +166,6 @@
         "online_kurs_colon",
         "online_kurs_appendix_vermiformis"
       ],
-      "mini_scenario": {
-        "title": "Transfer: Gastroenterologie und Verdauung",
-        "situation": "Eine 57-jährige Patientin berichtet über schwarzen Stuhl und Schwindel seit zwei Tagen.",
-        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
-      },
       "source_tags": [
         "Fachsprachkurs PDF: Gastro- und Gastroskopieabschnitte"
       ]
@@ -182,27 +176,32 @@
       "focus": "Miktionsanamnese, Infektzeichen und urologische Dringlichkeiten",
       "summary": "Dieses Modul vertieft den urogenitalen Fragenkatalog aus dem PDF und trainiert sprachlich sensible Themen wie Sexual- und Intimanamnese auf professionellem Niveau.",
       "learning_text": [
-        "Dieses Modul vertieft den urogenitalen Fragenkatalog aus dem PDF und trainiert sprachlich sensible Themen wie Sexual- und Intimanamnese auf professionellem Niveau. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Dysurie, Pollakisurie, Nykturie, Harnfarbe, Flankenschmerz, Fieber und Hämaturie bilden den Kern des urogenitalen Moduls. Trinkmenge, Medikation, Katheteranamnese und Vorerkrankungen liefern wichtige Zusatzrichtung. Akuter Harnverhalt, Sepsisverdacht und ausgeprägte Blutung gehören in die erste Dringlichkeitsebene.",
-        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Die Sprache muss respektvoll bleiben und gleichzeitig klar genug sein, um peinliche Themen medizinisch verwertbar zu machen. Urinstatus, Labor, Sonographie oder stationäres Vorgehen sollten kurz und nachvollziehbar erklärt werden. In der Übergabe zählen Symptomkombination, Schweregrad und weiterer Plan mehr als Detailaufzählungen."
+        "Dieses Modul bündelt klinisches Grundwissen so, dass daraus ein klarer, wiederholbarer Fallkern entsteht.",
+        "Nicht lose Einzelinformationen bringen dich weiter, sondern eine feste Ordnung aus Leitsymptom, relevanten Risiken, klinischer Einordnung und erstem Plan. So bleibt das Thema auch in neuen Fällen sprachlich tragfähig.",
+        "Dysurie, Pollakisurie, Nykturie, Harnfarbe, Flankenschmerz, Fieber und Hämaturie bilden den Kern des urogenitalen Moduls. Trinkmenge, Medikation, Katheteranamnese und Vorerkrankungen liefern wichtige Zusatzrichtung. Akuter Harnverhalt, Sepsisverdacht und ausgeprägte Blutung gehören in die erste Dringlichkeitsebene. Intime Fragen wirken nur dann professionell, wenn ihr medizinischer Grund klar gemacht wird. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst.",
+        "Die Sprache muss respektvoll bleiben und gleichzeitig klar genug sein, um peinliche Themen medizinisch verwertbar zu machen. Urinstatus, Labor, Sonographie oder stationäres Vorgehen sollten kurz und nachvollziehbar erklärt werden. In der Übergabe zählen Symptomkombination, Schweregrad und weiterer Plan mehr als Detailaufzählungen. Auch hier sind eindeutige Rückkehrkriterien Teil einer vollständigen Kommunikation. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden.",
+        "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können. So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
       ],
       "question_groups": [
         {
-          "title": "Was fachlich zuerst geordnet werden muss",
+          "title": "Wie du das Thema klinisch ordnest",
           "questions": [
-            "Dysurie, Pollakisurie, Nykturie, Harnfarbe, Flankenschmerz, Fieber und Hämaturie bilden den Kern des urogenitalen Moduls.",
-            "Trinkmenge, Medikation, Katheteranamnese und Vorerkrankungen liefern wichtige Zusatzrichtung.",
-            "Akuter Harnverhalt, Sepsisverdacht und ausgeprägte Blutung gehören in die erste Dringlichkeitsebene.",
-            "Intime Fragen wirken nur dann professionell, wenn ihr medizinischer Grund klar gemacht wird."
+            "Dysurie, Pollakisurie, Nykturie, Harnfarbe, Flankenschmerz, Fieber und Hämaturie bilden den Kern des urogenitalen Moduls. Trinkmenge, Medikation, Katheteranamnese und Vorerkrankungen liefern wichtige Zusatzrichtung.",
+            "Akuter Harnverhalt, Sepsisverdacht und ausgeprägte Blutung gehören in die erste Dringlichkeitsebene. Intime Fragen wirken nur dann professionell, wenn ihr medizinischer Grund klar gemacht wird. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst."
           ]
         },
         {
-          "title": "Was sprachlich tragen soll",
+          "title": "Welche Formulierungen die Struktur tragen",
           "questions": [
-            "Die Sprache muss respektvoll bleiben und gleichzeitig klar genug sein, um peinliche Themen medizinisch verwertbar zu machen.",
-            "Urinstatus, Labor, Sonographie oder stationäres Vorgehen sollten kurz und nachvollziehbar erklärt werden.",
-            "In der Übergabe zählen Symptomkombination, Schweregrad und weiterer Plan mehr als Detailaufzählungen.",
-            "Auch hier sind eindeutige Rückkehrkriterien Teil einer vollständigen Kommunikation."
+            "Die Sprache muss respektvoll bleiben und gleichzeitig klar genug sein, um peinliche Themen medizinisch verwertbar zu machen. Urinstatus, Labor, Sonographie oder stationäres Vorgehen sollten kurz und nachvollziehbar erklärt werden.",
+            "In der Übergabe zählen Symptomkombination, Schweregrad und weiterer Plan mehr als Detailaufzählungen. Auch hier sind eindeutige Rückkehrkriterien Teil einer vollständigen Kommunikation. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden."
+          ]
+        },
+        {
+          "title": "Wie daraus ein ganzer Fall wird",
+          "questions": [
+            "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können.",
+            "So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
           ]
         }
       ],
@@ -221,13 +220,6 @@
         "online_kurs_dysurie",
         "online_kurs_pollakisurie"
       ],
-      "mini_scenario": {
-        "title": "Transfer: Urogenitales System",
-        "situation": "Eine 34-jährige Patientin stellt sich mit Dysurie, Flankenschmerz und Schüttelfrost vor.",
-        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
-      },
       "source_tags": [
         "Fachsprachkurs PDF: Urogenitalsystem und Anamnesefragen"
       ]
@@ -236,29 +228,34 @@
       "id": "neurologie_modul",
       "title": "Neurologie und neurovaskuläre Notfälle",
       "focus": "Kernsymptome, fokal-neurologische Defizite und zeitkritische Kommunikation",
-      "summary": "Dieses Modul buendelt neurologische Inhalte aus dem Fachsprachkurs für den klinischen Alltagssprech in Anamnese, Untersuchung und Übergabe.",
+      "summary": "Dieses Modul bündelt neurologische Inhalte aus dem Fachsprachkurs für den klinischen Alltagssprech in Anamnese, Untersuchung und Übergabe.",
       "learning_text": [
-        "Dieses Modul buendelt neurologische Inhalte aus dem Fachsprachkurs für den klinischen Alltagssprech in Anamnese, Untersuchung und Übergabe. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Im neurologischen Modul tragen Zeitachse, fokale Defizite, Kopfschmerzcharakter und Bewusstseinslage die klinische Logik. Auch Krampfanfall, Sprachstörung und Antikoagulation können die Dringlichkeit sofort verändern. Die neurologische Basisstruktur muss schnell zwischen harmloserem Verlauf und neurovaskulärem Notfall unterscheiden.",
-        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Defizite sollten möglichst konkret benannt und nicht hinter Sammelbegriffen versteckt werden. Patienten müssen verstehen, warum Bildgebung oder Stroke-Abklärung jetzt Zeit gewinnt. In der Übergabe stehen letzter unauffälliger Zeitpunkt, Kernbefund und Akutplan an erster Stelle."
+        "Dieses Modul bündelt klinisches Grundwissen so, dass daraus ein klarer, wiederholbarer Fallkern entsteht.",
+        "Nicht lose Einzelinformationen bringen dich weiter, sondern eine feste Ordnung aus Leitsymptom, relevanten Risiken, klinischer Einordnung und erstem Plan. So bleibt das Thema auch in neuen Fällen sprachlich tragfähig.",
+        "Im neurologischen Modul tragen Zeitachse, fokale Defizite, Kopfschmerzcharakter und Bewusstseinslage die klinische Logik. Auch Krampfanfall, Sprachstörung und Antikoagulation können die Dringlichkeit sofort verändern. Die neurologische Basisstruktur muss schnell zwischen harmloserem Verlauf und neurovaskulärem Notfall unterscheiden. Für Berlin ist hier weniger Breite als klare Priorisierung entscheidend. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst.",
+        "Defizite sollten möglichst konkret benannt und nicht hinter Sammelbegriffen versteckt werden. Patienten müssen verstehen, warum Bildgebung oder Stroke-Abklärung jetzt Zeit gewinnt. In der Übergabe stehen letzter unauffälliger Zeitpunkt, Kernbefund und Akutplan an erster Stelle. Neurologische Sprache wirkt stark, wenn sie kurz, konkret und ohne Spekulation bleibt. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden.",
+        "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können. So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
       ],
       "question_groups": [
         {
-          "title": "Was fachlich zuerst geordnet werden muss",
+          "title": "Wie du das Thema klinisch ordnest",
           "questions": [
-            "Im neurologischen Modul tragen Zeitachse, fokale Defizite, Kopfschmerzcharakter und Bewusstseinslage die klinische Logik.",
-            "Auch Krampfanfall, Sprachstörung und Antikoagulation können die Dringlichkeit sofort verändern.",
-            "Die neurologische Basisstruktur muss schnell zwischen harmloserem Verlauf und neurovaskulärem Notfall unterscheiden.",
-            "Für Berlin ist hier weniger Breite als klare Priorisierung entscheidend."
+            "Im neurologischen Modul tragen Zeitachse, fokale Defizite, Kopfschmerzcharakter und Bewusstseinslage die klinische Logik. Auch Krampfanfall, Sprachstörung und Antikoagulation können die Dringlichkeit sofort verändern.",
+            "Die neurologische Basisstruktur muss schnell zwischen harmloserem Verlauf und neurovaskulärem Notfall unterscheiden. Für Berlin ist hier weniger Breite als klare Priorisierung entscheidend. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst."
           ]
         },
         {
-          "title": "Was sprachlich tragen soll",
+          "title": "Welche Formulierungen die Struktur tragen",
           "questions": [
-            "Defizite sollten möglichst konkret benannt und nicht hinter Sammelbegriffen versteckt werden.",
-            "Patienten müssen verstehen, warum Bildgebung oder Stroke-Abklärung jetzt Zeit gewinnt.",
-            "In der Übergabe stehen letzter unauffälliger Zeitpunkt, Kernbefund und Akutplan an erster Stelle.",
-            "Neurologische Sprache wirkt stark, wenn sie kurz, konkret und ohne Spekulation bleibt."
+            "Defizite sollten möglichst konkret benannt und nicht hinter Sammelbegriffen versteckt werden. Patienten müssen verstehen, warum Bildgebung oder Stroke-Abklärung jetzt Zeit gewinnt.",
+            "In der Übergabe stehen letzter unauffälliger Zeitpunkt, Kernbefund und Akutplan an erster Stelle. Neurologische Sprache wirkt stark, wenn sie kurz, konkret und ohne Spekulation bleibt. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden."
+          ]
+        },
+        {
+          "title": "Wie daraus ein ganzer Fall wird",
+          "questions": [
+            "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können.",
+            "So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
           ]
         }
       ],
@@ -277,13 +274,6 @@
         "online_kurs_lumbalpunktion",
         "online_kurs_kraniale_computertomographie_cct"
       ],
-      "mini_scenario": {
-        "title": "Transfer: Neurologie und neurovaskuläre Notfälle",
-        "situation": "Ein 68-jähriger Patient zeigt plötzliche Dysarthrie und Unsicherheit beim Stehen.",
-        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
-      },
       "source_tags": [
         "Fachsprachkurs PDF: neurologische Begriffe und Fallvorstellung"
       ]
@@ -294,27 +284,32 @@
       "focus": "Symptomcluster, Hormonbezug und patientenverständliche Langzeitplanung",
       "summary": "Endokrine Themen sind häufig nicht akut dramatisch, aber sprachlich anspruchsvoll. Die FSP bewertet hier vor allem semantische Präzision und nachvollziehbare Therapieerklärung.",
       "learning_text": [
-        "Endokrine Themen sind häufig nicht akut dramatisch, aber sprachlich anspruchsvoll. Die FSP bewertet hier vor allem semantische Präzision und nachvollziehbare Therapieerklärung. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Durst, Polyurie, Gewichtsveränderung, Erschoepfung, Hypoglykämiesymptome und Schilddrüsenbeschwerden bilden die Basis dieses Moduls. Medikation, Adhaerenz und Vorerkrankungen sind für endokrine Themen oft genauso wichtig wie das Leitsymptom selbst. Akute Entgleisung und langfristige Stoffwechselsteuerung müssen sprachlich auseinandergehalten werden.",
-        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Patienten sollten verstehen, welche Beschwerden akut sind und welche eher für die längerfristige Einstellung relevant bleiben. Labor, Verlaufskontrollen und Therapieanpassung müssen ruhig und nachvollziehbar erklärt werden. In der Übergabe ist die Verbindung aus Symptomcluster, Stoffwechsellage und Plan entscheidend."
+        "Dieses Modul bündelt klinisches Grundwissen so, dass daraus ein klarer, wiederholbarer Fallkern entsteht.",
+        "Nicht lose Einzelinformationen bringen dich weiter, sondern eine feste Ordnung aus Leitsymptom, relevanten Risiken, klinischer Einordnung und erstem Plan. So bleibt das Thema auch in neuen Fällen sprachlich tragfähig.",
+        "Durst, Polyurie, Gewichtsveränderung, Erschöpfung, Hypoglykämiesymptome und Schilddrüsenbeschwerden bilden die Basis dieses Moduls. Medikation, Adhärenz und Vorerkrankungen sind für endokrine Themen oft genauso wichtig wie das Leitsymptom selbst. Akute Entgleisung und langfristige Stoffwechselsteuerung müssen sprachlich auseinandergehalten werden. Gerade bei endokrinen Themen trägt semantische Präzision mehr als spektakuläre Notfallsprache. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst.",
+        "Patienten sollten verstehen, welche Beschwerden akut sind und welche eher für die längerfristige Einstellung relevant bleiben. Labor, Verlaufskontrollen und Therapieanpassung müssen ruhig und nachvollziehbar erklärt werden. In der Übergabe ist die Verbindung aus Symptomcluster, Stoffwechsellage und Plan entscheidend. Gute endokrinologische Sprache bleibt klar, konkret und ohne unnötige Lehrbuchschwere. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden.",
+        "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können. So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
       ],
       "question_groups": [
         {
-          "title": "Was fachlich zuerst geordnet werden muss",
+          "title": "Wie du das Thema klinisch ordnest",
           "questions": [
-            "Durst, Polyurie, Gewichtsveränderung, Erschoepfung, Hypoglykämiesymptome und Schilddrüsenbeschwerden bilden die Basis dieses Moduls.",
-            "Medikation, Adhaerenz und Vorerkrankungen sind für endokrine Themen oft genauso wichtig wie das Leitsymptom selbst.",
-            "Akute Entgleisung und langfristige Stoffwechselsteuerung müssen sprachlich auseinandergehalten werden.",
-            "Gerade bei endokrinen Themen traegt semantische Präzision mehr als spektakuläre Notfallsprache."
+            "Durst, Polyurie, Gewichtsveränderung, Erschöpfung, Hypoglykämiesymptome und Schilddrüsenbeschwerden bilden die Basis dieses Moduls. Medikation, Adhärenz und Vorerkrankungen sind für endokrine Themen oft genauso wichtig wie das Leitsymptom selbst.",
+            "Akute Entgleisung und langfristige Stoffwechselsteuerung müssen sprachlich auseinandergehalten werden. Gerade bei endokrinen Themen trägt semantische Präzision mehr als spektakuläre Notfallsprache. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst."
           ]
         },
         {
-          "title": "Was sprachlich tragen soll",
+          "title": "Welche Formulierungen die Struktur tragen",
           "questions": [
-            "Patienten sollten verstehen, welche Beschwerden akut sind und welche eher für die längerfristige Einstellung relevant bleiben.",
-            "Labor, Verlaufskontrollen und Therapieanpassung müssen ruhig und nachvollziehbar erklärt werden.",
-            "In der Übergabe ist die Verbindung aus Symptomcluster, Stoffwechsellage und Plan entscheidend.",
-            "Gute endokrinologische Sprache bleibt klar, konkret und ohne unnötige Lehrbuchschwere."
+            "Patienten sollten verstehen, welche Beschwerden akut sind und welche eher für die längerfristige Einstellung relevant bleiben. Labor, Verlaufskontrollen und Therapieanpassung müssen ruhig und nachvollziehbar erklärt werden.",
+            "In der Übergabe ist die Verbindung aus Symptomcluster, Stoffwechsellage und Plan entscheidend. Gute endokrinologische Sprache bleibt klar, konkret und ohne unnötige Lehrbuchschwere. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden."
+          ]
+        },
+        {
+          "title": "Wie daraus ein ganzer Fall wird",
+          "questions": [
+            "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können.",
+            "So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
           ]
         }
       ],
@@ -333,13 +328,6 @@
         "online_kurs_thyreoiditis",
         "online_kurs_oraler_glukosetoleranztest_ogtt"
       ],
-      "mini_scenario": {
-        "title": "Transfer: Endokrinologie, Diabetes und Schilddrüse",
-        "situation": "Ein 49-jähriger Patient berichtet über Polydipsie, Polyurie und Erschoepfung seit Tagen.",
-        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
-      },
       "source_tags": [
         "Fachsprachkurs PDF: Endokrinologie und Diabetesblock"
       ]
@@ -350,27 +338,32 @@
       "focus": "Beschwerdeanalyse, funktionelle Untersuchung und prozedurale Sprache",
       "summary": "Im Fachsprachkurs sind zahlreiche muskuloskelettale Verfahren und Begriffe enthalten. Dieses Modul macht daraus ein klinisch verwertbares Schema für Gespräch, Untersuchung und Übergabe.",
       "learning_text": [
-        "Im Fachsprachkurs sind zahlreiche muskuloskelettale Verfahren und Begriffe enthalten. Dieses Modul macht daraus ein klinisch verwertbares Schema für Gespräch, Untersuchung und Übergabe. Hier geht es um ein klinisch nutzbares Grundmuster aus Leitsymptom, Einordnung und erstem Plan statt um lose Einzelinformationen.",
-        "Didaktisch beginnt das Thema mit dem Kernaufbau. Was fachlich zuerst geordnet werden muss: Im muskuloskelettalen Bereich tragen Schmerzort, Auslöser, Funktionseinschränkung, Schwellung und neurovaskulärer Status die Grundstruktur. Traumamechanismus, Belastbarkeit und zeitlicher Verlauf liefern schnell Richtung für die weitere Einschätzung. Wichtig ist die klare Trennung zwischen lokalem Beschwerdebild und Warnzeichen für Fraktur, Infektion oder neurologische Beteiligung.",
-        "Danach folgt der prüfungsnahe Transfer in Sprache und Struktur. Was sprachlich tragen soll: Patienten brauchen kurze, klare Anweisungen bei Bewegungsprüfung und Schmerzprovokation. Bildgebung, Schonung, Analgesie oder Immobilisation müssen über ihren Zweck und nicht nur über ihren Namen erklärt werden. In der Übergabe zählen Funktion, Schwellung, Untersuchung und Plan in einer logischen Reihenfolge."
+        "Dieses Modul bündelt klinisches Grundwissen so, dass daraus ein klarer, wiederholbarer Fallkern entsteht.",
+        "Nicht lose Einzelinformationen bringen dich weiter, sondern eine feste Ordnung aus Leitsymptom, relevanten Risiken, klinischer Einordnung und erstem Plan. So bleibt das Thema auch in neuen Fällen sprachlich tragfähig.",
+        "Im muskuloskelettalen Bereich tragen Schmerzort, Auslöser, Funktionseinschränkung, Schwellung und neurovaskulärer Status die Grundstruktur. Traumamechanismus, Belastbarkeit und zeitlicher Verlauf liefern schnell Richtung für die weitere Einschätzung. Wichtig ist die klare Trennung zwischen lokalem Beschwerdebild und Warnzeichen für Fraktur, Infektion oder neurologische Beteiligung. Dieses Modul wird klinisch stark, wenn Untersuchung und Alltagseinschränkung zusammen gedacht werden. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst.",
+        "Patienten brauchen kurze, klare Anweisungen bei Bewegungsprüfung und Schmerzprovokation. Bildgebung, Schonung, Analgesie oder Immobilisation müssen über ihren Zweck und nicht nur über ihren Namen erklärt werden. In der Übergabe zählen Funktion, Schwellung, Untersuchung und Plan in einer logischen Reihenfolge. Gute muskuloskelettale Sprache bleibt anschaulich, funktionell und nicht unnötig kompliziert. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden.",
+        "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können. So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
       ],
       "question_groups": [
         {
-          "title": "Was fachlich zuerst geordnet werden muss",
+          "title": "Wie du das Thema klinisch ordnest",
           "questions": [
-            "Im muskuloskelettalen Bereich tragen Schmerzort, Auslöser, Funktionseinschränkung, Schwellung und neurovaskulärer Status die Grundstruktur.",
-            "Traumamechanismus, Belastbarkeit und zeitlicher Verlauf liefern schnell Richtung für die weitere Einschätzung.",
-            "Wichtig ist die klare Trennung zwischen lokalem Beschwerdebild und Warnzeichen für Fraktur, Infektion oder neurologische Beteiligung.",
-            "Dieses Modul wird klinisch stark, wenn Untersuchung und Alltagseinschränkung zusammen gedacht werden."
+            "Im muskuloskelettalen Bereich tragen Schmerzort, Auslöser, Funktionseinschränkung, Schwellung und neurovaskulärer Status die Grundstruktur. Traumamechanismus, Belastbarkeit und zeitlicher Verlauf liefern schnell Richtung für die weitere Einschätzung.",
+            "Wichtig ist die klare Trennung zwischen lokalem Beschwerdebild und Warnzeichen für Fraktur, Infektion oder neurologische Beteiligung. Dieses Modul wird klinisch stark, wenn Untersuchung und Alltagseinschränkung zusammen gedacht werden. Entscheidend ist, dass du nicht nur Fachwissen sammelst, sondern daraus ein wiederholbares klinisches Grundmuster machst."
           ]
         },
         {
-          "title": "Was sprachlich tragen soll",
+          "title": "Welche Formulierungen die Struktur tragen",
           "questions": [
-            "Patienten brauchen kurze, klare Anweisungen bei Bewegungsprüfung und Schmerzprovokation.",
-            "Bildgebung, Schonung, Analgesie oder Immobilisation müssen über ihren Zweck und nicht nur über ihren Namen erklärt werden.",
-            "In der Übergabe zählen Funktion, Schwellung, Untersuchung und Plan in einer logischen Reihenfolge.",
-            "Gute muskuloskelettale Sprache bleibt anschaulich, funktionell und nicht unnötig kompliziert."
+            "Patienten brauchen kurze, klare Anweisungen bei Bewegungsprüfung und Schmerzprovokation. Bildgebung, Schonung, Analgesie oder Immobilisation müssen über ihren Zweck und nicht nur über ihren Namen erklärt werden.",
+            "In der Übergabe zählen Funktion, Schwellung, Untersuchung und Plan in einer logischen Reihenfolge. Gute muskuloskelettale Sprache bleibt anschaulich, funktionell und nicht unnötig kompliziert. Jedes Systemmodul trägt besonders dann, wenn Leitsymptom, relevante Risiken und erster Plan sofort miteinander verbunden werden."
+          ]
+        },
+        {
+          "title": "Wie daraus ein ganzer Fall wird",
+          "questions": [
+            "Ein Modul sitzt erst dann wirklich, wenn du daraus ohne Mühe Anamnese, kurze Einordnung und ersten Diagnostik- oder Therapieplan bauen kannst. Die Sprache sollte von Anfang an zwischen Patientenerklärung und kollegialer Kurzvorstellung wechseln können.",
+            "So wird aus Einzelwissen ein belastbarer Fallkern, der sich in mehreren Situationen wiederverwenden lässt."
           ]
         }
       ],
@@ -389,13 +382,6 @@
         "online_kurs_meniskektomie",
         "online_kurs_orthese"
       ],
-      "mini_scenario": {
-        "title": "Transfer: Muskuloskelettales System",
-        "situation": "Ein 29-jähriger Patient kommt nach Sportunfall mit schmerzhaft geschwollenem Knie.",
-        "task_patient": "Erklären Sie dem Patienten den ersten diagnostischen oder therapeutischen Plan in 3 bis 4 klaren Sätzen.",
-        "task_doctor": "Formulieren Sie eine fachsprachliche Kurzübergabe mit Kernsymptom, Einordnung und Plan.",
-        "task_letter": "Dokumentieren Sie Leitsymptom, Einordnung und weiteres Vorgehen in 2 bis 3 präzisen Sätzen."
-      },
       "source_tags": [
         "Fachsprachkurs PDF: muskuloskelettale Methoden und Verfahren"
       ]

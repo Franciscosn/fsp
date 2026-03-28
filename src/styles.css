@@ -1733,6 +1733,17 @@ body.auth-only .edge-deco {
   list-style: disc;
 }
 
+.learning-question-group.is-prose {
+  gap: 10px;
+}
+
+.learning-question-group.is-prose p {
+  margin: 0;
+  color: #5d2736;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
 .learning-exam-sentences,
 .learning-mini-scenarios,
 .learning-linked-terms {
@@ -3168,6 +3179,10 @@ body.learning-reader .learning-back-avatar {
 
   .learning-question-group ol,
   .learning-question-group ul {
+    font-size: 0.9rem;
+  }
+
+  .learning-question-group.is-prose p {
     font-size: 0.9rem;
   }
 
