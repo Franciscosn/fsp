@@ -24,35 +24,34 @@
     {
       "id": "allgemeiner_status_vitalparameter",
       "title": "Allgemeiner Status und Vitalparameter",
-      "focus": "Erstuntersuchung sprachlich klar, priorisiert und reproduzierbar durchführen",
-      "summary": "Der Allgemeinstatus ist die Basis jeder strukturierten Vorstellung. In der FSP wird bewertet, ob Kandidaten nicht nur Werte nennen, sondern klinisch relevante Befunde einordnen und verständlich überleiten.",
+      "focus": "Geordnete Untersuchungsführung | Befund und Konsequenz verbinden | Sprachlich sichere Untersuchung",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
-        "Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
-        "Der Allgemeinstatus beginnt mit Gesamteindruck, Bewusstseinslage und einer ersten klinischen Priorisierung. Danach folgen RR, Puls, Atemfrequenz, Temperatur und SpO2 mit Einheit und sinnvoller Reihenfolge. Wichtig ist die Trennung zwischen Beobachtung und Interpretation, damit der Status sprachlich sauber bleibt. Schon im Erststatus sollte erkennbar sein, ob Monitoring, Reevaluation oder Akutdiagnostik nötig werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
-        "Ein guter Befundsatz nennt nicht nur Zahlen, sondern ordnet sie als tachykard, fieberhaft, hypoxisch oder kreislaufstabil ein. Auffällige Werte werden früh benannt und direkt mit ihrer klinischen Bedeutung verbunden. Die Übergabe wirkt reif, wenn aus Status und Vitalzeichen sofort der nächste Schritt ableitbar wird. Gerade in der FSP entsteht Sicherheit durch klare, kurze und reproduzierbare Standardsätze. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
-        "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+        "In der Untersuchungseinheit „Allgemeiner Status und Vitalparameter“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Der Allgemeinstatus beginnt mit Gesamteindruck, Bewusstseinslage und einer ersten klinischen Priorisierung. Danach folgen RR, Puls, Atemfrequenz, Temperatur und SpO2 mit Einheit und sinnvoller Reihenfolge. Wichtig ist die Trennung zwischen Beobachtung und Interpretation, damit der Status sprachlich sauber bleibt. Schon im Erststatus sollte erkennbar sein, ob Monitoring, Reevaluation oder Akutdiagnostik nötig werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Der Allgemeinstatus beginnt mit Gesamteindruck, Bewusstseinslage und einer ersten klinischen Priorisierung. Danach folgen RR, Puls, Atemfrequenz, Temperatur und SpO2 mit Einheit und sinnvoller Reihenfolge. Wichtig ist die Trennung zwischen Beobachtung und Interpretation, damit der Status sprachlich sauber bleibt. Schon im Erststatus sollte erkennbar sein, ob Monitoring, Reevaluation oder Akutdiagnostik nötig werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Ein guter Befundsatz nennt nicht nur Zahlen, sondern ordnet sie als tachykard, fieberhaft, hypoxisch oder kreislaufstabil ein. Auffällige Werte werden früh benannt und direkt mit ihrer klinischen Bedeutung verbunden. Die Übergabe wirkt reif, wenn aus Status und Vitalzeichen sofort der nächste Schritt ableitbar wird. Gerade in der FSP entsteht Sicherheit durch klare, kurze und reproduzierbare Standardsätze. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Im Erstkontakt ist der Patient wach und orientiert, wirkt jedoch klinisch reduziert. Die Vitalparameter zeigen eine Tachykardie bei sonst stabilen Kreislaufverhältnissen. Aufgrund des Befundbildes priorisieren wir jetzt die weitere Akutdiagnostik."
       ],
       "question_groups": [
         {
-          "title": "Wie du die Untersuchung geordnet führst",
+          "title": "Geordnete Untersuchungsführung",
           "questions": [
-            "Der Allgemeinstatus beginnt mit Gesamteindruck, Bewusstseinslage und einer ersten klinischen Priorisierung. Danach folgen RR, Puls, Atemfrequenz, Temperatur und SpO2 mit Einheit und sinnvoller Reihenfolge.",
-            "Wichtig ist die Trennung zwischen Beobachtung und Interpretation, damit der Status sprachlich sauber bleibt. Schon im Erststatus sollte erkennbar sein, ob Monitoring, Reevaluation oder Akutdiagnostik nötig werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
+            "Der Allgemeinstatus beginnt mit Gesamteindruck, Bewusstseinslage und einer ersten klinischen Priorisierung. Danach folgen RR, Puls, Atemfrequenz, Temperatur und SpO2 mit Einheit und sinnvoller Reihenfolge. Wichtig ist die Trennung zwischen Beobachtung und Interpretation, damit der Status sprachlich sauber bleibt. Schon im Erststatus sollte erkennbar sein, ob Monitoring, Reevaluation oder Akutdiagnostik nötig werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
           ]
         },
         {
-          "title": "Wie du Befund und Konsequenz zusammenführst",
+          "title": "Befund und Konsequenz verbinden",
           "questions": [
-            "Ein guter Befundsatz nennt nicht nur Zahlen, sondern ordnet sie als tachykard, fieberhaft, hypoxisch oder kreislaufstabil ein. Auffällige Werte werden früh benannt und direkt mit ihrer klinischen Bedeutung verbunden.",
-            "Die Übergabe wirkt reif, wenn aus Status und Vitalzeichen sofort der nächste Schritt ableitbar wird. Gerade in der FSP entsteht Sicherheit durch klare, kurze und reproduzierbare Standardsätze. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
+            "Ein guter Befundsatz nennt nicht nur Zahlen, sondern ordnet sie als tachykard, fieberhaft, hypoxisch oder kreislaufstabil ein. Auffällige Werte werden früh benannt und direkt mit ihrer klinischen Bedeutung verbunden. Die Übergabe wirkt reif, wenn aus Status und Vitalzeichen sofort der nächste Schritt ableitbar wird. Gerade in der FSP entsteht Sicherheit durch klare, kurze und reproduzierbare Standardsätze. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
           ]
         },
         {
-          "title": "Woran du merkst, dass die Untersuchung sprachlich sitzt",
+          "title": "Sprachlich sichere Untersuchung",
           "questions": [
-            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen.",
-            "Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
           ]
         }
       ],
@@ -76,35 +75,34 @@
     {
       "id": "neurologischer_ueberblick",
       "title": "Neurologischer Überblick im Akutfall",
-      "focus": "Schneller orientierender Neurostatus mit klarer Befundsprache",
-      "summary": "Der orientierende Neurostatus trennt stabile von zeitkritischen Situationen. In der FSP ist die sprachliche Struktur wichtiger als die Tiefe einer fachneurologischen Komplettuntersuchung.",
+      "focus": "Geordnete Untersuchungsführung | Befund und Konsequenz verbinden | Sprachlich sichere Untersuchung",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
-        "Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
-        "Der orientierende Neurostatus beginnt mit Bewusstsein, Sprache, Pupillen und grober Motorik. Im Akutfall ist die Zeitachse fast so wichtig wie der Befund selbst und gehört früh in die Einschätzung. Der Untersuchungsumfang bleibt fokussiert auf Zeichen, die stabile von zeitkritischen Situationen trennen. Wichtig ist eine feste Reihenfolge, damit unter Zeitdruck keine Kernpunkte verloren gehen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
-        "Neurologische Auffälligkeiten sollten konkret beschrieben werden, zum Beispiel Aphasie, Fazialisparese oder Armhalteversuch rechts absinkend. Unscharfe Begriffe wie neurologisch auffällig wirken schwach, weil sie keine klinische Richtung geben. Bei fokalen Defiziten muss sprachlich sofort klar werden, dass Bildgebung, Monitoring und Akutpfad eingeleitet werden. Die beste Übergabe bleibt kurz, konkret und streng an Defizit, Zeitachse und Plan orientiert. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
-        "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+        "In der Untersuchungseinheit „Neurologischer Überblick im Akutfall“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Der orientierende Neurostatus beginnt mit Bewusstsein, Sprache, Pupillen und grober Motorik. Im Akutfall ist die Zeitachse fast so wichtig wie der Befund selbst und gehört früh in die Einschätzung. Der Untersuchungsumfang bleibt fokussiert auf Zeichen, die stabile von zeitkritischen Situationen trennen. Wichtig ist eine feste Reihenfolge, damit unter Zeitdruck keine Kernpunkte verloren gehen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Der orientierende Neurostatus beginnt mit Bewusstsein, Sprache, Pupillen und grober Motorik. Im Akutfall ist die Zeitachse fast so wichtig wie der Befund selbst und gehört früh in die Einschätzung. Der Untersuchungsumfang bleibt fokussiert auf Zeichen, die stabile von zeitkritischen Situationen trennen. Wichtig ist eine feste Reihenfolge, damit unter Zeitdruck keine Kernpunkte verloren gehen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Neurologische Auffälligkeiten sollten konkret beschrieben werden, zum Beispiel Aphasie, Fazialisparese oder Armhalteversuch rechts absinkend. Unscharfe Begriffe wie neurologisch auffällig wirken schwach, weil sie keine klinische Richtung geben. Bei fokalen Defiziten muss sprachlich sofort klar werden, dass Bildgebung, Monitoring und Akutpfad eingeleitet werden. Die beste Übergabe bleibt kurz, konkret und streng an Defizit, Zeitachse und Plan orientiert. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Es zeigen sich neue fokal-neurologische Ausfälle, deshalb behandeln wir die Situation als zeitkritisch. Ich sehe eine rechtsbetonte Fazialisparese mit begleitender Dysarthrie. Wir veranlassen jetzt umgehend die zerebrale Bildgebung und informieren das Stroke-Team."
       ],
       "question_groups": [
         {
-          "title": "Wie du die Untersuchung geordnet führst",
+          "title": "Geordnete Untersuchungsführung",
           "questions": [
-            "Der orientierende Neurostatus beginnt mit Bewusstsein, Sprache, Pupillen und grober Motorik. Im Akutfall ist die Zeitachse fast so wichtig wie der Befund selbst und gehört früh in die Einschätzung.",
-            "Der Untersuchungsumfang bleibt fokussiert auf Zeichen, die stabile von zeitkritischen Situationen trennen. Wichtig ist eine feste Reihenfolge, damit unter Zeitdruck keine Kernpunkte verloren gehen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
+            "Der orientierende Neurostatus beginnt mit Bewusstsein, Sprache, Pupillen und grober Motorik. Im Akutfall ist die Zeitachse fast so wichtig wie der Befund selbst und gehört früh in die Einschätzung. Der Untersuchungsumfang bleibt fokussiert auf Zeichen, die stabile von zeitkritischen Situationen trennen. Wichtig ist eine feste Reihenfolge, damit unter Zeitdruck keine Kernpunkte verloren gehen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
           ]
         },
         {
-          "title": "Wie du Befund und Konsequenz zusammenführst",
+          "title": "Befund und Konsequenz verbinden",
           "questions": [
-            "Neurologische Auffälligkeiten sollten konkret beschrieben werden, zum Beispiel Aphasie, Fazialisparese oder Armhalteversuch rechts absinkend. Unscharfe Begriffe wie neurologisch auffällig wirken schwach, weil sie keine klinische Richtung geben.",
-            "Bei fokalen Defiziten muss sprachlich sofort klar werden, dass Bildgebung, Monitoring und Akutpfad eingeleitet werden. Die beste Übergabe bleibt kurz, konkret und streng an Defizit, Zeitachse und Plan orientiert. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
+            "Neurologische Auffälligkeiten sollten konkret beschrieben werden, zum Beispiel Aphasie, Fazialisparese oder Armhalteversuch rechts absinkend. Unscharfe Begriffe wie neurologisch auffällig wirken schwach, weil sie keine klinische Richtung geben. Bei fokalen Defiziten muss sprachlich sofort klar werden, dass Bildgebung, Monitoring und Akutpfad eingeleitet werden. Die beste Übergabe bleibt kurz, konkret und streng an Defizit, Zeitachse und Plan orientiert. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
           ]
         },
         {
-          "title": "Woran du merkst, dass die Untersuchung sprachlich sitzt",
+          "title": "Sprachlich sichere Untersuchung",
           "questions": [
-            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen.",
-            "Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
           ]
         }
       ],
@@ -128,35 +126,34 @@
     {
       "id": "hirnnerven",
       "title": "Hirnnerven untersuchen und anleiten",
-      "focus": "Prüfungsnahe Anweisungen, Beobachtung und Dokumentationssprache",
-      "summary": "In Berlin werden häufig klare Untersuchungsanweisungen bewertet. Ziel ist, dass der Patient versteht, was er tun soll, und dass die Kandidatin die Beobachtung fachsprachlich korrekt dokumentiert.",
+      "focus": "Geordnete Untersuchungsführung | Befund und Konsequenz verbinden | Sprachlich sichere Untersuchung",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
-        "Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
-        "Bei den Hirnnerven steht eine klare Patientenanleitung im Vordergrund, damit jeder Schritt sicher mitgemacht werden kann. Pupillen, Augenbewegungen, Gesichtsmotorik, Hören, Gaumensegel und Zungenmotorik werden geordnet abgearbeitet. Die Sprache bleibt einfach, etwa bitte folgen Sie meinem Finger oder zeigen Sie die Zähne. Je klarer die Anleitung, desto leichter wird anschließend auch die Beobachtung sprachlich präzise. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
-        "Hirnnervenbefunde sollten seitengerecht und möglichst konkret beschrieben werden. Wichtig ist die Unterscheidung zwischen unauffälligem Befund und echtem Ausfall mit klinischer Bedeutung. Auch ein kleiner Defizitbefund wirkt nur dann stark, wenn er nicht isoliert, sondern im Gesamtbild eingeordnet wird. In der FSP punktet, wer Untersuchung, Befund und Konsequenz sprachlich sauber zusammenhaelt. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
-        "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+        "In der Untersuchungseinheit „Hirnnerven untersuchen und anleiten“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Bei den Hirnnerven steht eine klare Patientenanleitung im Vordergrund, damit jeder Schritt sicher mitgemacht werden kann. Pupillen, Augenbewegungen, Gesichtsmotorik, Hören, Gaumensegel und Zungenmotorik werden geordnet abgearbeitet. Die Sprache bleibt einfach, etwa bitte folgen Sie meinem Finger oder zeigen Sie die Zähne. Je klarer die Anleitung, desto leichter wird anschließend auch die Beobachtung sprachlich präzise. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Bei den Hirnnerven steht eine klare Patientenanleitung im Vordergrund, damit jeder Schritt sicher mitgemacht werden kann. Pupillen, Augenbewegungen, Gesichtsmotorik, Hören, Gaumensegel und Zungenmotorik werden geordnet abgearbeitet. Die Sprache bleibt einfach, etwa bitte folgen Sie meinem Finger oder zeigen Sie die Zähne. Je klarer die Anleitung, desto leichter wird anschließend auch die Beobachtung sprachlich präzise. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Hirnnervenbefunde sollten seitengerecht und möglichst konkret beschrieben werden. Wichtig ist die Unterscheidung zwischen unauffälligem Befund und echtem Ausfall mit klinischer Bedeutung. Auch ein kleiner Defizitbefund wirkt nur dann stark, wenn er nicht isoliert, sondern im Gesamtbild eingeordnet wird. In der FSP punktet, wer Untersuchung, Befund und Konsequenz sprachlich sauber zusammenhaelt. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Bitte folgen Sie meinem Finger nur mit den Augen, ohne den Kopf zu bewegen. Die orientierende Hirnnervenprüfung war weitgehend unauffällig. Es zeigt sich eine rechtsseitige periphere Fazialisparese."
       ],
       "question_groups": [
         {
-          "title": "Wie du die Untersuchung geordnet führst",
+          "title": "Geordnete Untersuchungsführung",
           "questions": [
-            "Bei den Hirnnerven steht eine klare Patientenanleitung im Vordergrund, damit jeder Schritt sicher mitgemacht werden kann. Pupillen, Augenbewegungen, Gesichtsmotorik, Hören, Gaumensegel und Zungenmotorik werden geordnet abgearbeitet.",
-            "Die Sprache bleibt einfach, etwa bitte folgen Sie meinem Finger oder zeigen Sie die Zähne. Je klarer die Anleitung, desto leichter wird anschließend auch die Beobachtung sprachlich präzise. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
+            "Bei den Hirnnerven steht eine klare Patientenanleitung im Vordergrund, damit jeder Schritt sicher mitgemacht werden kann. Pupillen, Augenbewegungen, Gesichtsmotorik, Hören, Gaumensegel und Zungenmotorik werden geordnet abgearbeitet. Die Sprache bleibt einfach, etwa bitte folgen Sie meinem Finger oder zeigen Sie die Zähne. Je klarer die Anleitung, desto leichter wird anschließend auch die Beobachtung sprachlich präzise. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
           ]
         },
         {
-          "title": "Wie du Befund und Konsequenz zusammenführst",
+          "title": "Befund und Konsequenz verbinden",
           "questions": [
-            "Hirnnervenbefunde sollten seitengerecht und möglichst konkret beschrieben werden. Wichtig ist die Unterscheidung zwischen unauffälligem Befund und echtem Ausfall mit klinischer Bedeutung.",
-            "Auch ein kleiner Defizitbefund wirkt nur dann stark, wenn er nicht isoliert, sondern im Gesamtbild eingeordnet wird. In der FSP punktet, wer Untersuchung, Befund und Konsequenz sprachlich sauber zusammenhaelt. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
+            "Hirnnervenbefunde sollten seitengerecht und möglichst konkret beschrieben werden. Wichtig ist die Unterscheidung zwischen unauffälligem Befund und echtem Ausfall mit klinischer Bedeutung. Auch ein kleiner Defizitbefund wirkt nur dann stark, wenn er nicht isoliert, sondern im Gesamtbild eingeordnet wird. In der FSP punktet, wer Untersuchung, Befund und Konsequenz sprachlich sauber zusammenhaelt. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
           ]
         },
         {
-          "title": "Woran du merkst, dass die Untersuchung sprachlich sitzt",
+          "title": "Sprachlich sichere Untersuchung",
           "questions": [
-            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen.",
-            "Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
           ]
         }
       ],
@@ -180,35 +177,34 @@
     {
       "id": "motorik_reflexe_sensibilitaet",
       "title": "Motorik, Reflexe und Sensibilität",
-      "focus": "Systematische Untersuchung und semantisch saubere Befundformulierung",
-      "summary": "Dieser Teil entscheidet oft über die Qualität der neurologischen Vorstellung. Gefordert ist keine Facharzt-Tiefe, aber eine stabile Struktur aus Test, Befund und klinischer Bedeutung.",
+      "focus": "Geordnete Untersuchungsführung | Befund und Konsequenz verbinden | Sprachlich sichere Untersuchung",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
-        "Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
-        "Motorik, Reflexe und Sensibilität werden seitenvergleichend und systematisch erhoben. Kraftprüfung, Halteversuche, Reflexstatus und sensible Qualitäten sollten in einer festen Reihenfolge erfolgen. Wichtig ist eine ruhige Patientenanleitung, damit Mitarbeit und Untersuchungsqualität stabil bleiben. Die Untersuchung braucht keine Facharzt-Tiefe, aber eine saubere Grundstruktur mit klarer Logik. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
-        "Seitendifferenzen und Reflexbefunde müssen möglichst konkret und nicht pauschal beschrieben werden. Sensible Störungen gewinnen erst durch Lokalisation und Qualität sprachliche Aussagekraft. Der klinische Wert liegt in der Verbindung von Untersuchungsbefund, möglicher Läsion und nächstem Schritt. In der Übergabe wirken kurze, präzise Standardsätze deutlich stärker als lange unsichere Beschreibungen. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
-        "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+        "In der Untersuchungseinheit „Motorik, Reflexe und Sensibilität“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Motorik, Reflexe und Sensibilität werden seitenvergleichend und systematisch erhoben. Kraftprüfung, Halteversuche, Reflexstatus und sensible Qualitäten sollten in einer festen Reihenfolge erfolgen. Wichtig ist eine ruhige Patientenanleitung, damit Mitarbeit und Untersuchungsqualität stabil bleiben. Die Untersuchung braucht keine Facharzt-Tiefe, aber eine saubere Grundstruktur mit klarer Logik. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Motorik, Reflexe und Sensibilität werden seitenvergleichend und systematisch erhoben. Kraftprüfung, Halteversuche, Reflexstatus und sensible Qualitäten sollten in einer festen Reihenfolge erfolgen. Wichtig ist eine ruhige Patientenanleitung, damit Mitarbeit und Untersuchungsqualität stabil bleiben. Die Untersuchung braucht keine Facharzt-Tiefe, aber eine saubere Grundstruktur mit klarer Logik. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Seitendifferenzen und Reflexbefunde müssen möglichst konkret und nicht pauschal beschrieben werden. Sensible Störungen gewinnen erst durch Lokalisation und Qualität sprachliche Aussagekraft. Der klinische Wert liegt in der Verbindung von Untersuchungsbefund, möglicher Läsion und nächstem Schritt. In der Übergabe wirken kurze, präzise Standardsätze deutlich stärker als lange unsichere Beschreibungen. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Die Muskelkraft ist linksseitig regelrecht, rechts distal vermindert. Die Eigenreflexe sind seitengleich auslösbar, ein pathologischer Reflex zeigt sich nicht. Sensible Defizite sind dermatomnah abgrenzbar im Bereich L5 rechts."
       ],
       "question_groups": [
         {
-          "title": "Wie du die Untersuchung geordnet führst",
+          "title": "Geordnete Untersuchungsführung",
           "questions": [
-            "Motorik, Reflexe und Sensibilität werden seitenvergleichend und systematisch erhoben. Kraftprüfung, Halteversuche, Reflexstatus und sensible Qualitäten sollten in einer festen Reihenfolge erfolgen.",
-            "Wichtig ist eine ruhige Patientenanleitung, damit Mitarbeit und Untersuchungsqualität stabil bleiben. Die Untersuchung braucht keine Facharzt-Tiefe, aber eine saubere Grundstruktur mit klarer Logik. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
+            "Motorik, Reflexe und Sensibilität werden seitenvergleichend und systematisch erhoben. Kraftprüfung, Halteversuche, Reflexstatus und sensible Qualitäten sollten in einer festen Reihenfolge erfolgen. Wichtig ist eine ruhige Patientenanleitung, damit Mitarbeit und Untersuchungsqualität stabil bleiben. Die Untersuchung braucht keine Facharzt-Tiefe, aber eine saubere Grundstruktur mit klarer Logik. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
           ]
         },
         {
-          "title": "Wie du Befund und Konsequenz zusammenführst",
+          "title": "Befund und Konsequenz verbinden",
           "questions": [
-            "Seitendifferenzen und Reflexbefunde müssen möglichst konkret und nicht pauschal beschrieben werden. Sensible Störungen gewinnen erst durch Lokalisation und Qualität sprachliche Aussagekraft.",
-            "Der klinische Wert liegt in der Verbindung von Untersuchungsbefund, möglicher Läsion und nächstem Schritt. In der Übergabe wirken kurze, präzise Standardsätze deutlich stärker als lange unsichere Beschreibungen. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
+            "Seitendifferenzen und Reflexbefunde müssen möglichst konkret und nicht pauschal beschrieben werden. Sensible Störungen gewinnen erst durch Lokalisation und Qualität sprachliche Aussagekraft. Der klinische Wert liegt in der Verbindung von Untersuchungsbefund, möglicher Läsion und nächstem Schritt. In der Übergabe wirken kurze, präzise Standardsätze deutlich stärker als lange unsichere Beschreibungen. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
           ]
         },
         {
-          "title": "Woran du merkst, dass die Untersuchung sprachlich sitzt",
+          "title": "Sprachlich sichere Untersuchung",
           "questions": [
-            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen.",
-            "Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
           ]
         }
       ],
@@ -232,35 +228,34 @@
     {
       "id": "koordination_gang",
       "title": "Koordination und Gangbild",
-      "focus": "Finger-Nase, Romberg, Gangbeurteilung und funktionelle Einordnung",
-      "summary": "Koordinationsbefunde werden in der FSP oft abgefragt, weil sie klinische Relevanz und sprachliche Präzision verbinden. Ziel ist eine kurze, klare und reproduzierbare Darstellung.",
+      "focus": "Geordnete Untersuchungsführung | Befund und Konsequenz verbinden | Sprachlich sichere Untersuchung",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
-        "Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
-        "Koordination und Gangbild werden über Finger-Nase-Versuch, Knie-Hacke-Versuch, Romberg und verschiedene Gangformen geordnet erhoben. Die Sicherheit des Patienten hat Vorrang, besonders wenn Unsicherheit oder Sturzgefahr besteht. Eine klare Anleitung ist entscheidend, damit der Unterschied zwischen fehlender Mitarbeit und echtem Defizit sichtbar bleibt. Auch wenn ein Test nicht durchführbar ist, sollte dieser Umstand sprachlich sauber benannt werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
-        "Gang und Koordination sollten möglichst konkret beschrieben werden, etwa breitbasig, ataktisch, unsicher oder mit Fallneigung. Ein unauffälliger Koordinationsbefund darf kurz, aber vollständig dokumentiert werden. Wichtig ist die Einordnung, ob der Befund eher zerebellär, sensibel, vestibulär oder schmerzbedingt wirkt. Die sprachliche Qualität entsteht durch kurze Beobachtungssätze mit klarer funktioneller Bedeutung. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
-        "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+        "In der Untersuchungseinheit „Koordination und Gangbild“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Koordination und Gangbild werden über Finger-Nase-Versuch, Knie-Hacke-Versuch, Romberg und verschiedene Gangformen geordnet erhoben. Die Sicherheit des Patienten hat Vorrang, besonders wenn Unsicherheit oder Sturzgefahr besteht. Eine klare Anleitung ist entscheidend, damit der Unterschied zwischen fehlender Mitarbeit und echtem Defizit sichtbar bleibt. Auch wenn ein Test nicht durchführbar ist, sollte dieser Umstand sprachlich sauber benannt werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Koordination und Gangbild werden über Finger-Nase-Versuch, Knie-Hacke-Versuch, Romberg und verschiedene Gangformen geordnet erhoben. Die Sicherheit des Patienten hat Vorrang, besonders wenn Unsicherheit oder Sturzgefahr besteht. Eine klare Anleitung ist entscheidend, damit der Unterschied zwischen fehlender Mitarbeit und echtem Defizit sichtbar bleibt. Auch wenn ein Test nicht durchführbar ist, sollte dieser Umstand sprachlich sauber benannt werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Gang und Koordination sollten möglichst konkret beschrieben werden, etwa breitbasig, ataktisch, unsicher oder mit Fallneigung. Ein unauffälliger Koordinationsbefund darf kurz, aber vollständig dokumentiert werden. Wichtig ist die Einordnung, ob der Befund eher zerebellär, sensibel, vestibulär oder schmerzbedingt wirkt. Die sprachliche Qualität entsteht durch kurze Beobachtungssätze mit klarer funktioneller Bedeutung. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Im Finger-Nase-Versuch zeigt sich eine leichte rechtsseitige Dysmetrie. Der Romberg-Test ist unsicher mit Tendenz nach rechts. Das Gangbild ist breitbasig und klinisch sturzgefährdet."
       ],
       "question_groups": [
         {
-          "title": "Wie du die Untersuchung geordnet führst",
+          "title": "Geordnete Untersuchungsführung",
           "questions": [
-            "Koordination und Gangbild werden über Finger-Nase-Versuch, Knie-Hacke-Versuch, Romberg und verschiedene Gangformen geordnet erhoben. Die Sicherheit des Patienten hat Vorrang, besonders wenn Unsicherheit oder Sturzgefahr besteht.",
-            "Eine klare Anleitung ist entscheidend, damit der Unterschied zwischen fehlender Mitarbeit und echtem Defizit sichtbar bleibt. Auch wenn ein Test nicht durchführbar ist, sollte dieser Umstand sprachlich sauber benannt werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
+            "Koordination und Gangbild werden über Finger-Nase-Versuch, Knie-Hacke-Versuch, Romberg und verschiedene Gangformen geordnet erhoben. Die Sicherheit des Patienten hat Vorrang, besonders wenn Unsicherheit oder Sturzgefahr besteht. Eine klare Anleitung ist entscheidend, damit der Unterschied zwischen fehlender Mitarbeit und echtem Defizit sichtbar bleibt. Auch wenn ein Test nicht durchführbar ist, sollte dieser Umstand sprachlich sauber benannt werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
           ]
         },
         {
-          "title": "Wie du Befund und Konsequenz zusammenführst",
+          "title": "Befund und Konsequenz verbinden",
           "questions": [
-            "Gang und Koordination sollten möglichst konkret beschrieben werden, etwa breitbasig, ataktisch, unsicher oder mit Fallneigung. Ein unauffälliger Koordinationsbefund darf kurz, aber vollständig dokumentiert werden.",
-            "Wichtig ist die Einordnung, ob der Befund eher zerebellär, sensibel, vestibulär oder schmerzbedingt wirkt. Die sprachliche Qualität entsteht durch kurze Beobachtungssätze mit klarer funktioneller Bedeutung. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
+            "Gang und Koordination sollten möglichst konkret beschrieben werden, etwa breitbasig, ataktisch, unsicher oder mit Fallneigung. Ein unauffälliger Koordinationsbefund darf kurz, aber vollständig dokumentiert werden. Wichtig ist die Einordnung, ob der Befund eher zerebellär, sensibel, vestibulär oder schmerzbedingt wirkt. Die sprachliche Qualität entsteht durch kurze Beobachtungssätze mit klarer funktioneller Bedeutung. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
           ]
         },
         {
-          "title": "Woran du merkst, dass die Untersuchung sprachlich sitzt",
+          "title": "Sprachlich sichere Untersuchung",
           "questions": [
-            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen.",
-            "Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
           ]
         }
       ],
@@ -284,35 +279,34 @@
     {
       "id": "psychischer_status",
       "title": "Psychischer Status in der klinischen Kommunikation",
-      "focus": "Stimmung, Antrieb, Denken und Sicherheitsaspekte sprachlich korrekt erfassen",
-      "summary": "Der psychische Status verlangt eine neutrale, nicht wertende Sprache. Entscheidend ist, Beobachtungen strukturiert zu beschreiben und sensible Themen professionell anzusprechen.",
+      "focus": "Geordnete Untersuchungsführung | Befund und Konsequenz verbinden | Sprachlich sichere Untersuchung",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
-        "Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
-        "Der psychische Status beginnt mit Eindruck, Kontaktfaehigkeit, Orientierung, Stimmung und formaler Denkführung. Neutrale, nicht wertende Sprache ist hier wichtiger als ausgefallene Fachbegriffe. Sensible Themen wie Suizidalität oder psychotische Symptome brauchen klare, direkte und gleichzeitig professionelle Formulierungen. Auch hier hilft eine feste Reihenfolge, damit relevante Sicherheitsaspekte nicht übersehen werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
-        "Beobachtungen sollten beschrieben und nicht etikettiert werden, zum Beispiel antriebsgemindert statt faul oder schwierig. Stimmung, Affekt, Denken und Realitätsbezug wirken nur dann stark, wenn sie knapp und konkret formuliert sind. Bei Sicherheitsaspekten muss die Brücke zu Schutz, Beobachtung und weiterem Vorgehen sprachlich eindeutig werden. Gerade hier zeigt sich klinische Reife darin, ruhig, respektvoll und klar zu bleiben. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
-        "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+        "In der Untersuchungseinheit „Psychischer Status in der klinischen Kommunikation“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Der psychische Status beginnt mit Eindruck, Kontaktfaehigkeit, Orientierung, Stimmung und formaler Denkführung. Neutrale, nicht wertende Sprache ist hier wichtiger als ausgefallene Fachbegriffe. Sensible Themen wie Suizidalität oder psychotische Symptome brauchen klare, direkte und gleichzeitig professionelle Formulierungen. Auch hier hilft eine feste Reihenfolge, damit relevante Sicherheitsaspekte nicht übersehen werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Der psychische Status beginnt mit Eindruck, Kontaktfaehigkeit, Orientierung, Stimmung und formaler Denkführung. Neutrale, nicht wertende Sprache ist hier wichtiger als ausgefallene Fachbegriffe. Sensible Themen wie Suizidalität oder psychotische Symptome brauchen klare, direkte und gleichzeitig professionelle Formulierungen. Auch hier hilft eine feste Reihenfolge, damit relevante Sicherheitsaspekte nicht übersehen werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Beobachtungen sollten beschrieben und nicht etikettiert werden, zum Beispiel antriebsgemindert statt faul oder schwierig. Stimmung, Affekt, Denken und Realitätsbezug wirken nur dann stark, wenn sie knapp und konkret formuliert sind. Bei Sicherheitsaspekten muss die Brücke zu Schutz, Beobachtung und weiterem Vorgehen sprachlich eindeutig werden. Gerade hier zeigt sich klinische Reife darin, ruhig, respektvoll und klar zu bleiben. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Der Patient ist allseits orientiert, im Kontakt verlangsamt und affektiv gedrückt. Auf direkte Nachfrage verneint er aktuell suizidale Handlungsabsichten. Es besteht dennoch ein relevanter psychosozialer Belastungsfaktor mit weiterem Abklärungsbedarf."
       ],
       "question_groups": [
         {
-          "title": "Wie du die Untersuchung geordnet führst",
+          "title": "Geordnete Untersuchungsführung",
           "questions": [
-            "Der psychische Status beginnt mit Eindruck, Kontaktfaehigkeit, Orientierung, Stimmung und formaler Denkführung. Neutrale, nicht wertende Sprache ist hier wichtiger als ausgefallene Fachbegriffe.",
-            "Sensible Themen wie Suizidalität oder psychotische Symptome brauchen klare, direkte und gleichzeitig professionelle Formulierungen. Auch hier hilft eine feste Reihenfolge, damit relevante Sicherheitsaspekte nicht übersehen werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
+            "Der psychische Status beginnt mit Eindruck, Kontaktfaehigkeit, Orientierung, Stimmung und formaler Denkführung. Neutrale, nicht wertende Sprache ist hier wichtiger als ausgefallene Fachbegriffe. Sensible Themen wie Suizidalität oder psychotische Symptome brauchen klare, direkte und gleichzeitig professionelle Formulierungen. Auch hier hilft eine feste Reihenfolge, damit relevante Sicherheitsaspekte nicht übersehen werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
           ]
         },
         {
-          "title": "Wie du Befund und Konsequenz zusammenführst",
+          "title": "Befund und Konsequenz verbinden",
           "questions": [
-            "Beobachtungen sollten beschrieben und nicht etikettiert werden, zum Beispiel antriebsgemindert statt faul oder schwierig. Stimmung, Affekt, Denken und Realitätsbezug wirken nur dann stark, wenn sie knapp und konkret formuliert sind.",
-            "Bei Sicherheitsaspekten muss die Brücke zu Schutz, Beobachtung und weiterem Vorgehen sprachlich eindeutig werden. Gerade hier zeigt sich klinische Reife darin, ruhig, respektvoll und klar zu bleiben. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
+            "Beobachtungen sollten beschrieben und nicht etikettiert werden, zum Beispiel antriebsgemindert statt faul oder schwierig. Stimmung, Affekt, Denken und Realitätsbezug wirken nur dann stark, wenn sie knapp und konkret formuliert sind. Bei Sicherheitsaspekten muss die Brücke zu Schutz, Beobachtung und weiterem Vorgehen sprachlich eindeutig werden. Gerade hier zeigt sich klinische Reife darin, ruhig, respektvoll und klar zu bleiben. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
           ]
         },
         {
-          "title": "Woran du merkst, dass die Untersuchung sprachlich sitzt",
+          "title": "Sprachlich sichere Untersuchung",
           "questions": [
-            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen.",
-            "Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
           ]
         }
       ],
@@ -336,35 +330,34 @@
     {
       "id": "herz_kreislauf_untersuchung",
       "title": "Herz-Kreislauf-Untersuchung strukturiert anleiten",
-      "focus": "Inspektion, Auskultation, Pulsstatus und Ödemzeichen sprachlich sicher führen",
-      "summary": "Im internistischen Alltag ist die kardiovaskuläre Untersuchung ein Basismodul mit grossem Hebel. Für die FSP ist vor allem wichtig, dass Anweisungen, Befundsprache und klinische Einordnung sauber zusammenpassen.",
+      "focus": "Geordnete Untersuchungsführung | Befund und Konsequenz verbinden | Sprachlich sichere Untersuchung",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
-        "Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
-        "Die kardiovaskuläre Untersuchung beginnt mit Inspektion, Vitalparametern und dem geordneten Übergang zu Puls, Halsvenen und Auskultation. Kurze, freundliche Anweisungen halten die Untersuchung ruhig und patientennah. Wichtig bleibt die Reihenfolge von Sehen, Fühlen, Hören und anschließender Einordnung. Auch periphere Zeichen wie Ödeme, Rekapillarisierung oder Hautkolorit gehören oft zum Gesamtbild. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
-        "Pulsqualität, Rhythmus, Ödeme und Halsvenenstauung sollten in konkreten Befundsätzen erscheinen. Herztoene und Nebengeräusche werden knapp, aber korrekt beschrieben und nicht überinterpretiert. Pathologische Zeichen entfalten ihren Wert erst in der Verbindung mit klinischer Einordnung und Plan. Die Übergabe wirkt stark, wenn aus dem Untersuchungsbefund unmittelbar weiteres Monitoring oder Diagnostik folgt. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
-        "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+        "In der Untersuchungseinheit „Herz-Kreislauf-Untersuchung strukturiert anleiten“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Die kardiovaskuläre Untersuchung beginnt mit Inspektion, Vitalparametern und dem geordneten Übergang zu Puls, Halsvenen und Auskultation. Kurze, freundliche Anweisungen halten die Untersuchung ruhig und patientennah. Wichtig bleibt die Reihenfolge von Sehen, Fühlen, Hören und anschließender Einordnung. Auch periphere Zeichen wie Ödeme, Rekapillarisierung oder Hautkolorit gehören oft zum Gesamtbild. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Die kardiovaskuläre Untersuchung beginnt mit Inspektion, Vitalparametern und dem geordneten Übergang zu Puls, Halsvenen und Auskultation. Kurze, freundliche Anweisungen halten die Untersuchung ruhig und patientennah. Wichtig bleibt die Reihenfolge von Sehen, Fühlen, Hören und anschließender Einordnung. Auch periphere Zeichen wie Ödeme, Rekapillarisierung oder Hautkolorit gehören oft zum Gesamtbild. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Pulsqualität, Rhythmus, Ödeme und Halsvenenstauung sollten in konkreten Befundsätzen erscheinen. Herztoene und Nebengeräusche werden knapp, aber korrekt beschrieben und nicht überinterpretiert. Pathologische Zeichen entfalten ihren Wert erst in der Verbindung mit klinischer Einordnung und Plan. Die Übergabe wirkt stark, wenn aus dem Untersuchungsbefund unmittelbar weiteres Monitoring oder Diagnostik folgt. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Ich höre jetzt Herz und Lunge ab und taste danach die Pulse an den Beinen. Die Herztoene sind rhythmisch, auskultatorisch zeigen sich aktuell keine deutlichen Nebengeräusche. Klinisch finden sich keine ausgeprägten Ödeme oder Zeichen einer akuten kardialen Dekompensation."
       ],
       "question_groups": [
         {
-          "title": "Wie du die Untersuchung geordnet führst",
+          "title": "Geordnete Untersuchungsführung",
           "questions": [
-            "Die kardiovaskuläre Untersuchung beginnt mit Inspektion, Vitalparametern und dem geordneten Übergang zu Puls, Halsvenen und Auskultation. Kurze, freundliche Anweisungen halten die Untersuchung ruhig und patientennah.",
-            "Wichtig bleibt die Reihenfolge von Sehen, Fühlen, Hören und anschließender Einordnung. Auch periphere Zeichen wie Ödeme, Rekapillarisierung oder Hautkolorit gehören oft zum Gesamtbild. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
+            "Die kardiovaskuläre Untersuchung beginnt mit Inspektion, Vitalparametern und dem geordneten Übergang zu Puls, Halsvenen und Auskultation. Kurze, freundliche Anweisungen halten die Untersuchung ruhig und patientennah. Wichtig bleibt die Reihenfolge von Sehen, Fühlen, Hören und anschließender Einordnung. Auch periphere Zeichen wie Ödeme, Rekapillarisierung oder Hautkolorit gehören oft zum Gesamtbild. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
           ]
         },
         {
-          "title": "Wie du Befund und Konsequenz zusammenführst",
+          "title": "Befund und Konsequenz verbinden",
           "questions": [
-            "Pulsqualität, Rhythmus, Ödeme und Halsvenenstauung sollten in konkreten Befundsätzen erscheinen. Herztoene und Nebengeräusche werden knapp, aber korrekt beschrieben und nicht überinterpretiert.",
-            "Pathologische Zeichen entfalten ihren Wert erst in der Verbindung mit klinischer Einordnung und Plan. Die Übergabe wirkt stark, wenn aus dem Untersuchungsbefund unmittelbar weiteres Monitoring oder Diagnostik folgt. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
+            "Pulsqualität, Rhythmus, Ödeme und Halsvenenstauung sollten in konkreten Befundsätzen erscheinen. Herztoene und Nebengeräusche werden knapp, aber korrekt beschrieben und nicht überinterpretiert. Pathologische Zeichen entfalten ihren Wert erst in der Verbindung mit klinischer Einordnung und Plan. Die Übergabe wirkt stark, wenn aus dem Untersuchungsbefund unmittelbar weiteres Monitoring oder Diagnostik folgt. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
           ]
         },
         {
-          "title": "Woran du merkst, dass die Untersuchung sprachlich sitzt",
+          "title": "Sprachlich sichere Untersuchung",
           "questions": [
-            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen.",
-            "Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
           ]
         }
       ],
@@ -388,35 +381,34 @@
     {
       "id": "lungen_thorax_untersuchung",
       "title": "Lungen- und Thoraxuntersuchung sicher führen",
-      "focus": "Inspektion, Palpation, Perkussion und Auskultation mit klarer Befundsprache verbinden",
-      "summary": "Bei Husten, Dyspnoe und Thoraxschmerz braucht man in der FSP eine stabile Untersuchungssprache. Hier zeigt sich schnell, ob Kandidaten medizinisch logisch und sprachlich geordnet vorgehen.",
+      "focus": "Geordnete Untersuchungsführung | Befund und Konsequenz verbinden | Sprachlich sichere Untersuchung",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
-        "Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
-        "Der Thoraxstatus beginnt mit Atemarbeit, Atemfrequenz und sichtbaren Belastungszeichen. Inspektion, Perkussion und Auskultation folgen in einer für Patienten nachvollziehbaren Reihenfolge. Klare Atemanweisungen gehören zur Untersuchungssprache unbedingt dazu. Auch Husten, Zyanose, asymmetrische Thoraxbewegung oder Schonatmung müssen früh beobachtet werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
-        "Rasselgeräusche, Giemen, abgeschwächtes Atemgeräusch oder hypersonorer Klopfschall sollten möglichst konkret benannt werden. Atemnot wird sprachlich stärker, wenn subjektive Beschwerde und objektive Zeichen gemeinsam beschrieben werden. Zwischen Beobachtung und Interpretation bleibt auch im Thoraxstatus eine klare Trennlinie. In der FSP zeigt sich Reife daran, dass der Befund sofort in Diagnostik, Therapie oder Monitoring übersetzt wird. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
-        "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+        "In der Untersuchungseinheit „Lungen- und Thoraxuntersuchung sicher führen“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Der Thoraxstatus beginnt mit Atemarbeit, Atemfrequenz und sichtbaren Belastungszeichen. Inspektion, Perkussion und Auskultation folgen in einer für Patienten nachvollziehbaren Reihenfolge. Klare Atemanweisungen gehören zur Untersuchungssprache unbedingt dazu. Auch Husten, Zyanose, asymmetrische Thoraxbewegung oder Schonatmung müssen früh beobachtet werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Der Thoraxstatus beginnt mit Atemarbeit, Atemfrequenz und sichtbaren Belastungszeichen. Inspektion, Perkussion und Auskultation folgen in einer für Patienten nachvollziehbaren Reihenfolge. Klare Atemanweisungen gehören zur Untersuchungssprache unbedingt dazu. Auch Husten, Zyanose, asymmetrische Thoraxbewegung oder Schonatmung müssen früh beobachtet werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Rasselgeräusche, Giemen, abgeschwächtes Atemgeräusch oder hypersonorer Klopfschall sollten möglichst konkret benannt werden. Atemnot wird sprachlich stärker, wenn subjektive Beschwerde und objektive Zeichen gemeinsam beschrieben werden. Zwischen Beobachtung und Interpretation bleibt auch im Thoraxstatus eine klare Trennlinie. In der FSP zeigt sich Reife daran, dass der Befund sofort in Diagnostik, Therapie oder Monitoring übersetzt wird. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Bitte atmen Sie jetzt mehrmals tief durch den Mund ein und aus, ich höre die Lunge an verschiedenen Stellen ab. Auskultatorisch zeigt sich rechts basal ein abgeschwächtes Atemgeräusch mit feinen Rasselgeraeschen. Der Befund passt klinisch zu einer pulmonalen Ursache der Dyspnoe und begründet weitere Diagnostik."
       ],
       "question_groups": [
         {
-          "title": "Wie du die Untersuchung geordnet führst",
+          "title": "Geordnete Untersuchungsführung",
           "questions": [
-            "Der Thoraxstatus beginnt mit Atemarbeit, Atemfrequenz und sichtbaren Belastungszeichen. Inspektion, Perkussion und Auskultation folgen in einer für Patienten nachvollziehbaren Reihenfolge.",
-            "Klare Atemanweisungen gehören zur Untersuchungssprache unbedingt dazu. Auch Husten, Zyanose, asymmetrische Thoraxbewegung oder Schonatmung müssen früh beobachtet werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
+            "Der Thoraxstatus beginnt mit Atemarbeit, Atemfrequenz und sichtbaren Belastungszeichen. Inspektion, Perkussion und Auskultation folgen in einer für Patienten nachvollziehbaren Reihenfolge. Klare Atemanweisungen gehören zur Untersuchungssprache unbedingt dazu. Auch Husten, Zyanose, asymmetrische Thoraxbewegung oder Schonatmung müssen früh beobachtet werden. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
           ]
         },
         {
-          "title": "Wie du Befund und Konsequenz zusammenführst",
+          "title": "Befund und Konsequenz verbinden",
           "questions": [
-            "Rasselgeräusche, Giemen, abgeschwächtes Atemgeräusch oder hypersonorer Klopfschall sollten möglichst konkret benannt werden. Atemnot wird sprachlich stärker, wenn subjektive Beschwerde und objektive Zeichen gemeinsam beschrieben werden.",
-            "Zwischen Beobachtung und Interpretation bleibt auch im Thoraxstatus eine klare Trennlinie. In der FSP zeigt sich Reife daran, dass der Befund sofort in Diagnostik, Therapie oder Monitoring übersetzt wird. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
+            "Rasselgeräusche, Giemen, abgeschwächtes Atemgeräusch oder hypersonorer Klopfschall sollten möglichst konkret benannt werden. Atemnot wird sprachlich stärker, wenn subjektive Beschwerde und objektive Zeichen gemeinsam beschrieben werden. Zwischen Beobachtung und Interpretation bleibt auch im Thoraxstatus eine klare Trennlinie. In der FSP zeigt sich Reife daran, dass der Befund sofort in Diagnostik, Therapie oder Monitoring übersetzt wird. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
           ]
         },
         {
-          "title": "Woran du merkst, dass die Untersuchung sprachlich sitzt",
+          "title": "Sprachlich sichere Untersuchung",
           "questions": [
-            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen.",
-            "Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
           ]
         }
       ],
@@ -440,35 +432,34 @@
     {
       "id": "abdomenstatus_basis",
       "title": "Abdomenstatus patientengerecht und fachsprachlich erheben",
-      "focus": "Inspektion, Auskultation, Palpation und Peritonismuszeichen sprachlich sicher verbinden",
-      "summary": "Das Abdomen ist einer der häufigsten Berlin-Bereiche. Wer den Status sauber anleiten und darstellen kann, gewinnt sofort Sicherheit bei vielen Fallgruppen wie Appendizitis, Cholezystitis, Pankreatitis oder Ileus.",
+      "focus": "Geordnete Untersuchungsführung | Befund und Konsequenz verbinden | Sprachlich sichere Untersuchung",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
-        "Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
-        "Der Bauchstatus beginnt mit Blickdiagnose, Lagerung und sprachlicher Vorbereitung des Patienten. Inspektion, Auskultation, Palpation und gegebenenfalls Perkussion bilden eine stabile Grundreihenfolge. Gerade bei Schmerzen müssen Berührung und schmerzhafte Schritte vorher angekündigt werden. Abwehrspannung, Druckschmerz und Lokalisation sind frühe Leitbefunde in vielen häufigen Berlin-Fällen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
-        "Druckschmerz, Loslassschmerz, Meteorismus und Darmgeräusche gehören zu den zentralen Befundwörtern des Abdomenstatus. Die Lokalisation sollte möglichst exakt benannt werden, weil sie die Verdachtsdiagnose stark beeinflusst. Ein Bauchbefund wird sprachlich stark, wenn er direkt auf Verdacht und Dringlichkeit hin eingeordnet wird. In der Übergabe sollten aus dem Status sofort Bildgebung, Labordiagnostik oder chirurgische Mitbeurteilung ableitbar werden. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
-        "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+        "In der Untersuchungseinheit „Abdomenstatus patientengerecht und fachsprachlich erheben“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Dieses Modul zeigt, wie eine klinische Untersuchung so angeleitet und zusammengefasst wird, dass daraus sofort ein verwertbarer Befund entsteht.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Im Vordergrund steht nicht möglichst viel Detailtiefe, sondern eine saubere Reihenfolge aus Anleitung, Beobachtung, Befundsprache und klinischer Einordnung. Genau diese Ordnung macht die Untersuchung in der FSP belastbar.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Der Bauchstatus beginnt mit Blickdiagnose, Lagerung und sprachlicher Vorbereitung des Patienten. Inspektion, Auskultation, Palpation und gegebenenfalls Perkussion bilden eine stabile Grundreihenfolge. Gerade bei Schmerzen müssen Berührung und schmerzhafte Schritte vorher angekündigt werden. Abwehrspannung, Druckschmerz und Lokalisation sind frühe Leitbefunde in vielen häufigen Berlin-Fällen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Der Bauchstatus beginnt mit Blickdiagnose, Lagerung und sprachlicher Vorbereitung des Patienten. Inspektion, Auskultation, Palpation und gegebenenfalls Perkussion bilden eine stabile Grundreihenfolge. Gerade bei Schmerzen müssen Berührung und schmerzhafte Schritte vorher angekündigt werden. Abwehrspannung, Druckschmerz und Lokalisation sind frühe Leitbefunde in vielen häufigen Berlin-Fällen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Druckschmerz, Loslassschmerz, Meteorismus und Darmgeräusche gehören zu den zentralen Befundwörtern des Abdomenstatus. Die Lokalisation sollte möglichst exakt benannt werden, weil sie die Verdachtsdiagnose stark beeinflusst. Ein Bauchbefund wird sprachlich stark, wenn er direkt auf Verdacht und Dringlichkeit hin eingeordnet wird. In der Übergabe sollten aus dem Status sofort Bildgebung, Labordiagnostik oder chirurgische Mitbeurteilung ableitbar werden. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Ich schäu mir jetzt Ihren Bauch an, höre ihn ab und taste ihn danach vorsichtig ab. Es besteht ein lokalisierter Druckschmerz im rechten Unterbauch bei sonst weicher Bauchdecke. Aktuell zeigen sich keine eindeutigen Zeichen eines diffusen Peritonismus."
       ],
       "question_groups": [
         {
-          "title": "Wie du die Untersuchung geordnet führst",
+          "title": "Geordnete Untersuchungsführung",
           "questions": [
-            "Der Bauchstatus beginnt mit Blickdiagnose, Lagerung und sprachlicher Vorbereitung des Patienten. Inspektion, Auskultation, Palpation und gegebenenfalls Perkussion bilden eine stabile Grundreihenfolge.",
-            "Gerade bei Schmerzen müssen Berührung und schmerzhafte Schritte vorher angekündigt werden. Abwehrspannung, Druckschmerz und Lokalisation sind frühe Leitbefunde in vielen häufigen Berlin-Fällen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
+            "Der Bauchstatus beginnt mit Blickdiagnose, Lagerung und sprachlicher Vorbereitung des Patienten. Inspektion, Auskultation, Palpation und gegebenenfalls Perkussion bilden eine stabile Grundreihenfolge. Gerade bei Schmerzen müssen Berührung und schmerzhafte Schritte vorher angekündigt werden. Abwehrspannung, Druckschmerz und Lokalisation sind frühe Leitbefunde in vielen häufigen Berlin-Fällen. Gerade im Erstkontakt ist die Reihenfolge wichtiger als Vollständigkeit bis ins letzte Detail."
           ]
         },
         {
-          "title": "Wie du Befund und Konsequenz zusammenführst",
+          "title": "Befund und Konsequenz verbinden",
           "questions": [
-            "Druckschmerz, Loslassschmerz, Meteorismus und Darmgeräusche gehören zu den zentralen Befundwörtern des Abdomenstatus. Die Lokalisation sollte möglichst exakt benannt werden, weil sie die Verdachtsdiagnose stark beeinflusst.",
-            "Ein Bauchbefund wird sprachlich stark, wenn er direkt auf Verdacht und Dringlichkeit hin eingeordnet wird. In der Übergabe sollten aus dem Status sofort Bildgebung, Labordiagnostik oder chirurgische Mitbeurteilung ableitbar werden. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
+            "Druckschmerz, Loslassschmerz, Meteorismus und Darmgeräusche gehören zu den zentralen Befundwörtern des Abdomenstatus. Die Lokalisation sollte möglichst exakt benannt werden, weil sie die Verdachtsdiagnose stark beeinflusst. Ein Bauchbefund wird sprachlich stark, wenn er direkt auf Verdacht und Dringlichkeit hin eingeordnet wird. In der Übergabe sollten aus dem Status sofort Bildgebung, Labordiagnostik oder chirurgische Mitbeurteilung ableitbar werden. Auffällige Befunde brauchen sofort eine sprachliche Konsequenz, damit aus der Untersuchung echte klinische Orientierung wird."
           ]
         },
         {
-          "title": "Woran du merkst, dass die Untersuchung sprachlich sitzt",
+          "title": "Sprachlich sichere Untersuchung",
           "questions": [
-            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen.",
-            "Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
+            "Stark wirkt eine Untersuchungssprache, die Anweisung, Beobachtung, Befund und Konsequenz sauber trennt. Patientinnen und Patienten sollen jederzeit wissen, was sie gerade tun sollen, während Kolleginnen und Kollegen aus dem Befundsatz sofort die Priorität erkennen. Unscharfe Sammelbegriffe verlieren an Wert; konkrete Befunde mit kurzer Einordnung und nächstem Schritt tragen deutlich weiter."
           ]
         }
       ],
@@ -492,46 +483,43 @@
     {
       "id": "infektstatus_hydratation",
       "title": "Infektstatus, Hydratation und Sepsiswarnzeichen",
-      "focus": "den akut kranken Patienten knapp auf Allgemeinzustand, Kreislauf und Flüssigkeitssituation einschätzen",
-      "summary": "Dieser Status ist besonders wichtig für Fieber-, Gastroenteritis-, HWI- und Pneumoniefälle.",
+      "focus": "Was zuerst gesehen werden muss | Was gezielt untersucht werden sollte | Klinisch wichtige Befunde",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Bei Infektfällen ist der Allgemeineindruck oft diagnostisch genauso wichtig wie das Labor. Deshalb sollte dieser Status sprachlich sehr klar sitzen.",
-        "Zuerst zählen Vigilanz, Hautkolorit, Atmung, Kreislaufeindruck, Schleimhäute, trockene Lippen, stehende Hautfalten, reduzierte Trinkfähigkeit oder allgemeine Erschöpfung.",
-        "Hinzu kommen Temperatur, Puls, Blutdruck, Atemfrequenz, Kapillarfüllung und je nach Fall die gezielte Suche nach Druckschmerz, Nierenlagerklopfschmerz oder fokalen Befunden.",
-        "Klinisch wichtig ist hier die Frage, ob eher ein lokaler Infekt mit stabilem Kreislauf oder eine potenziell schwere systemische Reaktion vorliegt.",
-        "Sprachlich stark sind Formulierungen wie reduziertem Allgemeinzustand entsprechend, exsikkiert wirkend, tachykard, febril, kreislaufstabil oder klinisch nicht toxisch imponierend.",
-        "Der Status sollte immer in eine Priorisierung münden: ambulant vertretbar, stationär nötig oder akut überwachungspflichtig."
+        "In der Untersuchungseinheit „Infektstatus, Hydratation und Sepsiswarnzeichen“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Bei Infektfällen ist der Allgemeineindruck oft diagnostisch genauso wichtig wie das Labor. Deshalb sollte dieser Status sprachlich sehr klar sitzen.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Zuerst zählen Vigilanz, Hautkolorit, Atmung, Kreislaufeindruck, Schleimhäute, trockene Lippen, stehende Hautfalten, reduzierte Trinkfähigkeit oder allgemeine Erschöpfung.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Hinzu kommen Temperatur, Puls, Blutdruck, Atemfrequenz, Kapillarfüllung und je nach Fall die gezielte Suche nach Druckschmerz, Nierenlagerklopfschmerz oder fokalen Befunden.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Allgemeinzustand, Vigilanz, Atemarbeit und Hautkolorit stehen an erster Stelle. Trockene Schleimhäute, stehende Hautfalten oder eingefallene Augen sprechen für Flüssigkeitsmangel. Auch ein toxischer Gesamteindruck oder eine auffällige Unruhe sollte sofort benannt werden.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Temperatur, Puls, Blutdruck, Atemfrequenz und Sauerstoffsättigung bilden die Basis. Je nach Fall folgen Bauchstatus, Nierenlager, Lungenstatus oder fokale Inspektion einer möglichen Eintrittspforte. Die Untersuchung bleibt kurz, aber klar priorisiert.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Im Status zeigt sich ein reduzierter Allgemeinzustand mit febriler Temperatur und Tachykardie. Klinisch imponiert der Patient leicht exsikkiert, aktuell aber noch kreislaufstabil. Warnzeichen einer schweren systemischen Reaktion müssen bei diesem Bild aktiv mitbedacht werden."
       ],
       "question_groups": [
         {
           "title": "Was zuerst gesehen werden muss",
           "questions": [
-            "Allgemeinzustand, Vigilanz, Atemarbeit und Hautkolorit stehen an erster Stelle.",
-            "Trockene Schleimhäute, stehende Hautfalten oder eingefallene Augen sprechen für Flüssigkeitsmangel.",
+            "Allgemeinzustand, Vigilanz, Atemarbeit und Hautkolorit stehen an erster Stelle. Trockene Schleimhäute, stehende Hautfalten oder eingefallene Augen sprechen für Flüssigkeitsmangel.",
             "Auch ein toxischer Gesamteindruck oder eine auffällige Unruhe sollte sofort benannt werden."
           ]
         },
         {
           "title": "Was gezielt untersucht werden sollte",
           "questions": [
-            "Temperatur, Puls, Blutdruck, Atemfrequenz und Sauerstoffsättigung bilden die Basis.",
-            "Je nach Fall folgen Bauchstatus, Nierenlager, Lungenstatus oder fokale Inspektion einer möglichen Eintrittspforte.",
+            "Temperatur, Puls, Blutdruck, Atemfrequenz und Sauerstoffsättigung bilden die Basis. Je nach Fall folgen Bauchstatus, Nierenlager, Lungenstatus oder fokale Inspektion einer möglichen Eintrittspforte.",
             "Die Untersuchung bleibt kurz, aber klar priorisiert."
           ]
         },
         {
-          "title": "Welche Befunde klinisch wichtig sind",
+          "title": "Klinisch wichtige Befunde",
           "questions": [
-            "Tachykardie, Hypotonie, Exsikkosezeichen oder Vigilanzminderung sind besonders wichtige Warnbefunde.",
-            "Klinisch relevant ist weniger jeder Einzelwert als die Gesamtkonstellation.",
+            "Tachykardie, Hypotonie, Exsikkosezeichen oder Vigilanzminderung sind besonders wichtige Warnbefunde. Klinisch relevant ist weniger jeder Einzelwert als die Gesamtkonstellation.",
             "Gerade das macht den Infektstatus prüfungsrelevant."
           ]
         },
         {
-          "title": "Wie daraus eine gute Übergabe wird",
+          "title": "Vom Befund zur Übergabe",
           "questions": [
-            "In der Übergabe sollte hörbar werden, ob der Patient kreislaufstabil und nicht toxisch imponiert oder bereits eine schwere systemische Reaktion zeigt.",
-            "Auch der Verdacht auf Exsikkose oder Sepsis sollte sprachlich klar benannt werden.",
+            "In der Übergabe sollte hörbar werden, ob der Patient kreislaufstabil und nicht toxisch imponiert oder bereits eine schwere systemische Reaktion zeigt. Auch der Verdacht auf Exsikkose oder Sepsis sollte sprachlich klar benannt werden.",
             "So wird aus Statussprache klinische Verantwortung."
           ]
         }
@@ -552,46 +540,43 @@
     {
       "id": "hno_hals_lymphknoten",
       "title": "HNO-, Hals- und Lymphknotenstatus",
-      "focus": "Rachen, Tonsillen, Hals und Lymphknoten geordnet und verständlich untersuchen",
-      "summary": "Dieser Status deckt häufige Berliner HNO- und Infektfälle wie Tonsillitis, Mononukleose oder zervikale Lymphadenitis ab.",
+      "focus": "Was zuerst gesehen werden muss | Was gezielt untersucht werden sollte | Klinisch wichtige Befunde",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "HNO-Status wird in der FSP oft abgefragt, weil sich hier gute Untersuchungsanweisungen und saubere Befundsprache sehr direkt zeigen.",
-        "Wichtig sind Mundöffnung, Racheninspektion, Tonsillengröße, Rötung, Beläge, Uvula, Schleimhautbefund und sichtbare Halsasymmetrien.",
-        "Palpatorisch folgen Halslymphknoten, Druckschmerz, Konsistenz, Beweglichkeit, Schilddrüse und gegebenenfalls die Suche nach Trismus oder Kieferwinkelschmerz.",
-        "Klinisch entscheidend ist, ob eher ein banaler Racheninfekt, eine ausgeprägte bakterielle Tonsillitis, eine Mononukleose oder ein komplizierter Verlauf vorliegt.",
-        "Wichtige Wörter sind gerötet, geschwollen, eitrige Beläge, zervikal, druckdolent, verschieblich, nicht verschieblich, foetor ex ore oder kloßige Sprache.",
-        "Der Status sollte am Ende klar machen, ob eher ambulante Therapie, HNO-Mitbeurteilung oder weitere Diagnostik nötig ist."
+        "In der Untersuchungseinheit „HNO-, Hals- und Lymphknotenstatus“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. HNO-Status wird in der FSP oft abgefragt, weil sich hier gute Untersuchungsanweisungen und saubere Befundsprache sehr direkt zeigen.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Wichtig sind Mundöffnung, Racheninspektion, Tonsillengröße, Rötung, Beläge, Uvula, Schleimhautbefund und sichtbare Halsasymmetrien.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Palpatorisch folgen Halslymphknoten, Druckschmerz, Konsistenz, Beweglichkeit, Schilddrüse und gegebenenfalls die Suche nach Trismus oder Kieferwinkelschmerz.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Im Vordergrund stehen Racheninspektion, Tonsillenbefund und Schleimhautstatus. Auch Mundöffnung, Uvula und asymmetrische Schwellungen sind wichtig. Bereits hier lassen sich viele HNO-Fälle grob einordnen.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Palpatorisch sollten zervikale Lymphknoten, Halsweichgewebe und gegebenenfalls die Schilddrüse beurteilt werden. Druckschmerz und Größenangaben helfen bei der Befundsprache. Die Untersuchung bleibt dabei für den Patienten gut verständlich anleitbar.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Im Rachen zeigen sich gerötete Tonsillen mit Belägen und druckdolente zervikale Lymphknoten. Eine kloßige Sprache oder ein Trismus wären für mich wichtige Warnzeichen. Der HNO-Status sollte kurz, aber klar strukturiert beschrieben werden."
       ],
       "question_groups": [
         {
           "title": "Was zuerst gesehen werden muss",
           "questions": [
-            "Im Vordergrund stehen Racheninspektion, Tonsillenbefund und Schleimhautstatus.",
-            "Auch Mundöffnung, Uvula und asymmetrische Schwellungen sind wichtig.",
+            "Im Vordergrund stehen Racheninspektion, Tonsillenbefund und Schleimhautstatus. Auch Mundöffnung, Uvula und asymmetrische Schwellungen sind wichtig.",
             "Bereits hier lassen sich viele HNO-Fälle grob einordnen."
           ]
         },
         {
           "title": "Was gezielt untersucht werden sollte",
           "questions": [
-            "Palpatorisch sollten zervikale Lymphknoten, Halsweichgewebe und gegebenenfalls die Schilddrüse beurteilt werden.",
-            "Druckschmerz und Größenangaben helfen bei der Befundsprache.",
+            "Palpatorisch sollten zervikale Lymphknoten, Halsweichgewebe und gegebenenfalls die Schilddrüse beurteilt werden. Druckschmerz und Größenangaben helfen bei der Befundsprache.",
             "Die Untersuchung bleibt dabei für den Patienten gut verständlich anleitbar."
           ]
         },
         {
-          "title": "Welche Befunde klinisch wichtig sind",
+          "title": "Klinisch wichtige Befunde",
           "questions": [
-            "Eitrige Beläge, druckdolente Halslymphknoten oder eine kloßige Sprache sind wichtige klinische Signale.",
-            "Auch Trismus oder deutliche Asymmetrien müssen ernst genommen werden.",
+            "Eitrige Beläge, druckdolente Halslymphknoten oder eine kloßige Sprache sind wichtige klinische Signale. Auch Trismus oder deutliche Asymmetrien müssen ernst genommen werden.",
             "Diese Befunde tragen die weitere Priorisierung stark."
           ]
         },
         {
-          "title": "Wie daraus eine gute Übergabe wird",
+          "title": "Vom Befund zur Übergabe",
           "questions": [
-            "In der Übergabe sollte der HNO-Status kurz, aber präzise sein.",
-            "Tonsillen, Beläge, Lymphknoten und relevante Red Flags genügen oft schon.",
+            "In der Übergabe sollte der HNO-Status kurz, aber präzise sein. Tonsillen, Beläge, Lymphknoten und relevante Red Flags genügen oft schon.",
             "So wird der Status in Berlin gut hörbar."
           ]
         }
@@ -612,46 +597,43 @@
     {
       "id": "gefaessstatus_beine",
       "title": "Gefäßstatus und Beinuntersuchung",
-      "focus": "Ödem, TVT-Verdacht und pAVK-relevante Befunde kurz und sicher beschreiben",
-      "summary": "Dieser Status ist besonders wertvoll für Ödeme, TVT, pAVK und kardiale Dekompensationsfälle.",
+      "focus": "Was zuerst gesehen werden muss | Was gezielt untersucht werden sollte | Klinisch wichtige Befunde",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Die Untersuchung der Beine ist in internistischen und gefäßmedizinischen FSP-Fällen ein echter Hebel, weil sie Symptome, Status und Differenzialdiagnose stark verdichtet.",
-        "Wichtig sind Seitendifferenz, Schwellung, Hautfarbe, livide oder gerötete Areale, sichtbare Varizen, Ulzera und trophische Hautveränderungen.",
-        "Palpatorisch folgen Temperatur, Druckdolenz, prätibiale Ödeme, Umfangsvergleich, periphere Pulse und gegebenenfalls die Beurteilung der Rekapillarisierungszeit.",
-        "Klinisch muss hörbar werden, ob eher eine venöse Problematik, arterielle Minderperfusion oder eine kardial bedingte Stauung im Vordergrund steht.",
-        "Typische Wörter sind eindrückbar, prätibial, überwärmt, druckdolent, livide, blass, pulslos, Seitendifferenz oder trophische Störung.",
-        "Die Untersuchung sollte in eine klare Aussage münden: TVT-Verdacht, pAVK-Verdacht, kardiale Ödemlage oder eher unspezifischer Befund."
+        "In der Untersuchungseinheit „Gefäßstatus und Beinuntersuchung“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Die Untersuchung der Beine ist in internistischen und gefäßmedizinischen FSP-Fällen ein echter Hebel, weil sie Symptome, Status und Differenzialdiagnose stark verdichtet.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Wichtig sind Seitendifferenz, Schwellung, Hautfarbe, livide oder gerötete Areale, sichtbare Varizen, Ulzera und trophische Hautveränderungen.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Palpatorisch folgen Temperatur, Druckdolenz, prätibiale Ödeme, Umfangsvergleich, periphere Pulse und gegebenenfalls die Beurteilung der Rekapillarisierungszeit.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Inspektion auf Schwellung, Seitendifferenz, Hautfarbe und trophische Störungen ist der erste Schritt. Auch Ulzera, Varizen oder livide Verfärbungen sollten aktiv benannt werden. Damit wird der Beinstatus klinisch sehr schnell aussagekräftig.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Druckdolenz, Überwärmung, Eindrückbarkeit der Ödeme und Pulse gehören zur Kernuntersuchung. Je nach Fragestellung kann auch der Umfangsvergleich wichtig sein. Wesentlich ist eine klare, nicht überladene Reihenfolge.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Es zeigt sich eine einseitige Beinschwellung mit Druckdolenz und leichter Überwärmung. Alternativ wären beidseitige eindrückbare Ödeme eher mit einer systemischen Stauung vereinbar. Der Gefäßstatus lebt von Seitendifferenz, Farbe, Temperatur und Pulsen."
       ],
       "question_groups": [
         {
           "title": "Was zuerst gesehen werden muss",
           "questions": [
-            "Inspektion auf Schwellung, Seitendifferenz, Hautfarbe und trophische Störungen ist der erste Schritt.",
-            "Auch Ulzera, Varizen oder livide Verfärbungen sollten aktiv benannt werden.",
+            "Inspektion auf Schwellung, Seitendifferenz, Hautfarbe und trophische Störungen ist der erste Schritt. Auch Ulzera, Varizen oder livide Verfärbungen sollten aktiv benannt werden.",
             "Damit wird der Beinstatus klinisch sehr schnell aussagekräftig."
           ]
         },
         {
           "title": "Was gezielt untersucht werden sollte",
           "questions": [
-            "Druckdolenz, Überwärmung, Eindrückbarkeit der Ödeme und Pulse gehören zur Kernuntersuchung.",
-            "Je nach Fragestellung kann auch der Umfangsvergleich wichtig sein.",
+            "Druckdolenz, Überwärmung, Eindrückbarkeit der Ödeme und Pulse gehören zur Kernuntersuchung. Je nach Fragestellung kann auch der Umfangsvergleich wichtig sein.",
             "Wesentlich ist eine klare, nicht überladene Reihenfolge."
           ]
         },
         {
-          "title": "Welche Befunde klinisch wichtig sind",
+          "title": "Klinisch wichtige Befunde",
           "questions": [
-            "Einseitige Schwellung mit Druckschmerz und Überwärmung stützt venöse Verdachtsdiagnosen.",
-            "Blasse, kalte Extremität mit schwachen Pulsen lenkt den Blick eher auf arterielle Probleme.",
+            "Einseitige Schwellung mit Druckschmerz und Überwärmung stützt venöse Verdachtsdiagnosen. Blasse, kalte Extremität mit schwachen Pulsen lenkt den Blick eher auf arterielle Probleme.",
             "Beidseitige prätibiale Ödeme passen eher zu systemischer Stauung."
           ]
         },
         {
-          "title": "Wie daraus eine gute Übergabe wird",
+          "title": "Vom Befund zur Übergabe",
           "questions": [
-            "In der Übergabe reichen oft drei Befundanker: Schwellung, Temperatur/Farbe und Pulse.",
-            "Daraus sollte die klinische Richtung klar werden.",
+            "In der Übergabe reichen oft drei Befundanker: Schwellung, Temperatur/Farbe und Pulse. Daraus sollte die klinische Richtung klar werden.",
             "Genau das macht diesen Status so nützlich für Berlin."
           ]
         }
@@ -672,46 +654,43 @@
     {
       "id": "gelenk_trauma_status",
       "title": "Gelenk-, Trauma- und Bewegungsstatus",
-      "focus": "schmerzhafte Extremitätenbefunde geordnet untersuchen und beschreiben",
-      "summary": "Dieser Status eignet sich besonders für Sprunggelenkdistorsion, Meniskus- und andere muskuloskelettale FSP-Fälle.",
+      "focus": "Was zuerst gesehen werden muss | Was gezielt untersucht werden sollte | Klinisch wichtige Befunde",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Trauma- und Gelenkstatus zeigen sehr gut, ob Untersuchungssprache praktisch und nicht nur theoretisch vorhanden ist.",
-        "Inspektiv stehen Fehlstellung, Schwellung, Hämatom, Rötung, Schonhaltung und Belastbarkeit im Vordergrund.",
-        "Palpatorisch folgen Druckschmerzpunkte, Überwärmung, Gelenkerguss, Stabilität, aktive und passive Beweglichkeit sowie neurovaskuläre Basisprüfung distal.",
-        "Klinisch wichtig ist die Frage, ob eher eine Distorsion, Fraktur, Bandverletzung, Gelenkerguss oder entzündliche Problematik vorliegt.",
-        "Hilfreiche Wörter sind druckdolent, eingeschränkte Beweglichkeit, Schwellung periartikulär, stabil/instabil, belastbar/nicht belastbar und neurovaskulär intakt.",
-        "Auch hier sollte der Status am Ende klar machen, ob primär Entlastung, Bildgebung oder chirurgisch-orthopädische Mitbeurteilung notwendig ist."
+        "In der Untersuchungseinheit „Gelenk-, Trauma- und Bewegungsstatus“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Trauma- und Gelenkstatus zeigen sehr gut, ob Untersuchungssprache praktisch und nicht nur theoretisch vorhanden ist.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Inspektiv stehen Fehlstellung, Schwellung, Hämatom, Rötung, Schonhaltung und Belastbarkeit im Vordergrund.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Palpatorisch folgen Druckschmerzpunkte, Überwärmung, Gelenkerguss, Stabilität, aktive und passive Beweglichkeit sowie neurovaskuläre Basisprüfung distal.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Zu Beginn zählen Achsstellung, Schwellung, Hämatom und Schonhaltung. Schon die Belastbarkeit liefert oft wichtige Hinweise. So bekommt der Gelenkstatus früh Richtung.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Druckschmerz, Beweglichkeit, Stabilität und distale Durchblutung/Sensibilität sind die Kernpunkte. Die Untersuchung sollte strukturiert, aber patientenschonend ablaufen. Kurze Anweisungen sind hier besonders wichtig.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Es zeigt sich eine schmerzhafte Schwellung mit lokaler Druckdolenz und eingeschränkter Belastbarkeit. Wichtig sind außerdem Beweglichkeit, Stabilität und der distale neurovaskuläre Status. Der Gelenkstatus muss nicht lang, aber funktionell vollständig sein."
       ],
       "question_groups": [
         {
           "title": "Was zuerst gesehen werden muss",
           "questions": [
-            "Zu Beginn zählen Achsstellung, Schwellung, Hämatom und Schonhaltung.",
-            "Schon die Belastbarkeit liefert oft wichtige Hinweise.",
+            "Zu Beginn zählen Achsstellung, Schwellung, Hämatom und Schonhaltung. Schon die Belastbarkeit liefert oft wichtige Hinweise.",
             "So bekommt der Gelenkstatus früh Richtung."
           ]
         },
         {
           "title": "Was gezielt untersucht werden sollte",
           "questions": [
-            "Druckschmerz, Beweglichkeit, Stabilität und distale Durchblutung/Sensibilität sind die Kernpunkte.",
-            "Die Untersuchung sollte strukturiert, aber patientenschonend ablaufen.",
+            "Druckschmerz, Beweglichkeit, Stabilität und distale Durchblutung/Sensibilität sind die Kernpunkte. Die Untersuchung sollte strukturiert, aber patientenschonend ablaufen.",
             "Kurze Anweisungen sind hier besonders wichtig."
           ]
         },
         {
-          "title": "Welche Befunde klinisch wichtig sind",
+          "title": "Klinisch wichtige Befunde",
           "questions": [
-            "Druckdolenz über dem Knochen spricht anders als diffuse Weichteilschmerzen.",
-            "Eingeschränkte Belastbarkeit und Instabilität sind wichtige Funktionsbefunde.",
+            "Druckdolenz über dem Knochen spricht anders als diffuse Weichteilschmerzen. Eingeschränkte Belastbarkeit und Instabilität sind wichtige Funktionsbefunde.",
             "Auch die distale Neurovaskularität muss sprachlich hörbar sein."
           ]
         },
         {
-          "title": "Wie daraus eine gute Übergabe wird",
+          "title": "Vom Befund zur Übergabe",
           "questions": [
-            "In der Übergabe reichen Lokalisation des Schmerzes, Funktion und neurovaskulärer Status als Grundgerüst.",
-            "Daraus lässt sich der Bedarf an Röntgen oder weiterer Bildgebung gut ableiten.",
+            "In der Übergabe reichen Lokalisation des Schmerzes, Funktion und neurovaskulärer Status als Grundgerüst. Daraus lässt sich der Bedarf an Röntgen oder weiterer Bildgebung gut ableiten.",
             "Genau diese Klarheit trägt die orthopädischen Standardfälle."
           ]
         }
@@ -732,46 +711,43 @@
     {
       "id": "haut_schleimhaut_exsikkose",
       "title": "Haut, Schleimhäute und Exsikkosezeichen",
-      "focus": "allgemeine Inspektionsbefunde geordnet beschreiben und klinisch einordnen",
-      "summary": "Dieser Status ergänzt viele internistische und infektiologische Fälle, in denen der erste Blick bereits wichtige Hinweise liefert.",
+      "focus": "Was zuerst gesehen werden muss | Was gezielt untersucht werden sollte | Klinisch wichtige Befunde",
+      "summary": "Diese Untersuchungseinheit sollte immer als Kombination aus geordnetem Vorgehen, nachvollziehbarer Patientenanleitung und klarer Befundsprache verstanden werden. Eine Untersuchung wirkt erst dann souverän, wenn Handgriffe, Beobachtung und klinische Konsequenz sprachlich sauber zusammenpassen.",
       "learning_text": [
-        "Haut- und Schleimhautbefunde werden in der FSP oft nur nebenbei erwähnt, obwohl sie diagnostisch sehr ergiebig sein können.",
-        "Wichtig sind Kolorit, Blässe, Ikterus, livide Verfärbungen, Hautturgor, trockene Schleimhäute, Exanthem, Petechien oder lokale Entzündungszeichen.",
-        "Palpatorisch können Temperatur, Überwärmung, Eindrückbarkeit von Ödemen oder Schmerzhaftigkeit ergänzt werden.",
-        "Klinisch helfen diese Befunde bei Exsikkose, Anämie, Leberproblemen, Infekten, allergischen Reaktionen oder vaskulären Störungen.",
-        "Typische Wörter sind blass, ikterisch, livide, exsikkiert, trocken, marmoriert, petechial, überwärmt oder imponiert klinisch unauffällig.",
-        "Der Status ist besonders nützlich, wenn er nicht isoliert genannt, sondern direkt in die übrige Falllogik eingebaut wird."
+        "In der Untersuchungseinheit „Haut, Schleimhäute und Exsikkosezeichen“ überzeugt die Sprache erst dann, wenn Ablauf, Patientenanleitung und Befund wie ein zusammenhängender klinischer Vorgang wirken. Genau daran zeigt sich, ob körperliche Untersuchung nur aufgezählt oder wirklich geführt wird.",
+        "Am Anfang jeder Untersuchung steht ein geordneter Ablauf. Haut- und Schleimhautbefunde werden in der FSP oft nur nebenbei erwähnt, obwohl sie diagnostisch sehr ergiebig sein können.",
+        "Danach müssen Beobachtung und gezielte Untersuchungsschritte nachvollziehbar erklärt werden. Wichtig sind Kolorit, Blässe, Ikterus, livide Verfärbungen, Hautturgor, trockene Schleimhäute, Exanthem, Petechien oder lokale Entzündungszeichen.",
+        "Wichtig ist außerdem, welche Befunde wirklich klinisch Gewicht haben. Palpatorisch können Temperatur, Überwärmung, Eindrückbarkeit von Ödemen oder Schmerzhaftigkeit ergänzt werden.",
+        "In der Übergabe zählt am Ende vor allem die Verbindung von Befund und Konsequenz. Kolorit, Hautturgor, Schleimhäute und sichtbare Hautveränderungen bilden die Basis. Schon hier fallen Exsikkose, Ikterus oder Blässe häufig auf. Das macht den ersten Blick klinisch wertvoll.",
+        "So wird die Untersuchung zu einem sprachlich klaren und klinisch brauchbaren Gesamtbild. Ergänzend können Temperatur, Druckdolenz oder Eindrückbarkeit von Schwellungen beurteilt werden. Auch Petechien, Hämatome oder Exantheme sollten bewusst benannt werden. So entsteht eine kleine, aber starke Befundsprache.",
+        "Auch sprachlich trägt das Thema erst dann, wenn einzelne Formulierungen in eine schlüssige Gesamtlinie eingebettet sind. Der Patient imponiert klinisch leicht exsikkiert mit trockenen Schleimhäuten. Alternativ können Blässe, Ikterus oder petechiale Hautveränderungen wichtige Zusatzhinweise liefern. Gerade Haut- und Schleimhautbefunde verdichten viele internistische Fälle stark."
       ],
       "question_groups": [
         {
           "title": "Was zuerst gesehen werden muss",
           "questions": [
-            "Kolorit, Hautturgor, Schleimhäute und sichtbare Hautveränderungen bilden die Basis.",
-            "Schon hier fallen Exsikkose, Ikterus oder Blässe häufig auf.",
+            "Kolorit, Hautturgor, Schleimhäute und sichtbare Hautveränderungen bilden die Basis. Schon hier fallen Exsikkose, Ikterus oder Blässe häufig auf.",
             "Das macht den ersten Blick klinisch wertvoll."
           ]
         },
         {
           "title": "Was gezielt untersucht werden sollte",
           "questions": [
-            "Ergänzend können Temperatur, Druckdolenz oder Eindrückbarkeit von Schwellungen beurteilt werden.",
-            "Auch Petechien, Hämatome oder Exantheme sollten bewusst benannt werden.",
+            "Ergänzend können Temperatur, Druckdolenz oder Eindrückbarkeit von Schwellungen beurteilt werden. Auch Petechien, Hämatome oder Exantheme sollten bewusst benannt werden.",
             "So entsteht eine kleine, aber starke Befundsprache."
           ]
         },
         {
-          "title": "Welche Befunde klinisch wichtig sind",
+          "title": "Klinisch wichtige Befunde",
           "questions": [
-            "Trockene Schleimhäute und stehende Hautfalten stützen Exsikkose.",
-            "Ikterus, Blässe oder Petechien lenken den Blick sofort in bestimmte diagnostische Richtungen.",
+            "Trockene Schleimhäute und stehende Hautfalten stützen Exsikkose. Ikterus, Blässe oder Petechien lenken den Blick sofort in bestimmte diagnostische Richtungen.",
             "Gerade diese Querverbindungen machen den Status so nützlich."
           ]
         },
         {
-          "title": "Wie daraus eine gute Übergabe wird",
+          "title": "Vom Befund zur Übergabe",
           "questions": [
-            "In der Übergabe genügt oft eine kurze Linie wie blass wirkend, leicht exsikkiert oder ohne Exanthem.",
-            "Wichtig ist, dass diese Befunde nicht lose stehen, sondern mit dem Fall verbunden werden.",
+            "In der Übergabe genügt oft eine kurze Linie wie blass wirkend, leicht exsikkiert oder ohne Exanthem. Wichtig ist, dass diese Befunde nicht lose stehen, sondern mit dem Fall verbunden werden.",
             "Dann wirken sie in Berlin sehr professionell."
           ]
         }

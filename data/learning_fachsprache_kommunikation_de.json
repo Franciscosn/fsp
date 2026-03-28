@@ -28,46 +28,43 @@
     {
       "id": "patientensprache_fachsprache",
       "title": "Patientensprache und Fachsprache sicher wechseln",
-      "focus": "denselben Inhalt je nach Gegenüber in zwei Registern tragen",
-      "summary": "Ein zentraler Teil der FSP ist nicht das reine Vokabellernen, sondern der sichere Registerwechsel zwischen Patientengespräch und kollegialer Übergabe.",
+      "focus": "Was beim Registerwechsel erhalten bleiben muss | Sinnvolle Lernlogik | Typische Bruchstellen",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "Viele sprachliche Probleme in der FSP entstehen nicht durch fehlende Medizin, sondern dadurch, dass jemand nur in einem Register spricht. Wer nur Fachsprache kann, klingt im Patientengespräch hart und unverständlich; wer nur Alltagssprache kann, wirkt in der Übergabe unpräzise.",
-        "Der Registerwechsel beginnt bereits bei der Wortwahl. Aus Luftnot wird Dyspnoe, aus Herzstolpern Palpitationen, aus gelber Haut ein Ikterus, aus Brennen beim Wasserlassen eine Dysurie. Diese Übersetzung ist kein Schmuck, sondern Kern der Prüfung.",
-        "Gute Kandidatinnen und Kandidaten halten dabei den medizinischen Gehalt stabil. Sie sagen nicht zwei verschiedene Dinge, sondern dieselbe Information in passender Sprache.",
-        "Gerade in Berlin ist diese Fähigkeit wichtig, weil Anamnese, Aufklärung und Fallvorstellung eng aufeinanderfolgen. Wer hier nicht umschalten kann, verliert in jedem Teil neu an Klarheit.",
-        "Hilfreich ist, Begriffe immer paarweise oder in kleinen Clustern zu lernen: Alltagssprache, Fachsprache, typischer Befund, typisches Verb. So werden sie leichter aktiv abrufbar.",
-        "Registerwechsel ist deshalb weniger eine Stilfrage als eine klinische Grundkompetenz."
+        "Beim Thema „Patientensprache und Fachsprache sicher wechseln“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. Viele sprachliche Probleme in der FSP entstehen nicht durch fehlende Medizin, sondern dadurch, dass jemand nur in einem Register spricht. Wer nur Fachsprache kann, klingt im Patientengespräch hart und unverständlich; wer nur Alltagssprache kann, wirkt in der Übergabe unpräzise.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Der Registerwechsel beginnt bereits bei der Wortwahl. Aus Luftnot wird Dyspnoe, aus Herzstolpern Palpitationen, aus gelber Haut ein Ikterus, aus Brennen beim Wasserlassen eine Dysurie. Diese Übersetzung ist kein Schmuck, sondern Kern der Prüfung.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Gute Kandidatinnen und Kandidaten halten dabei den medizinischen Gehalt stabil. Sie sagen nicht zwei verschiedene Dinge, sondern dieselbe Information in passender Sprache.",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Die medizinische Kernaussage bleibt gleich, auch wenn die Sprache wechselt. Patientengespräch und Oberarztgespräch unterscheiden sich im Ton und in der Präzision, aber nicht im medizinischen Kern. Genau diese Stabilität wirkt professionell.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Begriffe bleiben am besten hängen, wenn sie als Paare oder kleine Wortfelder gelernt werden. So kann aus dem Patientengespräch direkt eine fachsprachliche Verdichtung entstehen. Didaktisch hilfreicher ist das als isoliertes Glossarlernen.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Ein guter Arzt spricht die Sprache des Patienten und kann dieselben Inhalte fachsprachlich verdichten. Luftnot, Herzstolpern oder Brennen beim Wasserlassen sollten deshalb sofort in Dyspnoe, Palpitationen oder Dysurie überführt werden können. Die Information bleibt dabei dieselbe, nur das Register wechselt."
       ],
       "question_groups": [
         {
           "title": "Was beim Registerwechsel erhalten bleiben muss",
           "questions": [
-            "Die medizinische Kernaussage bleibt gleich, auch wenn die Sprache wechselt.",
-            "Patientengespräch und Oberarztgespräch unterscheiden sich im Ton und in der Präzision, aber nicht im medizinischen Kern.",
+            "Die medizinische Kernaussage bleibt gleich, auch wenn die Sprache wechselt. Patientengespräch und Oberarztgespräch unterscheiden sich im Ton und in der Präzision, aber nicht im medizinischen Kern.",
             "Genau diese Stabilität wirkt professionell."
           ]
         },
         {
-          "title": "Wie man sinnvoll lernt",
+          "title": "Sinnvolle Lernlogik",
           "questions": [
-            "Begriffe bleiben am besten hängen, wenn sie als Paare oder kleine Wortfelder gelernt werden.",
-            "So kann aus dem Patientengespräch direkt eine fachsprachliche Verdichtung entstehen.",
-            "Das ist für die FSP deutlich wertvoller als isoliertes Glossarlernen."
+            "Begriffe bleiben am besten hängen, wenn sie als Paare oder kleine Wortfelder gelernt werden. So kann aus dem Patientengespräch direkt eine fachsprachliche Verdichtung entstehen.",
+            "Didaktisch hilfreicher ist das als isoliertes Glossarlernen."
           ]
         },
         {
-          "title": "Wo der Wechsel häufig scheitert",
+          "title": "Typische Bruchstellen",
           "questions": [
-            "Typisch ist zu technische Sprache gegenüber dem Patienten oder zu unklare Umgangssprache in der Übergabe.",
-            "Beides macht den Eindruck, dass klinische Kontrolle fehlt.",
+            "Typisch ist zu technische Sprache gegenüber dem Patienten oder zu unklare Umgangssprache in der Übergabe. Beides macht den Eindruck, dass klinische Kontrolle fehlt.",
             "Die Lösung liegt fast immer in bewusst trainierten Übersetzungen."
           ]
         },
         {
-          "title": "Warum Berlin das so stark bewertet",
+          "title": "Warum Berlin das stark bewertet",
           "questions": [
-            "Die Prüfung misst, ob medizinische Inhalte in der deutschen Kliniksprache tatsächlich handlungsfähig sind.",
-            "Das zeigt sich besonders deutlich im Registerwechsel.",
+            "Die Prüfung misst, ob medizinische Inhalte in der deutschen Kliniksprache tatsächlich handlungsfähig sind. Das zeigt sich besonders deutlich im Registerwechsel.",
             "Deshalb trägt diese Fähigkeit fast jeden anderen Lernbereich mit."
           ]
         }
@@ -88,46 +85,43 @@
     {
       "id": "beschwerden_praezise",
       "title": "Beschwerden zeitlich und inhaltlich präzise beschreiben",
-      "focus": "vage Angaben in klinisch brauchbare Beschwerdesprache verwandeln",
-      "summary": "Viele FSP-Schwächen liegen nicht im Fachwissen, sondern in unpräziser Beschwerdesprache.",
+      "focus": "Bedeutung zeitlicher Sprache | Qualitative Präzision | Häufige Fehler",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "Aussagen wie seit längerem, starke Schmerzen oder manchmal schlecht Luft reichen klinisch kaum aus. Gute Anamnese lebt davon, Symptome nach Beginn, Verlauf, Intensität, Lokalisation, Auslösern und Linderung zu ordnen.",
-        "Gerade zeitliche Sprache trägt viel: plötzlich, schleichend, seit gestern, seit zwei Wochen progredient, rezidivierend, anfallsartig oder belastungsabhängig. Ohne diese Wörter wirkt der Fall unfertig.",
-        "Auch die inhaltliche Präzision ist entscheidend. Ein Schmerz ist drückend, stechend, kolikartig, brennend oder dumpf; Atemnot ist belastungsabhängig oder in Ruhe vorhanden; Schwindel ist Dreh- oder Schwankschwindel.",
-        "Wer diese Präzisierung beherrscht, spart in der weiteren Fallstruktur viel Arbeit. Denn bereits in der Beschwerdesprache liegen die ersten Differenzialdiagnosen verborgen.",
-        "Für Berlin lohnt es sich deshalb, Symptomwörter immer mit Verlauf und Qualität zu lernen und nicht nur als Nomen.",
-        "So entsteht eine Sprache, die schon in den ersten Minuten klinisch trägt."
+        "Beim Thema „Beschwerden zeitlich und inhaltlich präzise beschreiben“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. Aussagen wie seit längerem, starke Schmerzen oder manchmal schlecht Luft reichen klinisch kaum aus. Gute Anamnese lebt davon, Symptome nach Beginn, Verlauf, Intensität, Lokalisation, Auslösern und Linderung zu ordnen.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Gerade zeitliche Sprache trägt viel: plötzlich, schleichend, seit gestern, seit zwei Wochen progredient, rezidivierend, anfallsartig oder belastungsabhängig. Ohne diese Wörter wirkt der Fall unfertig.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Auch die inhaltliche Präzision ist entscheidend. Ein Schmerz ist drückend, stechend, kolikartig, brennend oder dumpf; Atemnot ist belastungsabhängig oder in Ruhe vorhanden; Schwindel ist Dreh- oder Schwankschwindel.",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Der Verlauf entscheidet oft, ob ein Symptom eher akut, entzündlich, chronisch oder funktionell wirkt. Ohne zeitliche Präzision bleiben viele Differenzialdiagnosen zu breit. Gerade deshalb hört Berlin stark auf diese Ebene.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Schmerzcharakter, Auslöser, Linderung und Begleitsymptome geben einem Symptom medizinische Kontur. Sie machen aus einer unscharfen Klage ein klinisch brauchbares Leitsymptom. Das stärkt Gespräch und Übergabe zugleich.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Ein Symptom wird erst klinisch brauchbar, wenn Beginn, Verlauf und Qualität klar benannt sind. Seit gestern plötzlich, seit zwei Wochen progredient oder belastungsabhängig sagt viel mehr als seit längerem. Auch Schmerzcharakter und Begleitsymptome sollten möglichst präzise sein."
       ],
       "question_groups": [
         {
-          "title": "Warum zeitliche Sprache so wichtig ist",
+          "title": "Bedeutung zeitlicher Sprache",
           "questions": [
-            "Der Verlauf entscheidet oft, ob ein Symptom eher akut, entzündlich, chronisch oder funktionell wirkt.",
-            "Ohne zeitliche Präzision bleiben viele Differenzialdiagnosen zu breit.",
+            "Der Verlauf entscheidet oft, ob ein Symptom eher akut, entzündlich, chronisch oder funktionell wirkt. Ohne zeitliche Präzision bleiben viele Differenzialdiagnosen zu breit.",
             "Gerade deshalb hört Berlin stark auf diese Ebene."
           ]
         },
         {
-          "title": "Wie qualitative Präzision hilft",
+          "title": "Qualitative Präzision",
           "questions": [
-            "Schmerzcharakter, Auslöser, Linderung und Begleitsymptome geben einem Symptom medizinische Kontur.",
-            "Sie machen aus einer unscharfen Klage ein klinisch brauchbares Leitsymptom.",
+            "Schmerzcharakter, Auslöser, Linderung und Begleitsymptome geben einem Symptom medizinische Kontur. Sie machen aus einer unscharfen Klage ein klinisch brauchbares Leitsymptom.",
             "Das stärkt Gespräch und Übergabe zugleich."
           ]
         },
         {
-          "title": "Was häufig schiefgeht",
+          "title": "Häufige Fehler",
           "questions": [
-            "Symptome werden oft nur wiederholt, nicht eingeordnet.",
-            "Dadurch fehlt dem ganzen Fall später Richtung.",
+            "Symptome werden oft nur wiederholt, nicht eingeordnet. Dadurch fehlt dem ganzen Fall später Richtung.",
             "Die Lösung liegt in wenigen klaren Ordnungsachsen."
           ]
         },
         {
-          "title": "Wie man diese Sprache trainiert",
+          "title": "Training dieser Sprache",
           "questions": [
-            "Am besten wird jede Hauptbeschwerde mit Beginn, Dauer, Qualität, Lokalisation, Auslösern und Linderung wiederholt.",
-            "Diese Bewegung sollte fast automatisch werden.",
+            "Am besten wird jede Hauptbeschwerde mit Beginn, Dauer, Qualität, Lokalisation, Auslösern und Linderung wiederholt. Diese Bewegung sollte fast automatisch werden.",
             "Dann wächst die FSP-Sprache vom Symptom her stabil auf."
           ]
         }
@@ -148,46 +142,43 @@
     {
       "id": "schmerzsprache",
       "title": "Schmerzsprache differenziert und fachlich sauber verwenden",
-      "focus": "Schmerzqualität, Lokalisation und Dynamik so ausdrücken, dass daraus klinische Richtung entsteht",
-      "summary": "Schmerz gehört zu den häufigsten Hauptbeschwerden. Gerade deshalb sollte seine Sprache nicht grob, sondern differenziert sitzen.",
+      "focus": "Zentrale Schmerzachsen | Tragende Fachwörter | Schmerz in der Übergabe",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "In der FSP reicht es nicht, nur nach Schmerz zu fragen. Entscheidend ist, Schmerz sprachlich zu strukturieren: Wo sitzt er, wie fühlt er sich an, seit wann besteht er, wie stark ist er, wohin strahlt er aus und was beeinflusst ihn.",
-        "Wichtige Qualitätswörter sind drückend, stechend, brennend, dumpf, kolikartig, pochend oder ziehend. Diese Wörter lenken oft bereits in Richtung kardial, viszeral, neuropathisch oder muskuloskelettal.",
-        "Ebenso wichtig sind Bewegungs- und Lagerungsbezüge. Belastungsabhängig, atemabhängig, nahrungsabhängig oder bewegungsabhängig sind keine kleinen Details, sondern klinische Wegweiser.",
-        "Für die Arzt-Arzt-Sprache helfen außerdem Lokalisation und Ausstrahlung: retrosternal, epigastrisch, lumbal, rechtsbetont, in den Rücken ausstrahlend oder in den linken Arm projizierend.",
-        "Berlin hört bei Schmerzfällen sehr genau darauf, ob man diese Ebenen systematisch abfragt und anschließend verdichtet.",
-        "Gute Schmerzsprache macht deshalb aus einem häufigen Thema einen echten Qualitätsmarker."
+        "Beim Thema „Schmerzsprache differenziert und fachlich sauber verwenden“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. In der FSP reicht es nicht, nur nach Schmerz zu fragen. Entscheidend ist, Schmerz sprachlich zu strukturieren: Wo sitzt er, wie fühlt er sich an, seit wann besteht er, wie stark ist er, wohin strahlt er aus und was beeinflusst ihn.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Wichtige Qualitätswörter sind drückend, stechend, brennend, dumpf, kolikartig, pochend oder ziehend. Diese Wörter lenken oft bereits in Richtung kardial, viszeral, neuropathisch oder muskuloskelettal.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Ebenso wichtig sind Bewegungs- und Lagerungsbezüge. Belastungsabhängig, atemabhängig, nahrungsabhängig oder bewegungsabhängig sind keine kleinen Details, sondern klinische Wegweiser.",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Lokalisation, Qualität, Intensität, zeitlicher Verlauf, Ausstrahlung sowie Verstärkung und Linderung bilden das Grundgerüst. Fehlt eine dieser Achsen, bleibt der Schmerz klinisch unscharf. Gerade am Anfang eines Falls ist diese Ordnung besonders wertvoll.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Drückend, kolikartig, brennend, atemabhängig, belastungsabhängig, ausstrahlend oder nächtlich verstärkt sind hochergiebige Signalwörter. Sie ordnen den Schmerz oft schon vor der Diagnostik. Deshalb sollten sie aktiv beherrscht werden.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Schmerz sollte immer nach Lokalisation, Qualität, Intensität, Verlauf und Ausstrahlung geordnet werden. Wörter wie drückend, kolikartig, brennend oder atemabhängig tragen sehr viel klinische Information. Auch Bewegungs- oder Nahrungsbezug sind häufig entscheidend."
       ],
       "question_groups": [
         {
-          "title": "Welche Schmerzachsen immer mitlaufen sollten",
+          "title": "Zentrale Schmerzachsen",
           "questions": [
-            "Lokalisation, Qualität, Intensität, zeitlicher Verlauf, Ausstrahlung sowie Verstärkung und Linderung bilden das Grundgerüst.",
-            "Fehlt eine dieser Achsen, bleibt der Schmerz klinisch unscharf.",
+            "Lokalisation, Qualität, Intensität, zeitlicher Verlauf, Ausstrahlung sowie Verstärkung und Linderung bilden das Grundgerüst. Fehlt eine dieser Achsen, bleibt der Schmerz klinisch unscharf.",
             "Gerade am Anfang eines Falls ist diese Ordnung besonders wertvoll."
           ]
         },
         {
-          "title": "Welche Wörter klinisch viel tragen",
+          "title": "Tragende Fachwörter",
           "questions": [
-            "drückend, kolikartig, brennend, atemabhängig, belastungsabhängig, ausstrahlend oder nächtlich verstärkt sind hochergiebige Signalwörter.",
-            "Sie ordnen den Schmerz oft schon vor der Diagnostik.",
+            "Drückend, kolikartig, brennend, atemabhängig, belastungsabhängig, ausstrahlend oder nächtlich verstärkt sind hochergiebige Signalwörter. Sie ordnen den Schmerz oft schon vor der Diagnostik.",
             "Deshalb sollten sie aktiv beherrscht werden."
           ]
         },
         {
-          "title": "Wie Schmerz in der Übergabe klingt",
+          "title": "Schmerz in der Übergabe",
           "questions": [
-            "In der Vorstellung wird aus Bauchweh oder Brustdrücken ein epigastrischer, drückender Schmerz oder ein retrosternaler Druckschmerz mit Ausstrahlung.",
-            "Genau diese Verdichtung macht die Sprache erwachsen.",
+            "In der Vorstellung wird aus Bauchweh oder Brustdrücken ein epigastrischer, drückender Schmerz oder ein retrosternaler Druckschmerz mit Ausstrahlung. Genau diese Verdichtung macht die Sprache erwachsen.",
             "Sie ist in Berlin deutlich hörbar."
           ]
         },
         {
-          "title": "Warum Schmerzsprache so prüfungsrelevant ist",
+          "title": "Warum Schmerzsprache prüfungsrelevant ist",
           "questions": [
-            "Sie taucht in fast allen Fachgebieten wieder auf.",
-            "Wer sie sicher beherrscht, stabilisiert viele Kernfälle gleichzeitig.",
+            "Sie taucht in fast allen Fachgebieten wieder auf. Wer sie sicher beherrscht, stabilisiert viele Kernfälle gleichzeitig.",
             "Das macht Schmerzsprache zu einem Grundmodul der FSP."
           ]
         }
@@ -208,46 +199,43 @@
     {
       "id": "arzt_arzt_uebergabe",
       "title": "Arzt-Arzt-Übergaben klar und knapp strukturieren",
-      "focus": "klinische Verdichtung statt Gesprächswiedergabe trainieren",
-      "summary": "Viele FSP-Kandidaten wissen genug, verlieren aber in der kollegialen Übergabe den roten Faden.",
+      "focus": "Bausteine einer guten Übergabe | Priorisierung in der Sprache | Was eine Übergabe schwächt",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "Die ärztliche Übergabe ist kein zweites Anamnesegespräch. Sie dient dazu, die vielen Einzelinformationen auf eine klinisch tragfähige Linie zu verdichten.",
-        "Dazu braucht es eine klare Grundordnung: Anlass der Vorstellung, Leitsymptom und Verlauf, wichtige Begleitumstände, relevante Vorgeschichte, Untersuchungs- und Laboranker, Verdachtsdiagnose und Plan.",
-        "Besonders stark wirkt in Berlin, wenn die Übergabe priorisiert klingt. Das bedeutet: zuerst das klinisch Relevante, danach das Ergänzende. Nicht alles ist gleich wichtig.",
-        "Auch sprachlich sollte die Übergabe nüchtern und aktiv sein. Zu viel indirekte Patientensprache, zu viele Nebensätze und fehlende Gewichtung machen die Vorstellung schwer hörbar.",
-        "Hilfreich ist es, pro Fall einen Einleitungssatz, zwei bis drei Kernbefunde und eine Planlinie parat zu haben. Mehr braucht es oft nicht.",
-        "Eine gute Übergabe ist daher nicht lang, sondern geordnet, verdichtet und belastbar."
+        "Beim Thema „Arzt-Arzt-Übergaben klar und knapp strukturieren“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. Die ärztliche Übergabe ist kein zweites Anamnesegespräch. Sie dient dazu, die vielen Einzelinformationen auf eine klinisch tragfähige Linie zu verdichten.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Dazu braucht es eine klare Grundordnung: Anlass der Vorstellung, Leitsymptom und Verlauf, wichtige Begleitumstände, relevante Vorgeschichte, Untersuchungs- und Laboranker, Verdachtsdiagnose und Plan.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Besonders stark wirkt in Berlin, wenn die Übergabe priorisiert klingt. Das bedeutet: zuerst das klinisch Relevante, danach das Ergänzende. Nicht alles ist gleich wichtig.",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Leitsymptom, Verlauf, relevante Vorerkrankungen, Schlüsselfunde und Plan bilden den Kern. Alles Weitere ist nur sinnvoll, wenn es diese Linie stärkt. So bleibt die Vorstellung klar und klinisch.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Zuerst kommt das Hauptproblem, dann die wichtigsten Kontextfaktoren, danach Untersuchungs- und Planinformation. Diese Reihenfolge zeigt ärztliche Gewichtung. Genau diese Gewichtung wird in Berlin stark wahrgenommen.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Eine gute Übergabe verdichtet den Fall auf Leitsymptom, relevante Befunde und Plan. Nicht alle Informationen sind gleich wichtig; Priorisierung muss hörbar sein. Zu lange Wiedergaben des Patientengesprächs schwächen den Eindruck eher."
       ],
       "question_groups": [
         {
-          "title": "Was in jede gute Übergabe gehört",
+          "title": "Bausteine einer guten Übergabe",
           "questions": [
-            "Leitsymptom, Verlauf, relevante Vorerkrankungen, Schlüsselfunde und Plan bilden den Kern.",
-            "Alles Weitere ist nur sinnvoll, wenn es diese Linie stärkt.",
+            "Leitsymptom, Verlauf, relevante Vorerkrankungen, Schlüsselfunde und Plan bilden den Kern. Alles Weitere ist nur sinnvoll, wenn es diese Linie stärkt.",
             "So bleibt die Vorstellung klar und klinisch."
           ]
         },
         {
-          "title": "Wie Priorisierung hörbar wird",
+          "title": "Priorisierung in der Sprache",
           "questions": [
-            "Zuerst kommt das Hauptproblem, dann die wichtigsten Kontextfaktoren, danach Untersuchungs- und Planinformation.",
-            "Diese Reihenfolge zeigt ärztliche Gewichtung.",
+            "Zuerst kommt das Hauptproblem, dann die wichtigsten Kontextfaktoren, danach Untersuchungs- und Planinformation. Diese Reihenfolge zeigt ärztliche Gewichtung.",
             "Genau diese Gewichtung wird in Berlin stark wahrgenommen."
           ]
         },
         {
-          "title": "Was die Übergabe schwächt",
+          "title": "Was eine Übergabe schwächt",
           "questions": [
-            "Zu viele Patientenzitate, lange Chronologien und fehlende Verdichtung machen den Fall schwer erfassbar.",
-            "Auch unverbundene Detaillisten wirken unsicher.",
+            "Zu viele Patientenzitate, lange Chronologien und fehlende Verdichtung machen den Fall schwer erfassbar. Auch unverbundene Detaillisten wirken unsicher.",
             "Die Lösung liegt fast immer in stärkerer Reduktion."
           ]
         },
         {
-          "title": "Wie man Übergaben trainiert",
+          "title": "Übergaben trainieren",
           "questions": [
-            "Hilfreich sind feste Kurzformate mit Einleitung, Kerninformationen und Plan.",
-            "Sie sollten laut gesprochen und mit echten Fällen verknüpft werden.",
+            "Hilfreich sind feste Kurzformate mit Einleitung, Kerninformationen und Plan. Sie sollten laut gesprochen und mit echten Fällen verknüpft werden.",
             "Dann wird die Übergabe zunehmend automatisch."
           ]
         }
@@ -268,46 +256,43 @@
     {
       "id": "unsicherheit_verdachtsdiagnose",
       "title": "Unsicherheit, Verdachtsdiagnose und Plan professionell formulieren",
-      "focus": "auch bei unvollständigen Informationen verantwortungsvoll sprechen",
-      "summary": "FSP-Sprache wirkt besonders reif, wenn Unsicherheit nicht versteckt, sondern geordnet wird.",
+      "focus": "Wörter für Wahrscheinlichkeit und Verdacht | Warum der Plan zur Unsicherheit gehört | Unsicherheit patientengerecht erklären",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "In klinischen Gesprächen liegt anfangs oft nur ein Verdacht vor. Gerade deshalb ist es wichtig, Unsicherheit professionell auszusprechen, ohne orientierungslos zu wirken.",
-        "Formulierungen wie am ehesten, differenzialdiagnostisch, aktuell führend, zunächst auszuschließen oder im Vordergrund stehend helfen, Wahrscheinlichkeiten sauber zu staffeln.",
-        "Ebenso wichtig ist der Plan. Unsicherheit wird erst dann gut getragen, wenn direkt gesagt werden kann, welche Untersuchung den Verdacht stützen oder entkräften soll.",
-        "Im Patientengespräch braucht dieselbe Unsicherheit eine verständlichere Form: Wir haben noch keine endgültige Diagnose, aber im Moment denken wir vor allem an ... und möchten deshalb als Nächstes ....",
-        "Berlin honoriert diese ruhige Ehrlichkeit. Sie klingt deutlich stärker als künstliche Sicherheit oder ausweichende Leerformeln.",
-        "Deshalb sollte Unsicherheit nicht als Mangel, sondern als eigener Sprachbaustein trainiert werden."
+        "Beim Thema „Unsicherheit, Verdachtsdiagnose und Plan professionell formulieren“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. In klinischen Gesprächen liegt anfangs oft nur ein Verdacht vor. Gerade deshalb ist es wichtig, Unsicherheit professionell auszusprechen, ohne orientierungslos zu wirken.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Formulierungen wie am ehesten, differenzialdiagnostisch, aktuell führend, zunächst auszuschließen oder im Vordergrund stehend helfen, Wahrscheinlichkeiten sauber zu staffeln.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Ebenso wichtig ist der Plan. Unsicherheit wird erst dann gut getragen, wenn direkt gesagt werden kann, welche Untersuchung den Verdacht stützen oder entkräften soll.",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Am ehesten, aktuell führend, differenzialdiagnostisch, zunächst auszuschließen oder klinisch vereinbar sind zentrale Formulierungen. Sie zeigen Abstufung statt Schwarz-Weiß-Denken. Genau das klingt ärztlich verantwortungsvoll.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Eine Verdachtsdiagnose wird stark, wenn sofort die nächste Klärungsidee folgt. Dann bleibt Unsicherheit aktiv und handlungsfähig. Ohne diesen Plan klingt sie schnell diffus.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Aktuell steht für mich am ehesten eine bestimmte Verdachtsdiagnose im Vordergrund. Differenzialdiagnostisch müssen aber weitere Ursachen mitgedacht werden. Entscheidend ist, welche Untersuchung den Verdacht als Nächstes stützen oder entkräften kann."
       ],
       "question_groups": [
         {
-          "title": "Welche Wörter Wahrscheinlichkeiten ordnen",
+          "title": "Wörter für Wahrscheinlichkeit und Verdacht",
           "questions": [
-            "am ehesten, aktuell führend, differenzialdiagnostisch, zunächst auszuschließen oder klinisch vereinbar sind zentrale Formulierungen.",
-            "Sie zeigen Abstufung statt Schwarz-Weiß-Denken.",
+            "Am ehesten, aktuell führend, differenzialdiagnostisch, zunächst auszuschließen oder klinisch vereinbar sind zentrale Formulierungen. Sie zeigen Abstufung statt Schwarz-Weiß-Denken.",
             "Genau das klingt ärztlich verantwortungsvoll."
           ]
         },
         {
           "title": "Warum der Plan zur Unsicherheit gehört",
           "questions": [
-            "Eine Verdachtsdiagnose wird stark, wenn sofort die nächste Klärungsidee folgt.",
-            "Dann bleibt Unsicherheit aktiv und handlungsfähig.",
+            "Eine Verdachtsdiagnose wird stark, wenn sofort die nächste Klärungsidee folgt. Dann bleibt Unsicherheit aktiv und handlungsfähig.",
             "Ohne diesen Plan klingt sie schnell diffus."
           ]
         },
         {
-          "title": "Wie das dem Patienten erklärt werden kann",
+          "title": "Unsicherheit patientengerecht erklären",
           "questions": [
-            "Patienten brauchen Klarheit darüber, dass noch nicht alles sicher ist, aber bereits sinnvoll gehandelt wird.",
-            "Die Sprache sollte offen und beruhigend zugleich sein.",
+            "Patienten brauchen Klarheit darüber, dass noch nicht alles sicher ist, aber bereits sinnvoll gehandelt wird. Die Sprache sollte offen und beruhigend zugleich sein.",
             "So entsteht Vertrauen statt Irritation."
           ]
         },
         {
           "title": "Warum Berlin darauf achtet",
           "questions": [
-            "Die Prüfung simuliert klinische Realität, und klinische Realität beginnt oft mit Ungewissheit.",
-            "Wer diese Ungewissheit geordnet spricht, wirkt deutlich belastbarer.",
+            "Die Prüfung simuliert klinische Realität, und klinische Realität beginnt oft mit Ungewissheit. Wer diese Ungewissheit geordnet spricht, wirkt deutlich belastbarer.",
             "Das ist in Berlin ein echter Pluspunkt."
           ]
         }
@@ -328,46 +313,43 @@
     {
       "id": "untersuchung_anleiten",
       "title": "Körperliche Untersuchung sprachlich anleiten",
-      "focus": "kurze, klare Anweisungen geben und gleichzeitig den Patientenkontakt halten",
-      "summary": "Untersuchungssprache ist in der FSP ein eigener Sprachtyp: knapp, konkret und ruhig.",
+      "focus": "Gute sprachliche Anleitung | Begleitung unangenehmer Untersuchungsschritte | Häufige Fehler",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "Viele Untersuchungssituationen scheitern nicht am medizinischen Wissen, sondern an unklaren Anweisungen. Wer zu komplex spricht, verliert Zeit und Kontakt.",
-        "Gute Untersuchungsanweisungen sind kurz, konkret und schrittweise: Bitte atmen Sie tief ein und aus. Bitte öffnen Sie den Mund. Bitte heben Sie beide Arme. Bitte drehen Sie den Kopf nach rechts.",
-        "Wichtig ist dabei, die Perspektive des Patienten mitzudenken. Er soll wissen, was er als Nächstes tun muss, nicht warum der Arzt schon drei Schritte weiter denkt.",
-        "Parallel dazu muss die Ärztin beim Patienten bleiben: kurz ankündigen, was jetzt passiert, bei unangenehmen Schritten warnen und am Ende wieder in den Gesprächsmodus zurückkehren.",
-        "Gerade in Berlin werden einfache, alltagstaugliche Anweisungen oft stärker bewertet als hochspezielle Fachtermini.",
-        "Untersuchungssprache sollte daher wie ein kleines Repertoire trainiert werden, nicht als spontane Improvisation."
+        "Beim Thema „Körperliche Untersuchung sprachlich anleiten“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. Viele Untersuchungssituationen scheitern nicht am medizinischen Wissen, sondern an unklaren Anweisungen. Wer zu komplex spricht, verliert Zeit und Kontakt.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Gute Untersuchungsanweisungen sind kurz, konkret und schrittweise: Bitte atmen Sie tief ein und aus. Bitte öffnen Sie den Mund. Bitte heben Sie beide Arme. Bitte drehen Sie den Kopf nach rechts.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Wichtig ist dabei, die Perspektive des Patienten mitzudenken. Er soll wissen, was er als Nächstes tun muss, nicht warum der Arzt schon drei Schritte weiter denkt.",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Sie sind kurz, eindeutig und nur einen Schritt lang. Sie sagen dem Patienten, was er jetzt tun soll. Dadurch wird die Untersuchung ruhig und effizient.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Kurze Vorwarnungen wie Das kann jetzt kurz unangenehm sein helfen sehr. Sie halten die Beziehung stabil, ohne die Untersuchung aufzublähen. Gerade das wirkt professionell und patientenzentriert.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Bitte atmen Sie einmal tief ein und aus. Bitte sagen Sie mir sofort Bescheid, wenn etwas unangenehm wird. Gute Untersuchungsanweisungen sind kurz, eindeutig und schrittweise."
       ],
       "question_groups": [
         {
-          "title": "Was gute Anweisungen ausmacht",
+          "title": "Gute sprachliche Anleitung",
           "questions": [
-            "Sie sind kurz, eindeutig und nur einen Schritt lang.",
-            "Sie sagen dem Patienten, was er jetzt tun soll.",
+            "Sie sind kurz, eindeutig und nur einen Schritt lang. Sie sagen dem Patienten, was er jetzt tun soll.",
             "Dadurch wird die Untersuchung ruhig und effizient."
           ]
         },
         {
-          "title": "Wie man unangenehme Schritte begleitet",
+          "title": "Begleitung unangenehmer Untersuchungsschritte",
           "questions": [
-            "Kurze Vorwarnungen wie Das kann jetzt kurz unangenehm sein helfen sehr.",
-            "Sie halten die Beziehung stabil, ohne die Untersuchung aufzublähen.",
+            "Kurze Vorwarnungen wie Das kann jetzt kurz unangenehm sein helfen sehr. Sie halten die Beziehung stabil, ohne die Untersuchung aufzublähen.",
             "Gerade das wirkt professionell und patientenzentriert."
           ]
         },
         {
-          "title": "Welche Fehler häufig passieren",
+          "title": "Häufige Fehler",
           "questions": [
-            "Zu viele Informationen auf einmal oder komplizierte Nebensätze verwirren den Patienten.",
-            "Dann leidet auch die Befunderhebung.",
+            "Zu viele Informationen auf einmal oder komplizierte Nebensätze verwirren den Patienten. Dann leidet auch die Befunderhebung.",
             "Bessere Sprache ist hier oft auch bessere Medizin."
           ]
         },
         {
           "title": "Warum Berlin hier genau hinhört",
           "questions": [
-            "Untersuchungssprache zeigt sehr direkt, ob jemand im deutschen Klinikalltag handlungsfähig ist.",
-            "Sie verbindet Patientenkontakt und klinische Struktur.",
+            "Untersuchungssprache zeigt sehr direkt, ob jemand im deutschen Klinikalltag handlungsfähig ist. Sie verbindet Patientenkontakt und klinische Struktur.",
             "Deshalb ist sie so prüfungsrelevant."
           ]
         }
@@ -388,46 +370,43 @@
     {
       "id": "patientenzentriert_verstaendnissicherung",
       "title": "Patientenzentriert sprechen und Verständnis sichern",
-      "focus": "klare Information mit Beziehung und Rückversicherung verbinden",
-      "summary": "Gute FSP-Sprache ist nicht nur korrekt, sondern auch zugewandt und überprüfbar verständlich.",
+      "focus": "Patientenzentrierte Sprache | Verständnissicherung | Sprachlich elegante Verständnissicherung",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "Patientenzentrierte Sprache bedeutet nicht, medizinische Struktur aufzugeben. Sie bedeutet vielmehr, Information so zu geben, dass sich der Patient gesehen, verstanden und orientiert fühlt.",
-        "Dazu gehören einfache Signale wie Zusammenfassen, offene Rückfragen, das Benennen des nächsten Schritts und das kurze Prüfen, ob alles verständlich war.",
-        "Gerade bei belastenden Themen ist Verständnissicherung entscheidend. Ein Patient nickt oft höflich, ohne den Inhalt wirklich aufgenommen zu haben. Deshalb reicht es nicht, Informationen nur einmal auszusprechen.",
-        "Auch sprachlich ist diese Ebene stark: Verstanden Sie, was der Grund für die Untersuchung ist? Möchten Sie, dass ich den nächsten Schritt noch einmal erkläre? Haben Sie dazu im Moment Fragen?",
-        "Berlin bewertet diese Haltung positiv, weil sie klinische Kommunikation realistischer macht. Gute Kandidaten sprechen nicht nur, sie führen.",
-        "Patientenzentrierung ist daher kein weiches Extra, sondern ein Qualitätsmerkmal guter medizinischer Sprache."
+        "Beim Thema „Patientenzentriert sprechen und Verständnis sichern“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. Patientenzentrierte Sprache bedeutet nicht, medizinische Struktur aufzugeben. Sie bedeutet vielmehr, Information so zu geben, dass sich der Patient gesehen, verstanden und orientiert fühlt.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Dazu gehören einfache Signale wie Zusammenfassen, offene Rückfragen, das Benennen des nächsten Schritts und das kurze Prüfen, ob alles verständlich war.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Gerade bei belastenden Themen ist Verständnissicherung entscheidend. Ein Patient nickt oft höflich, ohne den Inhalt wirklich aufgenommen zu haben. Deshalb reicht es nicht, Informationen nur einmal auszusprechen.",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Sie bleibt fachlich klar, aber nimmt die Perspektive des Gegenübers ernst. Sie erklärt, strukturiert und lässt Raum für Rückfragen. Dadurch steigt nicht nur die Empathie, sondern auch die Verständlichkeit.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Ein Patient kann Informationen hören, ohne sie wirklich zu verstehen. Kurze Rückversicherungen machen deshalb einen großen Unterschied. Sie sind vor allem bei Diagnostik und Therapieplänen wichtig.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Ich möchte kurz zusammenfassen, was wir bisher besprochen haben. Haben Sie verstanden, warum wir diese Untersuchung empfehlen? Wenn Sie möchten, erkläre ich Ihnen den nächsten Schritt noch einmal in Ruhe."
       ],
       "question_groups": [
         {
-          "title": "Was patientenzentrierte Sprache ausmacht",
+          "title": "Patientenzentrierte Sprache",
           "questions": [
-            "Sie bleibt fachlich klar, aber nimmt die Perspektive des Gegenübers ernst.",
-            "Sie erklärt, strukturiert und lässt Raum für Rückfragen.",
+            "Sie bleibt fachlich klar, aber nimmt die Perspektive des Gegenübers ernst. Sie erklärt, strukturiert und lässt Raum für Rückfragen.",
             "Dadurch steigt nicht nur die Empathie, sondern auch die Verständlichkeit."
           ]
         },
         {
-          "title": "Warum Verständnissicherung nötig ist",
+          "title": "Verständnissicherung",
           "questions": [
-            "Ein Patient kann Informationen hören, ohne sie wirklich zu verstehen.",
-            "Kurze Rückversicherungen machen deshalb einen großen Unterschied.",
+            "Ein Patient kann Informationen hören, ohne sie wirklich zu verstehen. Kurze Rückversicherungen machen deshalb einen großen Unterschied.",
             "Sie sind vor allem bei Diagnostik und Therapieplänen wichtig."
           ]
         },
         {
-          "title": "Wie das sprachlich elegant geht",
+          "title": "Sprachlich elegante Verständnissicherung",
           "questions": [
-            "Kurze Fragen und Zusammenfassungen reichen oft aus.",
-            "Die Sprache sollte dabei zugewandt und nicht belehrend wirken.",
+            "Kurze Fragen und Zusammenfassungen reichen oft aus. Die Sprache sollte dabei zugewandt und nicht belehrend wirken.",
             "So bleibt das Gespräch respektvoll und klar."
           ]
         },
         {
           "title": "Warum Berlin das positiv bewertet",
           "questions": [
-            "Die FSP simuliert nicht nur Wissensabfrage, sondern realen klinischen Kontakt.",
-            "Verständnissicherung zeigt, dass Sprache auch als Beziehungsarbeit beherrscht wird.",
+            "Die FSP simuliert nicht nur Wissensabfrage, sondern realen klinischen Kontakt. Verständnissicherung zeigt, dass Sprache auch als Beziehungsarbeit beherrscht wird.",
             "Das fällt in der Bewertung oft positiv auf."
           ]
         }
@@ -448,46 +427,43 @@
     {
       "id": "sensible_themen",
       "title": "Sensible Themen sprachlich sauber und ohne Härte ansprechen",
-      "focus": "Alkohol, Suizidalität, Sexualität, Stuhl und soziale Belastungen professionell eröffnen",
-      "summary": "Gerade sensible Themen trennen in der FSP oft reine Sprachkenntnis von wirklicher Gesprächskompetenz.",
+      "focus": "Warum direkte Sprache hier besser ist | Gute Einbettung sensibler Fragen | Besonders wichtige Themen",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "Themen wie Alkohol, Drogen, Suizidgedanken, Sexualität, Inkontinenz, Stuhlverhalten oder häusliche Belastung brauchen eine Sprache, die direkt und gleichzeitig respektvoll ist.",
-        "Zu vage Fragen führen oft zu unklaren Antworten; zu harte Fragen wirken konfrontativ. Hilfreich sind deshalb kurze, normale und enttabuisierende Formulierungen.",
-        "Zum Beispiel: Ich frage das alle Patienten, weil es medizinisch wichtig ist. Trinken Sie Alkohol? oder Haben Sie in letzter Zeit Gedanken gehabt, sich etwas anzutun?",
-        "Wichtig ist auch, vor dem sensiblen Thema den medizinischen Grund anzudeuten. Dann wirkt die Frage fachlich notwendig und nicht neugierig.",
-        "In Berlin werden solche Situationen oft deshalb schwierig, weil Kandidaten sprachlich ausweichen. Gerade hier wirkt klare, ruhige Direktheit stärker als Umkreisen.",
-        "Sensible Themen brauchen also Mut, aber vor allem gute Formulierungen."
+        "Beim Thema „Sensible Themen sprachlich sauber und ohne Härte ansprechen“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. Themen wie Alkohol, Drogen, Suizidgedanken, Sexualität, Inkontinenz, Stuhlverhalten oder häusliche Belastung brauchen eine Sprache, die direkt und gleichzeitig respektvoll ist.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Zu vage Fragen führen oft zu unklaren Antworten; zu harte Fragen wirken konfrontativ. Hilfreich sind deshalb kurze, normale und enttabuisierende Formulierungen.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Zum Beispiel: Ich frage das alle Patienten, weil es medizinisch wichtig ist. Trinken Sie Alkohol? oder Haben Sie in letzter Zeit Gedanken gehabt, sich etwas anzutun?",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Sensible Themen verlieren oft an Klarheit, wenn sie zu vorsichtig umschrieben werden. Kurze, sachliche Formulierungen wirken respektvoller als peinlich wirkende Umschweife. Das ist auch medizinisch hilfreicher.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Ein kurzer Hinweis auf den medizinischen Zweck entlastet beide Seiten. Dann wird klar, warum die Frage gestellt wird. Das schafft eher Kooperation als Abwehr.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Ich frage das alle Patientinnen und Patienten, weil es für die medizinische Einschätzung wichtig ist. Trinken Sie Alkohol oder nehmen Sie andere Substanzen? Haben Sie im Moment Gedanken, sich selbst etwas anzutun?"
       ],
       "question_groups": [
         {
           "title": "Warum direkte Sprache hier besser ist",
           "questions": [
-            "Sensible Themen verlieren oft an Klarheit, wenn sie zu vorsichtig umschrieben werden.",
-            "Kurze, sachliche Formulierungen wirken respektvoller als peinlich wirkende Umschweife.",
+            "Sensible Themen verlieren oft an Klarheit, wenn sie zu vorsichtig umschrieben werden. Kurze, sachliche Formulierungen wirken respektvoller als peinlich wirkende Umschweife.",
             "Das ist auch medizinisch hilfreicher."
           ]
         },
         {
-          "title": "Wie man die Frage einbettet",
+          "title": "Gute Einbettung sensibler Fragen",
           "questions": [
-            "Ein kurzer Hinweis auf den medizinischen Zweck entlastet beide Seiten.",
-            "Dann wird klar, warum die Frage gestellt wird.",
+            "Ein kurzer Hinweis auf den medizinischen Zweck entlastet beide Seiten. Dann wird klar, warum die Frage gestellt wird.",
             "Das schafft eher Kooperation als Abwehr."
           ]
         },
         {
-          "title": "Welche Themen besonders geübt werden sollten",
+          "title": "Besonders wichtige Themen",
           "questions": [
-            "Alkohol- und Drogenkonsum, Suizidgedanken, Inkontinenz, Sexualanamnese und soziale Belastungen sind klassische Stolperstellen.",
-            "Gerade hier lohnt sich ein kleines Set fester Formulierungen.",
+            "Alkohol- und Drogenkonsum, Suizidgedanken, Inkontinenz, Sexualanamnese und soziale Belastungen sind klassische Stolperstellen. Gerade hier lohnt sich ein kleines Set fester Formulierungen.",
             "Sie geben im Ernstfall sprachliche Sicherheit."
           ]
         },
         {
-          "title": "Warum dieses Modul für Berlin wichtig ist",
+          "title": "Bedeutung dieses Moduls für Berlin",
           "questions": [
-            "Die Prüfung bewertet nicht nur sachliche Richtigkeit, sondern auch professionelle Gesprächsführung.",
-            "Sensible Themen zeigen diese Professionalität besonders deutlich.",
+            "Die Prüfung bewertet nicht nur sachliche Richtigkeit, sondern auch professionelle Gesprächsführung. Sensible Themen zeigen diese Professionalität besonders deutlich.",
             "Deshalb verdienen sie eigenes Training."
           ]
         }
@@ -508,46 +484,43 @@
     {
       "id": "konjunktiv_berichtssprache",
       "title": "Konjunktiv und Berichtssprache stabil verwenden",
-      "focus": "Patientenaussagen sicher in ärztliche Berichtssprache überführen",
-      "summary": "Viele Kandidaten wissen fachlich genug, verlieren aber im Konjunktiv und in der Berichtssprache an Sicherheit.",
+      "focus": "Funktion des Konjunktivs | Besonders wichtige Formen | Häufige Fehler",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "Die Berichtssprache ist in der FSP wichtig, weil Patientenaussagen nicht eins zu eins übernommen werden, sondern ärztlich verdichtet werden müssen. Genau dafür ist der Konjunktiv ein zentrales Werkzeug.",
-        "Wörter wie der Patient berichtet, er habe angegeben, sie habe verneint, es bestünden, die Beschwerden hätten begonnen oder Fieber sei nicht aufgetreten gehören zum Grundrepertoire.",
-        "Dabei geht es nicht um perfekte Schulgrammatik, sondern um eine konsistente, professionelle Distanz. Schon wenige stabile Formen machen die Sprache deutlich reifer.",
-        "Wichtig ist auch, was nicht in den Konjunktiv muss. Befunde, Untersuchungen und ärztliche Einordnungen werden im Indikativ formuliert. So bleiben Patientenaussage und ärztliche Bewertung klar getrennt.",
-        "Berlin hört in Übergabe und Brief sehr genau auf diese Grenze. Wer sie sauber setzt, wirkt sofort sicherer.",
-        "Berichtssprache ist damit weniger Grammatikübung als klinische Rollenordnung."
+        "Beim Thema „Konjunktiv und Berichtssprache stabil verwenden“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. Die Berichtssprache ist in der FSP wichtig, weil Patientenaussagen nicht eins zu eins übernommen werden, sondern ärztlich verdichtet werden müssen. Genau dafür ist der Konjunktiv ein zentrales Werkzeug.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Wörter wie der Patient berichtet, er habe angegeben, sie habe verneint, es bestünden, die Beschwerden hätten begonnen oder Fieber sei nicht aufgetreten gehören zum Grundrepertoire.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Dabei geht es nicht um perfekte Schulgrammatik, sondern um eine konsistente, professionelle Distanz. Schon wenige stabile Formen machen die Sprache deutlich reifer.",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Er markiert, dass etwas vom Patienten berichtet wurde und nicht direkt vom Arzt festgestellt ist. Damit entsteht sprachlich eine saubere Rollenverteilung. Diese Differenz macht Übergabe und Brief professionell.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Habe, sei, bestünden, hätten begonnen, habe verneint und habe angegeben gehören zu den am häufigsten gebrauchten Formen. Schon dieses kleine Set trägt erstaunlich weit. Entscheidend ist die stabile Anwendung, nicht die maximale Vielfalt.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Der Patient habe über retrosternalen Druckschmerz berichtet. Dyspnoe und Fieber habe er verneint. Im Status zeigt sich dagegen eine Tachykardie und basale Rasselgeräusche."
       ],
       "question_groups": [
         {
-          "title": "Wozu der Konjunktiv dient",
+          "title": "Funktion des Konjunktivs",
           "questions": [
-            "Er markiert, dass etwas vom Patienten berichtet wurde und nicht direkt vom Arzt festgestellt ist.",
-            "Damit entsteht sprachlich eine saubere Rollenverteilung.",
+            "Er markiert, dass etwas vom Patienten berichtet wurde und nicht direkt vom Arzt festgestellt ist. Damit entsteht sprachlich eine saubere Rollenverteilung.",
             "Diese Differenz macht Übergabe und Brief professionell."
           ]
         },
         {
-          "title": "Welche Formen besonders wichtig sind",
+          "title": "Besonders wichtige Formen",
           "questions": [
-            "habe, sei, bestünden, hätten begonnen, habe verneint und habe angegeben gehören zu den am häufigsten gebrauchten Formen.",
-            "Schon dieses kleine Set trägt erstaunlich weit.",
+            "Habe, sei, bestünden, hätten begonnen, habe verneint und habe angegeben gehören zu den am häufigsten gebrauchten Formen. Schon dieses kleine Set trägt erstaunlich weit.",
             "Entscheidend ist die stabile Anwendung, nicht die maximale Vielfalt."
           ]
         },
         {
-          "title": "Wo häufige Fehler passieren",
+          "title": "Häufige Fehler",
           "questions": [
-            "Oft werden Patientenaussagen, Befunde und ärztliche Einschätzung grammatisch vermischt.",
-            "Dann verliert der Text an Klarheit.",
+            "Oft werden Patientenaussagen, Befunde und ärztliche Einschätzung grammatisch vermischt. Dann verliert der Text an Klarheit.",
             "Die Lösung liegt in bewusst gesetzten Perspektivwechseln."
           ]
         },
         {
           "title": "Warum Berlin hier sensibel ist",
           "questions": [
-            "Berichtssprache ist ein Kernstück der Arzt-Arzt-Kommunikation und des Briefs.",
-            "Wer sie sicher verwendet, zeigt funktionierende klinische Sprachkompetenz.",
+            "Berichtssprache ist ein Kernstück der Arzt-Arzt-Kommunikation und des Briefs. Wer sie sicher verwendet, zeigt funktionierende klinische Sprachkompetenz.",
             "Das wirkt oft stärker als einzelne seltene Fachwörter."
           ]
         }
@@ -568,46 +541,43 @@
     {
       "id": "dokumentation_briefsprache",
       "title": "Dokumentation und kurze Briefsprache verdichten",
-      "focus": "schriftliche Sprache so knapp machen, dass sie klinisch vollständig und zeitsparend bleibt",
-      "summary": "Der schriftliche Teil der FSP lebt weniger von Eleganz als von Verdichtung, Ordnung und Relevanz.",
+      "focus": "Was in den kurzen Brief gehört | Warum Verdichtung wichtiger ist als Vollständigkeitsillusion | Tragfähige schriftliche Sprache",
+      "summary": "Dieses Kapitel gehört zu den sprachlichen Kernkompetenzen der Fachsprachprüfung. Entscheidend ist, dass medizinischer Inhalt zugleich verständlich, präzise und adressatengerecht bleibt. Es geht nicht darum, besonders kompliziert zu klingen, sondern denselben Inhalt je nach Gegenüber korrekt zu übersetzen und sauber zu verdichten.",
       "learning_text": [
-        "Kurze Briefsprache bedeutet nicht, Informationen zu opfern, sondern sie klinisch zu ordnen. Das Leitsymptom, der Verlauf, relevante Vorinformationen, Schlüsselfunde, Verdachtsdiagnose und Plan müssen in knapper Form erhalten bleiben.",
-        "Schwache Briefe verlieren sich oft in Chronologie oder Nebensächlichkeiten. Starke Briefe folgen einer funktionalen Reihenfolge und lassen Überflüssiges weg.",
-        "Wichtig ist, dass dieselbe Information schriftlich anders klingt als im Gespräch. Der Brief ist dichter, nominaler und stärker auf klinische Kernfakten fokussiert.",
-        "Auch typische Abkürzungen und Dokumentationswörter helfen hier: V. a., DD, Z. n., o. B., i. v., p. o. oder tgl. sollten verstanden, aber bewusst und lesbar eingesetzt werden.",
-        "Berlin bewertet im Brief nicht nur Deutschkenntnisse, sondern vor allem, ob man Wesentliches von Unwesentlichem trennen kann.",
-        "Kurze Briefsprache ist deshalb eine Form klinischer Priorisierung in Schriftform."
+        "Beim Thema „Dokumentation und kurze Briefsprache verdichten“ zeigt sich besonders gut, ob medizinischer Inhalt klar, präzise und adressatengerecht formuliert werden kann. Ziel ist keine künstlich komplizierte Sprache, sondern eine sichere Übersetzung desselben Inhalts in das jeweils passende Register.",
+        "Zunächst geht es darum, den medizinischen Kern stabil zu halten. Kurze Briefsprache bedeutet nicht, Informationen zu opfern, sondern sie klinisch zu ordnen. Das Leitsymptom, der Verlauf, relevante Vorinformationen, Schlüsselfunde, Verdachtsdiagnose und Plan müssen in knapper Form erhalten bleiben.",
+        "Darauf aufbauend entscheidet die Wortwahl, ob der Inhalt für das Gegenüber passend klingt. Schwache Briefe verlieren sich oft in Chronologie oder Nebensächlichkeiten. Starke Briefe folgen einer funktionalen Reihenfolge und lassen Überflüssiges weg.",
+        "Besonders hilfreich ist eine klare innere Struktur der Sätze. Wichtig ist, dass dieselbe Information schriftlich anders klingt als im Gespräch. Der Brief ist dichter, nominaler und stärker auf klinische Kernfakten fokussiert.",
+        "Viele kommunikative Probleme entstehen nicht aus fehlendem Wissen, sondern aus unklarer Verdichtung. Leitsymptom, zeitlicher Verlauf, relevante Begleitumstände, Schlüsselfunde und Plan bilden den Kern. Alles andere muss sich daran messen lassen. So bleibt der Brief knapp und vollständig zugleich.",
+        "Eine gute Sprachkompetenz zeigt sich deshalb vor allem in ruhigen, präzisen und anschlussfähigen Formulierungen. Nicht jede Antwort aus der Anamnese gehört in denselben Detaillierungsgrad in den Brief. Wichtiger ist, dass die klinische Linie klar erkennbar bleibt. Genau das spart Zeit und erhöht die Qualität.",
+        "Typische Formulierungen sollten dabei nicht wie auswendig gelernte Floskeln wirken, sondern die inhaltliche Ordnung tragen. Im kurzen Brief zählt vor allem die klinische Linie, nicht die maximale Detailfülle. Leitsymptom, Verlauf, Schlüsselfunde und Plan sollten klar erkennbar bleiben. Berichtssprache und sinnvolle Verdichtung sind hier entscheidend."
       ],
       "question_groups": [
         {
           "title": "Was in den kurzen Brief gehört",
           "questions": [
-            "Leitsymptom, zeitlicher Verlauf, relevante Begleitumstände, Schlüsselfunde und Plan bilden den Kern.",
-            "Alles andere muss sich daran messen lassen.",
+            "Leitsymptom, zeitlicher Verlauf, relevante Begleitumstände, Schlüsselfunde und Plan bilden den Kern. Alles andere muss sich daran messen lassen.",
             "So bleibt der Brief knapp und vollständig zugleich."
           ]
         },
         {
           "title": "Warum Verdichtung wichtiger ist als Vollständigkeitsillusion",
           "questions": [
-            "Nicht jede Antwort aus der Anamnese gehört in denselben Detaillierungsgrad in den Brief.",
-            "Wichtiger ist, dass die klinische Linie klar erkennbar bleibt.",
+            "Nicht jede Antwort aus der Anamnese gehört in denselben Detaillierungsgrad in den Brief. Wichtiger ist, dass die klinische Linie klar erkennbar bleibt.",
             "Genau das spart Zeit und erhöht die Qualität."
           ]
         },
         {
-          "title": "Welche Sprache schriftlich gut trägt",
+          "title": "Tragfähige schriftliche Sprache",
           "questions": [
-            "Kurze Hauptsätze, klare Konnektoren und sichere Berichtssprache wirken meist stärker als komplizierte Konstruktionen.",
-            "Auch Abkürzungen dürfen helfen, solange sie lesbar und passend bleiben.",
+            "Kurze Hauptsätze, klare Konnektoren und sichere Berichtssprache wirken meist stärker als komplizierte Konstruktionen. Auch Abkürzungen dürfen helfen, solange sie lesbar und passend bleiben.",
             "Die Schrift soll klar, nicht verkünstelt sein."
           ]
         },
         {
           "title": "Warum das für Berlin so wichtig ist",
           "questions": [
-            "Der Brief ist in Berlin einer der präzisesten Bewertungsbereiche.",
-            "Wer ihn als Verdichtungsaufgabe versteht, schreibt ruhiger und treffsicherer.",
+            "Der Brief ist in Berlin einer der präzisesten Bewertungsbereiche. Wer ihn als Verdichtungsaufgabe versteht, schreibt ruhiger und treffsicherer.",
             "Diese Haltung zahlt sich in der ganzen Prüfung aus."
           ]
         }

@@ -8657,7 +8657,7 @@ function stopLearningBodyModelLoop() {
 }
 
 function getLearningMetaCountLabel(rootId) {
-  return rootId === "anamnese" ? "Fragen" : "Lernpunkte";
+  return rootId === "anamnese" ? "Fragen" : "Abschnitte";
 }
 
 function isQuestionDrivenLearningRoot(rootId) {
@@ -8665,7 +8665,7 @@ function isQuestionDrivenLearningRoot(rootId) {
 }
 
 function getLearningGroupSectionLabel(rootId) {
-  return isQuestionDrivenLearningRoot(rootId) ? "Fragewege" : "Vertiefung";
+  return isQuestionDrivenLearningRoot(rootId) ? "Fragewege" : "Kapitelabschnitte";
 }
 
 function renderLearningReadingMode(bundle) {

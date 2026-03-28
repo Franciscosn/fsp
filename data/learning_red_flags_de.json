@@ -12,35 +12,34 @@
     {
       "id": "thorax_akut",
       "title": "Thorax und Atemwege: sofortige Alarmzeichen",
-      "focus": "ACS, Lungenembolie, Pneumothorax und akute respiratorische Insuffizienz",
-      "summary": "Thorakale Beschwerden sind in der FSP klassische Hochrisikothemen. Bewertet wird, ob Kandidaten Alarmzeichen früh priorisieren statt unsortiert Differentialdiagnosen aufzuzahlen.",
+      "focus": "Sofort zu priorisierende Warnzeichen | Dringlichkeit klar benennen | Unmittelbare Konsequenzen",
+      "summary": "Dieses Kapitel verlangt, Warnzeichen früh zu erkennen und sie nicht nur zu benennen, sondern sofort in eine Konsequenz zu übersetzen. Zeitkritische Konstellationen müssen in der Sprache deutlich hörbar werden: zuerst die Gefährdung, dann der erste Akutplan, erst danach die weitere Differenzierung.",
       "learning_text": [
-        "In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
-        "Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
-        "Alarmierend sind persistierender Druckschmerz, starke Ruhedyspnoe, Synkope, Zyanose, Kaltschweißigkeit und Kreislaufinstabilität. Bei Thoraxbeschwerden gilt zuerst Gefährdung, dann Differenzierung. Risikofaktoren für ACS, Lungenembolie oder Pneumothorax müssen früh erhoben und klar gewichtet werden. Zeitkritik sollte in Befund und Dokumentation sprachlich früh sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
-        "Patienten sollten hören, dass sofortige Abklärung nötig ist, weil gefährliche Ursachen ausgeschlossen werden müssen. In der Übergabe gehören Red Flags immer zusammen mit Monitoring, EKG, Labor und weiterem Akutplan genannt. Unscharfe Alarmwörter ohne Konsequenz wirken schwach; stark wirkt die direkte Verbindung von Warnzeichen und Maßnahme. Bei Entlassung müssen exakte Wiedervorstellungskriterien und Warnzeichen klar ausgesprochen werden. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
-        "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+        "Im Kapitel „Thorax und Atemwege: sofortige Alarmzeichen“ muss Gefährdung sofort hörbar werden. Entscheidend ist nicht dramatische Sprache, sondern eine ruhige, klare Benennung von Warnzeichen und die unmittelbare Verbindung zu den richtigen Maßnahmen.",
+        "Hier geht es zuerst um die Frage, welche Zeichen sofort alarmieren. In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
+        "Danach muss klar werden, welche Akutmaßnahmen daraus folgen. Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
+        "Wichtig ist außerdem, wie Dringlichkeit gegenüber Patient und Team ausgesprochen wird. Alarmierend sind persistierender Druckschmerz, starke Ruhedyspnoe, Synkope, Zyanose, Kaltschweißigkeit und Kreislaufinstabilität. Bei Thoraxbeschwerden gilt zuerst Gefährdung, dann Differenzierung. Risikofaktoren für ACS, Lungenembolie oder Pneumothorax müssen früh erhoben und klar gewichtet werden. Zeitkritik sollte in Befund und Dokumentation sprachlich früh sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
+        "Im klinischen Alltag reicht es nicht, Alarmwörter aufzuzählen. Warnzeichen müssen geordnet, gewichtet und mit Monitoring, Basisdiagnostik, weiterer Akutabklärung oder Wiedervorstellungskriterien verknüpft werden, damit aus der Gefährdung eine nachvollziehbare Handlungsstrategie entsteht.",
+        "Nur wenn Warnzeichen und Maßnahmen zusammen genannt werden, wird die Situation wirklich klinisch eingeordnet. Patienten sollten hören, dass sofortige Abklärung nötig ist, weil gefährliche Ursachen ausgeschlossen werden müssen. In der Übergabe gehören Red Flags immer zusammen mit Monitoring, EKG, Labor und weiterem Akutplan genannt. Unscharfe Alarmwörter ohne Konsequenz wirken schwach; stark wirkt die direkte Verbindung von Warnzeichen und Maßnahme. Bei Entlassung müssen exakte Wiedervorstellungskriterien und Warnzeichen klar ausgesprochen werden. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
+        "In kritischen Situationen sind klare Standardsätze hilfreich, weil sie Gefährdung und Maßnahme unmittelbar miteinander verbinden. Aufgrund der Konstellation behandeln wir die Situation als akut potenziell bedrohlich. Wir leiten jetzt sofort Monitoring und Notfalldiagnostik ein. Ich erkläre Ihnen klar, welche Warnzeichen eine unmittelbare Wiedervorstellung erfordern."
       ],
       "question_groups": [
         {
-          "title": "Welche Zeichen du sofort priorisieren musst",
+          "title": "Sofort zu priorisierende Warnzeichen",
           "questions": [
-            "Alarmierend sind persistierender Druckschmerz, starke Ruhedyspnoe, Synkope, Zyanose, Kaltschweißigkeit und Kreislaufinstabilität. Bei Thoraxbeschwerden gilt zuerst Gefährdung, dann Differenzierung.",
-            "Risikofaktoren für ACS, Lungenembolie oder Pneumothorax müssen früh erhoben und klar gewichtet werden. Zeitkritik sollte in Befund und Dokumentation sprachlich früh sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
+            "Alarmierend sind persistierender Druckschmerz, starke Ruhedyspnoe, Synkope, Zyanose, Kaltschweißigkeit und Kreislaufinstabilität. Bei Thoraxbeschwerden gilt zuerst Gefährdung, dann Differenzierung. Risikofaktoren für ACS, Lungenembolie oder Pneumothorax müssen früh erhoben und klar gewichtet werden. Zeitkritik sollte in Befund und Dokumentation sprachlich früh sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
           ]
         },
         {
-          "title": "Wie du Dringlichkeit klar aussprichst",
+          "title": "Dringlichkeit klar benennen",
           "questions": [
-            "Patienten sollten hören, dass sofortige Abklärung nötig ist, weil gefährliche Ursachen ausgeschlossen werden müssen. In der Übergabe gehören Red Flags immer zusammen mit Monitoring, EKG, Labor und weiterem Akutplan genannt.",
-            "Unscharfe Alarmwörter ohne Konsequenz wirken schwach; stark wirkt die direkte Verbindung von Warnzeichen und Maßnahme. Bei Entlassung müssen exakte Wiedervorstellungskriterien und Warnzeichen klar ausgesprochen werden. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
+            "Patienten sollten hören, dass sofortige Abklärung nötig ist, weil gefährliche Ursachen ausgeschlossen werden müssen. In der Übergabe gehören Red Flags immer zusammen mit Monitoring, EKG, Labor und weiterem Akutplan genannt. Unscharfe Alarmwörter ohne Konsequenz wirken schwach; stark wirkt die direkte Verbindung von Warnzeichen und Maßnahme. Bei Entlassung müssen exakte Wiedervorstellungskriterien und Warnzeichen klar ausgesprochen werden. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
           ]
         },
         {
-          "title": "Welche Handlung sprachlich sofort folgen muss",
+          "title": "Unmittelbare Konsequenzen",
           "questions": [
-            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert.",
-            "Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
           ]
         }
       ],
@@ -65,35 +64,34 @@
     {
       "id": "neurologie_akut",
       "title": "Neurologische Red Flags",
-      "focus": "Schlaganfallzeichen, Meningitisverdacht, Krampfanfall und Bewusstseinsstörung",
-      "summary": "Neurologische Warnzeichen müssen in der FSP schnell erkannt und in eine zeitkritische Kommunikation übersetzt werden. Unklares Ausweichen wird hier stark negativ bewertet.",
+      "focus": "Sofort zu priorisierende Warnzeichen | Dringlichkeit klar benennen | Unmittelbare Konsequenzen",
+      "summary": "Dieses Kapitel verlangt, Warnzeichen früh zu erkennen und sie nicht nur zu benennen, sondern sofort in eine Konsequenz zu übersetzen. Zeitkritische Konstellationen müssen in der Sprache deutlich hörbar werden: zuerst die Gefährdung, dann der erste Akutplan, erst danach die weitere Differenzierung.",
       "learning_text": [
-        "In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
-        "Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
-        "Plötzliche fokale Defizite, Sprachstörung, Vigilanzminderung, Thunderclap-Kopfschmerz und Krampfanfälle mit Verwirrtheit sind neurologische Alarmzeichen. Die Zeitachse mit letztem unauffälligem Zeitpunkt und Symptombeginn ist ein Kernbestandteil der Notfalllogik. Auch Fieber plus Meningismus oder Bewusstseinsveränderung müssen sofort als zeitkritisch erkannt werden. Neurologische Red Flags leben von klarer Beschreibung und nicht von spekulativer Fachsprache. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
-        "Patienten müssen verstehen, dass jetzt schnell gehandelt wird, um bleibende Schäden möglichst zu verhindern. In der Übergabe zählen Defizit, Zeitachse und Akutplan deutlich mehr als breite Differentialdiagnosen. Die Formulierung sollte klar auf Bildgebung, Monitoring und sofortige weitere Abklärung hin öffnen. Falls keine stationäre Situation vorliegt, braucht es sehr konkrete Warnzeichen und Rückkehrregeln. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
-        "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+        "Im Kapitel „Neurologische Red Flags“ muss Gefährdung sofort hörbar werden. Entscheidend ist nicht dramatische Sprache, sondern eine ruhige, klare Benennung von Warnzeichen und die unmittelbare Verbindung zu den richtigen Maßnahmen.",
+        "Hier geht es zuerst um die Frage, welche Zeichen sofort alarmieren. In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
+        "Danach muss klar werden, welche Akutmaßnahmen daraus folgen. Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
+        "Wichtig ist außerdem, wie Dringlichkeit gegenüber Patient und Team ausgesprochen wird. Plötzliche fokale Defizite, Sprachstörung, Vigilanzminderung, Thunderclap-Kopfschmerz und Krampfanfälle mit Verwirrtheit sind neurologische Alarmzeichen. Die Zeitachse mit letztem unauffälligem Zeitpunkt und Symptombeginn ist ein Kernbestandteil der Notfalllogik. Auch Fieber plus Meningismus oder Bewusstseinsveränderung müssen sofort als zeitkritisch erkannt werden. Neurologische Red Flags leben von klarer Beschreibung und nicht von spekulativer Fachsprache. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
+        "Im klinischen Alltag reicht es nicht, Alarmwörter aufzuzählen. Warnzeichen müssen geordnet, gewichtet und mit Monitoring, Basisdiagnostik, weiterer Akutabklärung oder Wiedervorstellungskriterien verknüpft werden, damit aus der Gefährdung eine nachvollziehbare Handlungsstrategie entsteht.",
+        "Nur wenn Warnzeichen und Maßnahmen zusammen genannt werden, wird die Situation wirklich klinisch eingeordnet. Patienten müssen verstehen, dass jetzt schnell gehandelt wird, um bleibende Schäden möglichst zu verhindern. In der Übergabe zählen Defizit, Zeitachse und Akutplan deutlich mehr als breite Differentialdiagnosen. Die Formulierung sollte klar auf Bildgebung, Monitoring und sofortige weitere Abklärung hin öffnen. Falls keine stationäre Situation vorliegt, braucht es sehr konkrete Warnzeichen und Rückkehrregeln. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
+        "In kritischen Situationen sind klare Standardsätze hilfreich, weil sie Gefährdung und Maßnahme unmittelbar miteinander verbinden. Es liegen neurologische Warnzeichen vor, daher behandeln wir den Fall als zeitkritisch. Der genaue Beginn der Symptome ist für das weitere Vorgehen entscheidend. Wir veranlassen jetzt sofort die notwendige Akutdiagnostik."
       ],
       "question_groups": [
         {
-          "title": "Welche Zeichen du sofort priorisieren musst",
+          "title": "Sofort zu priorisierende Warnzeichen",
           "questions": [
-            "Plötzliche fokale Defizite, Sprachstörung, Vigilanzminderung, Thunderclap-Kopfschmerz und Krampfanfälle mit Verwirrtheit sind neurologische Alarmzeichen. Die Zeitachse mit letztem unauffälligem Zeitpunkt und Symptombeginn ist ein Kernbestandteil der Notfalllogik.",
-            "Auch Fieber plus Meningismus oder Bewusstseinsveränderung müssen sofort als zeitkritisch erkannt werden. Neurologische Red Flags leben von klarer Beschreibung und nicht von spekulativer Fachsprache. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
+            "Plötzliche fokale Defizite, Sprachstörung, Vigilanzminderung, Thunderclap-Kopfschmerz und Krampfanfälle mit Verwirrtheit sind neurologische Alarmzeichen. Die Zeitachse mit letztem unauffälligem Zeitpunkt und Symptombeginn ist ein Kernbestandteil der Notfalllogik. Auch Fieber plus Meningismus oder Bewusstseinsveränderung müssen sofort als zeitkritisch erkannt werden. Neurologische Red Flags leben von klarer Beschreibung und nicht von spekulativer Fachsprache. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
           ]
         },
         {
-          "title": "Wie du Dringlichkeit klar aussprichst",
+          "title": "Dringlichkeit klar benennen",
           "questions": [
-            "Patienten müssen verstehen, dass jetzt schnell gehandelt wird, um bleibende Schäden möglichst zu verhindern. In der Übergabe zählen Defizit, Zeitachse und Akutplan deutlich mehr als breite Differentialdiagnosen.",
-            "Die Formulierung sollte klar auf Bildgebung, Monitoring und sofortige weitere Abklärung hin öffnen. Falls keine stationäre Situation vorliegt, braucht es sehr konkrete Warnzeichen und Rückkehrregeln. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
+            "Patienten müssen verstehen, dass jetzt schnell gehandelt wird, um bleibende Schäden möglichst zu verhindern. In der Übergabe zählen Defizit, Zeitachse und Akutplan deutlich mehr als breite Differentialdiagnosen. Die Formulierung sollte klar auf Bildgebung, Monitoring und sofortige weitere Abklärung hin öffnen. Falls keine stationäre Situation vorliegt, braucht es sehr konkrete Warnzeichen und Rückkehrregeln. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
           ]
         },
         {
-          "title": "Welche Handlung sprachlich sofort folgen muss",
+          "title": "Unmittelbare Konsequenzen",
           "questions": [
-            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert.",
-            "Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
           ]
         }
       ],
@@ -118,35 +116,34 @@
     {
       "id": "bauch_gi_blutung",
       "title": "Abdomen und GI-Blutung",
-      "focus": "Peritonismus, Blutungszeichen und septische Warnkonstellationen",
-      "summary": "Bauchschmerzthemen sind prüfungsrelevant, weil klinische Priorisierung und Verständlichkeitskommunikation parallel gefordert werden.",
+      "focus": "Sofort zu priorisierende Warnzeichen | Dringlichkeit klar benennen | Unmittelbare Konsequenzen",
+      "summary": "Dieses Kapitel verlangt, Warnzeichen früh zu erkennen und sie nicht nur zu benennen, sondern sofort in eine Konsequenz zu übersetzen. Zeitkritische Konstellationen müssen in der Sprache deutlich hörbar werden: zuerst die Gefährdung, dann der erste Akutplan, erst danach die weitere Differenzierung.",
       "learning_text": [
-        "In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
-        "Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
-        "Peritonealer Schmerz, Abwehrspannung, Hämatemesis, Meläna, anhaltendes Erbrechen und Kreislaufzeichen sind zentrale Alarmkonstellationen. Auch Fieber mit reduziertem Allgemeinzustand oder orthostatischem Schwindel spricht für ein dringliches Vorgehen. Bei abdominalen Red Flags müssen Warnzeichen vor der breiten Differenzialdiagnose erhoben werden. Die sprachliche Priorisierung entscheidet mit darüber, wie sicher der Fall wirkt. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
-        "Eine starke Formulierung erklärt ruhig, dass Blutung oder akute Entzündung rasch ausgeschlossen werden müssen. Endoskopie, Bildgebung, Labor oder stationäre Aufnahme sollten patientengerecht und nicht abstrakt angekündigt werden. Warnzeichen für zuhause müssen konkret an Schmerzen, Kreislauf und sichtbare Blutungszeichen gekoppelt sein. In Brief und Übergabe gehören Alarmzeichen und Handlungsplan immer eng zusammen. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
-        "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+        "Im Kapitel „Abdomen und GI-Blutung“ muss Gefährdung sofort hörbar werden. Entscheidend ist nicht dramatische Sprache, sondern eine ruhige, klare Benennung von Warnzeichen und die unmittelbare Verbindung zu den richtigen Maßnahmen.",
+        "Hier geht es zuerst um die Frage, welche Zeichen sofort alarmieren. In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
+        "Danach muss klar werden, welche Akutmaßnahmen daraus folgen. Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
+        "Wichtig ist außerdem, wie Dringlichkeit gegenüber Patient und Team ausgesprochen wird. Peritonealer Schmerz, Abwehrspannung, Hämatemesis, Meläna, anhaltendes Erbrechen und Kreislaufzeichen sind zentrale Alarmkonstellationen. Auch Fieber mit reduziertem Allgemeinzustand oder orthostatischem Schwindel spricht für ein dringliches Vorgehen. Bei abdominalen Red Flags müssen Warnzeichen vor der breiten Differenzialdiagnose erhoben werden. Die sprachliche Priorisierung entscheidet mit darüber, wie sicher der Fall wirkt. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
+        "Im klinischen Alltag reicht es nicht, Alarmwörter aufzuzählen. Warnzeichen müssen geordnet, gewichtet und mit Monitoring, Basisdiagnostik, weiterer Akutabklärung oder Wiedervorstellungskriterien verknüpft werden, damit aus der Gefährdung eine nachvollziehbare Handlungsstrategie entsteht.",
+        "Nur wenn Warnzeichen und Maßnahmen zusammen genannt werden, wird die Situation wirklich klinisch eingeordnet. Eine starke Formulierung erklärt ruhig, dass Blutung oder akute Entzündung rasch ausgeschlossen werden müssen. Endoskopie, Bildgebung, Labor oder stationäre Aufnahme sollten patientengerecht und nicht abstrakt angekündigt werden. Warnzeichen für zuhause müssen konkret an Schmerzen, Kreislauf und sichtbare Blutungszeichen gekoppelt sein. In Brief und Übergabe gehören Alarmzeichen und Handlungsplan immer eng zusammen. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
+        "In kritischen Situationen sind klare Standardsätze hilfreich, weil sie Gefährdung und Maßnahme unmittelbar miteinander verbinden. Die aktuelle Konstellation enthält Warnzeichen für eine akute abdominale Ursache. Wir klären jetzt zügig ab, ob eine Blutung oder ein entzündlicher Notfall vorliegt. Bei Verschlechterung wie zunehmendem Schmerz, Schwindel oder Blutbeimengungen müssen Sie sofort wiederkommen."
       ],
       "question_groups": [
         {
-          "title": "Welche Zeichen du sofort priorisieren musst",
+          "title": "Sofort zu priorisierende Warnzeichen",
           "questions": [
-            "Peritonealer Schmerz, Abwehrspannung, Hämatemesis, Meläna, anhaltendes Erbrechen und Kreislaufzeichen sind zentrale Alarmkonstellationen. Auch Fieber mit reduziertem Allgemeinzustand oder orthostatischem Schwindel spricht für ein dringliches Vorgehen.",
-            "Bei abdominalen Red Flags müssen Warnzeichen vor der breiten Differenzialdiagnose erhoben werden. Die sprachliche Priorisierung entscheidet mit darüber, wie sicher der Fall wirkt. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
+            "Peritonealer Schmerz, Abwehrspannung, Hämatemesis, Meläna, anhaltendes Erbrechen und Kreislaufzeichen sind zentrale Alarmkonstellationen. Auch Fieber mit reduziertem Allgemeinzustand oder orthostatischem Schwindel spricht für ein dringliches Vorgehen. Bei abdominalen Red Flags müssen Warnzeichen vor der breiten Differenzialdiagnose erhoben werden. Die sprachliche Priorisierung entscheidet mit darüber, wie sicher der Fall wirkt. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
           ]
         },
         {
-          "title": "Wie du Dringlichkeit klar aussprichst",
+          "title": "Dringlichkeit klar benennen",
           "questions": [
-            "Eine starke Formulierung erklärt ruhig, dass Blutung oder akute Entzündung rasch ausgeschlossen werden müssen. Endoskopie, Bildgebung, Labor oder stationäre Aufnahme sollten patientengerecht und nicht abstrakt angekündigt werden.",
-            "Warnzeichen für zuhause müssen konkret an Schmerzen, Kreislauf und sichtbare Blutungszeichen gekoppelt sein. In Brief und Übergabe gehören Alarmzeichen und Handlungsplan immer eng zusammen. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
+            "Eine starke Formulierung erklärt ruhig, dass Blutung oder akute Entzündung rasch ausgeschlossen werden müssen. Endoskopie, Bildgebung, Labor oder stationäre Aufnahme sollten patientengerecht und nicht abstrakt angekündigt werden. Warnzeichen für zuhause müssen konkret an Schmerzen, Kreislauf und sichtbare Blutungszeichen gekoppelt sein. In Brief und Übergabe gehören Alarmzeichen und Handlungsplan immer eng zusammen. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
           ]
         },
         {
-          "title": "Welche Handlung sprachlich sofort folgen muss",
+          "title": "Unmittelbare Konsequenzen",
           "questions": [
-            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert.",
-            "Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
           ]
         }
       ],
@@ -170,35 +167,34 @@
     {
       "id": "urogenital_sepsis",
       "title": "Urogenitale Red Flags und Sepsisrisiko",
-      "focus": "Flankenschmerz plus Fieber, Harnverhalt, Makrohämaturie",
-      "summary": "Urogenitale Warnzeichen verlangen eine Sprache, die Intimsymptome respektvoll erhebt und Dringlichkeit trotzdem klar markiert.",
+      "focus": "Sofort zu priorisierende Warnzeichen | Dringlichkeit klar benennen | Unmittelbare Konsequenzen",
+      "summary": "Dieses Kapitel verlangt, Warnzeichen früh zu erkennen und sie nicht nur zu benennen, sondern sofort in eine Konsequenz zu übersetzen. Zeitkritische Konstellationen müssen in der Sprache deutlich hörbar werden: zuerst die Gefährdung, dann der erste Akutplan, erst danach die weitere Differenzierung.",
       "learning_text": [
-        "In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
-        "Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
-        "Fieber mit Flankenschmerz, Schüttelfrost, reduzierter Allgemeinzustand, Harnverhalt und makroskopische Blutung sind urogenitale Warnzeichen. Gerade die Kombination aus Infektzeichen und Systembeteiligung muss schnell an Sepsis oder komplizierten Verlauf denken lassen. Intime Beschwerden bleiben nur dann klinisch verwertbar, wenn sie respektvoll, klar und ohne Ausweichen erhoben werden. Der Schweregrad sollte früh sprachlich sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
-        "Patienten sollten verstehen, warum Diagnostik und Therapie bei dieser Konstellation nicht aufgeschoben werden sollten. In der Übergabe gehören Infektzeichen, Harnsituation und Sepsisverdacht geordnet an den Anfang. Auch hier wirken konkrete Rückkehrkriterien deutlich stärker als allgemeine Sicherheitssätze. Der Arztbrief sollte Warnkonstellation, Akutplan und Nachsorge logisch zusammenfassen. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
-        "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+        "Im Kapitel „Urogenitale Red Flags und Sepsisrisiko“ muss Gefährdung sofort hörbar werden. Entscheidend ist nicht dramatische Sprache, sondern eine ruhige, klare Benennung von Warnzeichen und die unmittelbare Verbindung zu den richtigen Maßnahmen.",
+        "Hier geht es zuerst um die Frage, welche Zeichen sofort alarmieren. In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
+        "Danach muss klar werden, welche Akutmaßnahmen daraus folgen. Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
+        "Wichtig ist außerdem, wie Dringlichkeit gegenüber Patient und Team ausgesprochen wird. Fieber mit Flankenschmerz, Schüttelfrost, reduzierter Allgemeinzustand, Harnverhalt und makroskopische Blutung sind urogenitale Warnzeichen. Gerade die Kombination aus Infektzeichen und Systembeteiligung muss schnell an Sepsis oder komplizierten Verlauf denken lassen. Intime Beschwerden bleiben nur dann klinisch verwertbar, wenn sie respektvoll, klar und ohne Ausweichen erhoben werden. Der Schweregrad sollte früh sprachlich sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
+        "Im klinischen Alltag reicht es nicht, Alarmwörter aufzuzählen. Warnzeichen müssen geordnet, gewichtet und mit Monitoring, Basisdiagnostik, weiterer Akutabklärung oder Wiedervorstellungskriterien verknüpft werden, damit aus der Gefährdung eine nachvollziehbare Handlungsstrategie entsteht.",
+        "Nur wenn Warnzeichen und Maßnahmen zusammen genannt werden, wird die Situation wirklich klinisch eingeordnet. Patienten sollten verstehen, warum Diagnostik und Therapie bei dieser Konstellation nicht aufgeschoben werden sollten. In der Übergabe gehören Infektzeichen, Harnsituation und Sepsisverdacht geordnet an den Anfang. Auch hier wirken konkrete Rückkehrkriterien deutlich stärker als allgemeine Sicherheitssätze. Der Arztbrief sollte Warnkonstellation, Akutplan und Nachsorge logisch zusammenfassen. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
+        "In kritischen Situationen sind klare Standardsätze hilfreich, weil sie Gefährdung und Maßnahme unmittelbar miteinander verbinden. Die Kombination aus Flankenschmerz und Fieber ist ein Warnzeichen für eine schwere urogenitale Infektion. Wir beginnen jetzt unverzüglich mit der notwendigen Diagnostik und Therapie. Bei fehlender Besserung oder neuen Warnzeichen müssen Sie sofort wiederkommen."
       ],
       "question_groups": [
         {
-          "title": "Welche Zeichen du sofort priorisieren musst",
+          "title": "Sofort zu priorisierende Warnzeichen",
           "questions": [
-            "Fieber mit Flankenschmerz, Schüttelfrost, reduzierter Allgemeinzustand, Harnverhalt und makroskopische Blutung sind urogenitale Warnzeichen. Gerade die Kombination aus Infektzeichen und Systembeteiligung muss schnell an Sepsis oder komplizierten Verlauf denken lassen.",
-            "Intime Beschwerden bleiben nur dann klinisch verwertbar, wenn sie respektvoll, klar und ohne Ausweichen erhoben werden. Der Schweregrad sollte früh sprachlich sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
+            "Fieber mit Flankenschmerz, Schüttelfrost, reduzierter Allgemeinzustand, Harnverhalt und makroskopische Blutung sind urogenitale Warnzeichen. Gerade die Kombination aus Infektzeichen und Systembeteiligung muss schnell an Sepsis oder komplizierten Verlauf denken lassen. Intime Beschwerden bleiben nur dann klinisch verwertbar, wenn sie respektvoll, klar und ohne Ausweichen erhoben werden. Der Schweregrad sollte früh sprachlich sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
           ]
         },
         {
-          "title": "Wie du Dringlichkeit klar aussprichst",
+          "title": "Dringlichkeit klar benennen",
           "questions": [
-            "Patienten sollten verstehen, warum Diagnostik und Therapie bei dieser Konstellation nicht aufgeschoben werden sollten. In der Übergabe gehören Infektzeichen, Harnsituation und Sepsisverdacht geordnet an den Anfang.",
-            "Auch hier wirken konkrete Rückkehrkriterien deutlich stärker als allgemeine Sicherheitssätze. Der Arztbrief sollte Warnkonstellation, Akutplan und Nachsorge logisch zusammenfassen. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
+            "Patienten sollten verstehen, warum Diagnostik und Therapie bei dieser Konstellation nicht aufgeschoben werden sollten. In der Übergabe gehören Infektzeichen, Harnsituation und Sepsisverdacht geordnet an den Anfang. Auch hier wirken konkrete Rückkehrkriterien deutlich stärker als allgemeine Sicherheitssätze. Der Arztbrief sollte Warnkonstellation, Akutplan und Nachsorge logisch zusammenfassen. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
           ]
         },
         {
-          "title": "Welche Handlung sprachlich sofort folgen muss",
+          "title": "Unmittelbare Konsequenzen",
           "questions": [
-            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert.",
-            "Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
           ]
         }
       ],
@@ -223,35 +219,34 @@
     {
       "id": "endokrin_metabolisch",
       "title": "Endokrine und metabolische Red Flags",
-      "focus": "Hypo-/Hyperglykämie, Thyreotoxikosezeichen und Exsikkose",
-      "summary": "Metabolische Entgleisungen werden in der FSP oft unterschätzt. Geprüft wird, ob Kandidaten Warnzeichen früh erkennen und klar kommunizieren.",
+      "focus": "Sofort zu priorisierende Warnzeichen | Dringlichkeit klar benennen | Unmittelbare Konsequenzen",
+      "summary": "Dieses Kapitel verlangt, Warnzeichen früh zu erkennen und sie nicht nur zu benennen, sondern sofort in eine Konsequenz zu übersetzen. Zeitkritische Konstellationen müssen in der Sprache deutlich hörbar werden: zuerst die Gefährdung, dann der erste Akutplan, erst danach die weitere Differenzierung.",
       "learning_text": [
-        "In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
-        "Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
-        "Bewusstseinsveränderung, Schweißigkeit, Zittern, Exsikkose, Polyurie, Erbrechen oder ausgeprägte Tachykardie sind typische metabolische Warnzeichen. Hypo- und Hyperglykämie müssen früh erkannt und sprachlich klar voneinander abgegrenzt werden. Auch Zeichen einer thyreotoxischen Entgleisung oder schweren Exsikkose gehören in diese Alarmlogik. Metabolische Fälle wirken klinisch stark, wenn nicht nur Symptome, sondern auch Schweregrad sofort sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
-        "Patienten müssen verstehen, dass Verwirrtheit, starke Schwäche oder Kreislaufprobleme hier akute Warnzeichen sind. In der Übergabe werden Blutzucker, Hydratationszustand, Bewusstseinslage und der erste Therapieplan klar priorisiert. Sprachlich stark ist die Verbindung von Befund, sofortiger Stabilisierung und weiterer Abklärung. Bei ambulanter Weiterbetreuung sind exakte Warnzeichen und Verlaufskontrollen unverzichtbar. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
-        "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+        "Im Kapitel „Endokrine und metabolische Red Flags“ muss Gefährdung sofort hörbar werden. Entscheidend ist nicht dramatische Sprache, sondern eine ruhige, klare Benennung von Warnzeichen und die unmittelbare Verbindung zu den richtigen Maßnahmen.",
+        "Hier geht es zuerst um die Frage, welche Zeichen sofort alarmieren. In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
+        "Danach muss klar werden, welche Akutmaßnahmen daraus folgen. Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
+        "Wichtig ist außerdem, wie Dringlichkeit gegenüber Patient und Team ausgesprochen wird. Bewusstseinsveränderung, Schweißigkeit, Zittern, Exsikkose, Polyurie, Erbrechen oder ausgeprägte Tachykardie sind typische metabolische Warnzeichen. Hypo- und Hyperglykämie müssen früh erkannt und sprachlich klar voneinander abgegrenzt werden. Auch Zeichen einer thyreotoxischen Entgleisung oder schweren Exsikkose gehören in diese Alarmlogik. Metabolische Fälle wirken klinisch stark, wenn nicht nur Symptome, sondern auch Schweregrad sofort sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
+        "Im klinischen Alltag reicht es nicht, Alarmwörter aufzuzählen. Warnzeichen müssen geordnet, gewichtet und mit Monitoring, Basisdiagnostik, weiterer Akutabklärung oder Wiedervorstellungskriterien verknüpft werden, damit aus der Gefährdung eine nachvollziehbare Handlungsstrategie entsteht.",
+        "Nur wenn Warnzeichen und Maßnahmen zusammen genannt werden, wird die Situation wirklich klinisch eingeordnet. Patienten müssen verstehen, dass Verwirrtheit, starke Schwäche oder Kreislaufprobleme hier akute Warnzeichen sind. In der Übergabe werden Blutzucker, Hydratationszustand, Bewusstseinslage und der erste Therapieplan klar priorisiert. Sprachlich stark ist die Verbindung von Befund, sofortiger Stabilisierung und weiterer Abklärung. Bei ambulanter Weiterbetreuung sind exakte Warnzeichen und Verlaufskontrollen unverzichtbar. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
+        "In kritischen Situationen sind klare Standardsätze hilfreich, weil sie Gefährdung und Maßnahme unmittelbar miteinander verbinden. Die aktuelle Symptomatik kann auf eine metabolische Entgleisung hinweisen und muss sofort kontrolliert werden. Wir messen jetzt unverzüglich die relevanten Werte und beginnen die erste Stabilisierung. Ich erkläre Ihnen klar, welche Warnzeichen zuhause ein sofortiges Handeln erfordern."
       ],
       "question_groups": [
         {
-          "title": "Welche Zeichen du sofort priorisieren musst",
+          "title": "Sofort zu priorisierende Warnzeichen",
           "questions": [
-            "Bewusstseinsveränderung, Schweißigkeit, Zittern, Exsikkose, Polyurie, Erbrechen oder ausgeprägte Tachykardie sind typische metabolische Warnzeichen. Hypo- und Hyperglykämie müssen früh erkannt und sprachlich klar voneinander abgegrenzt werden.",
-            "Auch Zeichen einer thyreotoxischen Entgleisung oder schweren Exsikkose gehören in diese Alarmlogik. Metabolische Fälle wirken klinisch stark, wenn nicht nur Symptome, sondern auch Schweregrad sofort sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
+            "Bewusstseinsveränderung, Schweißigkeit, Zittern, Exsikkose, Polyurie, Erbrechen oder ausgeprägte Tachykardie sind typische metabolische Warnzeichen. Hypo- und Hyperglykämie müssen früh erkannt und sprachlich klar voneinander abgegrenzt werden. Auch Zeichen einer thyreotoxischen Entgleisung oder schweren Exsikkose gehören in diese Alarmlogik. Metabolische Fälle wirken klinisch stark, wenn nicht nur Symptome, sondern auch Schweregrad sofort sichtbar werden. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
           ]
         },
         {
-          "title": "Wie du Dringlichkeit klar aussprichst",
+          "title": "Dringlichkeit klar benennen",
           "questions": [
-            "Patienten müssen verstehen, dass Verwirrtheit, starke Schwäche oder Kreislaufprobleme hier akute Warnzeichen sind. In der Übergabe werden Blutzucker, Hydratationszustand, Bewusstseinslage und der erste Therapieplan klar priorisiert.",
-            "Sprachlich stark ist die Verbindung von Befund, sofortiger Stabilisierung und weiterer Abklärung. Bei ambulanter Weiterbetreuung sind exakte Warnzeichen und Verlaufskontrollen unverzichtbar. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
+            "Patienten müssen verstehen, dass Verwirrtheit, starke Schwäche oder Kreislaufprobleme hier akute Warnzeichen sind. In der Übergabe werden Blutzucker, Hydratationszustand, Bewusstseinslage und der erste Therapieplan klar priorisiert. Sprachlich stark ist die Verbindung von Befund, sofortiger Stabilisierung und weiterer Abklärung. Bei ambulanter Weiterbetreuung sind exakte Warnzeichen und Verlaufskontrollen unverzichtbar. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
           ]
         },
         {
-          "title": "Welche Handlung sprachlich sofort folgen muss",
+          "title": "Unmittelbare Konsequenzen",
           "questions": [
-            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert.",
-            "Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
           ]
         }
       ],
@@ -276,35 +271,34 @@
     {
       "id": "psychiatrie_sicherheit",
       "title": "Psychiatrische Sicherheitsaspekte",
-      "focus": "Suizidalität, akute Eigen-/Fremdgefährdung und klare Schutzkommunikation",
-      "summary": "Auch ohne tiefe Psychiatrieexpertise müssen Kandidaten in Berlin Sicherheitsfragen klar stellen und transparent handeln können.",
+      "focus": "Sofort zu priorisierende Warnzeichen | Dringlichkeit klar benennen | Unmittelbare Konsequenzen",
+      "summary": "Dieses Kapitel verlangt, Warnzeichen früh zu erkennen und sie nicht nur zu benennen, sondern sofort in eine Konsequenz zu übersetzen. Zeitkritische Konstellationen müssen in der Sprache deutlich hörbar werden: zuerst die Gefährdung, dann der erste Akutplan, erst danach die weitere Differenzierung.",
       "learning_text": [
-        "In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
-        "Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
-        "Suizidgedanken, konkrete Pläne, Eigen- oder Fremdgefährdung, schwere Agitation und Realitätsverlust sind zentrale Alarmkonstellationen. Sicherheitsfragen müssen direkt, klar und professionell gestellt werden und nicht verklausuliert. Auch fehlende Impulskontrolle oder ausgeprägte Selbstvernachlässigung gehören in die akute Risikoeinschätzung. Im psychiatrischen Kontext ist ruhige, neutrale Sprache selbst ein Teil der Deeskalation. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
-        "Patienten und Angehörige sollten verstehen, dass Sicherheit jetzt Vorrang vor Detaildiskussionen hat. In der Übergabe werden Risiko, aktueller Schutzbedarf und weitere Sicherungsmassnahmen zuerst genannt. Konkrete Schutzschritte wie engmaschige Beobachtung, psychiatrische Vorstellung oder gesicherte Umgebung müssen sprachlich eindeutig sein. Wenn eine Entlassung vertretbar ist, braucht es ein besonders klares und dokumentiertes Sicherheitsnetz. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
-        "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+        "Im Kapitel „Psychiatrische Sicherheitsaspekte“ muss Gefährdung sofort hörbar werden. Entscheidend ist nicht dramatische Sprache, sondern eine ruhige, klare Benennung von Warnzeichen und die unmittelbare Verbindung zu den richtigen Maßnahmen.",
+        "Hier geht es zuerst um die Frage, welche Zeichen sofort alarmieren. In diesem Modul geht es darum, Warnzeichen früh zu erkennen und sie sofort in klinische Priorisierung zu übersetzen.",
+        "Danach muss klar werden, welche Akutmaßnahmen daraus folgen. Red Flags wirken sprachlich nur dann stark, wenn nicht bei der Benennung stehen geblieben wird. Entscheidend ist, dass aus dem Alarmzeichen unmittelbar ein nachvollziehbarer Akutplan folgt.",
+        "Wichtig ist außerdem, wie Dringlichkeit gegenüber Patient und Team ausgesprochen wird. Suizidgedanken, konkrete Pläne, Eigen- oder Fremdgefährdung, schwere Agitation und Realitätsverlust sind zentrale Alarmkonstellationen. Sicherheitsfragen müssen direkt, klar und professionell gestellt werden und nicht verklausuliert. Auch fehlende Impulskontrolle oder ausgeprägte Selbstvernachlässigung gehören in die akute Risikoeinschätzung. Im psychiatrischen Kontext ist ruhige, neutrale Sprache selbst ein Teil der Deeskalation. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden.",
+        "Im klinischen Alltag reicht es nicht, Alarmwörter aufzuzählen. Warnzeichen müssen geordnet, gewichtet und mit Monitoring, Basisdiagnostik, weiterer Akutabklärung oder Wiedervorstellungskriterien verknüpft werden, damit aus der Gefährdung eine nachvollziehbare Handlungsstrategie entsteht.",
+        "Nur wenn Warnzeichen und Maßnahmen zusammen genannt werden, wird die Situation wirklich klinisch eingeordnet. Patienten und Angehörige sollten verstehen, dass Sicherheit jetzt Vorrang vor Detaildiskussionen hat. In der Übergabe werden Risiko, aktueller Schutzbedarf und weitere Sicherungsmassnahmen zuerst genannt. Konkrete Schutzschritte wie engmaschige Beobachtung, psychiatrische Vorstellung oder gesicherte Umgebung müssen sprachlich eindeutig sein. Wenn eine Entlassung vertretbar ist, braucht es ein besonders klares und dokumentiertes Sicherheitsnetz. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig.",
+        "In kritischen Situationen sind klare Standardsätze hilfreich, weil sie Gefährdung und Maßnahme unmittelbar miteinander verbinden. Ich frage Sie direkt: Haben Sie aktuell Gedanken, sich etwas anzutun? Bei bestehender Gefährdung sorgen wir sofort für Schutz und engmaschige Betreuung. Wir handeln in dieser Situation klar strukturiert und binden sofort das zuständige Fachteam ein."
       ],
       "question_groups": [
         {
-          "title": "Welche Zeichen du sofort priorisieren musst",
+          "title": "Sofort zu priorisierende Warnzeichen",
           "questions": [
-            "Suizidgedanken, konkrete Pläne, Eigen- oder Fremdgefährdung, schwere Agitation und Realitätsverlust sind zentrale Alarmkonstellationen. Sicherheitsfragen müssen direkt, klar und professionell gestellt werden und nicht verklausuliert.",
-            "Auch fehlende Impulskontrolle oder ausgeprägte Selbstvernachlässigung gehören in die akute Risikoeinschätzung. Im psychiatrischen Kontext ist ruhige, neutrale Sprache selbst ein Teil der Deeskalation. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
+            "Suizidgedanken, konkrete Pläne, Eigen- oder Fremdgefährdung, schwere Agitation und Realitätsverlust sind zentrale Alarmkonstellationen. Sicherheitsfragen müssen direkt, klar und professionell gestellt werden und nicht verklausuliert. Auch fehlende Impulskontrolle oder ausgeprägte Selbstvernachlässigung gehören in die akute Risikoeinschätzung. Im psychiatrischen Kontext ist ruhige, neutrale Sprache selbst ein Teil der Deeskalation. Warnzeichen dürfen nicht gesammelt, sondern müssen geordnet und gewichtet werden."
           ]
         },
         {
-          "title": "Wie du Dringlichkeit klar aussprichst",
+          "title": "Dringlichkeit klar benennen",
           "questions": [
-            "Patienten und Angehörige sollten verstehen, dass Sicherheit jetzt Vorrang vor Detaildiskussionen hat. In der Übergabe werden Risiko, aktueller Schutzbedarf und weitere Sicherungsmassnahmen zuerst genannt.",
-            "Konkrete Schutzschritte wie engmaschige Beobachtung, psychiatrische Vorstellung oder gesicherte Umgebung müssen sprachlich eindeutig sein. Wenn eine Entlassung vertretbar ist, braucht es ein besonders klares und dokumentiertes Sicherheitsnetz. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
+            "Patienten und Angehörige sollten verstehen, dass Sicherheit jetzt Vorrang vor Detaildiskussionen hat. In der Übergabe werden Risiko, aktueller Schutzbedarf und weitere Sicherungsmassnahmen zuerst genannt. Konkrete Schutzschritte wie engmaschige Beobachtung, psychiatrische Vorstellung oder gesicherte Umgebung müssen sprachlich eindeutig sein. Wenn eine Entlassung vertretbar ist, braucht es ein besonders klares und dokumentiertes Sicherheitsnetz. Zeitkritik muss in der Sprache hörbar werden, sonst bleibt die Priorisierung unvollständig."
           ]
         },
         {
-          "title": "Welche Handlung sprachlich sofort folgen muss",
+          "title": "Unmittelbare Konsequenzen",
           "questions": [
-            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert.",
-            "Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
+            "Sobald ein Red Flag erkannt ist, muss sprachlich direkt die Konsequenz folgen: Überwachung, Bildgebung, Labor, stationäre Aufnahme oder sofortige Weiterleitung. Auch gegenüber Patientinnen und Patienten braucht Dringlichkeit eine ruhige, klare Form, die weder verharmlost noch unnötig dramatisiert. Bei Entlassung gehören präzise Warnzeichen und Wiedervorstellungskriterien zwingend dazu."
           ]
         }
       ],
