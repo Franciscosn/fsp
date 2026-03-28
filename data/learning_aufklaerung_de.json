@@ -21,7 +21,7 @@
       "learning_text": [
         "In diesem Modul geht es darum, dass die Patientin oder der Patient den Sinn des geplanten Verfahrens wirklich versteht und nicht nur dessen Namen hört.",
         "Eine gute Aufklärung folgt fast immer derselben Ordnung: Anlass, Nutzen, Ablauf, mögliche Belastung, Risiken und das, was danach wichtig wird. Je ruhiger diese Reihenfolge bleibt, desto sicherer wirkt das Gespräch.",
-        "Ein EKG wird erklärt als kurze Untersuchung von Herzrhythmus und möglichen Durchblutungszeichen. Patienten sollten wissen, dass Elektroden auf Brust und Extremitäten geklebt werden und die Untersuchung schmerzfrei ist. Wichtig ist der Hinweis, dass ein EKG schnell viele Informationen liefert, aber nicht jede Herzerkrankung allein ausschliesst. Die Erklärung beginnt idealerweise mit dem konkreten Anlass der aktuellen Beschwerden und nicht nur mit dem Namen der Untersuchung. Der medizinische Anlass sollte am Anfang klar benannt werden, damit die Untersuchung oder Maßnahme sofort nachvollziehbar wird.",
+        "Ein EKG wird erklärt als kurze Untersuchung von Herzrhythmus und möglichen Durchblutungszeichen. Patienten sollten wissen, dass Elektroden auf Brust und Extremitäten geklebt werden und die Untersuchung schmerzfrei ist. Wichtig ist der Hinweis, dass ein EKG schnell viele Informationen liefert, aber nicht jede Herzerkrankung allein ausschließt. Die Erklärung beginnt idealerweise mit dem konkreten Anlass der aktuellen Beschwerden und nicht nur mit dem Namen der Untersuchung. Der medizinische Anlass sollte am Anfang klar benannt werden, damit die Untersuchung oder Maßnahme sofort nachvollziehbar wird.",
         "Eine starke Formulierung lautet: Wir schreiben jetzt ein EKG, um Ihren Herzrhythmus und mögliche Belastungszeichen des Herzens zu beurteilen. Danach folgen Ablauf, Dauer und der Hinweis, dass während der Ableitung möglichst ruhig gelegen werden sollte. Im Anschluss wird angekündigt, dass das Ergebnis sofort besprochen und bei Bedarf durch weitere Diagnostik ergänzt wird. Am Ende wirkt eine kurze Verständnissicherung professionell und patientennah. Am Ende stärkt eine kurze Verständnissicherung den Eindruck, dass die Information angekommen ist und nicht nur abgespult wurde.",
         "Am Ende sollte klar sein, was unmittelbar passiert, wie lange es ungefähr dauert und welche Empfindungen normal sein können. Ebenso wichtig sind Hinweise zu Nüchternheit, Begleitperson, Nachbeobachtung oder Einschränkungen im Alltag, sofern sie zu diesem Verfahren gehören. Vollständig wirkt die Aufklärung erst dann, wenn der nächste Schritt transparent wird und die Einwilligung auf echtem Verständnis beruht."
       ],
@@ -30,7 +30,7 @@
           "title": "Worum es bei diesem Verfahren wirklich geht",
           "questions": [
             "Ein EKG wird erklärt als kurze Untersuchung von Herzrhythmus und möglichen Durchblutungszeichen. Patienten sollten wissen, dass Elektroden auf Brust und Extremitäten geklebt werden und die Untersuchung schmerzfrei ist.",
-            "Wichtig ist der Hinweis, dass ein EKG schnell viele Informationen liefert, aber nicht jede Herzerkrankung allein ausschliesst. Die Erklärung beginnt idealerweise mit dem konkreten Anlass der aktuellen Beschwerden und nicht nur mit dem Namen der Untersuchung. Der medizinische Anlass sollte am Anfang klar benannt werden, damit die Untersuchung oder Maßnahme sofort nachvollziehbar wird."
+            "Wichtig ist der Hinweis, dass ein EKG schnell viele Informationen liefert, aber nicht jede Herzerkrankung allein ausschließt. Die Erklärung beginnt idealerweise mit dem konkreten Anlass der aktuellen Beschwerden und nicht nur mit dem Namen der Untersuchung. Der medizinische Anlass sollte am Anfang klar benannt werden, damit die Untersuchung oder Maßnahme sofort nachvollziehbar wird."
           ]
         },
         {
@@ -72,7 +72,7 @@
       "id": "sonographie",
       "title": "Sonographie verständlich erklären",
       "focus": "Nutzen, Ablauf und Grenzen des Ultraschalls in einfacher Sprache",
-      "summary": "Bei der Sonographie wird in der Prüfung oft erwartet, dass Sie technische Begriffe korrekt, aber patientennah erklären. Ziel ist eine beruhigende und gleichzeitig fachlich korrekte Kommunikation.",
+      "summary": "Bei der Sonographie zählt vor allem, ob technische Begriffe in eine ruhige, patientennahe und gleichzeitig fachlich korrekte Sprache übersetzt werden.",
       "learning_text": [
         "In diesem Modul geht es darum, dass die Patientin oder der Patient den Sinn des geplanten Verfahrens wirklich versteht und nicht nur dessen Namen hört.",
         "Eine gute Aufklärung folgt fast immer derselben Ordnung: Anlass, Nutzen, Ablauf, mögliche Belastung, Risiken und das, was danach wichtig wird. Je ruhiger diese Reihenfolge bleibt, desto sicherer wirkt das Gespräch.",
@@ -177,27 +177,27 @@
       "id": "endoskopie_gastroskopie",
       "title": "Endoskopie und Gastroskopie aufklären",
       "focus": "Indikation, Sedierung, Risiken und Befundkommunikation bei endoskopischen Verfahren",
-      "summary": "Im Fachsprachkurs wurden Gastroskopie-Gespräche mehrfach geübt. Entscheidend ist, dass Kandidaten Zweck, Ablauf, Unannehmlichkeiten und Risiken strukturiert und ohne Ausweichen kommunizieren.",
+      "summary": "Hier zählt, ob Zweck, Ablauf, Belastung und Verhalten nach der Untersuchung ruhig und nachvollziehbar erklärt werden.",
       "learning_text": [
         "In diesem Modul geht es darum, dass die Patientin oder der Patient den Sinn des geplanten Verfahrens wirklich versteht und nicht nur dessen Namen hört.",
         "Eine gute Aufklärung folgt fast immer derselben Ordnung: Anlass, Nutzen, Ablauf, mögliche Belastung, Risiken und das, was danach wichtig wird. Je ruhiger diese Reihenfolge bleibt, desto sicherer wirkt das Gespräch.",
-        "Die Gastroskopie wird erklärt als Spiegelung von Speiseröhre, Magen und Zwolfingerdarm mit möglicher Probenentnahme. Nüchternheit, Rachenspray und mögliche Sedierung gehören früh in die Aufklärung. Würgereiz, Druckgefühl und kurze Nachbeobachtung sollten offen benannt werden, weil genau davor viele Patienten Respekt haben. Seltene Risiken wie Blutung, Aspiration oder Verletzung werden sachlich und ohne Ausweichen erklärt. Der medizinische Anlass sollte am Anfang klar benannt werden, damit die Untersuchung oder Maßnahme sofort nachvollziehbar wird.",
-        "Die sprachlich starke Struktur lautet: Zweck, Ablauf, Unannehmlichkeiten, Risiken und Verhalten nach der Untersuchung. Ein beruhigender Satz kann sein, dass die Untersuchung eng überwacht wird und bei Bedarf mit Beruhigungsmittel erfolgt. Patienten sollten wissen, dass sie nach Sedierung nicht sofort aktiv am Straßenverkehr teilnehmen dürfen. Eine gute Aufklärung endet mit der Aussicht, dass Befund und weiteres Vorgehen anschliessend gemeinsam besprochen werden. Am Ende stärkt eine kurze Verständnissicherung den Eindruck, dass die Information angekommen ist und nicht nur abgespult wurde.",
+        "Die Gastroskopie wird erklärt als Spiegelung von Speiseröhre, Magen und Zwölffingerdarm, bei der bei Bedarf auch Gewebeproben entnommen werden können. Nüchternheit, Rachenspray und mögliche Sedierung gehören früh in die Aufklärung. Würgereiz, Druckgefühl und kurze Nachbeobachtung sollten offen benannt werden, weil genau davor viele Patienten Respekt haben. Seltene Risiken wie Blutung, Aspiration oder Verletzung werden sachlich und ohne Ausweichen erklärt. Der medizinische Anlass sollte am Anfang klar benannt werden, damit die Untersuchung oder Maßnahme sofort nachvollziehbar wird.",
+        "Die sprachlich starke Struktur lautet: Zweck, Ablauf, Unannehmlichkeiten, Risiken und Verhalten nach der Untersuchung. Ein beruhigender Satz kann sein, dass die Untersuchung eng überwacht wird und bei Bedarf mit einem Beruhigungsmittel erfolgen kann. Patienten sollten wissen, dass sie nach Sedierung nicht sofort aktiv am Straßenverkehr teilnehmen dürfen. Eine gute Aufklärung endet mit der Aussicht, dass Befund und weiteres Vorgehen anschließend gemeinsam besprochen werden. Am Ende stärkt eine kurze Verständnissicherung den Eindruck, dass die Information angekommen ist und nicht nur abgespult wurde.",
         "Am Ende sollte klar sein, was unmittelbar passiert, wie lange es ungefähr dauert und welche Empfindungen normal sein können. Ebenso wichtig sind Hinweise zu Nüchternheit, Begleitperson, Nachbeobachtung oder Einschränkungen im Alltag, sofern sie zu diesem Verfahren gehören. Vollständig wirkt die Aufklärung erst dann, wenn der nächste Schritt transparent wird und die Einwilligung auf echtem Verständnis beruht."
       ],
       "question_groups": [
         {
           "title": "Worum es bei diesem Verfahren wirklich geht",
           "questions": [
-            "Die Gastroskopie wird erklärt als Spiegelung von Speiseröhre, Magen und Zwolfingerdarm mit möglicher Probenentnahme. Nüchternheit, Rachenspray und mögliche Sedierung gehören früh in die Aufklärung.",
+            "Die Gastroskopie wird erklärt als Spiegelung von Speiseröhre, Magen und Zwölffingerdarm, bei der bei Bedarf auch Gewebeproben entnommen werden können. Nüchternheit, Rachenspray und mögliche Sedierung gehören früh in die Aufklärung.",
             "Würgereiz, Druckgefühl und kurze Nachbeobachtung sollten offen benannt werden, weil genau davor viele Patienten Respekt haben. Seltene Risiken wie Blutung, Aspiration oder Verletzung werden sachlich und ohne Ausweichen erklärt. Der medizinische Anlass sollte am Anfang klar benannt werden, damit die Untersuchung oder Maßnahme sofort nachvollziehbar wird."
           ]
         },
         {
           "title": "Wie du die Erklärung ruhig und verständlich aufbaust",
           "questions": [
-            "Die sprachlich starke Struktur lautet: Zweck, Ablauf, Unannehmlichkeiten, Risiken und Verhalten nach der Untersuchung. Ein beruhigender Satz kann sein, dass die Untersuchung eng überwacht wird und bei Bedarf mit Beruhigungsmittel erfolgt.",
-            "Patienten sollten wissen, dass sie nach Sedierung nicht sofort aktiv am Straßenverkehr teilnehmen dürfen. Eine gute Aufklärung endet mit der Aussicht, dass Befund und weiteres Vorgehen anschliessend gemeinsam besprochen werden. Am Ende stärkt eine kurze Verständnissicherung den Eindruck, dass die Information angekommen ist und nicht nur abgespult wurde."
+            "Die sprachlich starke Struktur lautet: Zweck, Ablauf, Unannehmlichkeiten, Risiken und Verhalten nach der Untersuchung. Ein beruhigender Satz kann sein, dass die Untersuchung eng überwacht wird und bei Bedarf mit einem Beruhigungsmittel erfolgen kann.",
+            "Patienten sollten wissen, dass sie nach Sedierung nicht sofort aktiv am Straßenverkehr teilnehmen dürfen. Eine gute Aufklärung endet mit der Aussicht, dass Befund und weiteres Vorgehen anschließend gemeinsam besprochen werden. Am Ende stärkt eine kurze Verständnissicherung den Eindruck, dass die Information angekommen ist und nicht nur abgespult wurde."
           ]
         },
         {
