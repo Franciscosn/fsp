@@ -7531,7 +7531,15 @@ function startQuickPractice() {
 }
 
 function scrollLearningPanelIntoView(behavior = "smooth", target = "panel") {
-  const element = target === "reading" ? refs.learningReadingView || refs.learningPanel : refs.learningPanel;
+  let element = refs.learningPanel;
+  if (target === "reading") {
+    element = refs.learningReadingView || refs.learningPanel;
+  } else if (target === "subcategories" || target === "themes") {
+    element =
+      refs.learningSubcategoryView ||
+      refs.learningSubcategoryList ||
+      refs.learningPanel;
+  }
   if (!element) return;
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
@@ -7545,14 +7553,14 @@ function handleOpenLearningPanel() {
   state.learningRootId = "anamnese";
   state.learningView = LEARNING_VIEW_SUBCATEGORIES;
   renderLearningFlow();
-  scrollLearningPanelIntoView("smooth");
+  scrollLearningPanelIntoView("smooth", "subcategories");
 }
 
 function handleLearningBackClick() {
   if (state.learningView === LEARNING_VIEW_READING) {
     state.learningView = LEARNING_VIEW_SUBCATEGORIES;
     renderLearningFlow();
-    scrollLearningPanelIntoView("auto");
+    scrollLearningPanelIntoView("auto", "subcategories");
   }
 }
 
@@ -7933,7 +7941,7 @@ function renderLearningRootList() {
       state.learningRootId = rootEntry.id;
       state.learningView = rootEntry.view || LEARNING_VIEW_SUBCATEGORIES;
       renderLearningFlow();
-      scrollLearningPanelIntoView("auto");
+      scrollLearningPanelIntoView("auto", "subcategories");
     });
     refs.learningRootList.appendChild(button);
   }
