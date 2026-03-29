@@ -15,7 +15,7 @@ const API_SPEND_TRACKER_VERSION = 2;
 const DEFAULT_DAILY_GOAL = 20;
 const MAX_DAILY_GOAL = 500;
 const APP_STATE_CARD_ID = "__app_state__";
-const APP_VERSION = "54";
+const APP_VERSION = "55";
 const BUILD_UPDATED_AT = "2026-03-01 20:02 CET";
 const MAX_VOICE_RECORD_MS = 25_000;
 const MAX_VOICE_CASE_LENGTH = 8_000;
@@ -45,10 +45,15 @@ const VOICE_CASE_RESOLUTION_PATH = "data/patientengespraeche_case_resolutions_de
 const VOICE_CASE_SAMPLE_PATH = "data/voice_case_samples_de.json";
 const LEARNING_BUNDLE_PATH_BY_ROOT = Object.freeze({
   anamnese: "data/learning_anamnese_de.json",
+  fachsprache_kommunikation: "data/learning_fachsprache_kommunikation_de.json",
+  berlin_wortschatz: "data/learning_berlin_wortschatz_de.json",
+  fallkerne: "data/learning_fallkerne_de.json",
   aufklaerung: "data/learning_aufklaerung_de.json",
   klinische_untersuchung: "data/learning_klinische_untersuchung_de.json",
   systemmodule: "data/learning_systemmodule_de.json",
-  red_flags: "data/learning_red_flags_de.json"
+  red_flags: "data/learning_red_flags_de.json",
+  abkuerzungen: "data/learning_abkuerzungen_de.json",
+  berlin_fsp: "data/learning_berlin_fsp_de.json"
 });
 const LEARNING_CURATION_PATH = "data/fachsprachkurs_curation_de.json";
 const VOICE_CASE_DEFAULT = "default";
@@ -95,13 +100,25 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
   {
     id: "anamnese",
     label: "Anamnese",
-    cta: "Symptomkataloge oeffnen",
+    cta: "Symptomkataloge öffnen",
     view: LEARNING_VIEW_SUBCATEGORIES
   },
   {
-    id: "aufklaerung",
-    label: "Aufklaerungsgespraeche",
-    cta: "Diagnostik verstaendlich erklaeren",
+    id: "fachsprache_kommunikation",
+    label: "Fachsprache & Kommunikation",
+    cta: "Registerwechsel und Übergaben festigen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "berlin_wortschatz",
+    label: "Berlin-Wortschatz",
+    cta: "Kernwortschatz für häufige Fälle festigen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "fallkerne",
+    label: "Fallkerne",
+    cta: "Hochfrequenzfälle als stabile Kerne lernen",
     view: LEARNING_VIEW_SUBCATEGORIES
   },
   {
@@ -111,15 +128,33 @@ const LEARNING_ROOT_ITEMS = Object.freeze([
     view: LEARNING_VIEW_SUBCATEGORIES
   },
   {
+    id: "red_flags",
+    label: "Red Flags",
+    cta: "Warnzeichen priorisiert erkennen",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "aufklaerung",
+    label: "Aufklärungsgespräche",
+    cta: "Diagnostik verständlich erklären",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
     id: "systemmodule",
     label: "Systemmodule",
     cta: "Organsysteme strukturiert lernen",
     view: LEARNING_VIEW_SUBCATEGORIES
   },
   {
-    id: "red_flags",
-    label: "Red Flags",
-    cta: "Warnzeichen priorisiert erkennen",
+    id: "abkuerzungen",
+    label: "Abkürzungen",
+    cta: "Stationssprache sicher entschlüsseln",
+    view: LEARNING_VIEW_SUBCATEGORIES
+  },
+  {
+    id: "berlin_fsp",
+    label: "Berlin/FSP-Fokus",
+    cta: "Prüfungsschwerpunkte priorisieren",
     view: LEARNING_VIEW_SUBCATEGORIES
   }
 ]);
@@ -185,7 +220,7 @@ const BODY_ATLAS_REGION_SOURCE_FIGURES_BY_ID = Object.freeze({
   ],
   gesicht_hno: [
     {
-      title: "Nasennebenhoehlen (nummeriert)",
+      title: "Nasennebenhöhlen (nummeriert)",
       description: "Wikimedia Commons, koronal/sagittal nummeriert.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Paranasal_sinuses_numbers.svg"
     },
@@ -264,13 +299,13 @@ const BODY_ATLAS_REGION_SOURCE_FIGURES_BY_ID = Object.freeze({
   ],
   ruecken_wirbelsaeule: [
     {
-      title: "Wirbelsaeulenkruemmung (nummeriert)",
-      description: "Wikimedia Commons, gesamte Wirbelsaeule mit Segmenten.",
+      title: "Wirbelsäulenkruemmung (nummeriert)",
+      description: "Wikimedia Commons, gesamte Wirbelsäule mit Segmenten.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Spinal_column_curvature_numbered.svg"
     },
     {
       title: "Nervensystem (nummeriert)",
-      description: "Wikimedia Commons, rueckenmarksnahe Orientierung.",
+      description: "Wikimedia Commons, rückenmarksnahe Orientierung.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Nervous_system_diagram_numbered.svg"
     }
   ],
@@ -282,7 +317,7 @@ const BODY_ATLAS_REGION_SOURCE_FIGURES_BY_ID = Object.freeze({
     },
     {
       title: "Armknochen-Diagramm",
-      description: "Wikimedia Commons, uebersichtliche Armknochenstruktur.",
+      description: "Wikimedia Commons, übersichtliche Armknochenstruktur.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Human_arm_bones_diagram.svg"
     }
   ],
@@ -294,31 +329,31 @@ const BODY_ATLAS_REGION_SOURCE_FIGURES_BY_ID = Object.freeze({
     },
     {
       title: "Armknochen-Diagramm",
-      description: "Wikimedia Commons, uebersichtliche Armknochenstruktur.",
+      description: "Wikimedia Commons, übersichtliche Armknochenstruktur.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Human_arm_bones_diagram.svg"
     }
   ],
   linker_unterarm_hand: [
     {
       title: "Handknochen (nummeriert)",
-      description: "Wikimedia Commons, knoecherne Strukturen der Hand.",
+      description: "Wikimedia Commons, knöcherne Strukturen der Hand.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Hand_bones_numbered.png"
     },
     {
       title: "Palmarer Tiefenschnitt (nummeriert)",
-      description: "Wikimedia Commons, Sehnen/Gefaesse/Nerven.",
+      description: "Wikimedia Commons, Sehnen/Gefäße/Nerven.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wrist_and_hand_deeper_palmar_dissection-numbers.svg"
     }
   ],
   rechter_unterarm_hand: [
     {
       title: "Handknochen (nummeriert)",
-      description: "Wikimedia Commons, knoecherne Strukturen der Hand.",
+      description: "Wikimedia Commons, knöcherne Strukturen der Hand.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Hand_bones_numbered.png"
     },
     {
       title: "Palmarer Tiefenschnitt (nummeriert)",
-      description: "Wikimedia Commons, Sehnen/Gefaesse/Nerven.",
+      description: "Wikimedia Commons, Sehnen/Gefäße/Nerven.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wrist_and_hand_deeper_palmar_dissection-numbers.svg"
     }
   ],
@@ -330,7 +365,7 @@ const BODY_ATLAS_REGION_SOURCE_FIGURES_BY_ID = Object.freeze({
     },
     {
       title: "Oberschenkelarterien (nummeriert)",
-      description: "Wikimedia Commons, Gefaessverlauf im Bein.",
+      description: "Wikimedia Commons, Gefäßverlauf im Bein.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Thigh_arteries_schema_numbered.svg"
     }
   ],
@@ -342,7 +377,7 @@ const BODY_ATLAS_REGION_SOURCE_FIGURES_BY_ID = Object.freeze({
     },
     {
       title: "Oberschenkelarterien (nummeriert)",
-      description: "Wikimedia Commons, Gefaessverlauf im Bein.",
+      description: "Wikimedia Commons, Gefäßverlauf im Bein.",
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Thigh_arteries_schema_numbered.svg"
     }
   ]
@@ -351,65 +386,65 @@ const BODY_ATLAS_EXTRA_TERMS_BY_GROUP = Object.freeze({
   head: [
     { fach: "Lobus occipitalis", patient: "Hinterhauptlappen", info: "Verarbeitet Sehreize.", x: 126, y: 98 },
     { fach: "Thalamus", patient: "Umschaltzentrum im Gehirn", info: "Filtert sensorische Signale.", x: 158, y: 132 },
-    { fach: "Hypothalamus", patient: "Regelzentrum fuer Hormone", info: "Steuert Temperatur und Hunger.", x: 168, y: 148 },
+    { fach: "Hypothalamus", patient: "Regelzentrum für Hormone", info: "Steuert Temperatur und Hunger.", x: 168, y: 148 },
     { fach: "Truncus encephali", patient: "Hirnstamm", info: "Kontrolliert lebenswichtige Grundfunktionen.", x: 170, y: 172 },
     { fach: "Ventriculus lateralis", patient: "Hirnkammer", info: "Liquorraum im Gehirn.", x: 196, y: 114 }
   ],
   hno: [
-    { fach: "Sinus frontalis", patient: "Stirnhoehle", info: "Nebenhoehle im Stirnbereich.", x: 160, y: 84 },
+    { fach: "Sinus frontalis", patient: "Stirnhöhle", info: "Nebenhöhle im Stirnbereich.", x: 160, y: 84 },
     { fach: "Septum nasi", patient: "Nasenscheidewand", info: "Trennt rechte und linke Nasenseite.", x: 162, y: 132 },
     { fach: "Concha nasalis", patient: "Nasenmuschel", info: "Erwaermt und befeuchtet Luft.", x: 145, y: 124 },
-    { fach: "Epiglottis", patient: "Kehldeckel", info: "Schuetzt die Atemwege beim Schlucken.", x: 164, y: 186 },
-    { fach: "Larynx", patient: "Kehlkopf", info: "Enthaelt die Stimmbildung.", x: 170, y: 198 }
+    { fach: "Epiglottis", patient: "Kehldeckel", info: "Schützt die Atemwege beim Schlucken.", x: 164, y: 186 },
+    { fach: "Larynx", patient: "Kehlkopf", info: "Enthält die Stimmbildung.", x: 170, y: 198 }
   ],
   thorax: [
-    { fach: "Clavicula", patient: "Schluesselbein", info: "Verbindet Brustbein und Schulter.", x: 111, y: 72 },
+    { fach: "Clavicula", patient: "Schlüsselbein", info: "Verbindet Brustbein und Schulter.", x: 111, y: 72 },
     { fach: "Bronchus principalis", patient: "Hauptbronchie", info: "Leitet Luft in die Lungenfluegel.", x: 164, y: 112 },
     { fach: "Pleura visceralis", patient: "Lungenfell", info: "Liegt direkt auf der Lunge.", x: 226, y: 156 },
     { fach: "Mediastinum", patient: "Mittelfellraum", info: "Raum zwischen den Lungen.", x: 162, y: 152 },
     { fach: "Arcus costalis", patient: "Rippenbogen", info: "Untere Rippenkante des Brustkorbs.", x: 166, y: 214 }
   ],
   cardio: [
-    { fach: "Atrium dextrum", patient: "rechter Vorhof", info: "Nimmt venoeses Blut auf.", x: 146, y: 136 },
-    { fach: "Ventriculus sinister", patient: "linke Herzkammer", info: "Pumpt Blut in den Koerperkreislauf.", x: 172, y: 182 },
+    { fach: "Atrium dextrum", patient: "rechter Vorhof", info: "Nimmt venöses Blut auf.", x: 146, y: 136 },
+    { fach: "Ventriculus sinister", patient: "linke Herzkammer", info: "Pumpt Blut in den Körperkreislauf.", x: 172, y: 182 },
     { fach: "Valva mitralis", patient: "Mitralklappe", info: "Klappe zwischen linkem Vorhof und Kammer.", x: 160, y: 156 },
-    { fach: "Vena cava superior", patient: "obere Hohlvene", info: "Fuehrt Blut zum Herzen.", x: 142, y: 90 },
+    { fach: "Vena cava superior", patient: "obere Hohlvene", info: "Führt Blut zum Herzen.", x: 142, y: 90 },
     { fach: "Vena pulmonalis", patient: "Lungenvene", info: "Bringt oxygeniertes Blut zum Herzen.", x: 194, y: 124 }
   ],
   upper_abdomen: [
-    { fach: "Duodenum", patient: "Zwoelffingerdarm", info: "Erster Abschnitt des Duenndarms.", x: 172, y: 170 },
-    { fach: "Cardia", patient: "Mageneingang", info: "Uebergang Speiseroehre-Magen.", x: 208, y: 92 },
-    { fach: "Lobus hepatis dexter", patient: "rechter Leberlappen", info: "Groesster Leberanteil.", x: 108, y: 96 },
+    { fach: "Duodenum", patient: "Zwölffingerdarm", info: "Erster Abschnitt des Dünndarms.", x: 172, y: 170 },
+    { fach: "Cardia", patient: "Mageneingang", info: "Übergang Speiseröhre-Magen.", x: 208, y: 92 },
+    { fach: "Lobus hepatis dexter", patient: "rechter Leberlappen", info: "Grösster Leberanteil.", x: 108, y: 96 },
     { fach: "Lobus hepatis sinister", patient: "linker Leberlappen", info: "Leberanteil zur Mitte hin.", x: 140, y: 102 },
-    { fach: "Ductus choledochus", patient: "Gallengang", info: "Fuehrt Galle in den Darm.", x: 146, y: 152 }
+    { fach: "Ductus choledochus", patient: "Gallengang", info: "Führt Galle in den Darm.", x: 146, y: 152 }
   ],
   lower_abdomen: [
     { fach: "Caecum", patient: "Blinddarmabschnitt", info: "Anfang des Dickdarms.", x: 114, y: 150 },
-    { fach: "Ileocaecalklappe", patient: "Darmklappe", info: "Grenze zwischen Duenn- und Dickdarm.", x: 130, y: 144 },
+    { fach: "Ileocaecalklappe", patient: "Darmklappe", info: "Grenze zwischen Dünn- und Dickdarm.", x: 130, y: 144 },
     { fach: "Colon sigmoideum", patient: "Sigma", info: "S-foermiger Dickdarmabschnitt.", x: 188, y: 166 },
-    { fach: "Jejunum", patient: "Leerdarm", info: "Mittlerer Duenndarmabschnitt.", x: 158, y: 136 },
+    { fach: "Jejunum", patient: "Leerdarm", info: "Mittlerer Dünndarmabschnitt.", x: 158, y: 136 },
     { fach: "Canalis analis", patient: "Analkanal", info: "Letzter Abschnitt vor dem After.", x: 170, y: 228 }
   ],
   pelvis: [
     { fach: "Ren sinister", patient: "linke Niere", info: "Filtert Blut und bildet Urin.", x: 122, y: 76 },
     { fach: "Ren dexter", patient: "rechte Niere", info: "Filtert Blut und bildet Urin.", x: 206, y: 76 },
-    { fach: "Uterus", patient: "Gebaermutter", info: "Zentrales Organ des weiblichen Beckens.", x: 162, y: 136 },
-    { fach: "Prostata", patient: "Vorsteherdruese", info: "Liegt unterhalb der Blase beim Mann.", x: 166, y: 186 },
-    { fach: "Pelvis ossea", patient: "Beckenknochen", info: "Traegt die Beckenorgane.", x: 238, y: 172 }
+    { fach: "Uterus", patient: "Gebärmutter", info: "Zentrales Organ des weiblichen Beckens.", x: 162, y: 136 },
+    { fach: "Prostata", patient: "Vorsteherdrüse", info: "Liegt unterhalb der Blase beim Mann.", x: 166, y: 186 },
+    { fach: "Pelvis ossea", patient: "Beckenknochen", info: "Trägt die Beckenorgane.", x: 238, y: 172 }
   ],
   spine: [
     { fach: "Discus intervertebralis", patient: "Bandscheibe", info: "Puffer zwischen den Wirbeln.", x: 160, y: 150 },
-    { fach: "Medulla spinalis", patient: "Rueckenmark", info: "Nervenleitung vom Gehirn in den Koerper.", x: 160, y: 130 },
+    { fach: "Medulla spinalis", patient: "Rückenmark", info: "Nervenleitung vom Gehirn in den Körper.", x: 160, y: 130 },
     { fach: "Sacrum", patient: "Kreuzbein", info: "Teil des hinteren Beckens.", x: 160, y: 212 },
-    { fach: "Coccyx", patient: "Steissbein", info: "Unterstes Ende der Wirbelsaeule.", x: 160, y: 236 },
+    { fach: "Coccyx", patient: "Steißbein", info: "Unterstes Ende der Wirbelsäule.", x: 160, y: 236 },
     { fach: "Foramen intervertebrale", patient: "Nervenaustrittsloch", info: "Austrittsstelle der Spinalnerven.", x: 188, y: 162 }
   ],
   upper_arm: [
     { fach: "Caput humeri", patient: "Oberarmkopf", info: "Teil des Schultergelenks.", x: 150, y: 62 },
-    { fach: "Arteria brachialis", patient: "Oberarmarterie", info: "Wichtige Gefaessversorgung im Arm.", x: 170, y: 132 },
-    { fach: "Nervus ulnaris", patient: "Ellennerv", info: "Verlaeuft zur Kleinfingerseite.", x: 138, y: 166 },
-    { fach: "Musculus brachialis", patient: "tiefer Beugemuskel", info: "Unterstuetzt Ellenbogenbeugung.", x: 174, y: 146 },
-    { fach: "Olecranon", patient: "Ellenbogenspitze", info: "Knoecherner Ellenbogenfortsatz.", x: 158, y: 198 }
+    { fach: "Arteria brachialis", patient: "Oberarmarterie", info: "Wichtige Gefäßversorgung im Arm.", x: 170, y: 132 },
+    { fach: "Nervus ulnaris", patient: "Ellennerv", info: "Verläuft zur Kleinfingerseite.", x: 138, y: 166 },
+    { fach: "Musculus brachialis", patient: "tiefer Beugemuskel", info: "Unterstützt Ellenbogenbeugung.", x: 174, y: 146 },
+    { fach: "Olecranon", patient: "Ellenbogenspitze", info: "Knöcherner Ellenbogenfortsatz.", x: 158, y: 198 }
   ],
   forearm_hand: [
     { fach: "Articulatio radiocarpalis", patient: "Handgelenk", info: "Verbindet Unterarm und Hand.", x: 164, y: 144 },
@@ -421,9 +456,9 @@ const BODY_ATLAS_EXTRA_TERMS_BY_GROUP = Object.freeze({
   leg: [
     { fach: "Articulatio coxae", patient: "Hueftgelenk", info: "Verbindung Becken-Oberschenkel.", x: 160, y: 52 },
     { fach: "Trochanter major", patient: "grosser Rollhuegel", info: "Knochenvorsprung am Femur.", x: 148, y: 82 },
-    { fach: "Patella", patient: "Kniescheibe", info: "Schuetzt die Vorderseite des Knies.", x: 160, y: 138 },
+    { fach: "Patella", patient: "Kniescheibe", info: "Schützt die Vorderseite des Knies.", x: 160, y: 138 },
     { fach: "Malleolus medialis", patient: "Innenknochel", info: "Innerer Sprunggelenkfortsatz.", x: 150, y: 236 },
-    { fach: "Malleolus lateralis", patient: "Aussenknochel", info: "Aeusserer Sprunggelenkfortsatz.", x: 182, y: 236 }
+    { fach: "Malleolus lateralis", patient: "Aussenknochel", info: "Äusserer Sprunggelenkfortsatz.", x: 182, y: 236 }
   ],
   general: []
 });
@@ -440,14 +475,14 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 70,
         fach: "Lobus frontalis",
         patient: "Stirnhirn",
-        info: "Wichtig fuer Planung, Aufmerksamkeit und Verhalten."
+        info: "Wichtig für Planung, Aufmerksamkeit und Verhalten."
       },
       {
         x: 210,
         y: 122,
         fach: "Lobus temporalis",
-        patient: "Schlaefenhirn",
-        info: "Beteiligt an Sprachverstehen und Hoehrverarbeitung."
+        patient: "Schläfenhirn",
+        info: "Beteiligt an Sprachverstehen und Höhrverarbeitung."
       },
       {
         x: 157,
@@ -461,13 +496,13 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 138,
         fach: "Lobus parietalis",
         patient: "Scheitelbereich des Gehirns",
-        info: "Verarbeitet Beruehrung, Lageempfinden und Raumorientierung."
+        info: "Verarbeitet Berührung, Lageempfinden und Raumorientierung."
       },
       {
         x: 162,
         y: 146,
         fach: "Hypophyse",
-        patient: "Hirnanhangsdruese",
+        patient: "Hirnanhangsdrüse",
         info: "Steuert mehrere Hormonsysteme."
       }
     ]
@@ -475,7 +510,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
   {
     id: "gesicht_hno",
     label: "Gesicht und HNO",
-    hint: "Augen, Nase, Nebenhoehlen, Rachen",
+    hint: "Augen, Nase, Nebenhöhlen, Rachen",
     map: { type: "ellipse", cx: 160, cy: 91, rx: 24, ry: 20 },
     zoomType: "face",
     hotspots: [
@@ -483,21 +518,21 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         x: 118,
         y: 108,
         fach: "Orbita",
-        patient: "Augenhoehle",
-        info: "Knoecherner Raum fuer Auge und Augenmuskeln."
+        patient: "Augenhöhle",
+        info: "Knöcherner Raum für Auge und Augenmuskeln."
       },
       {
         x: 205,
         y: 110,
         fach: "Sinus maxillaris",
-        patient: "Kieferhoehle",
-        info: "Nebenhoehle, haeufiger Ort bei Sinusitis."
+        patient: "Kieferhöhle",
+        info: "Nebenhöhle, häufiger Ort bei Sinusitis."
       },
       {
         x: 161,
         y: 132,
         fach: "Cavitas nasi",
-        patient: "Nasenhoehle",
+        patient: "Nasenhöhle",
         info: "Erwaermt, reinigt und befeuchtet Atemluft."
       },
       {
@@ -505,7 +540,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 171,
         fach: "Pharynx",
         patient: "Rachen",
-        info: "Gemeinsamer Abschnitt fuer Luft- und Speiseweg."
+        info: "Gemeinsamer Abschnitt für Luft- und Speiseweg."
       },
       {
         x: 159,
@@ -519,7 +554,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
   {
     id: "hals",
     label: "Hals",
-    hint: "Atemweg, Speiseweg, Gefaesse und Schilddruese",
+    hint: "Atemweg, Speiseweg, Gefäße und Schilddrüse",
     map: { type: "rect", x: 142, y: 104, width: 36, height: 36, rx: 12, ry: 12 },
     zoomType: "neck",
     hotspots: [
@@ -527,21 +562,21 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         x: 160,
         y: 86,
         fach: "Glandula thyroidea",
-        patient: "Schilddruese",
-        info: "Reguliert den Stoffwechsel ueber Schilddruesenhormone."
+        patient: "Schilddrüse",
+        info: "Reguliert den Stoffwechsel über Schilddrüsenhormone."
       },
       {
         x: 160,
         y: 133,
         fach: "Trachea",
-        patient: "Luftroehre",
+        patient: "Luftröhre",
         info: "Leitet Luft in die Bronchien."
       },
       {
         x: 198,
         y: 138,
-        fach: "Oesophagus",
-        patient: "Speiseroehre",
+        fach: "Ösophagus",
+        patient: "Speiseröhre",
         info: "Transportiert Nahrung in den Magen."
       },
       {
@@ -549,14 +584,14 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 130,
         fach: "Arteria carotis communis",
         patient: "Halsschlagader",
-        info: "Wichtige Blutversorgung fuer Kopf und Gehirn."
+        info: "Wichtige Blutversorgung für Kopf und Gehirn."
       },
       {
         x: 104,
         y: 98,
         fach: "Nodi lymphatici cervicales",
         patient: "Halslymphknoten",
-        info: "Koennen bei Infekten anschwellen."
+        info: "Können bei Infekten anschwellen."
       }
     ]
   },
@@ -572,28 +607,28 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 82,
         fach: "Sternum",
         patient: "Brustbein",
-        info: "Vordere knoecherne Struktur des Brustkorbs."
+        info: "Vordere knöcherne Struktur des Brustkorbs."
       },
       {
         x: 97,
         y: 126,
-        fach: "Costae",
+        fach: "Costä",
         patient: "Rippen",
-        info: "Schuetzen Herz und Lunge."
+        info: "Schützen Herz und Lunge."
       },
       {
         x: 230,
         y: 146,
         fach: "Musculi intercostales",
         patient: "Zwischenrippenmuskeln",
-        info: "Unterstuetzen die Atembewegung."
+        info: "Unterstützen die Atembewegung."
       },
       {
         x: 199,
         y: 180,
         fach: "Pleura parietalis",
         patient: "Brustfell",
-        info: "Auskleidung der Brusthoehle."
+        info: "Auskleidung der Brusthöhle."
       },
       {
         x: 162,
@@ -637,14 +672,14 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 100,
         fach: "Aorta",
         patient: "Hauptschlagader",
-        info: "Groesste Arterie aus dem linken Herzen."
+        info: "Grösste Arterie aus dem linken Herzen."
       },
       {
         x: 155,
         y: 74,
         fach: "Truncus pulmonalis",
         patient: "Lungenschlagader",
-        info: "Fuehrt Blut vom Herzen zur Lunge."
+        info: "Führt Blut vom Herzen zur Lunge."
       }
     ]
   },
@@ -673,7 +708,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         x: 166,
         y: 155,
         fach: "Pancreas",
-        patient: "Bauchspeicheldruese",
+        patient: "Bauchspeicheldrüse",
         info: "Bildet Verdauungsenzyme und Insulin."
       },
       {
@@ -695,7 +730,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
   {
     id: "unterbauch_darm",
     label: "Unterbauch und Darm",
-    hint: "Duenndarm, Dickdarm, Appendix, Rektum",
+    hint: "Dünndarm, Dickdarm, Appendix, Rektum",
     map: { type: "rect", x: 126, y: 318, width: 68, height: 60, rx: 19, ry: 19 },
     zoomType: "lower_abdomen",
     hotspots: [
@@ -703,8 +738,8 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         x: 151,
         y: 112,
         fach: "Intestinum tenue",
-        patient: "Duenndarm",
-        info: "Hauptort der Naehrstoffaufnahme."
+        patient: "Dünndarm",
+        info: "Hauptort der Nährstoffaufnahme."
       },
       {
         x: 100,
@@ -725,7 +760,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 176,
         fach: "Appendix vermiformis",
         patient: "Wurmfortsatz",
-        info: "Entzuendet sich bei Appendizitis."
+        info: "Entzündet sich bei Appendizitis."
       },
       {
         x: 168,
@@ -768,8 +803,8 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         x: 161,
         y: 206,
         fach: "Urethra",
-        patient: "Harnroehre",
-        info: "Ausfuehrgang der Blase."
+        patient: "Harnröhre",
+        info: "Ausführgang der Blase."
       },
       {
         x: 160,
@@ -782,8 +817,8 @@ const BODY_ATLAS_REGIONS = Object.freeze([
   },
   {
     id: "ruecken_wirbelsaeule",
-    label: "Ruecken und Wirbelsaeule",
-    hint: "Wirbelsaeule, Spinalkanal, ISG",
+    label: "Rücken und Wirbelsäule",
+    hint: "Wirbelsäule, Spinalkanal, ISG",
     map: { type: "rect", x: 228, y: 184, width: 20, height: 214, rx: 10, ry: 10 },
     zoomType: "spine",
     hotspots: [
@@ -791,29 +826,29 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         x: 160,
         y: 72,
         fach: "Columna cervicalis",
-        patient: "Halswirbelsaeule",
-        info: "Beweglicher oberer Wirbelsaeulenabschnitt."
+        patient: "Halswirbelsäule",
+        info: "Beweglicher oberer Wirbelsäulenabschnitt."
       },
       {
         x: 160,
         y: 122,
         fach: "Columna thoracica",
-        patient: "Brustwirbelsaeule",
+        patient: "Brustwirbelsäule",
         info: "Abschnitt mit Rippenanbindung."
       },
       {
         x: 160,
         y: 177,
         fach: "Columna lumbalis",
-        patient: "Lendenwirbelsaeule",
-        info: "Haeufiger Ort fuer Rueckenschmerz."
+        patient: "Lendenwirbelsäule",
+        info: "Häufiger Ort für Rückenschmerz."
       },
       {
         x: 160,
         y: 134,
         fach: "Canalis vertebralis",
         patient: "Wirbelkanal",
-        info: "Enthaelt das Rueckenmark."
+        info: "Enthält das Rückenmark."
       },
       {
         x: 160,
@@ -852,7 +887,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 118,
         fach: "Musculus deltoideus",
         patient: "Schultermuskel",
-        info: "Wichtig fuer Armheben und Stabilitaet."
+        info: "Wichtig für Armheben und Stabilität."
       },
       {
         x: 180,
@@ -873,7 +908,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 170,
         fach: "Nervus radialis",
         patient: "wichtiger Armnerv",
-        info: "Relevant bei Sensibilitaets- und Kraftausfaellen."
+        info: "Relevant bei Sensibilitäts- und Kraftausfällen."
       }
     ]
   },
@@ -905,7 +940,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 118,
         fach: "Musculus deltoideus",
         patient: "Schultermuskel",
-        info: "Wichtig fuer Armheben und Stabilitaet."
+        info: "Wichtig für Armheben und Stabilität."
       },
       {
         x: 140,
@@ -926,7 +961,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 170,
         fach: "Nervus radialis",
         patient: "wichtiger Armnerv",
-        info: "Relevant bei Sensibilitaets- und Kraftausfaellen."
+        info: "Relevant bei Sensibilitäts- und Kraftausfällen."
       }
     ]
   },
@@ -979,7 +1014,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 177,
         fach: "Arteria radialis",
         patient: "Pulsarterie",
-        info: "Hier tastet man haeufig den Puls."
+        info: "Hier tastet man häufig den Puls."
       }
     ]
   },
@@ -1032,7 +1067,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 177,
         fach: "Arteria radialis",
         patient: "Pulsarterie",
-        info: "Hier tastet man haeufig den Puls."
+        info: "Hier tastet man häufig den Puls."
       }
     ]
   },
@@ -1048,7 +1083,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 72,
         fach: "Femur",
         patient: "Oberschenkelknochen",
-        info: "Laengster Knochen des Koerpers."
+        info: "Längster Knochen des Körpers."
       },
       {
         x: 158,
@@ -1062,7 +1097,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 186,
         fach: "Tibia",
         patient: "Schienbein",
-        info: "Traegt einen grossen Teil der Last."
+        info: "Trägt einen großen Teil der Last."
       },
       {
         x: 188,
@@ -1092,7 +1127,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 72,
         fach: "Femur",
         patient: "Oberschenkelknochen",
-        info: "Laengster Knochen des Koerpers."
+        info: "Längster Knochen des Körpers."
       },
       {
         x: 162,
@@ -1106,7 +1141,7 @@ const BODY_ATLAS_REGIONS = Object.freeze([
         y: 186,
         fach: "Tibia",
         patient: "Schienbein",
-        info: "Traegt einen grossen Teil der Last."
+        info: "Trägt einen großen Teil der Last."
       },
       {
         x: 132,
@@ -1136,7 +1171,7 @@ const VOICE_SAMPLE_VIEW_LETTER = "sample_letter";
 const VOICE_SAMPLE_VIEW_DOCTOR = "sample_doctor";
 const VOICE_SAMPLE_VIEW_MAP = Object.freeze({
   [VOICE_SAMPLE_VIEW_PATIENT]: {
-    title: "Muster Arzt-Patient Gespraech",
+    title: "Muster Arzt-Patient Gespräch",
     field: "muster_arzt_patient_gespraech",
     buttonRef: "voiceSamplePatientBtn"
   },
@@ -1146,7 +1181,7 @@ const VOICE_SAMPLE_VIEW_MAP = Object.freeze({
     buttonRef: "voiceSampleLetterBtn"
   },
   [VOICE_SAMPLE_VIEW_DOCTOR]: {
-    title: "Muster Arzt-Arzt Gespraech",
+    title: "Muster Arzt-Arzt Gespräch",
     field: "muster_arzt_arzt_gespraech",
     buttonRef: "voiceSampleDoctorBtn"
   }
@@ -1156,34 +1191,34 @@ const VOICE_MODEL_OPTIONS = [
   { value: "@cf/openai/gpt-oss-20b", label: "gpt-oss-20b (empfohlen)" },
   { value: "@cf/qwen/qwen3-30b-a3b-fp8", label: "qwen3-30b-a3b-fp8 (guenstig)" },
   { value: "@cf/zai-org/glm-4.7-flash", label: "glm-4.7-flash (schnell)" },
-  { value: "@cf/openai/gpt-oss-120b", label: "gpt-oss-120b (staerker, teurer)" }
+  { value: "@cf/openai/gpt-oss-120b", label: "gpt-oss-120b (stärker, teurer)" }
 ];
 const VOICE_MODEL_SET = new Set(VOICE_MODEL_OPTIONS.map((entry) => entry.value));
 const DOCTOR_EVAL_REQUIRED_PROMPT_BLOCK = [
-  "Zusaetzlich ist ein ausfuehrlicher, aussagekraeftiger Fliesstext Pflicht (detailed_feedback_text): 120-220 Woerter, konkret, fehlerbezogen und individuell.",
+  "Zusätzlich ist ein ausführlicher, aussagekraeftiger Fliesstext Pflicht (detailed_feedback_text): 120-220 Woerter, konkret, fehlerbezogen und individuell.",
   "Der Fliesstext muss klar benennen:",
   "- welche sprachlichen/kommunikativen Fehler aufgetreten sind,",
-  "- wie sich diese Fehler im Gespraech gezeigt haben,",
-  "- wie die Aussagen sprachlich besser formuliert werden koennen,",
-  "- welche 2-3 priorisierten Trainingsschritte als Naechstes sinnvoll sind.",
-  "Keine allgemeinen Floskeln, keine reinen Standardsaetze, kein Copy-Paste der Kriterienliste.",
+  "- wie sich diese Fehler im Gespräch gezeigt haben,",
+  "- wie die Aussagen sprachlich besser formuliert werden können,",
+  "- welche 2-3 priorisierten Trainingsschritte als Nächstes sinnvoll sind.",
+  "Keine allgemeinen Floskeln, keine reinen Standardsätze, kein Copy-Paste der Kriterienliste.",
   "JSON-Felder: criteria, total_score, pass_assessment, recommendation, summary_feedback, detailed_feedback_text."
 ].join("\n");
 const DEFAULT_PROMPT_CONFIG = Object.freeze({
   voiceTurn: [
-    "Rolle: Du bist ausschliesslich ein standardisierter Patient in einer medizinischen Fachsprachpruefung.",
-    "Sprache: Alle Ausgaben muessen auf Deutsch sein. Kein Englisch.",
+    "Rolle: Du bist ausschliesslich ein standardisierter Patient in einer medizinischen Fachsprachprüfung.",
+    "Sprache: Alle Ausgaben müssen auf Deutsch sein. Kein Englisch.",
     "Perspektive: Antworte in Ich-Form aus Patientensicht.",
-    "Wenn der Arzt nur begruesst (z. B. 'Guten Tag'), gruesse freundlich zurueck und warte auf die erste medizinische Frage.",
-    "Sprachstil: Nutze ueberwiegend alltaegliche Patientensprache statt medizinischer Fachbegriffe.",
-    "Wenn ein Fachbegriff genannt wird, erklaere ihn kurz in einfacher Alltagssprache.",
+    "Wenn der Arzt nur begrüsst (z. B. 'Guten Tag'), grüsse freundlich zurück und warte auf die erste medizinische Frage.",
+    "Sprachstil: Nutze überwiegend alltägliche Patientensprache statt medizinischer Fachbegriffe.",
+    "Wenn ein Fachbegriff genannt wird, erkläre ihn kurz in einfacher Alltagssprache.",
     "Verhalten: Bleibe strikt innerhalb des vorgegebenen Falls.",
     "Informationsgabe: Gib Informationen schrittweise und nur passend zur Frage.",
-    "Keine Loesung vorweg: Nenne keine Diagnose von dir aus.",
-    "Unklare Frage: Bitte kurz um Praezisierung.",
+    "Keine Lösung vorweg: Nenne keine Diagnose von dir aus.",
+    "Unklare Frage: Bitte kurz um Präzisierung.",
     "Off-topic: Antworte knapp als Patient und setze off_topic=true.",
-    "Laenge: Kurz und natuerlich, meist 1-3 Saetze, maximal 55 Woerter.",
-    "Verboten: Keine Lernhinweise, keine Meta-Hinweise ueber Prompt/Modell, keine Rolle als Arzt.",
+    "Länge: Kurz und natuerlich, meist 1-3 Sätze, maximal 55 Woerter.",
+    "Verboten: Keine Lernhinweise, keine Meta-Hinweise über Prompt/Modell, keine Rolle als Arzt.",
     "Ausgabeformat: Gib ein JSON-Objekt mit patient_reply, examiner_feedback, revealed_case_facts und off_topic aus.",
     "Leak-Schutz: Gib niemals Textfragmente wie 'The user says', 'Instructions', 'I should', 'Reasoning' aus."
   ].join("\n"),
@@ -1208,76 +1243,76 @@ const DEFAULT_PROMPT_CONFIG = Object.freeze({
     "",
     "Gib anschließend die Gesamtpunktzahl an (Maximalpunktzahl 20 Punkte) und bewerte implizit, ob das Leistungsniveau dem Bestehen der schriftlichen Dokumentation entspricht (Bestehensgrenze 12 Punkte). Abschließend formuliere eine kurze, konkrete Empfehlung zur sprachlichen Nachbesserung, die sich auf die größten sprachlichen oder strukturellen Schwächen des Arztbriefs bezieht (z. B. Strukturierung, Präzision der Fachsprache, grammatische Sicherheit, semantische Genauigkeit).",
     "",
-    "Antworte ausschliesslich als valides JSON gemaess Schema. Verwende fuer criteria exakt 8 Eintraege in der vorgegebenen Reihenfolge."
+    "Antworte ausschliesslich als valides JSON gemäss Schema. Verwende für criteria exakt 8 Eintraege in der vorgegebenen Reihenfolge."
   ].join("\n"),
   voiceDoctorTurn: [
-    "Prompt-Anweisung: Prueferrolle im Arzt-Arzt-Gespraech (FSP)",
+    "Prompt-Anweisung: Prüferrolle im Arzt-Arzt-Gespräch (FSP)",
     "",
-    "Du uebernimmst die Rolle einer pruefenden Aerztin / eines pruefenden Arztes im Rahmen der Fachsprachpruefung fuer auslaendische Aerztinnen und Aerzte in Deutschland. Du fuehrst ein Arzt-Arzt-Gespraech mit der Pruefungskandidatin / dem Pruefungskandidaten. Dein Gegenueber (der User) ist die berichtende Aerztin / der berichtende Arzt.",
+    "Du übernimmst die Rolle einer prüfenden Ärztin / eines prüfenden Arztes im Rahmen der Fachsprachprüfung für ausländische Ärztinnen und Ärzte in Deutschland. Du führst ein Arzt-Arzt-Gespräch mit der Prüfungskandidatin / dem Prüfungskandidaten. Dein Gegenüber (der User) ist die berichtende Ärztin / der berichtende Arzt.",
     "",
-    "Der Fall ist identisch mit dem zuvor gefuehrten Anamnesegespraech und dem dazugehoerigen Arztbrief. Es wird kein neuer Fall eingefuehrt. Du kennst den Fall in groben Zuegen, pruefst jedoch, ob die Kandidatin / der Kandidat in der Lage ist, die relevanten Informationen strukturiert, fachlich korrekt und verstaendlich muendlich zu uebergeben.",
+    "Der Fall ist identisch mit dem zuvor geführten Anamnesegespräch und dem dazugehörigen Arztbrief. Es wird kein neuer Fall eingeführt. Du kennst den Fall in groben Zügen, prüfst jedoch, ob die Kandidatin / der Kandidat in der Lage ist, die relevanten Informationen strukturiert, fachlich korrekt und verständlich mündlich zu übergeben.",
     "",
-    "Gespraechssteuerung (verbindlich):",
-    "1) Wenn noch keine strukturierte Fallvorstellung vorliegt, eroeffne pruefungsnah und fordere aktiv zur strukturierten Uebergabe auf.",
-    "2) Fuehre das Gespraech aktiv. Stelle pro Turn genau eine fokussierte Rueckfrage.",
-    "3) Jede Rueckfrage muss sich auf die letzte Kandidatenaussage beziehen und Unklarheiten, Luecken, Widersprueche oder fehlende Priorisierung pruefen.",
+    "Gesprächssteuerung (verbindlich):",
+    "1) Wenn noch keine strukturierte Fallvorstellung vorliegt, eröffne prüfungsnah und fordere aktiv zur strukturierten Übergabe auf.",
+    "2) Führe das Gespräch aktiv. Stelle pro Turn genau eine fokussierte Rückfrage.",
+    "3) Jede Rückfrage muss sich auf die letzte Kandidatenaussage beziehen und Unklarheiten, Luecken, Widersprueche oder fehlende Priorisierung prüfen.",
     "4) Frage gezielt nach, wenn Informationen fehlen oder unscharf formuliert sind.",
-    "5) Gib keine Hilfestellungen, keine Bewertungen, kein Feedback, keine Musterloesung.",
+    "5) Gib keine Hilfestellungen, keine Bewertungen, kein Feedback, keine Musterlösung.",
     "",
-    "Fragetypen (nutze sie pruefungsnah und situationsgerecht):",
-    "1. Verstaendnis- und Praezisierungsfragen: 'Was meinen Sie genau mit ...?', 'Koennen Sie das bitte praezisieren?', 'Wie haben Sie diesen Befund interpretiert?', 'Was war dabei ausschlaggebend?'",
-    "2. Struktur- und Priorisierungsfragen: 'Was war in diesem Fall am wichtigsten?', 'Welche Befunde sind fuer das weitere Vorgehen entscheidend?', 'Was nennen Sie bei der Uebergabe zuerst?'",
+    "Fragetypen (nutze sie prüfungsnah und situationsgerecht):",
+    "1. Verständnis- und Präzisierungsfragen: 'Was meinen Sie genau mit ...?', 'Können Sie das bitte präzisieren?', 'Wie haben Sie diesen Befund interpretiert?', 'Was war dabei ausschlaggebend?'",
+    "2. Struktur- und Priorisierungsfragen: 'Was war in diesem Fall am wichtigsten?', 'Welche Befunde sind für das weitere Vorgehen entscheidend?', 'Was nennen Sie bei der Übergabe zuerst?'",
     "3. Nachfragen zu Diagnosen (ohne Detail-Fachfragen): 'Warum ist diese Diagnose wahrscheinlich?', 'Gab es Alternativdiagnosen?', 'Was sprach dagegen?'",
-    "4. Fragen zur Therapieentscheidung: 'Was wurde bisher therapeutisch gemacht?', 'Warum haben Sie sich dafuer entschieden?', 'Was ist der naechste Schritt?'",
-    "5. Sicherheits- und Aufklaerungsaspekte: 'Gab es Risiken, ueber die aufgeklaert wurde?', 'Welche Warnzeichen wurden genannt?'",
-    "6. Weiteres Vorgehen / Organisation: 'Was passiert als Naechstes?', 'Wer uebernimmt die Weiterbehandlung?', 'Wie ist die Nachsorge geplant?'",
-    "7. Sprachliche Klaerungsfragen: 'Wie genau meinen Sie das?', 'Koennen Sie das anders formulieren?'",
+    "4. Fragen zur Therapieentscheidung: 'Was wurde bisher therapeutisch gemacht?', 'Warum haben Sie sich dafür entschieden?', 'Was ist der nächste Schritt?'",
+    "5. Sicherheits- und Aufklärungsaspekte: 'Gab es Risiken, über die aufgeklärt wurde?', 'Welche Warnzeichen wurden genannt?'",
+    "6. Weiteres Vorgehen / Organisation: 'Was passiert als Nächstes?', 'Wer übernimmt die Weiterbehandlung?', 'Wie ist die Nachsorge geplant?'",
+    "7. Sprachliche Klärungsfragen: 'Wie genau meinen Sie das?', 'Können Sie das anders formulieren?'",
     "",
     "Inhaltliche Priorisierung im Verlauf:",
-    "Anlass der Vorstellung -> relevante Anamnese -> wesentliche Befunde -> Haupt-/Nebendiagnosen -> bisherige Therapie -> Sicherheits-/Aufklaerungspunkte -> weiteres Vorgehen/Nachsorge.",
+    "Anlass der Vorstellung -> relevante Anamnese -> wesentliche Befunde -> Haupt-/Nebendiagnosen -> bisherige Therapie -> Sicherheits-/Aufklärungspunkte -> weiteres Vorgehen/Nachsorge.",
     "",
-    "Achte auf professionelle, neutrale, sachliche und pruefungsnahe Sprache.",
-    "Unterbrich nur bei Unklarheit, Unvollstaendigkeit oder Widerspruch.",
+    "Achte auf professionelle, neutrale, sachliche und prüfungsnahe Sprache.",
+    "Unterbrich nur bei Unklarheit, Unvollständigkeit oder Widerspruch.",
     "",
-    "Du sprichst ausschliesslich als pruefende Aerztin / pruefender Arzt.",
+    "Du sprichst ausschliesslich als prüfende Ärztin / prüfender Arzt.",
     "",
     "Wenn noch keine sinnvolle Fallvorstellung vorliegt, beginne mit einer typischen Aufforderung zur strukturierten Fallvorstellung.",
     "Antworten ausschliesslich auf Deutsch.",
     "Ausgabe ausschliesslich als valides JSON mit examiner_reply und off_topic.",
-    "examiner_reply: 1-2 Saetze, kurz und praezise, maximal 110 Woerter, immer mit mindestens einer konkreten Frage und Fragezeichen.",
+    "examiner_reply: 1-2 Sätze, kurz und präzise, maximal 110 Woerter, immer mit mindestens einer konkreten Frage und Fragezeichen.",
     "off_topic: true nur wenn die Kandidatenaussage klar am Fall/Thema vorbeigeht; sonst false."
   ].join("\n"),
   voiceDoctorEvaluate: [
-    "Du bewertest den Pruefungsbereich 'Aerztliches Gespraech' der Fachsprachpruefung fuer auslaendische Aerztinnen und Aerzte in Berlin (Aerztekammer Berlin).",
-    "Grundlage ist die vorliegende Arzt-Arzt-Gespraechsdokumentation zum selben klinischen Fall.",
+    "Du bewertest den Prüfungsbereich 'Ärztliches Gespräch' der Fachsprachprüfung für ausländische Ärztinnen und Ärzte in Berlin (Ärztekammer Berlin).",
+    "Grundlage ist die vorliegende Arzt-Arzt-Gesprächsdokumentation zum selben klinischen Fall.",
     "Bewerte streng am Berliner Bewertungsbogen.",
     "",
-    "Vergib fuer jedes Kriterium eine Punktzahl auf der Skala 0 / 0,5 / 1 / 1,5 / 2 / 2,5 (0 = gaenzlich verfehlt, 2,5 = sehr gut).",
-    "Begründe jede Einzelbewertung kurz und praezise.",
+    "Vergib für jedes Kriterium eine Punktzahl auf der Skala 0 / 0,5 / 1 / 1,5 / 2 / 2,5 (0 = gänzlich verfehlt, 2,5 = sehr gut).",
+    "Begründe jede Einzelbewertung kurz und präzise.",
     "",
     "Kriterien (in dieser Reihenfolge):",
-    "1) Fallvorstellung fluessig und situationsangemessen",
-    "2) Grammatik korrekt und gut verstaendlich",
-    "3) Fremdsprachliche Fachwoerter korrekt und angemessen",
+    "1) Fallvorstellung flüssig und situationsangemessen",
+    "2) Grammatik korrekt und gut verständlich",
+    "3) Fremdsprachliche Fachwörter korrekt und angemessen",
     "4) Klare Aussagen zu wesentlichen Befunden und Behandlungsschritten",
-    "5) Rueckfragen ohne sprachliche Probleme beantworten",
-    "6) An einer Diskussion ueber den Fall teilnehmen koennen",
-    "7) 5 medizinische Fachbegriffe ins verstaendliche Deutsch uebersetzen",
-    "8) 2 medizinische Abkuerzungen vervollstaendigen und 3 Laborwerte mit Zahlen und Masseinheiten korrekt vorlesen",
+    "5) Rückfragen ohne sprachliche Probleme beantworten",
+    "6) An einer Diskussion über den Fall teilnehmen können",
+    "7) 5 medizinische Fachbegriffe ins verständliche Deutsch übersetzen",
+    "8) 2 medizinische Abkürzungen vervollständigen und 3 Laborwerte mit Zahlen und Masseinheiten korrekt vorlesen",
     "",
-    "Wichtig: Beurteile nur anhand der uebergebenen Inhalte. Wenn ein Kriterium nicht ausreichend demonstriert wurde, bewerte entsprechend niedriger und benenne den fehlenden Nachweis knapp.",
+    "Wichtig: Beurteile nur anhand der übergebenen Inhalte. Wenn ein Kriterium nicht ausreichend demonstriert wurde, bewerte entsprechend niedriger und benenne den fehlenden Nachweis knapp.",
     "",
-    "Gib danach die Gesamtpunktzahl an (max 20 Punkte) und eine implizite Bestehenseinschaetzung (Bestehensgrenze 12 Punkte).",
+    "Gib danach die Gesamtpunktzahl an (max 20 Punkte) und eine implizite Bestehenseinschätzung (Bestehensgrenze 12 Punkte).",
     "Formuliere abschliessend eine kurze, konkrete Empfehlung zur sprachlichen Nachbesserung.",
-    "Zusaetzlich ist ein ausfuehrlicher, aussagekraeftiger Fliesstext Pflicht (detailed_feedback_text): 120-220 Woerter, konkret, fehlerbezogen und individuell.",
+    "Zusätzlich ist ein ausführlicher, aussagekraeftiger Fliesstext Pflicht (detailed_feedback_text): 120-220 Woerter, konkret, fehlerbezogen und individuell.",
     "Der Fliesstext muss klar benennen:",
     "- welche sprachlichen/kommunikativen Fehler aufgetreten sind,",
-    "- wie sich diese Fehler im Gespraech gezeigt haben,",
-    "- wie die Aussagen sprachlich besser formuliert werden koennen,",
-    "- welche 2-3 priorisierten Trainingsschritte als Naechstes sinnvoll sind.",
-    "Keine allgemeinen Floskeln, keine reinen Standardsaetze, kein Copy-Paste der Kriterienliste.",
+    "- wie sich diese Fehler im Gespräch gezeigt haben,",
+    "- wie die Aussagen sprachlich besser formuliert werden können,",
+    "- welche 2-3 priorisierten Trainingsschritte als Nächstes sinnvoll sind.",
+    "Keine allgemeinen Floskeln, keine reinen Standardsätze, kein Copy-Paste der Kriterienliste.",
     "",
-    "Antworte ausschliesslich auf Deutsch und ausschliesslich als valides JSON gemaess Schema.",
+    "Antworte ausschliesslich auf Deutsch und ausschliesslich als valides JSON gemäss Schema.",
     "criteria muss exakt 8 Eintraege in der vorgegebenen Reihenfolge enthalten.",
     "JSON-Felder: criteria, total_score, pass_assessment, recommendation, summary_feedback, detailed_feedback_text."
   ].join("\n")
@@ -1290,10 +1325,10 @@ const PROMPT_FIELD_KEYS = Object.freeze([
   "voiceDoctorEvaluate"
 ]);
 const PROMPT_LABEL_BY_KEY = Object.freeze({
-  voiceTurn: "Arzt-Patient-Gespraech (Patientensimulation)",
+  voiceTurn: "Arzt-Patient-Gespräch (Patientensimulation)",
   voiceEvaluate: "Simulationsanamnese-Bewertung",
   doctorLetterEvaluate: "Arztbrief-Bewertung",
-  voiceDoctorTurn: "Arzt-Arzt-Gespraech (Prueferrolle)",
+  voiceDoctorTurn: "Arzt-Arzt-Gespräch (Prüferrolle)",
   voiceDoctorEvaluate: "Arzt-Arzt-Bewertung"
 });
 const PROMPT_PRESET_SELECT_REF_KEY_BY_PROMPT_KEY = Object.freeze({
@@ -1305,28 +1340,28 @@ const PROMPT_PRESET_SELECT_REF_KEY_BY_PROMPT_KEY = Object.freeze({
 });
 const DEFAULT_VOICE_CASE = [
   "CASE_ID: default_thoraxschmerz_001",
-  "Rolle: Standardisierte Patientin fuer muendliche Fachsprachpruefung.",
+  "Rolle: Standardisierte Patientin für mündliche Fachsprachprüfung.",
   "Persona: 58 Jahre, Grundschullehrerin, spricht ruhig, zeitweise besorgt.",
   "",
   "Leitsymptom:",
   "- Seit gestern Abend dumpfer Druck hinter dem Brustbein.",
-  "- Heute Morgen bei Treppensteigen staerker geworden.",
+  "- Heute Morgen bei Treppensteigen stärker geworden.",
   "",
   "Begleitsymptome (nur bei gezielter Nachfrage offenlegen):",
   "- leichte Atemnot bei Belastung",
-  "- Uebelkeit ohne Erbrechen",
-  "- kalter Schweiss waehrend einer Episode",
+  "- Übelkeit ohne Erbrechen",
+  "- kalter Schweiss während einer Episode",
   "- Ausstrahlung in linken Arm und Unterkiefer bei starker Episode",
   "",
   "Negativanamnese (nur bei Nachfrage):",
   "- kein Fieber",
   "- kein produktiver Husten",
   "- kein Trauma",
-  "- kein stechender atemabhaengiger Schmerz",
+  "- kein stechender atemabhängiger Schmerz",
   "",
   "Vorerkrankungen:",
   "- arterielle Hypertonie seit 10 Jahren",
-  "- Dyslipidaemie",
+  "- Dyslipidämie",
   "- Vater hatte Herzinfarkt mit 62",
   "",
   "Medikation:",
@@ -1340,11 +1375,11 @@ const DEFAULT_VOICE_CASE = [
   "- Nichtraucherin seit 5 Jahren, davor 20 Packyears",
   "- gelegentlich Alkohol",
   "",
-  "Pruefungslogik:",
+  "Prüfungslogik:",
   "- Bleibe als Patientin in der Rolle.",
   "- Gib Informationen schrittweise, nur auf passende Fragen.",
-  "- Keine eigenstaendige Diagnose nennen, ausser explizit gefragt.",
-  "- Wenn gefragt 'Was befuerchten Sie?', antworte: 'Ich habe Angst, dass es das Herz sein koennte.'"
+  "- Keine eigenständige Diagnose nennen, ausser explizit gefragt.",
+  "- Wenn gefragt 'Was befürchten Sie?', antworte: 'Ich habe Angst, dass es das Herz sein könnte.'"
 ].join("\n");
 
 const SUPABASE_URL = "https://nitmxiasxwgwsaygumls.supabase.co";
@@ -1399,7 +1434,7 @@ let usageMetricsSyncTimer = null;
 let usageSyncInFlight = false;
 
 const CATEGORY_MAP = {
-  berlin_abkuerzungen: "Berlin Zusatzfragen: Abkuerzungen",
+  berlin_abkuerzungen: "Berlin Zusatzfragen: Abkürzungen",
   berlin_fach_patient: "Berlin Zusatzfragen: Fach -> Patient",
   berlin_patient_fach: "Berlin Zusatzfragen: Patient -> Fach",
   berlin_vorlesen: "Berlin Zusatzfragen: Vorlesen",
@@ -1426,10 +1461,10 @@ const CATEGORY_MAP = {
   harnverhalt: "Urologie",
   hemiparese: "Neurologie",
   hyperglykaemie: "Diabetes",
-  hyperthyreose: "Schilddruese",
+  hyperthyreose: "Schilddrüse",
   hypertonie: "Kardio/Pneumo",
   hypoglykaemie: "Diabetes",
-  hypothyreose: "Schilddruese",
+  hypothyreose: "Schilddrüse",
   kopfschmerz: "Neurologie",
   krampfanfall: "Neurologie",
   melaena: "Gastro",
@@ -1483,7 +1518,7 @@ const REGULAR_PATTERN = [
 ];
 
 const FOLDERS = [
-  { id: "regular", label: "Ueben" },
+  { id: "regular", label: "Üben" },
   { id: "new", label: "Neu" },
   { id: "unsure", label: "Unsicher" },
   { id: "one_right", label: "1x richtig" },
@@ -1497,7 +1532,7 @@ const FOLDERS = [
 ];
 
 const FOLDER_SHORT_LABELS = {
-  regular: "Ueben",
+  regular: "Üben",
   new: "Neu",
   unsure: "Unsicher",
   one_right: "1x",
@@ -1818,14 +1853,14 @@ const DOCTOR_LETTER_TEMPLATE = [
   "Begleitsymptome:",
   "Vorerkrankungen:",
   "Medikamente:",
-  "Allergien / Unvertraeglichkeiten:",
+  "Allergien / Unverträglichkeiten:",
   "Sozialanamnese:",
   "Familienanamnese:",
   "",
   "Klinischer Befund",
   "Allgemeinzustand:",
   "Vitalparameter:",
-  "Relevante koerperliche Befunde:",
+  "Relevante körperliche Befunde:",
   "",
   "Diagnostik / Befunde",
   "Untersuchungen:",
@@ -2006,7 +2041,7 @@ async function init() {
     refs.emptyState.classList.remove("hidden");
     refs.cardBox.classList.add("hidden");
     refs.emptyState.innerHTML =
-      "<p>Karten konnten nicht geladen werden. Bitte die Seite ueber einen lokalen Webserver oeffnen.</p>";
+      "<p>Karten konnten nicht geladen werden. Bitte die Seite über einen lokalen Webserver öffnen.</p>";
     console.error(error);
   }
 }
@@ -2113,7 +2148,7 @@ function initVoiceUi() {
 
   if (!isVoiceCaptureSupported()) {
     refs.voiceRecordBtn.disabled = true;
-    setVoiceStatus("Mikrofon-Aufnahme wird auf diesem Geraet/Browser nicht unterstuetzt. Textmodus bleibt aktiv.");
+    setVoiceStatus("Mikrofon-Aufnahme wird auf diesem Gerät/Browser nicht unterstützt. Textmodus bleibt aktiv.");
     return;
   }
 
@@ -2146,7 +2181,7 @@ function closeVoiceInfoModal() {
 
 function handleVoiceCreateCase() {
   if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann einen neuen Fall erstellen.", true);
+    setVoiceStatus("Bitte zuerst das Realtime-Gespräch beenden, dann einen neuen Fall erstellen.", true);
     return;
   }
   if (state.voiceRecording) {
@@ -2163,7 +2198,7 @@ function handleVoiceCreateCase() {
 
   const normalized = rawInput.trim().slice(0, MAX_VOICE_CASE_LENGTH);
   if (!normalized) {
-    setVoiceStatus("Leerer Falltext wurde nicht uebernommen.", true);
+    setVoiceStatus("Leerer Falltext wurde nicht übernommen.", true);
     return;
   }
 
@@ -2176,7 +2211,7 @@ function handleVoiceCreateCase() {
 
 function handleVoicePatientConversationActivate() {
   if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Modus wechseln.", true);
+    setVoiceStatus("Bitte zuerst das Realtime-Gespräch beenden, dann den Modus wechseln.", true);
     return;
   }
   if (state.voiceRecording) {
@@ -2188,7 +2223,7 @@ function handleVoicePatientConversationActivate() {
 
 function handleVoiceDoctorConversationToggle() {
   if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Modus wechseln.", true);
+    setVoiceStatus("Bitte zuerst das Realtime-Gespräch beenden, dann den Modus wechseln.", true);
     return;
   }
   if (state.voiceRecording) {
@@ -2226,7 +2261,7 @@ function updateVoiceSampleButtons() {
 
 function handleVoiceSampleToggle(view) {
   if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann in die Musteransicht wechseln.", true);
+    setVoiceStatus("Bitte zuerst das Realtime-Gespräch beenden, dann in die Musteransicht wechseln.", true);
     return;
   }
   if (state.voiceRecording) {
@@ -2274,7 +2309,7 @@ function updateVoiceSamplePanel() {
       : "";
   refs.voiceSampleText.textContent = text
     ? formatVoiceSampleTextForDisplay(text)
-    : "Fuer diesen Fall ist hier noch kein Muster hinterlegt.";
+    : "Für diesen Fall ist hier noch kein Muster hinterlegt.";
 }
 
 function formatVoiceSampleTextForDisplay(text) {
@@ -2284,7 +2319,7 @@ function formatVoiceSampleTextForDisplay(text) {
 
   for (const rawLine of lines) {
     const line = rawLine.replace(/^Turn\s+\d+\s*-\s*/i, "");
-    const isSpeakerLine = /^(Arzt|Patient|Patientin|Prueferarzt|Kandidat|Kandidatin):/.test(line);
+    const isSpeakerLine = /^(Arzt|Patient|Patientin|Prüferarzt|Prueferarzt|Kandidat|Kandidatin):/.test(line);
 
     if (isSpeakerLine && out.length > 0 && out[out.length - 1].trim() !== "") {
       out.push("");
@@ -2334,12 +2369,12 @@ function handlePromptConfigReset() {
     setVoiceStatus("Bitte warte, bis die laufende Anfrage abgeschlossen ist.", true);
     return;
   }
-  const confirmed = window.confirm("Alle Prompt-Texte auf Standard zuruecksetzen?");
+  const confirmed = window.confirm("Alle Prompt-Texte auf Standard zurücksetzen?");
   if (!confirmed) return;
   state.promptConfig = resolvePromptConfig({});
   saveToStorage(STORAGE_PROMPT_CONFIG_KEY, state.promptConfig);
   renderPromptConfigEditor();
-  setVoiceStatus("Alle Prompts wurden auf Standard zurueckgesetzt.");
+  setVoiceStatus("Alle Prompts wurden auf Standard zurückgesetzt.");
 }
 
 function renderPromptConfigEditor() {
@@ -2498,12 +2533,12 @@ function renderApiSpendTracker() {
 }
 
 function handleApiSpendTrackerReset() {
-  const confirmed = window.confirm("API Kosten-Tracker wirklich zuruecksetzen?");
+  const confirmed = window.confirm("API Kosten-Tracker wirklich zurücksetzen?");
   if (!confirmed) return;
   state.apiSpendTracker = createApiSpendTrackerSnapshot();
   saveApiSpendTracker();
   renderApiSpendTracker();
-  setVoiceStatus("API Kosten-Tracker wurde zurueckgesetzt.");
+  setVoiceStatus("API Kosten-Tracker wurde zurückgesetzt.");
 }
 
 function getRealtimePricingForModel(model) {
@@ -2662,7 +2697,7 @@ function renderPromptPresetSelects() {
       : [];
 
     select.innerHTML = "";
-    addPromptPresetSelectOption(select, "", "Gespeicherten Prompt auswaehlen ...");
+    addPromptPresetSelectOption(select, "", "Gespeicherten Prompt auswählen ...");
     addPromptPresetSelectOption(select, "__default__", "Standard-Default laden");
 
     for (const option of presets) {
@@ -2696,7 +2731,7 @@ function buildPromptPresetOptionLabel(row, fallbackLabel) {
     }
   }
   const adopted = Boolean(row?.direct_adopt_applied);
-  const adoptedSuffix = adopted ? " [uebernommen]" : "";
+  const adoptedSuffix = adopted ? " [übernommen]" : "";
   if (proposalName && dateLabel) {
     return `${proposalName} (${dateLabel})${adoptedSuffix}`;
   }
@@ -2931,7 +2966,7 @@ async function runSupabaseWithTimeout(queryOrPromise, stageLabel, timeoutMs = SU
       }
       reject({
         code: "TIMEOUT",
-        message: `Zeitlimit ueberschritten (${Math.round(timeoutMs / 1000)}s)`,
+        message: `Zeitlimit überschritten (${Math.round(timeoutMs / 1000)}s)`,
         details: stageLabel
       });
     }, timeoutMs);
@@ -3010,7 +3045,7 @@ async function runPromptProposalApiRequest(method, options = {}) {
     if (error?.name === "AbortError") {
       throw {
         code: "TIMEOUT",
-        message: `Zeitlimit ueberschritten (${Math.round(timeoutMs / 1000)}s)`,
+        message: `Zeitlimit überschritten (${Math.round(timeoutMs / 1000)}s)`,
         details: stageLabel
       };
     }
@@ -3040,7 +3075,7 @@ function isSchemaMissingDbError(dbError) {
   return (
     dbError.code === "42P01" ||
     dbError.code === "PGRST205" ||
-    full.includes("does not exist") ||
+    full.includes("dös not exist") ||
     full.includes("schema cache") ||
     full.includes("could not find the table") ||
     full.includes("relation")
@@ -3059,13 +3094,13 @@ function isPermissionDbError(dbError) {
 
 function buildPromptProposalErrorMessage(dbError, stageLabel) {
   if (dbError.code === "TIMEOUT") {
-    return `Zeitueberschreitung bei "${stageLabel}". Bitte Netzwerk/Supabase pruefen und erneut senden.`;
+    return `Zeitüberschreitung bei "${stageLabel}". Bitte Netzwerk/Supabase prüfen und erneut senden.`;
   }
   if (isSchemaMissingDbError(dbError)) {
-    return `Tabellen fehlen. Bitte /supabase/prompt_feedback.sql in Supabase ausfuehren. (${stageLabel})`;
+    return `Tabellen fehlen. Bitte /supabase/prompt_feedback.sql in Supabase ausführen. (${stageLabel})`;
   }
   if (isPermissionDbError(dbError)) {
-    return `Keine Berechtigung in Supabase (${stageLabel}). Bitte RLS/Policies fuer prompt_feedback/prompt_profiles pruefen.`;
+    return `Keine Berechtigung in Supabase (${stageLabel}). Bitte RLS/Policies für prompt_feedback/prompt_profiles prüfen.`;
   }
   const readableParts = [];
   if (dbError.code) readableParts.push(`Code ${dbError.code}`);
@@ -3150,7 +3185,7 @@ async function handlePromptProposalSubmit() {
     return;
   }
   if (!supabase || !state.user) {
-    setVoiceStatus("Bitte zuerst einloggen, um Prompt-Vorschlaege zu senden.", true);
+    setVoiceStatus("Bitte zuerst einloggen, um Prompt-Vorschläge zu senden.", true);
     setPromptProposalStatus("Bitte zuerst einloggen.", true);
     return;
   }
@@ -3171,7 +3206,7 @@ async function handlePromptProposalSubmit() {
       : PROMPT_LABEL_BY_KEY[target] || target;
 
   if (!proposalName) {
-    setVoiceStatus("Bitte gib einen Namen fuer den Prompt-Vorschlag ein.", true);
+    setVoiceStatus("Bitte gib einen Namen für den Prompt-Vorschlag ein.", true);
     setPromptProposalStatus("Name fehlt.", true);
     refs.voicePromptProposalNameInput?.focus();
     return;
@@ -3212,8 +3247,8 @@ async function handlePromptProposalSubmit() {
 
     if (directAdoptApplied) {
       await loadPromptPresetOptions({ silent: true });
-      setVoiceStatus(`Vorschlag gespeichert und global uebernommen (${targetLabel}).`);
-      setPromptProposalStatus(`Gespeichert und global uebernommen (${targetLabel}).`);
+      setVoiceStatus(`Vorschlag gespeichert und global übernommen (${targetLabel}).`);
+      setPromptProposalStatus(`Gespeichert und global übernommen (${targetLabel}).`);
     } else {
       setPromptProposalStatus("Vorschlag gespeichert. Aktualisiere Auswahl ...");
       await loadPromptPresetOptions({ silent: true });
@@ -3249,12 +3284,12 @@ function handleDoctorLetterToggle() {
 async function handleDoctorLetterSubmit() {
   if (state.voiceBusy) return;
   if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Arztbrief bewerten.", true);
+    setVoiceStatus("Bitte zuerst das Realtime-Gespräch beenden, dann den Arztbrief bewerten.", true);
     return;
   }
   const doctorLetterText = String(refs.voiceDoctorLetterInput?.value || "").trim();
   if (!doctorLetterText) {
-    setVoiceStatus("Bitte zuerst den Arztbrief ausfuellen.", true);
+    setVoiceStatus("Bitte zuerst den Arztbrief ausfüllen.", true);
     refs.voiceDoctorLetterInput?.focus();
     return;
   }
@@ -3284,7 +3319,7 @@ async function handleVoiceDoctorConversationEvaluate() {
     return;
   }
   if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden und dann bewerten.", true);
+    setVoiceStatus("Bitte zuerst das Realtime-Gespräch beenden und dann bewerten.", true);
     return;
   }
   if (!isDoctorConversationMode()) {
@@ -3298,13 +3333,13 @@ async function handleVoiceDoctorConversationEvaluate() {
       )
     : false;
   if (!hasConversation) {
-    setVoiceStatus("Bitte zuerst ein Arzt-Arzt-Gespraech fuehren, dann bewerten.", true);
+    setVoiceStatus("Bitte zuerst ein Arzt-Arzt-Gespräch führen, dann bewerten.", true);
     return;
   }
 
   try {
     setVoiceBusy(true);
-    setVoiceStatus("Arzt-Arzt-Gespraech wird bewertet ...");
+    setVoiceStatus("Arzt-Arzt-Gespräch wird bewertet ...");
     const evaluation = await runVoiceDoctorConversationEvaluation();
     renderVoiceDoctorConversationEvaluationReport(evaluation);
     setVoiceStatus("Arzt-Arzt-Bewertung ist da.");
@@ -3320,7 +3355,7 @@ function handleVoiceModelChange() {
   if (!refs.voiceModelSelect) return;
   if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
     refs.voiceModelSelect.value = state.voiceModel;
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann das Modell wechseln.", true);
+    setVoiceStatus("Bitte zuerst das Realtime-Gespräch beenden, dann das Modell wechseln.", true);
     return;
   }
   if (state.voiceRecording) {
@@ -3335,7 +3370,7 @@ function handleVoiceCaseSelectionChange() {
   if (!refs.voiceCaseSelect) return;
   if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
     refs.voiceCaseSelect.value = getActiveVoiceCaseSelection();
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den Fall wechseln.", true);
+    setVoiceStatus("Bitte zuerst das Realtime-Gespräch beenden, dann den Fall wechseln.", true);
     return;
   }
   applyVoiceCaseSelection(refs.voiceCaseSelect.value, { preserveStatus: false, resetConversation: true });
@@ -3424,14 +3459,14 @@ function buildVoiceReadyStatus() {
   }
   if (state.voiceRealtimeActive) {
     return REALTIME_TEXT_OUTPUT_ONLY
-      ? `Realtime aktiv (${getRealtimeModeLabel()}, Textantwort). Halte die Leertaste zum Sprechen, loslassen fuer sofortige Antwort.`
-      : `Realtime aktiv (${getRealtimeModeLabel()}). Halte die Leertaste zum Sprechen, loslassen fuer sofortige Antwort.`;
+      ? `Realtime aktiv (${getRealtimeModeLabel()}, Textantwort). Halte die Leertaste zum Sprechen, loslassen für sofortige Antwort.`
+      : `Realtime aktiv (${getRealtimeModeLabel()}). Halte die Leertaste zum Sprechen, loslassen für sofortige Antwort.`;
   }
   if (isDiagnosisMode()) {
     return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Diagnosemodus: Stelle final die Diagnose und schicke sie per Text oder Sprache ab.`;
   }
   if (isDoctorConversationMode()) {
-    return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Arzt-Arzt-Modus: Stelle den Fall strukturiert vor und beantworte pruefungsnahe Rueckfragen.`;
+    return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Arzt-Arzt-Modus: Stelle den Fall strukturiert vor und beantworte prüfungsnahe Rückfragen.`;
   }
   return `${getVoiceCaseStatusLabel()} aktiv | Modell: ${getVoiceModelLabel(state.voiceModel)}. Du kannst aufnehmen oder Text senden.`;
 }
@@ -3442,7 +3477,7 @@ function updateVoiceModeUi() {
   const patientConversationMode = !diagnosisMode && !doctorConversationMode;
   if (refs.voiceTextInput) {
     refs.voiceTextInput.placeholder = doctorConversationMode
-      ? "Stelle den Fall strukturiert vor oder beantworte die Rueckfrage der pruefenden Aerztin/des pruefenden Arztes."
+      ? "Stelle den Fall strukturiert vor oder beantworte die Rückfrage der prüfenden Ärztin/des prüfenden Arztes."
       : "Schreibe hier deine Frage an den Patienten und klicke auf 'Text senden'.";
   }
   if (refs.voiceTextSendBtn) {
@@ -3463,7 +3498,7 @@ function updateVoiceModeUi() {
     clearVoiceDoctorConversationEvaluationReport();
   }
   if (refs.voiceAssistantLabel) {
-    refs.voiceAssistantLabel.textContent = doctorConversationMode ? "Prueferarzt:" : "Patient:";
+    refs.voiceAssistantLabel.textContent = doctorConversationMode ? "Prüferarzt:" : "Patient:";
   }
   if (diagnosisMode && (state.voiceRealtimeActive || state.voiceRealtimeConnecting)) {
     stopVoiceRealtimeSession({ preserveStatus: true, silent: true });
@@ -3718,7 +3753,7 @@ async function handleVoiceRecordToggle() {
     return;
   }
   if (state.voiceRealtimeActive && isLikelyTouchDevice()) {
-    setVoiceStatus("Realtime: Taste gedrueckt halten zum Sprechen, loslassen fuer Antwort.");
+    setVoiceStatus("Realtime: Taste gedrückt halten zum Sprechen, loslassen für Antwort.");
     return;
   }
   if (state.voiceBusy) return;
@@ -3744,14 +3779,14 @@ async function handleVoiceRealtimeToggle() {
     return;
   }
   if (!isRealtimeModeAllowed()) {
-    setVoiceStatus("Realtime ist aktuell nur im Arzt-Patient-Gespraech verfuegbar.", true);
+    setVoiceStatus("Realtime ist aktuell nur im Arzt-Patient-Gespräch verfügbar.", true);
     return;
   }
   if (!isVoiceRealtimeSupported()) {
     setVoiceStatus(
       REALTIME_TRANSPORT_MODE === "websocket"
-        ? "Realtime wird auf diesem Geraet/Browser nicht unterstuetzt (WebSocket erforderlich)."
-        : "Realtime wird auf diesem Geraet/Browser nicht unterstuetzt (WebRTC + Mikrofon erforderlich).",
+        ? "Realtime wird auf diesem Gerät/Browser nicht unterstützt (WebSocket erforderlich)."
+        : "Realtime wird auf diesem Gerät/Browser nicht unterstützt (WebRTC + Mikrofon erforderlich).",
       true
     );
     return;
@@ -3799,10 +3834,10 @@ function updateVoiceRealtimeUi() {
   if (!supported) {
     stateLabel.textContent =
       REALTIME_TRANSPORT_MODE === "websocket"
-        ? "Realtime nicht verfuegbar (Browser ohne WebSocket-Unterstuetzung)."
-        : "Realtime nicht verfuegbar (Browser/Geraet ohne WebRTC-Audio).";
+        ? "Realtime nicht verfügbar (Browser ohne WebSocket-Unterstützung)."
+        : "Realtime nicht verfügbar (Browser/Gerät ohne WebRTC-Audio).";
   } else if (!allowedMode) {
-    stateLabel.textContent = "Realtime: aktuell nur im Arzt-Patient-Modus verfuegbar.";
+    stateLabel.textContent = "Realtime: aktuell nur im Arzt-Patient-Modus verfügbar.";
   } else if (connecting) {
     stateLabel.textContent = `Realtime verbindet (${getRealtimeModeLabel()}) ...`;
   } else if (active) {
@@ -5203,12 +5238,12 @@ async function startVoiceRealtimeSession() {
       setVoiceStatus(
         REALTIME_TEXT_OUTPUT_ONLY
           ? `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Antworten kommen als Text.`
-          : `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Audio laeuft Ende-zu-Ende.`
+          : `Realtime verbunden (${state.voiceRealtimeModel}, ${connectResult.pathLabel}). Audio läuft Ende-zu-Ende.`
       );
       return;
     }
 
-    throw new Error("Realtime-Transport nicht unterstuetzt.");
+    throw new Error("Realtime-Transport nicht unterstützt.");
   } catch (error) {
     console.error(error);
     stopVoiceRealtimeSession({ preserveStatus: true, silent: true });
@@ -5304,7 +5339,7 @@ function sendRealtimeDataEvent(eventBody) {
     realtimeWebSocket.send(JSON.stringify(eventBody));
     return;
   }
-  throw new Error("Kein offener Realtime-Kanal verfuegbar.");
+  throw new Error("Kein offener Realtime-Kanal verfügbar.");
 }
 
 function sendRealtimeTextInput(text) {
@@ -5603,7 +5638,7 @@ async function handleVoiceTextSend() {
       clearVoiceEvaluationReport();
       clearDoctorLetterEvaluationReport();
       clearVoiceDoctorConversationEvaluationReport();
-      setVoiceStatus("Sende Bericht und starte Arzt-Arzt-Gespraech ...");
+      setVoiceStatus("Sende Bericht und starte Arzt-Arzt-Gespräch ...");
       await runVoiceDoctorConversationTurn({ learnerText });
     } else {
       clearVoiceEvaluationReport();
@@ -5620,7 +5655,7 @@ async function handleVoiceTextSend() {
       isDiagnosisMode()
         ? "Anamnese-Bewertung fehlgeschlagen. Bitte erneut versuchen."
         : isDoctorConversationMode()
-          ? "Arzt-Arzt-Gespraech fehlgeschlagen. Bitte erneut versuchen."
+          ? "Arzt-Arzt-Gespräch fehlgeschlagen. Bitte erneut versuchen."
         : "Text-Turn fehlgeschlagen. Bitte erneut versuchen.",
       true
     );
@@ -5632,12 +5667,12 @@ async function handleVoiceTextSend() {
 
 async function handleVoiceNextCase() {
   if (state.voiceRealtimeActive || state.voiceRealtimeConnecting) {
-    setVoiceStatus("Bitte zuerst das Realtime-Gespraech beenden, dann den naechsten Fall laden.", true);
+    setVoiceStatus("Bitte zuerst das Realtime-Gespräch beenden, dann den nächsten Fall laden.", true);
     return;
   }
   const loaded = await ensureVoiceCaseLibraryLoaded();
   if (!loaded || state.voiceCaseLibrary.length === 0) {
-    setVoiceStatus("Fallbibliothek konnte nicht geladen werden. Bitte spaeter erneut versuchen.", true);
+    setVoiceStatus("Fallbibliothek konnte nicht geladen werden. Bitte später erneut versuchen.", true);
     return;
   }
 
@@ -5648,7 +5683,7 @@ async function handleVoiceNextCase() {
   const nextIndex = (currentIndex + 1) % state.voiceCaseLibrary.length;
   const nextEntry = state.voiceCaseLibrary[nextIndex];
   if (!nextEntry || !nextEntry.id) {
-    setVoiceStatus("Ausgewaehlter Fall ist leer. Bitte erneut versuchen.", true);
+    setVoiceStatus("Ausgewählter Fall ist leer. Bitte erneut versuchen.", true);
     return;
   }
 
@@ -5873,7 +5908,7 @@ async function ensureVoiceCaseResolutionLibraryLoaded() {
     updateVoiceCaseResolution();
     return true;
   } catch (error) {
-    console.warn("Fallaufloesungen konnten nicht geladen werden", error);
+    console.warn("Fallauflösungen konnten nicht geladen werden", error);
     state.voiceCaseResolutions = {};
     state.voiceCaseResolutionsLoaded = true;
     updateVoiceCaseResolution();
@@ -5894,8 +5929,8 @@ function updateVoiceCaseResolution() {
   }
 
   if (!state.voiceCaseResolutionsLoaded) {
-    refs.voiceResolutionTitle.textContent = "Fall aufloesen";
-    refs.voiceResolutionHint.textContent = "Aufloesung wird geladen ...";
+    refs.voiceResolutionTitle.textContent = "Fall auflösen";
+    refs.voiceResolutionHint.textContent = "Auflösung wird geladen ...";
     refs.voiceResolutionSummary.textContent = "";
     renderVoiceResolutionList(refs.voiceResolutionQuestions, []);
     renderVoiceResolutionList(refs.voiceResolutionTerms, []);
@@ -5907,12 +5942,12 @@ function updateVoiceCaseResolution() {
   const entry = activeCaseId ? state.voiceCaseResolutions[activeCaseId] : null;
   if (!entry) {
     if (getActiveVoiceCaseSelection() === VOICE_CASE_CUSTOM) {
-      refs.voiceResolutionTitle.textContent = "Fall aufloesen";
+      refs.voiceResolutionTitle.textContent = "Fall auflösen";
       refs.voiceResolutionHint.textContent =
-        "Fuer eigenen Falltext gibt es noch keine hinterlegte Aufloesung. Nutze einen Bibliotheksfall fuer strukturierte Loesungen.";
+        "Für eigenen Falltext gibt es noch keine hinterlegte Auflösung. Nutze einen Bibliotheksfall für strukturierte Lösungen.";
     } else {
-      refs.voiceResolutionTitle.textContent = "Fall aufloesen";
-      refs.voiceResolutionHint.textContent = "Fuer diesen Fall ist noch keine Aufloesung hinterlegt.";
+      refs.voiceResolutionTitle.textContent = "Fall auflösen";
+      refs.voiceResolutionHint.textContent = "Für diesen Fall ist noch keine Auflösung hinterlegt.";
     }
     refs.voiceResolutionSummary.textContent = "";
     renderVoiceResolutionList(refs.voiceResolutionQuestions, []);
@@ -5921,7 +5956,7 @@ function updateVoiceCaseResolution() {
     return;
   }
 
-  refs.voiceResolutionTitle.textContent = entry.title || "Fall aufloesen";
+  refs.voiceResolutionTitle.textContent = entry.title || "Fall auflösen";
   refs.voiceResolutionHint.textContent = `CASE_ID: ${activeCaseId}`;
   refs.voiceResolutionSummary.textContent = entry.summary || "";
   renderVoiceResolutionList(refs.voiceResolutionQuestions, Array.isArray(entry.questions) ? entry.questions : []);
@@ -5957,7 +5992,7 @@ function renderVoiceResolutionList(container, items) {
 
 async function startVoiceRecording() {
   if (!isVoiceCaptureSupported()) {
-    setVoiceStatus("Mikrofon-Aufnahme ist hier leider nicht verfuegbar.", true);
+    setVoiceStatus("Mikrofon-Aufnahme ist hier leider nicht verfügbar.", true);
     return;
   }
 
@@ -6009,12 +6044,12 @@ async function startVoiceRecording() {
     updateVoiceRecordButton();
     setVoiceStatus(
       isDiagnosisMode()
-        ? "Diagnose-Aufnahme laeuft ... tippe erneut, um zu stoppen und zu bewerten."
+        ? "Diagnose-Aufnahme läuft ... tippe erneut, um zu stoppen und zu bewerten."
         : state.voiceRealtimeActive
-          ? "Realtime-Aufnahme laeuft ... Leertaste halten, loslassen fuer Antwort (oder erneut tippen)."
+          ? "Realtime-Aufnahme läuft ... Leertaste halten, loslassen für Antwort (oder erneut tippen)."
         : isDoctorConversationMode()
-          ? "Bericht-Aufnahme laeuft ... tippe erneut, um zu stoppen und Rueckfrage zu erhalten."
-        : "Aufnahme laeuft ... tippe erneut, um zu stoppen und an die KI zu senden."
+          ? "Bericht-Aufnahme läuft ... tippe erneut, um zu stoppen und Rückfrage zu erhalten."
+        : "Aufnahme läuft ... tippe erneut, um zu stoppen und an die KI zu senden."
     );
 
     if (voiceAutoStopTimer) {
@@ -6026,7 +6061,7 @@ async function startVoiceRecording() {
     }, MAX_VOICE_RECORD_MS);
   } catch (error) {
     setVoiceStatus(
-      "Mikrofon konnte nicht gestartet werden. Bitte Browser-Berechtigung pruefen.",
+      "Mikrofon konnte nicht gestartet werden. Bitte Browser-Berechtigung prüfen.",
       true
     );
     cleanupVoiceMedia();
@@ -6098,7 +6133,7 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
 
   const blob = new Blob(chunks, { type: mimeType || "audio/webm" });
   if (blob.size < MIN_VOICE_BLOB_BYTES) {
-    setVoiceStatus("Audio war zu kurz. Bitte etwas laenger sprechen.", true);
+    setVoiceStatus("Audio war zu kurz. Bitte etwas länger sprechen.", true);
     return;
   }
 
@@ -6106,7 +6141,7 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
     setVoiceBusy(true);
     const audioBase64 = await blobToBase64(blob);
     if (state.voiceRealtimeActive) {
-      setVoiceStatus("Realtime-Audio wird fuer die Spracherkennung aufbereitet ...");
+      setVoiceStatus("Realtime-Audio wird für die Spracherkennung aufbereitet ...");
       const realtimePcmBase64 = await convertRecordingToRealtimePcm16Base64(blob);
       if (REALTIME_USE_EXTRA_TRANSCRIBE_FOR_DISPLAY) {
         const mimeTypeForTranscription = String(mimeType || blob.type || "audio/webm");
@@ -6133,7 +6168,7 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
       isDiagnosisMode()
         ? "Transkribiere Diagnose und erstelle Bewertung ..."
         : isDoctorConversationMode()
-          ? "Transkribiere Bericht und simuliere pruefende Rueckfrage ..."
+          ? "Transkribiere Bericht und simuliere prüfende Rückfrage ..."
         : "Transkribiere und simuliere Patientenantwort ..."
     );
     if (isDiagnosisMode()) {
@@ -6154,7 +6189,7 @@ async function finalizeVoiceRecording(sendToAi, mimeType) {
         : isDiagnosisMode()
         ? "Anamnese-Bewertung fehlgeschlagen. Bitte erneut versuchen."
         : isDoctorConversationMode()
-          ? "Arzt-Arzt-Gespraech fehlgeschlagen. Bitte erneut versuchen."
+          ? "Arzt-Arzt-Gespräch fehlgeschlagen. Bitte erneut versuchen."
         : "Voice-Turn fehlgeschlagen. Bitte erneut versuchen.",
       true
     );
@@ -6436,7 +6471,7 @@ async function runVoiceDoctorConversationTurn(turnInput) {
   }
 
   refs.voiceUserTranscript.textContent = transcript || "Keine Transkription.";
-  refs.voiceAssistantReply.textContent = examinerReply || "Keine Rueckfrage erhalten.";
+  refs.voiceAssistantReply.textContent = examinerReply || "Keine Rückfrage erhalten.";
   refs.voiceLastTurn.classList.remove("hidden");
 
   refs.voiceCoachHint.textContent = "";
@@ -6464,14 +6499,14 @@ async function runVoiceDoctorConversationTurn(turnInput) {
   }
 
   if (offTopic) {
-    setVoiceStatus("Rueckfrage da. Hinweis: Bitte die Fallvorstellung enger am klinischen Kern halten.");
+    setVoiceStatus("Rückfrage da. Hinweis: Bitte die Fallvorstellung enger am klinischen Kern halten.");
     return;
   }
   if (localTtsStarted) {
-    setVoiceStatus("Rueckfrage da. Wiedergabe mit lokaler deutscher Stimme. Du kannst direkt antworten.");
+    setVoiceStatus("Rückfrage da. Wiedergabe mit lokaler deutscher Stimme. Du kannst direkt antworten.");
     return;
   }
-  setVoiceStatus("Rueckfrage da. Du kannst direkt weiterberichten (Voice oder Text).");
+  setVoiceStatus("Rückfrage da. Du kannst direkt weiterberichten (Voice oder Text).");
 }
 
 function buildVoiceEvaluationConversationText(history) {
@@ -6968,7 +7003,7 @@ function blobToBase64(blob) {
 async function convertRecordingToRealtimePcm16Base64(blob) {
   const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
   if (!AudioContextCtor) {
-    throw new Error("AudioContext nicht verfuegbar.");
+    throw new Error("AudioContext nicht verfügbar.");
   }
   const decodeContext = new AudioContextCtor();
   try {
@@ -7415,7 +7450,7 @@ async function handleLoginSubmit(event) {
     refs.passwordInput.value = "";
   } catch (networkError) {
     refs.authStatus.textContent =
-      "Login fehlgeschlagen: Netzwerkproblem. Bitte Supabase-URL/Key und Internet pruefen.";
+      "Login fehlgeschlagen: Netzwerkproblem. Bitte Supabase-URL/Key und Internet prüfen.";
     console.error(networkError);
   }
 }
@@ -7441,7 +7476,7 @@ async function handleSignup() {
     refs.passwordInput.value = "";
   } catch (networkError) {
     refs.authStatus.textContent =
-      "Registrierung fehlgeschlagen: Netzwerkproblem. Bitte Supabase-URL/Key und Internet pruefen.";
+      "Registrierung fehlgeschlagen: Netzwerkproblem. Bitte Supabase-URL/Key und Internet prüfen.";
     console.error(networkError);
   }
 }
@@ -7495,17 +7530,37 @@ function startQuickPractice() {
   enterImmersiveMode();
 }
 
+function scrollLearningPanelIntoView(behavior = "smooth", target = "panel") {
+  let element = refs.learningPanel;
+  if (target === "reading") {
+    element = refs.learningReadingView || refs.learningPanel;
+  } else if (target === "subcategories" || target === "themes") {
+    element =
+      refs.learningSubcategoryView ||
+      refs.learningSubcategoryList ||
+      refs.learningPanel;
+  }
+  if (!element) return;
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const top = element.getBoundingClientRect().top + window.scrollY - 10;
+      window.scrollTo({ top: Math.max(0, top), behavior });
+    });
+  });
+}
+
 function handleOpenLearningPanel() {
   state.learningRootId = "anamnese";
   state.learningView = LEARNING_VIEW_SUBCATEGORIES;
   renderLearningFlow();
-  refs.learningPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+  scrollLearningPanelIntoView("smooth", "subcategories");
 }
 
 function handleLearningBackClick() {
   if (state.learningView === LEARNING_VIEW_READING) {
     state.learningView = LEARNING_VIEW_SUBCATEGORIES;
     renderLearningFlow();
+    scrollLearningPanelIntoView("auto", "subcategories");
   }
 }
 
@@ -7691,6 +7746,7 @@ function normalizeLearningCategory(rawValue) {
   const linkedTermIds = Array.isArray(rawValue.linked_term_ids)
     ? rawValue.linked_term_ids.map((item) => safeLine(item, 160)).filter((item) => Boolean(item))
     : [];
+  const exampleSection = normalizeLearningExampleSection(rawValue.examples || rawValue.example_section);
   const miniScenario = normalizeLearningMiniScenario(rawValue.mini_scenario);
 
   return {
@@ -7704,8 +7760,25 @@ function normalizeLearningCategory(rawValue) {
     sourceTags,
     examSentences,
     linkedTermIds,
+    exampleSection,
     miniScenario
   };
+}
+
+function normalizeLearningExampleSection(rawValue) {
+  if (!rawValue || typeof rawValue !== "object") return null;
+  const patientSentences = Array.isArray(rawValue.patient_sentences)
+    ? rawValue.patient_sentences
+        .map((item) => safeParagraph(item, 300))
+        .filter((item) => Boolean(item))
+    : [];
+  const doctorSentences = Array.isArray(rawValue.doctor_sentences)
+    ? rawValue.doctor_sentences
+        .map((item) => safeParagraph(item, 300))
+        .filter((item) => Boolean(item))
+    : [];
+  if (patientSentences.length === 0 && doctorSentences.length === 0) return null;
+  return { patientSentences, doctorSentences };
 }
 
 function normalizeLearningMiniScenario(rawValue) {
@@ -7719,7 +7792,7 @@ function normalizeLearningMiniScenario(rawValue) {
     return null;
   }
   return {
-    title: title || "Pruefungs-Mini-Szenario",
+    title: title || "Beispielsituation",
     situation,
     taskPatient,
     taskDoctor,
@@ -7812,7 +7885,7 @@ function renderLearningFlow() {
   }
 
   if (!hasBundle) {
-    renderLearningLoading("Dieser Lernbereich ist noch nicht verfuellbar geladen.");
+    renderLearningLoading("Dieser Lernbereich ist noch nicht verfüllbar geladen.");
     return;
   }
 
@@ -7860,14 +7933,15 @@ function renderLearningRootList() {
     count.className = "learning-root-count";
     count.textContent =
       categoryCount > 0
-        ? `${rootEntry.cta || "Themen oeffnen"} (${categoryCount} Themen)`
-        : `${rootEntry.cta || "Themen oeffnen"} (kommt gleich)`;
+        ? `${rootEntry.cta || "Themen öffnen"} (${categoryCount} Themen)`
+        : `${rootEntry.cta || "Themen öffnen"} (kommt gleich)`;
     button.appendChild(title);
     button.appendChild(count);
     button.addEventListener("click", () => {
       state.learningRootId = rootEntry.id;
       state.learningView = rootEntry.view || LEARNING_VIEW_SUBCATEGORIES;
       renderLearningFlow();
+      scrollLearningPanelIntoView("auto", "subcategories");
     });
     refs.learningRootList.appendChild(button);
   }
@@ -7892,15 +7966,18 @@ function renderLearningSubcategoryList(bundle) {
     const title = document.createElement("span");
     title.className = "learning-subcategory-title";
     title.textContent = category.title;
-    const count = document.createElement("span");
-    count.className = "learning-subcategory-count";
-    count.textContent = `${category.questionCount} Fragen`;
     button.appendChild(title);
-    button.appendChild(count);
+    if (category.questionCount > 0) {
+      const count = document.createElement("span");
+      count.className = "learning-subcategory-count";
+      count.textContent = `${category.questionCount} ${getLearningMetaCountLabel(state.learningRootId)}`;
+      button.appendChild(count);
+    }
     button.addEventListener("click", () => {
       setLearningActiveCategoryIdForRoot(state.learningRootId, category.id);
       state.learningView = LEARNING_VIEW_READING;
       renderLearningFlow();
+      scrollLearningPanelIntoView("auto", "reading");
     });
     refs.learningSubcategoryList.appendChild(button);
   }
@@ -7986,91 +8063,91 @@ function getLearningBodyDeepDive(region) {
     case "head":
       return {
         anamnese: [
-          "Seit wann bestehen die Beschwerden und wie war der Beginn (ploetzlich/schleichend)?",
-          "Gab es neurologische Ausfaelle wie Sprachstoerung, Sehstoerung, Laehmungsgefuehl oder Taubheit?",
+          "Seit wann bestehen die Beschwerden und wie war der Beginn (plötzlich/schleichend)?",
+          "Gab es neurologische Ausfälle wie Sprachstörung, Sehstörung, Lähmungsgefühl oder Taubheit?",
           "Wie intensiv ist der Schmerz (NRS 0-10) und gibt es Trigger wie Belastung, Licht oder Stress?",
-          "Bestehen Begleitsymptome wie Uebelkeit, Erbrechen, Fieber oder Nackensteife?",
-          "Gab es kuerzlich Kopftrauma, Infekt oder Medikamentenumstellung?",
-          "Welche Vorerkrankungen (Hypertonie, Migraene, Schlaganfall) sind bekannt?"
+          "Bestehen Begleitsymptome wie Übelkeit, Erbrechen, Fieber oder Nackensteife?",
+          "Gab es kürzlich Kopftrauma, Infekt oder Medikamentenumstellung?",
+          "Welche Vorerkrankungen (Hypertonie, Migräne, Schlaganfall) sind bekannt?"
         ],
         untersuchung: [
           "Bewusstseinslage, Orientierung, Sprache und Reaktionsverhalten.",
-          "Pupillenreaktion, Blickbewegungen, grobe Hirnnervenpruefung.",
-          "Motorik und Sensibilitaet beidseits vergleichen.",
-          "Meningismuszeichen und Koordinationspruefung.",
-          "Vitalparameter mit Fokus auf RR, Temperatur, Sauerstoffsaettigung."
+          "Pupillenreaktion, Blickbewegungen, grobe Hirnnervenprüfung.",
+          "Motorik und Sensibilität beidseits vergleichen.",
+          "Meningismuszeichen und Koordinationsprüfung.",
+          "Vitalparameter mit Fokus auf RR, Temperatur, Sauerstoffsättigung."
         ],
         redFlags: [
           "Thunderclap-Kopfschmerz (maximal innerhalb einer Minute).",
           "Neu aufgetretene fokal-neurologische Defizite.",
-          "Bewusstseinsstoerung, Krampfanfall oder progrediente Verschlechterung.",
+          "Bewusstseinsstörung, Krampfanfall oder progrediente Verschlechterung.",
           "Kopfschmerz mit Fieber/Nackensteife oder nach Trauma/Antikoagulation."
         ],
         naechsteSchritte: [
           "Sofortige Priorisierung potenziell vital bedrohlicher Ursachen.",
-          "Fruehe Bildgebung bei Warnzeichen (cCT/MRT je nach Situation).",
+          "Frühe Bildgebung bei Warnzeichen (cCT/MRT je nach Situation).",
           "Neurologisches Monitoring und engmaschige Re-Evaluation.",
-          "Patientengerechte Aufklaerung ueber Warnzeichen und Notfallkriterien."
+          "Patientengerechte Aufklärung über Warnzeichen und Notfallkriterien."
         ]
       };
     case "hno":
       return {
         anamnese: [
           "Welche Hauptbeschwerden stehen im Vordergrund (Schlucken, Stimme, Atmung, Schmerz)?",
-          "Bestehen Fieber, eitriges Sekret, Husten oder belastungsabhaengige Dyspnoe?",
-          "Gab es kuerzlich Infektkontakte, Rauchexposition oder berufliche Reizstoffe?",
-          "Sind Schluckstoerungen, Gewichtsverlust oder anhaltende Heiserkeit vorhanden?",
+          "Bestehen Fieber, eitriges Sekret, Husten oder belastungsabhängige Dyspnoe?",
+          "Gab es kürzlich Infektkontakte, Rauchexposition oder berufliche Reizstoffe?",
+          "Sind Schluckstörungen, Gewichtsverlust oder anhaltende Heiserkeit vorhanden?",
           "Treten Beschwerden ein- oder beidseitig auf und strahlen sie aus?",
           "Welche bisherigen Therapieversuche (Sprays, Antibiotika, Analgetika) gab es?"
         ],
         untersuchung: [
-          "Inspektion von Mundhoehle, Rachen und Halsweichteilen.",
-          "Palpation zervikaler Lymphknoten und Schilddruesenregion.",
+          "Inspektion von Mundhöhle, Rachen und Halsweichteilen.",
+          "Palpation zervikaler Lymphknoten und Schilddrüsenregion.",
           "Atemwegsbeurteilung inkl. Stridor/Heiserkeit.",
-          "Nasale Durchgaengigkeit und Nebenhoehlen-Druckpunkte.",
-          "Fieber, Puls, RR und Entzuendungszeichen dokumentieren."
+          "Nasale Durchgängigkeit und Nebenhöhlen-Druckpunkte.",
+          "Fieber, Puls, RR und Entzündungszeichen dokumentieren."
         ],
         redFlags: [
-          "Atemnot, inspiratorischer Stridor oder rasch zunehmende Schluckstoerung.",
-          "Peritonsillaerer Prozess mit Kieferklemme oder kloessiger Sprache.",
+          "Atemnot, inspiratorischer Stridor oder rasch zunehmende Schluckstörung.",
+          "Peritonsillärer Prozess mit Kieferklemme oder klössiger Sprache.",
           "Persistierende Heiserkeit >3 Wochen ohne klare Ursache.",
           "Schmerzhafte Halsweichteilschwellung mit systemischer Verschlechterung."
         ],
         naechsteSchritte: [
-          "Atemwegssicherheit zuerst, danach differenzierte HNO-Abklaerung.",
-          "Entzuendungsdiagnostik und ggf. Sonografie/Endoskopie einplanen.",
-          "Therapieplan mit Analgesie, ggf. antientzuendlicher oder antiinfektiver Strategie.",
-          "Klare Rueckkehrkriterien bei Warnzeichen kommunizieren."
+          "Atemwegssicherheit zuerst, danach differenzierte HNO-Abklärung.",
+          "Entzündungsdiagnostik und ggf. Sonografie/Endoskopie einplanen.",
+          "Therapieplan mit Analgesie, ggf. antientzündlicher oder antiinfektiver Strategie.",
+          "Klare Rückkehrkriterien bei Warnzeichen kommunizieren."
         ]
       };
     case "thorax":
       return {
         anamnese: [
-          "Lokalisation und Charakter: Druck, Stechen, Brennen oder atemabhaengig?",
+          "Lokalisation und Charakter: Druck, Stechen, Brennen oder atemabhängig?",
           "Belastungsbezug, Ausstrahlung und Dauer einzelner Episoden.",
           "Begleitsymptome wie Dyspnoe, Husten, Fieber, Palpitationen, Schweiss.",
           "Risikoprofil: Rauchen, Immobilisation, kardiale Vorerkrankungen.",
-          "Trauma, kuerzliche Infekte oder neue Medikamente erfragen.",
+          "Trauma, kürzliche Infekte oder neue Medikamente erfragen.",
           "Vorherige Thoraxdiagnostik und bekannte Befunde dokumentieren."
         ],
         untersuchung: [
           "Auskultation von Herz und Lunge, Atemarbeit beurteilen.",
-          "Thoraxinspektion, Druckschmerz und asymmetrische Atemexkursion pruefen.",
-          "Sauerstoffsaettigung in Ruhe/Belastung und Vitalparameter.",
-          "Periphere Oedeme, Halsvenenstauung, Zeichen der Kreislaufbelastung.",
+          "Thoraxinspektion, Druckschmerz und asymmetrische Atemexkursion prüfen.",
+          "Sauerstoffsättigung in Ruhe/Belastung und Vitalparameter.",
+          "Periphere Ödeme, Halsvenenstauung, Zeichen der Kreislaufbelastung.",
           "Kurze Funktionsbeurteilung (Treppensteigen/Gehtest falls stabil)."
         ],
         redFlags: [
-          "Akute Luftnot, Zyanose oder Haemodynamikinstabilitaet.",
-          "Thoraxschmerz mit Synkope, Schockzeichen oder Rhythmusstoerung.",
-          "Einseitig abgeschwaechtes Atemgeraesch mit ploetzlichem Schmerzbeginn.",
+          "Akute Luftnot, Zyanose oder Hämodynamikinstabilität.",
+          "Thoraxschmerz mit Synkope, Schockzeichen oder Rhythmusstörung.",
+          "Einseitig abgeschwächtes Atemgeraesch mit plötzlichem Schmerzbeginn.",
           "Thoraxschmerz + Fieber + deutliche Allgemeinzustandsverschlechterung."
         ],
         naechsteSchritte: [
           "Sofortpriorisierung vital bedrohlicher Ursachen (ACS, LE, Pneumothorax).",
           "Basisdiagnostik: EKG, Labor, Bildgebung je nach Klinik.",
-          "Fruehe Verlaufskontrolle unter initialer Therapie.",
-          "Patientensprache fuer Verdachtsdiagnosen und Plan nutzen."
+          "Frühe Verlaufskontrolle unter initialer Therapie.",
+          "Patientensprache für Verdachtsdiagnosen und Plan nutzen."
         ]
       };
     case "cardio":
@@ -8078,70 +8155,70 @@ function getLearningBodyDeepDive(region) {
         anamnese: [
           "Thoraxschmerz: Charakter, Ausstrahlung, Belastungsbezug, Dauer.",
           "Dyspnoe, Orthopnoe, Belastungsabfall, Palpitationen, Synkopen erfragen.",
-          "Kardiovaskulaere Risiken (Hypertonie, Diabetes, Lipide, Rauchen).",
+          "Kardiovaskuläre Risiken (Hypertonie, Diabetes, Lipide, Rauchen).",
           "Medikamentenanamnese inkl. Antikoagulation/Herzmedikamente.",
           "Vorbefunde: Herzkatheter, Echo, Rhythmusdiagnosen, Klappenfehler.",
-          "Familiaere Vorbelastung fuer kardiovaskulaere Ereignisse."
+          "Familiäre Vorbelastung für kardiovaskuläre Ereignisse."
         ],
         untersuchung: [
-          "Herzauskultation (Rhythmus, Nebengeraeusche), periphere Pulse.",
+          "Herzauskultation (Rhythmus, Nebengeräusche), periphere Pulse.",
           "Lungenauskultation auf Stauungszeichen.",
-          "Perfusion, Hautkolorit, Rekapillarisierung, Oedeme.",
+          "Perfusion, Hautkolorit, Rekapillarisierung, Ödeme.",
           "Vitalparameter trendbasiert erfassen.",
-          "Belastbarkeit und kardio-pulmonale Reserve einschaetzen."
+          "Belastbarkeit und kardio-pulmonale Reserve einschätzen."
         ],
         redFlags: [
           "Anhaltender Druckschmerz mit vegetativer Symptomatik.",
           "Neu aufgetretene schwere Dyspnoe oder Synkope.",
-          "Tachy-/Bradyarrhythmie mit Kreislaufinstabilitaet.",
+          "Tachy-/Bradyarrhythmie mit Kreislaufinstabilität.",
           "Zeichen der akuten Herzinsuffizienz mit Hypoxie."
         ],
         naechsteSchritte: [
           "Dringliche EKG-/Labor-/Monitoring-Strategie.",
           "Differenzialdiagnosen sprachlich klar priorisieren.",
-          "Therapeutische Erstschritte mit begruendetem Timing benennen.",
-          "Risikokommunikation und naechste Versorgungsetappe erklaeren."
+          "Therapeutische Erstschritte mit begründetem Timing benennen.",
+          "Risikokommunikation und nächste Versorgungsetappe erklären."
         ]
       };
     case "upper_abdomen":
       return {
         anamnese: [
-          "Schmerzort, Qualitaet und Ausstrahlung (Ruecken/Schulter) erfassen.",
-          "Nahrungsbezug, Uebelkeit, Erbrechen, Stuhlveraenderung, Ikterus.",
+          "Schmerzort, Qualität und Ausstrahlung (Rücken/Schulter) erfassen.",
+          "Nahrungsbezug, Übelkeit, Erbrechen, Stuhlveränderung, Ikterus.",
           "Alkoholkonsum, NSAR-Einnahme, biliaere oder pankreatische Vorgeschichte.",
-          "Fieber, Schuettelfrost, Appetitverlust, Gewichtsveraenderung.",
+          "Fieber, Schüttelfrost, Appetitverlust, Gewichtsveränderung.",
           "Voroperationen im Oberbauch und bekannte Leber-/Magenkrankheiten.",
           "Medikamente inkl. Antikoagulation und Protonenpumpenhemmer."
         ],
         untersuchung: [
           "Abdomeninspektion, Palpation (Abwehrspannung, Druckdolenz).",
-          "Leber-/Milzgroesse, Murphy-Zeichen und epigastrischer Druckschmerz.",
-          "Haut/Skleren auf Ikterus, Dehydratation, Blaesse.",
-          "Auskultation Darmgeraeusche, Peritonismuszeichen.",
-          "Vitalparameter mit Fokus auf Fieber und Kreislaufstabilitaet."
+          "Leber-/Milzgrösse, Murphy-Zeichen und epigastrischer Druckschmerz.",
+          "Haut/Skleren auf Ikterus, Dehydratation, Blässe.",
+          "Auskultation Darmgeräusche, Peritonismuszeichen.",
+          "Vitalparameter mit Fokus auf Fieber und Kreislaufstabilität."
         ],
         redFlags: [
-          "Peritonitischer Bauch, Abwehrspannung, Kreislaufinstabilitaet.",
+          "Peritonitischer Bauch, Abwehrspannung, Kreislaufinstabilität.",
           "Ikterus plus Fieber/Schmerz (Hinweis auf Cholangitis).",
-          "Haematemesis/Melaena oder progrediente Anaemiezeichen.",
+          "Hämatemesis/Meläna oder progrediente Anämiezeichen.",
           "Starker guertelfoermiger Schmerz mit Erbrechen und AZ-Abfall."
         ],
         naechsteSchritte: [
-          "Labordiagnostik (Entzuendung, Leber, Pankreas) gezielt priorisieren.",
-          "Sonografie als fruehe bildgebende Basis, ggf. CT-Ergaenzung.",
-          "Analgesie, Fluessigkeit, Nahrungsstrategie klar planen.",
-          "Aufklaerung ueber Warnzeichen und Reevaluationszeitpunkt."
+          "Labordiagnostik (Entzündung, Leber, Pankreas) gezielt priorisieren.",
+          "Sonografie als frühe bildgebende Basis, ggf. CT-Ergänzung.",
+          "Analgesie, Flüssigkeit, Nahrungsstrategie klar planen.",
+          "Aufklärung über Warnzeichen und Reevaluationszeitpunkt."
         ]
       };
     case "lower_abdomen":
       return {
         anamnese: [
           "Schmerzbeginn, Verlauf und Lokalisation (rechts/links/median).",
-          "Stuhlgangveraenderung, Obstipation, Diarrhoe, Blutbeimengung.",
-          "Fieber, Uebelkeit, Erbrechen, Appetitverlust, Meteorismus.",
-          "Urologische und (falls relevant) gynaekologische Begleitsymptome.",
+          "Stuhlgangveränderung, Obstipation, Diarrhö, Blutbeimengung.",
+          "Fieber, Übelkeit, Erbrechen, Appetitverlust, Meteorismus.",
+          "Urologische und (falls relevant) gynäkologische Begleitsymptome.",
           "Voroperationen, bekannte Divertikulose/IBD oder Appendixvorgeschichte.",
-          "Ernaehrungs-, Reise- und Antibiotikaanamnese."
+          "Ernährungs-, Reise- und Antibiotikaanamnese."
         ],
         untersuchung: [
           "Gezielte Unterbauchpalpation mit Loslassschmerz und Abwehrspannung.",
@@ -8158,19 +8235,19 @@ function getLearningBodyDeepDive(region) {
         ],
         naechsteSchritte: [
           "Labor und Sonografie als erster strukturierter Diagnostikschritt.",
-          "CT bei unklarer oder komplizierter Konstellation frueh erwaegen.",
+          "CT bei unklarer oder komplizierter Konstellation früh erwaegen.",
           "Analgesie und Verlaufskontrolle engmaschig dokumentieren.",
-          "Stationaere Einweisung bei red-flag-Konstellationen."
+          "Stationäre Einweisung bei red-flag-Konstellationen."
         ]
       };
     case "pelvis":
       return {
         anamnese: [
           "Miktionsbeschwerden: Dysurie, Pollakisurie, Harnverhalt, Inkontinenz.",
-          "Flankenschmerz, Unterbauchschmerz, Fieber, Schuettelfrost.",
-          "Makro-/Mikrohaematurie oder veraenderter Uringeruch.",
+          "Flankenschmerz, Unterbauchschmerz, Fieber, Schüttelfrost.",
+          "Makro-/Mikrohämaturie oder veränderter Uringeruch.",
           "Vorinfektionen, Steinleiden, urologische Eingriffe/Operationen.",
-          "Gynaekologische oder prostatabezogene Begleitanamnese je nach Geschlecht.",
+          "Gynäkologische oder prostatabezogene Begleitanamnese je nach Geschlecht.",
           "Trinkmenge, Medikamente und nephrotoxische Substanzen."
         ],
         untersuchung: [
@@ -8183,42 +8260,42 @@ function getLearningBodyDeepDive(region) {
         redFlags: [
           "Fieber plus Flankenschmerz plus reduzierter Allgemeinzustand.",
           "Akuter Harnverhalt mit Schmerzen und fehlender Miktion.",
-          "Makrohaematurie mit Koageln oder Kreislaufrelevanz.",
+          "Makrohämaturie mit Koageln oder Kreislaufrelevanz.",
           "Sepsisverdacht bei urogenitalem Fokus."
         ],
         naechsteSchritte: [
-          "Urinstatus/-kultur und laborchemische Entzuendungsabklaerung.",
+          "Urinstatus/-kultur und laborchemische Entzündungsabklärung.",
           "Sonografie Harntrakt/Restharn zielgerichtet einsetzen.",
-          "Fruehe antiinfektive oder entlastende Therapie je nach Befund.",
+          "Frühe antiinfektive oder entlastende Therapie je nach Befund.",
           "Nachsorgeplan mit Trink-/Warnzeichenberatung formulieren."
         ]
       };
     case "spine":
       return {
         anamnese: [
-          "Rueckenschmerzlokalisation, Belastungsbezug und Schmerzdynamik.",
-          "Radikulaere Symptome: Ausstrahlung, Kribbeln, Taubheit, Kraftverlust.",
-          "Trauma, Ueberlastung, bekannte Bandscheiben-/Wirbelerkrankung.",
+          "Rückenschmerzlokalisation, Belastungsbezug und Schmerzdynamik.",
+          "Radikuläre Symptome: Ausstrahlung, Kribbeln, Taubheit, Kraftverlust.",
+          "Trauma, Überlastung, bekannte Bandscheiben-/Wirbelerkrankung.",
           "Fieber, Gewichtsverlust, Tumoranamnese, Immunsuppression.",
-          "Miktions-/Defaekationsstoerung oder Sattelanaesthesie gezielt erfragen.",
-          "Bisherige Therapie und Funktionseinschraenkung im Alltag."
+          "Miktions-/Defäkationsstörung oder Sattelanästhesie gezielt erfragen.",
+          "Bisherige Therapie und Funktionseinschränkung im Alltag."
         ],
         untersuchung: [
-          "Inspektion Haltung, Beweglichkeit, Druckschmerz entlang Wirbelsaeule.",
-          "Neurologischer Status (Kraft, Sensibilitaet, Reflexe).",
+          "Inspektion Haltung, Beweglichkeit, Druckschmerz entlang Wirbelsäule.",
+          "Neurologischer Status (Kraft, Sensibilität, Reflexe).",
           "Lasègue/umgekehrter Lasègue je nach Beschwerdebild.",
-          "Gangbild und Standstabilitaet.",
+          "Gangbild und Standstabilität.",
           "Fieber und systemische Warnzeichen erfassen."
         ],
         redFlags: [
-          "Cauda-Equina-Zeichen (Sattelanaesthesie, Blasen-/Mastdarmstoerung).",
-          "Neu progrediente motorische Ausfaelle.",
+          "Cauda-Equina-Zeichen (Sattelanästhesie, Blasen-/Mastdarmstörung).",
+          "Neu progrediente motorische Ausfälle.",
           "Infekt-/Tumorverdacht mit Nachtschmerz und Allgemeinsymptomen.",
           "Schmerz nach relevantem Trauma oder bei Osteoporoserisiko."
         ],
         naechsteSchritte: [
           "Strukturierte Schmerz- und Funktionsklassifikation.",
-          "Fruehe Bildgebung bei red flags, sonst stufenweise Diagnostik.",
+          "Frühe Bildgebung bei red flags, sonst stufenweise Diagnostik.",
           "Multimodales Management (Analgesie, Mobilisation, Physio).",
           "Klare Sicherheitsnetze mit sofortigen Wiedervorstellungskriterien."
         ]
@@ -8227,69 +8304,69 @@ function getLearningBodyDeepDive(region) {
     case "forearm_hand":
       return {
         anamnese: [
-          "Verletzungsmechanismus oder Ueberlastungssituation genau erfragen.",
-          "Schmerzort, Schwellung, Bewegungseinschraenkung, Kraftverlust.",
-          "Paraesthesien, Taubheit, Kaeltegefuehl oder Farbveraenderungen.",
+          "Verletzungsmechanismus oder Überlastungssituation genau erfragen.",
+          "Schmerzort, Schwellung, Bewegungseinschränkung, Kraftverlust.",
+          "Parästhesien, Taubheit, Kältegefühl oder Farbveränderungen.",
           "Dominante Hand, berufliche Belastung und Sportprofil.",
           "Vorverletzungen, Operationen, Arthrose-/Rheumaanamnese.",
           "Bisherige Schonung, Bandage, Analgetika und Effekt."
         ],
         untersuchung: [
-          "Inspektion Achse, Schwellung, Haematom, Fehlstellung.",
+          "Inspektion Achse, Schwellung, Hämatom, Fehlstellung.",
           "Aktive/passive Beweglichkeit in Schulter/Ellenbogen/Handgelenk.",
           "Funktion von N. medianus, ulnaris, radialis orientierend testen.",
           "Durchblutung distal (Puls, Rekapillarisierung, Temperatur).",
-          "Sehnen-/Bandstabilitaet je nach Verdacht differenziert pruefen."
+          "Sehnen-/Bandstabilität je nach Verdacht differenziert prüfen."
         ],
         redFlags: [
-          "Akute Durchblutungsstoerung oder neurologischer Ausfall.",
+          "Akute Durchblutungsstörung oder neurologischer Ausfall.",
           "Offene Verletzung, Fehlstellung oder Frakturverdacht.",
           "Progrediente Schwellung mit Kompartmentsyndrom-Verdacht.",
           "Infektzeichen nach Punktion/Verletzung."
         ],
         naechsteSchritte: [
-          "Ruhigstellung und schmerzarme Fruehversorgung.",
+          "Ruhigstellung und schmerzarme Frühversorgung.",
           "Bildgebung je nach Trauma- und Befundkonstellation.",
-          "Neurovaskulaere Verlaufskontrollen dokumentieren.",
+          "Neurovaskuläre Verlaufskontrollen dokumentieren.",
           "Patientenhinweise zu Belastung, Schwellungsmanagement, Kontrolle."
         ]
       };
     case "leg":
       return {
         anamnese: [
-          "Schmerzlokalisation (Huefte/Knie/Unterschenkel/Fuss) praezisieren.",
+          "Schmerzlokalisation (Huefte/Knie/Unterschenkel/Fuss) präzisieren.",
           "Trauma, Verdrehung, Sturz, sportliche Belastung erheben.",
-          "Belastbarkeit: Gehen, Treppen, Standzeit, Instabilitaetsgefuehl.",
-          "Schwellung, Ueberwaermung, Roetung, naechtlicher Schmerz.",
+          "Belastbarkeit: Gehen, Treppen, Standzeit, Instabilitätsgefühl.",
+          "Schwellung, Überwaermung, Rötung, nächtlicher Schmerz.",
           "Thromboserisiko, Voroperationen, bekannte Gelenkerkrankungen.",
           "Neurologische Begleitsymptome oder Claudicatiozeichen."
         ],
         untersuchung: [
-          "Inspektion Achse, Umfangsdifferenz, Haematom, Erguss.",
+          "Inspektion Achse, Umfangsdifferenz, Hämatom, Erguss.",
           "Beweglichkeit und Band-/Meniskuszeichen am Knie (falls passend).",
           "Palpation entlang Femur, Tibia, Fibula, Achillessehne.",
-          "Durchblutung, Sensibilitaet und Motorik distal sichern.",
+          "Durchblutung, Sensibilität und Motorik distal sichern.",
           "Gangbild und schmerzadaptierte Belastungsprobe."
         ],
         redFlags: [
           "Unfaehigkeit zu belasten nach Trauma.",
           "Schwellung + Dyspnoe/Thoraxschmerz (Thromboembolieverdacht).",
-          "Akute Durchblutungsstoerung oder motorischer Ausfall.",
+          "Akute Durchblutungsstörung oder motorischer Ausfall.",
           "Heftiger Waden-/Sehnenschmerz mit Funktionsverlust."
         ],
         naechsteSchritte: [
           "Sofortige Stabilisierung und Schmerzmanagement.",
           "Bildgebung/Thrombosediagnostik indikationsgerecht priorisieren.",
           "Funktionelle Nachkontrolle und Belastungsaufbau planen.",
-          "Warnzeichen fuer Notfallwiedervorstellung klar benennen."
+          "Warnzeichen für Notfallwiedervorstellung klar benennen."
         ]
       };
     default:
       return {
         anamnese: ["Beschwerdebeginn, Verlauf und Belastungsbezug systematisch erheben."],
-        untersuchung: ["Koerperliche Untersuchung regionenspezifisch strukturieren."],
+        untersuchung: ["Körperliche Untersuchung regionenspezifisch strukturieren."],
         redFlags: ["Warnzeichen aktiv erfragen und dokumentieren."],
-        naechsteSchritte: ["Diagnostik und Therapie patientengerecht erklaeren."]
+        naechsteSchritte: ["Diagnostik und Therapie patientengerecht erklären."]
       };
   }
 }
@@ -8311,7 +8388,7 @@ function getLearningBodyRegionFigureSet(region) {
         safeLine(entry.title || "", 180) || `${region.label}: Anatomische Detailansicht ${index + 1}`,
       description:
         safeParagraph(entry.description || "", 280) ||
-        "Nummerierte anatomische Darstellung mit fachlich ueblichen Strukturen.",
+        "Nummerierte anatomische Darstellung mit fachlich üblichen Strukturen.",
       src,
       sourceLabel: safeLine(entry.sourceLabel || "Wikimedia Commons", 80) || "Wikimedia Commons",
       sourceUrl: src
@@ -8323,7 +8400,7 @@ function getLearningBodyRegionFigureSet(region) {
   return [
     {
       title: `${region.label}: Anatomische Detailansicht`,
-      description: "Fallback auf Ganzkoerpergrafik, da keine Regionsquelle hinterlegt ist.",
+      description: "Fallback auf Ganzkörpergrafik, da keine Regionsquelle hinterlegt ist.",
       src: BODY_ATLAS_MAP_IMAGE_SRC,
       sourceLabel: "Servier Medical Art",
       sourceUrl: "https://smart.servier.com/"
@@ -8415,14 +8492,14 @@ function renderLearningBodyMap() {
   const image = document.createElement("img");
   image.className = "learning-body-map-image";
   image.src = BODY_ATLAS_MAP_IMAGE_SRC;
-  image.alt = "Ganzkoerpermodell";
+  image.alt = "Ganzkörpermodell";
   image.loading = "lazy";
   image.decoding = "async";
   image.addEventListener("error", () => {
     stage.classList.add("is-image-missing");
     if (refs.learningBodyStatus) {
       refs.learningBodyStatus.textContent =
-        "Koerpermodell konnte nicht geladen werden. Bitte Seite neu laden.";
+        "Körpermodell konnte nicht geladen werden. Bitte Seite neu laden.";
     }
   });
   stage.appendChild(image);
@@ -8475,7 +8552,7 @@ function renderLearningBodyView() {
   }
   if (refs.learningBodyStatus && !refs.learningBodyStatus.textContent.trim()) {
     refs.learningBodyStatus.textContent =
-      "Tippe auf die gewuenschte Koerperregion im Modell. Die Unterteilung bleibt unsichtbar.";
+      "Tippe auf die gewünschte Körperregion im Modell. Die Unterteilung bleibt unsichtbar.";
   }
 }
 
@@ -8486,7 +8563,7 @@ function renderLearningBodySelection() {
   renderLearningBodyMap();
   if (refs.learningBodyStatus) {
     refs.learningBodyStatus.textContent =
-      "Tippe auf die gewuenschte Koerperregion im Modell. Danach oeffnet sich nur diese Region.";
+      "Tippe auf die gewünschte Körperregion im Modell. Danach öffnet sich nur diese Region.";
   }
 }
 
@@ -8567,7 +8644,7 @@ function renderLearningBodyRegionDetail(region) {
       { title: "Gezielte Anamnesefragen", items: deepDive.anamnese },
       { title: "Untersuchungsfokus", items: deepDive.untersuchung },
       { title: "Red Flags", items: deepDive.redFlags },
-      { title: "Priorisierte naechste Schritte", items: deepDive.naechsteSchritte }
+      { title: "Priorisierte nächste Schritte", items: deepDive.naechsteSchritte }
     ];
     sections.forEach((section) => {
       const card = document.createElement("article");
@@ -8604,7 +8681,19 @@ function renderLearningBodyRegionDetail(region) {
 }
 
 function stopLearningBodyModelLoop() {
-  // Kein 3D-Loop mehr noetig im 2D-Atlas.
+  // Kein 3D-Loop mehr nötig im 2D-Atlas.
+}
+
+function getLearningMetaCountLabel(rootId) {
+  return rootId === "anamnese" ? "Fragen" : "Abschnitte";
+}
+
+function isQuestionDrivenLearningRoot(rootId) {
+  return rootId === "anamnese";
+}
+
+function getLearningGroupSectionLabel(rootId) {
+  return isQuestionDrivenLearningRoot(rootId) ? "Fragewege" : "Kapitelabschnitte";
 }
 
 function renderLearningReadingMode(bundle) {
@@ -8626,8 +8715,10 @@ function renderLearningReadingMode(bundle) {
   if (refs.learningReadingMeta) {
     refs.learningReadingMeta.textContent = [
       activeCategory.focus,
-      `${activeCategory.questionCount} Fragen`,
-      linkedTerms.length > 0 ? `${linkedTerms.length} verknuepfte Online-Kurs-Begriffe` : ""
+      activeCategory.questionCount > 0
+        ? `${activeCategory.questionCount} ${getLearningMetaCountLabel(state.learningRootId)}`
+        : "",
+      linkedTerms.length > 0 ? `${linkedTerms.length} verknüpfte Online-Kurs-Begriffe` : ""
     ]
       .filter((item) => Boolean(item))
       .join(" | ");
@@ -8654,20 +8745,43 @@ function renderLearningReadingMode(bundle) {
 
   if (refs.learningReadingQuestionGroups) {
     refs.learningReadingQuestionGroups.innerHTML = "";
-    for (const group of activeCategory.questionGroups) {
-      const block = document.createElement("article");
-      block.className = "learning-question-group";
-      const heading = document.createElement("h6");
-      heading.textContent = group.title;
-      block.appendChild(heading);
-      const list = document.createElement("ol");
-      for (const question of group.questions) {
-        const li = document.createElement("li");
-        li.textContent = question;
-        list.appendChild(li);
+    if (activeCategory.questionGroups.length > 0) {
+      const head = document.createElement("div");
+      head.className = "learning-question-head";
+      const heading = document.createElement("h5");
+      heading.textContent = getLearningGroupSectionLabel(state.learningRootId);
+      head.appendChild(heading);
+      refs.learningReadingQuestionGroups.appendChild(head);
+
+      for (const group of activeCategory.questionGroups) {
+        const block = document.createElement("article");
+        block.className = "learning-question-group";
+        const groupHeading = document.createElement("h6");
+        groupHeading.textContent = group.title;
+        block.appendChild(groupHeading);
+
+        if (isQuestionDrivenLearningRoot(state.learningRootId)) {
+          const useOrderedList =
+            Array.isArray(group.questions) &&
+            group.questions.length > 0 &&
+            group.questions.every((entry) => String(entry || "").trim().endsWith("?"));
+          const list = document.createElement(useOrderedList ? "ol" : "ul");
+          for (const question of group.questions) {
+            const li = document.createElement("li");
+            li.textContent = question;
+            list.appendChild(li);
+          }
+          block.appendChild(list);
+        } else {
+          block.classList.add("is-prose");
+          for (const question of group.questions) {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = question;
+            block.appendChild(paragraph);
+          }
+        }
+        refs.learningReadingQuestionGroups.appendChild(block);
       }
-      block.appendChild(list);
-      refs.learningReadingQuestionGroups.appendChild(block);
     }
   }
 
@@ -8677,7 +8791,7 @@ function renderLearningReadingMode(bundle) {
       const head = document.createElement("div");
       head.className = "learning-question-head";
       const heading = document.createElement("h5");
-      heading.textContent = "Pruefungssaetze (sicher formulieren)";
+      heading.textContent = "Formulierungen, die sitzen sollten";
       head.appendChild(heading);
       refs.learningReadingExamSentences.appendChild(head);
 
@@ -8694,43 +8808,43 @@ function renderLearningReadingMode(bundle) {
 
   if (refs.learningReadingMiniScenario) {
     refs.learningReadingMiniScenario.innerHTML = "";
-    if (activeCategory.miniScenario) {
+    const exampleSection = activeCategory.exampleSection;
+    if (exampleSection && (exampleSection.patientSentences.length > 0 || exampleSection.doctorSentences.length > 0)) {
       const card = document.createElement("article");
       card.className = "learning-mini-card";
+
       const heading = document.createElement("h6");
-      heading.textContent = activeCategory.miniScenario.title;
+      heading.textContent = "Beispielsektion";
       card.appendChild(heading);
 
-      if (activeCategory.miniScenario.situation) {
-        const situation = document.createElement("p");
-        situation.textContent = activeCategory.miniScenario.situation;
-        card.appendChild(situation);
+      if (exampleSection.patientSentences.length > 0) {
+        const patientLabel = document.createElement("p");
+        patientLabel.textContent = "Patient könnte sagen:";
+        card.appendChild(patientLabel);
+
+        const patientList = document.createElement("ul");
+        patientList.className = "learning-mini-tasks";
+        for (const sentence of exampleSection.patientSentences) {
+          const li = document.createElement("li");
+          li.textContent = sentence;
+          patientList.appendChild(li);
+        }
+        card.appendChild(patientList);
       }
 
-      const tasks = [
-        {
-          label: "Arzt-Patient",
-          value: activeCategory.miniScenario.taskPatient
-        },
-        {
-          label: "Arzt-Arzt",
-          value: activeCategory.miniScenario.taskDoctor
-        },
-        {
-          label: "Arztbrief",
-          value: activeCategory.miniScenario.taskLetter
-        }
-      ].filter((entry) => Boolean(entry.value));
+      if (exampleSection.doctorSentences.length > 0) {
+        const doctorLabel = document.createElement("p");
+        doctorLabel.textContent = "Sie könnten sagen:";
+        card.appendChild(doctorLabel);
 
-      if (tasks.length > 0) {
-        const list = document.createElement("ul");
-        list.className = "learning-mini-tasks";
-        for (const task of tasks) {
+        const doctorList = document.createElement("ul");
+        doctorList.className = "learning-mini-tasks";
+        for (const sentence of exampleSection.doctorSentences) {
           const li = document.createElement("li");
-          li.innerHTML = `<strong>${task.label}:</strong> ${task.value}`;
-          list.appendChild(li);
+          li.textContent = sentence;
+          doctorList.appendChild(li);
         }
-        card.appendChild(list);
+        card.appendChild(doctorList);
       }
 
       refs.learningReadingMiniScenario.appendChild(card);
@@ -8742,7 +8856,7 @@ function renderLearningReadingMode(bundle) {
     if (linkedTerms.length > 0) {
       const heading = document.createElement("p");
       heading.className = "learning-sources-title";
-      heading.textContent = "Verknuepfte Fachbegriffe (Online-Kurs)";
+      heading.textContent = "Verknüpfte Fachbegriffe (Online-Kurs)";
       refs.learningReadingLinkedTerms.appendChild(heading);
 
       const list = document.createElement("ul");
@@ -8761,7 +8875,7 @@ function renderLearningReadingMode(bundle) {
   if (refs.learningReadingCuration) {
     const stats = state.learningOnlineKursCurationStats || { total: 0, included: 0, excluded: 0 };
     const curationTitle =
-      safeLine(state.learningCuration?.title || "", 120) || "Lernkuration (PDF -> Website)";
+      safeLine(state.learningCuration?.title || "", 120) || "Lernkuration aus dem Online-Kurs";
     const missingText =
       missingLinkedTermIds.length > 0
         ? ` | ${missingLinkedTermIds.length} verlinkte Begriffe sind durch Kuration ausgeblendet oder fehlen.`
@@ -9116,7 +9230,7 @@ function renderCard() {
   refs.resultText.classList.remove("hidden");
   refs.explanationText.classList.remove("hidden");
   refs.translationText.classList.remove("hidden");
-  refs.nextBtn.textContent = "Naechste Karte";
+  refs.nextBtn.textContent = "Nächste Karte";
 
   refs.choices.innerHTML = "";
 
@@ -9155,7 +9269,7 @@ function renderCard() {
     refs.feedbackBox.classList.add("text-card-nav");
     refs.resultText.classList.remove("hidden");
     refs.resultText.classList.add("bad");
-    refs.resultText.textContent = "Karte unvollstaendig. Bitte Deck-Daten pruefen.";
+    refs.resultText.textContent = "Karte unvollständig. Bitte Deck-Daten prüfen.";
     refs.explanationText.classList.add("hidden");
     refs.translationText.classList.add("hidden");
     state.answered = true;
@@ -9241,7 +9355,7 @@ function showDifferentialAnswer(card) {
   refs.questionText.classList.add("story-text", "differential-answer");
   refs.feedbackBox.classList.remove("hidden");
   refs.feedbackBox.classList.add("text-card-nav");
-  refs.nextBtn.textContent = "Naechste Karte";
+  refs.nextBtn.textContent = "Nächste Karte";
   state.revealPhase = "answer";
 }
 
@@ -9629,7 +9743,7 @@ function renderAdminStatsPanel() {
   if (!refs.adminStatsPanel || !refs.adminStatsStatus) return;
   refs.adminStatsPanel.classList.toggle("hidden", !state.isAdmin);
   if (!state.isAdmin) {
-    refs.adminStatsStatus.textContent = "Admin-Ansicht: Kein Zugriff fuer diesen Account.";
+    refs.adminStatsStatus.textContent = "Admin-Ansicht: Kein Zugriff für diesen Account.";
     return;
   }
   if (state.adminMetricsRows.length) {
@@ -9719,7 +9833,7 @@ async function refreshAdminMetrics() {
     renderAdminStatsRows();
   } catch (_error) {
     refs.adminStatsStatus.textContent =
-      "Admin-Daten konnten nicht geladen werden. Bitte SQL-Setup und RLS pruefen.";
+      "Admin-Daten konnten nicht geladen werden. Bitte SQL-Setup und RLS prüfen.";
   }
 }
 

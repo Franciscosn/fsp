@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css?v=54" />
+    <link rel="stylesheet" href="src/styles.css?v=57" />
   </head>
   <body class="auth-only">
     <div class="bg-orb orb-a" aria-hidden="true"></div>
@@ -169,11 +169,11 @@
             </button>
             <p id="voiceRealtimeState" class="voice-realtime-state">Realtime aus.</p>
             <div class="voice-api-spend-tracker">
-              <p class="voice-api-spend-title">API Kosten-Tracker (geschaetzt)</p>
+              <p class="voice-api-spend-title">API Kosten-Tracker (geschätzt)</p>
               <p id="voiceApiSpendSummary" class="voice-api-spend-summary">0.0000 USD</p>
               <p id="voiceApiSpendTokens" class="voice-api-spend-tokens">Noch keine Realtime-Nutzung erfasst.</p>
               <button id="voiceApiSpendResetBtn" class="soft-btn voice-api-spend-reset-btn" type="button">
-                Tracker zuruecksetzen
+                Tracker zurücksetzen
               </button>
             </div>
           </div>
@@ -191,7 +191,7 @@
           </button>
         </div>
         <div class="voice-actions">
-          <button id="voiceNextCaseBtn" class="soft-btn" type="button">Naechster Fall</button>
+          <button id="voiceNextCaseBtn" class="soft-btn" type="button">Nächster Fall</button>
           <button id="voicePatientConversationBtn" class="soft-btn voice-patient-conversation-btn" type="button">
             Arzt-Patient Gespräch
           </button>
@@ -217,13 +217,13 @@
             Prompt-Editor
           </button>
           <button id="voiceSamplePatientBtn" class="soft-btn voice-sample-patient-btn" type="button">
-            Muster Arzt-Patient Gespraech
+            Muster Arzt-Patient Gespräch
           </button>
           <button id="voiceSampleLetterBtn" class="soft-btn voice-sample-letter-btn" type="button">
             Muster Arztbrief
           </button>
           <button id="voiceSampleDoctorBtn" class="soft-btn voice-sample-doctor-btn" type="button">
-            Muster Arzt-Arzt Gespraech
+            Muster Arzt-Arzt Gespräch
           </button>
           <button id="openLearningBtn" class="soft-btn voice-learning-btn" type="button">
             Lernbereich
@@ -235,7 +235,7 @@
             id="voiceDoctorLetterInput"
             class="voice-doctor-letter-input"
             rows="18"
-            placeholder="Ergaenze hier den Arztbrief und sende ihn anschliessend zur Bewertung."
+            placeholder="Ergänze hier den Arztbrief und sende ihn anschliessend zur Bewertung."
           ></textarea>
           <button id="voiceDoctorLetterSubmitBtn" class="soft-btn voice-doctor-letter-submit" type="button">
             Arztbrief abschicken
@@ -244,11 +244,11 @@
         <article id="voicePromptConfigPanel" class="voice-prompt-config hidden">
           <h4>Prompt-Editor (Testphase)</h4>
           <p class="voice-prompt-config-hint">
-            Hier kannst du die kompletten Systemprompts bearbeiten. Aenderungen gelten lokal auf diesem Geraet.
+            Hier kannst du die kompletten Systemprompts bearbeiten. Aenderungen gelten lokal auf diesem Gerät.
           </p>
           <div class="voice-prompt-config-grid">
             <label class="voice-prompt-config-item" for="voicePromptVoiceTurnInput">
-              <span>Arzt-Patient-Gespraech (Patientensimulation)</span>
+              <span>Arzt-Patient-Gespräch (Patientensimulation)</span>
               <select
                 id="voicePromptVoiceTurnPresetSelect"
                 class="voice-prompt-config-select"
@@ -290,11 +290,11 @@
               ></textarea>
             </label>
             <label class="voice-prompt-config-item" for="voicePromptVoiceDoctorTurnInput">
-              <span>Arzt-Arzt-Gespraech (Prueferrolle)</span>
+              <span>Arzt-Arzt-Gespräch (Prüferrolle)</span>
               <select
                 id="voicePromptVoiceDoctorTurnPresetSelect"
                 class="voice-prompt-config-select"
-                aria-label="Prompt-Auswahl Arzt-Arzt-Gespraech"
+                aria-label="Prompt-Auswahl Arzt-Arzt-Gespräch"
               ></select>
               <textarea
                 id="voicePromptVoiceDoctorTurnInput"
@@ -323,7 +323,7 @@
               Prompt-Aenderungen speichern
             </button>
             <button id="voicePromptConfigResetBtn" class="soft-btn" type="button">
-              Alle Prompts auf Standard zuruecksetzen
+              Alle Prompts auf Standard zurücksetzen
             </button>
           </div>
           <section class="voice-prompt-feedback">
@@ -335,7 +335,7 @@
                 class="voice-prompt-feedback-input"
                 type="text"
                 maxlength="120"
-                placeholder="z. B. Arzt-Arzt v3 (fokussierte Rueckfragen)"
+                placeholder="z. B. Arzt-Arzt v3 (fokussierte Rückfragen)"
               />
             </label>
             <label class="voice-prompt-feedback-item" for="voicePromptProposalNoteInput">
@@ -351,9 +351,9 @@
             <label class="voice-prompt-feedback-item" for="voicePromptProposalTargetSelect">
               <span>Welchen Prompt als Vorschlag senden?</span>
               <select id="voicePromptProposalTargetSelect" class="voice-prompt-feedback-select">
-                <option value="voiceDoctorTurn">Arzt-Arzt-Gespraech (Prueferrolle)</option>
+                <option value="voiceDoctorTurn">Arzt-Arzt-Gespräch (Prüferrolle)</option>
                 <option value="voiceDoctorEvaluate">Arzt-Arzt-Bewertung</option>
-                <option value="voiceTurn">Arzt-Patient-Gespraech (Patientensimulation)</option>
+                <option value="voiceTurn">Arzt-Patient-Gespräch (Patientensimulation)</option>
                 <option value="voiceEvaluate">Simulationsanamnese-Bewertung</option>
                 <option value="doctorLetterEvaluate">Arztbrief-Bewertung</option>
                 <option value="__all__">Alle 5 Prompts (aktueller Stand)</option>
@@ -361,7 +361,7 @@
             </label>
             <label class="voice-prompt-feedback-check">
               <input id="voicePromptProposalApplyNowInput" type="checkbox" />
-              Direkt global uebernehmen (Testphase)
+              Direkt global übernehmen (Testphase)
             </label>
             <button id="voicePromptProposalSubmitBtn" class="soft-btn" type="button">
               Vorschlag senden
@@ -387,16 +387,16 @@
             <option value="@cf/openai/gpt-oss-20b">gpt-oss-20b (empfohlen)</option>
             <option value="@cf/qwen/qwen3-30b-a3b-fp8">qwen3-30b-a3b-fp8 (guenstig)</option>
             <option value="@cf/zai-org/glm-4.7-flash">glm-4.7-flash (schnell)</option>
-            <option value="@cf/openai/gpt-oss-120b">gpt-oss-120b (staerker, teurer)</option>
+            <option value="@cf/openai/gpt-oss-120b">gpt-oss-120b (stärker, teurer)</option>
           </select>
         </div>
         <p id="voiceCaseMeta" class="voice-case-meta">Aktiv: Fall 1</p>
         <div class="voice-case-actions">
           <details class="voice-resolution voice-resolution-inline">
-            <summary class="voice-resolution-toggle">Fall aufloesen</summary>
+            <summary class="voice-resolution-toggle">Fall auflösen</summary>
             <div class="voice-resolution-content">
-              <h4 id="voiceResolutionTitle">Fall aufloesen</h4>
-              <p id="voiceResolutionHint" class="voice-resolution-hint">Aufloesung wird geladen ...</p>
+              <h4 id="voiceResolutionTitle">Fall auflösen</h4>
+              <p id="voiceResolutionHint" class="voice-resolution-hint">Auflösung wird geladen ...</p>
               <p id="voiceResolutionSummary" class="voice-resolution-summary"></p>
               <div class="voice-resolution-grid">
                 <article class="voice-resolution-block">
@@ -409,7 +409,7 @@
                 </article>
               </div>
               <article class="voice-resolution-block">
-                <h5>Diagnose / moegliche Diagnosen</h5>
+                <h5>Diagnose / mögliche Diagnosen</h5>
                 <ul id="voiceResolutionDiagnoses" class="voice-resolution-list"></ul>
               </article>
             </div>
@@ -435,7 +435,7 @@
           id="voiceCaseInput"
           class="voice-case-input hidden"
           rows="3"
-          placeholder="Interner Speicher fuer eigenen Fall."
+          placeholder="Interner Speicher für eigenen Fall."
         ></textarea>
         <article id="voiceEvalPanel" class="voice-eval hidden">
           <div class="voice-eval-head">
@@ -487,7 +487,7 @@
           <p id="voiceDoctorConversationEvalSummary" class="voice-eval-summary"></p>
           <p id="voiceDoctorConversationEvalRecommendation" class="voice-eval-summary"></p>
           <article class="voice-eval-block">
-            <h5>Ausfuehrliches Feedback</h5>
+            <h5>Ausführliches Feedback</h5>
             <p id="voiceDoctorConversationEvalDetailed" class="voice-eval-prose"></p>
           </article>
           <article class="voice-eval-block">
@@ -504,7 +504,7 @@
           ></button>
           <div class="voice-info-card">
             <h4 id="voiceInfoTitle">Info</h4>
-            <p>Fallbasiertes Gespraech fuer medizinische Pruefungssimulation.</p>
+            <p>Fallbasiertes Gespräch für medizinische Prüfungssimulation.</p>
             <button id="voiceInfoCloseBtn" class="soft-btn" type="button">Schliessen</button>
           </div>
         </div>
@@ -529,15 +529,12 @@
               src="assets/levels/level-0.png"
               alt=""
             />
-            <span class="learning-back-text">Oops. Zurueck ins Trainingslager.</span>
+            <span class="learning-back-text">Oops. Zurück ins Trainingslager.</span>
           </button>
           <h4 id="learningReadingTitle">Anamnese</h4>
           <p id="learningReadingMeta" class="learning-meta"></p>
           <p id="learningReadingStatus" class="learning-status"></p>
           <div id="learningReadingText" class="learning-prose"></div>
-          <div class="learning-question-head">
-            <h5>Fragen nach Untergebieten</h5>
-          </div>
           <div id="learningReadingQuestionGroups" class="learning-question-groups"></div>
           <div id="learningReadingExamSentences" class="learning-exam-sentences"></div>
           <div id="learningReadingMiniScenario" class="learning-mini-scenarios"></div>
@@ -658,7 +655,7 @@
           <article class="panel">
             <h3>Heute</h3>
             <div class="today-stats">
-              <p><span>Geuebt:</span> <strong id="todayAttempts">0</strong></p>
+              <p><span>Geübt:</span> <strong id="todayAttempts">0</strong></p>
               <p><span>Richtig:</span> <strong id="todayCorrect">0</strong></p>
               <p><span>Falsch:</span> <strong id="todayWrong">0</strong></p>
               <p><span>Trefferquote:</span> <strong id="todayRate">0%</strong></p>
@@ -670,7 +667,7 @@
           <article class="panel">
             <h3>7-Tage Verlauf</h3>
             <p class="muted">
-              Taegliche Uebungen mit Erfolgsquote. Hoehere Balken bedeuten mehr
+              Tägliche Übungen mit Erfolgsquote. Höhere Balken bedeuten mehr
               trainierte Karten.
             </p>
             <p class="muted compact">
@@ -696,7 +693,7 @@
                     <th>Tag</th>
                     <th>Zeit</th>
                     <th>XP</th>
-                    <th>Geuebt</th>
+                    <th>Geübt</th>
                     <th>Quote</th>
                   </tr>
                 </thead>
@@ -712,7 +709,7 @@
               <button id="adminStatsRefreshBtn" class="soft-btn" type="button">Aktualisieren</button>
             </div>
             <p id="adminStatsStatus" class="muted compact">
-              Nur fuer Admin-Nutzer sichtbar. Bitte SQL-Setup in Supabase ausfuehren.
+              Nur für Admin-Nutzer sichtbar. Bitte SQL-Setup in Supabase ausführen.
             </p>
             <div class="stats-table-wrap">
               <table class="stats-table">
@@ -723,7 +720,7 @@
                     <th>Zeit</th>
                     <th>XP</th>
                     <th>Level</th>
-                    <th>Geuebt</th>
+                    <th>Geübt</th>
                   </tr>
                 </thead>
                 <tbody id="adminStatsTableBody"></tbody>
@@ -762,6 +759,6 @@
       </article>
     </section>
 
-    <script type="module" src="src/app.js?v=54"></script>
+    <script type="module" src="src/app.js?v=57"></script>
   </body>
 </html>

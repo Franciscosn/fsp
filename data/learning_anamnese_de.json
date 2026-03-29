@@ -1,92 +1,92 @@
 {
   "title": "Lernbereich",
-  "subtitle": "Anamnese fuer die Fachsprachpruefung Berlin",
+  "subtitle": "Anamnese für die Fachsprachprüfung Berlin",
   "updated_at": "2026-02-21",
-  "scope_note": "Didaktischer Lerninhalt fuer die sprachliche und strukturierte Gespraechsfuehrung in der FSP. Kein Ersatz fuer klinische Leitlinienarbeit am Patienten.",
+  "scope_note": "Didaktischer Lerninhalt für strukturierte, priorisierte Gesprächsführung in der FSP Berlin. Ergänzt um häufige Berlin-Cluster aus dem Info-Ordner und um schlüssige Red-Flag-Wege für Akut- und Standardsituationen.",
   "categories": [
     {
       "id": "husten",
       "title": "Hustenanamnese",
-      "focus": "Akuter und chronischer Husten, Red Flags, differenzierte Einordnung",
-      "summary": "Diese Kategorie trainiert eine strukturierte Hustenanamnese vom Erstkontakt bis zur Risikoabschaetzung.",
+      "focus": "Einstieg, Beginn und zeitlicher Verlauf | Hustenqualität und Begleitbeschwerden | Risikofaktoren, Vorerkrankungen und Warnzeichen",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen respiratorische und kardiopulmonale Beschwerden. Wichtig sind eine klare Zeitstruktur, eine genaue Symptomqualität und eine sprachlich saubere Gewichtung von Warnzeichen.",
       "learning_text": [
-        "Husten ist in der haus- und klinikaerztlichen Praxis ein sehr haeufiges Leitsymptom. Fuer die FSP ist weniger die sofortige Enddiagnose entscheidend als die sprachlich saubere Struktur: Beginn, Dauer, Verlauf, Qualitaet, Begleitsymptome, Risikofaktoren und Warnzeichen. Ein hilfreicher Start im Gespraech ist die offene Frage nach dem Hauptproblem und danach die gezielte Eingrenzung. Praktisch bewahrt sich die Dreiteilung in akuten Husten, subakuten Husten und chronischen Husten. Diese Einteilung steuert, wie breit die Differentialdiagnostik gedacht werden muss und wie dringlich das weitere Vorgehen ist.",
-        "In der Detailanamnese sollte zuerst die Hustenqualitaet geklaert werden: trocken oder produktiv, tagsueber oder nachts, anfallsartig oder kontinuierlich. Bei Auswurf sind Farbe, Menge und Konsistenz wichtig, ohne ueberzuinterpretieren. Gruenlicher Auswurf bedeutet nicht automatisch bakterielle Ursache, waehrend blutiger Auswurf immer gezielt weitergeklaert werden muss. Zusaetzlich sind thorakale Schmerzen, Fieber, Dyspnoe, Giemen, Heiserkeit, Schluckbeschwerden und Gewichtsverlust sprachlich praezise zu erheben. Genau diese Wortpraezision wird in der FSP bewertet.",
-        "Ein sehr wichtiger Block ist die Expositions- und Ausloeseranamnese. Dazu gehoeren Rauchen, berufliche Staub- oder Chemikalienbelastung, Kontakt zu Erkrankten, neue Haustiere, Schimmel, Reisen, Tuberkulosekontakte und neue Medikamente. Besonders pruefungsrelevant ist das Nachfragen nach ACE-Hemmern bei trockenem Reizhusten. Ebenfalls haeufig sind postinfektioeser Husten, asthmatische Komponente, obere Atemwegsbeteiligung und Reflux. Wer diese Moeglichkeiten klar, aber patientenverstaendlich erfragt, zeigt klinisch-sprachliche Handlungskompetenz.",
-        "Die Red-Flag-Orientierung entscheidet ueber die Dringlichkeit. Dazu gehoeren Haemoptysen, deutliche Ruhedyspnoe, Thoraxschmerz mit kardio-pulmonalem Verdacht, hohes Fieber mit reduziertem Allgemeinzustand, Immunsuppression, relevante Hypoxiezeichen, Synkope und rasche Verschlechterung. Bei aelteren Menschen oder multimorbiden Patienten muessen Schwellen fuer eine erweiterte Diagnostik niedriger sein. In der FSP wirkt es besonders professionell, wenn das weitere Vorgehen transparent erklaert wird, zum Beispiel warum eine sofortige Klinikabklaerung oder warum eine ambulante Verlaufskontrolle sinnvoll ist.",
-        "Sprachlich lohnt sich ein Mix aus offenen und geschlossenen Fragen. Zuerst laesst man die Patientin oder den Patienten frei berichten, danach strukturiert man aktiv. Typische Formulierungen wie Seit wann besteht der Husten genau, Was verschlechtert ihn, Was bessert ihn, Haben Sie Blut im Auswurf bemerkt, sind klar und pruefungsnah. Wichtig ist auch das aktive Zusammenfassen in eigenen Worten. So zeigt die Kandidatin oder der Kandidat, dass Informationen nicht nur gesammelt, sondern verarbeitet wurden.",
-        "Fuer die Lernpraxis gilt: Eine gute Hustenanamnese ist nie nur ein starres Schema, sondern eine priorisierte Gespraechsfuehrung. Bei stabilen Verlaeufen kann breiter exploriert werden, bei Alarmsignalen wird fokussiert und beschleunigt. Genau diese situationsgerechte Gewichtung wird in der Berliner FSP positiv bewertet. Wer am Ende das geplante Vorgehen in einfacher Sprache erklaert, inklusive Sicherheitsnetz mit konkreten Warnzeichen, erfuellt sowohl die medizinische als auch die kommunikative Zielsetzung des Anamnesegespraechs."
+        "Bei der Anamnese zu „Hustenanamnese“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Husten ist in der haus- und klinikärztlichen Praxis ein sehr häufiges Leitsymptom. Für die FSP ist weniger die sofortige Enddiagnose entscheidend als die sprachlich saubere Struktur: Beginn, Dauer, Verlauf, Qualität, Begleitsymptome, Risikofaktoren und Warnzeichen. Ein hilfreicher Start im Gespräch ist die offene Frage nach dem Hauptproblem und danach die gezielte Eingrenzung. Praktisch bewahrt sich die Dreiteilung in akuten Husten, subakuten Husten und chronischen Husten. Diese Einteilung steuert, wie breit die Differentialdiagnostik gedacht werden muss und wie dringlich das weitere Vorgehen ist.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. In der Detailanamnese sollte zuerst die Hustenqualität geklärt werden: trocken oder produktiv, tagsüber oder nachts, anfallsartig oder kontinuierlich. Bei Auswurf sind Farbe, Menge und Konsistenz wichtig, ohne überzuinterpretieren. Grünlicher Auswurf bedeutet nicht automatisch bakterielle Ursache, während blutiger Auswurf immer gezielt weitergeklärt werden muss. Zusätzlich sind thorakale Schmerzen, Fieber, Dyspnoe, Giemen, Heiserkeit, Schluckbeschwerden und Gewichtsverlust sprachlich präzise zu erheben. Genau diese Wortpräzision wird in der FSP bewertet.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Ein sehr wichtiger Block ist die Expositions- und Auslöseranamnese. Dazu gehören Rauchen, berufliche Staub- oder Chemikalienbelastung, Kontakt zu Erkrankten, neue Haustiere, Schimmel, Reisen, Tuberkulosekontakte und neue Medikamente. Besonders prüfungsrelevant ist das Nachfragen nach ACE-Hemmern bei trockenem Reizhusten. Ebenfalls häufig sind postinfektiöser Husten, asthmatische Komponente, obere Atemwegsbeteiligung und Reflux. Wer diese Möglichkeiten klar, aber patientenverständlich erfragt, zeigt klinisch-sprachliche Handlungskompetenz.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Einstieg, Beginn und zeitlicher Verlauf, Hustenqualität und Begleitbeschwerden, Risikofaktoren, Vorerkrankungen und Warnzeichen. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
-          "title": "Leitsymptom und Zeitverlauf",
+          "title": "Einstieg, Beginn und zeitlicher Verlauf",
           "questions": [
             "Seit wann husten Sie genau?",
-            "Hat der Husten ploetzlich begonnen oder schleichend?",
-            "Ist der Husten tagsueber, nachts oder rund um die Uhr am staerksten?",
+            "Hat der Husten plötzlich begonnen oder schleichend?",
+            "Ist der Husten tagsüber, nachts oder rund um die Uhr am stärksten?",
             "Hat sich der Husten in den letzten Tagen gebessert oder verschlechtert?",
-            "Gab es vor Beginn eine Erkaeltung oder einen Infekt?"
+            "Gab es vor Beginn eine Erkältung oder einen Infekt?"
           ]
         },
         {
-          "title": "Hustenqualitaet und Begleitsymptome",
+          "title": "Hustenqualität und Begleitbeschwerden",
           "questions": [
             "Ist der Husten trocken oder mit Auswurf?",
-            "Wenn Sie Auswurf haben: welche Farbe und wie viel ungefaehr?",
+            "Wenn Sie Auswurf haben: welche Farbe und wie viel ungefähr?",
             "Haben Sie Blut im Auswurf bemerkt?",
-            "Haben Sie Fieber, Schuettelfrost oder Nachtschweiss?",
+            "Haben Sie Fieber, Schüttelfrost oder Nachtschweiß?",
             "Kommt Luftnot dazu, besonders beim Sprechen oder Treppensteigen?",
             "Haben Sie Brustschmerzen beim Atmen oder Husten?"
           ]
         },
         {
-          "title": "Risikofaktoren, Vorerkrankungen und Red Flags",
+          "title": "Risikofaktoren, Vorerkrankungen und Warnzeichen",
           "questions": [
-            "Rauchen Sie aktuell oder haben Sie frueher geraucht?",
+            "Rauchen Sie aktuell oder haben Sie früher geraucht?",
             "Nehmen Sie neue Medikamente ein, zum Beispiel einen ACE-Hemmer?",
             "Sind Asthma, COPD, Allergien oder Reflux bei Ihnen bekannt?",
             "Gab es Kontakt zu Menschen mit Tuberkulose oder schweren Atemwegsinfekten?",
             "Haben Sie unbeabsichtigt Gewicht verloren?",
-            "Waren Sie kuerzlich im Ausland oder auf laengeren Reisen?"
+            "Waren Sie kürzlich im Ausland oder auf längeren Reisen?"
           ]
         }
       ],
       "source_tags": [
         "DEGAM S3 053-013 Akuter und chronischer Husten (2025)",
-        "AWMF 020-003 Fachaerztliche Diagnostik und Therapie Husten (2025)",
+        "AWMF 020-003 Fachärztliche Diagnostik und Therapie Husten (2025)",
         "Fachsprachkurs-PDF interne Anamnesefragen"
       ]
     },
     {
       "id": "dyspnoe_akut",
       "title": "Akute Dyspnoe und Atemnot",
-      "focus": "Notfallorientierte Dyspnoeanamnese, differenzierte Rueckfragen bei potenziell kritischen Verlaeufen",
-      "summary": "Ziel ist die schnelle sprachliche Priorisierung zwischen stabiler und vital bedrohlicher Atemnot.",
+      "focus": "Akutcharakter und Schweregrad | Begleitsymptome und Differenzialhinweise | Risikofaktoren und Sicherheitsnetz",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen respiratorische und kardiopulmonale Beschwerden. Wichtig sind eine klare Zeitstruktur, eine genaue Symptomqualität und eine sprachlich saubere Gewichtung von Warnzeichen.",
       "learning_text": [
-        "Akute Atemnot ist ein Leitsymptom mit hoher Dringlichkeit. In der FSP wird erwartet, dass die Kandidatin oder der Kandidat frueh die Schwere einschaetzt und trotzdem strukturiert bleibt. Sprachlich bedeutet das: kurze, klare Fragen, rasches Priorisieren und nachvollziehbares Denken. Die erste Einordnung fragt nach Beginn, Dynamik und Situation. Ploetzlicher Beginn in Ruhe, starke Verschlechterung innerhalb kurzer Zeit oder Luftnot mit Sprechdyspnoe sind Warnhinweise. Schleichender Verlauf mit Belastungsbezug ist meist weniger akut, muss aber trotzdem systematisch erhoben werden.",
-        "Ein pragmatischer Ablauf ist: zuerst Symptomcharakter, dann Ausloeser, dann Begleitzeichen. Bei der Charakterisierung helfen Fragen nach Belastung, Ruheatemnot, Orthopnoe, naechtlicher Atemnot und anfallsartigen Episoden. Danach folgen Hinweise auf moegliche Ursachen: pleuritischer Thoraxschmerz, pfeifende Atmung, Husten, Fieber, Infektzeichen, Palpitationen, Synkope, Beinbeschwerden oder Angstempfinden. Wichtig ist, dass die Fragen nicht nur aufgelistet, sondern logisch verbunden werden. In der Pruefung wirkt diese Verbindung deutlich professioneller als unstrukturiertes Abfragen.",
-        "Differentialdiagnostisch sind in der Akutsituation vor allem kardiale, pulmonale und thromboembolische Ursachen relevant. Klinisch-sprachlich muss der Pruefling zeigen, dass er diese Richtungen aktiv mitdenkt. Beispiele sind Asthma- oder COPD-Exazerbation, Pneumonie, Pneumothorax, Lungenembolie, akute Herzinsuffizienz oder kardiale Ischaemie. Besonders pruefungsnah ist das Erfragen von Risikofaktoren fuer Lungenembolie, etwa Immobilisation, OP, Thromboseanamnese, Malignom oder Hormone. Ebenso wichtig: bei einseitigem Thoraxschmerz plus ploetzlicher Dyspnoe an Pneumothorax denken.",
-        "Bei potenziell kritischer Atemnot ist der Satzbau selbst Teil der klinischen Sicherheit: kurze Fragen, klare Anweisungen, keine komplexen Schachtelsaetze. Die Kommunikation muss gleichzeitig beruhigend und fuehrend sein. Ein gutes Muster ist, die Dringlichkeit offen zu erklaeren, ohne zu dramatisieren. Zum Beispiel: Ich moechte Sie jetzt zuegig untersuchen, weil wir bei Luftnot gefaehrliche Ursachen schnell ausschliessen muessen. Diese Sprache zeigt Verantwortung und Empathie zugleich.",
-        "Ein weiterer Schwerpunkt ist die Verlaufs- und Sicherheitskommunikation. Wenn keine unmittelbaren Alarmzeichen vorliegen, muss dennoch klar gesagt werden, bei welchen Symptomen sofortige Wiedervorstellung noetig ist. Dazu zaehlen zunehmende Ruhedyspnoe, Thoraxschmerz, Zyanose, Synkope, Verwirrtheit oder Blutbeimengung im Sputum. Dieses Sicherheitsnetz ist in der Berliner FSP ein starkes Qualitaetsmerkmal, weil es klinische Alltagstauglichkeit zeigt.",
-        "Zusammengefasst ist die Dyspnoeanamnese eine Priorisierungsleistung: zuerst Gefahr erkennen, danach Ursachenrichtung eingrenzen, anschliessend weiteres Vorgehen erklaeren. Wer dies sprachlich ruhig, praezise und ohne unnoetige Umwege umsetzt, erreicht ein hohes Niveau. Gerade in diesem Bereich zeigt sich, ob medizinische Sprache nur Fachvokabular ist oder ob sie als Werkzeug fuer sicheres Handeln eingesetzt wird."
+        "Bei der Anamnese zu „Akute Dyspnoe und Atemnot“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Akute Atemnot ist ein Leitsymptom mit hoher Dringlichkeit. Entscheidend ist, die Schwere früh einzuordnen und trotzdem strukturiert zu bleiben. Sprachlich bedeutet das: kurze, klare Fragen, rasches Priorisieren und nachvollziehbares Denken. Die erste Einordnung fragt nach Beginn, Dynamik und Situation. Plötzlicher Beginn in Ruhe, starke Verschlechterung innerhalb kurzer Zeit oder Luftnot mit Sprechdyspnoe sind Warnhinweise. Schleichender Verlauf mit Belastungsbezug ist meist weniger akut, muss aber trotzdem systematisch erhoben werden.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Ein pragmatischer Ablauf ist: zuerst Symptomcharakter, dann Auslöser, dann Begleitzeichen. Bei der Charakterisierung helfen Fragen nach Belastung, Ruheatemnot, Orthopnoe, nächtlicher Atemnot und anfallsartigen Episoden. Danach folgen Hinweise auf mögliche Ursachen: pleuritischer Thoraxschmerz, pfeifende Atmung, Husten, Fieber, Infektzeichen, Palpitationen, Synkope, Beinbeschwerden oder Angstempfinden. Wichtig ist, dass die Fragen nicht nur aufgelistet, sondern logisch verbunden werden. In der Prüfung wirkt diese Verbindung deutlich professioneller als unstrukturiertes Abfragen.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Differentialdiagnostisch sind in der Akutsituation vor allem kardiale, pulmonale und thromboembolische Ursachen relevant. Klinisch-sprachlich muss der Prüfling zeigen, dass er diese Richtungen aktiv mitdenkt. Beispiele sind Asthma- oder COPD-Exazerbation, Pneumonie, Pneumothorax, Lungenembolie, akute Herzinsuffizienz oder kardiale Ischämie. Besonders prüfungsnah ist das Erfragen von Risikofaktoren für Lungenembolie, etwa Immobilisation, OP, Thromboseanamnese, Malignom oder Hormone. Ebenso wichtig: bei einseitigem Thoraxschmerz plus plötzlicher Dyspnoe an Pneumothorax denken.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Akutcharakter und Schweregrad, Begleitsymptome und Differenzialhinweise, Risikofaktoren und Sicherheitsnetz. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
           "title": "Akutcharakter und Schweregrad",
           "questions": [
             "Seit wann genau besteht die Atemnot?",
-            "Kam die Luftnot ploetzlich oder schleichend?",
+            "Kam die Luftnot plötzlich oder schleichend?",
             "Ist die Luftnot in Ruhe oder nur bei Belastung?",
-            "Koennen Sie ganze Saetze sprechen oder muessen Sie wegen Atemnot pausieren?",
+            "Können Sie ganze Sätze sprechen oder müssen Sie wegen Atemnot pausieren?",
             "Wird es im Liegen schlechter als im Sitzen?"
           ]
         },
         {
           "title": "Begleitsymptome und Differenzialhinweise",
           "questions": [
-            "Haben Sie Brustschmerzen, und wenn ja atemabhaengig oder drueckend?",
-            "Gibt es Husten, Auswurf, Fieber oder Schuettelfrost?",
-            "Haben Sie pfeifende Atmung oder Engegefuehl in der Brust?",
+            "Haben Sie Brustschmerzen, und wenn ja atemabhängig oder drückend?",
+            "Gibt es Husten, Auswurf, Fieber oder Schüttelfrost?",
+            "Haben Sie pfeifende Atmung oder Engegefühl in der Brust?",
             "Gab es Schwindel, Ohnmacht oder Herzrasen?",
             "Haben Sie Schwellungen oder Schmerzen in den Beinen bemerkt?"
           ]
@@ -94,17 +94,17 @@
         {
           "title": "Risikofaktoren und Sicherheitsnetz",
           "questions": [
-            "Gab es kuerzlich eine Operation, laengere Immobilisation oder Reise?",
-            "Hatten Sie frueher eine Thrombose oder Lungenembolie?",
+            "Gab es kürzlich eine Operation, längere Immobilisation oder Reise?",
+            "Hatten Sie früher eine Thrombose oder Lungenembolie?",
             "Leiden Sie an Herz- oder Lungenerkrankungen?",
-            "Nehmen Sie regelmaessig Medikamente, auch Inhalatoren oder Blutverduenner?",
+            "Nehmen Sie regelmäßig Medikamente, auch Inhalatoren oder Blutverdünner?",
             "Hat sich die Luftnot heute deutlich verschlechtert?",
-            "Gab es blaue Lippen, starke Schweissausbrueche oder Verwirrtheit?"
+            "Gab es blaue Lippen, starke Schweißausbrüche oder Verwirrtheit?"
           ]
         }
       ],
       "source_tags": [
-        "ESC Syncope Guidelines (2018) fuer initiale Risikostratifizierung und Basisdiagnostik",
+        "ESC Syncope Guidelines (2018) für initiale Risikostratifizierung und Basisdiagnostik",
         "AWMF 065-002 Venenthrombose und Lungenembolie (2023)",
         "ESC HF symptomatische Dyspnoe- und Warnzeichen-Tabellen"
       ]
@@ -112,44 +112,44 @@
     {
       "id": "herz_allgemein",
       "title": "Herzerkrankungen allgemein",
-      "focus": "Kardiale Basisanamnese, Funktionseinschraenkung, Vorerkrankungen und Familienanamnese",
-      "summary": "Diese Kategorie vermittelt die stabile Grundstruktur fuer kardiologische Fallvorstellungen.",
+      "focus": "Kardiale Vorgeschichte | Funktion und Verlauf | Risiko, Familie und Medikamente",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen kardiovaskuläre Beschwerden und Risiken. Zentral sind Risikoprofil, Vorerkrankungen, Medikation und die Verbindung von Befund zu weiterem Plan.",
       "learning_text": [
-        "Die allgemeine Herzanamnese ist das Rueckgrat vieler internistischer Gespraeche. In der FSP wird erwartet, dass die Kandidatin oder der Kandidat nicht nur einzelne Symptome abfragt, sondern den gesamten kardiovaskulaeren Kontext erfasst. Das beginnt mit der Leitfrage nach bekannten Herzerkrankungen und fuehrt ueber funktionelle Einschraenkung, fruehere Ereignisse, Eingriffe, Medikamente und Risikoprofil. Eine saubere Struktur verhindert, dass relevante Informationen vergessen werden oder erst spaet auffallen.",
-        "Besonders wichtig ist die funktionelle Einordnung im Alltag. Hier geht es um Belastbarkeit, Treppensteigen, Gehstrecken, Ruhebeschwerden und Leistungsabfall im Verlauf. Solche Fragen sind sprachlich einfach, aber klinisch hoch relevant, weil sie den Schweregrad indirekt zeigen. Ebenso wichtig ist die Dynamik: stabil seit Monaten oder deutliche Verschlechterung in Tagen bis Wochen. In der Pruefung zeigt man damit Priorisierung und Situationsbezug, zwei zentrale Bewertungskriterien.",
-        "Der Block Vorerkrankungen und Vorinterventionen umfasst Herzinfarkt, Herzinsuffizienz, Rhythmusstoerungen, Klappenerkrankungen, Stent, Bypass, Schrittmacher und Hospitalisierungen. Neben dem Ja oder Nein ist das Wann entscheidend. Das zeitliche Einordnen verbessert die klinische Plausibilitaet. Auch Begleiterkrankungen wie Diabetes, Niereninsuffizienz oder periphere Gefaesserkrankung beeinflussen Risiko und Sprache im weiteren Gespraech. Wer diese Zusammenhaenge explizit anspricht, wirkt sicher und professionell.",
-        "Die Familienanamnese ist bei kardialen Fragen kein Nebenthema. Fruehe Herzinfarkte, ploetzlicher Herztod oder genetische Kardiomyopathien in der Familie veraendern die Risikoeinschaetzung deutlich. Gleichzeitig darf die Kommunikation nicht alarmistisch sein. Ziel ist eine ruhige, respektvolle Exploration mit klaren Formulierungen. In der FSP wird positiv bewertet, wenn sensible Themen ohne sprachliches Stolpern angesprochen werden und die Informationen korrekt in das Gespraech eingebunden sind.",
-        "Medikationsanamnese und Adhaerenz sind ebenfalls zentral. Es reicht nicht, Wirkstoffnamen abzufragen. Wichtiger ist, ob die Medikamente regelmaessig eingenommen werden, ob Nebenwirkungen bestehen und ob Dosisaenderungen erfolgten. Dazu kommen Lebensstilfaktoren wie Rauchen, Alkohol, Bewegung, Schlaf, psychosozialer Stress und Ernaehrung. Diese Faktoren sollten nicht moralisch, sondern klinisch-neutral erhoben werden.",
-        "Insgesamt zeigt eine gute kardiale Basisanamnese, dass die Kandidatin oder der Kandidat vom Symptom zur Risikostruktur fuehren kann. Genau diese Denk- und Sprachleistung wird in Berlin erwartet. Am Ende sollte immer ein kurzes strukturiertes Zwischenfazit kommen, damit Patient und Pruefer verstehen, was als naechster diagnostischer oder therapeutischer Schritt geplant ist."
+        "Bei der Anamnese zu „Herzerkrankungen allgemein“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Die allgemeine Herzanamnese bildet in vielen internistischen Gesprächen den tragenden Hintergrund und nicht nur einen Zusatzblock neben dem Leitsymptom.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Wichtig ist eine feste Reihenfolge: bekannte Diagnosen, funktionelle Belastbarkeit, frühere Ereignisse oder Eingriffe, aktuelle Medikation und das kardiovaskuläre Risikoprofil. So entsteht früh ein Bild davon, ob der Fall eher stabil verläuft oder klinisch enger geführt werden muss.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Für die Alltagstauglichkeit sind besonders Fragen zur Belastbarkeit wertvoll. Treppensteigen, Gehstrecke, Beschwerden in Ruhe und Veränderungen in den letzten Wochen machen den Schweregrad oft besser sichtbar als isolierte Fachbegriffe.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Kardiale Vorgeschichte, Funktion und Verlauf, Risiko, Familie und Medikamente. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
           "title": "Kardiale Vorgeschichte",
           "questions": [
             "Sind bei Ihnen Herzerkrankungen bekannt?",
-            "Hatten Sie frueher einen Herzinfarkt oder eine Herzschwaeche?",
+            "Hatten Sie früher einen Herzinfarkt oder eine Herzschwäche?",
             "Gab es Eingriffe am Herzen wie Stent, Bypass oder Schrittmacher?",
-            "Waren Sie wegen Herzbeschwerden schon stationaer im Krankenhaus?",
+            "Waren Sie wegen Herzbeschwerden schon stationär im Krankenhaus?",
             "Wann war die letzte kardiologische Kontrolle?"
           ]
         },
         {
           "title": "Funktion und Verlauf",
           "questions": [
-            "Wie weit koennen Sie aktuell gehen, bevor Beschwerden auftreten?",
-            "Hat sich Ihre Belastbarkeit in den letzten Wochen veraendert?",
+            "Wie weit können Sie aktuell gehen, bevor Beschwerden auftreten?",
+            "Hat sich Ihre Belastbarkeit in den letzten Wochen verändert?",
             "Haben Sie Beschwerden in Ruhe oder nur bei Belastung?",
-            "Muessen Sie nachts wegen Luftnot oder Harndrang aufstehen?",
+            "Müssen Sie nachts wegen Luftnot oder Harndrang aufstehen?",
             "Haben Sie in letzter Zeit Gewicht zu- oder abgenommen?"
           ]
         },
         {
           "title": "Risiko, Familie und Medikamente",
           "questions": [
-            "Gibt es in Ihrer Familie fruehe Herzinfarkte oder ploetzlichen Herztod?",
-            "Rauchen Sie aktuell oder frueher?",
+            "Gibt es in Ihrer Familie frühe Herzinfarkte oder plötzlichen Herztod?",
+            "Rauchen Sie aktuell oder früher?",
             "Sind Bluthochdruck, Diabetes oder hohe Cholesterinwerte bekannt?",
-            "Welche Herzmedikamente nehmen Sie genau und wie regelmaessig?",
+            "Welche Herzmedikamente nehmen Sie genau ein, und wie regelmäßig gelingt die Einnahme?",
             "Gab es Nebenwirkungen oder ausgelassene Dosen in letzter Zeit?"
           ]
         }
@@ -163,33 +163,33 @@
     {
       "id": "brustschmerz_angina",
       "title": "Brustschmerz und Angina pectoris",
-      "focus": "Leitsymptom Thoraxschmerz, Ischaemieverdacht, sichere Priorisierung",
-      "summary": "Hier wird trainiert, Thoraxschmerz differenziert und pruefungsnah zu strukturieren.",
+      "focus": "Schmerzcharakter und Verlauf | Auslöser und Begleitsymptome | Risikoprofil",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen respiratorische und kardiopulmonale Beschwerden. Wichtig sind eine klare Zeitstruktur, eine genaue Symptomqualität und eine sprachlich saubere Gewichtung von Warnzeichen.",
       "learning_text": [
-        "Thoraxschmerz ist ein klassisches Pruefungsthema, weil klinische Priorisierung und sprachliche Praezision gleichzeitig gefordert sind. In der FSP geht es nicht darum, sofort alle Diagnosen zu nennen, sondern gefaehrliche Verlaeufe frueh zu erkennen. Ein bewaehrter Einstieg ist die OPQRST-orientierte Struktur: Ort, Charakter, Intensitaet, zeitlicher Verlauf, Ausstrahlung, Ausloeser und Linderung. Diese Struktur gibt Sicherheit und verhindert unvollstaendige Anamnesen.",
-        "Bei ischaemischem Verdacht sind typische Merkmale drueckender oder einengender Schmerz retrosternal, Belastungsabhaengigkeit, Ausstrahlung in Arm, Kiefer oder Oberbauch sowie vegetative Begleitzeichen wie Uebelkeit, Schweiss und Luftnot. Wichtig ist aber, atypische Verlaeufe nicht zu uebersehen, besonders bei Frauen, aelteren Menschen und Diabetikern. Deshalb muss aktiv nach unklarer Leistungsminderung, Dyspnoe, epigastrischem Druck oder atypischer Symptomkombination gefragt werden.",
-        "Parallel zur Symptomanalyse braucht es frueh die Risikostruktur: kardiovaskulaere Vorerkrankungen, fruehere Ereignisse, Risikofaktoren, Familienanamnese und aktuelle Medikation. In der Kommunikation sollte klar werden, warum diese Fragen gestellt werden. So erlebt die Patientin oder der Patient die Anamnese als zielgerichtet und nicht als zufaellige Liste. Genau diese Transparenz verbessert in der FSP die Bewertung bei Gespraechsfuehrung und Professionalitaet.",
-        "Differenzialdiagnostisch gehoeren auch nicht-kardiale Ursachen in das Gespraech: muskuloskelettale Schmerzen, pleuritische Ursachen, Reflux, Oesophagusspasmus, Angst- oder Paniksymptomatik. Entscheidend ist jedoch die Reihenfolge. Zuerst muessen potenziell lebensbedrohliche Ursachen sprachlich priorisiert werden. Ein pruefungsnaher Satz waere: Ich frage Sie jetzt gezielt zu Warnzeichen, damit wir eine gefaehrliche Ursache schnell ausschliessen koennen.",
-        "Die Abschlussphase ist besonders wichtig. Wer nach der Anamnese den naechsten Schritt sauber erklaert, zeigt klinische Reife. Bei hohem Risiko gehoeren sofortige Diagnostik und gegebenenfalls stationaeres Vorgehen in die Erklaerung. Bei niedrigem Risiko ist eine ambulante Einordnung mit Sicherheitsnetz moeglich. In beiden Faellen sollte das weitere Vorgehen patientenverstaendlich formuliert werden, ohne unnoetiges Fachvokabular.",
-        "Fuer die FSP gilt: Thoraxschmerz ist ein Strukturtest fuer Sprache unter Druck. Eine ruhige Stimme, kurze Saetze, klare Rueckfragen und geordnetes Zusammenfassen machen den Unterschied. Wer gleichzeitig Empathie zeigt und dennoch konsequent priorisiert, erreicht meist eine deutlich bessere Gesamtwirkung."
+        "Bei der Anamnese zu „Brustschmerz und Angina pectoris“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Thoraxschmerz ist ein klassisches Prüfungsthema, weil klinische Priorisierung und sprachliche Präzision gleichzeitig gefordert sind. In der FSP geht es nicht darum, sofort alle Diagnosen zu nennen, sondern gefährliche Verläufe früh zu erkennen. Ein bewährter Einstieg ist die OPQRST-orientierte Struktur: Ort, Charakter, Intensität, zeitlicher Verlauf, Ausstrahlung, Auslöser und Linderung. Diese Struktur gibt Sicherheit und verhindert unvollständige Anamnesen.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Bei ischämischem Verdacht sind typische Merkmale drückender oder einengender Schmerz retrosternal, Belastungsabhängigkeit, Ausstrahlung in Arm, Kiefer oder Oberbauch sowie vegetative Begleitzeichen wie Übelkeit, Schweiß und Luftnot. Wichtig ist aber, atypische Verläufe nicht zu übersehen, besonders bei Frauen, älteren Menschen und Diabetikern. Deshalb muss aktiv nach unklarer Leistungsminderung, Dyspnoe, epigastrischem Druck oder atypischer Symptomkombination gefragt werden.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Parallel zur Symptomanalyse braucht es früh die Risikostruktur: kardiovaskuläre Vorerkrankungen, frühere Ereignisse, Risikofaktoren, Familienanamnese und aktuelle Medikation. In der Kommunikation sollte klar werden, warum diese Fragen gestellt werden. So erlebt die Patientin oder der Patient die Anamnese als zielgerichtet und nicht als zufällige Liste. Genau diese Transparenz verbessert in der FSP die Bewertung bei Gesprächsführung und Professionalität.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Schmerzcharakter und Verlauf, Auslöser und Begleitsymptome, Risikoprofil. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
           "title": "Schmerzcharakter und Verlauf",
           "questions": [
             "Wo genau sitzt der Schmerz in der Brust?",
-            "Wie wuerden Sie den Schmerz beschreiben: drueckend, stechend, brennend?",
+            "Wie würden Sie den Schmerz beschreiben: drückend, stechend oder brennend?",
             "Seit wann besteht der Schmerz und wie lange dauern die Episoden?",
             "Wie stark ist der Schmerz auf einer Skala von 0 bis 10?",
-            "Strahlt der Schmerz in Arm, Kiefer, Ruecken oder Oberbauch aus?"
+            "Strahlt der Schmerz in Arm, Kiefer, Rücken oder Oberbauch aus?"
           ]
         },
         {
-          "title": "Ausloeser und Begleitsymptome",
+          "title": "Auslöser und Begleitsymptome",
           "questions": [
             "Tritt der Schmerz bei Belastung oder auch in Ruhe auf?",
             "Wird es beim Atmen oder Husten schlimmer?",
-            "Haben Sie Luftnot, Uebelkeit oder kalten Schweiss dabei?",
+            "Haben Sie Luftnot, Übelkeit oder kalten Schweiß dabei?",
             "Gab es Schwindel, Ohnmacht oder Herzrasen?",
             "Wird der Schmerz durch Ruhe oder Medikamente besser?"
           ]
@@ -198,10 +198,10 @@
           "title": "Risikoprofil",
           "questions": [
             "Sind Bluthochdruck, Diabetes oder hohe Blutfette bekannt?",
-            "Hatten Sie frueher Herzinfarkt, Stent oder Bypass?",
-            "Gibt es in der Familie fruehe Herzinfarkte?",
-            "Rauchen Sie aktuell oder frueher?",
-            "Welche Herzmedikamente nehmen Sie regelmaessig?"
+            "Hatten Sie früher Herzinfarkt, Stent oder Bypass?",
+            "Gibt es in der Familie frühe Herzinfarkte?",
+            "Rauchen Sie aktuell oder früher?",
+            "Welche Herzmedikamente nehmen Sie regelmäßig?"
           ]
         }
       ],
@@ -214,66 +214,66 @@
     {
       "id": "dyspnoe_kardial",
       "title": "Dyspnoe bei kardialem Verdacht",
-      "focus": "Herzinsuffizienznahe Symptomkonstellationen und Verlaufseinschaetzung",
-      "summary": "Diese Einheit verbindet Atemnotanamnese mit typischen Herzinsuffizienzmustern.",
+      "focus": "Belastung und Lageabhängigkeit | Stauungszeichen und Verlauf | Auslöser und Alarmzeichen",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen respiratorische und kardiopulmonale Beschwerden. Wichtig sind eine klare Zeitstruktur, eine genaue Symptomqualität und eine sprachlich saubere Gewichtung von Warnzeichen.",
       "learning_text": [
-        "Dyspnoe mit moeglicher kardialer Ursache ist in der FSP ein Klassiker, weil hier klinische Logik und sprachliche Praezision zusammenkommen. Wichtig ist die Frage, ob die Luftnot eher belastungsabhaengig, lageabhaengig oder in Ruhe auftritt. Orthopnoe und paroxysmale naechliche Dyspnoe sind besonders relevante Hinweise auf kardiale Beteiligung. Ebenso wichtig sind Leistungsabfall, rasche Erschoepfbarkeit und reduzierte Belastbarkeit im Alltag.",
-        "Im zweiten Schritt wird nach Volumenzeichen gefragt: Knocheloedeme, Gewichtszunahme innerhalb weniger Tage, Nykturie, Spannungsgefuehl im Bauch oder reduzierter Appetit bei Stauung. Die Sprache sollte dabei alltagsnah bleiben. Statt reiner Fachwoerter kann man nach geschwollenen Knoecheln, enger werdenden Schuhen oder naechtlichem Wasserlassen fragen. Diese Uebersetzung in Patientensprache ist ein zentrales Bewertungskriterium in Berlin.",
-        "Begleitend sind Ausloeser und Trigger relevant: Infekte, Rhythmusstoerungen, schlechte Medikamentenadhaerenz, erhoehter Salz- oder Fluessigkeitskonsum, Nierenfunktionsverschlechterung oder neu aufgetretener Blutdruckanstieg. Diese Faktoren entscheiden oft ueber akute Dekompensation. In der Gespraechsfuehrung sollte klar werden, dass diese Fragen nicht zufaellig sind, sondern direkt mit dem geplanten Vorgehen zusammenhaengen.",
-        "Bei kardialer Dyspnoe muss die Dringlichkeit immer mitgedacht werden. Ruhedyspnoe, deutliche Tachypnoe, Schaumhusten, Thoraxschmerz, Synkope oder Verwirrtheit sind Alarmsignale. In der FSP reicht es nicht, diese nur zu kennen. Sie muessen sprachlich klar abgefragt und anschliessend in eine nachvollziehbare Handlungsentscheidung uebersetzt werden. Genau diese Ueberleitung von Anamnese zu Aktion wird in der Bewertung stark gewichtet.",
-        "Ein professioneller Abschluss der Anamnese umfasst ein kurzes Zwischenfazit und eine transparente Planung. Beispiel: Ihre Angaben sprechen fuer eine moegliche Herzbeteiligung der Luftnot, deshalb moechte ich jetzt zuegig Herz, Lunge und Kreislauf weiter untersuchen und die weitere Behandlung planen. Solche Saetze verbinden medizinische Genauigkeit mit Verstaendlichkeit.",
-        "Fuer das Training lohnt sich, diese Kategorie immer in Kombination mit Oedemen, Rhythmusstoerungen und Hypertonie zu lernen. In echten FSP-Gespraechen treten diese Themen selten isoliert auf. Wer die Verknuepfungen sprachlich sauber darstellen kann, wirkt klinisch deutlich reifer."
+        "Bei der Anamnese zu „Dyspnoe bei kardialem Verdacht“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Dyspnoe mit möglicher kardialer Ursache verbindet Leitsymptom, Risikodenken und sprachliche Präzision besonders eng. Wichtig ist die Frage, ob die Luftnot eher belastungsabhängig, lageabhängig oder in Ruhe auftritt. Orthopnoe und paroxysmale nächtliche Dyspnoe sind besonders relevante Hinweise auf kardiale Beteiligung. Ebenso wichtig sind Leistungsabfall, rasche Erschöpfbarkeit und reduzierte Belastbarkeit im Alltag.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Im zweiten Schritt wird nach Volumenzeichen gefragt: Knöchelödeme, Gewichtszunahme innerhalb weniger Tage, Nykturie, Spannungsgefühl im Bauch oder reduzierter Appetit bei Stauung. Die Sprache sollte dabei alltagsnah bleiben. Statt reiner Fachwörter kann man nach geschwollenen Knöcheln, enger werdenden Schuhen oder nächtlichem Wasserlassen fragen. Gerade diese Übersetzung in Patientensprache macht die Anamnese deutlich tragfähiger.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Begleitend sind Auslöser und Trigger relevant: Infekte, Rhythmusstörungen, schlechte Medikamentenadhärenz, erhöhter Salz- oder Flüssigkeitskonsum, Nierenfunktionsverschlechterung oder neu aufgetretener Blutdruckanstieg. Diese Faktoren entscheiden oft über akute Dekompensation. In der Gesprächsführung sollte klar werden, dass diese Fragen nicht zufällig sind, sondern direkt mit dem geplanten Vorgehen zusammenhängen.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Belastung und Lageabhängigkeit, Stauungszeichen und Verlauf, Auslöser und Alarmzeichen. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
-          "title": "Belastung und Lageabhaengigkeit",
+          "title": "Belastung und Lageabhängigkeit",
           "questions": [
             "Haben Sie Luftnot nur bei Belastung oder auch in Ruhe?",
             "Brauchen Sie nachts mehrere Kissen zum Schlafen?",
             "Wachen Sie nachts wegen Luftnot auf?",
-            "Wie weit koennen Sie aktuell gehen oder Treppen steigen?",
-            "Hat sich die Belastbarkeit kuerzlich veraendert?"
+            "Wie weit können Sie aktuell gehen oder Treppen steigen?",
+            "Hat sich die Belastbarkeit kürzlich verändert?"
           ]
         },
         {
           "title": "Stauungszeichen und Verlauf",
           "questions": [
-            "Haben Sie geschwollene Beine oder Knoechel?",
+            "Haben Sie geschwollene Beine oder Knöchel?",
             "Nimmt die Schwellung im Tagesverlauf zu?",
             "Ist Ihr Gewicht in kurzer Zeit angestiegen?",
-            "Muessen Sie nachts haeufig Wasser lassen?",
-            "Haben Sie Druckgefuehl im Bauch oder weniger Appetit?"
+            "Müssen Sie nachts häufig Wasser lassen?",
+            "Haben Sie Druckgefühl im Bauch oder weniger Appetit?"
           ]
         },
         {
-          "title": "Ausloeser und Alarmzeichen",
+          "title": "Auslöser und Alarmzeichen",
           "questions": [
-            "Gab es kuerzlich einen Infekt oder Fieber?",
+            "Gab es kürzlich einen Infekt oder Fieber?",
             "Haben Sie Herzstolpern oder anfallsartiges Herzrasen bemerkt?",
-            "Nehmen Sie Ihre Herzmedikamente regelmaessig ein?",
-            "Gab es ploetzliche Ruhedyspnoe, Schwindel oder Ohnmacht?",
+            "Nehmen Sie Ihre Herzmedikamente regelmäßig ein?",
+            "Gab es plötzliche Ruhedyspnoe, Schwindel oder Ohnmacht?",
             "Treten Brustschmerzen zusammen mit der Luftnot auf?"
           ]
         }
       ],
       "source_tags": [
-        "ESC HF Guideline symptomatische Tabellen (Orthopnoe, PND, Oedeme)",
+        "ESC HF Guideline symptomatische Tabellen (Orthopnoe, PND, Ödeme)",
         "Fachsprachkurs-PDF Dyspnoe-Fragen",
         "ESC CCS/ACS symptomorientierte Bewertung"
       ]
     },
     {
       "id": "oedeme",
-      "title": "Oedeme und Wassereinlagerungen",
-      "focus": "Differenzierung unilateral vs bilateral, kardial-renale-hepatische Hinweise",
-      "summary": "Diese Kategorie trainiert eine strukturierte Oedemanamnese mit Fokus auf Ursache und Dringlichkeit.",
+      "title": "Ödeme und Wassereinlagerungen",
+      "focus": "Verteilung und Verlauf | Begleitsymptome | Ursachenhinweise",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen kardiovaskuläre Beschwerden und Risiken. Zentral sind Risikoprofil, Vorerkrankungen, Medikation und die Verbindung von Befund zu weiterem Plan.",
       "learning_text": [
-        "Oedeme werden in der FSP oft als Nebensymptom genannt, sind aber diagnostisch sehr wertvoll. Das Ziel ist, aus der Anamnese eine erste Richtung abzuleiten: venoes, kardial, renal, hepatisch, lymphatisch, medikamentoes oder endokrin. Der erste Schluessel ist die Verteilung. Einseitige schmerzhafte Schwellung spricht eher fuer lokal-venoese Ursachen, symmetrische beidseitige Oedeme eher fuer systemische Prozesse.",
-        "Danach folgt der zeitliche Verlauf: ploetzlicher Beginn oder schleichend, tageszeitliche Schwankung, Besserung ueber Nacht, Progression ueber Wochen. Solche Verlaufsfragen sind pruefungsrelevant, weil sie klinische Priorisierung zeigen. Auch Begleitsymptome sind entscheidend: Dyspnoe, Orthopnoe, Gewichtszunahme, Nykturie, Bauchumfangszunahme, Hautveraenderungen, Schmerz oder Roetung. Wer diese Punkte logisch aufbaut, wird als strukturiert und zielorientiert bewertet.",
-        "Ein weiterer wichtiger Bereich ist die Medikamentenanamnese. Calciumantagonisten, NSAR, Kortikosteroide oder bestimmte Hormone koennen Oedeme verstaerken. Ebenso relevant sind Nieren- und Lebererkrankungen, Schilddruesenstoerungen sowie fruehere Thrombosen. In der Gespraechsfuehrung sollte klar unterschieden werden zwischen alltagsnaher Sprache und Fachbegriffen. Zum Beispiel erst nach geschwollenen Fuessen fragen und danach den Begriff Oedem verwenden.",
-        "Red Flags muessen explizit abgefragt werden: akute einseitige Schwellung mit Schmerz und Atemnot, rasche generalisierte Gewichtszunahme, Ruhedyspnoe, Thoraxschmerz, Fieber oder Zeichen lokaler Entzuendung. Diese Konstellationen erfordern rasches Handeln. In der FSP wird ein deutlicher Pluspunkt vergeben, wenn Kandidatinnen und Kandidaten Alarmzeichen nicht nur kennen, sondern in eine klare Handlungsentscheidung ueberfuehren.",
-        "Didaktisch wichtig ist auch das Zusammenfassen. Ein professionelles Zwischenfazit kann lauten: Die Schwellungen sind beidseitig, nehmen abends zu und gehen nachts teilweise zurueck, zusammen mit Luftnot bei Belastung. Das spricht fuer eine systemische Ursache, wahrscheinlich kardial oder renal, und wir sollten das weiter abklaeren. Solche Saetze zeigen analytisches Denken und klare Sprache.",
-        "Fuer den Lernerfolg sollte die Oedemanamnese immer in Verbindung mit Dyspnoe, Hypertonie, Nierenfunktion und Medikation trainiert werden. Dann entsteht aus Einzelinformationen ein klinisches Gesamtbild, was genau dem pruefungsnahen Arbeiten entspricht."
+        "Bei der Anamnese zu „Ödeme und Wassereinlagerungen“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Ödeme werden in der FSP oft als Nebensymptom genannt, sind aber diagnostisch sehr wertvoll. Das Ziel ist, aus der Anamnese eine erste Richtung abzuleiten: venös, kardial, renal, hepatisch, lymphatisch, medikamentös oder endokrin. Der erste Schlüssel ist die Verteilung. Einseitige schmerzhafte Schwellung spricht eher für lokal-venöse Ursachen, symmetrische beidseitige Ödeme eher für systemische Prozesse.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Danach folgt der zeitliche Verlauf: plötzlicher Beginn oder schleichend, tageszeitliche Schwankung, Besserung über Nacht, Progression über Wochen. Solche Verlaufsfragen sind prüfungsrelevant, weil sie klinische Priorisierung zeigen. Auch Begleitsymptome sind entscheidend: Dyspnoe, Orthopnoe, Gewichtszunahme, Nykturie, Bauchumfangszunahme, Hautveränderungen, Schmerz oder Rötung. Wer diese Punkte logisch aufbaut, wird als strukturiert und zielorientiert bewertet.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Ein weiterer wichtiger Bereich ist die Medikamentenanamnese. Calciumantagonisten, NSAR, Kortikosteroide oder bestimmte Hormone können Ödeme verstärken. Ebenso relevant sind Nieren- und Lebererkrankungen, Schilddrüsenstörungen sowie frühere Thrombosen. In der Gesprächsführung sollte klar unterschieden werden zwischen alltagsnaher Sprache und Fachbegriffen. Zum Beispiel erst nach geschwollenen Füßen fragen und danach den Begriff Ödem verwenden.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Verteilung und Verlauf, Begleitsymptome, Ursachenhinweise. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
@@ -282,7 +282,7 @@
             "Seit wann bestehen die Schwellungen?",
             "Sind beide Beine betroffen oder nur eine Seite?",
             "Nehmen die Schwellungen im Laufe des Tages zu?",
-            "Gehen die Schwellungen nachts zurueck?",
+            "Gehen die Schwellungen nachts zurück?",
             "Ist das Problem in den letzten Tagen schneller schlimmer geworden?"
           ]
         },
@@ -291,9 +291,9 @@
           "questions": [
             "Haben Sie Luftnot bei Belastung oder im Liegen?",
             "Gab es eine rasche Gewichtszunahme?",
-            "Haben Sie Schmerzen, Roetung oder Ueberwaermung an einem Bein?",
-            "Muessen Sie nachts haeufig Wasser lassen?",
-            "Haben Sie Druckgefuehl im Bauch oder weniger Appetit?"
+            "Haben Sie Schmerzen, Rötung oder Überwärmung an einem Bein?",
+            "Müssen Sie nachts häufig Wasser lassen?",
+            "Haben Sie Druckgefühl im Bauch oder weniger Appetit?"
           ]
         },
         {
@@ -301,49 +301,49 @@
           "questions": [
             "Sind Herz-, Nieren- oder Lebererkrankungen bekannt?",
             "Nehmen Sie neue Medikamente ein, zum Beispiel Blutdruckmittel oder Schmerzmittel?",
-            "Hatten Sie frueher eine Thrombose?",
-            "Gab es kuerzlich eine laengere Immobilisation oder Reise?",
-            "Haben Sie Schilddruesenprobleme oder andere chronische Erkrankungen?"
+            "Hatten Sie früher eine Thrombose?",
+            "Gab es kürzlich eine längere Immobilisation oder Reise?",
+            "Haben Sie Schilddrüsenprobleme oder andere chronische Erkrankungen?"
           ]
         }
       ],
       "source_tags": [
         "ESC HF symptomorientierte Empfehlungen",
         "ESC Syncope/Chest Pain Toolkit Symptomkapitel",
-        "Fachsprachkurs-PDF Oedem- und Dyspnoebloecke"
+        "Fachsprachkurs-PDF Ödem- und Dyspnoebloecke"
       ]
     },
     {
       "id": "rhythmusstoerung",
-      "title": "Herzrhythmusstoerungen und Palpitationen",
-      "focus": "Anfallscharakter, Trigger, Haemodynamik, Risikoabschaetzung",
-      "summary": "Der Schwerpunkt liegt auf einer sprachlich klaren Einordnung von Herzstolpern und Tachykardien.",
+      "title": "Herzrhythmusstörungen und Palpitationen",
+      "focus": "Episodencharakter | Trigger und Kontext | Alarmzeichen und Vorgeschichte",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen kardiovaskuläre Beschwerden und Risiken. Zentral sind Risikoprofil, Vorerkrankungen, Medikation und die Verbindung von Befund zu weiterem Plan.",
       "learning_text": [
-        "Palpitationen sind ein sprachlich anspruchsvolles Thema, weil Patientinnen und Patienten sehr unterschiedliche Beschreibungen nutzen. Manche sagen Herzrasen, andere Stolpern, Flattern oder Aussetzer. In der FSP ist entscheidend, diese Alltagssprache in klinisch verwertbare Informationen zu uebersetzen. Der wichtigste erste Schritt ist die Charakterisierung der Episoden: ploetzlicher Beginn, ploetzliches Ende, regelmaessig schnell, unregelmaessig oder einzelne Aussetzer.",
-        "Der zweite Schritt ist die zeitliche und situative Einordnung. Wie lange dauern die Anfaelle, wie haeufig treten sie auf, in Ruhe oder unter Belastung, nachts, nach Koffein, Alkohol oder Stress. Auch Medikamentenwechsel, Infekte, Schilddruesenstoerungen und Elektrolytprobleme koennen ausloesen. Wer diese Faktoren strukturiert erhebt, zeigt in der FSP eine gute klinische Logik ohne in Detailwissen zu verlieren.",
-        "Sehr wichtig ist die Symptomkopplung. Palpitationen mit Schwindel, Synkope, Thoraxschmerz, Luftnot oder Leistungsknick muessen als potenziell risikoreich eingeordnet werden. Diese Koppelung entscheidet, ob zuegige Notfalldiagnostik notwendig ist. In der Sprache sollte dies klar, aber ruhig erklaert werden. Zum Beispiel: Weil Herzrasen zusammen mit Schwindel auftritt, moechte ich das jetzt rasch weiter abklaeren.",
-        "Bei bekannter Vorhofflimmeranamnese gehoeren Fragen zur Antikoagulation, Adhaerenz und Blutungsanamnese in den Kern der Gespraechsfuehrung. Auch vorbestehende Herzerkrankungen, Schrittmacher, fruehere Kardioversionen oder Ablationen sind relevant. In der FSP wird positiv bewertet, wenn die Kandidatin oder der Kandidat solche Angaben zeitlich einordnet und am Ende strukturiert zusammenfasst.",
-        "Ein typischer Fehler ist, nur auf das Symptom Herzrasen zu fokussieren und den funktionellen Einfluss zu vergessen. Besser ist, gezielt nach Alltagseinschraenkung zu fragen: Muessen Sie dann stehen bleiben, koennen Sie weitergehen, kommt Angst hinzu, wie lange dauert die Erholung. Diese Fragen sind pruefungsnah, weil sie klinische Relevanz und kommunikative Kompetenz verbinden.",
-        "Fuer das Lernziel gilt: Nicht jede Rhythmusstoerung ist ein Notfall, aber jede Rhythmusanamnese braucht eine klare Dringlichkeitsschaetzung. Wer zwischen stabiler Symptomatik und Alarmzeichen sprachlich sicher unterscheidet, erreicht in der FSP ein deutlich hoeheres Niveau."
+        "Bei der Anamnese zu „Herzrhythmusstörungen und Palpitationen“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Palpitationen sind ein sprachlich anspruchsvolles Thema, weil Patientinnen und Patienten sehr unterschiedliche Beschreibungen nutzen. Manche sagen Herzrasen, andere Stolpern, Flattern oder Aussetzer. In der FSP ist entscheidend, diese Alltagssprache in klinisch verwertbare Informationen zu übersetzen. Der wichtigste erste Schritt ist die Charakterisierung der Episoden: plötzlicher Beginn, plötzliches Ende, regelmäßig schnell, unregelmäßig oder einzelne Aussetzer.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Der zweite Schritt ist die zeitliche und situative Einordnung. Wie lange dauern die Anfälle, wie häufig treten sie auf, in Ruhe oder unter Belastung, nachts, nach Koffein, Alkohol oder Stress. Auch Medikamentenwechsel, Infekte, Schilddrüsenstörungen und Elektrolytprobleme können auslösen. Wer diese Faktoren strukturiert erhebt, zeigt in der FSP eine gute klinische Logik ohne in Detailwissen zu verlieren.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Sehr wichtig ist die Symptomkopplung. Palpitationen mit Schwindel, Synkope, Thoraxschmerz, Luftnot oder Leistungsknick müssen als potenziell risikoreich eingeordnet werden. Diese Koppelung entscheidet, ob zügige Notfalldiagnostik notwendig ist. In der Sprache sollte dies klar, aber ruhig erklärt werden. Zum Beispiel: Weil Herzrasen zusammen mit Schwindel auftritt, möchte ich das jetzt rasch weiter abklären.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Episodencharakter, Trigger und Kontext, Alarmzeichen und Vorgeschichte. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
           "title": "Episodencharakter",
           "questions": [
-            "Fuehlt es sich eher wie Herzrasen, Herzstolpern oder Aussetzer an?",
-            "Beginnt die Episode ploetzlich und endet sie ploetzlich?",
+            "Fühlt es sich eher wie Herzrasen, Herzstolpern oder Aussetzer an?",
+            "Beginnt die Episode plötzlich und endet sie plötzlich?",
             "Wie lange dauert ein Anfall typischerweise?",
-            "Wie haeufig treten die Episoden auf?",
-            "Ist der Puls dann regelmaessig oder eher unregelmaessig?"
+            "Wie häufig treten die Episoden auf?",
+            "Fühlt sich der Puls dann eher regelmäßig oder unregelmäßig an?"
           ]
         },
         {
           "title": "Trigger und Kontext",
           "questions": [
             "Tritt es in Ruhe oder bei Belastung auf?",
-            "Gibt es Ausloeser wie Stress, Koffein, Alkohol oder Schlafmangel?",
-            "Gab es kuerzlich Infekte, Fieber oder neue Medikamente?",
-            "Sind Schilddruesenprobleme bekannt?",
+            "Gibt es Auslöser wie Stress, Koffein, Alkohol oder Schlafmangel?",
+            "Gab es kürzlich Infekte, Fieber oder neue Medikamente?",
+            "Sind Schilddrüsenprobleme bekannt?",
             "Besteht ein Zusammenhang mit Angst oder Panik?"
           ]
         },
@@ -353,7 +353,7 @@
             "Kommt es dabei zu Schwindel oder Ohnmacht?",
             "Haben Sie gleichzeitig Brustschmerzen oder Luftnot?",
             "Sind Herzerkrankungen oder Vorhofflimmern bekannt?",
-            "Nehmen Sie Blutverduenner oder Rhythmusmedikamente?",
+            "Nehmen Sie Blutverdünner oder Rhythmusmedikamente?",
             "Hatten Sie schon einmal Kardioversion, Ablation oder Schrittmacherimplantation?"
           ]
         }
@@ -367,15 +367,15 @@
     {
       "id": "synkope_schwindel",
       "title": "Synkope und Schwindel",
-      "focus": "Differenzierung Synkope, Praesynkope, Vertigo; Risikozeichen fuer kardiale Ursachen",
-      "summary": "Diese Einheit trainiert die strukturierte Ereignisanamnese bei Bewusstseinsverlust und Schwindel.",
+      "focus": "Vor dem Ereignis | Ereignis und Nachphase | Risikofaktoren",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen neurologische Beschwerden und Bewusstseinsveränderungen. Wichtig ist eine saubere Einordnung von Verlauf, Begleitsymptomen, neurologischen Ausfällen und Warnzeichen.",
       "learning_text": [
-        "Bei Synkope und Schwindel ist der entscheidende Punkt die klare Begriffstrennung. Nicht jedes Schwindelgefuehl ist eine Synkope. In der FSP wird erwartet, dass die Kandidatin oder der Kandidat die Ereignisse zeitlich und inhaltlich sauber rekonstruiert: vor dem Ereignis, waehrenddessen und danach. Diese Rekonstruktion ist oft diagnostisch wertvoller als eine lange Liste unspezifischer Fragen.",
-        "Der erste Kernblock fragt nach der Situation: Was hat die Patientin oder der Patient unmittelbar vor dem Ereignis gemacht, stand sie oder er, gab es Belastung, Schmerz, emotionalen Stress, Husten, Miktion, Defaekation oder Lagewechsel. Danach folgen Prodromi wie Uebelkeit, Schweiss, Schwarzwerden vor Augen, Ohrensausen, Palpitationen oder Brustschmerz. Diese Details helfen, reflexvermittelte, orthostatische und kardiale Ursachen zu trennen.",
-        "Waerend des Ereignisses sind Fremdanamnese und Beobachtung zentral: Dauer, komplette Bewusstlosigkeit, Sturz, Verletzung, Zuckungen, Blasenentleerung, Zungenbiss, Hautfarbe. Postevent-Informationen wie rasche Erholung versus laengere Verwirrtheit sind ebenfalls wichtig. In der FSP zeigt ein strukturierter Ablauf mit klaren Uebergaengen, dass klinische Informationen zielgerichtet erhoben werden.",
-        "Risikoorientiert sind besonders wichtig: Synkope unter Belastung oder in Rueckenlage, fehlende Prodromi, bekannte strukturelle Herzerkrankung, familiaerer ploetzlicher Herztod und auffaellige Rhythmusvorgeschichte. Diese Konstellationen erfordern hohe Aufmerksamkeit. Ein professioneller Pruefungssatz lautet etwa: Wegen dieser Risikokonstellation moechte ich eine kardiologische Ursache vorrangig ausschliessen.",
-        "Orthostatische Beschwerden sollten aktiv getestet und sprachlich vorbereitet werden. Die Kandidatin oder der Kandidat kann erklaeren, dass Blutdruck und Puls im Liegen und im Stehen gemessen werden, um Kreislaufreaktionen einzuordnen. Solche patientenorientierten Erklaerungen verbessern die Bewertung bei Verstaendlichkeit und Gespraechsfuehrung.",
-        "Fuer den Lernalltag gilt: Eine gute Synkopenanamnese ist eine Ereignisanamnese mit klarer Risikostratifizierung. Wer diese Struktur beherrscht, kann auch in unruhigen Gespraechssituationen sicher arbeiten und die naechsten diagnostischen Schritte nachvollziehbar begruenden."
+        "Bei der Anamnese zu „Synkope und Schwindel“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Bei Synkope und Schwindel ist die saubere Rekonstruktion des Ereignisses wichtiger als eine lange Liste unspezifischer Zusatzfragen.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Am Anfang steht deshalb die Einordnung des Begriffs: Ging es um eine echte Bewusstlosigkeit, um Beinahe-Synkope oder eher um Dreh-, Schwank- oder Benommenheitsschwindel. Erst danach folgt die zeitliche Rekonstruktion vor, während und nach dem Ereignis.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Vor dem Ereignis sind Situation, Haltung, Auslöser und Prodromi entscheidend. Belastung, Lagewechsel, Husten, Miktion, Schmerz, emotionaler Stress, Übelkeit, Schwarzwerden vor Augen, Palpitationen oder Thoraxschmerz helfen, reflexvermittelte, orthostatische und kardiale Ursachen voneinander zu trennen.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Vor dem Ereignis, Ereignis und Nachphase, Risikofaktoren. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
@@ -383,9 +383,9 @@
           "questions": [
             "Was haben Sie direkt vor dem Ereignis gemacht?",
             "Standen Sie, sassen Sie oder lagen Sie?",
-            "Gab es vorher Schwindel, Uebelkeit, Schwitzen oder Schwarzwerden vor Augen?",
+            "Gab es vorher Schwindel, Übelkeit, Schwitzen oder Schwarzwerden vor Augen?",
             "Hatten Sie kurz davor Brustschmerz, Herzrasen oder Luftnot?",
-            "Gab es einen ausloesenden Faktor wie Schmerz, Stress oder schnellen Lagewechsel?"
+            "Gab es einen auslösenden Faktor wie Schmerz, Stress oder schnellen Lagewechsel?"
           ]
         },
         {
@@ -395,17 +395,17 @@
             "Hat jemand den Vorfall beobachtet?",
             "Gab es Sturzverletzungen, Zuckungen oder Einnassen?",
             "Wie schnell waren Sie danach wieder orientiert?",
-            "Bestand nach dem Ereignis laengere Verwirrtheit oder Kopfschmerz?"
+            "Bestand nach dem Ereignis längere Verwirrtheit oder Kopfschmerz?"
           ]
         },
         {
           "title": "Risikofaktoren",
           "questions": [
-            "Kam ein Ereignis bei koerperlicher Belastung oder in Rueckenlage vor?",
-            "Sind Herzerkrankungen oder Rhythmusstoerungen bekannt?",
-            "Gibt es in der Familie ploetzlichen Herztod?",
+            "Kam ein Ereignis bei körperlicher Belastung oder in Rückenlage vor?",
+            "Sind Herzerkrankungen oder Rhythmusstörungen bekannt?",
+            "Gibt es in der Familie plötzlichen Herztod?",
             "Nehmen Sie Medikamente, die den Blutdruck senken oder den Puls beeinflussen?",
-            "Sind solche Episoden frueher schon aufgetreten?"
+            "Sind solche Episoden früher schon aufgetreten?"
           ]
         }
       ],
@@ -418,15 +418,15 @@
     {
       "id": "hypertonie",
       "title": "Hypertonieanamnese",
-      "focus": "Blutdruckverlauf, Endorgansymptome, Adhaerenz und Risikoprofil",
-      "summary": "Diese Kategorie fokussiert die sprachlich korrekte Einordnung von Bluthochdruck im Alltag und in Akutsituationen.",
+      "focus": "Blutdruckverlauf | Symptome und Organhinweise | Therapie und Lebensstil",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen kardiovaskuläre Beschwerden und Risiken. Zentral sind Risikoprofil, Vorerkrankungen, Medikation und die Verbindung von Befund zu weiterem Plan.",
       "learning_text": [
-        "Hypertonie ist in der FSP ein haeufiges Querschnittsthema und selten eine isolierte Einzelfrage. Wichtig ist, den Blutdruck nicht nur als Zahl zu sehen, sondern als Verlauf mit Risiko- und Organkontext. Gute Anamnese beginnt mit bekannten Werten, Messmethode, Messhaeufigkeit und Schwankungen. Viele Patientinnen und Patienten berichten unsystematisch; deshalb braucht es klare Rueckfragen nach typischen Bereichen und zeitlicher Entwicklung.",
-        "Der zweite Kernpunkt ist die Erfassung von Endorgansymptomen. Dazu gehoeren neurologische Beschwerden, Sehstoerungen, Brustschmerz, Dyspnoe, Nierenhinweise und Belastungsabfall. In der FSP wird es positiv bewertet, wenn Kandidatinnen und Kandidaten erklaeren, warum diese Fragen wichtig sind. So wird aus einem reinen Abfragen eine patientenorientierte Kommunikation mit erkennbarem klinischem Ziel.",
-        "Ein zentraler Teil ist die Therapieanamnese. Welche Medikamente, welche Dosis, wie regelmaessig, welche Nebenwirkungen, welche Adhaerenzprobleme. In der Praxis sind vergessene Einnahmen, selbststaendige Dosisanpassungen oder Absetzen wegen Nebenwirkungen haeufig. Diese Aspekte sollten offen und nicht vorwurfsvoll erfragt werden. Sprachlich hilft eine neutrale Formulierung wie Manche Tabletten sind im Alltag schwierig. Wie klappt die Einnahme bei Ihnen.",
-        "Lebensstilfaktoren gehoeren zwingend dazu: Salzkonsum, Alkohol, Rauchen, Bewegung, Gewicht, Schlaf, Stress und eventuell Schlafapnoe-Hinweise. In der FSP geht es dabei nicht um belehrende Beratung, sondern um kooperative Risikoerklaerung. Wer die Zusammenhaenge kurz und verstaendlich formuliert, zeigt hohe sprachliche Handlungskompetenz.",
-        "Akutsituationen muessen klar von stabilen Verlaeufen getrennt werden. Sehr hohe Werte plus neurologische Ausfaelle, Thoraxschmerz, schwere Dyspnoe, akute Nierensymptome oder Bewusstseinsstoerung sind Warnzeichen einer potenziellen hypertensiven Krise mit Organbeteiligung. Diese Konstellation erfordert dringliches Vorgehen. Entscheidend ist, dass die Dringlichkeit nicht dramatisiert, aber eindeutig kommuniziert wird.",
-        "Fuer den Lernerfolg ist wichtig: Hypertonieanamnese wird besser, wenn sie mit kardialen Symptomen, Nierenfragen und Medikationskompetenz zusammen trainiert wird. Dann entsteht ein klinisch plausibles Gesamtbild, genau wie es in der Berliner FSP erwartet wird."
+        "Bei der Anamnese zu „Hypertonieanamnese“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Hypertonie ist selten ein isoliertes Thema, sondern fast immer mit Organrisiko, Medikation und Alltagssituation verknüpft.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Darum beginnt die Anamnese nicht bei einer einzelnen Zahl, sondern bei Verlauf, Messmethode, typischen Werten und Schwankungen. Gerade bei unsystematischen Patientenberichten helfen konkrete Nachfragen nach Morgen- und Abendwerten oder nach auffälligen Spitzen.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Danach folgt die Suche nach Endorgansymptomen. Kopfschmerz, Sehstörung, neurologische Auffälligkeiten, Brustschmerz, Dyspnoe oder Veränderungen von Urinmenge und Nierenfunktion zeigen, ob mehr als ein chronisch erhöhter Blutdruck im Raum steht.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Blutdruckverlauf, Symptome und Organhinweise, Therapie und Lebensstil. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
@@ -435,17 +435,17 @@
             "Seit wann ist bei Ihnen Bluthochdruck bekannt?",
             "Messen Sie den Blutdruck zu Hause, und wenn ja wie oft?",
             "Welche Werte haben Sie typischerweise morgens und abends?",
-            "Gab es in letzter Zeit deutlich hoehere Werte als sonst?",
+            "Gab es in letzter Zeit deutlich höhere Werte als sonst?",
             "Treten Beschwerden parallel zu hohen Werten auf?"
           ]
         },
         {
           "title": "Symptome und Organhinweise",
           "questions": [
-            "Haben Sie Kopfschmerzen, Sehstoerungen oder Schwindel?",
+            "Haben Sie Kopfschmerzen, Sehstörungen oder Schwindel?",
             "Gab es Brustschmerzen oder Luftnot?",
-            "Haben Sie neurologische Auffaelligkeiten wie Taubheit oder Sprachprobleme bemerkt?",
-            "Hat sich die Urinmenge oder Nierenfunktion veraendert?",
+            "Haben Sie neurologische Auffälligkeiten wie Taubheit oder Sprachprobleme bemerkt?",
+            "Hat sich die Urinmenge oder Nierenfunktion verändert?",
             "Gab es Ohnmacht oder Verwirrtheit?"
           ]
         },
@@ -453,31 +453,31 @@
           "title": "Therapie und Lebensstil",
           "questions": [
             "Welche Blutdruckmedikamente nehmen Sie aktuell?",
-            "Nehmen Sie die Medikamente regelmaessig ein?",
+            "Nehmen Sie die Medikamente regelmäßig ein?",
             "Gab es Nebenwirkungen oder Absetzphasen?",
             "Wie sieht es mit Salz, Alkohol, Bewegung und Gewicht aus?",
-            "Haben Sie starkes Schnarchen oder Tagesmuedigkeit als Hinweis auf Schlafapnoe?"
+            "Haben Sie starkes Schnarchen oder Tagesmüdigkeit als Hinweis auf Schlafapnoe?"
           ]
         }
       ],
       "source_tags": [
         "ESC Hypertension Guideline Update (2024)",
-        "DEGAM kardiovaskulaere Risikoberatung (2025)",
+        "DEGAM kardiovaskuläre Risikoberatung (2025)",
         "Fachsprachkurs-PDF Blutdruck- und Herzblock"
       ]
     },
     {
       "id": "kardio_vorgeschichte",
-      "title": "Kardiovaskulaere Vorgeschichte, Medikation und Risikofaktoren",
-      "focus": "Sekundaerpraevention und Uebergabefaehigkeit in der FSP",
-      "summary": "Diese Kategorie trainiert die geordnete Erhebung der kardiovaskulaeren Basisdaten fuer Arzt-Patient und Arzt-Arzt.",
+      "title": "Kardiovaskuläre Vorgeschichte, Medikation und Risikofaktoren",
+      "focus": "Diagnosen und Ereignisse | Aktuelle Therapie | Risikoprofil und Lebensstil",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen kardiovaskuläre Beschwerden und Risiken. Zentral sind Risikoprofil, Vorerkrankungen, Medikation und die Verbindung von Befund zu weiterem Plan.",
       "learning_text": [
-        "Viele FSP-Kandidatinnen und Kandidaten erfassen Symptome gut, verlieren aber bei Vorerkrankungen und Medikation die Struktur. Genau hier setzt diese Kategorie an. Ziel ist eine geordnete Erhebung der kardiovaskulaeren Vorgeschichte, die sowohl im Arzt-Patient-Gespraech als auch in der spaeteren Arzt-Arzt-Uebergabe tragfaehig ist. Entscheidend ist die Reihenfolge: Diagnosen, Ereignisse, Interventionen, aktuelle Medikamente, Adhaerenz, Risikofaktoren.",
-        "Bei Ereignissen sind Datum und klinische Relevanz zentral. Ein Herzinfarkt vor zehn Jahren ist nicht dasselbe wie ein NSTEMI vor drei Monaten. Gleiches gilt fuer Interventionen wie PCI, Bypass, Schrittmacher, ICD oder Klappenersatz. Wenn diese Informationen zeitlich praezise erhoben werden, verbessert sich automatisch die Qualitaet des Arztbriefs und der Fallvorstellung im Arzt-Arzt-Gespraech.",
-        "Der Medikationsblock sollte funktional gedacht werden: Antihypertensiva, Lipidsenker, Antikoagulation, Thrombozytenhemmung, Antianginosa, Diuretika. Dazu gehoeren Fragen nach Nebenwirkungen, Interaktionen, Einnahmefehlern und Therapieabbruechen. Sprachlich wichtig ist eine nicht-konfrontative Haltung. Die Formulierung Was faellt Ihnen bei der Einnahme schwer ist oft hilfreicher als Warum nehmen Sie das nicht.",
-        "Risikofaktoren sollten als Gesamtprofil erhoben werden. Dazu gehoeren Rauchen, Hypertonie, Diabetes, Dyslipidaemie, Adipositas, Bewegungsmangel, Niereninsuffizienz, psychosoziale Belastung und familiaere Vorbelastung. In der FSP wird positiv bewertet, wenn diese Faktoren nicht isoliert aufgelistet, sondern in Beziehung zum aktuellen Problem gesetzt werden.",
-        "Ein typischer Pruefungsmehrwert ist die kurze risikoorientierte Zusammenfassung am Ende. Beispiel: Bei bekannter KHK mit frueherer PCI, unregelmaessiger Medikamenteneinnahme und fortgesetztem Nikotinkonsum besteht ein erhoehtes kardiovaskulaeres Risiko. Solche Saetze sind klar, knapp und klinisch relevant.",
-        "Didaktisch gilt: Diese Kategorie ist das Bindeglied zwischen Anamnese, Diagnosebegruendung und Therapieplanung. Wer sie beherrscht, wirkt nicht nur sprachlich sicher, sondern auch organisationsfaehig, was in der Berliner Fachsprachpruefung einen deutlichen Unterschied macht."
+        "Bei der Anamnese zu „Kardiovaskuläre Vorgeschichte, Medikation und Risikofaktoren“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Diese Kategorie ordnet die Basisdaten, die in vielen kardiovaskulären Fällen übersehen oder zu unstrukturiert erhoben werden.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Am Anfang stehen bekannte Diagnosen und frühere Ereignisse. Herzinfarkt, TIA, Schlaganfall, Herzinsuffizienz oder Rhythmusstörung müssen nicht nur genannt, sondern zeitlich eingeordnet werden, weil der Abstand zum aktuellen Problem die Bewertung stark verändert.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Dasselbe gilt für Interventionen wie PCI, Bypass, Klappenersatz, ICD oder Schrittmacher. Sobald diese Eingriffe zeitlich und funktionell verständlich werden, verbessern sich fast automatisch auch Fallvorstellung und Dokumentation.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Diagnosen und Ereignisse, Aktuelle Therapie, Risikoprofil und Lebensstil. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
@@ -486,15 +486,15 @@
             "Welche Herz-Kreislauf-Erkrankungen sind bei Ihnen bekannt?",
             "Hatten Sie schon Herzinfarkt, Schlaganfall oder TIA?",
             "Gab es Eingriffe wie Stent, Bypass oder Schrittmacher?",
-            "Wann war das letzte relevante kardiovaskulaere Ereignis?",
+            "Wann war das letzte relevante kardiovaskuläre Ereignis?",
             "Waren seitdem weitere Krankenhausaufenthalte notwendig?"
           ]
         },
         {
           "title": "Aktuelle Therapie",
           "questions": [
-            "Welche Medikamente nehmen Sie taeglich ein, inklusive Dosierung?",
-            "Nehmen Sie Blutverduenner oder Cholesterinsenker?",
+            "Welche Medikamente nehmen Sie täglich ein, inklusive Dosierung?",
+            "Nehmen Sie Blutverdünner oder Cholesterinsenker?",
             "Kommt es vor, dass Sie Tabletten auslassen?",
             "Gab es Nebenwirkungen, die die Einnahme erschweren?",
             "Wer hat den aktuellen Medikationsplan zuletzt angepasst?"
@@ -503,11 +503,11 @@
         {
           "title": "Risikoprofil und Lebensstil",
           "questions": [
-            "Rauchen Sie aktuell oder frueher?",
-            "Sind Diabetes, Bluthochdruck oder Fettstoffwechselstoerungen bekannt?",
+            "Rauchen Sie aktuell oder früher?",
+            "Sind Diabetes, Bluthochdruck oder Fettstoffwechselstörungen bekannt?",
             "Wie sieht Ihr Bewegungsniveau im Alltag aus?",
-            "Gibt es in Ihrer Familie fruehe Herz-Kreislauf-Erkrankungen?",
-            "Besteht aktuell hoher beruflicher oder familiarer Stress?"
+            "Gibt es in Ihrer Familie frühe Herz-Kreislauf-Erkrankungen?",
+            "Besteht aktuell hoher beruflicher oder familiärer Stress?"
           ]
         }
       ],
@@ -520,47 +520,47 @@
     {
       "id": "urogenital_miktion",
       "title": "Urogenitale und Miktionsanamnese",
-      "focus": "Beschwerden beim Wasserlassen, obere vs untere Harnwegsbeteiligung, sensible Gespraechsfuehrung",
-      "summary": "Diese Kategorie trainiert den differenzierten urogenitalen Fragekatalog in patientenverstaendlicher Sprache.",
+      "focus": "Miktion und Urin | Begleitsymptome und Schweregrad | Risikofaktoren und Kontext",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen urogenitale und metabolische Beschwerden. Wichtig sind Symptomqualität, Ausscheidungsverhalten, Fieber, Flankenschmerz und Zeichen einer systemischen Beteiligung.",
       "learning_text": [
-        "Die urogenitale Anamnese ist in der FSP besonders geeignet, um sprachliche Sensibilitaet zu zeigen. Themen wie Dysurie, Inkontinenz, Sexualanamnese oder genitale Beschwerden erfordern klare, respektvolle Formulierungen ohne Verlegenheit. Der Einstieg sollte erklaerend sein: Ich stelle Ihnen jetzt einige Fragen zum Wasserlassen und zum urogenitalen Bereich, damit wir die Ursache genauer eingrenzen koennen.",
-        "Klinisch steht am Anfang die Symptomtrias aus Dysurie, Pollakisurie und Harndrang sowie die Frage nach Fieber, Flankenschmerz und Allgemeinzustand. So laesst sich erste Orientierung zwischen unterer und moeglicher oberer Harnwegsbeteiligung gewinnen. Zusaetzlich sollten Urinveraenderungen, Haematurie, Geruch, Restharngefuehl und Miktionsschwierigkeiten systematisch erfasst werden.",
-        "Differenzialdiagnostisch gehoeren auch urologische und gynakologische Faktoren in die Anamnese: Prostatahinweise, Steinanamnese, Katheter, rezidivierende Infekte, Schwangerschaft, vaginale Beschwerden, STI-Risiko und Sexualanamnese. In der FSP ist entscheidend, dass solche Fragen neutral und nicht wertend formuliert werden. Eine sachliche Sprache verbessert sowohl Informationsgewinn als auch Beziehungsgestaltung.",
-        "Red Flags sind Fieber mit Flankenschmerz, Schuettelfrost, Uebelkeit oder Erbrechen, eingeschraenkter Allgemeinzustand, akute Harnverhaltung, relevante Haematurie und Zeichen einer Sepsis. Diese Konstellationen muessen klar priorisiert werden. Wer in der Pruefung die Dringlichkeit begruenden kann, zeigt klinische Handlungssicherheit.",
-        "Zur Vollstaendigkeit gehoeren Medikamentenanamnese, Trinkverhalten, Vorerkrankungen wie Diabetes, Immunsuppression oder Niereninsuffizienz sowie fruehere antibiotische Therapien. Bei wiederholten Beschwerden sollte aktiv nach Vorbefunden gefragt werden. Diese strukturierte Tiefe ist in der FSP ein wichtiger Unterschied zwischen befriedigender und guter Leistung.",
-        "Fuer den Lernbereich gilt: Urogenitale Anamnese sollte immer als Kombination aus medizinischer Praezision und sprachlicher Sensibilitaet geuebt werden. Genau diese Balance wird in Berlin besonders beachtet."
+        "Bei der Anamnese zu „Urogenitale und Miktionsanamnese“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Die urogenitale Anamnese ist in der FSP besonders geeignet, um sprachliche Sensibilität zu zeigen. Themen wie Dysurie, Inkontinenz, Sexualanamnese oder genitale Beschwerden erfordern klare, respektvolle Formulierungen ohne Verlegenheit. Der Einstieg sollte erklärend sein: Ich stelle Ihnen jetzt einige Fragen zum Wasserlassen und zum urogenitalen Bereich, damit wir die Ursache genauer eingrenzen können.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Klinisch steht am Anfang die Symptomtrias aus Dysurie, Pollakisurie und Harndrang sowie die Frage nach Fieber, Flankenschmerz und Allgemeinzustand. So lässt sich erste Orientierung zwischen unterer und möglicher oberer Harnwegsbeteiligung gewinnen. Zusätzlich sollten Urinveränderungen, Hämaturie, Geruch, Restharngefühl und Miktionsschwierigkeiten systematisch erfasst werden.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Differenzialdiagnostisch gehören auch urologische und gynakologische Faktoren in die Anamnese: Prostatahinweise, Steinanamnese, Katheter, rezidivierende Infekte, Schwangerschaft, vaginale Beschwerden, STI-Risiko und Sexualanamnese. In der FSP ist entscheidend, dass solche Fragen neutral und nicht wertend formuliert werden. Eine sachliche Sprache verbessert sowohl Informationsgewinn als auch Beziehungsgestaltung.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Miktion und Urin, Begleitsymptome und Schweregrad, Risikofaktoren und Kontext. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
           "title": "Miktion und Urin",
           "questions": [
             "Haben Sie Brennen oder Schmerzen beim Wasserlassen?",
-            "Muessen Sie haeufig kleine Mengen Wasser lassen?",
+            "Müssen Sie häufig kleine Mengen Wasser lassen?",
             "Haben Sie starken Harndrang?",
-            "Hat sich Farbe oder Geruch des Urins veraendert?",
+            "Hat sich Farbe oder Geruch des Urins verändert?",
             "Haben Sie Blut im Urin bemerkt?",
-            "Bleibt das Gefuehl, dass die Blase nicht ganz leer wird?"
+            "Bleibt das Gefühl, dass die Blase nicht ganz leer wird?"
           ]
         },
         {
           "title": "Begleitsymptome und Schweregrad",
           "questions": [
-            "Haben Sie Fieber oder Schuettelfrost?",
-            "Gibt es Flankenschmerzen oder Rueckenschmerzen?",
-            "Bestehen Uebelkeit oder Erbrechen?",
+            "Haben Sie Fieber oder Schüttelfrost?",
+            "Gibt es Flankenschmerzen oder Rückenschmerzen?",
+            "Bestehen Übelkeit oder Erbrechen?",
             "Haben Sie Unterbauchschmerzen?",
-            "Koennen Sie normal Wasser lassen oder geht es kaum noch?"
+            "Können Sie normal Wasser lassen oder geht es kaum noch?"
           ]
         },
         {
           "title": "Risikofaktoren und Kontext",
           "questions": [
-            "Hatten Sie frueher Harnwegsinfekte oder Nierensteine?",
-            "Tragen oder trugen Sie kuerzlich einen Katheter?",
+            "Hatten Sie früher Harnwegsinfekte oder Nierensteine?",
+            "Tragen oder trugen Sie kürzlich einen Katheter?",
             "Sind Diabetes oder Nierenerkrankungen bekannt?",
             "Nehmen Sie Medikamente, die das Wasserlassen beeinflussen?",
-            "Gab es kuerzlich ungeschuetzten Geschlechtsverkehr oder neue Partner?",
-            "Bei Frauen: koennte eine Schwangerschaft bestehen?"
+            "Gab es kürzlich ungeschützten Geschlechtsverkehr oder neue Partner?",
+            "Bei Frauen: könnte eine Schwangerschaft bestehen?"
           ]
         }
       ],
@@ -573,24 +573,24 @@
     {
       "id": "kopfschmerz",
       "title": "Kopfschmerzanamnese",
-      "focus": "Primaer vs sekundaer, Red Flags, strukturierte Schmerzanalyse",
-      "summary": "Die Kategorie trainiert eine vollstaendige, differenzierte und pruefungsnahe Kopfschmerzanamnese.",
+      "focus": "Schmerzprofil | Begleitsymptome und Trigger | Red Flags und Medikation",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen neurologische Beschwerden und Bewusstseinsveränderungen. Wichtig ist eine saubere Einordnung von Verlauf, Begleitsymptomen, neurologischen Ausfällen und Warnzeichen.",
       "learning_text": [
-        "Kopfschmerz ist in der FSP ideal, um systematische Anamnese mit klinischer Priorisierung zu zeigen. Der Kern ist die Trennung zwischen wahrscheinlichen primaeren Kopfschmerzen und potenziell gefaehrlichen sekundaeren Ursachen. Diese Trennung erfolgt sprachlich ueber einen klaren Fragenpfad: Beginn, Verlauf, Lokalisation, Qualitaet, Intensitaet, Trigger, Begleitsymptome, neurologische Zeichen und Red Flags.",
-        "Die Diagnose einer primaeren Kopfschmerzerkrankung stuetzt sich wesentlich auf Anamnese plus unauffaelligen neurologischen Befund. Das muss im Gespraech deutlich werden. Typische Migrainemerkmale wie einseitiger pulsierender Schmerz, Uebelkeit, Licht- und Laermempfindlichkeit, Belastungsverstaerkung und Attackencharakter sollten gezielt abgefragt werden. Ebenso wichtig ist die Frage nach Frequenz und Funktionseinschraenkung im Alltag.",
-        "Parallel braucht es konsequente Red-Flag-Abfrage. Dazu gehoeren ploetzlicher Vernichtungskopfschmerz, neue neurologische Ausfaelle, Fieber und Meningismuszeichen, Trauma, neue Kopfschmerzen im hoeheren Alter, progredienter Verlauf, relevante Immunsuppression, Tumoranamnese oder Schwangerschaftskontext. In der FSP wird hoch bewertet, wenn diese Warnsignale nicht nur genannt, sondern sprachlich sauber begruendet werden.",
-        "Ein haufig uebersehener Bereich ist die Medikamentenanamnese. Regelmaessige Analgetika- oder Triptaneinnahme kann zu Medikamentenuebergebrauchskopfschmerz fuehren. Deshalb muessen Haeufigkeit, Dosis und Selbstmedikation konkret erfragt werden. Auch Schlafmuster, Koffein, Stress, Fluessigkeitszufuhr und Menstruationsbezug koennen klinisch relevant sein und gehoeren in eine vollstaendige Anamnese.",
-        "Sprachlich hilft es, die Fragen in Bloecke zu ordnen und kurz zusammenzufassen. Zum Beispiel: Ich habe verstanden, die Schmerzen sind seit drei Monaten anfallsartig, meist einseitig pulsierend, mit Uebelkeit und Lichtempfindlichkeit, ohne neurologische Ausfaelle. Diese strukturierte Rueckmeldung zeigt aktives Verstehen und verbessert die Bewertung der Gespraechsqualitaet.",
-        "Fuer den Lernbereich gilt: Kopfschmerz ist weniger ein reines Wissens- als ein Strukturthema. Wer konsequent vom Symptom zur Risikostratifizierung fuehrt und am Ende das Vorgehen verstaendlich erklaert, demonstriert genau die medizinisch-sprachliche Handlungsfaehigkeit, die in Berlin geprueft wird."
+        "Bei der Anamnese zu „Kopfschmerzanamnese“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Kopfschmerz ist in der FSP ideal, um systematische Anamnese mit klinischer Priorisierung zu zeigen. Der Kern ist die Trennung zwischen wahrscheinlichen primären Kopfschmerzen und potenziell gefährlichen sekundären Ursachen. Diese Trennung erfolgt sprachlich über einen klaren Fragenpfad: Beginn, Verlauf, Lokalisation, Qualität, Intensität, Trigger, Begleitsymptome, neurologische Zeichen und Red Flags.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Die Diagnose einer primären Kopfschmerzerkrankung stützt sich wesentlich auf Anamnese plus unauffälligen neurologischen Befund. Das muss im Gespräch deutlich werden. Typische Migrainemerkmale wie einseitiger pulsierender Schmerz, Übelkeit, Licht- und Lärmempfindlichkeit, Belastungsverstärkung und Attackencharakter sollten gezielt abgefragt werden. Ebenso wichtig ist die Frage nach Frequenz und Funktionseinschränkung im Alltag.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Parallel braucht es konsequente Red-Flag-Abfrage. Dazu gehören plötzlicher Vernichtungskopfschmerz, neue neurologische Ausfälle, Fieber und Meningismuszeichen, Trauma, neue Kopfschmerzen im höheren Alter, progredienter Verlauf, relevante Immunsuppression, Tumoranamnese oder Schwangerschaftskontext. In der FSP wird hoch bewertet, wenn diese Warnsignale nicht nur genannt, sondern sprachlich sauber begründet werden.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Schmerzprofil, Begleitsymptome und Trigger, Red Flags und Medikation. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
           "title": "Schmerzprofil",
           "questions": [
             "Seit wann bestehen die Kopfschmerzen?",
-            "Sind die Schmerzen ploetzlich maximal stark gestartet oder langsam aufgebaut?",
+            "Sind die Schmerzen plötzlich maximal stark gestartet oder langsam aufgebaut?",
             "Wo genau sitzen die Schmerzen?",
-            "Wie ist der Charakter: pulsierend, drueckend, stechend?",
+            "Wie ist der Charakter: pulsierend, drückend, stechend?",
             "Wie stark sind die Schmerzen auf einer Skala von 0 bis 10?",
             "Wie lange dauert eine typische Episode?"
           ]
@@ -598,10 +598,10 @@
         {
           "title": "Begleitsymptome und Trigger",
           "questions": [
-            "Haben Sie Uebelkeit oder Erbrechen dabei?",
-            "Stoeren Licht oder Geraeusche waehrend der Attacke?",
-            "Gibt es Sehstoerungen, Sprachstoerungen oder Taubheitsgefuehle?",
-            "Was loest die Schmerzen aus oder verschlechtert sie?",
+            "Haben Sie Übelkeit oder Erbrechen dabei?",
+            "Stören Licht oder Geräusche während der Attacke?",
+            "Gibt es Sehstörungen, Sprachstörungen oder Taubheitsgefühle?",
+            "Was löst die Schmerzen aus oder verschlechtert sie?",
             "Was hilft Ihnen gegen die Schmerzen?"
           ]
         },
@@ -618,73 +618,73 @@
       ],
       "source_tags": [
         "DGN/DMKG Leitlinie Migrainetherapie AWMF 030-057 (2025)",
-        "Klinischer Hinweis: Diagnostik primaer an Anamnese und Neurostatus",
+        "Klinischer Hinweis: Diagnostik primär an Anamnese und Neurostatus",
         "Fachsprachkurs-PDF Kopfschmerzfragen"
       ]
     },
     {
       "id": "depression",
       "title": "Depressionsanamnese",
-      "focus": "Kernsymptome, Funktionsniveau, Suizidalitaet und sensible Gespraechsfuehrung",
-      "summary": "Diese Kategorie trainiert eine sichere und empathische Exploration depressiver Symptomatik.",
+      "focus": "Kernsymptome | Funktion und Kontext | Suizidalität und Sicherheit",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen psychiatrische und psychosoziale Themen. Besonders wichtig sind eine ruhige, direkte und respektvolle Sprache sowie eine klare Struktur bei heiklen Fragen.",
       "learning_text": [
-        "Die Depressionsanamnese ist sprachlich anspruchsvoll, weil medizinische Klarheit und empathische Haltung gleichzeitig gefordert sind. In der FSP wird erwartet, dass die Kandidatin oder der Kandidat depressive Kernsymptome aktiv anspricht und nicht nur auf spontane Patientenaussagen wartet. Geeignet ist ein strukturierter Einstieg ueber Stimmung, Interessenverlust und Antrieb in den letzten zwei Wochen, danach Vertiefung zu Schlaf, Appetit, Konzentration, Schuldgefuehlen und sozialem Rueckzug.",
-        "Ein wichtiger Leitlinienpunkt ist, dass viele Betroffene zunaechst unspezifische koerperliche Beschwerden nennen, etwa Schlafstoerungen, Erschoepfung, Appetitveraenderung oder diffuse Schmerzen. Deshalb muss die Ueberleitung zu psychischen Symptomen sprachlich fein sein. Formulierungen wie Viele Menschen mit solchen Beschwerden fuehlen sich auch seelisch belastet. Wie ist das bei Ihnen schaffen eine sichere Gespraechsatmosphaere.",
-        "Die funktionelle Dimension ist zentral: Wie stark sind Alltag, Beruf, Familie und Selbstversorgung eingeschraenkt. Moderne Leitlinien betonen diese Teilhabeaspekte deutlich. In der FSP wird positiv bewertet, wenn die Kandidatin oder der Kandidat nicht nur Symptome zaehlt, sondern deren Auswirkungen auf das Leben klar erfasst. Das verbessert zugleich die spaetere Therapieerklaerung.",
-        "Suizidalitaet muss aktiv, direkt und ohne Umwege angesprochen werden. Leitlinien zeigen, dass das offene Ansprechen suizidaler Gedanken diese nicht ausloest, sondern die Sicherheit verbessert. Entscheidend ist die graduelle Abklaerung: passive Todeswuensche, konkrete Suizidgedanken, Plaene, Mittel, fruehere Versuche, protektive Faktoren und aktuelle Distanzierung. Eine ruhige, klare Sprache ist hier ein Kernkriterium in der Berliner FSP.",
-        "Zusatzthemen sind Komorbiditaeten wie Angst, Sucht, somatische Erkrankungen und Medikamentenwirkungen. Ebenso wichtig sind fruehere depressive Episoden, Therapieverlaeufe, Psychotherapieerfahrung und soziale Ressourcen. In der Gespraechsfuehrung sollte immer vermittelt werden, dass Hilfe moeglich ist und dass das weitere Vorgehen gemeinsam geplant wird.",
-        "Fuer den Lernbereich gilt: Eine gute Depressionsanamnese ist weder rein somatisch noch rein psychologisch, sondern integriert beides. Wer Symptome, Funktionsniveau und Suizidalitaet strukturiert erhebt und anschliessend patientenverstaendlich zusammenfasst, zeigt in der FSP ein sehr hohes Kommunikationsniveau."
+        "Bei der Anamnese zu „Depressionsanamnese“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Die Depressionsanamnese braucht eine Sprache, die klar, direkt und zugleich empathisch bleibt.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Ein guter Einstieg orientiert sich an Stimmung, Interessenverlust und Antrieb in den letzten zwei Wochen. Danach werden Schlaf, Appetit, Konzentration, Schuldgefühle, innere Unruhe und sozialer Rückzug geordnet vertieft, ohne dass das Gespräch schematisch wirkt.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Viele Betroffene berichten zunächst über Schlafstörungen, Erschöpfung, Appetitveränderung oder diffuse Schmerzen. Eine behutsame Überleitung zu psychischen Symptomen ist deshalb wichtig, zum Beispiel mit dem Hinweis, dass solche Beschwerden häufig auch mit seelischer Belastung einhergehen können.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Kernsymptome, Funktion und Kontext, Suizidalität und Sicherheit. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
           "title": "Kernsymptome",
           "questions": [
-            "Fuehlten Sie sich in den letzten zwei Wochen haeufig niedergeschlagen oder traurig?",
-            "Haben Sie deutlich weniger Interesse oder Freude an frueher wichtigen Dingen?",
-            "Fuehlen Sie sich antriebslos oder schneller erschoepft?",
+            "Fühlten Sie sich in den letzten zwei Wochen häufig niedergeschlagen oder traurig?",
+            "Haben Sie deutlich weniger Interesse oder Freude an früher wichtigen Dingen?",
+            "Fühlen Sie sich antriebslos oder schneller erschöpft?",
             "Wie ist Ihr Schlaf in letzter Zeit?",
-            "Hat sich Ihr Appetit oder Gewicht veraendert?"
+            "Hat sich Ihr Appetit oder Gewicht verändert?"
           ]
         },
         {
           "title": "Funktion und Kontext",
           "questions": [
             "Wie stark beeinflussen die Beschwerden Ihren Alltag und Ihre Arbeit?",
-            "Koennen Sie sich konzentrieren wie frueher?",
-            "Haben Sie sich sozial zurueckgezogen?",
+            "Können Sie sich konzentrieren wie früher?",
+            "Haben Sie sich sozial zurückgezogen?",
             "Gab es belastende Ereignisse in den letzten Monaten?",
-            "Hatten Sie frueher schon depressive Episoden?"
+            "Hatten Sie früher schon depressive Episoden?"
           ]
         },
         {
-          "title": "Suizidalitaet und Sicherheit",
+          "title": "Suizidalität und Sicherheit",
           "questions": [
             "Hatten Sie in letzter Zeit Gedanken, nicht mehr leben zu wollen?",
             "Gab es konkrete Gedanken, sich etwas anzutun?",
-            "Haben Sie dafuer schon Plaene oder Vorbereitungen getroffen?",
-            "Gab es frueher Suizidversuche?",
+            "Haben Sie dafür schon Pläne oder Vorbereitungen getroffen?",
+            "Gab es früher Suizidversuche?",
             "Was hilft Ihnen aktuell, sich davon zu distanzieren?"
           ]
         }
       ],
       "source_tags": [
         "NVL Unipolare Depression Langfassung nvl-005 (Version 3.2, 2023)",
-        "NVL Hinweise zu Suizidalitaetsscreening und Kernsymptomen",
+        "NVL Hinweise zu Suizidalitätsscreening und Kernsymptomen",
         "Fachsprachkurs-PDF Depressionsfragen"
       ]
     },
     {
       "id": "sucht_konsum",
       "title": "Sucht- und Konsumanamnese",
-      "focus": "Nicht-wertende Exploration von Alkohol, Nikotin, Medikamenten und Drogen",
-      "summary": "Der Schwerpunkt liegt auf klarer, stigmaarmer Sprache und risikoorientierter Einordnung.",
+      "focus": "Konsummuster | Abhängigkeitshinweise | Sicherheit und Komorbidität",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen psychiatrische und psychosoziale Themen. Besonders wichtig sind eine ruhige, direkte und respektvolle Sprache sowie eine klare Struktur bei heiklen Fragen.",
       "learning_text": [
-        "Die Konsumanamnese ist in der FSP ein Schluesselthema, weil sie kommunikative Haltung sichtbar macht. Medizinisch gute Fragen wirken nur dann, wenn sie nicht wertend gestellt werden. Ziel ist eine offene, sichere Atmosphaere, in der Betroffene ehrlich berichten koennen. Ein hilfreicher Einstieg ist die Normalisierung: Ich frage alle Patientinnen und Patienten nach Konsumgewohnheiten, weil das fuer Diagnose und Therapie wichtig ist.",
-        "Inhaltlich sollte strukturiert nach Substanzgruppen gefragt werden: Alkohol, Nikotin, Cannabis, Stimulanzien, Opioide, Sedativa und nicht verordnete Medikamente. Danach folgt Quantifizierung: Menge, Frequenz, Muster, letzter Konsum, Kontrollverlust und Binge-Episoden. Klinisch wichtig sind Toleranzentwicklung, Entzugssymptome, Craving, erfolglose Reduktionsversuche und fortgesetzter Konsum trotz schaedlicher Folgen.",
-        "Zusatzfragen betreffen somatische und psychosoziale Auswirkungen: Schlafprobleme, Stimmungsschwankungen, Arbeitsausfaelle, Konflikte, Unfaelle, rechtliche Probleme und finanzielle Belastung. In der FSP wird positiv bewertet, wenn Kandidatinnen und Kandidaten diese Folgen in einfacher, respektvoller Sprache erfassen und nicht nur Fachbegriffe verwenden.",
-        "Bei Alkohol sind Screeningansaetze und risikoorientierte Kurzerfassung besonders relevant. Leitlinien zu alkoholbezogenen Stoerungen betonen fruehes Screening, klare Diagnostik und abgestufte Interventionen. In der Anamnese muessen auch Entzugssymptome, fruehere Entzuege, Krampfanfaelle oder Delirrisiko aktiv erfragt werden. Diese Informationen sind fuer die Sicherheitsbeurteilung zentral.",
-        "Wichtig ist die Einbettung in psychiatrische und somatische Komorbiditaeten. Angst, Depression, Traumafolgen oder chronische Schmerzen koennen Konsumverhalten beeinflussen. Umgekehrt kann Konsum psychische Symptome verstaerken. In der FSP zeigt man hohe Kompetenz, wenn diese Wechselwirkungen sprachlich klar und patientenfreundlich erfasst werden.",
-        "Fuer den Abschluss empfiehlt sich ein gemeinsamer Ausblick statt moralischer Appelle. Zum Beispiel: Wir schauen zusammen, welche Schritte fuer Sie realistisch sind und welche Unterstuetzung sinnvoll waere. Diese Haltung entspricht moderner Suchtmedizin und wird in der Pruefung als professionell und empathisch wahrgenommen."
+        "Bei der Anamnese zu „Sucht- und Konsumanamnese“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Die Konsumanamnese lebt von klarer, stigmaarmer Sprache und einer Haltung, die Informationsgewinn über Moral stellt.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Ein guter Einstieg erklärt kurz, warum nach Konsum gefragt wird, und normalisiert das Thema. Danach werden die Substanzgruppen geordnet erhoben: Alkohol, Nikotin, Cannabis, Stimulanzien, Opioide, Sedativa und nicht verordnete Medikamente.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Wichtig sind Menge, Frequenz, Muster, letzter Konsum, Kontrollverlust, Craving, Toleranzentwicklung und Entzugssymptome. Gerade diese Punkte trennen gelegentlichen Konsum von einer klinisch relevanten Störung.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Konsummuster, Abhängigkeitshinweise, Sicherheit und Komorbidität. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
       ],
       "question_groups": [
         {
@@ -693,35 +693,557 @@
             "Welche Substanzen konsumieren Sie aktuell: Alkohol, Nikotin, Cannabis oder andere?",
             "Wie oft und in welcher Menge konsumieren Sie?",
             "Wann war der letzte Konsum?",
-            "Gab es Phasen mit deutlich hoeherem Konsum?",
-            "Haben Sie schon versucht zu reduzieren oder aufzhoeren?"
+            "Gab es Phasen mit deutlich höherem Konsum?",
+            "Haben Sie schon versucht zu reduzieren oder aufzuhören?"
           ]
         },
         {
-          "title": "Abhaengigkeitshinweise",
+          "title": "Abhängigkeitshinweise",
           "questions": [
-            "Brauchen Sie inzwischen mehr von der Substanz, um den gleichen Effekt zu spueren?",
+            "Brauchen Sie inzwischen mehr von der Substanz, um den gleichen Effekt zu spüren?",
             "Haben Sie Entzugssymptome, wenn Sie nicht konsumieren?",
             "Kommt es zu starkem Verlangen oder Kontrollverlust?",
-            "Hat der Konsum zu Problemen in Arbeit, Familie oder Partnerschaft gefuehrt?",
+            "Hat der Konsum zu Problemen in Arbeit, Familie oder Partnerschaft geführt?",
             "Konsumieren Sie trotz bekannter gesundheitlicher Folgen weiter?"
           ]
         },
         {
-          "title": "Sicherheit und Komorbiditaet",
+          "title": "Sicherheit und Komorbidität",
           "questions": [
-            "Gab es frueher Entgiftungen, Entzuege oder Entzugskraempfe?",
-            "Nehmen Sie weitere Medikamente oder Beruhigungsmittel regelmaessig?",
+            "Gab es früher Entgiftungen, Entzüge oder Entzugskrämpfe?",
+            "Nehmen Sie weitere Medikamente oder Beruhigungsmittel regelmäßig?",
             "Bestehen gleichzeitig depressive Symptome oder Angstbeschwerden?",
-            "Gab es Unfaelle oder riskante Situationen unter Substanzeinfluss?",
-            "Welche Unterstuetzung koennte fuer Sie aktuell hilfreich sein?"
+            "Gab es Unfälle oder riskante Situationen unter Substanzeinfluss?",
+            "Welche Unterstützung könnte für Sie aktuell hilfreich sein?"
           ]
         }
       ],
       "source_tags": [
-        "AWMF 076-001 S3 Alkoholbezogene Stoerungen (verlaengert 2025)",
+        "AWMF 076-001 S3 Alkoholbezogene Störungen (verlängert 2025)",
         "AWMF Hinweise zu substanzbezogenem Screening und Versorgung",
         "Fachsprachkurs-PDF Suchtkapitel"
+      ]
+    },
+    {
+      "id": "fieber_infektanamnese",
+      "title": "Fieber-, Schüttelfrost- und Infektanamnese",
+      "focus": "Fieberhöhe, Verlauf und Allgemeinzustand | Möglichen Fokus gezielt eingrenzen | Risikokontext und Vorerkrankungen erfassen",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen klinische Standardsituationen der Fachsprachprüfung. Entscheidend ist, dass medizinische Ordnung, sprachliche Klarheit und praktisches Vorgehen zusammenfinden.",
+      "learning_text": [
+        "Bei der Anamnese zu „Fieber-, Schüttelfrost- und Infektanamnese“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Fieberfälle wirken oft zunächst unspezifisch. Gerade deshalb muss die Anamnese schnell zwischen banalem Infekt, fokaler Entzündung und potenziell schwerem Verlauf unterscheiden.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Wichtig sind Beginn, Höchsttemperatur, Schüttelfrost, Begleitsymptome, Reise- und Expositionsanamnese sowie Hinweise auf einen möglichen Fokus wie Husten, Dysurie, Bauchschmerz oder Hautveränderungen.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Ebenso relevant sind Immunsuppression, kürzliche Eingriffe, Katheter, Vorerkrankungen und der Verlauf unter bereits begonnener Medikation.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Fieberhöhe, Verlauf und Allgemeinzustand, Möglichen Fokus gezielt eingrenzen, Risikokontext und Vorerkrankungen erfassen. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
+      ],
+      "question_groups": [
+        {
+          "title": "Fieberhöhe, Verlauf und Allgemeinzustand",
+          "questions": [
+            "Seit wann haben Sie Fieber oder erhöhte Temperaturen?",
+            "Wie hoch war die höchste gemessene Temperatur?",
+            "Hatten Sie Schüttelfrost oder nächtliches Schwitzen?",
+            "Ist das Fieber plötzlich aufgetreten oder eher schleichend gekommen?"
+          ]
+        },
+        {
+          "title": "Möglichen Fokus gezielt eingrenzen",
+          "questions": [
+            "Haben Sie Husten, Halsschmerzen oder Atemnot bemerkt?",
+            "Gibt es Brennen beim Wasserlassen, häufigen Harndrang oder Flankenschmerzen?",
+            "Bestehen Bauchschmerzen, Durchfall, Erbrechen oder Hautveränderungen?",
+            "Gab es in letzter Zeit Wunden, Eingriffe oder Zahnprobleme?"
+          ]
+        },
+        {
+          "title": "Risikokontext und Vorerkrankungen erfassen",
+          "questions": [
+            "Nehmen Sie Medikamente, die das Immunsystem unterdrücken?",
+            "Hatten Sie zuletzt Krankenhausaufenthalte, Katheter oder Operationen?",
+            "Waren Sie kürzlich auf Reisen oder hatten Sie Kontakt zu erkrankten Personen?",
+            "Bestehen relevante Vorerkrankungen wie Diabetes, Tumorerkrankungen oder Nierenprobleme?"
+          ]
+        },
+        {
+          "title": "Schweregrad und Warnzeichen einschätzen",
+          "questions": [
+            "Ist Ihnen schwindelig, sind Sie verwirrt oder fühlen Sie sich deutlich schwächer als sonst?",
+            "Können Sie ausreichend trinken und bei sich behalten?",
+            "Ist Ihnen Atemnot oder Herzrasen aufgefallen?",
+            "Haben Sie den Eindruck, dass sich Ihr Zustand rasch verschlechtert?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Fieber- und Infektkonstellationen",
+        "Deutsch für Ärzte: Allgemeinsymptome und Infektanamnese"
+      ]
+    },
+    {
+      "id": "bauchschmerz_akutes_abdomen",
+      "title": "Bauchschmerz und akutes Abdomen",
+      "focus": "Schmerz räumlich und qualitativ einordnen | Begleitsymptome erfassen | Urogenitalen und gynäkologischen Kontext mitdenken",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen abdominelle Beschwerden. Entscheidend sind Schmerzort, Schmerzcharakter, Begleitsymptome und eine früh hörbare Einschätzung der Dringlichkeit.",
+      "learning_text": [
+        "Bei der Anamnese zu „Bauchschmerz und akutes Abdomen“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Bauchschmerz gehört zu den ergiebigsten Leitsymptomen der FSP. Die Anamnese muss deshalb schnell Ordnung schaffen, bevor einzelne Diagnosen genannt werden.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Zuerst stehen Lokalisation, Beginn, Schmerzcharakter, Ausstrahlung und Dynamik. Danach folgen Übelkeit, Erbrechen, Stuhlverhalten, Fieber, Miktion und Nahrungsbezug.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Besonders wichtig sind Voroperationen, bekannte Gallen- oder Darmprobleme, Alkohol, Medikamente wie NSAR sowie gynäkologische und urologische Zusatzfragen, wenn sie zum Fall passen.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Schmerz räumlich und qualitativ einordnen, Begleitsymptome erfassen, Urogenitalen und gynäkologischen Kontext mitdenken. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
+      ],
+      "question_groups": [
+        {
+          "title": "Schmerz räumlich und qualitativ einordnen",
+          "questions": [
+            "Wo genau haben Sie die Schmerzen?",
+            "Sind die Schmerzen plötzlich oder schleichend begonnen?",
+            "Wie würden Sie den Schmerz beschreiben: stechend, drückend, kolikartig oder brennend?",
+            "Strahlen die Schmerzen irgendwohin aus?"
+          ]
+        },
+        {
+          "title": "Begleitsymptome erfassen",
+          "questions": [
+            "Haben Sie Übelkeit oder mussten Sie erbrechen?",
+            "Gab es Fieber oder Schüttelfrost?",
+            "Haben sich Stuhlgang oder Blähungen verändert?",
+            "Ist Ihnen Sodbrennen, Völlegefühl oder Appetitverlust aufgefallen?"
+          ]
+        },
+        {
+          "title": "Urogenitalen und gynäkologischen Kontext mitdenken",
+          "questions": [
+            "Haben Sie Brennen beim Wasserlassen oder Blut im Urin bemerkt?",
+            "Bestehen Flankenschmerzen oder häufiger Harndrang?",
+            "Gab es ähnliche Beschwerden schon einmal?",
+            "Gibt es bei Ihnen Besonderheiten, die wir gynäkologisch mitdenken müssen?"
+          ]
+        },
+        {
+          "title": "Red Flags prüfen",
+          "questions": [
+            "Werden die Schmerzen bei Bewegung oder Erschütterung stärker?",
+            "Ist der Bauch hart oder sehr druckempfindlich geworden?",
+            "Konnten Sie Flüssigkeit oder Nahrung gar nicht mehr bei sich behalten?",
+            "Haben Sie Kreislaufbeschwerden oder fühlen Sie sich deutlich schlechter als zu Beginn?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: akutes Abdomen",
+        "FSP KURZ UND KNAPP Berlin: Bauchschmerz"
+      ]
+    },
+    {
+      "id": "uebelkeit_erbrechen",
+      "title": "Übelkeit, Erbrechen und Exsikkoseanamnese",
+      "focus": "Erbrechen beschreiben | Begleitsymptome einordnen | Flüssigkeit und Kreislauf prüfen",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen abdominelle Beschwerden. Entscheidend sind Schmerzort, Schmerzcharakter, Begleitsymptome und eine früh hörbare Einschätzung der Dringlichkeit.",
+      "learning_text": [
+        "Bei der Anamnese zu „Übelkeit, Erbrechen und Exsikkoseanamnese“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Übelkeit und Erbrechen kommen in vielen Berliner Fällen vor und müssen deshalb früh sprachlich sauber eingeordnet werden.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Wichtig sind Beginn, Häufigkeit, Zusammenhang mit Essen, mögliche Blutbeimengungen, galliges Erbrechen sowie Begleitsymptome wie Bauchschmerz, Fieber, Schwindel oder Kopfschmerz.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Zusätzlich sollte nach Trinkmenge, Diurese, Medikamenten, Alkohol, Schwangerschaftsmöglichkeit und ähnlichen Episoden gefragt werden.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Erbrechen beschreiben, Begleitsymptome einordnen, Flüssigkeit und Kreislauf prüfen. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
+      ],
+      "question_groups": [
+        {
+          "title": "Erbrechen beschreiben",
+          "questions": [
+            "Seit wann besteht die Übelkeit beziehungsweise das Erbrechen?",
+            "Wie oft mussten Sie erbrechen?",
+            "War das Erbrechen nach dem Essen oder unabhängig davon?",
+            "Haben Sie Blut oder kaffeesatzartiges Material bemerkt?"
+          ]
+        },
+        {
+          "title": "Begleitsymptome einordnen",
+          "questions": [
+            "Bestehen Bauchschmerzen oder Bauchkrämpfe?",
+            "Haben Sie zusätzlich Durchfall, Fieber oder Schwindel?",
+            "Haben Sie Kopfschmerzen oder Sehstörungen bemerkt?",
+            "Gab es Sodbrennen, Völlegefühl oder Aufstoßen?"
+          ]
+        },
+        {
+          "title": "Flüssigkeit und Kreislauf prüfen",
+          "questions": [
+            "Können Sie überhaupt noch trinken?",
+            "Wie viel haben Sie heute ungefähr bei sich behalten?",
+            "Ist Ihnen beim Aufstehen schwindelig?",
+            "Haben Sie deutlich weniger Wasser gelassen als sonst?"
+          ]
+        },
+        {
+          "title": "Auslöser und Kontext erfassen",
+          "questions": [
+            "Gab es verdorbene Speisen, Reisen oder kranke Kontaktpersonen?",
+            "Nehmen Sie Medikamente, die den Magen reizen könnten?",
+            "Trinken Sie Alkohol oder haben Sie zuletzt mehr Alkohol konsumiert?",
+            "Gab es solche Beschwerden schon einmal?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Deutsch für Ärzte: Gastrointestinale Standardsymptome",
+        "Berlin-Liste: Magen-Darm-Fälle"
+      ]
+    },
+    {
+      "id": "diarrhoe_stuhlveraenderung",
+      "title": "Diarrhö, Blut im Stuhl und Stuhlveränderungen",
+      "focus": "Stuhlfrequenz und Qualität erfassen | Begleitbeschwerden erheben | Auslöser und Kontext prüfen",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen abdominelle Beschwerden. Entscheidend sind Schmerzort, Schmerzcharakter, Begleitsymptome und eine früh hörbare Einschätzung der Dringlichkeit.",
+      "learning_text": [
+        "Bei der Anamnese zu „Diarrhö, Blut im Stuhl und Stuhlveränderungen“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Durchfall- und Stuhlveränderungen klingen im Alltag oft banal, tragen in der FSP aber viele wichtige Differenzialdiagnosen.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Zunächst werden Frequenz, Dauer, Konsistenz, Blut- oder Schleimbeimengungen und Bauchschmerz erhoben. Danach folgen Fieber, Gewichtsverlust, Reisen, Nahrungsbezug und Medikamentenanamnese.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Relevant sind auch chronische Verläufe, frühere CED-Diagnosen, Antibiotika, Krankenhausaufenthalte oder bekannte Unverträglichkeiten.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Stuhlfrequenz und Qualität erfassen, Begleitbeschwerden erheben, Auslöser und Kontext prüfen. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
+      ],
+      "question_groups": [
+        {
+          "title": "Stuhlfrequenz und Qualität erfassen",
+          "questions": [
+            "Wie oft haben Sie am Tag Stuhlgang?",
+            "Ist der Stuhl eher wässrig, breiig oder geformt?",
+            "Haben Sie Schleim oder Blut im Stuhl bemerkt?",
+            "Ist der Stuhl eher schwarz, hell oder normal gefärbt?"
+          ]
+        },
+        {
+          "title": "Begleitbeschwerden erheben",
+          "questions": [
+            "Haben Sie Bauchschmerzen oder Krämpfe?",
+            "Bestehen Fieber, Übelkeit oder Erbrechen?",
+            "Müssen Sie nachts wegen des Stuhlgangs aufstehen?",
+            "Haben Sie Gewicht verloren oder weniger Appetit?"
+          ]
+        },
+        {
+          "title": "Auslöser und Kontext prüfen",
+          "questions": [
+            "Gab es Reisen, Antibiotika oder verdorbene Nahrungsmittel?",
+            "Sind andere Personen in Ihrem Umfeld ähnlich erkrankt?",
+            "Bestehen bekannte Darmkrankheiten oder Unverträglichkeiten?",
+            "Haben Sie in letzter Zeit Krankenhausaufenthalte gehabt?"
+          ]
+        },
+        {
+          "title": "Schweregrad einschätzen",
+          "questions": [
+            "Konnten Sie ausreichend trinken?",
+            "Fühlen Sie sich kreislaufmäßig beeinträchtigt?",
+            "Haben Sie sehr starke Schmerzen oder einen geblähten Bauch?",
+            "Ist die Symptomatik eher akut oder schon länger progredient?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Gastroenteritis, CED, Reizdarm",
+        "FSP KURZ UND KNAPP Berlin: Diarrhöfälle"
+      ]
+    },
+    {
+      "id": "oberbauchschmerz_dyspepsie",
+      "title": "Oberbauchschmerz, Pyrosis und Dyspepsie",
+      "focus": "Schmerz und Nahrungsbezug klären | Reflux- und Dyspepsiesymptome erfassen | Blutung und Warnzeichen prüfen",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen abdominelle Beschwerden. Entscheidend sind Schmerzort, Schmerzcharakter, Begleitsymptome und eine früh hörbare Einschätzung der Dringlichkeit.",
+      "learning_text": [
+        "Bei der Anamnese zu „Oberbauchschmerz, Pyrosis und Dyspepsie“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Oberbauchbeschwerden sind ein klassischer Bereich, in dem Schmerzsprache, Nahrungsbezug und Blutungsfragen besonders wichtig werden.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Wichtig sind Lokalisation im Epigastrium oder rechten Oberbauch, Nahrungsbezug, Sodbrennen, Aufstoßen, Völlegefühl, Übelkeit und Erbrechen.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Außerdem sollte nach NSAR, Alkohol, Nikotin, Helicobacter-Vorgeschichte, schwarzem Stuhl und Gewichtsverlust gefragt werden.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Schmerz und Nahrungsbezug klären, Reflux- und Dyspepsiesymptome erfassen, Blutung und Warnzeichen prüfen. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
+      ],
+      "question_groups": [
+        {
+          "title": "Schmerz und Nahrungsbezug klären",
+          "questions": [
+            "Wo genau sitzen die Beschwerden im Oberbauch?",
+            "Treten die Beschwerden vor oder nach dem Essen auf?",
+            "Wie würden Sie den Schmerz beschreiben?",
+            "Strahlen die Beschwerden in Rücken oder Schulter aus?"
+          ]
+        },
+        {
+          "title": "Reflux- und Dyspepsiesymptome erfassen",
+          "questions": [
+            "Haben Sie Sodbrennen oder saures Aufstoßen?",
+            "Gibt es Völlegefühl oder frühe Sättigung?",
+            "Ist Ihnen übel oder mussten Sie erbrechen?",
+            "Haben Sie Schluckbeschwerden bemerkt?"
+          ]
+        },
+        {
+          "title": "Blutung und Warnzeichen prüfen",
+          "questions": [
+            "Haben Sie schwarzem Stuhl oder Blut beim Erbrechen bemerkt?",
+            "Gab es Gewichtsverlust oder nächtliche Beschwerden?",
+            "Nehmen Sie Schmerzmittel wie Ibuprofen oder Diclofenac?",
+            "Trinken Sie regelmäßig Alkohol oder rauchen Sie?"
+          ]
+        },
+        {
+          "title": "Kontext und Vorbelastung erheben",
+          "questions": [
+            "Gab es ähnliche Beschwerden schon früher?",
+            "Wurde bei Ihnen schon einmal ein Magengeschwür oder Helicobacter festgestellt?",
+            "Bestehen Gallenprobleme oder Lebererkrankungen?",
+            "Nehmen Sie Medikamente gegen Sodbrennen oder Magenschutz ein?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Deutsch für Ärzte: obere GI-Beschwerden",
+        "FSP KURZ UND KNAPP Berlin: Reflux und Ulkus"
+      ]
+    },
+    {
+      "id": "flankenschmerz_kolik",
+      "title": "Flanken-, Leisten- und kolikartiger Schmerz",
+      "focus": "Schmerzcharakter erfassen | Harnwegsbeschwerden mitprüfen | Infektzeichen und Red Flags erheben",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen urogenitale und metabolische Beschwerden. Wichtig sind Symptomqualität, Ausscheidungsverhalten, Fieber, Flankenschmerz und Zeichen einer systemischen Beteiligung.",
+      "learning_text": [
+        "Bei der Anamnese zu „Flanken-, Leisten- und kolikartiger Schmerz“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Flankenschmerzfälle leben stark von der Schmerzqualität und von der Frage, ob eine Infektion mitläuft oder nicht.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Zentral sind Beginn, Kolikcharakter, Ausstrahlung in Leiste oder Genitalregion, Hämaturie, Dysurie, Fieber und Bewegungsunruhe.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Ebenso wichtig sind frühere Steinereignisse, Trinkgewohnheiten, Medikamente und bekannte Nierenerkrankungen.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Schmerzcharakter erfassen, Harnwegsbeschwerden mitprüfen, Infektzeichen und Red Flags erheben. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
+      ],
+      "question_groups": [
+        {
+          "title": "Schmerzcharakter erfassen",
+          "questions": [
+            "Seit wann bestehen die Flankenschmerzen?",
+            "Sind die Schmerzen eher wellenförmig oder konstant?",
+            "Strahlen die Schmerzen in die Leiste oder den Unterbauch aus?",
+            "Müssen Sie wegen der Schmerzen ständig die Position wechseln?"
+          ]
+        },
+        {
+          "title": "Harnwegsbeschwerden mitprüfen",
+          "questions": [
+            "Haben Sie Brennen beim Wasserlassen?",
+            "Ist Ihnen Blut im Urin aufgefallen?",
+            "Müssen Sie häufiger Wasser lassen als sonst?",
+            "Kommt nur wenig Urin oder gar keiner?"
+          ]
+        },
+        {
+          "title": "Infektzeichen und Red Flags erheben",
+          "questions": [
+            "Hatten Sie Fieber oder Schüttelfrost?",
+            "Müssen Sie erbrechen oder können Sie kaum trinken?",
+            "Fühlen Sie sich kreislaufmäßig beeinträchtigt?",
+            "Gab es ähnliche Anfälle schon einmal?"
+          ]
+        },
+        {
+          "title": "Vorerkrankungen und Verlauf abfragen",
+          "questions": [
+            "Sind bei Ihnen schon einmal Nieren- oder Harnleitersteine festgestellt worden?",
+            "Bestehen bekannte Nierenerkrankungen?",
+            "Nehmen Sie regelmäßig Medikamente ein?",
+            "Wie viel trinken Sie normalerweise am Tag?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Nephrolithiasis",
+        "FSP KURZ UND KNAPP Berlin: Uro-Fälle"
+      ]
+    },
+    {
+      "id": "dysurie_haematurie",
+      "title": "Dysurie, Hämaturie und Harnwegsbeschwerden",
+      "focus": "Miktionssymptome klären | Urinveränderungen erfassen | Infekt und obere Harnwege mitdenken",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen urogenitale und metabolische Beschwerden. Wichtig sind Symptomqualität, Ausscheidungsverhalten, Fieber, Flankenschmerz und Zeichen einer systemischen Beteiligung.",
+      "learning_text": [
+        "Bei der Anamnese zu „Dysurie, Hämaturie und Harnwegsbeschwerden“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Miktionsthemen werden von vielen Lernenden zu vorsichtig oder zu unstrukturiert angesprochen. Gerade deshalb lohnt sich eine klare Standardsprache.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Zuerst stehen Dysurie, Pollakisurie, Nykturie, Harnmenge, Hämaturie und Drang. Danach folgen Fieber, Flankenschmerz, Inkontinenz und Restharngefühl.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Auch Sexualanamnese, Schwangerschaft, Katheter, Prostata, frühere Infekte und Medikamente können relevant sein.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Miktionssymptome klären, Urinveränderungen erfassen, Infekt und obere Harnwege mitdenken. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
+      ],
+      "question_groups": [
+        {
+          "title": "Miktionssymptome klären",
+          "questions": [
+            "Haben Sie Brennen oder Schmerzen beim Wasserlassen?",
+            "Müssen Sie häufiger zur Toilette als sonst?",
+            "Lassen Sie jeweils nur kleine Mengen Wasser?",
+            "Müssen Sie nachts zum Wasserlassen aufstehen?"
+          ]
+        },
+        {
+          "title": "Urinveränderungen erfassen",
+          "questions": [
+            "Ist Ihnen Blut im Urin aufgefallen?",
+            "Hat sich Farbe oder Geruch des Urins verändert?",
+            "Haben Sie das Gefühl, die Blase nicht ganz entleeren zu können?",
+            "Gab es unfreiwilligen Urinverlust?"
+          ]
+        },
+        {
+          "title": "Infekt und obere Harnwege mitdenken",
+          "questions": [
+            "Bestehen Fieber oder Schüttelfrost?",
+            "Haben Sie Flankenschmerzen oder Druck im Unterbauch?",
+            "Ist Ihnen übel oder mussten Sie erbrechen?",
+            "Fühlen Sie sich insgesamt krank oder geschwächt?"
+          ]
+        },
+        {
+          "title": "Kontextfragen stellen",
+          "questions": [
+            "Gab es ähnliche Beschwerden früher schon einmal?",
+            "Bestehen Prostata-, Nieren- oder Blasenprobleme?",
+            "Hatten Sie zuletzt Katheter, Eingriffe oder neue Sexualkontakte?",
+            "Nehmen Sie Medikamente ein, die die Blutung oder Miktion beeinflussen könnten?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Harnwegsinfektion und Prostata",
+        "AWMF Harnwegsinfektionen Erwachsene"
+      ]
+    },
+    {
+      "id": "polyurie_polydipsie",
+      "title": "Polyurie, Polydipsie und Diabetesanamnese",
+      "focus": "Kernsymptome des Stoffwechsels erfassen | Zusatzsymptome klären | Bekannten Diabetes und Therapie erfragen",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen urogenitale und metabolische Beschwerden. Wichtig sind Symptomqualität, Ausscheidungsverhalten, Fieber, Flankenschmerz und Zeichen einer systemischen Beteiligung.",
+      "learning_text": [
+        "Bei der Anamnese zu „Polyurie, Polydipsie und Diabetesanamnese“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Bei Stoffwechselbeschwerden ist die Anamnese besonders wertvoll, weil schon wenige Fragen eine starke Richtung vorgeben können.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Zentral sind vermehrter Durst, häufiges Wasserlassen, Gewichtsveränderung, Müdigkeit, Sehstörung, Infektneigung, Appetit und Medikamentenadhärenz.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Außerdem sollte nach bekannten Diabetesdiagnosen, Insulin oder Tabletten, Blutzuckerwerten und früheren Entgleisungen gefragt werden.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Kernsymptome des Stoffwechsels erfassen, Zusatzsymptome klären, Bekannten Diabetes und Therapie erfragen. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
+      ],
+      "question_groups": [
+        {
+          "title": "Kernsymptome des Stoffwechsels erfassen",
+          "questions": [
+            "Haben Sie in letzter Zeit deutlich mehr Durst als sonst?",
+            "Müssen Sie häufiger Wasser lassen?",
+            "Haben Sie ungewollt Gewicht verloren oder zugenommen?",
+            "Fühlen Sie sich auffallend müde oder abgeschlagen?"
+          ]
+        },
+        {
+          "title": "Zusatzsymptome klären",
+          "questions": [
+            "Ist Ihnen verschwommenes Sehen aufgefallen?",
+            "Haben Sie häufiger Infekte oder schlecht heilende Wunden?",
+            "Haben Sie mehr Hunger oder eher Appetitverlust?",
+            "Gab es Übelkeit oder Erbrechen?"
+          ]
+        },
+        {
+          "title": "Bekannten Diabetes und Therapie erfragen",
+          "questions": [
+            "Ist bei Ihnen bereits ein Diabetes bekannt?",
+            "Nehmen Sie Tabletten oder Insulin?",
+            "Messen Sie Ihren Blutzucker regelmäßig?",
+            "Gab es schon einmal Unter- oder Überzuckerungen?"
+          ]
+        },
+        {
+          "title": "Warnzeichen der Entgleisung prüfen",
+          "questions": [
+            "Sind Sie sehr durstig, trocken oder benommen?",
+            "Atmen Sie schneller oder tiefer als sonst?",
+            "Hatten Sie in letzter Zeit deutlich erhöhte Blutzuckerwerte?",
+            "Fühlen Sie sich heute deutlich kränker als an den Vortagen?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Berlin-Liste: Diabetes mellitus",
+        "Deutsch für Ärzte: Stoffwechselanamnese"
+      ]
+    },
+    {
+      "id": "gewichtsverlust_b_symptomatik",
+      "title": "Gewichtsverlust, Inappetenz und B-Symptomatik",
+      "focus": "Gewichtsverlust quantifizieren | B-Symptomatik und Allgemeinbefinden erfragen | Systematisch nach Organhinweisen fragen",
+      "summary": "Diese Anamnese sollte wie ein in sich geschlossener Gesprächsweg aufgebaut sein: vom offenen Einstieg über die gezielte Vertiefung bis zur Einordnung von Warnzeichen und Dringlichkeit. Im Mittelpunkt stehen klinische Standardsituationen der Fachsprachprüfung. Entscheidend ist, dass medizinische Ordnung, sprachliche Klarheit und praktisches Vorgehen zusammenfinden.",
+      "learning_text": [
+        "Bei der Anamnese zu „Gewichtsverlust, Inappetenz und B-Symptomatik“ geht es nicht um eine vorschnelle Diagnose, sondern um eine offene, geordnete Gesprächsführung. Vom ersten Satz an sollte klar werden, welches Hauptproblem im Vordergrund steht und wie dringlich die Situation eingeschätzt werden muss.",
+        "Zu Beginn braucht das Gespräch einen klaren Rahmen. Gewichtsverlust und Allgemeinsymptome wirken in der Anamnese leicht unscharf. Gerade deshalb brauchen sie einen klaren Frageweg.",
+        "Danach sollte das Leitsymptom systematisch vertieft werden. Wichtig sind Ausmaß und Zeitraum des Gewichtsverlusts, Appetit, Fieber, Nachtschweiß, Fatigue, Husten, Stuhl- und Miktionsthemen sowie Schmerzen.",
+        "Für die klinische Einordnung sind Begleitsymptome und Risikofaktoren entscheidend. Zusätzlich relevant sind Nikotin, Alkohol, Tumoranamnese, chronische Entzündungen, Depression, Schilddrüse und soziale Faktoren wie Nahrungsaufnahme oder Isolation.",
+        "Sinnvoll ist eine feste innere Ordnung des Gesprächs, zum Beispiel über die Achsen Gewichtsverlust quantifizieren, B-Symptomatik und Allgemeinbefinden erfragen, Systematisch nach Organhinweisen fragen. So bleibt die Anamnese offen für Differenzialdiagnosen und gleichzeitig klar genug, um Warnzeichen früh zu erkennen.",
+        "Am Ende sollte kein Sammelsurium einzelner Fragen stehen, sondern ein anamnestischer Befund, der Verlauf, Schweregrad, relevante Begleitsymptome, Risikofaktoren und das weitere Vorgehen nachvollziehbar verbindet."
+      ],
+      "question_groups": [
+        {
+          "title": "Gewichtsverlust quantifizieren",
+          "questions": [
+            "Wie viel Gewicht haben Sie ungefähr verloren?",
+            "Über welchen Zeitraum ist das passiert?",
+            "War der Gewichtsverlust beabsichtigt oder ungewollt?",
+            "Wie ist Ihr Appetit im Vergleich zu früher?"
+          ]
+        },
+        {
+          "title": "B-Symptomatik und Allgemeinbefinden erfragen",
+          "questions": [
+            "Hatten Sie Fieber oder Nachtschweiß?",
+            "Fühlen Sie sich ungewöhnlich müde oder leistungsgemindert?",
+            "Haben Sie Husten, Luftnot oder andere Infektzeichen?",
+            "Gab es Schmerzen oder Schluckbeschwerden?"
+          ]
+        },
+        {
+          "title": "Systematisch nach Organhinweisen fragen",
+          "questions": [
+            "Haben sich Stuhlgang oder Wasserlassen verändert?",
+            "Ist Ihnen Blut im Stuhl, Urin oder Auswurf aufgefallen?",
+            "Bestehen Bauchbeschwerden, Übelkeit oder frühe Sättigung?",
+            "Haben Sie Herzrasen, Schwitzen oder Hinweise auf eine Schilddrüsenproblematik bemerkt?"
+          ]
+        },
+        {
+          "title": "Kontext und Risikofaktoren mitdenken",
+          "questions": [
+            "Rauchen Sie oder trinken Sie regelmäßig Alkohol?",
+            "Gab es früher Krebserkrankungen oder chronische Entzündungen?",
+            "Wie ist Ihre Stimmung und Ihre Nahrungsaufnahme im Alltag?",
+            "Haben Sie solche Beschwerden schon einmal erlebt?"
+          ]
+        }
+      ],
+      "exam_sentences": [],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Deutsch für Ärztinnen und Ärzte: Allgemeinsymptome",
+        "Berlin-Liste: onkologische und chronische Warnsymptome"
       ]
     }
   ],
@@ -743,7 +1265,7 @@
       "url": "https://register.awmf.org/assets/guidelines/nvl-005l_S3_Unipolare-Depression_2023-07.pdf"
     },
     {
-      "label": "AWMF S3 Alkoholbezogene Stoerungen (076-001)",
+      "label": "AWMF S3 Alkoholbezogene Störungen (076-001)",
       "url": "https://www.awmf.org/aktuelles-und-angebot/awmf-aktuell/screening-diagnostik-und-behandlung-alkoholbezogener-stoerungen"
     },
     {
@@ -765,6 +1287,18 @@
     {
       "label": "DGN/DMKG Leitlinie Migrainetherapie (AWMF 030-057)",
       "url": "https://register.awmf.org/assets/guidelines/030-057l_S1_Therapie-der-Migraeneattacke-Prophylaxe-der-Migraene_2025-11.pdf"
+    },
+    {
+      "label": "Info: Berlin liste nur wichtigsten Themen 44",
+      "url": "info/Berlin liste nur wichtigsten Themen 44.pdf"
+    },
+    {
+      "label": "Info: FSP KURZ UND KNAPP Berlin",
+      "url": "info/FSP KURZ Und KNAPP Berlin Final Version.pdf"
+    },
+    {
+      "label": "Info: Deutsch für Ärzte",
+      "url": "info/Deutsch für Ärzte.pdf"
     }
   ]
 }

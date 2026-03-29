@@ -1,493 +1,901 @@
 {
   "title": "Lernbereich",
-  "subtitle": "Aufklaerungsgespraeche fuer die FSP Berlin",
-  "scope_note": "Dieses Modul trainiert patientengerechte Erklaerungen diagnostischer und invasiver Verfahren. Schwerpunkt ist sprachliche Klarheit, Risiko-Nutzen-Kommunikation und sichere Einwilligungssprache auf B2/C1-Niveau.",
+  "subtitle": "Aufklärungsgespräche für Diagnostik und Eingriffe",
+  "scope_note": "Dieses Modul bündelt die wichtigsten diagnostischen und operativen Aufklärungen aus dem Info-Ordner. Schwerpunkt ist eine ruhige, verständliche Nutzen-Risiko-Kommunikation auf FSP-Niveau.",
   "references": [
     {
-      "label": "Fachsprachkurs PDF: EKG, Sonographie, CT/MRT, Gastroskopie, Lumbalpunktion, PDA",
+      "label": "Info: Aufklärungen komplett",
+      "url": "info/Aufklärungen komplett.docx"
+    },
+    {
+      "label": "Fachsprachkurs PDF: Diagnostik und Aufklärung",
       "url": "data/fachsprachkurs.pdf"
     },
     {
-      "label": "AEKB Berlin: Kommunikationsanforderungen in der FSP",
-      "url": "https://www.aekb.de"
+      "label": "Info: Kommunikation für ausländische Ärzte",
+      "url": "info/345404168-kommunikation-fur-auslandische-arzte-unbekannt.pdf"
     }
   ],
   "categories": [
     {
       "id": "ekg_monitoring",
-      "title": "EKG und Basis-Monitoring erklaeren",
-      "focus": "Kurze, klare Erklaerung von Zweck, Ablauf und Grenzen eines EKG",
-      "summary": "Viele Kandidatinnen und Kandidaten nennen beim EKG nur den Namen der Untersuchung. In der Pruefung wird aber bewertet, ob die Patientin oder der Patient versteht, was genau passiert und warum diese Untersuchung jetzt sinnvoll ist.",
+      "title": "EKG und Basis-Monitoring erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
       "learning_text": [
-        "Ein gutes Aufklaerungsgespraech zum EKG beginnt mit dem Anlass und endet mit einer klaren Erwartungssteuerung. Ein pruefungsnaher Einstieg ist: Wir schreiben jetzt ein EKG, um Ihren Herzrhythmus und moegliche Durchblutungsstoerungen zu beurteilen. Damit weiss die Patientin sofort Ziel und medizinischen Kontext.",
-        "Im zweiten Schritt folgt die konkrete Ablauferklaerung in Patientensprache. Wichtig sind Elektroden auf Brust und Extremitaeten, kurze Dauer, keine Schmerzen und keine Strahlenbelastung. Sprachlich problematisch ist unscharfes Vokabular wie Wir gucken mal kurz. Besser ist ein strukturierter Ablauf in zwei bis drei kurzen Saetzen.",
-        "Der dritte Schritt ist die Abgrenzung von Aussage und Grenze der Untersuchung. Ein EKG kann richtungsweisend sein, ersetzt aber nicht jede weitere Diagnostik. Diese Differenzierung wirkt professionell und vermeidet falsche Sicherheit. In Berlin wird positiv gewertet, wenn Kandidaten plausibel erklaeren, warum bei unauffaelligem EKG je nach Klinik trotzdem weitere Schritte folgen.",
-        "Abschliessend sollte die Kandidatin aktiv auf Fragen eingehen und den naechsten Schritt nennen. Beispiel: Danach besprechen wir das Ergebnis gemeinsam und entscheiden, ob wir zusaetzlich Blutwerte oder weitere Diagnostik brauchen. Das verbindet medizinische Logik mit patientenzentrierter Kommunikation."
+        "In der Aufklärung zu „EKG und Basis-Monitoring erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Herzrhythmus, mögliche Durchblutungsstörungen und akute Belastungszeichen des Herzens rasch zu beurteilen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: Oberkörper freimachen, Elektroden ankleben, kurze Ableitung in Ruhe durchführen und das Ergebnis direkt auswerten. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Herzrhythmus, mögliche Durchblutungsstörungen und akute Belastungszeichen des Herzens rasch zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Wir kleben Ihnen einige Elektroden auf Brust, Arme und Beine, damit wir die elektrische Aktivität Ihres Herzens aufzeichnen können. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: Oberkörper freimachen, Elektroden ankleben, kurze Ableitung in Ruhe durchführen und das Ergebnis direkt auswerten. Vorbereitung heißt hier vor allem: den Oberkörper freizumachen, still zu liegen und Metallschmuck oder stark störende Gegenstände abzulegen. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Wir schreiben jetzt ein EKG, um Herzrhythmus und mögliche Belastungszeichen des Herzens zu beurteilen. Die Untersuchung ist schmerzfrei und dauert nur wenige Minuten. Bitte liegen Sie während der Ableitung möglichst ruhig."
       ],
       "question_groups": [
         {
-          "title": "Indikation und Zielsetzung",
+          "title": "Medizinischer Kern",
           "questions": [
-            "Warum ist das EKG in der aktuellen Situation notwendig?",
-            "Welche konkrete klinische Frage soll zuerst beantwortet werden?",
-            "Wird ein Ruhe-EKG ausreichen oder ist spaeter ein Langzeit-/Belastungs-EKG denkbar?",
-            "Welche Symptome des Patienten leiten die Diagnostik?",
-            "Welche Differentialdiagnosen sollen initial ausgeschlossen werden?"
+            "Der medizinische Nutzen liegt darin, Herzrhythmus, mögliche Durchblutungsstörungen und akute Belastungszeichen des Herzens rasch zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Wir kleben Ihnen einige Elektroden auf Brust, Arme und Beine, damit wir die elektrische Aktivität Ihres Herzens aufzeichnen können.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
           ]
         },
         {
-          "title": "Ablauf patientengerecht erklaeren",
+          "title": "Ablauf und Vorbereitung",
           "questions": [
-            "Wie erklaeren Sie Elektroden und Messprinzip ohne Fachjargon?",
-            "Wie lange dauert die Untersuchung und was muss der Patient beachten?",
-            "Wie erklaeren Sie, dass das EKG schmerzfrei ist?",
-            "Wie gehen Sie mit Angst oder Scham beim Entkleiden um?",
-            "Welche Formulierung nutzen Sie, um Ruhe waehrend der Ableitung zu begruenden?"
+            "Zum Ablauf gehören in verständlicher Reihenfolge: Oberkörper freimachen, Elektroden ankleben, kurze Ableitung in Ruhe durchführen und das Ergebnis direkt auswerten. Vorbereitung heißt hier vor allem: den Oberkörper freizumachen, still zu liegen und Metallschmuck oder stark störende Gegenstände abzulegen.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
           ]
         },
         {
-          "title": "Ergebnis und naechste Schritte",
+          "title": "Belastungen, Risiken und Grenzen",
           "questions": [
-            "Wie kommunizieren Sie einen unauffaelligen Befund ohne falsche Entwarnung?",
-            "Wie erklaeren Sie einen auffaelligen Rhythmusbefund patientengerecht?",
-            "Wie formulieren Sie den Plan fuer weitere Diagnostik?",
-            "Welche Warnzeichen nennen Sie fuer eine sofortige Wiedervorstellung?",
-            "Wie sichern Sie Verstaendnis am Ende aktiv ab?"
+            "Wichtige Punkte sind: die Untersuchung schmerzfrei und praktisch risikolos ist, aber ein unauffälliges EKG nicht jede Herzerkrankung sicher ausschließt. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Danach erkläre ich Ihnen sofort, was wir im EKG sehen und ob wir weitere Schritte brauchen.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
           ]
         }
       ],
       "exam_sentences": [
-        "Wir schreiben jetzt ein EKG, um Herzrhythmus und moegliche Belastungszeichen des Herzens zu beurteilen.",
+        "Wir schreiben jetzt ein EKG, um Herzrhythmus und mögliche Belastungszeichen des Herzens zu beurteilen.",
         "Die Untersuchung ist schmerzfrei und dauert nur wenige Minuten.",
-        "Ein EKG liefert wichtige Hinweise, aber je nach Befund brauchen wir eventuell weitere Untersuchungen.",
-        "Danach erklaere ich Ihnen das Ergebnis sofort und wir legen die naechsten Schritte gemeinsam fest."
+        "Bitte liegen Sie während der Ableitung möglichst ruhig.",
+        "Ein EKG liefert uns schnell wichtige Hinweise, ersetzt aber nicht jede weitere Diagnostik.",
+        "Im Anschluss bespreche ich das Ergebnis direkt mit Ihnen."
       ],
       "linked_term_ids": [
         "online_kurs_elektrokardiogramm",
-        "online_kurs_elektrokardiographie",
-        "online_kurs_belastungs_ekg",
-        "online_kurs_rr_apparat",
         "online_kurs_arrhythmie",
         "online_kurs_tachykardie",
         "online_kurs_bradykardie"
       ],
-      "mini_scenario": {
-        "title": "Mini-Szenario: Thoraxschmerz in der Notaufnahme",
-        "situation": "Ein 59-jaehriger Patient berichtet ueber drueckenden Brustschmerz seit 45 Minuten und wirkt deutlich besorgt.",
-        "task_patient": "Erklaeren Sie in maximal vier Saetzen, warum sofort ein EKG geschrieben wird.",
-        "task_doctor": "Formulieren Sie eine strukturierte 30-Sekunden-Uebergabe mit EKG-Indikation und naechstem Schritt.",
-        "task_letter": "Dokumentieren Sie die Aufklaerung zum EKG in zwei praezisen Arztbrief-Saetzen."
-      },
       "source_tags": [
-        "Fachsprachkurs PDF: EKG-Dialogbeispiele",
-        "Berlin FSP: patientenverstaendliche Diagnostikerklaerung"
+        "Fachsprachkurs PDF: EKG-Dialoge",
+        "Aufklärungen komplett: Basisdiagnostik patientengerecht erklären"
       ]
     },
     {
-      "id": "sonographie",
-      "title": "Sonographie verstaendlich erklaeren",
-      "focus": "Nutzen, Ablauf und Grenzen des Ultraschalls in einfacher Sprache",
-      "summary": "Bei der Sonographie wird in der Pruefung oft erwartet, dass Sie technische Begriffe korrekt, aber patientennah erklaeren. Ziel ist eine beruhigende und gleichzeitig fachlich korrekte Kommunikation.",
+      "id": "sonographie_verstaendlich",
+      "title": "Sonographie verständlich erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
       "learning_text": [
-        "Eine starke Sonographie-Erklaerung benennt zuerst den Nutzen fuer die aktuelle Beschwerde. Beispiel: Mit dem Ultraschall koennen wir Ihre Organe und Gefaesse ohne Strahlenbelastung anschauen. Diese Priorisierung hilft dem Patienten, den Sinn der Untersuchung sofort zu verstehen.",
-        "Im Ablauf sollten Gel, Schallkopf, eventuell Druckgefuehl und die typische Untersuchungsdauer erwaehnt werden. Unnötig detailreiche Physikerklaerungen kosten Zeit und bringen in der FSP keinen Mehrwert. Entscheidend ist sprachliche Sicherheit und Struktur.",
-        "Wichtig ist ausserdem die Erwartungssteuerung: Sonographie ist oft eine sehr gute erste Bildgebung, aber nicht in jeder Situation ausreichend. Kandidaten sollten transparent sagen, wann bei unklaren Befunden zusaetzlich CT oder MRT erforderlich sein kann.",
-        "Bei angespannten Patienten wirkt eine kurze Sicherheitsschleife professionell: Wenn etwas unangenehm ist, sagen Sie mir bitte sofort Bescheid. Diese Formulierung verbindet Empathie mit klarer Rollensicherheit."
+        "In der Aufklärung zu „Sonographie verständlich erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, innere Organe oder Gefäße ohne Strahlenbelastung in Echtzeit zu beurteilen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: Gel auftragen, den Schallkopf über die Haut führen und die Bilder direkt am Monitor beurteilen. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, innere Organe oder Gefäße ohne Strahlenbelastung in Echtzeit zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Mit Ultraschall schauen wir von außen mit Schallwellen auf Organe oder Gefäße, ohne dass Sie dabei Strahlung bekommen. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: Gel auftragen, den Schallkopf über die Haut führen und die Bilder direkt am Monitor beurteilen. Vorbereitung heißt hier vor allem: je nach Region nüchtern zu bleiben, bequeme Lagerung zu ermöglichen und zu wissen, dass das Gel sich kalt anfühlen kann. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Mit dem Ultraschall können wir Organe oder Gefäße ohne Strahlung beurteilen. Ich trage etwas Gel auf und führe dann den Schallkopf über die Haut. Die Untersuchung ist normalerweise schmerzfrei."
       ],
       "question_groups": [
         {
-          "title": "Indikation",
+          "title": "Medizinischer Kern",
           "questions": [
-            "Welche klinische Frage wollen Sie mit der Sonographie beantworten?",
-            "Welche Region soll untersucht werden und warum?",
-            "Ist die Sonographie Erstdiagnostik oder Verlaufskontrolle?",
-            "Welche Befunde waeren richtungsweisend?",
-            "Welche Alternativen gibt es bei unzureichender Aussagekraft?"
+            "Der medizinische Nutzen liegt darin, innere Organe oder Gefäße ohne Strahlenbelastung in Echtzeit zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Mit Ultraschall schauen wir von außen mit Schallwellen auf Organe oder Gefäße, ohne dass Sie dabei Strahlung bekommen.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
           ]
         },
         {
-          "title": "Ablauf",
+          "title": "Ablauf und Vorbereitung",
           "questions": [
-            "Wie erklaeren Sie Gel und Schallkopf in alltagstauglicher Sprache?",
-            "Wie gehen Sie auf moegliches Druckgefuehl ein?",
-            "Wie lange dauert die Untersuchung realistisch?",
-            "Welche Vorbereitung ist eventuell noetig (nuechtern, Blasenfuellung)?",
-            "Wie holen Sie aktiv Einverstaendnis vor Untersuchungsbeginn ein?"
+            "Zum Ablauf gehören in verständlicher Reihenfolge: Gel auftragen, den Schallkopf über die Haut führen und die Bilder direkt am Monitor beurteilen. Vorbereitung heißt hier vor allem: je nach Region nüchtern zu bleiben, bequeme Lagerung zu ermöglichen und zu wissen, dass das Gel sich kalt anfühlen kann.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
           ]
         },
         {
-          "title": "Befundkommunikation",
+          "title": "Belastungen, Risiken und Grenzen",
           "questions": [
-            "Wie kommunizieren Sie unauffaellige Sonographiebefunde?",
-            "Wie erklaeren Sie einen unklaren oder grenzwertigen Befund?",
-            "Wie ueberleiten Sie patientengerecht auf weiterfuehrende Bildgebung?",
-            "Welche Warnzeichen nennen Sie bis zur weiteren Abklaerung?",
-            "Wie sichern Sie, dass der Patient den Plan verstanden hat?"
+            "Wichtige Punkte sind: die Untersuchung schmerzfrei und ohne Strahlenbelastung ist, ihre Aussagekraft aber von der Fragestellung, der Lage der Organe und manchmal auch von Luft im Darm abhängen kann. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Sobald die Untersuchung beendet ist, erkläre ich Ihnen direkt, was wir gesehen haben und ob noch weitere Schritte nötig sind.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
           ]
         }
       ],
       "exam_sentences": [
-        "Mit dem Ultraschall koennen wir die betroffene Region schnell und ohne Strahlenbelastung beurteilen.",
-        "Dafuer benutze ich ein Gel und einen Schallkopf, das kann kurz etwas kuehl sein.",
-        "Falls der Befund nicht eindeutig ist, planen wir im naechsten Schritt eine genauere Bildgebung.",
-        "Ich erklaere Ihnen das Ergebnis direkt nach der Untersuchung in Ruhe."
+        "Mit dem Ultraschall können wir Organe oder Gefäße ohne Strahlung beurteilen.",
+        "Ich trage etwas Gel auf und führe dann den Schallkopf über die Haut.",
+        "Die Untersuchung ist normalerweise schmerzfrei.",
+        "Je nach Fragestellung kann es hilfreich sein, nüchtern zu sein oder die Blase gefüllt zu haben.",
+        "Danach besprechen wir sofort, ob der Befund ausreicht oder wir noch weitere Diagnostik brauchen."
       ],
       "linked_term_ids": [
-        "online_kurs_doppler_sonographie",
-        "online_kurs_echokardiographie",
-        "online_kurs_angiographie",
-        "online_kurs_angioplastie"
+        "online_kurs_sonographie"
       ],
-      "mini_scenario": {
-        "title": "Mini-Szenario: Oberbauchschmerz",
-        "situation": "Eine 43-jaehrige Patientin stellt sich mit akutem rechten Oberbauchschmerz und Uebelkeit vor.",
-        "task_patient": "Erklaeren Sie den geplanten Oberbauch-Ultraschall in drei bis vier klaren Saetzen.",
-        "task_doctor": "Uebergeben Sie knapp, warum Sonographie zuerst erfolgt und wann CT folgen sollte.",
-        "task_letter": "Dokumentieren Sie die Aufklaerung und das Einverstaendnis in einem kurzen Absatz."
-      },
       "source_tags": [
-        "Fachsprachkurs PDF: Sonographie-Aufklaerung",
-        "Pruefungspraxis FSP: patientenfreundliche Ablauferklaerung"
+        "Aufklärungen komplett: Abdomensonographie und Gefäßsonographie",
+        "FSP-Berlin: bildgebende Diagnostik erklären"
+      ]
+    },
+    {
+      "id": "abdomensonographie",
+      "title": "Abdomensonographie patientengerecht aufklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
+      "learning_text": [
+        "In der Aufklärung zu „Abdomensonographie patientengerecht aufklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Leber, Gallenblase, Bauchspeicheldrüse, Nieren, Milz und weitere Bauchorgane schnell und schonend zu beurteilen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: Sie liegen entspannt auf dem Rücken, es wird Gel aufgetragen und der Schallkopf nacheinander über die verschiedenen Bauchregionen geführt. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Leber, Gallenblase, Bauchspeicheldrüse, Nieren, Milz und weitere Bauchorgane schnell und schonend zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Wir machen einen Ultraschall des Bauches, um die Organe im Bauchraum ohne Strahlung anzuschauen. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: Sie liegen entspannt auf dem Rücken, es wird Gel aufgetragen und der Schallkopf nacheinander über die verschiedenen Bauchregionen geführt. Vorbereitung heißt hier vor allem: bei geplanter Oberbauchdiagnostik möglichst nüchtern zu sein und während der Untersuchung kurz die Atmung anpassen zu können. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Wir führen einen Bauchultraschall durch, um die Organe im Bauchraum zu beurteilen. Dabei entstehen die Bilder mit Schallwellen und nicht mit Röntgenstrahlen. Sie liegen dabei auf dem Rücken, und ich bewege den Schallkopf mit etwas Gel über den Bauch."
+      ],
+      "question_groups": [
+        {
+          "title": "Medizinischer Kern",
+          "questions": [
+            "Der medizinische Nutzen liegt darin, Leber, Gallenblase, Bauchspeicheldrüse, Nieren, Milz und weitere Bauchorgane schnell und schonend zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Wir machen einen Ultraschall des Bauches, um die Organe im Bauchraum ohne Strahlung anzuschauen.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
+          ]
+        },
+        {
+          "title": "Ablauf und Vorbereitung",
+          "questions": [
+            "Zum Ablauf gehören in verständlicher Reihenfolge: Sie liegen entspannt auf dem Rücken, es wird Gel aufgetragen und der Schallkopf nacheinander über die verschiedenen Bauchregionen geführt. Vorbereitung heißt hier vor allem: bei geplanter Oberbauchdiagnostik möglichst nüchtern zu sein und während der Untersuchung kurz die Atmung anpassen zu können.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
+          ]
+        },
+        {
+          "title": "Belastungen, Risiken und Grenzen",
+          "questions": [
+            "Wichtige Punkte sind: keine Strahlenbelastung und praktisch keine Risiken bestehen, die Untersuchung aber nicht jede Ursache eines Bauchschmerzes sicher beweisen oder ausschließen kann. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Wenn wir den Ultraschall beendet haben, sage ich Ihnen direkt, ob wir einen klaren Befund sehen oder noch weiter untersuchen müssen.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Wir führen einen Bauchultraschall durch, um die Organe im Bauchraum zu beurteilen.",
+        "Dabei entstehen die Bilder mit Schallwellen und nicht mit Röntgenstrahlen.",
+        "Sie liegen dabei auf dem Rücken, und ich bewege den Schallkopf mit etwas Gel über den Bauch.",
+        "Für bestimmte Fragestellungen ist es hilfreich, wenn Sie nüchtern sind.",
+        "Anschließend besprechen wir sofort, ob der Ultraschall die Ursache Ihrer Beschwerden erklären kann."
+      ],
+      "linked_term_ids": [
+        "online_kurs_abdomensonographie"
+      ],
+      "source_tags": [
+        "Aufklärungen komplett: Abdomensonographie"
+      ]
+    },
+    {
+      "id": "thorax_roentgen",
+      "title": "Thoraxröntgen ruhig und konkret erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
+      "learning_text": [
+        "In der Aufklärung zu „Thoraxröntgen ruhig und konkret erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Lunge, Herzgröße und bestimmte akute Veränderungen im Brustkorb rasch zu beurteilen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: Metallische Gegenstände ablegen, sich korrekt vor das Gerät stellen, kurz ruhig bleiben und gegebenenfalls die Luft anhalten. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Lunge, Herzgröße und bestimmte akute Veränderungen im Brustkorb rasch zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Wir machen ein Röntgenbild des Brustkorbs, um Herz und Lunge besser beurteilen zu können. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: Metallische Gegenstände ablegen, sich korrekt vor das Gerät stellen, kurz ruhig bleiben und gegebenenfalls die Luft anhalten. Vorbereitung heißt hier vor allem: Schmuck, Gürtel oder andere störende Gegenstände abzulegen und eine mögliche Schwangerschaft unbedingt vorher zu nennen. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Wir möchten den Brustkorb röntgen, um Herz und Lunge besser beurteilen zu können. Die Untersuchung dauert nur kurz und ist schmerzfrei. Bitte sagen Sie uns unbedingt, falls eine Schwangerschaft bestehen könnte."
+      ],
+      "question_groups": [
+        {
+          "title": "Medizinischer Kern",
+          "questions": [
+            "Der medizinische Nutzen liegt darin, Lunge, Herzgröße und bestimmte akute Veränderungen im Brustkorb rasch zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Wir machen ein Röntgenbild des Brustkorbs, um Herz und Lunge besser beurteilen zu können.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
+          ]
+        },
+        {
+          "title": "Ablauf und Vorbereitung",
+          "questions": [
+            "Zum Ablauf gehören in verständlicher Reihenfolge: Metallische Gegenstände ablegen, sich korrekt vor das Gerät stellen, kurz ruhig bleiben und gegebenenfalls die Luft anhalten. Vorbereitung heißt hier vor allem: Schmuck, Gürtel oder andere störende Gegenstände abzulegen und eine mögliche Schwangerschaft unbedingt vorher zu nennen.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
+          ]
+        },
+        {
+          "title": "Belastungen, Risiken und Grenzen",
+          "questions": [
+            "Wichtige Punkte sind: die Strahlenbelastung gering ist, bei Schwangerschaft aber besonders sorgfältig abgewogen werden muss. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Sobald die Aufnahme gemacht ist, schauen wir gemeinsam, ob sich daraus schon eine klare Erklärung für Ihre Beschwerden ergibt.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Wir möchten den Brustkorb röntgen, um Herz und Lunge besser beurteilen zu können.",
+        "Die Untersuchung dauert nur kurz und ist schmerzfrei.",
+        "Bitte sagen Sie uns unbedingt, falls eine Schwangerschaft bestehen könnte.",
+        "Während der Aufnahme sollten Sie sich möglichst nicht bewegen und kurz die Luft anhalten.",
+        "Danach ordnen wir den Befund gemeinsam mit Ihren Beschwerden ein."
+      ],
+      "linked_term_ids": [
+        "online_kurs_roentgen"
+      ],
+      "source_tags": [
+        "Aufklärungen komplett: Röntgen Thorax"
+      ]
+    },
+    {
+      "id": "sprunggelenk_roentgen",
+      "title": "Sprunggelenk-Röntgen erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
+      "learning_text": [
+        "In der Aufklärung zu „Sprunggelenk-Röntgen erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Frakturen, Fehlstellungen oder andere knöcherne Verletzungen des Sprunggelenks zu erkennen oder auszuschließen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: Hose oder Verband soweit freilegen, das Bein korrekt lagern und mehrere kurze Aufnahmen aus verschiedenen Perspektiven anfertigen. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Frakturen, Fehlstellungen oder andere knöcherne Verletzungen des Sprunggelenks zu erkennen oder auszuschließen. Für die Patientensprache reicht eine ruhige Grundidee: Wir röntgen Ihr Sprunggelenk, um zu sehen, ob ein Knochen verletzt ist oder ob eher eine Verstauchung vorliegt. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: Hose oder Verband soweit freilegen, das Bein korrekt lagern und mehrere kurze Aufnahmen aus verschiedenen Perspektiven anfertigen. Vorbereitung heißt hier vor allem: das Bein freizumachen, ruhig zu halten und eine mögliche Schwangerschaft vor der Untersuchung anzusprechen. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Wir machen eine Röntgenaufnahme Ihres Sprunggelenks, um eine knöcherne Verletzung auszuschließen. Die Untersuchung ist kurz und schmerzfrei, auch wenn das Lagern etwas unangenehm sein kann. Bitte halten Sie das Bein während der Aufnahme möglichst ruhig."
+      ],
+      "question_groups": [
+        {
+          "title": "Medizinischer Kern",
+          "questions": [
+            "Der medizinische Nutzen liegt darin, Frakturen, Fehlstellungen oder andere knöcherne Verletzungen des Sprunggelenks zu erkennen oder auszuschließen. Für die Patientensprache reicht eine ruhige Grundidee: Wir röntgen Ihr Sprunggelenk, um zu sehen, ob ein Knochen verletzt ist oder ob eher eine Verstauchung vorliegt.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
+          ]
+        },
+        {
+          "title": "Ablauf und Vorbereitung",
+          "questions": [
+            "Zum Ablauf gehören in verständlicher Reihenfolge: Hose oder Verband soweit freilegen, das Bein korrekt lagern und mehrere kurze Aufnahmen aus verschiedenen Perspektiven anfertigen. Vorbereitung heißt hier vor allem: das Bein freizumachen, ruhig zu halten und eine mögliche Schwangerschaft vor der Untersuchung anzusprechen.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
+          ]
+        },
+        {
+          "title": "Belastungen, Risiken und Grenzen",
+          "questions": [
+            "Wichtige Punkte sind: die Strahlenbelastung gering ist, das Verfahren aber vor allem knöcherne und nicht jede Bandverletzung vollständig beurteilt. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Nach dem Röntgen kann ich Ihnen sagen, ob wir eher an einen Bruch, eine Distorsion oder an weitere Diagnostik denken müssen.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Wir machen eine Röntgenaufnahme Ihres Sprunggelenks, um eine knöcherne Verletzung auszuschließen.",
+        "Die Untersuchung ist kurz und schmerzfrei, auch wenn das Lagern etwas unangenehm sein kann.",
+        "Bitte halten Sie das Bein während der Aufnahme möglichst ruhig.",
+        "Die Strahlenbelastung ist gering; eine Schwangerschaft sollten Sie uns aber unbedingt mitteilen.",
+        "Je nach Befund besprechen wir danach sofort die weitere Behandlung."
+      ],
+      "linked_term_ids": [],
+      "source_tags": [
+        "Aufklärungen komplett: Röntgenaufnahme des Sprunggelenks"
       ]
     },
     {
       "id": "ct_mrt_roentgen",
-      "title": "CT, MRT und Roentgen erklaeren",
-      "focus": "Vergleich von Bildgebung, Strahlenaspekten und patientengerechter Nutzenkommunikation",
-      "summary": "Dieser Bereich ist in der FSP besonders wichtig, weil hier medizinische Praezision und Laienverstaendlichkeit kollidieren. Gute Kandidaten unterscheiden Zweck, Belastung und Dringlichkeit klar.",
+      "title": "CT, MRT und Röntgen sinnvoll unterscheiden",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
       "learning_text": [
-        "In der Pruefung sollten CT, MRT und Roentgen nicht als austauschbar dargestellt werden. Das CT ist schnell und in Notfallsituationen oft erste Wahl, das MRT bietet hohe Weichteilaufloesung ohne ionisierende Strahlung, braucht aber mehr Zeit. Diese Kernunterscheidung sollte sprachlich sicher abrufbar sein.",
-        "Zur Strahlenkommunikation gilt: ehrlich, ruhig, ohne Dramatisierung. Ein geeigneter Satz ist: Beim CT wird Roentgenstrahlung verwendet, wir setzen die Untersuchung aber nur ein, wenn der diagnostische Nutzen klar ueberwiegt. So wirkt die Aufklaerung medizinisch korrekt und vertrauensbildend.",
-        "Bei MRT-bezogenen Aengsten sind Klaustrophobie, Geraeuschpegel und Liegedauer relevant. Gute Kommunikation kombiniert Vorbereitung und Handlungsoptionen, zum Beispiel Notklingel, Pausenmoeglichkeit oder beruhigende Begleitung. Kandidaten punkten, wenn sie konkrete Entlastungsstrategien anbieten.",
-        "Zum Abschluss gehoert eine klare Antwort auf die Frage Was passiert danach. Wer den Befundpfad und die naechsten Entscheidungen transparent ankoppelt, zeigt klinische und sprachliche Handlungsfaehigkeit zugleich."
+        "In der Aufklärung zu „CT, MRT und Röntgen sinnvoll unterscheiden“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, je nach Fragestellung schnell, detailliert oder strahlungsfrei unterschiedliche Körperstrukturen sichtbar zu machen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: zuerst die Fragestellung erklären, dann das passende Verfahren auswählen und den typischen Ablauf knapp beschreiben. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, je nach Fragestellung schnell, detailliert oder strahlungsfrei unterschiedliche Körperstrukturen sichtbar zu machen. Für die Patientensprache reicht eine ruhige Grundidee: Röntgen, CT und MRT zeigen den Körper auf unterschiedliche Weise; welches Verfahren wir wählen, hängt davon ab, was wir genau suchen. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: zuerst die Fragestellung erklären, dann das passende Verfahren auswählen und den typischen Ablauf knapp beschreiben. Vorbereitung heißt hier vor allem: Metallgegenstände abzulegen, bei MRT Platzangst oder Implantate anzugeben und bei Kontrastmitteluntersuchungen Nierenfunktion oder Allergien zu beachten. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Das Röntgen ist schnell und eignet sich besonders für knöcherne Strukturen und bestimmte Übersichtsaufnahmen. Das CT arbeitet ebenfalls mit Röntgenstrahlen, liefert aber deutlich detailliertere Querschnittsbilder. Das MRT kommt ohne Röntgenstrahlen aus und ist besonders gut für Weichteile, Gehirn oder Gelenke geeignet."
       ],
       "question_groups": [
         {
-          "title": "Verfahrenswahl",
+          "title": "Medizinischer Kern",
           "questions": [
-            "Welche klinische Frage spricht fuer CT statt MRT?",
-            "Wann ist das MRT diagnostisch ueberlegen?",
-            "Welche Rolle spielt Zeitkritik in der Notfallentscheidung?",
-            "Wie begruenden Sie Roentgen als Erstuntersuchung?",
-            "Welche Kontraindikationen muessen vorab geklaert werden?"
+            "Der medizinische Nutzen liegt darin, je nach Fragestellung schnell, detailliert oder strahlungsfrei unterschiedliche Körperstrukturen sichtbar zu machen. Für die Patientensprache reicht eine ruhige Grundidee: Röntgen, CT und MRT zeigen den Körper auf unterschiedliche Weise; welches Verfahren wir wählen, hängt davon ab, was wir genau suchen.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
           ]
         },
         {
-          "title": "Aufklaerung",
+          "title": "Ablauf und Vorbereitung",
           "questions": [
-            "Wie erklaeren Sie Strahlenexposition ohne Angstverstaerkung?",
-            "Welche Punkte sprechen Sie bei Kontrastmittelgabe an?",
-            "Wie gehen Sie auf Klaustrophobie beim MRT ein?",
-            "Welche Vorbereitungshinweise geben Sie vor der Untersuchung?",
-            "Wie formulieren Sie die Einwilligung klar und kurz?"
+            "Zum Ablauf gehören in verständlicher Reihenfolge: zuerst die Fragestellung erklären, dann das passende Verfahren auswählen und den typischen Ablauf knapp beschreiben. Vorbereitung heißt hier vor allem: Metallgegenstände abzulegen, bei MRT Platzangst oder Implantate anzugeben und bei Kontrastmitteluntersuchungen Nierenfunktion oder Allergien zu beachten.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
           ]
         },
         {
-          "title": "Nach der Untersuchung",
+          "title": "Belastungen, Risiken und Grenzen",
           "questions": [
-            "Wie teilen Sie mit, wann Befunde vorliegen?",
-            "Wie erklaeren Sie einen unklaren Befund und den weiteren Plan?",
-            "Welche Nebenwirkungen nach Kontrastmittel sollten genannt werden?",
-            "Wie dokumentieren Sie Aufklaerung und Einwilligung kurz im Arztbrief?",
-            "Wie integrieren Sie Bildgebungsergebnisse in die Arzt-Arzt-Uebergabe?"
+            "Wichtige Punkte sind: Röntgen und CT mit Strahlenbelastung arbeiten, das MRT dafür länger dauert und nicht bei allen Implantaten geeignet ist. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Ich erkläre Ihnen genau, warum wir gerade dieses Verfahren auswählen und was wir uns davon erhoffen.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
           ]
         }
       ],
       "exam_sentences": [
-        "Das CT ist in Ihrer Situation die schnellste Untersuchung, um gefaehrliche Ursachen rasch auszuschliessen.",
-        "Beim MRT arbeiten wir ohne Roentgenstrahlung, die Untersuchung dauert aber laenger.",
-        "Wir waehlen die Untersuchung so, dass Nutzen und Belastung in Ihrem Fall gut ausbalanciert sind.",
-        "Sobald der Befund vorliegt, bespreche ich mit Ihnen die naechsten Schritte transparent."
+        "Das Röntgen ist schnell und eignet sich besonders für knöcherne Strukturen und bestimmte Übersichtsaufnahmen.",
+        "Das CT arbeitet ebenfalls mit Röntgenstrahlen, liefert aber deutlich detailliertere Querschnittsbilder.",
+        "Das MRT kommt ohne Röntgenstrahlen aus und ist besonders gut für Weichteile, Gehirn oder Gelenke geeignet.",
+        "Welches Verfahren wir wählen, hängt von Ihrer Fragestellung und der Dringlichkeit ab.",
+        "Danach besprechen wir den Befund immer zusammen mit den übrigen Untersuchungsergebnissen."
       ],
       "linked_term_ids": [
-        "online_kurs_kraniale_computertomographie_cct",
-        "online_kurs_myelographie",
-        "online_kurs_radikulographie",
-        "online_kurs_transkraniale_doppler_sonographie",
-        "online_kurs_ophthalmoskopie"
+        "online_kurs_computertomographie",
+        "online_kurs_mrt",
+        "online_kurs_roentgen"
       ],
-      "mini_scenario": {
-        "title": "Mini-Szenario: Akuter neurologischer Ausfall",
-        "situation": "Ein 68-jaehriger Patient entwickelt ploetzlich Dysarthrie und Halbseitenschwaeche.",
-        "task_patient": "Erklaeren Sie die dringliche CT-Indikation in patientenverstaendlicher Sprache.",
-        "task_doctor": "Uebergeben Sie den Bildgebungsplan in 20-30 Sekunden an den Oberarzt.",
-        "task_letter": "Dokumentieren Sie Aufklaerung, Einwilligung und Dringlichkeit sprachlich sauber."
-      },
       "source_tags": [
-        "Fachsprachkurs PDF: CT/MRT-Vergleich und Dialog",
-        "Berlin FSP: Aufklaerung zu Bildgebung"
+        "Fachsprachkurs PDF: CT/MRT/Röntgen erklären",
+        "Aufklärungen komplett: CT, MRT und Röntgen"
       ]
     },
     {
-      "id": "endoskopie_gastroskopie",
-      "title": "Endoskopie und Gastroskopie aufklaeren",
-      "focus": "Indikation, Sedierung, Risiken und Befundkommunikation bei endoskopischen Verfahren",
-      "summary": "Im Fachsprachkurs wurden Gastroskopie-Gespraeche mehrfach geuebt. Entscheidend ist, dass Kandidaten Zweck, Ablauf, Unannehmlichkeiten und Risiken strukturiert und ohne Ausweichen kommunizieren.",
+      "id": "gastroskopie_endoskopie",
+      "title": "Endoskopie und Gastroskopie patientengerecht erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
       "learning_text": [
-        "Die Endoskopie-Aufklaerung sollte mit dem diagnostischen Ziel starten, etwa Blutungsquelle finden, Entzuendung beurteilen oder Gewebeprobe gewinnen. Der Nutzen muss konkret am Fall orientiert sein. Allgemeine Floskeln ohne Fallbezug wirken in der Pruefung unsicher.",
-        "Danach folgt der Ablauf: Nuechternheit, lokale Betaeubung und gegebenenfalls Sedierung, Einfuehrung des Endoskops, Beobachtungsphase nach dem Eingriff. Diese Sequenz sollte in klarer Reihenfolge und mit alltagssprachlichen Begriffen erklaert werden.",
-        "Risikokommunikation ist Pflicht: Blutung, Perforation, Aspiration, Kreislaufreaktionen, Nachwirkungen der Sedierung. In der FSP geht es nicht um juristische Vollstaendigkeit, sondern um sprachlich saubere, ehrliche und angemessen gewichtete Aufklaerung.",
-        "Zum Schluss gehoeren Nachsorge und Sicherheitsnetz in einfacher Sprache dazu, zum Beispiel Verkehrsfaehigkeit nach Sedierung, Warnzeichen und Zeitpunkt der Befundbesprechung."
+        "In der Aufklärung zu „Endoskopie und Gastroskopie patientengerecht erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Speiseröhre, Magen und Zwölffingerdarm direkt anzuschauen und bei Bedarf Proben zu entnehmen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: nüchtern bleiben, Aufklärung über Beruhigungsmittel, Einführung des Endoskops und gegebenenfalls Entnahme kleiner Gewebeproben. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Speiseröhre, Magen und Zwölffingerdarm direkt anzuschauen und bei Bedarf Proben zu entnehmen. Für die Patientensprache reicht eine ruhige Grundidee: Bei der Magenspiegelung schauen wir mit einer dünnen Kamera über den Mund in Speiseröhre und Magen. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: nüchtern bleiben, Aufklärung über Beruhigungsmittel, Einführung des Endoskops und gegebenenfalls Entnahme kleiner Gewebeproben. Vorbereitung heißt hier vor allem: mehrere Stunden nüchtern zu bleiben und zu wissen, dass nach Beruhigungsmitteln vorübergehend keine aktive Teilnahme am Straßenverkehr möglich ist. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Mit der Gastroskopie können wir Speiseröhre, Magen und Zwölffingerdarm direkt beurteilen. Dafür wird ein dünnes flexibles Gerät über den Mund eingeführt. Vor der Untersuchung müssen Sie nüchtern bleiben."
       ],
       "question_groups": [
         {
-          "title": "Vorbereitung",
+          "title": "Medizinischer Kern",
           "questions": [
-            "Warum ist Nuechternheit vor Gastroskopie wichtig?",
-            "Wie erklaeren Sie den Unterschied zwischen mit und ohne Sedierung?",
-            "Welche Medikamente muessen vorab aktiv erfragt werden?",
-            "Wie sprechen Sie Antikoagulation patientengerecht an?",
-            "Wie stellen Sie sicher, dass der Patient das Vorgehen verstanden hat?"
+            "Der medizinische Nutzen liegt darin, Speiseröhre, Magen und Zwölffingerdarm direkt anzuschauen und bei Bedarf Proben zu entnehmen. Für die Patientensprache reicht eine ruhige Grundidee: Bei der Magenspiegelung schauen wir mit einer dünnen Kamera über den Mund in Speiseröhre und Magen.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
           ]
         },
         {
-          "title": "Ablauf und Risiken",
+          "title": "Ablauf und Vorbereitung",
           "questions": [
-            "Wie erklaeren Sie Endoskop, Kamera und Luftinsufflation laiengerecht?",
-            "Welche typischen Beschwerden waehrend der Untersuchung nennen Sie?",
-            "Welche Risiken muessen zwingend angesprochen werden?",
-            "Wie formulieren Sie seltene Komplikationen ohne Angstmache?",
-            "Welche Rolle haben Biopsien in der Erklaerung?"
+            "Zum Ablauf gehören in verständlicher Reihenfolge: nüchtern bleiben, Aufklärung über Beruhigungsmittel, Einführung des Endoskops und gegebenenfalls Entnahme kleiner Gewebeproben. Vorbereitung heißt hier vor allem: mehrere Stunden nüchtern zu bleiben und zu wissen, dass nach Beruhigungsmitteln vorübergehend keine aktive Teilnahme am Straßenverkehr möglich ist.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
           ]
         },
         {
-          "title": "Nachsorge",
+          "title": "Belastungen, Risiken und Grenzen",
           "questions": [
-            "Welche Verhaltensregeln gelten nach Sedierung?",
-            "Welche Warnzeichen erfordern sofortige Wiedervorstellung?",
-            "Wie kommunizieren Sie den Zeitpunkt der Befundmitteilung?",
-            "Wie dokumentieren Sie das Aufklaerungsgespraech knapp und korrekt?",
-            "Wie uebergeben Sie den Fall strukturiert im Arzt-Arzt-Gespraech?"
+            "Wichtige Punkte sind: Würgereiz, Kreislaufreaktionen, sehr selten Blutungen oder Verletzungen auftreten können, Gewebeproben aber meist unkompliziert sind. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Wenn Sie möchten, erkläre ich Ihnen auch noch einmal genau, wie sich die Untersuchung anfühlt und was wir danach beachten.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
           ]
         }
       ],
       "exam_sentences": [
-        "Wir empfehlen eine Gastroskopie, um die Ursache Ihrer Beschwerden direkt zu sehen und bei Bedarf Gewebeproben zu entnehmen.",
-        "Die Untersuchung erfolgt nuechtern; auf Wunsch ist eine Sedierung moeglich.",
-        "Seltene Risiken wie Blutung oder Verletzung bespreche ich mit Ihnen offen, damit Sie informiert entscheiden koennen.",
-        "Nach der Untersuchung erhalten Sie klare Verhaltenshinweise und wir besprechen den weiteren Plan."
+        "Mit der Gastroskopie können wir Speiseröhre, Magen und Zwölffingerdarm direkt beurteilen.",
+        "Dafür wird ein dünnes flexibles Gerät über den Mund eingeführt.",
+        "Vor der Untersuchung müssen Sie nüchtern bleiben.",
+        "Bei Bedarf können wir kleine Gewebeproben entnehmen, ohne dass Sie das bewusst merken.",
+        "Nach der Untersuchung besprechen wir den Befund und die nächsten Schritte mit Ihnen."
       ],
       "linked_term_ids": [
-        "online_kurs_duodenum",
-        "online_kurs_colon",
-        "online_kurs_angiographie",
-        "online_kurs_angioskopie",
-        "online_kurs_venenpunktion"
+        "online_kurs_endoskopie",
+        "online_kurs_gastroskopie"
       ],
-      "mini_scenario": {
-        "title": "Mini-Szenario: Melena und Anaemie",
-        "situation": "Eine 57-jaehrige Patientin berichtet ueber Teerstuhl, Schwindel und Leistungsabfall.",
-        "task_patient": "Erklaeren Sie die Gastroskopie-Indikation und das Procedere in klarer Patientensprache.",
-        "task_doctor": "Stellen Sie den Aufklaerungsstand und das Risikoprofil strukturiert dem Oberarzt vor.",
-        "task_letter": "Erstellen Sie drei kurze Arztbrief-Saetze zur Aufklaerung inklusive Einwilligung."
-      },
       "source_tags": [
-        "Fachsprachkurs PDF: Gastroskopie-Aufklaerung",
-        "Berlin FSP: Nutzen-Risiko-Kommunikation"
+        "Fachsprachkurs PDF: Endoskopie/Gastroskopie",
+        "Aufklärungen komplett: endoskopische Diagnostik"
       ]
     },
     {
       "id": "lumbalpunktion",
-      "title": "Lumbalpunktion und Liquordiagnostik erklaeren",
-      "focus": "Indikation, Ablauf, Sicherheit und Komplikationen in klarer Sprache",
-      "summary": "Die Lumbalpunktion ist sprachlich anspruchsvoll, weil viele Patienten Sorge vor Schmerzen oder neurologischen Schaeden haben. Pruefungsrelevant ist eine ruhige, strukturierte und sachlich praezise Erklaerung.",
+      "title": "Lumbalpunktion und Liquordiagnostik erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
       "learning_text": [
-        "Starten Sie mit der diagnostischen Leitfrage: Wir benoetigen Nervenwasser, um Entzuendung, Infektion oder andere Ursachen Ihrer Beschwerden besser einordnen zu koennen. Das schafft inhaltliche Orientierung.",
-        "Im Ablauf sollten Lagerung, sterile Bedingungen, lokale Betaeubung, kurze Punktion und anschliessende Beobachtung genannt werden. Die Kandidatin muss dabei einfach formulieren, aber fachlich korrekt bleiben.",
-        "Risikoseitig sind postpunktioneller Kopfschmerz, lokale Schmerzen, selten Blutung oder Infektion zu nennen. Entscheidend ist die sprachliche Balance zwischen Transparenz und Beruhigung. Pauschale Aussagen wie Das ist ganz harmlos sind in der FSP eher negativ.",
-        "Zum Ende gehoeren klare Hinweise zu Nachbeobachtung, Warnzeichen und Befundbesprechung. Damit wird aus einer rein technischen Erklaerung ein vollstaendiges Aufklaerungsgespraech."
+        "In der Aufklärung zu „Lumbalpunktion und Liquordiagnostik erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Nervenwasser zu gewinnen, um Entzündungen, Blutungen oder andere neurologische Ursachen besser beurteilen zu können. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: geeignete Lagerung in Seitenlage oder sitzend, sterile Vorbereitung, örtliche Betäubung und vorsichtige Punktion im unteren Lendenbereich. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Nervenwasser zu gewinnen, um Entzündungen, Blutungen oder andere neurologische Ursachen besser beurteilen zu können. Für die Patientensprache reicht eine ruhige Grundidee: Wir entnehmen im unteren Rücken etwas Nervenwasser, um bestimmte Erkrankungen des Nervensystems genauer abzuklären. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: geeignete Lagerung in Seitenlage oder sitzend, sterile Vorbereitung, örtliche Betäubung und vorsichtige Punktion im unteren Lendenbereich. Vorbereitung heißt hier vor allem: stille Lagerung zu halten, Gerinnungsmedikation anzugeben und zu wissen, dass wir unterhalb des Rückenmarks punktieren. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Mit der Lumbalpunktion können wir Nervenwasser untersuchen und so wichtige Hinweise auf neurologische Erkrankungen bekommen. Die Punktion erfolgt im unteren Rücken unter sterilen Bedingungen. Vorher betäuben wir die Stelle örtlich, sodass der Eingriff meist gut auszuhalten ist."
       ],
       "question_groups": [
         {
-          "title": "Indikation",
+          "title": "Medizinischer Kern",
           "questions": [
-            "Welche klinische Frage macht die Lumbalpunktion notwendig?",
-            "Welche Differentialdiagnosen sollen dadurch abgegrenzt werden?",
-            "Welche Vorbefunde beeinflussen die Dringlichkeit?",
-            "Welche Kontraindikationen muessen vorab geprueft werden?",
-            "Wie erklaeren Sie den Nutzen des Liquors in Patientensprache?"
+            "Der medizinische Nutzen liegt darin, Nervenwasser zu gewinnen, um Entzündungen, Blutungen oder andere neurologische Ursachen besser beurteilen zu können. Für die Patientensprache reicht eine ruhige Grundidee: Wir entnehmen im unteren Rücken etwas Nervenwasser, um bestimmte Erkrankungen des Nervensystems genauer abzuklären.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
           ]
         },
         {
-          "title": "Ablauf und Komfort",
+          "title": "Ablauf und Vorbereitung",
           "questions": [
-            "Wie erklaeren Sie Lagerung und sterile Vorbereitung?",
-            "Wie beschreiben Sie lokale Betaeubung und Punktion realistisch?",
-            "Welche Formulierungen reduzieren Angst ohne zu verharmlosen?",
-            "Wie sichern Sie aktive Rueckfragen des Patienten?",
-            "Wie erklaeren Sie die Beobachtungsphase nach der Punktion?"
+            "Zum Ablauf gehören in verständlicher Reihenfolge: geeignete Lagerung in Seitenlage oder sitzend, sterile Vorbereitung, örtliche Betäubung und vorsichtige Punktion im unteren Lendenbereich. Vorbereitung heißt hier vor allem: stille Lagerung zu halten, Gerinnungsmedikation anzugeben und zu wissen, dass wir unterhalb des Rückenmarks punktieren.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
           ]
         },
         {
-          "title": "Risiko und Nachsorge",
+          "title": "Belastungen, Risiken und Grenzen",
           "questions": [
-            "Welche haeufige Nebenwirkung muss angesprochen werden?",
-            "Welche seltenen Komplikationen nennen Sie verpflichtend?",
-            "Welche Warnzeichen fuer eine schnelle Wiedervorstellung gibt es?",
-            "Wie dokumentieren Sie Einwilligung und Risikoaufklaerung sprachlich sauber?",
-            "Wie uebergeben Sie die LP-Entscheidung im Arzt-Arzt-Format?"
+            "Wichtige Punkte sind: vorübergehende Kopfschmerzen, Rückenschmerzen oder sehr selten Blutungen und Infektionen auftreten können, bleibende Lähmungen aber bei korrekter Durchführung nicht zu erwarten sind. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Mir ist wichtig, dass Sie wissen: Wir punktieren unterhalb des Rückenmarks, damit wir diese Untersuchung sicher durchführen können.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
           ]
         }
       ],
       "exam_sentences": [
-        "Mit der Lumbalpunktion gewinnen wir Nervenwasser, um die Ursache Ihrer Beschwerden genauer einzugrenzen.",
-        "Wir arbeiten steril und mit lokaler Betaeubung, damit die Untersuchung fuer Sie moeglichst schonend ist.",
-        "Hauefig kann es danach zu voruebergehendem Kopfschmerz kommen; seltene Komplikationen erklaere ich Ihnen offen.",
-        "Nach der Untersuchung beobachten wir Sie und besprechen den Befundplan Schritt fuer Schritt."
+        "Mit der Lumbalpunktion können wir Nervenwasser untersuchen und so wichtige Hinweise auf neurologische Erkrankungen bekommen.",
+        "Die Punktion erfolgt im unteren Rücken unter sterilen Bedingungen.",
+        "Vorher betäuben wir die Stelle örtlich, sodass der Eingriff meist gut auszuhalten ist.",
+        "Nach der Untersuchung können vorübergehend Kopfschmerzen auftreten, schwere Komplikationen sind selten.",
+        "Anschließend beobachten wir Sie und besprechen die Ergebnisse mit Ihnen."
       ],
       "linked_term_ids": [
-        "online_kurs_lumbalpunktion",
-        "online_kurs_meningitis",
-        "online_kurs_kraniale_computertomographie_cct",
-        "online_kurs_elektroenzephalographie_eeg",
-        "online_kurs_elektroneurographie_eng"
+        "online_kurs_lumbalpunktion"
       ],
-      "mini_scenario": {
-        "title": "Mini-Szenario: Fieber, Nackensteife, Kopfschmerz",
-        "situation": "Ein 31-jaehriger Patient zeigt klinische Zeichen eines Meningitisverdachts.",
-        "task_patient": "Erklaeren Sie LP-Indikation und Risiken in klarer, nicht dramatisierender Sprache.",
-        "task_doctor": "Uebergeben Sie kurz die rationale Reihenfolge aus CT/LP/Antibiotikatherapie.",
-        "task_letter": "Dokumentieren Sie die Aufklaerung zur LP inklusive Warnzeichen nach dem Eingriff."
-      },
       "source_tags": [
-        "Fachsprachkurs PDF: Lumbalpunktion-Dialog",
-        "Neurologische Akutkommunikation in der FSP"
+        "Fachsprachkurs PDF: Lumbalpunktion",
+        "Kommunikation für ausländische Ärzte: Aufklärung belasteter Maßnahmen"
       ]
     },
     {
       "id": "pda_regionalanaesthesie",
-      "title": "PDA und Regionalanaesthesie aufklaeren",
-      "focus": "Schmerzerleichterung, Ablauf, Risiken und Entscheidungshoheit der Patientin",
-      "summary": "Im PDF war die PDA-Aufklaerung als Dialog enthalten. Dieses Thema trainiert, wie man bei Unsicherheit der Patientin professionell, empathisch und gleichzeitig strukturiert informiert.",
+      "title": "PDA und Regionalanästhesie aufklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
       "learning_text": [
-        "Bei der PDA-Aufklaerung ist das kommunikative Grundprinzip: Entscheidungshilfe statt Ueberreden. Die Kandidatin erklaert Nutzen, Grenzen und Alternativen, bleibt aber neutral und respektiert die Entscheidung der Patientin.",
-        "Sprachlich sollte der Ablauf in drei Teilen kommen: Vorbereitung, Anlage, Wirkungskontrolle. Medizinische Detailtiefe darf vorhanden sein, muss aber in patientenfreundlicher Form bleiben. Zu technische Sprache ohne Erklaerung fuehrt in der FSP oft zu Punktverlust.",
-        "Wesentliche Risiken sind Blutdruckabfall, Kopfschmerz, unvollstaendige Wirkung, selten neurologische Komplikationen. Die Formulierung sollte klar sein: seltene Komplikationen werden genannt, aber nicht dramatisiert.",
-        "Ein starker Abschluss ist die aktive Verstaendnissicherung: Was ist fuer Sie aktuell noch unklar, bevor Sie entscheiden? Das zeigt Professionalitaet und macht das Gespraech pruefungsnah."
+        "In der Aufklärung zu „PDA und Regionalanästhesie aufklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Schmerzen während Geburt oder Operation gezielt zu lindern, ohne den ganzen Körper in Narkose zu versetzen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: geeignete Lagerung, sterile Vorbereitung, örtliche Betäubung, Vorschieben einer feinen Nadel und Einlage eines dünnen Katheters. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Schmerzen während Geburt oder Operation gezielt zu lindern, ohne den ganzen Körper in Narkose zu versetzen. Für die Patientensprache reicht eine ruhige Grundidee: Bei der PDA geben wir ein Schmerzmittel über einen dünnen Katheter in die Nähe der Rückenmarksnerven. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: geeignete Lagerung, sterile Vorbereitung, örtliche Betäubung, Vorschieben einer feinen Nadel und Einlage eines dünnen Katheters. Vorbereitung heißt hier vor allem: still zu sitzen oder zu liegen, Gerinnungsmedikation vorher anzugeben und zu wissen, dass Berührung und Druck möglich sind, aber keine starken Schmerzen sein sollten. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Mit einer PDA können wir Schmerzen gezielt lindern, ohne Sie vollständig in Narkose zu versetzen. Dafür wird im Rücken unter sterilen Bedingungen ein dünner Katheter eingelegt. Während des Einlegens ist es wichtig, dass Sie möglichst ruhig bleiben."
       ],
       "question_groups": [
         {
-          "title": "Beratung und Entscheidung",
+          "title": "Medizinischer Kern",
           "questions": [
-            "Wie erklaeren Sie den Hauptnutzen einer PDA in einfacher Sprache?",
-            "Welche Alternativen sollten fair genannt werden?",
-            "Wie reagieren Sie auf Angst vor der Nadel?",
-            "Wie sichern Sie freiwillige Einwilligung statt Druck?",
-            "Wie formulieren Sie die Entscheidungshoheit der Patientin?"
+            "Der medizinische Nutzen liegt darin, Schmerzen während Geburt oder Operation gezielt zu lindern, ohne den ganzen Körper in Narkose zu versetzen. Für die Patientensprache reicht eine ruhige Grundidee: Bei der PDA geben wir ein Schmerzmittel über einen dünnen Katheter in die Nähe der Rückenmarksnerven.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
           ]
         },
         {
-          "title": "Ablauf und Wirkung",
+          "title": "Ablauf und Vorbereitung",
           "questions": [
-            "Wie beschreiben Sie den Ablauf von Lagerung bis Wirkungseintritt?",
-            "Wie erklaeren Sie die Wirkung auf Schmerzen und Motorik?",
-            "Welche realistischen Erwartungen setzen Sie?",
-            "Wie gehen Sie mit unvollstaendiger Wirkung um?",
-            "Wie erklaeren Sie notwendige Ueberwachung?"
+            "Zum Ablauf gehören in verständlicher Reihenfolge: geeignete Lagerung, sterile Vorbereitung, örtliche Betäubung, Vorschieben einer feinen Nadel und Einlage eines dünnen Katheters. Vorbereitung heißt hier vor allem: still zu sitzen oder zu liegen, Gerinnungsmedikation vorher anzugeben und zu wissen, dass Berührung und Druck möglich sind, aber keine starken Schmerzen sein sollten.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
           ]
         },
         {
-          "title": "Risiken und Nachbetreuung",
+          "title": "Belastungen, Risiken und Grenzen",
           "questions": [
-            "Welche haeufigeren Nebenwirkungen nennen Sie verpflichtend?",
-            "Wie benennen Sie seltene Risiken praezise und ruhig?",
-            "Welche Warnzeichen nach Anlage muessen genannt werden?",
-            "Wie dokumentieren Sie das Aufklaerungsgespraech sprachlich sauber?",
-            "Wie uebergeben Sie die Entscheidung im Arzt-Arzt-Gespraech?"
+            "Wichtige Punkte sind: Blutdruckabfall, ungleichmäßige Wirkung, Kopfschmerzen oder sehr selten Infektionen und Blutungen auftreten können. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Wenn Sie möchten, gehe ich mit Ihnen die häufigsten Sorgen noch einmal in Ruhe durch, bevor wir beginnen.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
           ]
         }
       ],
       "exam_sentences": [
-        "Eine PDA kann die Schmerzen deutlich lindern, waehrend Sie in der Regel wach bleiben.",
-        "Ich erklaere Ihnen den Ablauf, die Vorteile und moegliche Nebenwirkungen, damit Sie informiert entscheiden koennen.",
-        "Wie bei jedem Verfahren gibt es Risiken; ich nenne Ihnen die wichtigsten offen und verstaendlich.",
-        "Sie entscheiden selbst, ob Sie die PDA moechten. Wir unterstuetzen Sie bei jeder Option."
+        "Mit einer PDA können wir Schmerzen gezielt lindern, ohne Sie vollständig in Narkose zu versetzen.",
+        "Dafür wird im Rücken unter sterilen Bedingungen ein dünner Katheter eingelegt.",
+        "Während des Einlegens ist es wichtig, dass Sie möglichst ruhig bleiben.",
+        "Typische Risiken sind zum Beispiel ein Blutdruckabfall oder vorübergehende Kopfschmerzen, schwere Komplikationen sind selten.",
+        "Nach dem Einlegen überwachen wir Wirkung und Kreislauf engmaschig."
       ],
-      "linked_term_ids": [
-        "online_kurs_myelographie",
-        "online_kurs_lumbalpunktion",
-        "online_kurs_radikulographie",
-        "online_kurs_meningitis",
-        "online_kurs_hypotonie"
-      ],
-      "mini_scenario": {
-        "title": "Mini-Szenario: Geburtsaufklaerung",
-        "situation": "Eine Erstgebaerende fragt in der Kreißsaalaufnahme gezielt nach einer PDA.",
-        "task_patient": "Fuehren Sie ein kurzes, strukturiertes PDA-Aufklaerungsgespraech mit Verstaendnissicherung.",
-        "task_doctor": "Berichten Sie dem Oberarzt die Entscheidungslage und den Aufklaerungsstand.",
-        "task_letter": "Dokumentieren Sie die Kernpunkte der Aufklaerung in zwei bis drei Saetzen."
-      },
+      "linked_term_ids": [],
       "source_tags": [
-        "Fachsprachkurs PDF: PDA-Dialog",
-        "FSP Berlin: patientenzentrierte Entscheidungskommunikation"
+        "Fachsprachkurs PDF: PDA-Aufklärung",
+        "Kommunikation für ausländische Ärzte: Einwilligung und Risiko-Nutzen-Kommunikation"
       ]
     },
     {
-      "id": "kontrastmittel_sicherheit",
-      "title": "Kontrastmittel, Risiken und Einwilligung",
-      "focus": "Sichere Aufklaerung zu Allergie, Nierenfunktion und Beobachtung nach Gabe",
-      "summary": "Kontrastmittelaufklaerung wird oft zu allgemein gefuehrt. In der FSP zaehlt, dass Sie konkrete Risikofragen stellen, Nutzen begruenden und den Ueberwachungsplan verstaendlich machen.",
+      "id": "kontrastmittel_einwilligung",
+      "title": "Kontrastmittel, Risiken und Einwilligung erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
       "learning_text": [
-        "Die Aufklaerung zu Kontrastmitteln beginnt mit der Indikation: Das Kontrastmittel verbessert die Aussagekraft der Untersuchung. Ohne diese Begruendung wirkt das Gespraech formal, aber nicht patientenzentriert.",
-        "Danach werden Risikofaktoren aktiv erfragt: fruehere Reaktionen, bekannte Allergien, Nierenfunktion, Schilddruesenerkrankungen und relevante Medikamente. Sprachlich sollte klar sein, dass diese Fragen Sicherheitszwecken dienen.",
-        "Bei der Risikokommunikation geht es um Proportion: meist gut vertraeglich, dennoch moegliche Nebenwirkungen wie Uebelkeit, Waermegefuehl oder selten allergische Reaktionen. Gute Kandidaten nennen zudem, was das Team bei Reaktionen sofort unternimmt.",
-        "Ein professioneller Abschluss enthaelt Beobachtungszeit, Trinkempfehlung und klare Warnzeichen fuer zu Hause. Dadurch wird die Aufklaerung vollstaendig und alltagstauglich."
+        "In der Aufklärung zu „Kontrastmittel, Risiken und Einwilligung erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Gefäße, Entzündungen oder Organstrukturen in bestimmten Bildgebungen klarer darzustellen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: Fragen nach Allergien und Nierenfunktion klären, Kontrastmittel meist über eine Vene geben und die Untersuchung anschließend durchführen. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Gefäße, Entzündungen oder Organstrukturen in bestimmten Bildgebungen klarer darzustellen. Für die Patientensprache reicht eine ruhige Grundidee: Mit dem Kontrastmittel können wir bestimmte Strukturen im Bild besser sehen. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: Fragen nach Allergien und Nierenfunktion klären, Kontrastmittel meist über eine Vene geben und die Untersuchung anschließend durchführen. Vorbereitung heißt hier vor allem: frühere Reaktionen auf Kontrastmittel, bekannte Allergien, Schilddrüsenerkrankungen und Nierenschwäche aktiv anzusprechen. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Das Kontrastmittel hilft uns, bestimmte Strukturen auf den Bildern besser darzustellen. Vorher fragen wir gezielt nach Allergien, Nierenfunktion und früheren Reaktionen auf Kontrastmittel. Während der Gabe können ein Wärmegefühl oder ein metallischer Geschmack auftreten; das ist meist harmlos."
       ],
       "question_groups": [
         {
-          "title": "Risikoprofil",
+          "title": "Medizinischer Kern",
           "questions": [
-            "Welche Vorreaktionen auf Kontrastmittel muessen aktiv erfragt werden?",
-            "Wie sprechen Sie Nierenfunktion patientengerecht an?",
-            "Welche Begleiterkrankungen sind besonders relevant?",
-            "Wie fragen Sie nach relevanter Medikation strukturiert?",
-            "Wie erklaeren Sie dem Patienten den Sinn dieser Sicherheitsfragen?"
+            "Der medizinische Nutzen liegt darin, Gefäße, Entzündungen oder Organstrukturen in bestimmten Bildgebungen klarer darzustellen. Für die Patientensprache reicht eine ruhige Grundidee: Mit dem Kontrastmittel können wir bestimmte Strukturen im Bild besser sehen.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
           ]
         },
         {
-          "title": "Aufklaerung und Einwilligung",
+          "title": "Ablauf und Vorbereitung",
           "questions": [
-            "Wie begruenden Sie den diagnostischen Nutzen konkret am Fall?",
-            "Wie benennen Sie haeufige und seltene Nebenwirkungen verstaendlich?",
-            "Wie erklaeren Sie das Vorgehen bei einer Reaktion?",
-            "Wie sichern Sie informierte Einwilligung sprachlich korrekt?",
-            "Wie reagieren Sie auf patientenseitige Ablehnung?"
+            "Zum Ablauf gehören in verständlicher Reihenfolge: Fragen nach Allergien und Nierenfunktion klären, Kontrastmittel meist über eine Vene geben und die Untersuchung anschließend durchführen. Vorbereitung heißt hier vor allem: frühere Reaktionen auf Kontrastmittel, bekannte Allergien, Schilddrüsenerkrankungen und Nierenschwäche aktiv anzusprechen.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
           ]
         },
         {
-          "title": "Nachsorge",
+          "title": "Belastungen, Risiken und Grenzen",
           "questions": [
-            "Welche Beobachtung direkt nach Kontrastmittelgabe ist sinnvoll?",
-            "Welche Hinweise fuer zu Hause geben Sie mit?",
-            "Welche Warnzeichen benoetigen eine sofortige Wiedervorstellung?",
-            "Wie dokumentieren Sie Aufklaerung und Einwilligung im Arztbrief?",
-            "Wie uebergeben Sie Kontrastmittelrisiken im Arzt-Arzt-Gespraech?"
+            "Wichtige Punkte sind: Wärmegefühl oder metallischer Geschmack häufig harmlos sind, allergische Reaktionen und Probleme bei schwerer Nierenfunktionsstörung aber ernst genommen werden müssen. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Bitte sagen Sie uns sofort Bescheid, falls Ihnen während oder nach der Gabe übel wird, schwindelig ist oder Sie schlecht Luft bekommen.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
           ]
         }
       ],
       "exam_sentences": [
-        "Das Kontrastmittel hilft uns, die Untersuchung deutlich genauer auszuwerten.",
-        "Vor der Gabe frage ich Sie gezielt nach Allergien, Nierenfunktion und frueheren Reaktionen, damit die Untersuchung sicher ist.",
-        "Meist wird das Kontrastmittel gut vertragen; selten kann es zu allergischen Reaktionen kommen.",
-        "Nach der Untersuchung beobachten wir Sie kurz und geben Ihnen klare Hinweise fuer zuhause mit."
+        "Das Kontrastmittel hilft uns, bestimmte Strukturen auf den Bildern besser darzustellen.",
+        "Vorher fragen wir gezielt nach Allergien, Nierenfunktion und früheren Reaktionen auf Kontrastmittel.",
+        "Während der Gabe können ein Wärmegefühl oder ein metallischer Geschmack auftreten; das ist meist harmlos.",
+        "Selten kann es zu einer allergischen Reaktion kommen, deshalb überwachen wir Sie aufmerksam.",
+        "Wenn Sie während der Untersuchung Beschwerden bemerken, sagen Sie uns bitte sofort Bescheid."
       ],
       "linked_term_ids": [
-        "online_kurs_angiographie",
-        "online_kurs_koronarangiographie",
-        "online_kurs_kraniale_computertomographie_cct",
-        "online_kurs_hyperthyreose",
-        "online_kurs_hypothyreose"
+        "online_kurs_kontrastmittel"
       ],
-      "mini_scenario": {
-        "title": "Mini-Szenario: CT-Angiographie geplant",
-        "situation": "Bei Verdacht auf Lungenembolie ist eine CT-Angiographie vorgesehen.",
-        "task_patient": "Erklaeren Sie Kontrastmittelgabe, Nutzen und Sicherheitsabfrage in patientenfreundlicher Sprache.",
-        "task_doctor": "Uebergeben Sie kurz Risikoprofil und geplantes Monitoring.",
-        "task_letter": "Dokumentieren Sie Aufklaerung und Einwilligung inklusive Nachsorgehinweisen."
-      },
       "source_tags": [
-        "Fachsprachkurs PDF: Diagnostikerklaerungen",
-        "FSP Berlin: klare Risiko-Nutzen-Kommunikation"
+        "Fachsprachkurs PDF: Kontrastmittel",
+        "Aufklärungen komplett: CT/MRT mit Kontrastmittel"
+      ]
+    },
+    {
+      "id": "tee",
+      "title": "TEE patientengerecht aufklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
+      "learning_text": [
+        "In der Aufklärung zu „TEE patientengerecht aufklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Herzklappen, Vorhöfe, Thromben oder Endokarditiszeichen genauer darzustellen als mit dem Ultraschall von außen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: nüchtern bleiben, Rachen betäuben oder sedieren, die Sonde über den Mund in die Speiseröhre einführen und das Herz von dort aus darstellen. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Herzklappen, Vorhöfe, Thromben oder Endokarditiszeichen genauer darzustellen als mit dem Ultraschall von außen. Für die Patientensprache reicht eine ruhige Grundidee: Bei der TEE schauen wir mit einem Ultraschallgerät über die Speiseröhre sehr nah auf Ihr Herz. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: nüchtern bleiben, Rachen betäuben oder sedieren, die Sonde über den Mund in die Speiseröhre einführen und das Herz von dort aus darstellen. Vorbereitung heißt hier vor allem: mehrere Stunden nüchtern zu bleiben, Zahnersatz anzugeben und nach Beruhigungsmitteln nicht selbst Auto zu fahren. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Mit der TEE können wir das Herz besonders genau darstellen, weil das Ultraschallgerät über die Speiseröhre nahe am Herzen liegt. Vor der Untersuchung müssen Sie nüchtern bleiben. Der Rachen wird betäubt, manchmal geben wir zusätzlich ein beruhigendes Medikament."
+      ],
+      "question_groups": [
+        {
+          "title": "Medizinischer Kern",
+          "questions": [
+            "Der medizinische Nutzen liegt darin, Herzklappen, Vorhöfe, Thromben oder Endokarditiszeichen genauer darzustellen als mit dem Ultraschall von außen. Für die Patientensprache reicht eine ruhige Grundidee: Bei der TEE schauen wir mit einem Ultraschallgerät über die Speiseröhre sehr nah auf Ihr Herz.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
+          ]
+        },
+        {
+          "title": "Ablauf und Vorbereitung",
+          "questions": [
+            "Zum Ablauf gehören in verständlicher Reihenfolge: nüchtern bleiben, Rachen betäuben oder sedieren, die Sonde über den Mund in die Speiseröhre einführen und das Herz von dort aus darstellen. Vorbereitung heißt hier vor allem: mehrere Stunden nüchtern zu bleiben, Zahnersatz anzugeben und nach Beruhigungsmitteln nicht selbst Auto zu fahren.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
+          ]
+        },
+        {
+          "title": "Belastungen, Risiken und Grenzen",
+          "questions": [
+            "Wichtige Punkte sind: Würgereiz, Halsschmerzen, Sedierungsrisiken oder sehr selten Verletzungen von Rachen und Speiseröhre auftreten können. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Ich sage Ihnen vorher genau, wie wir den Würgereiz möglichst gering halten und was nach der Untersuchung wichtig ist.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Mit der TEE können wir das Herz besonders genau darstellen, weil das Ultraschallgerät über die Speiseröhre nahe am Herzen liegt.",
+        "Vor der Untersuchung müssen Sie nüchtern bleiben.",
+        "Der Rachen wird betäubt, manchmal geben wir zusätzlich ein beruhigendes Medikament.",
+        "Seltene Risiken sind Verletzungen im Rachen oder an der Speiseröhre sowie Nebenwirkungen der Sedierung.",
+        "Nach der Untersuchung dürfen Sie erst wieder essen und trinken, wenn der Schluckreflex sicher zurück ist."
+      ],
+      "linked_term_ids": [
+        "online_kurs_transoesophageale_echokardiographie"
+      ],
+      "source_tags": [
+        "Aufklärungen komplett: Transösophageale Echokardiographie",
+        "FSP Berlin: patientengerechte Spezialdiagnostik"
+      ]
+    },
+    {
+      "id": "echokardiographie",
+      "title": "Echokardiographie verständlich erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
+      "learning_text": [
+        "In der Aufklärung zu „Echokardiographie verständlich erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Herzgröße, Pumpleistung, Wandbewegung und Herzklappenfunktion von außen per Ultraschall zu beurteilen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: Oberkörper freimachen, Gel auftragen, Schallkopf an verschiedenen Stellen des Brustkorbs ansetzen und Bilder des Herzens aufnehmen. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Herzgröße, Pumpleistung, Wandbewegung und Herzklappenfunktion von außen per Ultraschall zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Mit dem Herzultraschall sehen wir die Bewegung und Funktion des Herzens direkt auf dem Monitor. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: Oberkörper freimachen, Gel auftragen, Schallkopf an verschiedenen Stellen des Brustkorbs ansetzen und Bilder des Herzens aufnehmen. Vorbereitung heißt hier vor allem: bequem auf der Untersuchungsliege zu liegen und zu wissen, dass kein Schlauch und keine Strahlung nötig sind. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Mit der Echokardiographie können wir die Herzfunktion direkt im Ultraschall beurteilen. Die Untersuchung ist schmerzfrei und arbeitet nicht mit Strahlen. Ich setze dazu den Schallkopf an verschiedenen Stellen auf Ihren Brustkorb."
+      ],
+      "question_groups": [
+        {
+          "title": "Medizinischer Kern",
+          "questions": [
+            "Der medizinische Nutzen liegt darin, Herzgröße, Pumpleistung, Wandbewegung und Herzklappenfunktion von außen per Ultraschall zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Mit dem Herzultraschall sehen wir die Bewegung und Funktion des Herzens direkt auf dem Monitor.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
+          ]
+        },
+        {
+          "title": "Ablauf und Vorbereitung",
+          "questions": [
+            "Zum Ablauf gehören in verständlicher Reihenfolge: Oberkörper freimachen, Gel auftragen, Schallkopf an verschiedenen Stellen des Brustkorbs ansetzen und Bilder des Herzens aufnehmen. Vorbereitung heißt hier vor allem: bequem auf der Untersuchungsliege zu liegen und zu wissen, dass kein Schlauch und keine Strahlung nötig sind.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
+          ]
+        },
+        {
+          "title": "Belastungen, Risiken und Grenzen",
+          "questions": [
+            "Wichtige Punkte sind: die Untersuchung praktisch risikolos ist, aber manche Fragestellungen später eine TEE oder weitere Diagnostik erfordern können. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Der Herzultraschall ist etwas anderes als ein EKG: Hier sehen wir die Herzbewegung direkt.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Mit der Echokardiographie können wir die Herzfunktion direkt im Ultraschall beurteilen.",
+        "Die Untersuchung ist schmerzfrei und arbeitet nicht mit Strahlen.",
+        "Ich setze dazu den Schallkopf an verschiedenen Stellen auf Ihren Brustkorb.",
+        "Damit können wir zum Beispiel Herzklappen, Pumpleistung oder einen Erguss beurteilen.",
+        "Im Anschluss besprechen wir den Befund und die nächsten Schritte."
+      ],
+      "linked_term_ids": [
+        "online_kurs_echokardiographie"
+      ],
+      "source_tags": [
+        "Aufklärungen komplett: Echokardiographie"
+      ]
+    },
+    {
+      "id": "kompressions_doppler",
+      "title": "Kompressions- und Dopplersonographie erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
+      "learning_text": [
+        "In der Aufklärung zu „Kompressions- und Dopplersonographie erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Venen auf Thrombosen und Arterien auf Durchblutung sowie Strömungsverhältnisse zu beurteilen. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: Gel auftragen, Gefäßverlauf im Ultraschall darstellen, bei der Kompressionssonographie leichten Druck ausüben und bei der Dopplersonographie die Flussrichtung beurteilen. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Venen auf Thrombosen und Arterien auf Durchblutung sowie Strömungsverhältnisse zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Mit dieser Ultraschalluntersuchung prüfen wir, ob die Gefäße frei durchgängig sind und wie das Blut darin fließt. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: Gel auftragen, Gefäßverlauf im Ultraschall darstellen, bei der Kompressionssonographie leichten Druck ausüben und bei der Dopplersonographie die Flussrichtung beurteilen. Vorbereitung heißt hier vor allem: bequeme Lagerung zu ermöglichen und zu wissen, dass das Verfahren normalerweise ohne Nadeln und ohne Strahlung auskommt. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Mit der Gefäßsonographie prüfen wir, ob die Gefäße frei durchgängig sind und wie das Blut darin fließt. Die Untersuchung arbeitet mit Ultraschall und ist deshalb strahlungsfrei. Bei der Kompressionssonographie übe ich an einzelnen Stellen kurz leichten Druck aus."
+      ],
+      "question_groups": [
+        {
+          "title": "Medizinischer Kern",
+          "questions": [
+            "Der medizinische Nutzen liegt darin, Venen auf Thrombosen und Arterien auf Durchblutung sowie Strömungsverhältnisse zu beurteilen. Für die Patientensprache reicht eine ruhige Grundidee: Mit dieser Ultraschalluntersuchung prüfen wir, ob die Gefäße frei durchgängig sind und wie das Blut darin fließt.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
+          ]
+        },
+        {
+          "title": "Ablauf und Vorbereitung",
+          "questions": [
+            "Zum Ablauf gehören in verständlicher Reihenfolge: Gel auftragen, Gefäßverlauf im Ultraschall darstellen, bei der Kompressionssonographie leichten Druck ausüben und bei der Dopplersonographie die Flussrichtung beurteilen. Vorbereitung heißt hier vor allem: bequeme Lagerung zu ermöglichen und zu wissen, dass das Verfahren normalerweise ohne Nadeln und ohne Strahlung auskommt.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
+          ]
+        },
+        {
+          "title": "Belastungen, Risiken und Grenzen",
+          "questions": [
+            "Wichtige Punkte sind: praktisch keine Risiken bestehen, der leichte Druck aber bei schmerzhaften Beinen oder entzündetem Gewebe unangenehm sein kann. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Das Ergebnis hilft uns oft schon direkt zu entscheiden, ob wir zum Beispiel an eine Thrombose denken müssen oder nicht.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Mit der Gefäßsonographie prüfen wir, ob die Gefäße frei durchgängig sind und wie das Blut darin fließt.",
+        "Die Untersuchung arbeitet mit Ultraschall und ist deshalb strahlungsfrei.",
+        "Bei der Kompressionssonographie übe ich an einzelnen Stellen kurz leichten Druck aus.",
+        "Bei der Dopplersonographie hören und sehen wir zusätzlich die Strömung des Blutes.",
+        "Den Befund können wir meist direkt in das weitere Vorgehen einordnen."
+      ],
+      "linked_term_ids": [
+        "online_kurs_dopplersonographie"
+      ],
+      "source_tags": [
+        "Aufklärungen komplett: Kompressions- und Dopplersonographie"
+      ]
+    },
+    {
+      "id": "blutabnahme",
+      "title": "Blutabnahme und Laboraufklärung",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
+      "learning_text": [
+        "In der Aufklärung zu „Blutabnahme und Laboraufklärung“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, Laborwerte zu gewinnen, die uns Hinweise auf Entzündung, Anämie, Organfunktion oder Stoffwechselstörungen geben. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: geeignete Vene auswählen, die Haut desinfizieren, Blut abnehmen und die Einstichstelle anschließend kurz komprimieren. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, Laborwerte zu gewinnen, die uns Hinweise auf Entzündung, Anämie, Organfunktion oder Stoffwechselstörungen geben. Für die Patientensprache reicht eine ruhige Grundidee: Wir nehmen Ihnen Blut ab, damit wir wichtige Laborwerte bestimmen können. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: geeignete Vene auswählen, die Haut desinfizieren, Blut abnehmen und die Einstichstelle anschließend kurz komprimieren. Vorbereitung heißt hier vor allem: je nach Fragestellung nüchtern zu sein, ausreichend zu trinken und frühere Kreislaufprobleme bei Blutabnahmen anzugeben. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Wir nehmen Ihnen Blut ab, um wichtige Laborwerte zu bestimmen. Vorher desinfizieren wir die Haut und punktieren dann kurz eine Vene. Die Untersuchung dauert nur wenige Minuten."
+      ],
+      "question_groups": [
+        {
+          "title": "Medizinischer Kern",
+          "questions": [
+            "Der medizinische Nutzen liegt darin, Laborwerte zu gewinnen, die uns Hinweise auf Entzündung, Anämie, Organfunktion oder Stoffwechselstörungen geben. Für die Patientensprache reicht eine ruhige Grundidee: Wir nehmen Ihnen Blut ab, damit wir wichtige Laborwerte bestimmen können.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
+          ]
+        },
+        {
+          "title": "Ablauf und Vorbereitung",
+          "questions": [
+            "Zum Ablauf gehören in verständlicher Reihenfolge: geeignete Vene auswählen, die Haut desinfizieren, Blut abnehmen und die Einstichstelle anschließend kurz komprimieren. Vorbereitung heißt hier vor allem: je nach Fragestellung nüchtern zu sein, ausreichend zu trinken und frühere Kreislaufprobleme bei Blutabnahmen anzugeben.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
+          ]
+        },
+        {
+          "title": "Belastungen, Risiken und Grenzen",
+          "questions": [
+            "Wichtige Punkte sind: es meist nur zu einem kurzen Stich kommt, gelegentlich aber kleine Hämatome, selten Kreislaufreaktionen oder Entzündungen auftreten können. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Wenn Ihnen bei Blutabnahmen schnell schwindelig wird, sagen Sie uns bitte vorher Bescheid.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Wir nehmen Ihnen Blut ab, um wichtige Laborwerte zu bestimmen.",
+        "Vorher desinfizieren wir die Haut und punktieren dann kurz eine Vene.",
+        "Die Untersuchung dauert nur wenige Minuten.",
+        "Manchmal entsteht ein kleiner Bluterguss; schwerere Komplikationen sind selten.",
+        "Sobald die Werte vorliegen, besprechen wir, was sie für Ihre Beschwerden bedeuten."
+      ],
+      "linked_term_ids": [
+        "online_kurs_blutbild"
+      ],
+      "source_tags": [
+        "Aufklärungen komplett: Blutabnahme"
+      ]
+    },
+    {
+      "id": "appendektomie",
+      "title": "Appendektomie erklären",
+      "focus": "Medizinischer Kern | Ablauf und Vorbereitung | Belastungen, Risiken und Grenzen",
+      "summary": "Bei Aufklärungsgesprächen reicht es nicht, nur Technik zu benennen. Entscheidend ist, dass medizinischer Anlass, konkreter Ablauf, mögliche Belastungen und Risiken in einer verständlichen Reihenfolge erklärt werden. Am Ende sollte die Patientin oder der Patient wissen, warum die Maßnahme sinnvoll ist, was genau passiert und worauf im Anschluss geachtet werden muss.",
+      "learning_text": [
+        "In der Aufklärung zu „Appendektomie erklären“ sollte der medizinische Anlass immer vor der Technik stehen. Patientinnen und Patienten sollen verstehen, warum die Untersuchung oder Behandlung empfohlen wird, wie sie abläuft und welche Folgen oder Belastungen damit verbunden sein können.",
+        "Am Anfang jeder Aufklärung steht die Frage, warum diese Maßnahme überhaupt empfohlen wird. Das gelingt nur dann gut, wenn Anlass, Nutzen und Ablauf für die Patientin oder den Patienten logisch zusammenpassen. Gerade scheinbar einfache Diagnostik wirkt sonst schnell technisch oder auswendig gelernt.",
+        "Darauf sollte eine ruhige Erklärung des medizinischen Nutzens folgen. Im Kern geht es hier darum, den entzündeten Wurmfortsatz zu entfernen und dadurch Komplikationen wie Perforation oder Abszessbildung zu verhindern. Die Erklärung sollte deshalb immer beim aktuellen klinischen Problem beginnen und nicht erst bei der Gerätebezeichnung.",
+        "Anschließend braucht der Ablauf eine verständliche Reihenfolge. Patientengerecht wirkt die Aufklärung, wenn der grobe Ablauf transparent wird: Aufklärung über Narkose und Operation, meist laparoskopisches Vorgehen, Entfernung des Appendix und anschließende Überwachung. Dadurch weiß die Patientin oder der Patient, was unmittelbar passiert und welche Mitarbeit erwartet wird.",
+        "Für die Einwilligung zählt, dass Grenzen und Alternativen nicht ausgeblendet werden. Der medizinische Nutzen liegt darin, den entzündeten Wurmfortsatz zu entfernen und dadurch Komplikationen wie Perforation oder Abszessbildung zu verhindern. Für die Patientensprache reicht eine ruhige Grundidee: Bei der Appendektomie entfernen wir den entzündeten Blinddarmanhang, damit sich die Entzündung nicht weiter ausbreitet. Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht.",
+        "So entsteht eine Aufklärung, die sowohl verständlich als auch fachlich sauber ist. Zum Ablauf gehören in verständlicher Reihenfolge: Aufklärung über Narkose und Operation, meist laparoskopisches Vorgehen, Entfernung des Appendix und anschließende Überwachung. Vorbereitung heißt hier vor allem: nüchtern zu bleiben, Schmuck abzulegen und zu wissen, dass meist eine Vollnarkose notwendig ist. Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert.",
+        "Gerade in der Aufklärung helfen kurze, ruhige Standardsätze, solange sie mit dem konkreten Fall verbunden bleiben. Wir empfehlen die Operation, weil der entzündete Wurmfortsatz sonst platzen könnte. Meist erfolgt der Eingriff in Vollnarkose und minimal-invasiv über kleine Schnitte. Wie bei jeder Operation gibt es Risiken wie Blutung, Infektion oder Narkosekomplikationen, auch wenn sie selten sind."
+      ],
+      "question_groups": [
+        {
+          "title": "Medizinischer Kern",
+          "questions": [
+            "Der medizinische Nutzen liegt darin, den entzündeten Wurmfortsatz zu entfernen und dadurch Komplikationen wie Perforation oder Abszessbildung zu verhindern. Für die Patientensprache reicht eine ruhige Grundidee: Bei der Appendektomie entfernen wir den entzündeten Blinddarmanhang, damit sich die Entzündung nicht weiter ausbreitet.",
+            "Wichtig ist, dass der Anlass der Untersuchung direkt mit den aktuellen Beschwerden verbunden wird und nicht isoliert im Raum steht."
+          ]
+        },
+        {
+          "title": "Ablauf und Vorbereitung",
+          "questions": [
+            "Zum Ablauf gehören in verständlicher Reihenfolge: Aufklärung über Narkose und Operation, meist laparoskopisches Vorgehen, Entfernung des Appendix und anschließende Überwachung. Vorbereitung heißt hier vor allem: nüchtern zu bleiben, Schmuck abzulegen und zu wissen, dass meist eine Vollnarkose notwendig ist.",
+            "Die Patientin oder der Patient sollte außerdem wissen, was aktiv mitgearbeitet werden muss und wie lange der Schritt ungefähr dauert."
+          ]
+        },
+        {
+          "title": "Belastungen, Risiken und Grenzen",
+          "questions": [
+            "Wichtige Punkte sind: Blutungen, Infektionen, Verletzungen benachbarter Strukturen oder Narkosekomplikationen selten, aber grundsätzlich möglich sind. Gute Aufklärung macht auch deutlich, dass ein unauffälliger Befund nicht jede denkbare Erkrankung ausschließt und bei Bedarf weitere Diagnostik folgen kann.",
+            "Wo sinnvoll, sollten Alternativen knapp genannt werden, ohne das Gespräch mit Technikdetails zu überfrachten."
+          ]
+        },
+        {
+          "title": "Sprachliche Leitlinie",
+          "questions": [
+            "Die sicherste Gesprächsstruktur lautet fast immer: Anlass, Ziel, Ablauf, mögliche Belastung, Risiken, nächster Schritt. Eine gute Schlussbewegung ist: Wichtig ist, dass Sie verstehen, warum wir zur Operation raten und was nach dem Eingriff auf Sie zukommt.",
+            "Damit bleibt die Aufklärung ruhig, vollständig und nachvollziehbar, auch wenn die Untersuchung selbst komplex ist."
+          ]
+        }
+      ],
+      "exam_sentences": [
+        "Wir empfehlen die Operation, weil der entzündete Wurmfortsatz sonst platzen könnte.",
+        "Meist erfolgt der Eingriff in Vollnarkose und minimal-invasiv über kleine Schnitte.",
+        "Wie bei jeder Operation gibt es Risiken wie Blutung, Infektion oder Narkosekomplikationen, auch wenn sie selten sind.",
+        "Nach dem Eingriff überwachen wir Sie und behandeln die Schmerzen.",
+        "Anschließend besprechen wir mit Ihnen, wann Sie wieder essen, aufstehen und nach Hause gehen können."
+      ],
+      "linked_term_ids": [
+        "online_kurs_appendektomie",
+        "online_kurs_appendizitis"
+      ],
+      "source_tags": [
+        "Aufklärungen komplett: Appendektomie"
       ]
     }
   ]
