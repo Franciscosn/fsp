@@ -7738,6 +7738,7 @@ function normalizeLearningCategory(rawValue) {
   const linkedTermIds = Array.isArray(rawValue.linked_term_ids)
     ? rawValue.linked_term_ids.map((item) => safeLine(item, 160)).filter((item) => Boolean(item))
     : [];
+  const exampleSection = normalizeLearningExampleSection(rawValue.examples || rawValue.example_section);
   const miniScenario = normalizeLearningMiniScenario(rawValue.mini_scenario);
 
   return {
@@ -7751,8 +7752,25 @@ function normalizeLearningCategory(rawValue) {
     sourceTags,
     examSentences,
     linkedTermIds,
+    exampleSection,
     miniScenario
   };
+}
+
+function normalizeLearningExampleSection(rawValue) {
+  if (!rawValue || typeof rawValue !== "object") return null;
+  const patientSentences = Array.isArray(rawValue.patient_sentences)
+    ? rawValue.patient_sentences
+        .map((item) => safeParagraph(item, 300))
+        .filter((item) => Boolean(item))
+    : [];
+  const doctorSentences = Array.isArray(rawValue.doctor_sentences)
+    ? rawValue.doctor_sentences
+        .map((item) => safeParagraph(item, 300))
+        .filter((item) => Boolean(item))
+    : [];
+  if (patientSentences.length === 0 && doctorSentences.length === 0) return null;
+  return { patientSentences, doctorSentences };
 }
 
 function normalizeLearningMiniScenario(rawValue) {
@@ -8782,6 +8800,47 @@ function renderLearningReadingMode(bundle) {
 
   if (refs.learningReadingMiniScenario) {
     refs.learningReadingMiniScenario.innerHTML = "";
+    const exampleSection = activeCategory.exampleSection;
+    if (exampleSection && (exampleSection.patientSentences.length > 0 || exampleSection.doctorSentences.length > 0)) {
+      const card = document.createElement("article");
+      card.className = "learning-mini-card";
+
+      const heading = document.createElement("h6");
+      heading.textContent = "Beispielsektion";
+      card.appendChild(heading);
+
+      if (exampleSection.patientSentences.length > 0) {
+        const patientLabel = document.createElement("p");
+        patientLabel.textContent = "Patient könnte sagen:";
+        card.appendChild(patientLabel);
+
+        const patientList = document.createElement("ul");
+        patientList.className = "learning-mini-tasks";
+        for (const sentence of exampleSection.patientSentences) {
+          const li = document.createElement("li");
+          li.textContent = sentence;
+          patientList.appendChild(li);
+        }
+        card.appendChild(patientList);
+      }
+
+      if (exampleSection.doctorSentences.length > 0) {
+        const doctorLabel = document.createElement("p");
+        doctorLabel.textContent = "Sie könnten sagen:";
+        card.appendChild(doctorLabel);
+
+        const doctorList = document.createElement("ul");
+        doctorList.className = "learning-mini-tasks";
+        for (const sentence of exampleSection.doctorSentences) {
+          const li = document.createElement("li");
+          li.textContent = sentence;
+          doctorList.appendChild(li);
+        }
+        card.appendChild(doctorList);
+      }
+
+      refs.learningReadingMiniScenario.appendChild(card);
+    }
   }
 
   if (refs.learningReadingLinkedTerms) {

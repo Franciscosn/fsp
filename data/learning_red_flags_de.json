@@ -13,169 +13,283 @@
       "id": "thorax_akut",
       "title": "Brustkorb und Atmung: Warnzeichen",
       "focus": "",
-      "summary": "Schmerzen im Brustkorb und starke Atemnot sind häufige Notfallgründe. Gefährlich wird es, wenn Kreislauf, Atmung oder Bewusstsein instabil werden. Dann müssen Herzinfarkt, Lungenembolie, Pneumothorax und schwere Rhythmusstörungen sofort mitgedacht und rasch abgeklärt werden.",
+      "summary": "Brustschmerz und Atemnot können harmlos beginnen, aber rasch lebensbedrohlich werden. Gefährlich sind vor allem Zeichen von Kreislauf- oder Ateminstabilität. In solchen Situationen müssen Herzinfarkt, Lungenembolie, Pneumothorax und schwere Rhythmusstörungen sofort mitgedacht werden.",
       "learning_text": [
-        "Wenn ein Patient mit Brustschmerz oder Atemnot kommt, zählt zuerst der aktuelle Zustand und nicht die perfekte Diagnose. Man schaut sofort, ob der Patient ansprechbar ist, wie er atmet und ob er kreislaufstabil wirkt.",
-        "Ein sehr starker Druck oder ein Engegefühl in der Brust ist ein Warnzeichen. Das gilt besonders, wenn der Schmerz neu ist, länger anhält oder in Arm, Rücken, Kiefer oder Oberbauch ausstrahlt.",
-        "Neue schwere Atemnot in Ruhe ist immer ernst. Wenn der Patient nur noch in kurzen Sätzen sprechen kann, Hilfsmuskeln nutzt oder panisch nach Luft ringt, ist die Lage akut.",
-        "Ohnmacht, beinahe Ohnmacht, kalter Schweiß, blasse Haut, bläuliche Lippen oder starke Schwäche sprechen für eine kritische Durchblutung oder Sauerstoffversorgung. Diese Zeichen müssen sofort priorisiert werden.",
-        "Auch die Vitalzeichen liefern frühe Warnungen. Ein sehr niedriger oder stark erhöhter Blutdruck, deutliche Tachykardie, Bradykardie, Tachypnoe oder eine niedrige Sauerstoffsättigung sind rote Signale.",
-        "Zur Einordnung helfen wenige klare Fragen: Wann haben die Beschwerden begonnen? Waren sie plötzlich oder langsam? Was macht sie schlimmer oder besser? Gibt es Begleitsymptome wie Übelkeit, Schwindel oder Angstgefühl?",
-        "Wichtige Risiken sind bekannte Herzkrankheiten, frühere Thrombosen oder Embolien, Immobilisation, Operationen, Rauchen, Diabetes, Hypertonie und Fettstoffwechselstörung. Auch die aktuelle Medikation muss früh erfasst werden.",
-        "Bei der Untersuchung sind Gesamteindruck, Hautfarbe, Atemarbeit, Auskultation, Kreislauf und Bewusstseinslage zentral. Hier hilft ein klarer Stil: zuerst sehen, dann messen, dann benennen.",
-        "Die erste Diagnostik ist meist kurz und zielgerichtet. Dazu gehören EKG, Monitoring, Sauerstoffsättigung, Blutdruckkontrolle und Labor. Je nach Lage folgt rasch Bildgebung.",
-        "Wichtig ist, gefährliche Diagnosen parallel mitzudenken. Bei Thoraxschmerz und Atemnot sind das vor allem akutes Koronarsyndrom, Lungenembolie, Pneumothorax und Aortensyndrom.",
-        "Ein häufiger Fehler ist, zu früh zu beruhigen, weil der Patient jung ist oder weil die Symptome zwischendurch nachlassen. Auch junge Menschen können lebensbedrohliche Verläufe haben.",
-        "Ein weiterer Fehler ist, nur den Schmerz zu besprechen und den Kreislauf zu vergessen. Der Schmerzcharakter ist wichtig, aber Instabilität in Atmung oder Kreislauf ist wichtiger.",
-        "Gegenüber dem Patienten hilft eine einfache, ruhige Sprache: Wir müssen jetzt schnell prüfen, ob eine gefährliche Ursache vorliegt. Darum überwachen wir Sie eng und machen sofort die wichtigsten Untersuchungen.",
-        "Für den Verlauf ist eine klare Dokumentation entscheidend. Man notiert Beginn, Warnzeichen, Vitalwerte, erste Maßnahmen, Reaktion auf die Therapie und den weiteren Plan. So bleibt die Behandlung auch im Team sicher und nachvollziehbar."
+        "Ein guter Start bei Brustschmerz ist immer derselbe: zuerst Stabilität, dann Details. Wenn ein Patient blass, kaltschweißig, sehr unruhig oder kaum belastbar wirkt, ist das wichtiger als eine perfekte frühe Diagnoseformulierung.",
+        "Danach wird die Symptomgeschichte geordnet. Man fragt nach Beginn, Verlauf, Schmerzcharakter, Ausstrahlung und Begleitsymptomen. Wichtig ist auch, ob die Beschwerden in Ruhe auftreten oder nur unter Belastung.",
+        "Besonders kritisch sind Druck oder Enge in der Brust, neue schwere Atemnot, Ohnmacht, fast Ohnmacht und ein deutlicher Leistungsabfall in kurzer Zeit. Auch Schmerzen mit Ausstrahlung in Arm, Rücken, Kiefer oder Oberbauch erhöhen die Sorge auf einen gefährlichen Verlauf.",
+        "Parallel dazu liefert die Atmung viele Hinweise. Wer nur in kurzen Sätzen sprechen kann, Hilfsmuskeln nutzt oder eine sichtbare Atemarbeit hat, braucht sofort Priorität. Eine niedrige Sauerstoffsättigung oder eine rasche Verschlechterung unterstreichen die Dringlichkeit.",
+        "Die Vitalzeichen helfen, das Risiko realistisch zu gewichten. Tachykardie, Bradykardie, Hypotonie, starke Hypertonie und Tachypnoe sind keine Nebendaten, sondern Teil der Akutentscheidung. Bewusstseinslage und Hautfarbe müssen immer mitgedacht werden.",
+        "In der Vorgeschichte fragt man gezielt nach kardiovaskulären Risiken und thromboembolischen Risiken. Dazu gehören bekannte Herzkrankheiten, frühere Thrombosen oder Embolien, Immobilisation, kürzliche Operationen, Rauchen, Diabetes und Blutdruckerkrankung. Auch aktuelle Medikamente sind zentral.",
+        "Die Erstdiagnostik bleibt kurz und klar. Meist braucht es EKG, Monitoring, Labor und je nach Klinik zügige Bildgebung. Entscheidend ist, dass Diagnostik und Stabilisierung parallel laufen und nicht nacheinander in langen Blöcken.",
+        "Ein häufiger Fehler ist zu frühe Entwarnung bei jüngeren Patienten oder bei vorübergehender Besserung. Ein zweiter Fehler ist, nur den Schmerz zu diskutieren und Kreislauf- oder Atemzeichen zu unterschätzen. Genau hier gehen in der Praxis wichtige Minuten verloren.",
+        "Die Kommunikation mit dem Patienten soll ruhig und eindeutig sein. Man kann sagen: Wir sehen Warnzeichen und müssen jetzt gefährliche Ursachen schnell ausschließen. So entsteht Vertrauen, ohne die Situation zu verharmlosen oder unnötig zu dramatisieren.",
+        "Am Ende zählt eine saubere Übergabe. Symptome, Zeitverlauf, Warnzeichen, Vitalwerte, erste Maßnahmen und der nächste Schritt müssen klar dokumentiert sein. Dann kann das Team ohne Informationsverlust weiterarbeiten und der Patient bekommt schneller die passende Therapie."
       ],
       "question_groups": [],
       "exam_sentences": [],
       "linked_term_ids": [],
       "source_tags": [
         "FSP-nahe Red-Flag-Kommunikation bei Thoraxsymptomen"
-      ]
+      ],
+      "examples": {
+        "patient_sentences": [
+          "Ich habe seit einer Stunde starken Druck auf der Brust.",
+          "Mir ist plötzlich die Luft weggeblieben.",
+          "Der Schmerz zieht in meinen linken Arm und in den Kiefer.",
+          "Ich bin ganz kalt geschwitzt und mir ist schwindelig.",
+          "Beim Treppensteigen wurde es auf einmal viel schlimmer.",
+          "Ich hatte kurz das Gefühl, dass ich ohnmächtig werde.",
+          "So stark war das noch nie, ich habe richtig Angst."
+        ],
+        "doctor_sentences": [
+          "Ich nehme Ihre Beschwerden sehr ernst und untersuche Sie jetzt sofort.",
+          "Bitte bleiben Sie sitzen und atmen Sie ruhig, wir überwachen Sie eng.",
+          "Seit wann genau bestehen die Schmerzen und waren sie plötzlich da?",
+          "Strahlt der Schmerz in Arm, Rücken, Kiefer oder Oberbauch aus?",
+          "Haben Sie zusätzlich Luftnot, Übelkeit, Schwindel oder kalten Schweiß?",
+          "Wir schreiben jetzt sofort ein EKG und kontrollieren Ihre Vitalwerte.",
+          "Wir nehmen Ihnen Blut ab, um wichtige Herzwerte rasch zu prüfen.",
+          "Bei dieser Symptomlage müssen wir gefährliche Ursachen schnell ausschließen.",
+          "Ich erkläre Ihnen jeden Schritt, während wir die Akutdiagnostik durchführen.",
+          "Wenn sich die Beschwerden verstärken, sagen Sie mir sofort Bescheid."
+        ]
+      }
     },
     {
       "id": "neurologie_akut",
       "title": "Neurologische Warnzeichen",
       "focus": "",
-      "summary": "Neurologische Notfälle beginnen oft plötzlich. Neue Lähmungen, Sprachstörungen, Bewusstseinsstörung, Krampfanfälle oder Vernichtungskopfschmerz sind Warnzeichen. Der genaue Beginn der Symptome ist für die Akuttherapie besonders wichtig.",
+      "summary": "Neurologische Notfälle zeigen sich oft durch einen plötzlichen Bruch im Zustand eines Menschen. Neue Lähmungen, Sprachstörungen, Bewusstseinsstörung, Krampfanfälle oder Vernichtungskopfschmerz sind zentrale Warnzeichen. Der genaue Symptombeginn ist für die Akuttherapie entscheidend.",
       "learning_text": [
-        "Neurologische Red Flags erkennt man oft an einem abrupten Wechsel. Der Patient war kurz zuvor unauffällig und zeigt plötzlich deutliche Ausfälle.",
-        "Typische Warnzeichen sind halbseitige Schwäche, ein hängender Mundwinkel, Sprachstörung, Sehstörung oder plötzlich starke Unsicherheit beim Gehen. Diese Zeichen müssen sofort ernst genommen werden.",
-        "Auch eine neue Bewusstseinsstörung ist ein Alarmzeichen. Verlangsamung, starke Schläfrigkeit, Verwirrtheit oder fehlende Orientierung können auf einen akuten neurologischen Prozess hinweisen.",
-        "Ein Krampfanfall ist besonders gefährlich, wenn er länger anhält, sich wiederholt oder der Patient danach nicht klar wird. Dann besteht akuter Handlungsbedarf.",
-        "Der stärkste Kopfschmerz des Lebens ist ein klassisches Warnsignal für eine mögliche Blutung. Hier darf man nicht abwarten und nicht bagatellisieren.",
-        "Fieber zusammen mit Nackensteife, Lichtscheu oder Verwirrtheit kann zu einer schweren Infektion des Nervensystems passen. Diese Kombination ist zeitkritisch.",
-        "Die Zeitachse gehört an den Anfang der Anamnese. Man braucht den Zeitpunkt des Symptombeginns oder den letzten Zeitpunkt ohne Symptome. Ohne diese Information bleibt der Notfallplan unvollständig.",
-        "In der Untersuchung reicht am Anfang ein klarer Basisstatus: Bewusstsein, Sprache, Pupillen, Blickrichtung, Gesichtsmotorik, Arm- und Beinkraft, Sensibilität und Koordination. Wichtiger als Vollständigkeit ist eine saubere Priorisierung.",
-        "Blutzucker muss früh kontrolliert werden, weil eine Unterzuckerung neurologische Ausfälle nachahmen kann. Diese einfache Messung verhindert gefährliche Fehleinschätzungen.",
-        "Bei Warnzeichen folgt in der Regel sofortige Akutdiagnostik mit Monitoring und Bildgebung. Die Reihenfolge richtet sich nach Zustand und Zeitfenster.",
-        "Antikoagulation, frühere Schlaganfälle, kürzliche Eingriffe, schwere Hypertonie oder bekannte Gefäßerkrankungen verändern das Risiko und müssen zügig erhoben werden.",
-        "Ein häufiger Fehler ist, nur auf ein einzelnes Symptom zu schauen. Entscheidend ist die Kombination aus Ausfall, Zeitverlauf, Allgemeinzustand und Vitalparametern.",
-        "Gegenüber dem Patienten hilft eine klare Erklärung: Die Symptome können auf eine ernste neurologische Ursache hindeuten. Deshalb handeln wir jetzt sofort und machen die nötigen Untersuchungen ohne Zeitverlust.",
-        "Auch hier ist gute Dokumentation ein Sicherheitsfaktor. Zeitpunkt, Symptomverlauf, neurologische Kernbefunde, erste Maßnahmen und Entscheidungsweg müssen klar festgehalten werden."
+        "Bei neurologischen Beschwerden ist der Verlauf oft wichtiger als ein einzelnes Symptom. Wenn etwas plötzlich neu auftritt, steigt die Wahrscheinlichkeit für einen akuten Prozess deutlich. Genau deshalb steht die Zeitachse am Anfang jeder Einschätzung.",
+        "Typische Warnzeichen sind halbseitige Schwäche, ein hängender Mundwinkel, Sprachstörung, Sehstörung oder ein plötzlicher Verlust der Koordination. Diese Zeichen werden nicht beobachtet und später bewertet, sondern sofort als potenziell zeitkritisch eingeordnet.",
+        "Auch Bewusstseinsveränderungen sind ein Alarm. Verwirrtheit, fehlende Orientierung, starke Somnolenz oder ein abruptes Abgleiten in eine Vigilanzminderung müssen sofort abgeklärt werden. Das gilt besonders, wenn Angehörige eine klare Veränderung bestätigen.",
+        "Ein anhaltender Krampfanfall oder ein Krampfanfall mit verzögerter Erholung ist ebenfalls ein Warnsignal. In dieser Situation reicht es nicht, nur die Episode zu beschreiben. Man muss gleichzeitig an Schutz, Monitoring und unmittelbare weitere Diagnostik denken.",
+        "Der stärkste Kopfschmerz des Lebens bleibt ein klassisches Red Flag. Zusammen mit Nackensteife, neurologischen Ausfällen oder Bewusstseinsstörung ist die Dringlichkeit noch höher. Auch Fieber plus Verwirrtheit oder Meningismus muss zügig abgeklärt werden.",
+        "In der Untersuchung hilft eine klare Reihenfolge: Bewusstsein, Sprache, Pupillen, Blick, Gesicht, Motorik, Sensibilität und Koordination. Diese Struktur verhindert, dass wichtige Ausfälle im Stress übersehen werden. Sie macht auch die Übergabe viel präziser.",
+        "Eine frühe Blutzuckerkontrolle gehört zur Basis, weil metabolische Störungen neurologische Ausfälle imitieren können. Zusätzlich werden Vitalzeichen und Sauerstoffsättigung erfasst, um den Schweregrad realistisch einzuschätzen.",
+        "Ein häufiger Fehler ist, sich zu früh auf eine harmlose Erklärung festzulegen. Ein zweiter Fehler ist, den Zeitpunkt des Beginns ungenau zu lassen. Ohne klare Zeitangabe wird der weitere therapeutische Weg unsicher.",
+        "Die Kommunikation mit dem Patienten soll direkt und beruhigend sein. Man kann sagen: Ihre Symptome können auf eine ernste neurologische Ursache hinweisen, deshalb handeln wir jetzt schnell. So bleibt die Dringlichkeit klar und der Patient fühlt sich geführt.",
+        "Für die Teamarbeit braucht es eine saubere Dokumentation. Dazu gehören Beginn, Verlauf, Kernbefunde, Warnzeichen, erste Maßnahmen und der nächste Schritt. Gute neurologische Notfallarbeit ist immer auch gute Strukturarbeit."
       ],
       "question_groups": [],
       "exam_sentences": [],
       "linked_term_ids": [],
       "source_tags": [
         "Fachsprachkurs PDF: Neurologische Prüfungsfragen"
-      ]
+      ],
+      "examples": {
+        "patient_sentences": [
+          "Seit einer halben Stunde kann ich meinen rechten Arm kaum bewegen.",
+          "Ich finde die Wörter nicht mehr richtig.",
+          "Auf einem Auge sehe ich plötzlich verschwommen.",
+          "Ich hatte eben einen starken Krampfanfall.",
+          "Ich bin plötzlich ganz verwirrt und weiß nicht, wo ich bin.",
+          "Das ist der schlimmste Kopfschmerz meines Lebens.",
+          "Meine Familie sagt, dass mein Gesicht seitlich hängt."
+        ],
+        "doctor_sentences": [
+          "Wir handeln jetzt sofort, weil Ihre Symptome zeitkritisch sein können.",
+          "Wann waren Sie zuletzt sicher ohne diese Beschwerden?",
+          "Können Sie beide Arme gleichzeitig anheben und halten?",
+          "Bitte wiederholen Sie diesen einfachen Satz für mich.",
+          "Ich kontrolliere jetzt Ihre Pupillen und Ihre Blickbewegungen.",
+          "Wir messen sofort den Blutzucker und die Vitalzeichen.",
+          "Wir brauchen jetzt rasch eine Bildgebung vom Kopf.",
+          "Ihre Angaben zum genauen Beginn sind für die Therapie sehr wichtig.",
+          "Bitte bleiben Sie hier, wir überwachen Sie engmaschig.",
+          "Ich informiere jetzt direkt das aufnehmende neurologische Team."
+        ]
+      }
     },
     {
       "id": "bauch_gi_blutung",
       "title": "Bauchschmerz und Magen-Darm-Blutung",
       "focus": "",
-      "summary": "Bauchschmerzen sind häufig, aber einige Verläufe sind akut gefährlich. Harte Bauchdecke, Blutungszeichen, anhaltendes Erbrechen oder Kreislaufprobleme sind Warnsignale. Dann muss man früh an Blutung, Peritonitis, Ileus oder andere akute Bauchursachen denken.",
+      "summary": "Bauchschmerzen sind häufig, aber nicht jeder Verlauf ist harmlos. Harte Bauchdecke, Blutungszeichen, anhaltendes Erbrechen und Kreislaufprobleme sind wichtige Red Flags. Dann muss man früh an Blutung, Peritonitis, Ileus oder andere akute Bauchursachen denken.",
       "learning_text": [
-        "Bei Bauchschmerz zählt zuerst, ob der Patient stabil ist. Die genaue Diagnose kann folgen, aber Warnzeichen dürfen nicht übersehen werden.",
-        "Ein harter Bauch mit deutlicher Abwehrspannung ist ein ernstes Zeichen. Das gilt besonders bei starkem Schmerz und rascher Verschlechterung.",
-        "Blut im Erbrochenen oder schwarzer Stuhl sind wichtige Hinweise auf eine gastrointestinale Blutung. Auch frisches Blut im Stuhl muss ernst genommen werden.",
-        "Anhaltendes Erbrechen, fehlender Wind- oder Stuhlabgang und zunehmende Bauchdistension können zu einem Ileus passen. Das braucht zügige Abklärung.",
-        "Kreislaufzeichen wie Schwindel, Tachykardie, Blutdruckabfall oder starke Schwäche erhöhen die Dringlichkeit deutlich. Hier geht es nicht nur um Bauchschmerz, sondern um mögliche Instabilität.",
-        "Fieber, reduzierter Allgemeinzustand und trockene Schleimhäute zeigen oft eine systemische Belastung. Gerade bei älteren Patienten kann die klinische Verschlechterung schnell sein.",
-        "Wichtige Fragen sind: Beginn, Schmerzort, Schmerzcharakter, Ausstrahlung, Verlauf, Erbrechen, Stuhlveränderung, Blutungszeichen und Medikamentenanamnese. Besonders relevant sind Gerinnungshemmer und NSAR.",
-        "In der Untersuchung helfen wenige klare Schritte: Inspektion, Auskultation, Palpation, Prüfung auf Loslassschmerz sowie Kreislaufbeurteilung. Befunde sollten kurz und präzise beschrieben werden.",
-        "Die erste Diagnostik umfasst meist Labor, Kreislaufmonitoring und je nach Bildgebung auch Sonographie oder CT. Bei Blutungsverdacht kommt Endoskopie hinzu.",
-        "Ein häufiger Fehler ist, bei kurzfristiger Schmerzabnahme zu früh zu entwarnen. Auch intermittierende Schmerzen können Teil eines ernsten Verlaufs sein.",
-        "Ein weiterer Fehler ist zu späte Volumentherapie bei dehydrierten oder instabilen Patienten. Kreislaufstabilisierung und Diagnostik müssen parallel laufen.",
-        "Gegenüber dem Patienten sollte man klar sagen: Ihre Beschwerden können eine ernstere Ursache haben. Darum klären wir jetzt schnell, ob eine Blutung oder ein akuter Bauchnotfall vorliegt.",
-        "Wenn keine unmittelbare stationäre Aufnahme erfolgt, braucht der Patient konkrete Rückkehrzeichen: zunehmender Schmerz, Schwindel, Blutungszeichen, Fieber, anhaltendes Erbrechen oder Kreislaufschwäche.",
-        "Eine saubere Verlaufsdokumentation ist zentral. Notiert werden Warnzeichen, Befunde, Kreislaufdaten, erste Maßnahmen, Reaktion und der weitere Plan."
+        "Der Einstieg bei Bauchschmerz beginnt mit der Stabilität des Patienten. Wenn Kreislauf oder Allgemeinzustand schlecht sind, hat das Vorrang vor langen Detailfragen. Erst danach wird die Symptomatik fein eingeordnet.",
+        "In der Anamnese werden Beginn, Schmerzort, Verlauf und Schmerzcharakter geklärt. Wichtig ist auch, ob Übelkeit, Erbrechen, Fieber, Stuhlveränderung oder Blutungszeichen dazugekommen sind. Diese Kombinationen entscheiden oft über die Dringlichkeit.",
+        "Red Flags sind Blut im Erbrochenen, schwarzer Stuhl oder frisches Blut im Stuhl. Ebenso kritisch sind eine harte Bauchdecke, deutliche Abwehrspannung, Loslassschmerz und rasche Schmerzprogredienz. Diese Zeichen sprechen gegen ein reines Abwarten.",
+        "Anhaltendes Erbrechen mit fehlendem Wind- oder Stuhlabgang kann auf einen Ileus hinweisen. Auch ausgeprägte Schwäche, Schwindel und Synkopenneigung können bei Blutung oder Volumenmangel auftreten und müssen sofort gewichtet werden.",
+        "Die Vitalzeichen sind ein zentraler Teil der Entscheidung. Tachykardie, Hypotonie, Tachypnoe und Blässe zeigen, dass der Patient nicht nur Schmerzen hat, sondern möglicherweise instabil wird. Hier laufen Diagnostik und Stabilisierung parallel.",
+        "Bei der Untersuchung helfen klare Schritte: Inspektion, Auskultation, vorsichtige Palpation, Loslassschmerzprüfung und Kreislaufbeurteilung. Eine ruhige, präzise Befundsprache ist besser als komplizierte Formulierungen ohne klare Aussage.",
+        "Die Erstdiagnostik umfasst meist Labor, Monitoring und je nach Befund Sonographie oder CT. Bei Blutungsverdacht wird die endoskopische Abklärung früh mitgedacht. Die Reihenfolge richtet sich nach Schweregrad und Stabilität.",
+        "Ein häufiger Fehler ist, kurzfristige Besserung als Entwarnung zu werten. Ein weiterer Fehler ist, bei älteren oder multimorbiden Patienten Red Flags zu unterschätzen. Gerade dort können Verläufe rasch kippen.",
+        "Gegenüber dem Patienten hilft eine klare Linie: Ihre Beschwerden können eine ernste Ursache haben, deshalb klären wir jetzt schnell und strukturiert ab. Das schafft Orientierung und verringert Unsicherheit.",
+        "Wenn eine Entlassung vertretbar ist, müssen Warnzeichen konkret benannt werden: zunehmender Schmerz, Blutungszeichen, anhaltendes Erbrechen, Fieber, Schwindel oder Schwäche. Zusammen mit guter Dokumentation entsteht so ein sicheres Vorgehen."
       ],
       "question_groups": [],
       "exam_sentences": [],
       "linked_term_ids": [],
       "source_tags": [
         "Fachsprachkurs PDF: GI-Symptome und Gastroskopiebezug"
-      ]
+      ],
+      "examples": {
+        "patient_sentences": [
+          "Ich habe seit gestern starke Bauchschmerzen, es wird schlimmer.",
+          "Ich musste mehrmals erbrechen und es war etwas Blut dabei.",
+          "Mein Stuhl ist seit heute ganz schwarz.",
+          "Mir ist beim Aufstehen sehr schwindelig.",
+          "Mein Bauch fühlt sich hart und gespannt an.",
+          "Ich kann seit Stunden weder Stuhl noch Luft absetzen.",
+          "Ich bin sehr schwach und habe Fieber bekommen."
+        ],
+        "doctor_sentences": [
+          "Ich untersuche Ihren Bauch jetzt Schritt für Schritt.",
+          "Seit wann genau bestehen die Schmerzen und wo haben sie begonnen?",
+          "Haben Sie Blut im Erbrochenen oder schwarzen Stuhl bemerkt?",
+          "Können Sie mir sagen, ob der Schmerz eher dauerhaft oder krampfartig ist?",
+          "Wir kontrollieren jetzt sofort Blutdruck, Puls und Sauerstoffsättigung.",
+          "Ich nehme Ihnen Blut ab und veranlasse eine zügige Diagnostik.",
+          "Bei diesen Warnzeichen müssen wir eine Blutung oder einen akuten Bauchnotfall ausschließen.",
+          "Bitte sagen Sie sofort Bescheid, wenn der Schmerz stärker wird.",
+          "Ich erkläre Ihnen gleich, welche nächsten Schritte heute notwendig sind.",
+          "Wenn sich Ihr Zustand verschlechtert, reagieren wir ohne Zeitverlust."
+        ]
+      }
     },
     {
       "id": "urogenital_sepsis",
       "title": "Harnwege, Niere und Sepsis",
       "focus": "",
-      "summary": "Nicht jeder Harnwegsinfekt ist harmlos. Fieber, Flankenschmerz, Schüttelfrost, Harnverhalt, makroskopische Hämaturie oder deutliche Schwäche sind Warnzeichen. Dann muss man an komplizierte Infektion, Harnstau und beginnende Sepsis denken.",
+      "summary": "Beschwerden der Harnwege sind häufig, können aber in gefährliche Verläufe übergehen. Fieber, Flankenschmerz, Schüttelfrost, Harnverhalt, Hämaturie und deutliche Schwäche sind wichtige Warnzeichen. Dann muss man an komplizierte Infektion, Harnstau und Sepsis denken.",
       "learning_text": [
-        "Viele Patienten kommen mit Dysurie oder häufigem Harndrang. Diese Beschwerden sind oft unkompliziert, können aber in gefährliche Verläufe übergehen.",
-        "Warnzeichen sind Fieber, Flankenschmerz und Schüttelfrost. Diese Kombination spricht eher für eine Beteiligung der oberen Harnwege als für eine einfache Zystitis.",
-        "Erbrechen, stark reduzierter Allgemeinzustand, Verwirrtheit oder kaum noch mögliche Flüssigkeitsaufnahme erhöhen die Dringlichkeit. Hier droht eine systemische Verschlechterung.",
-        "Akuter Harnverhalt ist ein eigener Notfall. Auch sichtbares Blut im Urin braucht zügige Einordnung, vor allem bei Schmerzen oder Kreislaufzeichen.",
-        "Für die Sepsis-Abschätzung sind Vitalzeichen entscheidend: Herzfrequenz, Blutdruck, Atemfrequenz, Temperatur, Sauerstoffsättigung und Bewusstseinslage. Veränderungen hier sind wichtiger als einzelne Laborwerte.",
-        "Risikofaktoren sind Harnkatheter, Harnsteine, anatomische Abflussstörung, Diabetes, Immunsuppression und höheres Alter. Diese Faktoren erklären oft, warum der Verlauf schwerer ist.",
-        "In der Anamnese sind Beginn, Schmerzort, Fieberverlauf, Urinmenge und frühere ähnliche Episoden wichtig. Man fragt auch nach Medikation und kürzlichen Eingriffen an den Harnwegen.",
-        "In der Untersuchung zählen Allgemeinzustand, Kreislauf, Hydratation und Klopfschmerz über den Nierenlagern. Zusätzlich prüft man, ob eine akute Entleerungsstörung vorliegt.",
-        "Die erste Diagnostik umfasst meist Urinstatus, Urinkultur, Blutkulturen, Entzündungswerte, Nierenfunktion und je nach Lage Bildgebung. Bei Verdacht auf Abflussstörung darf man die Bildgebung nicht aufschieben.",
-        "Therapie und Diagnostik laufen parallel. Bei schwerem Verlauf braucht es rasche Flüssigkeitstherapie, frühe Antibiotikagabe und engmaschige Überwachung.",
-        "Ein häufiger Fehler ist, Fieber und Flankenschmerz als banalen Infekt zu werten. Ein weiterer Fehler ist, Sepsiszeichen zu spät als Notfall zu erkennen.",
-        "Gegenüber dem Patienten sollte man klar und ruhig erklären: Ihre Beschwerden sprechen möglicherweise für eine ernste Infektion der Harnwege oder Niere. Deshalb behandeln wir jetzt zügig und überwachen eng.",
-        "Bei ambulanter Weiterbehandlung müssen Rückkehrzeichen genau benannt werden: steigendes Fieber, Erbrechen, Schwindel, weniger Urin, zunehmender Schmerz oder Verwirrtheit.",
-        "Dokumentiert werden Warnzeichen, Risikofaktoren, Kreislaufdaten, erste Maßnahmen und das vereinbarte Sicherheitsnetz. Das verbessert Sicherheit und Teamkommunikation."
+        "Bei Harnwegsbeschwerden beginnt die Einschätzung mit der Frage, ob es sich noch um einen lokalen Infekt handelt oder bereits um einen systemischen Verlauf. Diese Entscheidung wird über Warnzeichen, Vitaldaten und Allgemeinzustand getroffen.",
+        "Fieber mit Flankenschmerz ist ein Kernsignal für eine mögliche Beteiligung der oberen Harnwege. Kommen Schüttelfrost, Erbrechen oder reduzierte Trinkfähigkeit hinzu, steigt die Dringlichkeit deutlich.",
+        "Harnverhalt ist ein eigener Notfall, weil Abflussstörung und Druckbelastung rasch zu Komplikationen führen können. Sichtbares Blut im Urin braucht ebenfalls eine rasche Einordnung, besonders bei Schmerzen oder Kreislaufzeichen.",
+        "Sepsiszeichen müssen aktiv gesucht werden. Dazu gehören Tachykardie, Hypotonie, Tachypnoe, kalte Extremitäten, mentale Veränderung und deutliche Allgemeinverschlechterung. Wenn diese Zeichen vorliegen, darf man nicht auf den nächsten Verlaufstag warten.",
+        "In der Vorgeschichte sind Katheter, Steine, frühere Nierenbeckenentzündungen, Diabetes, Immunsuppression und kürzliche Eingriffe sehr relevant. Sie erklären, warum ein Verlauf kompliziert werden kann.",
+        "Die Untersuchung bleibt klar und zielgerichtet: Allgemeinzustand, Kreislauf, Hydratation und Nierenklopfschmerz. Gleichzeitig wird die Urinsituation geklärt, also Menge, Farbe, Schmerzen und Entleerbarkeit.",
+        "Die Erstdiagnostik umfasst typischerweise Urinstatus, Kultur, Entzündungswerte, Nierenfunktion und je nach Bildgebung die Suche nach Abflussstörung. Bei schwerem Bild werden Blutkulturen früh abgenommen.",
+        "Diagnostik und Therapie laufen parallel. Bei Verdacht auf komplizierte Infektion oder Sepsis braucht es rasche Flüssigkeitstherapie, frühe antiinfektive Behandlung und engmaschige Überwachung.",
+        "Ein häufiger Fehler ist die Verwechslung von schwerem Verlauf mit banalem Infekt. Ein weiterer Fehler ist die späte Reaktion auf mentale Veränderungen oder Kreislaufzeichen. Genau diese Verzögerungen verschlechtern Prognosen.",
+        "Gegenüber dem Patienten hilft eine klare Botschaft: Ihre Beschwerden sprechen möglicherweise für eine ernste Infektion, deshalb handeln wir jetzt zügig. Mit klarer Übergabe und präziser Dokumentation bleibt der weitere Verlauf sicher steuerbar."
       ],
       "question_groups": [],
       "exam_sentences": [],
       "linked_term_ids": [],
       "source_tags": [
         "Fachsprachkurs PDF: urogenitale Anamnese und Warnzeichen"
-      ]
+      ],
+      "examples": {
+        "patient_sentences": [
+          "Ich habe hohes Fieber und starke Schmerzen in der Flanke.",
+          "Seit gestern schüttelt es mich immer wieder.",
+          "Beim Wasserlassen brennt es und es kommt kaum Urin.",
+          "Heute war Blut im Urin zu sehen.",
+          "Mir ist übel und ich kann kaum trinken.",
+          "Ich bin sehr schwach und mir ist ständig schwindelig.",
+          "Ich fühle mich verwirrt und gar nicht mehr wie sonst."
+        ],
+        "doctor_sentences": [
+          "Ich nehme Ihre Beschwerden ernst und kläre sofort einen schweren Verlauf ab.",
+          "Seit wann haben Sie Fieber und wo genau sind die Schmerzen am stärksten?",
+          "Haben Sie Schüttelfrost, Erbrechen oder deutlich weniger Urin bemerkt?",
+          "Wir kontrollieren jetzt sofort Ihre Vitalzeichen und den Kreislauf.",
+          "Ich untersuche die Nierenlager und Ihren Allgemeinzustand direkt.",
+          "Wir brauchen jetzt Urin- und Blutuntersuchungen ohne Verzögerung.",
+          "Bei dieser Konstellation müssen wir eine komplizierte Infektion ausschließen.",
+          "Je nach Befund veranlassen wir noch heute eine Bildgebung.",
+          "Wenn Sepsiszeichen vorliegen, beginnen wir sofort mit der Akuttherapie.",
+          "Ich erkläre Ihnen jeden Schritt, damit Sie wissen, warum wir jetzt schnell handeln."
+        ]
+      }
     },
     {
       "id": "endokrin_metabolisch",
       "title": "Stoffwechsel und Hormone: Warnzeichen",
       "focus": "",
-      "summary": "Stoffwechselentgleisungen können sich anfangs unscheinbar zeigen. Warnzeichen sind unter anderem starker Durst, häufiges Wasserlassen, Erbrechen, tiefe schnelle Atmung, Schweiß, Zittern und Bewusstseinsveränderung. Gefährlich sind vor allem schwere Hypoglykämie, diabetische Ketoazidose, hyperosmolares Syndrom und andere akute Hormonkrisen.",
+      "summary": "Metabolische und hormonelle Krisen starten oft unscheinbar und können schnell gefährlich werden. Warnzeichen sind unter anderem starker Durst, Polyurie, Erbrechen, tiefe schnelle Atmung, Zittern, Schweiß und Bewusstseinsveränderung. Besonders wichtig sind die frühe Erkennung von Hypoglykämie, Ketoazidose, hyperosmolarer Entgleisung und anderen Hormonkrisen.",
       "learning_text": [
-        "Metabolische Notfälle beginnen oft mit unspezifischen Beschwerden. Müdigkeit, Schwäche oder Unruhe wirken zunächst harmlos, können aber rasch in eine kritische Lage übergehen.",
-        "Bei Hypoglykämie stehen oft Schweiß, Zittern, Hunger, Herzklopfen und Unruhe am Anfang. Später können Verwirrtheit, Krampfanfälle oder Bewusstlosigkeit folgen.",
-        "Bei starker Hyperglykämie fallen häufig Durst, häufiges Wasserlassen, trockene Schleimhäute, Gewichtsverlust und Schwäche auf. Dazu können Übelkeit, Erbrechen und Bauchschmerzen kommen.",
-        "Bei Ketoazidose ist eine tiefe, schnelle Atmung typisch. Diese Atmung ist ein Warnsignal und sollte sofort ernst genommen werden.",
-        "Beim hyperosmolaren Syndrom können schwere Dehydratation und neurologische Symptome im Vordergrund stehen. Besonders ältere Patienten sind hier gefährdet.",
-        "Auch endokrine Krisen außerhalb des Diabetes müssen mitgedacht werden. Sehr hohes Fieber, starke Tachykardie, Unruhe, Delir oder Bewusstseinsstörung können zu schweren Hormonentgleisungen passen.",
-        "In der Erstbeurteilung sind Bewusstsein, Kreislauf, Atmung und Hydratation zentral. Diese vier Bereiche entscheiden früh über die Dringlichkeit.",
-        "Eine sofortige Blutzuckermessung gehört zur Basis bei unklarem neurologischem oder internistischem Zustand. Diese einfache Maßnahme verhindert gefährliche Verzögerungen.",
-        "Die weitere Diagnostik umfasst je nach Lage Blutgase, Elektrolyte, Ketonkörper, Nierenwerte und Entzündungsparameter. Ziel ist, Schweregrad und Ursache schnell zu klären.",
-        "Die Therapie beginnt häufig parallel mit Volumen, Stoffwechselstabilisierung und engmaschiger Überwachung. Bei Hypoglykämie ist die schnelle Korrektur zentral, bei Hyperglykämie die kontrollierte Stabilisierung.",
-        "Ein häufiger Fehler ist, Warnzeichen als bloßen Infekt oder Stress abzutun. Ein weiterer Fehler ist, bei Verwirrtheit nicht früh an Unter- oder Überzuckerung zu denken.",
-        "Wichtig ist außerdem die Medikamentenanamnese: Insulin, orale Antidiabetika, Kortikosteroide und andere Präparate können den Verlauf stark beeinflussen.",
-        "Gegenüber dem Patienten sollte man klar formulieren: Ihr Stoffwechsel kann entgleist sein, deshalb müssen wir jetzt sofort messen, stabilisieren und eng kontrollieren.",
-        "Bei Entlassung oder ambulanter Weiterführung braucht es konkrete Sicherheitsregeln: zunehmende Schwäche, Verwirrtheit, anhaltendes Erbrechen, tiefe schnelle Atmung oder Kreislaufprobleme sind sofortige Wiedervorstellungsgründe."
+        "Der Verlauf metabolischer Krisen ist oft tückisch, weil die ersten Zeichen unspezifisch wirken. Müdigkeit, Unruhe oder Schwäche werden leicht unterschätzt, obwohl sie Teil einer beginnenden Entgleisung sein können.",
+        "Bei Hypoglykämie beginnt es häufig mit Zittern, Schweiß, Hunger, Nervosität und Konzentrationsabfall. Später können Verwirrtheit, Krampfanfälle oder Bewusstlosigkeit auftreten. Deshalb muss bei passenden Symptomen früh gemessen werden.",
+        "Bei Hyperglykämie stehen oft Durst, häufiges Wasserlassen, trockene Schleimhäute, Gewichtsverlust und zunehmende Schwäche im Vordergrund. Dazu kommen je nach Schweregrad Übelkeit, Erbrechen und Bauchschmerzen.",
+        "Bei Ketoazidose ist die tiefe schnelle Atmung ein klassisches Warnzeichen. Wenn zusätzlich Verwirrtheit, Exsikkose oder Kreislaufprobleme auftreten, wird der Fall akut und braucht engmaschige Steuerung.",
+        "Das hyperosmolare Syndrom zeigt sich häufig mit schwerer Dehydratation und neurologischen Symptomen. Gerade ältere Menschen können dabei rasch dekompensieren, auch wenn der Beginn zunächst still wirkt.",
+        "Auch andere hormonelle Entgleisungen müssen mitgedacht werden. Sehr hohe Herzfrequenz, hohes Fieber, Delir oder ausgeprägte Unruhe können auf eine schwere Schilddrüsenkrise hinweisen.",
+        "In der Erstbeurteilung stehen immer die gleichen Punkte: Bewusstsein, Atmung, Kreislauf und Hydratation. Diese vier Säulen helfen, den Schweregrad schnell und verlässlich einzuschätzen.",
+        "Die Diagnostik umfasst je nach Lage Blutzucker, Blutgase, Elektrolyte, Ketone, Nierenwerte und Entzündungsparameter. Sie dient nicht nur der Diagnose, sondern vor allem der sicheren Therapiesteuerung im Verlauf.",
+        "Die Therapie startet oft parallel mit Volumen, Stoffwechselkorrektur und Monitoring. Ein häufiger Fehler ist, nur den Einzelwert zu behandeln und den Gesamtzustand zu wenig zu beachten. Entscheidend ist das Zusammenspiel aus Klinik und Verlauf.",
+        "Dem Patienten sollte man klar sagen: Ihr Stoffwechsel kann entgleist sein, deshalb messen und stabilisieren wir jetzt sofort. Mit klarer Rückmeldung, enger Kontrolle und guter Dokumentation lässt sich das Risiko deutlich reduzieren."
       ],
       "question_groups": [],
       "exam_sentences": [],
       "linked_term_ids": [],
       "source_tags": [
         "Fachsprachkurs PDF: Endokrinologie- und Diabetesabschnitte"
-      ]
+      ],
+      "examples": {
+        "patient_sentences": [
+          "Ich habe seit gestern extremen Durst und muss ständig Wasser lassen.",
+          "Mir ist übel, ich habe mehrfach erbrochen und fühle mich sehr schwach.",
+          "Ich zittere stark und bin ganz verschwitzt.",
+          "Ich kann mich plötzlich schlecht konzentrieren.",
+          "Meine Atmung ist tief und schnell, obwohl ich mich kaum bewege.",
+          "Ich bin sehr verwirrt und fühle mich benommen.",
+          "Ich habe das Gefühl, gleich wegzukippen."
+        ],
+        "doctor_sentences": [
+          "Wir kontrollieren jetzt sofort Ihren Blutzucker und Ihre Vitalzeichen.",
+          "Seit wann bestehen Durst, häufiges Wasserlassen und die Schwäche?",
+          "Haben Sie heute Insulin oder Ihre Tabletten wie gewohnt eingenommen?",
+          "Ich prüfe jetzt Ihren Kreislauf, Ihre Atmung und den Flüssigkeitszustand.",
+          "Wir nehmen Blut ab, um Elektrolyte, Säure-Basen-Status und Nierenwerte zu prüfen.",
+          "Bei diesen Zeichen müssen wir eine akute Stoffwechselentgleisung ausschließen.",
+          "Wir beginnen jetzt direkt mit der Stabilisierung und überwachen engmaschig.",
+          "Bitte sagen Sie sofort Bescheid, wenn Verwirrtheit oder Schwäche zunehmen.",
+          "Ich erkläre Ihnen gleich verständlich, welche Therapie heute nötig ist.",
+          "Unser Ziel ist, Ihren Stoffwechsel jetzt schnell und sicher zu stabilisieren."
+        ]
+      }
     },
     {
       "id": "psychiatrie_sicherheit",
       "title": "Psychische Krise und Sicherheit",
       "focus": "",
-      "summary": "Bei psychischen Krisen steht Sicherheit an erster Stelle. Warnzeichen sind Suizidgedanken, konkrete Pläne, starke Agitation, Realitätsverlust, fehlende Impulskontrolle oder erhebliche Selbstvernachlässigung. Dann muss rasch ein Schutzplan umgesetzt werden.",
+      "summary": "In psychischen Krisen steht der Schutz des Patienten und seines Umfelds an erster Stelle. Suizidgedanken, konkrete Pläne, starke Agitation, Realitätsverlust und fehlende Impulskontrolle sind zentrale Warnzeichen. Dann braucht es ein klares, ruhiges und sofort umsetzbares Sicherheitsvorgehen.",
       "learning_text": [
-        "In psychischen Krisen ist der erste Schritt immer die Sicherheitsfrage. Wenn Selbst- oder Fremdgefährdung möglich ist, hat Schutz Vorrang vor langen diagnostischen Diskussionen.",
-        "Direkte Fragen sind hier wichtig und professionell. Man fragt klar nach Suizidgedanken, nach konkreten Plänen, nach bereits vorbereiteten Handlungen und nach früheren Versuchen.",
-        "Warnzeichen sind auch schwere Unruhe, Impulsdurchbrüche, akute psychotische Symptome, Halluzinationen mit Handlungsdruck oder Realitätsverlust. In solchen Situationen kann sich das Risiko schnell verändern.",
-        "Substanzkonsum gehört früh in die Einschätzung. Intoxikation oder Entzug können Verhalten, Urteilsfähigkeit und Impulskontrolle deutlich verschlechtern.",
-        "Neben Risiken werden Schutzfaktoren erfasst: unterstützende Bezugspersonen, klare Hilfsbereitschaft, verbindliche Absprachen und tragfähige Nachbetreuung. Diese Faktoren helfen, das Risiko realistischer einzuschätzen.",
-        "Die Umgebung muss aktiv sicher gestaltet werden. Dazu gehören ruhige Ansprache, klare Führung, wenig Reize, ausreichend Abstand und ein Team, das deeskalierend zusammenarbeitet.",
-        "Bei höherem Risiko braucht es engmaschige Beobachtung und häufig sofortige fachpsychiatrische Mitbeurteilung. Alle Maßnahmen sollten eindeutig benannt und zeitnah umgesetzt werden.",
-        "Ein häufiger Fehler ist ausweichende Sprache. Unklare Formulierungen können dazu führen, dass zentrale Risiken nicht ausgesprochen und nicht behandelt werden.",
-        "Ein weiterer Fehler ist, nur auf Worte zu achten und Verhalten zu übersehen. Starke Unruhe, plötzlicher Rückzug, fehlende Kooperation oder abrupter Stimmungswechsel können wichtige Hinweise sein.",
-        "Kommunikation mit Angehörigen ist oft hilfreich, wenn der Patient einverstanden ist oder wenn die Sicherheitslage es erforderlich macht. Dabei geht es um Beobachtungen, Verlauf und umsetzbare Schutzschritte.",
-        "Gegenüber dem Patienten hilft eine respektvolle, klare Linie: Ihre Sicherheit hat jetzt Vorrang. Wir lassen Sie nicht allein und organisieren sofort die passende Unterstützung.",
-        "Bei geplanter Entlassung braucht es ein belastbares Sicherheitsnetz: klare Kontaktwege, Notfallnummern, feste Termine und klar benannte Rückkehrzeichen.",
-        "Rückkehrzeichen sind zum Beispiel zunehmende Suizidgedanken, Verlust der Kontrolle, neue Stimmen mit Handlungsdruck, starke Schlaflosigkeit mit Entgleisung oder erneuter Substanzkonsum mit Gefährdung.",
-        "Eine präzise Dokumentation ist essenziell: Risikoeinschätzung, Schutzfaktoren, konkrete Fragen, Antworten, vereinbarte Maßnahmen und Übergaben müssen vollständig und nachvollziehbar festgehalten werden."
+        "Der wichtigste Grundsatz in psychischen Krisen lautet: Sicherheit zuerst. Wenn der Eindruck entsteht, dass Selbst- oder Fremdgefährdung möglich ist, wird diese Frage nicht auf später verschoben, sondern direkt geklärt.",
+        "Dabei hilft klare Sprache. Direkte Fragen nach Suizidgedanken, Plan, Vorbereitung und früheren Versuchen sind professionell und notwendig. Unklare Andeutungen reichen für eine sichere Einschätzung nicht aus.",
+        "Warnzeichen sind auch schwere Unruhe, Impulsdurchbrüche, psychotische Symptome mit Handlungsdruck und deutlicher Realitätsverlust. In solchen Situationen kann sich das Risiko innerhalb kurzer Zeit verändern.",
+        "Substanzkonsum gehört früh in die Einschätzung, weil Intoxikation oder Entzug die Kontrolle und Urteilsfähigkeit stark verschlechtern können. Auch Schlafentzug und abrupte Verhaltensänderungen sind wichtige Zusatzhinweise.",
+        "Neben Risiken werden Schutzfaktoren erfasst: unterstützende Personen, Kooperationsbereitschaft, erreichbare Hilfe und verbindliche Nachsorge. Eine gute Entscheidung braucht beide Seiten, Risiko und Schutz.",
+        "Die Umgebung wird aktiv sicher gestaltet. Ruhige Ansprache, klare Rollen im Team, geringe Reizbelastung und deeskalierende Führung senken Eskalationsrisiken und verbessern die Gesprächsqualität.",
+        "Bei erhöhtem Risiko braucht es engmaschige Beobachtung und oft sofortige psychiatrische Mitbeurteilung. Maßnahmen werden konkret benannt und zeitnah umgesetzt. Unverbindliche Formulierungen helfen hier nicht.",
+        "Ein häufiger Fehler ist, nur den gesprochenen Inhalt zu bewerten und das Verhalten zu wenig zu beachten. Starker Rückzug, abrupter Stimmungswechsel, fehlende Kooperation oder motorische Unruhe sind oft entscheidende Signale.",
+        "Die Kommunikation mit dem Patienten bleibt respektvoll und klar: Ihre Sicherheit steht jetzt im Vordergrund, wir lassen Sie nicht allein und organisieren sofort Unterstützung. So entsteht Orientierung in einer instabilen Situation.",
+        "Bei Entlassung braucht es ein belastbares Sicherheitsnetz mit klaren Kontaktwegen, festen Terminen und konkreten Rückkehrzeichen. Eine präzise Dokumentation von Risiko, Schutzfaktoren, Maßnahmen und Übergaben ist für die weitere Sicherheit unverzichtbar."
       ],
       "question_groups": [],
       "exam_sentences": [],
       "linked_term_ids": [],
       "source_tags": [
         "Fachsprachkurs PDF: Depression, Sucht und Sicherheitsfragen"
-      ]
+      ],
+      "examples": {
+        "patient_sentences": [
+          "Ich halte den Druck nicht mehr aus und habe dunkle Gedanken.",
+          "Ich habe schon überlegt, mir etwas anzutun.",
+          "Ich fühle mich völlig außer Kontrolle und sehr unruhig.",
+          "Ich höre Stimmen, die mir Dinge befehlen.",
+          "Ich habe seit Tagen kaum geschlafen und werde immer verwirrter.",
+          "Ich habe heute viel Alkohol getrunken und komme nicht klar.",
+          "Ich habe Angst, dass ich mir oder anderen schade."
+        ],
+        "doctor_sentences": [
+          "Danke, dass Sie das so offen sagen, ich nehme das sehr ernst.",
+          "Haben Sie im Moment konkrete Gedanken, sich etwas anzutun?",
+          "Gibt es einen Plan oder etwas, das Sie schon vorbereitet haben?",
+          "Sind Sie gerade allein, oder ist jemand da, der Sie unterstützen kann?",
+          "Ich bleibe jetzt bei Ihnen und sorge für eine sichere Umgebung.",
+          "Wir holen sofort psychiatrische Unterstützung dazu.",
+          "Bitte geben Sie mir Rückmeldung, wenn die Anspannung weiter steigt.",
+          "Wir sprechen jetzt ruhig und Schritt für Schritt, Sie sind nicht allein.",
+          "Ihre Sicherheit hat jetzt Vorrang vor allem anderen.",
+          "Wir vereinbaren zusammen einen klaren Plan für die nächsten Stunden."
+        ]
+      }
     }
   ]
 }
