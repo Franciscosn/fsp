@@ -7940,11 +7940,13 @@ function renderLearningSubcategoryList(bundle) {
     const title = document.createElement("span");
     title.className = "learning-subcategory-title";
     title.textContent = category.title;
-    const count = document.createElement("span");
-    count.className = "learning-subcategory-count";
-    count.textContent = `${category.questionCount} ${getLearningMetaCountLabel(state.learningRootId)}`;
     button.appendChild(title);
-    button.appendChild(count);
+    if (category.questionCount > 0) {
+      const count = document.createElement("span");
+      count.className = "learning-subcategory-count";
+      count.textContent = `${category.questionCount} ${getLearningMetaCountLabel(state.learningRootId)}`;
+      button.appendChild(count);
+    }
     button.addEventListener("click", () => {
       setLearningActiveCategoryIdForRoot(state.learningRootId, category.id);
       state.learningView = LEARNING_VIEW_READING;
@@ -8687,7 +8689,9 @@ function renderLearningReadingMode(bundle) {
   if (refs.learningReadingMeta) {
     refs.learningReadingMeta.textContent = [
       activeCategory.focus,
-      `${activeCategory.questionCount} ${getLearningMetaCountLabel(state.learningRootId)}`,
+      activeCategory.questionCount > 0
+        ? `${activeCategory.questionCount} ${getLearningMetaCountLabel(state.learningRootId)}`
+        : "",
       linkedTerms.length > 0 ? `${linkedTerms.length} verknüpfte Online-Kurs-Begriffe` : ""
     ]
       .filter((item) => Boolean(item))
